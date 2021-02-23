@@ -27,7 +27,7 @@ final class Application extends \Typo3RectorPrefix20210223\Symfony\Component\Con
     /**
      * @var string
      */
-    private const VERSION = '0.9.4';
+    private const VERSION = '0.9.5';
     /**
      * @var NoRectorsLoadedReporter
      */

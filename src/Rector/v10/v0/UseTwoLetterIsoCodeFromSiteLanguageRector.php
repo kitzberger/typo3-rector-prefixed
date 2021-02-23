@@ -1,0 +1,67 @@
+<?php
+
+declare (strict_types=1);
+namespace Ssch\TYPO3Rector\Rector\v10\v0;
+
+use PhpParser\Node;
+use PhpParser\Node\Expr\Assign;
+use PhpParser\Node\Expr\PropertyFetch;
+use Rector\Core\Rector\AbstractRector;
+use Rector\NodeTypeResolver\Node\AttributeKey;
+use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+/**
+ * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.0/Deprecation-88559-TSFE-sys_language_isocode.html
+ */
+final class UseTwoLetterIsoCodeFromSiteLanguageRector extends \Rector\Core\Rector\AbstractRector
+{
+    /**
+     * @var Typo3NodeResolver
+     */
+    private $typo3NodeResolver;
+    public function __construct(\Ssch\TYPO3Rector\Helper\Typo3NodeResolver $typo3NodeResolver)
+    {
+        $this->typo3NodeResolver = $typo3NodeResolver;
+    }
+    public function getNodeTypes() : array
+    {
+        return [\PhpParser\Node\Expr\PropertyFetch::class];
+    }
+    /**
+     * @param PropertyFetch $node
+     */
+    public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
+    {
+        if (!$this->isObjectType($node, \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class) && !$this->typo3NodeResolver->isPropertyFetchOnAnyPropertyOfGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER)) {
+            return null;
+        }
+        if (!$this->isName($node->name, 'sys_language_isocode')) {
+            return null;
+        }
+        $parentNode = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE);
+        // Check if we have an assigment to the property, if so do not change it
+        if ($parentNode instanceof \PhpParser\Node\Expr\Assign && $parentNode->var instanceof \PhpParser\Node\Expr\PropertyFetch) {
+            return null;
+        }
+        return $this->nodeFactory->createMethodCall($this->nodeFactory->createMethodCall($node->var, 'getLanguage'), 'getTwoLetterIsoCode');
+    }
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
+    {
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('The usage of the propery sys_language_isocode is deprecated. Use method getTwoLetterIsoCode of SiteLanguage', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+if ($GLOBALS['TSFE']->sys_language_isocode) {
+    $GLOBALS['LANG']->init($GLOBALS['TSFE']->sys_language_isocode);
+}
+PHP
+, <<<'PHP'
+if ($GLOBALS['TSFE']->getLanguage()->getTwoLetterIsoCode()) {
+    $GLOBALS['LANG']->init($GLOBALS['TSFE']->getLanguage()->getTwoLetterIsoCode());
+}
+PHP
+)]);
+    }
+}

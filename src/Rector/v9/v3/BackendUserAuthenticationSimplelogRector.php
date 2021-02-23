@@ -1,0 +1,56 @@
+<?php
+
+declare (strict_types=1);
+namespace Ssch\TYPO3Rector\Rector\v9\v3;
+
+use PhpParser\Node;
+use PhpParser\Node\Arg;
+use PhpParser\Node\Expr\MethodCall;
+use Rector\Core\Rector\AbstractRector;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
+use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+/**
+ * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.3/Deprecation-84981-BackendUserAuthentication-simplelogDeprecated.html
+ */
+final class BackendUserAuthenticationSimplelogRector extends \Rector\Core\Rector\AbstractRector
+{
+    /**
+     * @param MethodCall $node
+     */
+    public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
+    {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Authentication\BackendUserAuthentication::class)) {
+            return null;
+        }
+        if (!$this->isName($node->name, 'simplelog')) {
+            return null;
+        }
+        /** @var Arg[] $currentArgs */
+        $currentArgs = $node->args;
+        $message = $this->valueResolver->getValue($currentArgs[0]->value);
+        $extKey = $this->valueResolver->getValue($currentArgs[1]->value);
+        $details = ($extKey ? '[' . $extKey . '] ' : '') . $message;
+        $args = [$this->nodeFactory->createArg(4), $this->nodeFactory->createArg(0), $currentArgs[2] ?? $this->nodeFactory->createArg(0), $this->nodeFactory->createArg($details), $this->nodeFactory->createArg([])];
+        return $this->nodeFactory->createMethodCall($node->var, 'writelog', $args);
+    }
+    public function getNodeTypes() : array
+    {
+        return [\PhpParser\Node\Expr\MethodCall::class];
+    }
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
+    {
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate the method BackendUserAuthentication->simplelog() to BackendUserAuthentication->writelog()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+$someObject = GeneralUtility::makeInstance(TYPO3\CMS\Core\Authentication\BackendUserAuthentication::class);
+$someObject->simplelog($message, $extKey, $error);
+PHP
+, <<<'PHP'
+$someObject = GeneralUtility::makeInstance(TYPO3\CMS\Core\Authentication\BackendUserAuthentication::class);
+$someObject->writelog(4, 0, $error, 0, ($extKey ? '[' . $extKey . '] ' : '') . $message, []);
+PHP
+)]);
+    }
+}

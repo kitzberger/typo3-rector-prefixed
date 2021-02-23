@@ -1,0 +1,57 @@
+<?php
+
+declare (strict_types=1);
+namespace Ssch\TYPO3Rector\Rector\v9\v5;
+
+use PhpParser\Node;
+use PhpParser\Node\Expr\ArrayDimFetch;
+use Rector\Core\Rector\AbstractRector;
+use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
+use TYPO3\CMS\Core\Package\PackageManager;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+/**
+ * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.5/Deprecation-86404-GLOBALSTYPO3_LOADED_EXT.html
+ */
+final class UsePackageManagerActivePackagesRector extends \Rector\Core\Rector\AbstractRector
+{
+    /**
+     * @var Typo3NodeResolver
+     */
+    private $typo3NodeResolver;
+    public function __construct(\Ssch\TYPO3Rector\Helper\Typo3NodeResolver $typo3NodeResolver)
+    {
+        $this->typo3NodeResolver = $typo3NodeResolver;
+    }
+    /**
+     * @return string[]
+     */
+    public function getNodeTypes() : array
+    {
+        return [\PhpParser\Node\Expr\ArrayDimFetch::class];
+    }
+    /**
+     * @param ArrayDimFetch $node
+     */
+    public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
+    {
+        if ($this->typo3NodeResolver->isTypo3Global($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO3_LOADED_EXT)) {
+            return $this->nodeFactory->createMethodCall($this->nodeFactory->createStaticCall(\TYPO3\CMS\Core\Utility\GeneralUtility::class, 'makeInstance', [$this->nodeFactory->createClassConstReference(\TYPO3\CMS\Core\Package\PackageManager::class)]), 'getActivePackages');
+        }
+        return null;
+    }
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
+    {
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use PackageManager API instead of $GLOBALS[\'TYPO3_LOADED_EXT\']', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+$extensionList = $GLOBALS['TYPO3_LOADED_EXT'];
+PHP
+, <<<'PHP'
+$extensionList = GeneralUtility::makeInstance(PackageManager::class)->getActivePackages();
+PHP
+)]);
+    }
+}

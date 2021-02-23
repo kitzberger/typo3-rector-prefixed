@@ -1,0 +1,180 @@
+<?php
+
+declare (strict_types=1);
+namespace Ssch\TYPO3Rector\Rector\v11\v0;
+
+use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use PhpParser\Node;
+use PhpParser\Node\Expr\Exit_;
+use PhpParser\Node\Expr\FuncCall;
+use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Name\FullyQualified;
+use PhpParser\Node\Stmt\ClassMethod;
+use PhpParser\Node\Stmt\Return_;
+use PHPStan\Type\TypeWithClassName;
+use Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface;
+use Rector\Core\Rector\AbstractRector;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+/**
+ * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/11.0/Deprecation-92784-ExtbaseControllerActionsMustReturnResponseInterface.html
+ *
+ * @see \Ssch\TYPO3Rector\Tests\Rector\v11\v0\ExtbaseControllerActionsMustReturnResponseInterface\ExtbaseControllerActionsMustReturnResponseInterfaceRectorTest
+ */
+final class ExtbaseControllerActionsMustReturnResponseInterfaceRector extends \Rector\Core\Rector\AbstractRector
+{
+    /**
+     * @var string
+     */
+    private const THIS = 'this';
+    /**
+     * @var string
+     */
+    private const HTML_RESPONSE = 'htmlResponse';
+    /**
+     * @return string[]
+     */
+    public function getNodeTypes() : array
+    {
+        return [\PhpParser\Node\Stmt\ClassMethod::class];
+    }
+    /**
+     * @param ClassMethod $node
+     */
+    public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
+    {
+        if ($this->shouldSkip($node)) {
+            return null;
+        }
+        foreach ($this->extractReturnCalls($node) as $returnCall) {
+            if (!$returnCall instanceof \PhpParser\Node\Stmt\Return_) {
+                continue;
+            }
+            $returnCallExpression = $returnCall->expr;
+            if ($returnCallExpression instanceof \PhpParser\Node\Expr\FuncCall && $this->isName($returnCallExpression->name, 'json_encode')) {
+                $returnCall->expr = $this->nodeFactory->createMethodCall($this->nodeFactory->createPropertyFetch(self::THIS, 'responseFactory'), 'createJsonResponse', [$returnCall->expr]);
+            } else {
+                // avoid duplication
+                if ($returnCall->expr instanceof \PhpParser\Node\Expr\MethodCall && $this->isName($returnCall->expr->name, self::HTML_RESPONSE)) {
+                    $args = [];
+                } else {
+                    $args = [$returnCall->expr];
+                }
+                $returnCall->expr = $this->nodeFactory->createMethodCall(self::THIS, self::HTML_RESPONSE, $args);
+            }
+        }
+        $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface::class);
+        $statements = $node->stmts;
+        $lastStatement = null;
+        if (\is_array($statements)) {
+            $lastStatement = \array_pop($statements);
+        }
+        if (!$lastStatement instanceof \PhpParser\Node\Stmt\Return_) {
+            $returnResponse = $this->nodeFactory->createMethodCall(self::THIS, self::HTML_RESPONSE);
+            $node->stmts[] = new \PhpParser\Node\Stmt\Return_($returnResponse);
+        }
+        return $node;
+    }
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
+    {
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Extbase controller actions must return ResponseInterface', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+class MyController extends ActionController
+{
+    public function someAction()
+    {
+        $this->view->assign('foo', 'bar');
+    }
+}
+PHP
+, <<<'PHP'
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+class MyController extends ActionController
+{
+    public function someAction(): ResponseInterface
+    {
+        $this->view->assign('foo', 'bar');
+        return $this->htmlResponse();
+    }
+}
+PHP
+)]);
+    }
+    private function shouldSkip(\PhpParser\Node\Stmt\ClassMethod $node) : bool
+    {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::class)) {
+            return \true;
+        }
+        if (!$node->isPublic()) {
+            return \true;
+        }
+        $methodName = $this->getName($node->name);
+        if (null === $methodName) {
+            return \true;
+        }
+        if (!\Typo3RectorPrefix20210223\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
+            return \true;
+        }
+        if (\Typo3RectorPrefix20210223\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
+            return \true;
+        }
+        if ($this->hasExitCall($node)) {
+            return \true;
+        }
+        if ($this->hasRedirectCall($node)) {
+            return \true;
+        }
+        return $this->alreadyResponseReturnType($node);
+    }
+    /**
+     * @return Return_[]|Node[]
+     */
+    private function extractReturnCalls(\PhpParser\Node\Stmt\ClassMethod $node) : array
+    {
+        return $this->betterNodeFinder->find((array) $node->stmts, function (\PhpParser\Node $node) : bool {
+            return $node instanceof \PhpParser\Node\Stmt\Return_;
+        });
+    }
+    private function hasRedirectCall(\PhpParser\Node\Stmt\ClassMethod $node) : bool
+    {
+        return (bool) $this->betterNodeFinder->find((array) $node->stmts, function (\PhpParser\Node $node) : bool {
+            if (!$node instanceof \PhpParser\Node\Expr\MethodCall) {
+                return \false;
+            }
+            if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::class)) {
+                return \false;
+            }
+            return $this->isNames($node->name, ['redirect', 'redirectToUri']);
+        });
+    }
+    private function hasExitCall(\PhpParser\Node\Stmt\ClassMethod $node) : bool
+    {
+        return (bool) $this->betterNodeFinder->find((array) $node->stmts, function (\PhpParser\Node $node) : bool {
+            return $node instanceof \PhpParser\Node\Expr\Exit_;
+        });
+    }
+    private function alreadyResponseReturnType(\PhpParser\Node\Stmt\ClassMethod $node) : bool
+    {
+        foreach ($this->extractReturnCalls($node) as $returnCall) {
+            if (!$returnCall instanceof \PhpParser\Node\Stmt\Return_) {
+                continue;
+            }
+            if (null === $returnCall->expr) {
+                continue;
+            }
+            $returnType = $this->nodeTypeResolver->getStaticType($returnCall->expr);
+            if (!$returnType instanceof \PHPStan\Type\TypeWithClassName) {
+                continue;
+            }
+            if (\is_a($returnType->getClassName(), \Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface::class, \true)) {
+                return \true;
+            }
+        }
+        return \false;
+    }
+}

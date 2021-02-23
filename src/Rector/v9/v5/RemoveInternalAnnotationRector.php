@@ -1,0 +1,70 @@
+<?php
+
+declare (strict_types=1);
+namespace Ssch\TYPO3Rector\Rector\v9\v5;
+
+use PhpParser\Node;
+use PhpParser\Node\Stmt\Class_;
+use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
+use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTagRemover;
+use Rector\Core\Rector\AbstractRector;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
+use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
+/**
+ * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.5/Deprecation-85980-InternalAnnotationInExtbaseCommands.html
+ */
+final class RemoveInternalAnnotationRector extends \Rector\Core\Rector\AbstractRector
+{
+    /**
+     * @var PhpDocTagRemover
+     */
+    private $phpDocTagRemover;
+    public function __construct(\Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTagRemover $phpDocTagRemover)
+    {
+        $this->phpDocTagRemover = $phpDocTagRemover;
+    }
+    /**
+     * @return string[]
+     */
+    public function getNodeTypes() : array
+    {
+        return [\PhpParser\Node\Stmt\Class_::class];
+    }
+    /**
+     * @param Class_ $node
+     */
+    public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
+    {
+        if (!$this->isObjectType($node, \TYPO3\CMS\Extbase\Mvc\Controller\CommandController::class)) {
+            return null;
+        }
+        /** @var PhpDocInfo|null $phpDocInfo */
+        $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);
+        if (null === $phpDocInfo) {
+            return null;
+        }
+        $this->phpDocTagRemover->removeByName($phpDocInfo, 'internal');
+        return $node;
+    }
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
+    {
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove @internal annotation from classes extending \\TYPO3\\CMS\\Extbase\\Mvc\\Controller\\CommandController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+/**
+ * @internal
+ */
+class MyCommandController extends CommandController
+{
+}
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
+class MyCommandController extends CommandController
+{
+}
+CODE_SAMPLE
+)]);
+    }
+}

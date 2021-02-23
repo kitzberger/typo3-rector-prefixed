@@ -15,3 +15,4 @@ vendor/bin/typo3-rector
 ```
 
 Check out the main repo for more options [https://github.com/sabbelasichon/typo3-rector](https://github.com/sabbelasichon/typo3-rector).
+

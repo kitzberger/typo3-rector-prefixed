@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\General;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\ArrayDimFetch;
+use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\Rector\AbstractRector;
@@ -41,6 +42,9 @@ PHP
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
+        if ($node->var instanceof \PhpParser\Node\Expr\MethodCall) {
+            return null;
+        }
         if (!$this->isName($node->var, 'TYPO3_CONF_VARS')) {
             return null;
         }

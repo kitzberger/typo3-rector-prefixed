@@ -121,6 +121,9 @@ final class Typo3NodeResolver
         if (!$node instanceof \PhpParser\Node\Expr\ArrayDimFetch) {
             return \false;
         }
+        if ($node->var instanceof \PhpParser\Node\Expr\MethodCall) {
+            return \false;
+        }
         if (!$this->nodeNameResolver->isName($node->var, self::GLOBALS)) {
             return \false;
         }

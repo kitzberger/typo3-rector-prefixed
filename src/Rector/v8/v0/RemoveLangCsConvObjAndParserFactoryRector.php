@@ -53,20 +53,20 @@ final class RemoveLangCsConvObjAndParserFactoryRector extends \Rector\Core\Recto
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove CsConvObj and ParserFactory from LanguageService::class and $GLOBALS[\'lang\']', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove CsConvObj and ParserFactory from LanguageService::class and $GLOBALS[\'lang\']', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $languageService = GeneralUtility::makeInstance(LanguageService::class);
 $charsetConverter = $languageService->csConvObj;
 $Localization = $languageService->parserFactory();
 $charsetConverterGlobals = $GLOBALS['LANG']->csConvObj;
 $LocalizationGlobals = $GLOBALS['LANG']->parserFactory();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $languageService = GeneralUtility::makeInstance(LanguageService::class);
 $charsetConverter = GeneralUtility::makeInstance(CharsetConverter::class);
 $Localization = GeneralUtility::makeInstance(LocalizationFactory::class);
 $charsetConverterGlobals = GeneralUtility::makeInstance(CharsetConverter::class);
 $LocalizationGlobals = GeneralUtility::makeInstance(LocalizationFactory::class);
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

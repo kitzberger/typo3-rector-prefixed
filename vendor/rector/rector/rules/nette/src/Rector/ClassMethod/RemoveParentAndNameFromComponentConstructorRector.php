@@ -29,7 +29,7 @@ final class RemoveParentAndNameFromComponentConstructorRector extends \Rector\Co
     /**
      * @var string
      */
-    private const COMPONENT_CONTAINER_CLASS = 'Typo3RectorPrefix20210223\\Nette\\ComponentModel\\IContainer';
+    private const COMPONENT_CONTAINER_CLASS = 'Typo3RectorPrefix20210227\\Nette\\ComponentModel\\IContainer';
     /**
      * @var string
      */
@@ -44,11 +44,11 @@ final class RemoveParentAndNameFromComponentConstructorRector extends \Rector\Co
      *
      * @var string
      */
-    private const CONTROL_CLASS = 'Typo3RectorPrefix20210223\\Nette\\Application\\UI\\Control';
+    private const CONTROL_CLASS = 'Typo3RectorPrefix20210227\\Nette\\Application\\UI\\Control';
     /**
      * @var string
      */
-    private const PRESENTER_CLASS = 'Typo3RectorPrefix20210223\\Nette\\Application\\UI\\Presenter';
+    private const PRESENTER_CLASS = 'Typo3RectorPrefix20210227\\Nette\\Application\\UI\\Presenter';
     /**
      * @var StaticCallAnalyzer
      */

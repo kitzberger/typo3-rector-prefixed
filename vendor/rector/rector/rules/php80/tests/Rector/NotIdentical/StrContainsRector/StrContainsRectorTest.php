@@ -6,13 +6,13 @@ namespace Rector\Php80\Tests\Rector\NotIdentical\StrContainsRector;
 use Iterator;
 use Rector\Php80\Rector\NotIdentical\StrContainsRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
 final class StrContainsRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

@@ -22,7 +22,7 @@ final class RemoveTcaOptionSetToDefaultOnCopyRector extends \Rector\Core\Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA option setToDefaultOnCopy removed', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA option setToDefaultOnCopy removed', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'selicon_field' => 'icon',
@@ -31,8 +31,8 @@ return [
     'columns' => [
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'selicon_field' => 'icon'
@@ -40,7 +40,7 @@ return [
     'columns' => [
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

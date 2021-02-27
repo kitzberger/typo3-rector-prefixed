@@ -45,18 +45,18 @@ final class RandomMethodsToRandomClassRector extends \Rector\Core\Rector\Abstrac
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Deprecated random generator methods in GeneralUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Deprecated random generator methods in GeneralUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 $randomBytes = GeneralUtility::generateRandomBytes();
 $randomHex = GeneralUtility::getRandomHexString();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $randomBytes = GeneralUtility::makeInstance(Random::class)->generateRandomBytes();
 $randomHex = GeneralUtility::makeInstance(Random::class)->generateRandomHexString();
-PHP
+CODE_SAMPLE
 )]);
     }
 }

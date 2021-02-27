@@ -54,20 +54,20 @@ final class UseContextApiForVersioningWorkspaceIdRector extends \Rector\Core\Rec
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use context API instead of versioningWorkspaceId', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use context API instead of versioningWorkspaceId', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $workspaceId = null;
 $workspaceId = $workspaceId ?? $GLOBALS['TSFE']->sys_page->versioningWorkspaceId;
 
 $GLOBALS['TSFE']->sys_page->versioningWorkspaceId = 1;
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $workspaceId = null;
 $workspaceId = $workspaceId ?? GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('workspace', 'id', 0);
 
 $GLOBALS['TSFE']->sys_page->versioningWorkspaceId = 1;
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\PropertyFetch $node) : bool

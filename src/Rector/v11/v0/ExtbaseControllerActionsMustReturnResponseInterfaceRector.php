@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v11\v0;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Exit_;
 use PhpParser\Node\Expr\FuncCall;
@@ -12,7 +12,7 @@ use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Return_;
 use PHPStan\Type\TypeWithClassName;
-use Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface;
+use Typo3RectorPrefix20210227\Psr\Http\Message\ResponseInterface;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -64,7 +64,7 @@ final class ExtbaseControllerActionsMustReturnResponseInterfaceRector extends \R
                 $returnCall->expr = $this->nodeFactory->createMethodCall(self::THIS, self::HTML_RESPONSE, $args);
             }
         }
-        $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface::class);
+        $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210227\Psr\Http\Message\ResponseInterface::class);
         $statements = $node->stmts;
         $lastStatement = null;
         if (\is_array($statements)) {
@@ -81,7 +81,7 @@ final class ExtbaseControllerActionsMustReturnResponseInterfaceRector extends \R
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Extbase controller actions must return ResponseInterface', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Extbase controller actions must return ResponseInterface', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class MyController extends ActionController
 {
@@ -90,8 +90,8 @@ class MyController extends ActionController
         $this->view->assign('foo', 'bar');
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class MyController extends ActionController
@@ -102,7 +102,7 @@ class MyController extends ActionController
         return $this->htmlResponse();
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Stmt\ClassMethod $node) : bool
@@ -117,10 +117,10 @@ PHP
         if (null === $methodName) {
             return \true;
         }
-        if (!\Typo3RectorPrefix20210223\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
+        if (!\Typo3RectorPrefix20210227\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
             return \true;
         }
-        if (\Typo3RectorPrefix20210223\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
+        if (\Typo3RectorPrefix20210227\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
             return \true;
         }
         if ($this->hasExitCall($node)) {
@@ -171,7 +171,7 @@ PHP
             if (!$returnType instanceof \PHPStan\Type\TypeWithClassName) {
                 continue;
             }
-            if (\is_a($returnType->getClassName(), \Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface::class, \true)) {
+            if (\is_a($returnType->getClassName(), \Typo3RectorPrefix20210227\Psr\Http\Message\ResponseInterface::class, \true)) {
                 return \true;
             }
         }

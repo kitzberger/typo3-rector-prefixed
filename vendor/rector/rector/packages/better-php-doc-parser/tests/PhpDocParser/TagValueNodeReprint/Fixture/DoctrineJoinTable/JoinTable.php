@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocParser\TagValueNodeReprint\Fixture\DoctrineJoinTable;
 
-use Typo3RectorPrefix20210223\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210227\Doctrine\ORM\Mapping as ORM;
 final class JoinTable
 {
     /**

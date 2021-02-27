@@ -43,7 +43,7 @@ final class RemovePropertiesFromSimpleDataHandlerControllerRector extends \Recto
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove assignments or accessing of properties prErr and uPT from class SimpleDataHandlerController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove assignments or accessing of properties prErr and uPT from class SimpleDataHandlerController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 final class MySimpleDataHandlerController extends SimpleDataHandlerController
 {
     public function myMethod()
@@ -53,15 +53,15 @@ final class MySimpleDataHandlerController extends SimpleDataHandlerController
         $this->uPT = true;
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 final class MySimpleDataHandlerController extends SimpleDataHandlerController
 {
     public function myMethod()
     {
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     private function removeVariableNode(\PhpParser\Node\Expr\Assign $assign) : void

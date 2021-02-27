@@ -60,19 +60,19 @@ final class RemoveSupportForTransForeignTableRector extends \Rector\Core\Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove support for transForeignTable in TCA', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove support for transForeignTable in TCA', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'transForeignTable' => 'l10n_parent',
         'transOrigPointerTable' => 'l10n_parent',
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
 }

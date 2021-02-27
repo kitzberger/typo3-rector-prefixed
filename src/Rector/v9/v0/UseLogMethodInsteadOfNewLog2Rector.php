@@ -58,7 +58,7 @@ final class UseLogMethodInsteadOfNewLog2Rector extends \Rector\Core\Rector\Abstr
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use log method instead of newlog2 from class DataHandler', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use log method instead of newlog2 from class DataHandler', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -66,8 +66,8 @@ $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
 $logEntryUid1 = $dataHandler->newlog2('Foo', 'pages', 1, null, 0);
 $logEntryUid2 = $dataHandler->newlog2('Foo', 'tt_content', 1, 2, 1);
 $logEntryUid3 = $dataHandler->newlog2('Foo', 'tt_content', 1);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -81,7 +81,7 @@ $propArr = $dataHandler->getRecordProperties('tt_content', 1);
 $pid = $propArr['pid'];
 
 $logEntryUid3 = $dataHandler->log('tt_content', 1, 0, 0, 0, 'Foo', -1, [], $dataHandler->eventPid('tt_content', 1, $pid));
-PHP
+CODE_SAMPLE
 )]);
     }
 }

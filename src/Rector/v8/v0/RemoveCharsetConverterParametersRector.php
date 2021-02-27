@@ -40,16 +40,16 @@ final class RemoveCharsetConverterParametersRector extends \Rector\Core\Rector\A
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove CharsetConvertParameters', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove CharsetConvertParameters', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $charsetConvert = GeneralUtility::makeInstance(CharsetConverter::class);
 $charsetConvert->entities_to_utf8('string', false);
 $charsetConvert->utf8_to_numberarray('string', false, false);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $charsetConvert = GeneralUtility::makeInstance(CharsetConverter::class);
 $charsetConvert->entities_to_utf8('string');
 $charsetConvert->utf8_to_numberarray('string');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

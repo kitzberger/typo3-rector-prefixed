@@ -23,7 +23,7 @@ final class RemovedTcaSelectTreeOptionsRector extends \Rector\Core\Rector\Abstra
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Removed TCA tree options: width, allowRecursiveMode, autoSizeMax', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Removed TCA tree options: width, allowRecursiveMode, autoSizeMax', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -43,8 +43,8 @@ return [
         ],
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -61,7 +61,7 @@ return [
         ],
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

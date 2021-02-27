@@ -50,22 +50,22 @@ final class UseFileGetContentsForGetUrlRector extends \Rector\Core\Rector\Abstra
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Rewirte Method Calls of GeneralUtility::getUrl("somefile.csv") to @file_get_contents', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Rewirte Method Calls of GeneralUtility::getUrl("somefile.csv") to @file_get_contents', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 GeneralUtility::getUrl('some.csv');
 $externalUrl = 'https://domain.com';
 GeneralUtility::getUrl($externalUrl);
 
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Http\RequestFactory;
 
 @file_get_contents('some.csv');
 $externalUrl = 'https://domain.com';
 GeneralUtility::makeInstance(RequestFactory::class)->request($externalUrl)->getBody()->getContents();
 
-PHP
+CODE_SAMPLE
 )]);
     }
 }

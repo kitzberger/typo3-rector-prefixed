@@ -49,14 +49,14 @@ final class UseRootlineUtilityInsteadOfGetRootlineMethodRector extends \Rector\C
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class RootlineUtility instead of method getRootLine', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class RootlineUtility instead of method getRootLine', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $rootline = $GLOBALS['TSFE']->sys_page->getRootLine(1);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
 $rootline = GeneralUtility::makeInstance(RootlineUtility::class, 1)->get();
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

@@ -22,7 +22,7 @@ final class RemoveShowRecordFieldListInsideInterfaceSectionRector extends \Recto
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove showRecordFieldList inside section interface', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove showRecordFieldList inside section interface', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -32,15 +32,15 @@ return [
     'columns' => [
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
     'columns' => [
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

@@ -59,15 +59,15 @@ final class RefactorDeprecationLogRector extends \Rector\Core\Rector\AbstractRec
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor GeneralUtility deprecationLog methods', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor GeneralUtility deprecationLog methods', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 GeneralUtility::logDeprecatedFunction();
 GeneralUtility::logDeprecatedViewHelperAttribute();
 GeneralUtility::deprecationLog('Message');
 GeneralUtility::getDeprecationLogFileName();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 trigger_error('A useful message', E_USER_DEPRECATED);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

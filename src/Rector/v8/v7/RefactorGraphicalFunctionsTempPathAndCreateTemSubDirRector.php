@@ -65,16 +65,16 @@ final class RefactorGraphicalFunctionsTempPathAndCreateTemSubDirRector extends \
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor tempPath() and createTempSubDir on GraphicalFunctions', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor tempPath() and createTempSubDir on GraphicalFunctions', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $graphicalFunctions = GeneralUtility::makeInstance(GraphicalFunctions::class);
 $graphicalFunctions->createTempSubDir('var/transient/');
 return $graphicalFunctions->tempPath . 'var/transient/';
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $graphicalFunctions = GeneralUtility::makeInstance(GraphicalFunctions::class);
 GeneralUtility::mkdir_deep(PATH_site . 'typo3temp/var/transient/');
 return 'typo3temp/' . 'var/transient/';
-PHP
+CODE_SAMPLE
 )]);
     }
     private function refactorMethodCall(\PhpParser\Node\Expr\MethodCall $node) : ?\PhpParser\Node

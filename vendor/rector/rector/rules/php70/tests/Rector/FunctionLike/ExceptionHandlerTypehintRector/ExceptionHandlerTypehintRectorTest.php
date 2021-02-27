@@ -6,13 +6,13 @@ namespace Rector\Php70\Tests\Rector\FunctionLike\ExceptionHandlerTypehintRector;
 use Iterator;
 use Rector\Php70\Rector\FunctionLike\ExceptionHandlerTypehintRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
 final class ExceptionHandlerTypehintRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

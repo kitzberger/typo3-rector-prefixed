@@ -47,16 +47,16 @@ final class BackendUtilityGetModuleUrlRector extends \Rector\Core\Rector\Abstrac
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate the method BackendUtility::getModuleUrl() to use UriBuilder API', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate the method BackendUtility::getModuleUrl() to use UriBuilder API', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $moduleName = 'record_edit';
 $params = ['pid' => 2];
 $url = BackendUtility::getModuleUrl($moduleName, $params);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $moduleName = 'record_edit';
 $params = ['pid' => 2];
 $url = GeneralUtility::makeInstance(UriBuilder::class)->buildUriFromRoute($moduleName, $params);
-PHP
+CODE_SAMPLE
 )]);
     }
     private function createUriBuilderCall(\PhpParser\Node\Arg $firstArgument, ?\PhpParser\Node\Arg $secondArgument) : \PhpParser\Node\Expr\MethodCall

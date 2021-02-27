@@ -22,7 +22,7 @@ final class RemoveOptionVersioningFollowPagesRector extends \Rector\Core\Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA option versioning_followPages removed', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA option versioning_followPages removed', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'versioningWS' => 2,
@@ -31,8 +31,8 @@ return [
     'columns' => [
     ]
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'versioningWS' => true,
@@ -40,7 +40,7 @@ return [
     'columns' => [
     ]
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

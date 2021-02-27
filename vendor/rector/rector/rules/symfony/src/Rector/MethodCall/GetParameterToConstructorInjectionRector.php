@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Symfony\Rector\MethodCall;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
@@ -68,7 +68,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210223\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
+        if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210227\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
             return null;
         }
         if (!$this->isName($node->name, 'getParameter')) {
@@ -77,7 +77,7 @@ CODE_SAMPLE
         /** @var String_ $stringArgument */
         $stringArgument = $node->args[0]->value;
         $parameterName = $stringArgument->value;
-        $parameterName = \Typo3RectorPrefix20210223\Nette\Utils\Strings::replace($parameterName, '#\\.#', '_');
+        $parameterName = \Typo3RectorPrefix20210227\Nette\Utils\Strings::replace($parameterName, '#\\.#', '_');
         $propertyName = $this->propertyNaming->underscoreToName($parameterName);
         $classLike = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLASS_NODE);
         if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {

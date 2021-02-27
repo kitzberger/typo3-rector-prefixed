@@ -7,7 +7,7 @@ use PhpParser\Node;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\FileSystemRector\Contract\FileWithNodesInterface;
 use Rector\FileSystemRector\Contract\MovedFileInterface;
-use Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
 final class MovedFileWithNodes implements \Rector\FileSystemRector\Contract\MovedFileInterface, \Rector\FileSystemRector\Contract\FileWithNodesInterface
 {
     /**
@@ -33,7 +33,7 @@ final class MovedFileWithNodes implements \Rector\FileSystemRector\Contract\Move
     /**
      * @param Node[] $nodes
      */
-    public function __construct(array $nodes, string $fileDestination, \Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo $originalSmartFileInfo, ?string $oldClassName = null, ?string $newClassName = null)
+    public function __construct(array $nodes, string $fileDestination, \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo $originalSmartFileInfo, ?string $oldClassName = null, ?string $newClassName = null)
     {
         $this->nodes = $nodes;
         $this->filePath = $fileDestination;
@@ -70,7 +70,7 @@ final class MovedFileWithNodes implements \Rector\FileSystemRector\Contract\Move
     {
         return $this->newClassName !== null;
     }
-    public function getOriginalFileInfo() : \Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo
+    public function getOriginalFileInfo() : \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->originalSmartFileInfo;
     }

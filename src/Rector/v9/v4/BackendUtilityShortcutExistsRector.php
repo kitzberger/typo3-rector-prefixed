@@ -21,9 +21,9 @@ final class BackendUtilityShortcutExistsRector extends \Rector\Core\Rector\Abstr
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('shortcutExists Static call replaced by method call of ShortcutRepository', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(\TYPO3\CMS\Backend\Utility\BackendUtility::class . '::shortcutExists($url);', <<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('shortcutExists Static call replaced by method call of ShortcutRepository', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(\TYPO3\CMS\Backend\Utility\BackendUtility::class . '::shortcutExists($url);', <<<'CODE_SAMPLE'
 GeneralUtility::makeInstance(ShortcutRepository::class)->shortcutExists($url);
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

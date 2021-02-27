@@ -63,14 +63,14 @@ final class ExcludeServiceKeysToArrayRector extends \Rector\Core\Rector\Abstract
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Change parameter $excludeServiceKeys explicity to an array', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Change parameter $excludeServiceKeys explicity to an array', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 GeneralUtility::makeInstanceService('serviceType', 'serviceSubType', 'key1, key2');
 ExtensionManagementUtility::findService('serviceType', 'serviceSubType', 'key1, key2');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 GeneralUtility::makeInstanceService('serviceType', 'serviceSubType', ['key1', 'key2']);
 ExtensionManagementUtility::findService('serviceType', 'serviceSubType', ['key1', 'key2']);
-PHP
+CODE_SAMPLE
 )]);
     }
     private function isExpectedObjectType(\PhpParser\Node\Expr\StaticCall $node) : bool

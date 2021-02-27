@@ -18,7 +18,7 @@ use Ssch\TYPO3Rector\Helper\FileHelperTrait;
 use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
 use TYPO3\CMS\Core\Http\ApplicationType;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/11.0/Deprecation-92947-DeprecateTYPO3_MODEAndTYPO3_REQUESTTYPEConstants.html
@@ -40,7 +40,7 @@ final class SubstituteConstantsModeAndRequestTypeRector extends \Rector\Core\Rec
     {
         /** @var SmartFileInfo $fileInfo */
         $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$fileInfo instanceof \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo) {
             return null;
         }
         if ($this->isFuncCallName($node, 'defined')) {
@@ -78,12 +78,12 @@ final class SubstituteConstantsModeAndRequestTypeRector extends \Rector\Core\Rec
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute TYPO3_MODE and TYPO3_REQUESTTYPE constants', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute TYPO3_MODE and TYPO3_REQUESTTYPE constants', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 defined('TYPO3_MODE') or die();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 defined('TYPO3') or die();
-PHP
+CODE_SAMPLE
 )]);
     }
     private function refactorProbablySecurityGate(\PhpParser\Node $node) : ?\PhpParser\Node

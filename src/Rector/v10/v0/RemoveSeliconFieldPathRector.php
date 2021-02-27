@@ -22,21 +22,21 @@ final class RemoveSeliconFieldPathRector extends \Rector\Core\Rector\AbstractRec
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA option "selicon_field_path" removed', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA option "selicon_field_path" removed', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'selicon_field' => 'icon',
         'selicon_field_path' => 'uploads/media'
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'selicon_field' => 'icon',
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

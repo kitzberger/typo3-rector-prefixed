@@ -37,15 +37,15 @@ final class MethodReadLLFileToLocalizationFactoryRector extends \Rector\Core\Rec
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use LocalizationFactory->getParsedData instead of GeneralUtility::readLLfile', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use LocalizationFactory->getParsedData instead of GeneralUtility::readLLfile', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $locallangs = GeneralUtility::readLLfile('EXT:foo/locallang.xml', 'de');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Localization\LocalizationFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $locallangs = GeneralUtility::makeInstance(LocalizationFactory::class)->getParsedData('EXT:foo/locallang.xml', 'de');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

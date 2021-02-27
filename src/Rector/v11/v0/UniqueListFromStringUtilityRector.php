@@ -40,14 +40,14 @@ final class UniqueListFromStringUtilityRector extends \Rector\Core\Rector\Abstra
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use StringUtility::uniqueList() instead of GeneralUtility::uniqueList', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use StringUtility::uniqueList() instead of GeneralUtility::uniqueList', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 GeneralUtility::uniqueList('1,2,2,3');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\StringUtility;
 StringUtility::uniqueList('1,2,2,3');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

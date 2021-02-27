@@ -41,12 +41,12 @@ final class TemplateServiceSplitConfArrayRector extends \Rector\Core\Rector\Abst
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute TemplateService->splitConfArray() with TypoScriptService->explodeConfigurationForOptionSplit()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute TemplateService->splitConfArray() with TypoScriptService->explodeConfigurationForOptionSplit()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $splitConfig = GeneralUtility::makeInstance(TemplateService::class)->splitConfArray($conf, $splitCount);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $splitConfig = GeneralUtility::makeInstance(TypoScriptService::class)->explodeConfigurationForOptionSplit($conf, $splitCount);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

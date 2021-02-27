@@ -68,15 +68,15 @@ final class ContentObjectRendererFileResourceRector extends \Rector\Core\Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate fileResource method of class ContentObjectRenderer', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate fileResource method of class ContentObjectRenderer', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $template = $this->cObj->fileResource('EXT:vendor/Resources/Private/Templates/Template.html');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $path = $GLOBALS['TSFE']->tmpl->getFileName('EXT:vendor/Resources/Private/Templates/Template.html');
 if ($path !== null && file_exists($path)) {
     $template = file_get_contents($path);
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

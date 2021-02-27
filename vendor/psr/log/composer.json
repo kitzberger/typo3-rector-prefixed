@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210223\\Psr\\Log\\": "Psr\/Log\/"
+            "Typo3RectorPrefix20210227\\Psr\\Log\\": "Psr\/Log\/"
         }
     },
     "extra": {

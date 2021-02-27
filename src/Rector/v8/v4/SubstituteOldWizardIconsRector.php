@@ -32,7 +32,7 @@ final class SubstituteOldWizardIconsRector extends \Rector\Core\Rector\AbstractR
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('The TCA migration migrates the icon calls to the new output if used as wizard icon', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('The TCA migration migrates the icon calls to the new output if used as wizard icon', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -49,8 +49,8 @@ return [
         ],
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -67,7 +67,7 @@ return [
         ],
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

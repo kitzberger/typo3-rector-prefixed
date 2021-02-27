@@ -49,21 +49,21 @@ final class UseClassTypo3InformationRector extends \Rector\Core\Rector\AbstractR
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class Typo3Information', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class Typo3Information', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $urlGeneral = TYPO3_URL_GENERAL;
 $urlLicense = TYPO3_URL_LICENSE;
 $urlException = TYPO3_URL_EXCEPTION;
 $urlDonate = TYPO3_URL_DONATE;
 $urlOpcache = TYPO3_URL_WIKI_OPCODECACHE;
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Information\Typo3Information;
 $urlGeneral = Typo3Information::TYPO3_URL_GENERAL;
 $urlLicense = Typo3Information::TYPO3_URL_LICENSE;
 $urlException = Typo3Information::TYPO3_URL_EXCEPTION;
 $urlDonate = Typo3Information::TYPO3_URL_DONATE;
 $urlOpcache = Typo3Information::TYPO3_URL_WIKI_OPCODECACHE;
-PHP
+CODE_SAMPLE
 )]);
     }
 }

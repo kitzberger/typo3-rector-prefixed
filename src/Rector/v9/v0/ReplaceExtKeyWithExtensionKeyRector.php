@@ -11,7 +11,7 @@ use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\FileHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.0/Important-82692-GuidelinesForExtensionFiles.html
  * @see \Ssch\TYPO3Rector\Tests\Rector\v9\v0\ReplaceExtKeyWithExtensionKey\ReplaceExtKeyWithExtensionKeyRectorTest
@@ -24,7 +24,7 @@ final class ReplaceExtKeyWithExtensionKeyRector extends \Rector\Core\Rector\Abst
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replace $_EXTKEY with extension key', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replace $_EXTKEY with extension key', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 ExtensionUtility::configurePlugin(
     'Foo.'.$_EXTKEY,
     'ArticleTeaser',
@@ -32,8 +32,8 @@ ExtensionUtility::configurePlugin(
         'FooBar' => 'baz',
     ]
 );
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 ExtensionUtility::configurePlugin(
     'Foo.'.'bar',
     'ArticleTeaser',
@@ -41,7 +41,7 @@ ExtensionUtility::configurePlugin(
         'FooBar' => 'baz',
     ]
 );
-PHP
+CODE_SAMPLE
 )]);
     }
     /**
@@ -58,7 +58,7 @@ PHP
     {
         /** @var SmartFileInfo $fileInfo */
         $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$fileInfo instanceof \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo) {
             return null;
         }
         if (!$this->isExtLocalConf($fileInfo) && !$this->isExtTables($fileInfo)) {

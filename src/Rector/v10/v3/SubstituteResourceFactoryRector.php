@@ -37,12 +37,12 @@ final class SubstituteResourceFactoryRector extends \Rector\Core\Rector\Abstract
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitue ResourceFactory::getInstance() through GeneralUtility::makeInstance(ResourceFactory::class)', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitue ResourceFactory::getInstance() through GeneralUtility::makeInstance(ResourceFactory::class)', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $resourceFactory = ResourceFactory::getInstance();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

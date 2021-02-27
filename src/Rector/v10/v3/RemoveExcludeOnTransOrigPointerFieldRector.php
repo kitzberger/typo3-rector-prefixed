@@ -22,7 +22,7 @@ final class RemoveExcludeOnTransOrigPointerFieldRector extends \Rector\Core\Rect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('transOrigPointerField is not longer allowed to be excluded', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('transOrigPointerField is not longer allowed to be excluded', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'transOrigPointerField' => 'l10n_parent',
@@ -36,8 +36,8 @@ return [
         ],
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'transOrigPointerField' => 'l10n_parent',
@@ -50,7 +50,7 @@ return [
         ],
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

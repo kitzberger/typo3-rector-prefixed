@@ -16,7 +16,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\Renaming\NodeManipulator\ClassRenamer;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Rector\Migrations\RenameClassMapAliasRectorTest
  */
@@ -49,7 +49,7 @@ final class RenameClassMapAliasRector extends \Rector\Core\Rector\AbstractRector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replaces defined classes by new ones.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replaces defined classes by new ones.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample(<<<'CODE_SAMPLE'
 namespace App;
 
 use t3lib_div;
@@ -58,8 +58,8 @@ function someFunction()
 {
     t3lib_div::makeInstance(\tx_cms_BackendLayout::class);
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 namespace App;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -68,7 +68,7 @@ function someFunction()
 {
     GeneralUtility::makeInstance(\TYPO3\CMS\Backend\View\BackendLayoutView::class);
 }
-PHP
+CODE_SAMPLE
 , [self::CLASS_ALIAS_MAPS => 'config/Migrations/Code/ClassAliasMap.php'])]);
     }
     /**
@@ -92,7 +92,7 @@ PHP
     {
         $classAliasMaps = $configuration[self::CLASS_ALIAS_MAPS] ?? [];
         foreach ($classAliasMaps as $file) {
-            $filePath = new \Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileInfo($file);
+            $filePath = new \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo($file);
             $classAliasMap = (require $filePath->getRealPath());
             foreach ($classAliasMap as $oldClass => $newClass) {
                 $this->oldToNewClasses[$oldClass] = $newClass;

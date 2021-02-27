@@ -24,7 +24,7 @@ final class MoveRequestUpdateOptionFromControlToColumnsRector extends \Rector\Co
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA ctrl field requestUpdate dropped', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA ctrl field requestUpdate dropped', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'requestUpdate' => 'foo',
@@ -33,8 +33,8 @@ return [
         'foo' => []
     ]
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -44,7 +44,7 @@ return [
         ]
     ]
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

@@ -63,7 +63,7 @@ final class RefactorRemovedMarkerMethodsFromHtmlParserRector extends \Rector\Cor
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor removed Marker-related methods from HtmlParser.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor removed Marker-related methods from HtmlParser.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Html\HtmlParser;
 
 final class HtmlParserMarkerRendererMethods
@@ -90,8 +90,8 @@ final class HtmlParserMarkerRendererMethods
 
 
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Html\HtmlParser;
 
 final class HtmlParserMarkerRendererMethods
@@ -115,7 +115,7 @@ final class HtmlParserMarkerRendererMethods
 
 
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

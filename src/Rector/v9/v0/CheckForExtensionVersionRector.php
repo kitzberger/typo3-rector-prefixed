@@ -44,22 +44,22 @@ final class CheckForExtensionVersionRector extends \Rector\Core\Rector\AbstractR
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Change the extensions to check for workspaces instead of version.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Change the extensions to check for workspaces instead of version.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 if (ExtensionManagementUtility::isLoaded('version')) {
 }
 
 $packageManager = GeneralUtility::makeInstance(PackageManager::class);
 if ($packageManager->isActive('version')) {
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 if (ExtensionManagementUtility::isLoaded('workspaces')) {
 }
 
 $packageManager = GeneralUtility::makeInstance(PackageManager::class);
 if ($packageManager->isActive('workspaces')) {
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

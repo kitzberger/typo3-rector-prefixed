@@ -44,7 +44,7 @@ final class UseClassSchemaInsteadReflectionServiceMethodsRector extends \Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Instead of fetching reflection data via ReflectionService use ClassSchema directly', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Instead of fetching reflection data via ReflectionService use ClassSchema directly', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Extbase\Reflection\ReflectionService;
 class MyService
 {
@@ -59,8 +59,8 @@ class MyService
         $properties = $this->reflectionService->getClassPropertyNames(\stdClass::class);
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Extbase\Reflection\ReflectionService;
 class MyService
 {
@@ -75,7 +75,7 @@ class MyService
         $properties = array_keys($this->reflectionService->getClassSchema(stdClass::class)->getProperties());
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

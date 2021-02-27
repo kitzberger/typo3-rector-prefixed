@@ -61,15 +61,15 @@ final class TypoScriptFrontendControllerCharsetConverterRector extends \Rector\C
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor $TSFE->csConvObj and $TSFE->csConv()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor $TSFE->csConvObj and $TSFE->csConv()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $output = $GLOBALS['TSFE']->csConvObj->conv_case('utf-8', 'foobar', 'lower');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Charset\CharsetConverter;
 $charsetConverter = GeneralUtility::makeInstance(CharsetConverter::class);
 $output = $charsetConverter->conv_case('utf-8', 'foobar', 'lower');
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

@@ -26,20 +26,20 @@ final class UseExtPrefixForTcaIconFileRector extends \Rector\Core\Rector\Abstrac
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Deprecate relative path to extension directory and using filename only in TCA ctrl iconfile', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Deprecate relative path to extension directory and using filename only in TCA ctrl iconfile', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 [
     'ctrl' => [
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('my_extension') . 'Resources/Public/Icons/image.png'
     ]
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 [
     'ctrl' => [
         'iconfile' => 'EXT:my_extension/Resources/Public/Icons/image.png'
     ]
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

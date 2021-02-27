@@ -1,10 +1,10 @@
 <?php
 
-namespace Typo3RectorPrefix20210223\Jean85;
+namespace Typo3RectorPrefix20210227\Jean85;
 
 class Version
 {
-    const SHORT_COMMIT_LENGTH = \Typo3RectorPrefix20210223\Jean85\PrettyVersions::SHORT_COMMIT_LENGTH;
+    const SHORT_COMMIT_LENGTH = \Typo3RectorPrefix20210227\Jean85\PrettyVersions::SHORT_COMMIT_LENGTH;
     /** @var string */
     private $packageName;
     /** @var string */

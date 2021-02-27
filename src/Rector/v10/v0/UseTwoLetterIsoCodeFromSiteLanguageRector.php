@@ -52,16 +52,16 @@ final class UseTwoLetterIsoCodeFromSiteLanguageRector extends \Rector\Core\Recto
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('The usage of the propery sys_language_isocode is deprecated. Use method getTwoLetterIsoCode of SiteLanguage', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('The usage of the propery sys_language_isocode is deprecated. Use method getTwoLetterIsoCode of SiteLanguage', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 if ($GLOBALS['TSFE']->sys_language_isocode) {
     $GLOBALS['LANG']->init($GLOBALS['TSFE']->sys_language_isocode);
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 if ($GLOBALS['TSFE']->getLanguage()->getTwoLetterIsoCode()) {
     $GLOBALS['LANG']->init($GLOBALS['TSFE']->getLanguage()->getTwoLetterIsoCode());
 }
-PHP
+CODE_SAMPLE
 )]);
     }
 }

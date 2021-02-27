@@ -52,12 +52,12 @@ final class TimeTrackerGlobalsToSingletonRector extends \Rector\Core\Rector\Abst
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute $GLOBALS[\'TT\'] method calls', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute $GLOBALS[\'TT\'] method calls', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $GLOBALS['TT']->setTSlogMessage('content');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 GeneralUtility::makeInstance(TimeTracker::class)->setTSlogMessage('content');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

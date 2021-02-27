@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v8\v5;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\Rector\AbstractRector;
@@ -29,7 +29,7 @@ final class MoveLanguageFilesFromLocallangToResourcesRector extends \Rector\Core
     {
         $value = $this->valueResolver->getValue($node);
         foreach (self::MAPPING_OLD_TO_NEW_PATHS as $oldPath => $newPath) {
-            if (\Typo3RectorPrefix20210223\Nette\Utils\Strings::contains($value, $oldPath)) {
+            if (\Typo3RectorPrefix20210227\Nette\Utils\Strings::contains($value, $oldPath)) {
                 return new \PhpParser\Node\Scalar\String_(\str_replace($oldPath, $newPath, $value));
             }
         }
@@ -40,16 +40,16 @@ final class MoveLanguageFilesFromLocallangToResourcesRector extends \Rector\Core
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Move language files from EXT:lang/locallang_* to Resources/Private/Language', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Move language files from EXT:lang/locallang_* to Resources/Private/Language', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Localization\LanguageService;
 $languageService = new LanguageService();
 $languageService->sL('LLL:EXT:lang/locallang_alt_doc.xlf:label.confirm.delete_record.title');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Localization\LanguageService;
 $languageService = new LanguageService();
 $languageService->sL('LLL:EXT:lang/Resources/Private/Language/locallang_alt_doc.xlf:label.confirm.delete_record.title');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

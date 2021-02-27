@@ -46,12 +46,12 @@ final class UsePackageManagerActivePackagesRector extends \Rector\Core\Rector\Ab
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use PackageManager API instead of $GLOBALS[\'TYPO3_LOADED_EXT\']', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use PackageManager API instead of $GLOBALS[\'TYPO3_LOADED_EXT\']', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $extensionList = $GLOBALS['TYPO3_LOADED_EXT'];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $extensionList = GeneralUtility::makeInstance(PackageManager::class)->getActivePackages();
-PHP
+CODE_SAMPLE
 )]);
     }
 }

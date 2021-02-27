@@ -40,16 +40,16 @@ final class GeneralUtilityToUpperAndLowerRector extends \Rector\Core\Rector\Abst
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use mb_strtolower and mb_strtoupper', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use mb_strtolower and mb_strtoupper', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 $toUpper = GeneralUtility::strtoupper('foo');
 $toLower = GeneralUtility::strtolower('FOO');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $toUpper = mb_strtoupper('foo', 'utf-8');
 $toLower = mb_strtolower('FOO', 'utf-8');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

@@ -37,17 +37,17 @@ final class RemoveInitMethodGraphicalFunctionsRector extends \Rector\Core\Rector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove method call init of class GraphicalFunctions', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove method call init of class GraphicalFunctions', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Imaging\GraphicalFunctions;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $graphicalFunctions = GeneralUtility::makeInstance(GraphicalFunctions::class);
 $graphicalFunctions->init();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Imaging\GraphicalFunctions;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $graphicalFunctions = GeneralUtility::makeInstance(GraphicalFunctions::class);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

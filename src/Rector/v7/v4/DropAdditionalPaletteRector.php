@@ -112,7 +112,7 @@ final class DropAdditionalPaletteRector extends \Rector\Core\Rector\AbstractRect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA: Drop additional palette', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA: Drop additional palette', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'types' => [
         'aType' => [
@@ -120,8 +120,8 @@ return [
         ],
      ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'types' => [
         'aType' => [
@@ -129,7 +129,7 @@ return [
         ],
      ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
 }

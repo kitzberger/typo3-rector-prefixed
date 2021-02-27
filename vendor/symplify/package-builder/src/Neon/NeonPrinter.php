@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210223\Symplify\PackageBuilder\Neon;
+namespace Typo3RectorPrefix20210227\Symplify\PackageBuilder\Neon;
 
-use Typo3RectorPrefix20210223\Nette\Neon\Encoder;
-use Typo3RectorPrefix20210223\Nette\Neon\Neon;
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Neon\Encoder;
+use Typo3RectorPrefix20210227\Nette\Neon\Neon;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 final class NeonPrinter
 {
     /**
@@ -23,7 +23,7 @@ final class NeonPrinter
      */
     public function printNeon(array $phpStanNeon) : string
     {
-        $neonContent = \Typo3RectorPrefix20210223\Nette\Neon\Neon::encode($phpStanNeon, \Typo3RectorPrefix20210223\Nette\Neon\Encoder::BLOCK);
+        $neonContent = \Typo3RectorPrefix20210227\Nette\Neon\Neon::encode($phpStanNeon, \Typo3RectorPrefix20210227\Nette\Neon\Encoder::BLOCK);
         // tabs to spaces for consistency
         $neonContent = $this->replaceTabsWithSpaces($neonContent);
         // inline single tags, dummy
@@ -33,14 +33,14 @@ final class NeonPrinter
     }
     private function replaceTabsWithSpaces(string $neonContent) : string
     {
-        return \Typo3RectorPrefix20210223\Nette\Utils\Strings::replace($neonContent, '#\\t#', '    ');
+        return \Typo3RectorPrefix20210227\Nette\Utils\Strings::replace($neonContent, '#\\t#', '    ');
     }
     private function inlineSingleTags(string $neonContent) : string
     {
-        return \Typo3RectorPrefix20210223\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
+        return \Typo3RectorPrefix20210227\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
     }
     private function fixDoubleSpaceInArguments(string $neonContent) : string
     {
-        return \Typo3RectorPrefix20210223\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
+        return \Typo3RectorPrefix20210227\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
     }
 }

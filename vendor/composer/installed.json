@@ -38,7 +38,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\PackageVersions\\": "src\/PackageVersions"
+                    "Typo3RectorPrefix20210227\\PackageVersions\\": "src\/PackageVersions"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -108,7 +108,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Composer\\Semver\\": "src"
+                    "Typo3RectorPrefix20210227\\Composer\\Semver\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -187,7 +187,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Composer\\XdebugHandler\\": "src"
+                    "Typo3RectorPrefix20210227\\Composer\\XdebugHandler\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -257,7 +257,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Doctrine\\Common\\Annotations\\": "lib\/Doctrine\/Common\/Annotations"
+                    "Typo3RectorPrefix20210227\\Doctrine\\Common\\Annotations\\": "lib\/Doctrine\/Common\/Annotations"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -334,7 +334,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Doctrine\\Inflector\\": "lib\/Doctrine\/Inflector"
+                    "Typo3RectorPrefix20210227\\Doctrine\\Inflector\\": "lib\/Doctrine\/Inflector"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -430,7 +430,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Doctrine\\Common\\Lexer\\": "lib\/Doctrine\/Common\/Lexer"
+                    "Typo3RectorPrefix20210227\\Doctrine\\Common\\Lexer\\": "lib\/Doctrine\/Common\/Lexer"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -512,7 +512,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Jean85\\": "src\/"
+                    "Typo3RectorPrefix20210227\\Jean85\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -949,17 +949,17 @@
         },
         {
             "name": "phpstan\/phpstan",
-            "version": "0.12.78",
-            "version_normalized": "0.12.78.0",
+            "version": "0.12.79",
+            "version_normalized": "0.12.79.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/phpstan\/phpstan.git",
-                "reference": "eecce8d2ee3cac6769f37b4cb1998b2715f82984"
+                "reference": "dd7769915648b704b9bd12925994457f1c2c8442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpstan\/zipball\/eecce8d2ee3cac6769f37b4cb1998b2715f82984",
-                "reference": "eecce8d2ee3cac6769f37b4cb1998b2715f82984",
+                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpstan\/zipball\/dd7769915648b704b9bd12925994457f1c2c8442",
+                "reference": "dd7769915648b704b9bd12925994457f1c2c8442",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
             "conflict": {
                 "phpstan\/phpstan-shim": "*"
             },
-            "time": "2021-02-20T13:24:36+00:00",
+            "time": "2021-02-25T16:44:57+00:00",
             "bin": [
                 "phpstan",
                 "phpstan.phar"
@@ -992,7 +992,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https:\/\/github.com\/phpstan\/phpstan\/issues",
-                "source": "https:\/\/github.com\/phpstan\/phpstan\/tree\/0.12.78"
+                "source": "https:\/\/github.com\/phpstan\/phpstan\/tree\/0.12.79"
             },
             "funding": [
                 {
@@ -1096,7 +1096,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Psr\\Cache\\": "src\/"
+                    "Typo3RectorPrefix20210227\\Psr\\Cache\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1148,7 +1148,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Psr\\Container\\": "src\/"
+                    "Typo3RectorPrefix20210227\\Psr\\Container\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1204,7 +1204,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Psr\\EventDispatcher\\": "src\/"
+                    "Typo3RectorPrefix20210227\\Psr\\EventDispatcher\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1257,7 +1257,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Psr\\Log\\": "Psr\/Log\/"
+                    "Typo3RectorPrefix20210227\\Psr\\Log\\": "Psr\/Log\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1310,7 +1310,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Psr\\SimpleCache\\": "src\/"
+                    "Typo3RectorPrefix20210227\\Psr\\SimpleCache\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1670,7 +1670,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\Cache\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\Cache\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1751,7 +1751,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Contracts\\Cache\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Contracts\\Cache\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1837,7 +1837,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\Config\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\Config\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1931,7 +1931,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\Console\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\Console\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2027,7 +2027,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\DependencyInjection\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\DependencyInjection\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2169,7 +2169,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\ErrorHandler\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\ErrorHandler\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2257,7 +2257,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\EventDispatcher\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\EventDispatcher\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2334,7 +2334,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Contracts\\EventDispatcher\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Contracts\\EventDispatcher\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -2406,7 +2406,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\ExpressionLanguage\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\ExpressionLanguage\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2471,7 +2471,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\Filesystem\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\Filesystem\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2535,7 +2535,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\Finder\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\Finder\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2612,7 +2612,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Contracts\\HttpClient\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Contracts\\HttpClient\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -2693,7 +2693,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\HttpFoundation\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\HttpFoundation\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2808,7 +2808,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\HttpKernel\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\HttpKernel\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -2884,7 +2884,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Polyfill\\Ctype\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Polyfill\\Ctype\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -2966,7 +2966,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -3050,7 +3050,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -3137,7 +3137,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Polyfill\\Mbstring\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Polyfill\\Mbstring\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -3217,7 +3217,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Polyfill\\Php73\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Polyfill\\Php73\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -3299,7 +3299,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Polyfill\\Php80\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Polyfill\\Php80\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -3377,7 +3377,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\Process\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\Process\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -3454,7 +3454,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Contracts\\Service\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Contracts\\Service\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -3534,7 +3534,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\String\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\String\\": ""
                 },
                 "files": [
                     "Resources\/functions.php"
@@ -3632,7 +3632,7 @@
                     "Resources\/functions\/dump.php"
                 ],
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\VarDumper\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\VarDumper\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -3704,7 +3704,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\VarExporter\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\VarExporter\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -3790,7 +3790,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symfony\\Component\\Yaml\\": ""
+                    "Typo3RectorPrefix20210227\\Symfony\\Component\\Yaml\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -3869,7 +3869,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\Astral\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\Astral\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -3926,7 +3926,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\AutowireArrayParameter\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\AutowireArrayParameter\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -3987,7 +3987,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\ComposerJsonManipulator\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\ComposerJsonManipulator\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4047,7 +4047,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\ConsoleColorDiff\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\ConsoleColorDiff\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4106,7 +4106,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\ConsolePackageBuilder\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\ConsolePackageBuilder\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4163,7 +4163,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\EasyTesting\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\EasyTesting\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4222,7 +4222,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\MarkdownDiff\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\MarkdownDiff\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4286,7 +4286,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\PackageBuilder\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\PackageBuilder\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4345,7 +4345,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\PhpConfigPrinter\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\PhpConfigPrinter\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4467,7 +4467,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\SetConfigResolver\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\SetConfigResolver\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4528,7 +4528,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\SimplePhpDocParser\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\SimplePhpDocParser\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4591,7 +4591,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\Skipper\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\Skipper\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4649,7 +4649,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\SmartFileSystem\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\SmartFileSystem\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4760,7 +4760,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Symplify\\SymplifyKernel\\": "src"
+                    "Typo3RectorPrefix20210227\\Symplify\\SymplifyKernel\\": "src"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -4805,7 +4805,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Typo3RectorPrefix20210223\\Webmozart\\Assert\\": "src\/"
+                    "Typo3RectorPrefix20210227\\Webmozart\\Assert\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210223\Symplify\AutowireArrayParameter\Tests\Source\Contract;
+namespace Typo3RectorPrefix20210227\Symplify\AutowireArrayParameter\Tests\Source\Contract;
 
 interface SecondCollectedInterface
 {

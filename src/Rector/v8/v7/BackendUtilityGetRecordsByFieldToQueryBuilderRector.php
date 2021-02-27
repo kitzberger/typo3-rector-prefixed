@@ -77,11 +77,11 @@ final class BackendUtilityGetRecordsByFieldToQueryBuilderRector extends \Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('BackendUtility::getRecordsByField to QueryBuilder', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('BackendUtility::getRecordsByField to QueryBuilder', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 $rows = BackendUtility::getRecordsByField('table', 'uid', 3);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\BackendWorkspaceRestriction;
@@ -91,7 +91,7 @@ $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(
 $queryBuilder->getRestrictions()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 $queryBuilder->select('*')->from('table')->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter(3)));
 $rows = $queryBuilder->execute()->fetchAll();
-PHP
+CODE_SAMPLE
 )]);
     }
     private function addQueryBuilderNode(\PhpParser\Node\Expr\StaticCall $node, \PhpParser\Node $positionNode) : void

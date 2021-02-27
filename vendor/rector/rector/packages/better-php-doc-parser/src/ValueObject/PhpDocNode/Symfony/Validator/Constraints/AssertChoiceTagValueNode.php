@@ -22,7 +22,7 @@ final class AssertChoiceTagValueNode extends \Rector\BetterPhpDocParser\ValueObj
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210223\\@Assert\\Choice';
+        return 'Typo3RectorPrefix20210227\\@Assert\\Choice';
     }
     public function getSilentKey() : string
     {

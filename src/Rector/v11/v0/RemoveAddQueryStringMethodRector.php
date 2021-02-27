@@ -43,19 +43,19 @@ final class RemoveAddQueryStringMethodRector extends \Rector\Defluent\Rector\Abs
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove TypoScript option addQueryString.method', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove TypoScript option addQueryString.method', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $this->uriBuilder->setUseCacheHash(true)
                          ->setCreateAbsoluteUri(true)
                          ->setAddQueryString(true)
                          ->setAddQueryStringMethod('GET')
                          ->build();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $this->uriBuilder->setUseCacheHash(true)
                          ->setCreateAbsoluteUri(true)
                          ->setAddQueryString(true)
                          ->build();
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

@@ -45,12 +45,12 @@ final class RemoveSecondArgumentGeneralUtilityMkdirDeepRector extends \Rector\Co
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second argument of GeneralUtility::mkdir_deep()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second argument of GeneralUtility::mkdir_deep()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 GeneralUtility::mkdir_deep(PATH_site . 'typo3temp/', 'myfolder');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 GeneralUtility::mkdir_deep(PATH_site . 'typo3temp/' . 'myfolder');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

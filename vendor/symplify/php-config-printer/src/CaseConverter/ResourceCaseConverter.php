@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\CaseConverter;
+namespace Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\CaseConverter;
 
 use PhpParser\Node\Stmt\Expression;
-use Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
-use Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\NodeFactory\Service\ServicesPhpNodeFactory;
-use Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
+use Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
+use Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\NodeFactory\Service\ServicesPhpNodeFactory;
+use Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
 /**
  * Handles this part:
  *
@@ -14,13 +14,13 @@ use Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
  *     App\\: <--
  *          source: '../src'
  */
-final class ResourceCaseConverter implements \Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
+final class ResourceCaseConverter implements \Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
 {
     /**
      * @var ServicesPhpNodeFactory
      */
     private $servicesPhpNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\NodeFactory\Service\ServicesPhpNodeFactory $servicesPhpNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\NodeFactory\Service\ServicesPhpNodeFactory $servicesPhpNodeFactory)
     {
         $this->servicesPhpNodeFactory = $servicesPhpNodeFactory;
     }
@@ -35,6 +35,6 @@ final class ResourceCaseConverter implements \Typo3RectorPrefix20210223\Symplify
     }
     public function match(string $rootKey, $key, $values) : bool
     {
-        return isset($values[\Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\ValueObject\YamlKey::RESOURCE]);
+        return isset($values[\Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\ValueObject\YamlKey::RESOURCE]);
     }
 }

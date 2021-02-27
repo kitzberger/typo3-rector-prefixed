@@ -64,13 +64,13 @@ final class RemoveInitTemplateMethodCallRector extends \Rector\Core\Rector\Abstr
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove method call initTemplate from TypoScriptFrontendController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove method call initTemplate from TypoScriptFrontendController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $tsfe = GeneralUtility::makeInstance(TypoScriptFrontendController::class);
 $tsfe->initTemplate();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $tsfe = GeneralUtility::makeInstance(TypoScriptFrontendController::class);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

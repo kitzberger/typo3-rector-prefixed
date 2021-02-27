@@ -14,7 +14,7 @@ final class ClassWithTypedPropertyTypes
     public ?\Rector\NodeTypeResolver\Tests\PerNodeTypeResolver\PropertyFetchTypeResolver\Source\Abc $abcNullable;
     public \Rector\NodeTypeResolver\Tests\PerNodeTypeResolver\PropertyFetchTypeResolver\Source\Abc $abcFQ;
     public \Rector\NodeTypeResolver\Tests\PerNodeTypeResolver\PropertyFetchTypeResolver\Source\IDontExist $nonexistent;
-    public \Typo3RectorPrefix20210223\A\B\C\IDontExist $nonexistentFQ;
+    public \Typo3RectorPrefix20210227\A\B\C\IDontExist $nonexistentFQ;
     public array $array;
     /** @var array<Abc> */
     public array $arrayOfAbcs;

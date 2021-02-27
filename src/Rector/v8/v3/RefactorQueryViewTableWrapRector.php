@@ -48,14 +48,14 @@ final class RefactorQueryViewTableWrapRector extends \Rector\Core\Rector\Abstrac
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate the method QueryView->tableWrap() to use pre-Tag', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate the method QueryView->tableWrap() to use pre-Tag', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $queryView = GeneralUtility::makeInstance(QueryView::class);
 $output = $queryView->tableWrap('value');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $queryView = GeneralUtility::makeInstance(QueryView::class);
 $output = '<pre>' . 'value' . '</pre>';
-PHP
+CODE_SAMPLE
 )]);
     }
 }

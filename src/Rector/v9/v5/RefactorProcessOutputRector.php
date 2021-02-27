@@ -51,21 +51,21 @@ final class RefactorProcessOutputRector extends \Rector\Core\Rector\AbstractRect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TypoScriptFrontendController->processOutput() to TypoScriptFrontendController->applyHttpHeadersToResponse() and TypoScriptFrontendController->processContentForOutput()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TypoScriptFrontendController->processOutput() to TypoScriptFrontendController->applyHttpHeadersToResponse() and TypoScriptFrontendController->processContentForOutput()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 $tsfe = GeneralUtility::makeInstance(TypoScriptFrontendController::class);
 $tsfe->processOutput();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 $tsfe = GeneralUtility::makeInstance(TypoScriptFrontendController::class);
 $tsfe->applyHttpHeadersToResponse();
 $tsfe->processContentForOutput();
-PHP
+CODE_SAMPLE
 )]);
     }
     private function refactorToNewMethodCalls(\PhpParser\Node\Expr\MethodCall $node) : void

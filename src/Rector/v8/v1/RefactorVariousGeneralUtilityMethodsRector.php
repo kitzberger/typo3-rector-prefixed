@@ -92,15 +92,15 @@ final class RefactorVariousGeneralUtilityMethodsRector extends \Rector\Core\Rect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor various deprecated methods of class GeneralUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor various deprecated methods of class GeneralUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $url = 'https://www.domain.com/';
 $url = GeneralUtility::rawUrlEncodeFP($url);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $url = 'https://www.domain.com/';
 $url = str_replace('%2F', '/', rawurlencode($url));
-PHP
+CODE_SAMPLE
 )]);
     }
 }

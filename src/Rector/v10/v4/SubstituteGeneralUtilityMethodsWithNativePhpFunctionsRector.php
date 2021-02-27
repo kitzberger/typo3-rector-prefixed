@@ -53,7 +53,7 @@ final class SubstituteGeneralUtilityMethodsWithNativePhpFunctionsRector extends 
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute deprecated method calls of class GeneralUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute deprecated method calls of class GeneralUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 $hex = '127.0.0.1';
@@ -63,8 +63,8 @@ GeneralUtility::IPv6Bin2Hex($bin);
 $address = '127.0.0.1';
 GeneralUtility::compressIPv6($address);
 GeneralUtility::milliseconds();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 $hex = '127.0.0.1';
@@ -74,7 +74,7 @@ inet_ntop($bin);
 $address = '127.0.0.1';
 inet_ntop(inet_pton($address));
 round(microtime(true) * 1000);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

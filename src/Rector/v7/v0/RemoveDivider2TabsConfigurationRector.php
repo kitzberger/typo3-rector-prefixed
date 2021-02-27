@@ -22,7 +22,7 @@ final class RemoveDivider2TabsConfigurationRector extends \Rector\Core\Rector\Ab
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Removed dividers2tabs functionality', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Removed dividers2tabs functionality', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'dividers2tabs' => true,
@@ -33,8 +33,8 @@ return [
     'columns' => [
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
         'label' => 'complete_identifier',
@@ -44,7 +44,7 @@ return [
     'columns' => [
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

@@ -70,15 +70,15 @@ final class UseGetMenuInsteadOfGetFirstWebPageRector extends \Rector\Core\Rector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use method getMenu instead of getFirstWebPage', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use method getMenu instead of getFirstWebPage', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $theFirstPage = $GLOBALS['TSFE']->sys_page->getFirstWebPage(0);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $rootLevelPages = $GLOBALS['TSFE']->sys_page->getMenu(0, 'uid', 'sorting', '', false);
 if (!empty($rootLevelPages)) {
     $theFirstPage = reset($rootLevelPages);
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

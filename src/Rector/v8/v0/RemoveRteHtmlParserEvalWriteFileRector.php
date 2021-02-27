@@ -53,7 +53,7 @@ final class RemoveRteHtmlParserEvalWriteFileRector extends \Rector\Core\Rector\A
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('remove evalWriteFile method from RteHtmlparser.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('remove evalWriteFile method from RteHtmlparser.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Html\RteHtmlParser;
 
 final class RteHtmlParserRemovedMethods
@@ -66,8 +66,8 @@ final class RteHtmlParserRemovedMethods
     }
 
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Html\RteHtmlParser;
 
 final class RteHtmlParserRemovedMethods
@@ -79,7 +79,7 @@ final class RteHtmlParserRemovedMethods
     }
 
 }
-PHP
+CODE_SAMPLE
 )]);
     }
 }

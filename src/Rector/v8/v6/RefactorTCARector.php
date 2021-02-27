@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v8\v6;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
@@ -37,7 +37,7 @@ final class RefactorTCARector extends \Rector\Core\Rector\AbstractRector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('A lot of different TCA changes', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('A lot of different TCA changes', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -66,8 +66,8 @@ return [
         ],
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [
     ],
@@ -83,7 +83,7 @@ return [
         ],
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**
@@ -167,7 +167,7 @@ PHP
                             continue;
                         }
                         $validWizard = $this->isValidWizard($wizardItemValue);
-                        if ($validWizard || \Typo3RectorPrefix20210223\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_') || $isRte) {
+                        if ($validWizard || \Typo3RectorPrefix20210227\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_') || $isRte) {
                             --$remainingWizards;
                         }
                         if (!$validWizard) {

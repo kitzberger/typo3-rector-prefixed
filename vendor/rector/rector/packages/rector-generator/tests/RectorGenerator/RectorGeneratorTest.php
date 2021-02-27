@@ -7,10 +7,10 @@ use Rector\Core\HttpKernel\RectorKernel;
 use Rector\RectorGenerator\Generator\RectorRecipeGenerator;
 use Rector\RectorGenerator\Tests\RectorGenerator\Source\StaticRectorRecipeFactory;
 use Rector\RectorGenerator\ValueObject\RectorRecipe;
-use Typo3RectorPrefix20210223\Symplify\EasyTesting\PHPUnit\Behavior\DirectoryAssertableTrait;
-use Typo3RectorPrefix20210223\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileSystem;
-final class RectorGeneratorTest extends \Typo3RectorPrefix20210223\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210227\Symplify\EasyTesting\PHPUnit\Behavior\DirectoryAssertableTrait;
+use Typo3RectorPrefix20210227\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileSystem;
+final class RectorGeneratorTest extends \Typo3RectorPrefix20210227\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     use DirectoryAssertableTrait;
     /**
@@ -28,7 +28,7 @@ final class RectorGeneratorTest extends \Typo3RectorPrefix20210223\Symplify\Pack
     protected function setUp() : void
     {
         $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
-        $this->smartFileSystem = $this->getService(\Typo3RectorPrefix20210223\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $this->smartFileSystem = $this->getService(\Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileSystem::class);
         $this->rectorRecipeGenerator = $this->getService(\Rector\RectorGenerator\Generator\RectorRecipeGenerator::class);
     }
     protected function tearDown() : void

@@ -41,16 +41,16 @@ final class RequireMethodsToNativeFunctionsRector extends \Rector\Core\Rector\Ab
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor GeneralUtility::requireOnce and GeneralUtility::requireFile', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor GeneralUtility::requireOnce and GeneralUtility::requireFile', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 GeneralUtility::requireOnce('somefile.php');
 GeneralUtility::requireFile('some_other_file.php');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 require_once 'somefile.php';
 require 'some_other_file.php';
-PHP
+CODE_SAMPLE
 )]);
     }
 }

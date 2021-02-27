@@ -39,16 +39,16 @@ final class UseClassTypo3VersionRector extends \Rector\Core\Rector\AbstractRecto
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class Typo3Version instead of the constants', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class Typo3Version instead of the constants', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $typo3Version = TYPO3_version;
 $typo3Branch = TYPO3_branch;
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Information\Typo3Version;
 $typo3Version = GeneralUtility::makeInstance(Typo3Version::class)->getVersion();
 $typo3Branch = GeneralUtility::makeInstance(Typo3Version::class)->getBranch();
-PHP
+CODE_SAMPLE
 )]);
     }
 }

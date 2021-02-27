@@ -22,16 +22,16 @@ final class RenameMethodCallToEnvironmentMethodCallRector extends \Rector\Core\R
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns method call names to new ones from new Environment API.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns method call names to new ones from new Environment API.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 Bootstrap::usesComposerClassLoading();
 GeneralUtility::getApplicationContext();
 EnvironmentService::isEnvironmentInCliMode();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 Environment::isComposerMode();
 Environment::getContext();
 Environment::isCli();
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

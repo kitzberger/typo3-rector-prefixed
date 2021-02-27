@@ -37,7 +37,7 @@ final class PrependAbsolutePathToGetFileAbsFileNameRector extends \Rector\Core\R
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use GeneralUtility::getFileAbsFileName() instead of GraphicalFunctions->prependAbsolutePath()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use GeneralUtility::getFileAbsFileName() instead of GraphicalFunctions->prependAbsolutePath()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Imaging\GraphicalFunctions;
 
 class SomeFooBar
@@ -50,8 +50,8 @@ class SomeFooBar
         $this->graphicalFunctions->prependAbsolutePath('some.font');
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Imaging\GraphicalFunctions;
 
@@ -65,7 +65,7 @@ class SomeFooBar
         GeneralUtility::getFileAbsFileName('some.font');
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
 }

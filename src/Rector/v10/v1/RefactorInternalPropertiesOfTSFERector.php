@@ -58,12 +58,12 @@ final class RefactorInternalPropertiesOfTSFERector extends \Rector\Core\Rector\A
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor Internal public TSFE properties', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor Internal public TSFE properties', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $domainStartPage = $GLOBALS['TSFE']->domainStartPage;
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $cHash = $GLOBALS['REQUEST']->getAttribute('routing')->getArguments()['cHash'];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

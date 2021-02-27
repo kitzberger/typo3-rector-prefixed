@@ -121,7 +121,7 @@ final class MigrateOptionsOfTypeGroupRector extends \Rector\Core\Rector\Abstract
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate options if type group in TCA', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrate options if type group in TCA', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'ctrl' => [],
     'columns' => [
@@ -136,8 +136,8 @@ return [
         ],
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'ctrl' => [],
     'columns' => [
@@ -155,7 +155,7 @@ return [
         ],
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
 }

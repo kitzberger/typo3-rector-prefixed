@@ -15,12 +15,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210223\\Symplify\\PhpConfigPrinter\\": "src"
+            "Typo3RectorPrefix20210227\\Symplify\\PhpConfigPrinter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210223\\Symplify\\PhpConfigPrinter\\Tests\\": "tests"
+            "Typo3RectorPrefix20210227\\Symplify\\PhpConfigPrinter\\Tests\\": "tests"
         },
         "files": [
             "tests\/Printer\/SmartPhpConfigPrinter\/Source\/custom_inline_objects_function.php",

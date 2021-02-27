@@ -45,13 +45,13 @@ final class DocumentTemplateAddStyleSheetRector extends \Rector\Core\Rector\Abst
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use PageRenderer::addCssFile instead of DocumentTemplate::addStyleSheet() ', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use PageRenderer::addCssFile instead of DocumentTemplate::addStyleSheet() ', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $documentTemplate = GeneralUtility::makeInstance(DocumentTemplate::class);
 $documentTemplate->addStyleSheet('foo', 'foo.css');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 GeneralUtility::makeInstance(PageRenderer::class)->addCssFile('foo.css', 'stylesheet', 'screen', '');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

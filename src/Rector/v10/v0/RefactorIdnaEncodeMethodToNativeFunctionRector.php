@@ -55,14 +55,14 @@ final class RefactorIdnaEncodeMethodToNativeFunctionRector extends \Rector\Core\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use native function idn_to_ascii instead of GeneralUtility::idnaEncode', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use native function idn_to_ascii instead of GeneralUtility::idnaEncode', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $domain = GeneralUtility::idnaEncode('domain.com');
 $email = GeneralUtility::idnaEncode('email@domain.com');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $domain = idn_to_ascii('domain.com', IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
 $email = 'email@' . idn_to_ascii('domain.com', IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
-PHP
+CODE_SAMPLE
 )]);
     }
     private function refactorToNativeFunction(string $value) : \PhpParser\Node\Expr\FuncCall

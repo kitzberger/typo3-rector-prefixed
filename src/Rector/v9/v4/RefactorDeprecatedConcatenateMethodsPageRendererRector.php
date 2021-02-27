@@ -45,14 +45,14 @@ final class RefactorDeprecatedConcatenateMethodsPageRendererRector extends \Rect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns method call names to new ones.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns method call names to new ones.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 $files = $someObject->getConcatenateFiles();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 $files = array_merge($this->getConcatenateCss(), $this->getConcatenateJavascript());
-PHP
+CODE_SAMPLE
 )]);
     }
     private function createArrayMergeCall(\PhpParser\Node\Expr\MethodCall $node) : \PhpParser\Node\Expr\FuncCall

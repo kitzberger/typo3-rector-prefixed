@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Privatization\Rector\ClassMethod;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassMethod;
@@ -146,7 +146,7 @@ CODE_SAMPLE
         if ($this->doctrineDocBlockResolver->isDoctrineEntityClass($class)) {
             return \true;
         }
-        if ($this->isObjectType($class, 'Typo3RectorPrefix20210223\\PHPUnit\\Framework\\TestCase')) {
+        if ($this->isObjectType($class, 'Typo3RectorPrefix20210227\\PHPUnit\\Framework\\TestCase')) {
             return \true;
         }
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($class);
@@ -158,11 +158,11 @@ CODE_SAMPLE
         if ($className === null) {
             return \false;
         }
-        if (!\Typo3RectorPrefix20210223\Nette\Utils\Strings::match($className, self::CONTROLLER_PRESENTER_SUFFIX_REGEX)) {
+        if (!\Typo3RectorPrefix20210227\Nette\Utils\Strings::match($className, self::CONTROLLER_PRESENTER_SUFFIX_REGEX)) {
             return \false;
         }
         $classMethodName = $this->getName($classMethod);
-        if ((bool) \Typo3RectorPrefix20210223\Nette\Utils\Strings::match($classMethodName, self::COMMON_PUBLIC_METHOD_CONTROLLER_REGEX)) {
+        if ((bool) \Typo3RectorPrefix20210227\Nette\Utils\Strings::match($classMethodName, self::COMMON_PUBLIC_METHOD_CONTROLLER_REGEX)) {
             return \true;
         }
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);

@@ -44,14 +44,14 @@ final class CallEnableFieldsFromPageRepositoryRector extends \Rector\Core\Rector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Call enable fields from PageRepository instead of ContentObjectRenderer', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Call enable fields from PageRepository instead of ContentObjectRenderer', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $contentObjectRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
 $contentObjectRenderer->enableFields('pages', false, []);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $contentObjectRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
 GeneralUtility::makeInstance(PageRepository::class)->enableFields('pages', -1, []);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

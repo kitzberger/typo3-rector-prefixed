@@ -29,20 +29,20 @@ final class ChangeMethodCallsForStandaloneViewRector extends \Rector\Core\Rector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns method call names to new ones.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns method call names to new ones.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $someObject = new StandaloneView();
 $someObject->setLayoutRootPath();
 $someObject->getLayoutRootPath();
 $someObject->setPartialRootPath();
 $someObject->getPartialRootPath();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $someObject = new StandaloneView();
 $someObject->setLayoutRootPaths();
 $someObject->getLayoutRootPaths();
 $someObject->setPartialRootPaths();
 $someObject->getPartialRootPaths();
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

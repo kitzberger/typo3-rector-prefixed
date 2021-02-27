@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\NodeFactory;
+namespace Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\NodeFactory;
 
 use PhpParser\Node\Stmt\Expression;
-use Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\CaseConverter\InstanceOfNestedCaseConverter;
+use Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\CaseConverter\InstanceOfNestedCaseConverter;
 final class ContainerNestedNodesFactory
 {
     /**
      * @var InstanceOfNestedCaseConverter
      */
     private $instanceOfNestedCaseConverter;
-    public function __construct(\Typo3RectorPrefix20210223\Symplify\PhpConfigPrinter\CaseConverter\InstanceOfNestedCaseConverter $instanceOfNestedCaseConverter)
+    public function __construct(\Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\CaseConverter\InstanceOfNestedCaseConverter $instanceOfNestedCaseConverter)
     {
         $this->instanceOfNestedCaseConverter = $instanceOfNestedCaseConverter;
     }

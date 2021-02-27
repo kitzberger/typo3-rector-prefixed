@@ -19,12 +19,12 @@ final class GeneralUtilityGetUrlRequestHeadersRector extends \Rector\Core\Rector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor GeneralUtility::getUrl() request headers in a associative way', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor GeneralUtility::getUrl() request headers in a associative way', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 GeneralUtility::getUrl('https://typo3.org', 1, ['Content-Language: de-DE']);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 GeneralUtility::getUrl('https://typo3.org', 1, ['Content-Language' => 'de-DE']);
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

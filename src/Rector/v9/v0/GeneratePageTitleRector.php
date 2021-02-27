@@ -40,16 +40,16 @@ final class GeneratePageTitleRector extends \Rector\Core\Rector\AbstractRector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use generatePageTitle of TSFE instead of class PageGenerator', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use generatePageTitle of TSFE instead of class PageGenerator', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Frontend\Page\PageGenerator;
 
 PageGenerator::generatePageTitle();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Frontend\Page\PageGenerator;
 
 $GLOBALS['TSFE']->generatePageTitle();
-PHP
+CODE_SAMPLE
 )]);
     }
 }

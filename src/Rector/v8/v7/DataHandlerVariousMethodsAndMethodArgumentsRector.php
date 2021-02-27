@@ -54,16 +54,16 @@ final class DataHandlerVariousMethodsAndMethodArgumentsRector extends \Rector\Co
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove CharsetConvertParameters', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove CharsetConvertParameters', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
 $dest = $dataHandler->destPathFromUploadFolder('uploadFolder');
 $dataHandler->extFileFunctions('table', 'field', 'theField', 'deleteAll');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
 $dest = PATH_site . 'uploadFolder';
 $dataHandler->extFileFunctions('table', 'field', 'theField');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

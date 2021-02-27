@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210223\Symplify\PackageBuilder\Console;
+namespace Typo3RectorPrefix20210227\Symplify\PackageBuilder\Console;
 
 final class ShellCode
 {

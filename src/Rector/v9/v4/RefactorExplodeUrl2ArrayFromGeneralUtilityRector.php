@@ -57,14 +57,14 @@ final class RefactorExplodeUrl2ArrayFromGeneralUtilityRector extends \Rector\Cor
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second argument of GeneralUtility::explodeUrl2Array if it is false or just use function parse_str if it is true', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second argument of GeneralUtility::explodeUrl2Array if it is false or just use function parse_str if it is true', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $variable = GeneralUtility::explodeUrl2Array('https://www.domain.com', true);
 $variable2 = GeneralUtility::explodeUrl2Array('https://www.domain.com', false);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 parse_str('https://www.domain.com', $variable);
 $variable2 = GeneralUtility::explodeUrl2Array('https://www.domain.com');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

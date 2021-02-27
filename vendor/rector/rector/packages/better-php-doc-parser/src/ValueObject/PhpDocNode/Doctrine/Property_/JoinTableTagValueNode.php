@@ -68,7 +68,7 @@ final class JoinTableTagValueNode extends \Rector\BetterPhpDocParser\ValueObject
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210223\\@ORM\\JoinTable';
+        return 'Typo3RectorPrefix20210227\\@ORM\\JoinTable';
     }
     /**
      * @return mixed[]

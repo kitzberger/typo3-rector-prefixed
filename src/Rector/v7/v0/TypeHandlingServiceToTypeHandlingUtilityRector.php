@@ -38,15 +38,15 @@ final class TypeHandlingServiceToTypeHandlingUtilityRector extends \Rector\Core\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use TypeHandlingUtility instead of TypeHandlingService', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use TypeHandlingUtility instead of TypeHandlingService', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Service\TypeHandlingService;
 GeneralUtility::makeInstance(TypeHandlingService::class)->isSimpleType('string');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Extbase\Utility\TypeHandlingUtility;
 TypeHandlingUtility::isSimpleType('string');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

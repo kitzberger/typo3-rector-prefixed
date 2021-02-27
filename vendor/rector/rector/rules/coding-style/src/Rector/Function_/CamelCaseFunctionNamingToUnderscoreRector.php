@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodingStyle\Rector\Function_;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Identifier;
@@ -72,7 +72,7 @@ CODE_SAMPLE
         if ($functionOrFuncCallName === null) {
             return null;
         }
-        $shortName = \Typo3RectorPrefix20210223\Nette\Utils\Strings::after($functionOrFuncCallName, '\\', -1);
+        $shortName = \Typo3RectorPrefix20210227\Nette\Utils\Strings::after($functionOrFuncCallName, '\\', -1);
         if ($shortName === null) {
             return $functionOrFuncCallName;
         }

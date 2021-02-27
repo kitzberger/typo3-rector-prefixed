@@ -55,14 +55,14 @@ final class RefactorBackendUtilityGetPagesTSconfigRector extends \Rector\Core\Re
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor method getPagesTSconfig of class BackendUtility if possible', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor method getPagesTSconfig of class BackendUtility if possible', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 $pagesTsConfig = BackendUtility::getPagesTSconfig(1, $rootLine = null, $returnPartArray = true);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 $pagesTsConfig = BackendUtility::getRawPagesTSconfig(1, $rootLine = null);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

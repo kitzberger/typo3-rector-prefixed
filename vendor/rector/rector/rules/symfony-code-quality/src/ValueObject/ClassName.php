@@ -8,7 +8,7 @@ final class ClassName
     /**
      * @var string
      */
-    public const ROUTE_NAME_NAMESPACE = 'Typo3RectorPrefix20210223\\App\\ValueObject\\Routing';
+    public const ROUTE_NAME_NAMESPACE = 'Typo3RectorPrefix20210227\\App\\ValueObject\\Routing';
     /**
      * @var string
      */

@@ -44,7 +44,7 @@ final class RteHtmlParserRector extends \Rector\Core\Rector\AbstractRector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second argument of HTMLcleaner_db getKeepTags. Substitute calls for siteUrl getUrl', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second argument of HTMLcleaner_db getKeepTags. Substitute calls for siteUrl getUrl', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
             use TYPO3\CMS\Core\Html\RteHtmlParser;
 
             $rteHtmlParser = new RteHtmlParser();
@@ -52,15 +52,15 @@ final class RteHtmlParserRector extends \Rector\Core\Rector\AbstractRector
             $rteHtmlParser->getKeepTags('arg1', 'arg2');
             $rteHtmlParser->getUrl('http://domain.com');
             $rteHtmlParser->siteUrl();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
             use TYPO3\CMS\Core\Html\RteHtmlParser;
             $rteHtmlParser = new RteHtmlParser();
             $rteHtmlParser->HTMLcleaner_db('arg1');
             $rteHtmlParser->getKeepTags('arg1');
             \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl('http://domain.com');
              \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
-PHP
+CODE_SAMPLE
 )]);
     }
     private function removeSecondArgumentFromMethod(\PhpParser\Node\Expr\MethodCall $node) : \PhpParser\Node

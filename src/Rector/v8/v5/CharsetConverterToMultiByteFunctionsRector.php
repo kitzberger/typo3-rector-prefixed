@@ -50,15 +50,15 @@ final class CharsetConverterToMultiByteFunctionsRector extends \Rector\Core\Rect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Move from CharsetConverter methods to mb_string functions', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Move from CharsetConverter methods to mb_string functions', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
         use TYPO3\CMS\Core\Charset\CharsetConverter;
         use TYPO3\CMS\Core\Utility\GeneralUtility;
         $charsetConverter = GeneralUtility::makeInstance(CharsetConverter::class);
         $charsetConverter->strlen('utf-8', 'string');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 mb_strlen('string', 'utf-8');
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

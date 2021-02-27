@@ -9,7 +9,7 @@ use PhpParser\Node\Expr\New_;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Return_;
-use Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface;
+use Typo3RectorPrefix20210227\Psr\Http\Message\ResponseInterface;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -25,7 +25,7 @@ final class ForwardResponseInsteadOfForwardMethodRector extends \Rector\Core\Rec
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Return TYPO3\\CMS\\Extbase\\Http\\ForwardResponse instead of TYPO3\\CMS\\Extbase\\Mvc\\Controller\\ActionController::forward()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Return TYPO3\\CMS\\Extbase\\Http\\ForwardResponse instead of TYPO3\\CMS\\Extbase\\Mvc\\Controller\\ActionController::forward()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class FooController extends ActionController
 {
@@ -34,8 +34,8 @@ class FooController extends ActionController
         $this->forward('show');
    }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
@@ -47,7 +47,7 @@ class FooController extends ActionController
         return new ForwardResponse('show');
    }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     /**
@@ -88,7 +88,7 @@ PHP
         }
         // Add returnType only if it is the only statement, otherwise it is not reliable
         if (\is_countable($node->stmts) && 1 === \count($node->stmts)) {
-            $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210223\Psr\Http\Message\ResponseInterface::class);
+            $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210227\Psr\Http\Message\ResponseInterface::class);
         }
         return $node;
     }

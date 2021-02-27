@@ -47,12 +47,12 @@ final class UseMethodGetPageShortcutDirectlyFromSysPageRector extends \Rector\Co
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use method getPageShortcut directly from PageRepository', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use method getPageShortcut directly from PageRepository', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $GLOBALS['TSFE']->getPageShortcut('shortcut', 1, 1);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $GLOBALS['TSFE']->sys_page->getPageShortcut('shortcut', 1, 1);
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

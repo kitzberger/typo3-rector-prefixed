@@ -55,7 +55,7 @@ final class UseSignalAfterExtensionInstallInsteadOfHasInstalledExtensionsRector 
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use the signal afterExtensionInstall of class InstallUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use the signal afterExtensionInstall of class InstallUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Extensionmanager\Service\ExtensionManagementService;
@@ -66,8 +66,8 @@ $signalSlotDispatcher->connect(
         \stdClass::class,
         'foo'
     );
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Extensionmanager\Utility\InstallUtility;
@@ -78,7 +78,7 @@ $signalSlotDispatcher = GeneralUtility::makeInstance(Dispatcher::class);
         \stdClass::class,
         'foo'
     );
-PHP
+CODE_SAMPLE
 )]);
     }
 }

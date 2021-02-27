@@ -39,7 +39,7 @@ final class RemovePropertyUserAuthenticationRector extends \Rector\Core\Rector\A
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use method getBackendUserAuthentication instead of removed property $userAuthentication', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use method getBackendUserAuthentication instead of removed property $userAuthentication', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 class MyCommandController extends CommandController
 {
     public function myMethod()
@@ -49,8 +49,8 @@ class MyCommandController extends CommandController
         }
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 class MyCommandController extends CommandController
 {
     public function myMethod()
@@ -60,7 +60,7 @@ class MyCommandController extends CommandController
         }
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
 }

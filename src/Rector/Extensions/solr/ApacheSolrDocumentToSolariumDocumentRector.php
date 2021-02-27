@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\Extensions\solr;
 
-use Typo3RectorPrefix20210223\Apache_Solr_Document;
+use Typo3RectorPrefix20210227\Apache_Solr_Document;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
@@ -27,7 +27,7 @@ final class ApacheSolrDocumentToSolariumDocumentRector extends \Rector\Core\Rect
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \Typo3RectorPrefix20210223\Apache_Solr_Document::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \Typo3RectorPrefix20210227\Apache_Solr_Document::class)) {
             return null;
         }
         if (!$this->isName($node->name, 'setMultiValue')) {
@@ -41,14 +41,14 @@ final class ApacheSolrDocumentToSolariumDocumentRector extends \Rector\Core\Rect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Apache_Solr_Document to solarium based document', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Apache_Solr_Document to solarium based document', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $document = new Apache_Solr_Document();
 $document->setMultiValue('foo', 'bar', true);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $document = new Apache_Solr_Document();
 $document->addField('foo', 'bar', true);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

@@ -67,18 +67,18 @@ final class TimeTrackerInsteadOfNullTimeTrackerRector extends \Rector\Core\Recto
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class TimeTracker instead of NullTimeTracker', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use class TimeTracker instead of NullTimeTracker', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\TimeTracker\NullTimeTracker;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $timeTracker1 = new NullTimeTracker();
 $timeTracker2 = GeneralUtility::makeInstance(NullTimeTracker::class);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $timeTracker1 = new TimeTracker(false);
 $timeTracker2 = GeneralUtility::makeInstance(TimeTracker::class, false);
-PHP
+CODE_SAMPLE
 )]);
     }
     private function addAdditionalArgumentIfNeeded(\PhpParser\Node $node) : ?\PhpParser\Node

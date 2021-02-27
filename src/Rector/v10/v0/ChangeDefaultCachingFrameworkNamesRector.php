@@ -48,7 +48,7 @@ final class ChangeDefaultCachingFrameworkNamesRector extends \Rector\Core\Rector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use new default cache names like core instead of cache_core)', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use new default cache names like core instead of cache_core)', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
 $cacheManager->getCache('cache_core');
 $cacheManager->getCache('cache_hash');
@@ -57,8 +57,8 @@ $cacheManager->getCache('cache_pagesection');
 $cacheManager->getCache('cache_runtime');
 $cacheManager->getCache('cache_rootline');
 $cacheManager->getCache('cache_imagesizes');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
 $cacheManager->getCache('core');
 $cacheManager->getCache('hash');
@@ -67,7 +67,7 @@ $cacheManager->getCache('pagesection');
 $cacheManager->getCache('runtime');
 $cacheManager->getCache('rootline');
 $cacheManager->getCache('imagesizes');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

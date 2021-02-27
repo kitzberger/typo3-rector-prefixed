@@ -40,12 +40,12 @@ final class MoveApplicationContextToEnvironmentApiRector extends \Rector\Core\Re
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use Environment API to fetch application context', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use Environment API to fetch application context', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 GeneralUtility::getApplicationContext();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 Environment::getContext();
-PHP
+CODE_SAMPLE
 )]);
     }
 }

@@ -119,7 +119,7 @@ final class OptionalConstructorToHardRequirementRector extends \Rector\Core\Rect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Option constructor arguments to hard requirement', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Option constructor arguments to hard requirement', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -134,8 +134,8 @@ public function __construct(Dispatcher $dispatcher = null, StandaloneView $view 
         $backendUtility = $backendUtility ?? GeneralUtility::makeInstance(BackendUtility::class);
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Fluid\View\StandaloneView;
@@ -148,7 +148,7 @@ public function __construct(Dispatcher $dispatcher, StandaloneView $view, Backen
         $backendUtility = $backendUtility;
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
 }

@@ -38,7 +38,7 @@ final class RemoveWakeupCallFromEntityRector extends \Rector\Core\Rector\Abstrac
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove __wakeup call for AbstractDomainObject', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove __wakeup call for AbstractDomainObject', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 
 class MyWakeupCallerClass extends AbstractDomainObject
@@ -51,8 +51,8 @@ class MyWakeupCallerClass extends AbstractDomainObject
         parent::__wakeup();
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 
 class MyWakeupCallerClass extends AbstractDomainObject
@@ -64,7 +64,7 @@ class MyWakeupCallerClass extends AbstractDomainObject
         $this->mySpecialResourceAfterWakeUp = fopen(__FILE__, 'wb');
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
 }

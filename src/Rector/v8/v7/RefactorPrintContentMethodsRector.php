@@ -52,7 +52,7 @@ final class RefactorPrintContentMethodsRector extends \Rector\Core\Rector\Abstra
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor printContent methods of classes TaskModuleController and PageLayoutController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor printContent methods of classes TaskModuleController and PageLayoutController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Controller\PageLayoutController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Taskcenter\Controller\TaskModuleController;
@@ -61,15 +61,15 @@ $pageLayoutController->printContent();
 
 $taskLayoutController = GeneralUtility::makeInstance(TaskModuleController::class);
 $taskLayoutController->printContent();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Controller\PageLayoutController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;use TYPO3\CMS\Taskcenter\Controller\TaskModuleController;
 $pageLayoutController = GeneralUtility::makeInstance(PageLayoutController::class);
 echo $pageLayoutController->getModuleTemplate()->renderContent();
 $taskLayoutController = GeneralUtility::makeInstance(TaskModuleController::class);
 echo $taskLayoutController->content;
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

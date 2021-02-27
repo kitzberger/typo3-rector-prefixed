@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Autodiscovery\Tests\Rector\FileNode\MoveEntitiesToEntityDirectoryRector\Source\Entity;
 
-use Typo3RectorPrefix20210223\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210227\Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */

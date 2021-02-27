@@ -54,7 +54,7 @@ final class SystemEnvironmentBuilderConstantsRector extends \Rector\Core\Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('GeneralUtility::verifyFilenameAgainstDenyPattern GeneralUtility::makeInstance(FileNameValidator::class)->isValid($filename)', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('GeneralUtility::verifyFilenameAgainstDenyPattern GeneralUtility::makeInstance(FileNameValidator::class)->isValid($filename)', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $var1 = TYPO3_URL_MAILINGLISTS;
 $var2 = TYPO3_URL_DOCUMENTATION;
 $var3 = TYPO3_URL_DOCUMENTATION_TSREF;
@@ -77,8 +77,8 @@ $var15 = T3_ERR_SV_FILE_READ;
 $var16 = T3_ERR_SV_FILE_WRITE;
 $var17 = T3_ERR_SV_PROG_NOT_FOUND;
 $var18 = T3_ERR_SV_PROG_FAILED;
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Service\AbstractService;
 $var1 = 'http://lists.typo3.org/cgi-bin/mailman/listinfo';
 $var2 = 'https://typo3.org/documentation/';
@@ -102,7 +102,7 @@ $var15 = AbstractService::ERROR_FILE_NOT_READABLE;
 $var16 = AbstractService::ERROR_FILE_NOT_WRITEABLE;
 $var17 = AbstractService::ERROR_PROGRAM_NOT_FOUND;
 $var18 = AbstractService::ERROR_PROGRAM_FAILED;
-PHP
+CODE_SAMPLE
 )]);
     }
 }

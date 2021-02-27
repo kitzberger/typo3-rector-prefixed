@@ -65,7 +65,7 @@ final class DatabaseConnectionToDbalRector extends \Rector\Core\Rector\AbstractR
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor legacy calls of DatabaseConnection to Dbal', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor legacy calls of DatabaseConnection to Dbal', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $GLOBALS['TYPO3_DB']->exec_INSERTquery(
             'pages',
             [
@@ -73,8 +73,8 @@ $GLOBALS['TYPO3_DB']->exec_INSERTquery(
                 'title' => 'Home',
             ]
         );
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $connectionPool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class);
         $databaseConnectionForPages = $connectionPool->getConnectionForTable('pages');
         $databaseConnectionForPages->insert(
@@ -84,7 +84,7 @@ $connectionPool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CM
                 'title' => 'Home',
             ]
         );
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool

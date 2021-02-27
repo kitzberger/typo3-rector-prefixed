@@ -7,7 +7,7 @@ use ReflectionClass;
 use Symplify\RuleDocGenerator\Contract\DocumentedRuleInterface;
 use Symplify\RuleDocGenerator\ValueObject\RuleClassWithFilePath;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210223\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210227\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class RuleDefinitionsResolver
 {
     /**
@@ -21,7 +21,7 @@ final class RuleDefinitionsResolver
             $reflectionClass = new \ReflectionClass($rule->getClass());
             $documentedRule = $reflectionClass->newInstanceWithoutConstructor();
             if (!$documentedRule instanceof \Symplify\RuleDocGenerator\Contract\DocumentedRuleInterface) {
-                throw new \Typo3RectorPrefix20210223\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+                throw new \Typo3RectorPrefix20210227\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
             }
             $ruleDefinition = $documentedRule->getRuleDefinition();
             $ruleDefinition->setRuleClass($rule->getClass());

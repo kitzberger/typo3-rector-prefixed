@@ -72,12 +72,12 @@ final class SubstituteCacheWrapperMethodsRector extends \Rector\Core\Rector\Abst
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Caching framework wrapper methods in BackendUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Caching framework wrapper methods in BackendUtility', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 $hash = 'foo';
 $content = BackendUtility::getHash($hash);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -89,7 +89,7 @@ if ($cacheEntry) {
     $hashContent = $cacheEntry;
 }
 $content = $hashContent;
-PHP
+CODE_SAMPLE
 )]);
     }
     private function createCacheManager() : \PhpParser\Node\Expr\StaticCall

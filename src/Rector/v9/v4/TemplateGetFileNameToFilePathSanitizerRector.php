@@ -78,10 +78,10 @@ final class TemplateGetFileNameToFilePathSanitizerRector extends \Rector\Core\Re
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use FilePathSanitizer->sanitize() instead of TemplateService->getFileName()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use FilePathSanitizer->sanitize() instead of TemplateService->getFileName()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $fileName = $GLOBALS['TSFE']->tmpl->getFileName('foo.text');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Resource\FilePathSanitizer;
 use TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
@@ -99,7 +99,7 @@ try {
         GeneralUtility::makeInstance(TimeTracker::class)->setTSlogMessage($e->getMessage(), 3);
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     private function createSanitizeMethod(\PhpParser\Node\Expr\Assign $parentNode, \PhpParser\Node\Expr\Cast\String_ $filePath) : \PhpParser\Node\Stmt\Expression

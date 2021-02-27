@@ -50,12 +50,12 @@ final class RefactorMethodsFromExtensionManagementUtilityRector extends \Rector\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor deprecated methods from ExtensionManagementUtility.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor deprecated methods from ExtensionManagementUtility.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 ExtensionManagementUtility::removeCacheFiles();
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->flushCachesInGroup('system');
-PHP
+CODE_SAMPLE
 )]);
     }
     private function createNewMethodCallForSiteRelPath(\PhpParser\Node\Expr\StaticCall $node) : \PhpParser\Node\Expr\StaticCall

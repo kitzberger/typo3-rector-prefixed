@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210223\Symplify\EasyTesting\ValueObject;
+namespace Typo3RectorPrefix20210227\Symplify\EasyTesting\ValueObject;
 
 final class InputAndExpected
 {

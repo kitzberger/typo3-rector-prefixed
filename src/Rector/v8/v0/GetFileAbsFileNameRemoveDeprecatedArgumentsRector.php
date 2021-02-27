@@ -40,14 +40,14 @@ final class GetFileAbsFileNameRemoveDeprecatedArgumentsRector extends \Rector\Co
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second and third argument of GeneralUtility::getFileAbsFileName()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove second and third argument of GeneralUtility::getFileAbsFileName()', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 GeneralUtility::getFileAbsFileName('foo.txt', false, true);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 GeneralUtility::getFileAbsFileName('foo.txt');
-PHP
+CODE_SAMPLE
 )]);
     }
 }

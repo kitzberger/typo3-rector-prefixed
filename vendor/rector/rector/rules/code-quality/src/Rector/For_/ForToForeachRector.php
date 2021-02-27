@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodeQuality\Rector\For_;
 
-use Typo3RectorPrefix20210223\Doctrine\Inflector\Inflector;
+use Typo3RectorPrefix20210227\Doctrine\Inflector\Inflector;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ArrayDimFetch;
@@ -56,7 +56,7 @@ final class ForToForeachRector extends \Rector\Core\Rector\AbstractRector
      * @var ForeachFactory
      */
     private $foreachFactory;
-    public function __construct(\Typo3RectorPrefix20210223\Doctrine\Inflector\Inflector $inflector, \Rector\CodeQuality\NodeAnalyzer\ForNodeAnalyzer $forNodeAnalyzer, \Rector\CodeQuality\NodeFactory\ForeachFactory $foreachFactory)
+    public function __construct(\Typo3RectorPrefix20210227\Doctrine\Inflector\Inflector $inflector, \Rector\CodeQuality\NodeAnalyzer\ForNodeAnalyzer $forNodeAnalyzer, \Rector\CodeQuality\NodeFactory\ForeachFactory $foreachFactory)
     {
         $this->inflector = $inflector;
         $this->forNodeAnalyzer = $forNodeAnalyzer;

@@ -47,13 +47,13 @@ final class RemoveInitMethodFromPageRepositoryRector extends \Rector\Core\Rector
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove method call init from PageRepository', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove method call init from PageRepository', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $repository = GeneralUtility::makeInstance(PageRepository::class);
 $repository->init(true);
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 $repository = GeneralUtility::makeInstance(PageRepository::class);
-PHP
+CODE_SAMPLE
 )]);
     }
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php 
-namespace Typo3RectorPrefix20210223;
+namespace Typo3RectorPrefix20210227;
 
 /*
  * This file is part of the Symfony package.
@@ -15,18 +15,18 @@ namespace Typo3RectorPrefix20210223;
  *
  * @author Jan Schädlich <jan.schaedlich@sensiolabs.de>
  */
-use Typo3RectorPrefix20210223\Symfony\Component\Console\Application;
-use Typo3RectorPrefix20210223\Symfony\Component\Yaml\Command\LintCommand;
+use Typo3RectorPrefix20210227\Symfony\Component\Console\Application;
+use Typo3RectorPrefix20210227\Symfony\Component\Yaml\Command\LintCommand;
 function includeIfExists(string $file) : bool
 {
     return \file_exists($file) && (include $file);
 }
-if (!\Typo3RectorPrefix20210223\includeIfExists(__DIR__ . '/../../../../autoload.php') && !\Typo3RectorPrefix20210223\includeIfExists(__DIR__ . '/../../vendor/autoload.php') && !\Typo3RectorPrefix20210223\includeIfExists(__DIR__ . '/../../../../../../vendor/autoload.php')) {
+if (!\Typo3RectorPrefix20210227\includeIfExists(__DIR__ . '/../../../../autoload.php') && !\Typo3RectorPrefix20210227\includeIfExists(__DIR__ . '/../../vendor/autoload.php') && !\Typo3RectorPrefix20210227\includeIfExists(__DIR__ . '/../../../../../../vendor/autoload.php')) {
     \fwrite(\STDERR, 'Install dependencies using Composer.' . \PHP_EOL);
     exit(1);
 }
-if (!\class_exists(\Typo3RectorPrefix20210223\Symfony\Component\Console\Application::class)) {
+if (!\class_exists(\Typo3RectorPrefix20210227\Symfony\Component\Console\Application::class)) {
     \fwrite(\STDERR, 'You need the "symfony/console" component in order to run the Yaml linter.' . \PHP_EOL);
     exit(1);
 }
-(new \Typo3RectorPrefix20210223\Symfony\Component\Console\Application())->add($command = new \Typo3RectorPrefix20210223\Symfony\Component\Yaml\Command\LintCommand())->getApplication()->setDefaultCommand($command->getName(), \true)->run();
+(new \Typo3RectorPrefix20210227\Symfony\Component\Console\Application())->add($command = new \Typo3RectorPrefix20210227\Symfony\Component\Yaml\Command\LintCommand())->getApplication()->setDefaultCommand($command->getName(), \true)->run();

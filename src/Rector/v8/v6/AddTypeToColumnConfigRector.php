@@ -102,14 +102,14 @@ final class AddTypeToColumnConfigRector extends \Rector\Core\Rector\AbstractRect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Add type to column config if not exists', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Add type to column config if not exists', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 return [
     'columns' => [
         'bar' => []
     ]
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 return [
     'columns' => [
         'bar' => [
@@ -119,7 +119,7 @@ return [
         ]
     ]
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
 }

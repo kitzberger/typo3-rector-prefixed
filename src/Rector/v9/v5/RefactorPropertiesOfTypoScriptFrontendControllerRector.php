@@ -61,18 +61,18 @@ final class RefactorPropertiesOfTypoScriptFrontendControllerRector extends \Rect
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor some properties of TypoScriptFrontendController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Refactor some properties of TypoScriptFrontendController', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $previewBeUserUid = $GLOBALS['TSFE']->ADMCMD_preview_BEUSER_uid;
 $workspacePreview = $GLOBALS['TSFE']->workspacePreview;
 $loginAllowedInBranch = $GLOBALS['TSFE']->loginAllowedInBranch;
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Context\Context;
 $previewBeUserUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('backend.user', 'id', 0);
 $workspacePreview = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('workspace', 'id', 0);
 $loginAllowedInBranch = $GLOBALS['TSFE']->checkIfLoginAllowedInBranch();
-PHP
+CODE_SAMPLE
 )]);
     }
 }

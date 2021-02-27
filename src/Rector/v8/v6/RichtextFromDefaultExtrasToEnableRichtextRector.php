@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v8\v6;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
@@ -28,7 +28,7 @@ final class RichtextFromDefaultExtrasToEnableRichtextRector extends \Rector\Core
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA richtext configuration in defaultExtras dropped', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('TCA richtext configuration in defaultExtras dropped', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 [
     'columns' => [
         'content' => [
@@ -39,8 +39,8 @@ final class RichtextFromDefaultExtrasToEnableRichtextRector extends \Rector\Core
         ],
     ],
 ];
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 [
     'columns' => [
         'content' => [
@@ -51,7 +51,7 @@ PHP
         ],
     ],
 ];
-PHP
+CODE_SAMPLE
 )]);
     }
     /**
@@ -127,7 +127,7 @@ PHP
         if (!\is_string($defaultExtras)) {
             return \false;
         }
-        return \Typo3RectorPrefix20210223\Nette\Utils\Strings::startsWith($defaultExtras, 'richtext');
+        return \Typo3RectorPrefix20210227\Nette\Utils\Strings::startsWith($defaultExtras, 'richtext');
     }
     private function refactorRichtextColumns(\PhpParser\Node\Expr\Array_ $columnItems) : void
     {

@@ -72,14 +72,14 @@ final class UseLanguageAspectForTsfeLanguagePropertiesRector extends \Rector\Cor
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use LanguageAspect instead of language properties of TSFE', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Use LanguageAspect instead of language properties of TSFE', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 $languageUid = $GLOBALS['TSFE']->sys_language_uid;
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 $languageUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id');
-PHP
+CODE_SAMPLE
 )]);
     }
     private function shouldSkip(\PhpParser\Node\Expr\PropertyFetch $node) : bool

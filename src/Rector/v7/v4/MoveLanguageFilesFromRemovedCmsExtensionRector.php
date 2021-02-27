@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v7\v4;
 
-use Typo3RectorPrefix20210223\Nette\Utils\Strings;
+use Typo3RectorPrefix20210227\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\Rector\AbstractRector;
@@ -23,16 +23,16 @@ final class MoveLanguageFilesFromRemovedCmsExtensionRector extends \Rector\Core\
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Move language files of removed cms to new location', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Move language files of removed cms to new location', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Localization\LanguageService;
 $languageService = new LanguageService();
 $languageService->sL('LLL:EXT:cms/web_info/locallang.xlf:pages_1');
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Localization\LanguageService;
 $languageService = new LanguageService();
 $languageService->sL('LLL:EXT:frontend/Resources/Private/Language/locallang_webinfo.xlf:pages_1');
-PHP
+CODE_SAMPLE
 )]);
     }
     /**
@@ -53,7 +53,7 @@ PHP
         }
         foreach (self::MAPPING_OLD_TO_NEW_PATHS as $oldPath => $newPath) {
             $oldPathPrefixed = \sprintf('LLL:EXT:%s', $oldPath);
-            if (\Typo3RectorPrefix20210223\Nette\Utils\Strings::startsWith($value, $oldPathPrefixed)) {
+            if (\Typo3RectorPrefix20210227\Nette\Utils\Strings::startsWith($value, $oldPathPrefixed)) {
                 $newPathPrefixed = \sprintf('LLL:EXT:%s', $newPath);
                 return new \PhpParser\Node\Scalar\String_(\str_replace($oldPathPrefixed, $newPathPrefixed, $value));
             }

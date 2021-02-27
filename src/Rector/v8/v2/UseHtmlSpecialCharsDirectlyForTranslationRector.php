@@ -29,7 +29,7 @@ final class UseHtmlSpecialCharsDirectlyForTranslationRector extends \Rector\Core
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('htmlspecialchars directly to properly escape the content.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'PHP'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('htmlspecialchars directly to properly escape the content.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Frontend\Plugin\AbstractPlugin;
 class MyPlugin extends AbstractPlugin
 {
@@ -42,8 +42,8 @@ class MyPlugin extends AbstractPlugin
         $translation10 = $GLOBALS['LANG']->sL('foobar', false);
     }
 }
-PHP
-, <<<'PHP'
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
 use TYPO3\CMS\Frontend\Plugin\AbstractPlugin;
 class MyPlugin extends AbstractPlugin
 {
@@ -56,7 +56,7 @@ class MyPlugin extends AbstractPlugin
         $translation10 = $GLOBALS['LANG']->sL('foobar');
     }
 }
-PHP
+CODE_SAMPLE
 )]);
     }
     /**

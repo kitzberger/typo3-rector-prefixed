@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210223\Symfony\Component\ExpressionLanguage\Node;
+namespace Typo3RectorPrefix20210227\Symfony\Component\ExpressionLanguage\Node;
 
-use Typo3RectorPrefix20210223\Symfony\Component\ExpressionLanguage\Compiler;
+use Typo3RectorPrefix20210227\Symfony\Component\ExpressionLanguage\Compiler;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @internal
  */
-class ArgumentsNode extends \Typo3RectorPrefix20210223\Symfony\Component\ExpressionLanguage\Node\ArrayNode
+class ArgumentsNode extends \Typo3RectorPrefix20210227\Symfony\Component\ExpressionLanguage\Node\ArrayNode
 {
-    public function compile(\Typo3RectorPrefix20210223\Symfony\Component\ExpressionLanguage\Compiler $compiler)
+    public function compile(\Typo3RectorPrefix20210227\Symfony\Component\ExpressionLanguage\Compiler $compiler)
     {
         $this->compileArguments($compiler, \false);
     }

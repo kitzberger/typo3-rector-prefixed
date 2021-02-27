@@ -77,17 +77,17 @@ final class PHPUnitStaticToKernelTestCaseGetRector extends \Rector\Core\Rector\A
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Convert static calls in PHPUnit test cases, to get() from the container of KernelTestCase', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample(<<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210223;
+namespace Typo3RectorPrefix20210227;
 
-use Typo3RectorPrefix20210223\PHPUnit\Framework\TestCase;
-final class SomeTestCase extends \Typo3RectorPrefix20210223\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210227\PHPUnit\Framework\TestCase;
+final class SomeTestCase extends \Typo3RectorPrefix20210227\PHPUnit\Framework\TestCase
 {
     public function test()
     {
-        $product = \Typo3RectorPrefix20210223\EntityFactory::create('product');
+        $product = \Typo3RectorPrefix20210227\EntityFactory::create('product');
     }
 }
-\class_alias('Typo3RectorPrefix20210223\\SomeTestCase', 'SomeTestCase', \false);
+\class_alias('Typo3RectorPrefix20210227\\SomeTestCase', 'SomeTestCase', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -194,8 +194,8 @@ CODE_SAMPLE
             }
         }
         // update parent clsas if not already
-        if (!$this->isObjectType($class, 'Typo3RectorPrefix20210223\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase')) {
-            $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210223\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase');
+        if (!$this->isObjectType($class, 'Typo3RectorPrefix20210227\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase')) {
+            $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210227\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase');
         }
         return $class;
     }

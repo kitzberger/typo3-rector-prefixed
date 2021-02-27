@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210223\Symfony\Component\Process\Pipes;
+namespace Typo3RectorPrefix20210227\Symfony\Component\Process\Pipes;
 
-use Typo3RectorPrefix20210223\Symfony\Component\Process\Exception\RuntimeException;
-use Typo3RectorPrefix20210223\Symfony\Component\Process\Process;
+use Typo3RectorPrefix20210227\Symfony\Component\Process\Exception\RuntimeException;
+use Typo3RectorPrefix20210227\Symfony\Component\Process\Process;
 /**
  * WindowsPipes implementation uses temporary files as handles.
  *
@@ -22,12 +22,12 @@ use Typo3RectorPrefix20210223\Symfony\Component\Process\Process;
  *
  * @internal
  */
-class WindowsPipes extends \Typo3RectorPrefix20210223\Symfony\Component\Process\Pipes\AbstractPipes
+class WindowsPipes extends \Typo3RectorPrefix20210227\Symfony\Component\Process\Pipes\AbstractPipes
 {
     private $files = [];
     private $fileHandles = [];
     private $lockHandles = [];
-    private $readBytes = [\Typo3RectorPrefix20210223\Symfony\Component\Process\Process::STDOUT => 0, \Typo3RectorPrefix20210223\Symfony\Component\Process\Process::STDERR => 0];
+    private $readBytes = [\Typo3RectorPrefix20210227\Symfony\Component\Process\Process::STDOUT => 0, \Typo3RectorPrefix20210227\Symfony\Component\Process\Process::STDERR => 0];
     private $haveReadSupport;
     public function __construct($input, bool $haveReadSupport)
     {
@@ -37,7 +37,7 @@ class WindowsPipes extends \Typo3RectorPrefix20210223\Symfony\Component\Process\
             // Workaround for this problem is to use temporary files instead of pipes on Windows platform.
             //
             // @see https://bugs.php.net/51800
-            $pipes = [\Typo3RectorPrefix20210223\Symfony\Component\Process\Process::STDOUT => \Typo3RectorPrefix20210223\Symfony\Component\Process\Process::OUT, \Typo3RectorPrefix20210223\Symfony\Component\Process\Process::STDERR => \Typo3RectorPrefix20210223\Symfony\Component\Process\Process::ERR];
+            $pipes = [\Typo3RectorPrefix20210227\Symfony\Component\Process\Process::STDOUT => \Typo3RectorPrefix20210227\Symfony\Component\Process\Process::OUT, \Typo3RectorPrefix20210227\Symfony\Component\Process\Process::STDERR => \Typo3RectorPrefix20210227\Symfony\Component\Process\Process::ERR];
             $tmpDir = \sys_get_temp_dir();
             $lastError = 'unknown reason';
             \set_error_handler(function ($type, $msg) use(&$lastError) {
@@ -51,7 +51,7 @@ class WindowsPipes extends \Typo3RectorPrefix20210223\Symfony\Component\Process\
                             continue 2;
                         }
                         \restore_error_handler();
-                        throw new \Typo3RectorPrefix20210223\Symfony\Component\Process\Exception\RuntimeException('A temporary file could not be opened to write the process output: ' . $lastError);
+                        throw new \Typo3RectorPrefix20210227\Symfony\Component\Process\Exception\RuntimeException('A temporary file could not be opened to write the process output: ' . $lastError);
                     }
                     if (!\flock($h, \LOCK_EX | \LOCK_NB)) {
                         continue 2;
@@ -119,9 +119,9 @@ class WindowsPipes extends \Typo3RectorPrefix20210223\Symfony\Component\Process\
         $read = $r = $e = [];
         if ($blocking) {
             if ($w) {
-                @\stream_select($r, $w, $e, 0, \Typo3RectorPrefix20210223\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
+                @\stream_select($r, $w, $e, 0, \Typo3RectorPrefix20210227\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
             } elseif ($this->fileHandles) {
-                \usleep(\Typo3RectorPrefix20210223\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
+                \usleep(\Typo3RectorPrefix20210227\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
             }
         }
         foreach ($this->fileHandles as $type => $fileHandle) {

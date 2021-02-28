@@ -6,13 +6,13 @@ namespace Rector\PHPOffice\Tests\Rector\MethodCall\ChangeConditionalReturnedCell
 use Iterator;
 use Rector\PHPOffice\Rector\MethodCall\ChangeConditionalReturnedCellRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo;
 final class ChangeConditionalReturnedCellRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

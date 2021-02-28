@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Rector\MethodCall;
 
-use Typo3RectorPrefix20210227\Doctrine\Common\Persistence\ManagerRegistry as DeprecatedManagerRegistry;
-use Typo3RectorPrefix20210227\Doctrine\Common\Persistence\ObjectManager as DeprecatedObjectManager;
-use Typo3RectorPrefix20210227\Doctrine\ORM\EntityManagerInterface;
-use Typo3RectorPrefix20210227\Doctrine\Persistence\ManagerRegistry;
-use Typo3RectorPrefix20210227\Doctrine\Persistence\ObjectManager;
-use Typo3RectorPrefix20210227\Nette\Utils\Strings;
+use Typo3RectorPrefix20210228\Doctrine\Common\Persistence\ManagerRegistry as DeprecatedManagerRegistry;
+use Typo3RectorPrefix20210228\Doctrine\Common\Persistence\ObjectManager as DeprecatedObjectManager;
+use Typo3RectorPrefix20210228\Doctrine\ORM\EntityManagerInterface;
+use Typo3RectorPrefix20210228\Doctrine\Persistence\ManagerRegistry;
+use Typo3RectorPrefix20210228\Doctrine\Persistence\ObjectManager;
+use Typo3RectorPrefix20210228\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
@@ -29,7 +29,7 @@ final class EntityAliasToClassConstantReferenceRector extends \Rector\Core\Recto
     /**
      * @var string[]
      */
-    private const ALLOWED_OBJECT_TYPES = [\Typo3RectorPrefix20210227\Doctrine\ORM\EntityManagerInterface::class, \Typo3RectorPrefix20210227\Doctrine\Persistence\ObjectManager::class, \Typo3RectorPrefix20210227\Doctrine\Common\Persistence\ObjectManager::class, \Typo3RectorPrefix20210227\Doctrine\Persistence\ManagerRegistry::class, \Typo3RectorPrefix20210227\Doctrine\Common\Persistence\ManagerRegistry::class];
+    private const ALLOWED_OBJECT_TYPES = [\Typo3RectorPrefix20210228\Doctrine\ORM\EntityManagerInterface::class, \Typo3RectorPrefix20210228\Doctrine\Persistence\ObjectManager::class, \Typo3RectorPrefix20210228\Doctrine\Common\Persistence\ObjectManager::class, \Typo3RectorPrefix20210228\Doctrine\Persistence\ManagerRegistry::class, \Typo3RectorPrefix20210228\Doctrine\Common\Persistence\ManagerRegistry::class];
     /**
      * @var string[]
      */
@@ -44,7 +44,7 @@ CODE_SAMPLE
 $entityManager = new Doctrine\ORM\EntityManager();
 $entityManager->getRepository(\App\Entity\Post::class);
 CODE_SAMPLE
-, [self::ALIASES_TO_NAMESPACES => ['App' => 'Typo3RectorPrefix20210227\\App\\Entity']])]);
+, [self::ALIASES_TO_NAMESPACES => ['App' => 'Typo3RectorPrefix20210228\\App\\Entity']])]);
     }
     /**
      * @return string[]
@@ -96,7 +96,7 @@ CODE_SAMPLE
     }
     private function isAlias(string $name) : bool
     {
-        return \Typo3RectorPrefix20210227\Nette\Utils\Strings::contains($name, ':');
+        return \Typo3RectorPrefix20210228\Nette\Utils\Strings::contains($name, ':');
     }
     private function hasAlias(string $name) : bool
     {

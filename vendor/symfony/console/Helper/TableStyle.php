@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\Console\Helper;
+namespace Typo3RectorPrefix20210228\Symfony\Component\Console\Helper;
 
-use Typo3RectorPrefix20210227\Symfony\Component\Console\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210227\Symfony\Component\Console\Exception\LogicException;
+use Typo3RectorPrefix20210228\Symfony\Component\Console\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210228\Symfony\Component\Console\Exception\LogicException;
 /**
  * Defines the styles for a Table.
  *
@@ -53,7 +53,7 @@ class TableStyle
     public function setPaddingChar(string $paddingChar)
     {
         if (!$paddingChar) {
-            throw new \Typo3RectorPrefix20210227\Symfony\Component\Console\Exception\LogicException('The padding char must not be empty.');
+            throw new \Typo3RectorPrefix20210228\Symfony\Component\Console\Exception\LogicException('The padding char must not be empty.');
         }
         $this->paddingChar = $paddingChar;
         return $this;
@@ -273,7 +273,7 @@ class TableStyle
     public function setPadType(int $padType)
     {
         if (!\in_array($padType, [\STR_PAD_LEFT, \STR_PAD_RIGHT, \STR_PAD_BOTH], \true)) {
-            throw new \Typo3RectorPrefix20210227\Symfony\Component\Console\Exception\InvalidArgumentException('Invalid padding type. Expected one of (STR_PAD_LEFT, STR_PAD_RIGHT, STR_PAD_BOTH).');
+            throw new \Typo3RectorPrefix20210228\Symfony\Component\Console\Exception\InvalidArgumentException('Invalid padding type. Expected one of (STR_PAD_LEFT, STR_PAD_RIGHT, STR_PAD_BOTH).');
         }
         $this->padType = $padType;
         return $this;

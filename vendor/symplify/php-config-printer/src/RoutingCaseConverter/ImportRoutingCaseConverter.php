@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\RoutingCaseConverter;
+namespace Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\RoutingCaseConverter;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\Expression;
-use Typo3RectorPrefix20210227\Symplify\PackageBuilder\Strings\StringFormatConverter;
-use Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\Contract\RoutingCaseConverterInterface;
-use Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
-use Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\ValueObject\VariableName;
-final class ImportRoutingCaseConverter implements \Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\Contract\RoutingCaseConverterInterface
+use Typo3RectorPrefix20210228\Symplify\PackageBuilder\Strings\StringFormatConverter;
+use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Contract\RoutingCaseConverterInterface;
+use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\VariableName;
+final class ImportRoutingCaseConverter implements \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Contract\RoutingCaseConverterInterface
 {
     /**
      * @var string[]
@@ -57,10 +57,10 @@ final class ImportRoutingCaseConverter implements \Typo3RectorPrefix20210227\Sym
      * @var StringFormatConverter
      */
     private $stringFormatConverter;
-    public function __construct(\Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory)
     {
         $this->argsNodeFactory = $argsNodeFactory;
-        $this->stringFormatConverter = new \Typo3RectorPrefix20210227\Symplify\PackageBuilder\Strings\StringFormatConverter();
+        $this->stringFormatConverter = new \Typo3RectorPrefix20210228\Symplify\PackageBuilder\Strings\StringFormatConverter();
     }
     public function match(string $key, $values) : bool
     {
@@ -68,7 +68,7 @@ final class ImportRoutingCaseConverter implements \Typo3RectorPrefix20210227\Sym
     }
     public function convertToMethodCall(string $key, $values) : \PhpParser\Node\Stmt\Expression
     {
-        $variable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\ValueObject\VariableName::ROUTING_CONFIGURATOR);
+        $variable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\VariableName::ROUTING_CONFIGURATOR);
         $args = $this->createAddArgs(self::IMPORT_ARGS, $values);
         $methodCall = new \PhpParser\Node\Expr\MethodCall($variable, 'import', $args);
         // Handle prefix independently as it has specific args

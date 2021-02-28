@@ -82,7 +82,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210227\\Illuminate\\Foundation\\Testing\\TestCase')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210228\\Illuminate\\Foundation\\Testing\\TestCase')) {
             return null;
         }
         if (!$this->isTestingConsoleOutput($node)) {
@@ -107,7 +107,7 @@ CODE_SAMPLE
             //                    }
             //                }
             //            }
-            return $this->isStaticCallNamed($node, 'Typo3RectorPrefix20210227\\Illuminate\\Support\\Facades\\Artisan', 'output');
+            return $this->isStaticCallNamed($node, 'Typo3RectorPrefix20210228\\Illuminate\\Support\\Facades\\Artisan', 'output');
         });
     }
     private function hasMockConsoleOutputFalse(\PhpParser\Node\Stmt\Class_ $class) : bool

@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Nette\Neon;
+namespace Typo3RectorPrefix20210228\Nette\Neon;
 
 /**
  * Parser for Nette Object Notation.
@@ -68,7 +68,7 @@ final class Decoder
         $pattern = '~(' . \implode(')|(', self::PATTERNS) . ')~Amixu';
         $this->tokens = \preg_split($pattern, $this->input, -1, \PREG_SPLIT_NO_EMPTY | \PREG_SPLIT_OFFSET_CAPTURE | \PREG_SPLIT_DELIM_CAPTURE);
         if ($this->tokens === \false) {
-            throw new \Typo3RectorPrefix20210227\Nette\Neon\Exception('Invalid UTF-8 sequence.');
+            throw new \Typo3RectorPrefix20210228\Nette\Neon\Exception('Invalid UTF-8 sequence.');
         }
         $last = \end($this->tokens);
         if ($this->tokens && !\preg_match($pattern, $last[0])) {
@@ -116,7 +116,6 @@ final class Decoder
                     $n++;
                     $result[] = $this->parse($indent . '  ', [], $value, \true);
                     $newIndent = isset($tokens[$n], $tokens[$n + 1]) ? (string) \substr($tokens[$n][0], 1) : '';
-                    // not last
                     if (\strlen($newIndent) > \strlen($indent)) {
                         $n++;
                         $this->error('Bad indentation');
@@ -147,10 +146,10 @@ final class Decoder
                         $this->error();
                     }
                     $n++;
-                    if ($value instanceof \Typo3RectorPrefix20210227\Nette\Neon\Entity && $value->value === \Typo3RectorPrefix20210227\Nette\Neon\Neon::CHAIN) {
+                    if ($value instanceof \Typo3RectorPrefix20210228\Nette\Neon\Entity && $value->value === \Typo3RectorPrefix20210228\Nette\Neon\Neon::CHAIN) {
                         \end($value->attributes)->attributes = $this->parse(\false, []);
                     } else {
-                        $value = new \Typo3RectorPrefix20210227\Nette\Neon\Entity($value, $this->parse(\false, []));
+                        $value = new \Typo3RectorPrefix20210228\Nette\Neon\Entity($value, $this->parse(\false, []));
                     }
                 } else {
                     $n++;
@@ -158,7 +157,6 @@ final class Decoder
                 }
                 $hasValue = \true;
                 if (!isset($tokens[$n]) || $tokens[$n][0] !== self::BRACKETS[$t]) {
-                    // unexpected type of bracket or block-parser
                     $this->error();
                 }
             } elseif ($t === ']' || $t === '}' || $t === ')') {
@@ -200,7 +198,6 @@ final class Decoder
                         }
                         $this->addValue($result, $key, $this->parse($newIndent));
                         $newIndent = isset($tokens[$n], $tokens[$n + 1]) ? (string) \substr($tokens[$n][0], 1) : '';
-                        // not last
                         if (\strlen($newIndent) > \strlen($indent)) {
                             $n++;
                             $this->error('Bad indentation');
@@ -261,12 +258,12 @@ final class Decoder
                     $converted = $t;
                 }
                 if ($hasValue) {
-                    if ($value instanceof \Typo3RectorPrefix20210227\Nette\Neon\Entity) {
+                    if ($value instanceof \Typo3RectorPrefix20210228\Nette\Neon\Entity) {
                         // Entity chaining
-                        if ($value->value !== \Typo3RectorPrefix20210227\Nette\Neon\Neon::CHAIN) {
-                            $value = new \Typo3RectorPrefix20210227\Nette\Neon\Entity(\Typo3RectorPrefix20210227\Nette\Neon\Neon::CHAIN, [$value]);
+                        if ($value->value !== \Typo3RectorPrefix20210228\Nette\Neon\Neon::CHAIN) {
+                            $value = new \Typo3RectorPrefix20210228\Nette\Neon\Entity(\Typo3RectorPrefix20210228\Nette\Neon\Neon::CHAIN, [$value]);
                         }
-                        $value->attributes[] = new \Typo3RectorPrefix20210227\Nette\Neon\Entity($converted);
+                        $value->attributes[] = new \Typo3RectorPrefix20210228\Nette\Neon\Entity($converted);
                     } else {
                         $this->error();
                     }
@@ -317,7 +314,7 @@ final class Decoder
             if ($code >= 0xd800 && $code <= 0xdfff) {
                 $this->error("Invalid UTF-8 (lone surrogate) {$sq}");
             }
-            return \iconv('UTF-32BE', 'UTF-8//IGNORE', \pack('N', $code));
+            return \function_exists('iconv') ? \iconv('UTF-32BE', 'UTF-8//IGNORE', \pack('N', $code)) : \mb_convert_encoding(\pack('N', $code), 'UTF-8', 'UTF-32BE');
         } elseif ($sq[1] === 'x' && \strlen($sq) === 4) {
             \trigger_error("Neon: '{$sq}' is deprecated, use '\\uXXXX' instead.", \E_USER_DEPRECATED);
             return \chr(\hexdec(\substr($sq, 2)));
@@ -327,12 +324,12 @@ final class Decoder
     }
     private function error(string $message = "Unexpected '%s'")
     {
-        $last = isset($this->tokens[$this->pos]) ? $this->tokens[$this->pos] : null;
+        $last = $this->tokens[$this->pos] ?? null;
         $offset = $last ? $last[1] : \strlen($this->input);
         $text = \substr($this->input, 0, $offset);
         $line = \substr_count($text, "\n");
         $col = $offset - \strrpos("\n" . $text, "\n") + 1;
         $token = $last ? \str_replace("\n", '<new line>', \substr($last[0], 0, 40)) : 'end';
-        throw new \Typo3RectorPrefix20210227\Nette\Neon\Exception(\str_replace('%s', $token, $message) . " on line {$line}, column {$col}.");
+        throw new \Typo3RectorPrefix20210228\Nette\Neon\Exception(\str_replace('%s', $token, $message) . " on line {$line}, column {$col}.");
     }
 }

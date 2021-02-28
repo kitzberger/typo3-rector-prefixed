@@ -5,10 +5,10 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Nette\Neon;
+namespace Typo3RectorPrefix20210228\Nette\Neon;
 
 /**
- * Representation of 'foo(bar=1)' literal
+ * Representation of NEON entity 'foo(bar=1)'
  */
 final class Entity extends \stdClass
 {

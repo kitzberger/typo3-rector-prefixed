@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\Yaml\Exception;
+namespace Typo3RectorPrefix20210228\Symfony\Component\Yaml\Exception;
 
 /**
  * Exception class thrown when an error occurs during dumping.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DumpException extends \Typo3RectorPrefix20210227\Symfony\Component\Yaml\Exception\RuntimeException
+class DumpException extends \Typo3RectorPrefix20210228\Symfony\Component\Yaml\Exception\RuntimeException
 {
 }

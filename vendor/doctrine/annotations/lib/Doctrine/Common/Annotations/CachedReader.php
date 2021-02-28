@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210227\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210228\Doctrine\Common\Annotations;
 
-use Typo3RectorPrefix20210227\Doctrine\Common\Cache\Cache;
+use Typo3RectorPrefix20210228\Doctrine\Common\Cache\Cache;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
@@ -15,7 +15,7 @@ use function time;
 /**
  * A cache aware annotation reader.
  */
-final class CachedReader implements \Typo3RectorPrefix20210227\Doctrine\Common\Annotations\Reader
+final class CachedReader implements \Typo3RectorPrefix20210228\Doctrine\Common\Annotations\Reader
 {
     /** @var Reader */
     private $delegate;
@@ -30,7 +30,7 @@ final class CachedReader implements \Typo3RectorPrefix20210227\Doctrine\Common\A
     /**
      * @param bool $debug
      */
-    public function __construct(\Typo3RectorPrefix20210227\Doctrine\Common\Annotations\Reader $reader, \Typo3RectorPrefix20210227\Doctrine\Common\Cache\Cache $cache, $debug = \false)
+    public function __construct(\Typo3RectorPrefix20210228\Doctrine\Common\Annotations\Reader $reader, \Typo3RectorPrefix20210228\Doctrine\Common\Cache\Cache $cache, $debug = \false)
     {
         $this->delegate = $reader;
         $this->cache = $cache;

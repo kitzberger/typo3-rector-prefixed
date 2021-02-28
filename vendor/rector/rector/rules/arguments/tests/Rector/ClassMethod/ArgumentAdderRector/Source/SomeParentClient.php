@@ -5,7 +5,7 @@ namespace Rector\Arguments\Tests\Rector\ClassMethod\ArgumentAdderRector\Source;
 
 class SomeParentClient
 {
-    public function submit(\Typo3RectorPrefix20210227\DomCrawlerForm $form, array $values = [])
+    public function submit(\Typo3RectorPrefix20210228\DomCrawlerForm $form, array $values = [])
     {
     }
 }

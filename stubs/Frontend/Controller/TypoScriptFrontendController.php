@@ -8,6 +8,7 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\TypoScript\TemplateService;
+use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Page\PageRepository;
 if (\class_exists(\TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class)) {
@@ -107,6 +108,10 @@ final class TypoScriptFrontendController
      * @var bool
      */
     public $loginAllowedInBranch = \false;
+    /**
+     * @var FrontendUserAuthentication
+     */
+    public $fe_user;
     public function initTemplate() : void
     {
     }
@@ -123,6 +128,7 @@ final class TypoScriptFrontendController
         $this->sys_language_isocode = 'ch';
         $this->csConvObj = new \TYPO3\CMS\Core\Charset\CharsetConverter();
         $this->cObj = new \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer();
+        $this->fe_user = new \TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication();
     }
     public function applyHttpHeadersToResponse() : void
     {

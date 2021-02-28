@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\Config\Exception;
+namespace Typo3RectorPrefix20210228\Symfony\Component\Config\Exception;
 
 /**
  * File locator exception if a file does not exist.

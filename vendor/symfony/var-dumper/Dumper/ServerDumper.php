@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Dumper;
+namespace Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Dumper;
 
-use Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Cloner\Data;
-use Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
-use Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Server\Connection;
+use Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Cloner\Data;
+use Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
+use Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Server\Connection;
 /**
  * ServerDumper forwards serialized Data clones to a server.
  *
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class ServerDumper implements \Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Dumper\DataDumperInterface
+class ServerDumper implements \Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Dumper\DataDumperInterface
 {
     private $connection;
     private $wrappedDumper;
@@ -27,9 +27,9 @@ class ServerDumper implements \Typo3RectorPrefix20210227\Symfony\Component\VarDu
      * @param DataDumperInterface|null   $wrappedDumper    A wrapped instance used whenever we failed contacting the server
      * @param ContextProviderInterface[] $contextProviders Context providers indexed by context name
      */
-    public function __construct(string $host, \Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper = null, array $contextProviders = [])
+    public function __construct(string $host, \Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper = null, array $contextProviders = [])
     {
-        $this->connection = new \Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Server\Connection($host, $contextProviders);
+        $this->connection = new \Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Server\Connection($host, $contextProviders);
         $this->wrappedDumper = $wrappedDumper;
     }
     public function getContextProviders() : array
@@ -39,7 +39,7 @@ class ServerDumper implements \Typo3RectorPrefix20210227\Symfony\Component\VarDu
     /**
      * {@inheritdoc}
      */
-    public function dump(\Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Cloner\Data $data)
+    public function dump(\Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Cloner\Data $data)
     {
         if (!$this->connection->write($data) && $this->wrappedDumper) {
             $this->wrappedDumper->dump($data);

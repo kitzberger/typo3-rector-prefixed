@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210227\Symplify\Skipper\Tests\Skipper\Fixture\Source;
+namespace Typo3RectorPrefix20210228\Symplify\Skipper\Tests\Skipper\Fixture\Source;
 
 class SomeFile
 {

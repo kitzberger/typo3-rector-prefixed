@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\Config\Util\Exception;
+namespace Typo3RectorPrefix20210228\Symfony\Component\Config\Util\Exception;
 
 /**
  * Exception class for when XML cannot be parsed properly.

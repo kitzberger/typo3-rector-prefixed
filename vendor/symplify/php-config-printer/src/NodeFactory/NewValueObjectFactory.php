@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Symplify\PhpConfigPrinter\NodeFactory;
+namespace Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory;
 
 use PhpParser\BuilderHelpers;
 use PhpParser\Node\Arg;

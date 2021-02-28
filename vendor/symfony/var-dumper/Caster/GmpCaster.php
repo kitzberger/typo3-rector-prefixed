@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Caster;
+namespace Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Caster;
 
-use Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Cloner\Stub;
+use Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Casts GMP objects to array representation.
  *
@@ -21,9 +21,9 @@ use Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Cloner\Stub;
  */
 class GmpCaster
 {
-    public static function castGmp(\GMP $gmp, array $a, \Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested, int $filter) : array
+    public static function castGmp(\GMP $gmp, array $a, \Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested, int $filter) : array
     {
-        $a[\Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'value'] = new \Typo3RectorPrefix20210227\Symfony\Component\VarDumper\Caster\ConstStub(\gmp_strval($gmp), \gmp_strval($gmp));
+        $a[\Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'value'] = new \Typo3RectorPrefix20210228\Symfony\Component\VarDumper\Caster\ConstStub(\gmp_strval($gmp), \gmp_strval($gmp));
         return $a;
     }
 }

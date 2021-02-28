@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210227\\PackageVersions\\": "src\/PackageVersions"
+            "Typo3RectorPrefix20210228\\PackageVersions\\": "src\/PackageVersions"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210227\\PackageVersionsTest\\": "test\/PackageVersionsTest"
+            "Typo3RectorPrefix20210228\\PackageVersionsTest\\": "test\/PackageVersionsTest"
         }
     },
     "extra": {

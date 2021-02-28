@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Nette\Iterators;
+namespace Typo3RectorPrefix20210228\Nette\Iterators;
 
-use Typo3RectorPrefix20210227\Nette;
+use Typo3RectorPrefix20210228\Nette;
 /**
  * Smarter caching iterator.
  *
@@ -38,7 +38,7 @@ class CachingIterator extends \CachingIterator implements \Countable
         } elseif ($iterator instanceof \Traversable) {
             $iterator = new \IteratorIterator($iterator);
         } else {
-            throw new \Typo3RectorPrefix20210227\Nette\InvalidArgumentException(\sprintf('Invalid argument passed to %s; array or Traversable expected, %s given.', self::class, \is_object($iterator) ? \get_class($iterator) : \gettype($iterator)));
+            throw new \Typo3RectorPrefix20210228\Nette\InvalidArgumentException(\sprintf('Invalid argument passed to %s; array or Traversable expected, %s given.', self::class, \is_object($iterator) ? \get_class($iterator) : \gettype($iterator)));
         }
         parent::__construct($iterator, 0);
     }
@@ -93,7 +93,7 @@ class CachingIterator extends \CachingIterator implements \Countable
         if ($inner instanceof \Countable) {
             return $inner->count();
         } else {
-            throw new \Typo3RectorPrefix20210227\Nette\NotSupportedException('Iterator is not countable.');
+            throw new \Typo3RectorPrefix20210228\Nette\NotSupportedException('Iterator is not countable.');
         }
     }
     /**

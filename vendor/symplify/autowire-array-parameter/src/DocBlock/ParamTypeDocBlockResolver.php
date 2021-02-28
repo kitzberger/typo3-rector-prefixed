@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Symplify\AutowireArrayParameter\DocBlock;
+namespace Typo3RectorPrefix20210228\Symplify\AutowireArrayParameter\DocBlock;
 
-use Typo3RectorPrefix20210227\Nette\Utils\Strings;
+use Typo3RectorPrefix20210228\Nette\Utils\Strings;
 /**
  * @see \Symplify\AutowireArrayParameter\Tests\DocBlock\ParamTypeDocBlockResolverTest
  */
@@ -37,7 +37,7 @@ final class ParamTypeDocBlockResolver
     {
         foreach (self::ARRAY_REGEXES as $arrayRegexWithPlaceholder) {
             $arrayRegex = \str_replace(self::NAME_PLACEHOLDER, $parameterName, $arrayRegexWithPlaceholder);
-            $result = \Typo3RectorPrefix20210227\Nette\Utils\Strings::match($docBlock, $arrayRegex);
+            $result = \Typo3RectorPrefix20210228\Nette\Utils\Strings::match($docBlock, $arrayRegex);
             if (isset($result[self::TYPE_PART])) {
                 return $result[self::TYPE_PART];
             }

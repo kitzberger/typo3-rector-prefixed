@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\Config\Definition;
+namespace Typo3RectorPrefix20210228\Symfony\Component\Config\Definition;
 
-use Typo3RectorPrefix20210227\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
-use Typo3RectorPrefix20210227\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use Typo3RectorPrefix20210227\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use Typo3RectorPrefix20210228\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
+use Typo3RectorPrefix20210228\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use Typo3RectorPrefix20210228\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 /**
  * Common Interface among all nodes.
  *

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Symplify\ComposerJsonManipulator\Json;
+namespace Typo3RectorPrefix20210228\Symplify\ComposerJsonManipulator\Json;
 
 final class JsonCleaner
 {

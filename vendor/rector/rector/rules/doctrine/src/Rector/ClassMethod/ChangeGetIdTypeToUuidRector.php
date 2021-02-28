@@ -6,7 +6,7 @@ namespace Rector\Doctrine\Rector\ClassMethod;
 use PhpParser\Node;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\ClassMethod;
-use Typo3RectorPrefix20210227\Ramsey\Uuid\UuidInterface;
+use Typo3RectorPrefix20210228\Ramsey\Uuid\UuidInterface;
 use Rector\Core\Rector\AbstractRector;
 use Rector\Doctrine\PhpDocParser\DoctrineDocBlockResolver;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -79,7 +79,7 @@ CODE_SAMPLE
         if ($this->hasUuidReturnType($node)) {
             return null;
         }
-        $node->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210227\\Ramsey\\Uuid\\UuidInterface');
+        $node->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210228\\Ramsey\\Uuid\\UuidInterface');
         return $node;
     }
     private function hasUuidReturnType(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool
@@ -87,6 +87,6 @@ CODE_SAMPLE
         if ($classMethod->returnType === null) {
             return \false;
         }
-        return $this->isName($classMethod->returnType, \Typo3RectorPrefix20210227\Ramsey\Uuid\UuidInterface::class);
+        return $this->isName($classMethod->returnType, \Typo3RectorPrefix20210228\Ramsey\Uuid\UuidInterface::class);
     }
 }

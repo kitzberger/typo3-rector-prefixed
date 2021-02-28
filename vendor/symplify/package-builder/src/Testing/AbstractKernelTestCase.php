@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Symplify\PackageBuilder\Testing;
+namespace Typo3RectorPrefix20210228\Symplify\PackageBuilder\Testing;
 
-use Typo3RectorPrefix20210227\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210228\PHPUnit\Framework\TestCase;
 use ReflectionClass;
-use Typo3RectorPrefix20210227\Symfony\Component\Console\Output\OutputInterface;
-use Typo3RectorPrefix20210227\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210227\Symfony\Component\DependencyInjection\Container;
-use Typo3RectorPrefix20210227\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface;
-use Typo3RectorPrefix20210227\Symfony\Contracts\Service\ResetInterface;
-use Typo3RectorPrefix20210227\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
-use Typo3RectorPrefix20210227\Symplify\PackageBuilder\Exception\HttpKernel\MissingInterfaceException;
-use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210227\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210228\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210228\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\Container;
+use Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface;
+use Typo3RectorPrefix20210228\Symfony\Contracts\Service\ResetInterface;
+use Typo3RectorPrefix20210228\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use Typo3RectorPrefix20210228\Symplify\PackageBuilder\Exception\HttpKernel\MissingInterfaceException;
+use Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210228\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * Inspiration
  * @see https://github.com/symfony/symfony/blob/master/src/Symfony/Bundle/FrameworkBundle/Test/KernelTestCase.php
  */
-abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit\Framework\TestCase
+abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210228\PHPUnit\Framework\TestCase
 {
     /**
      * @var KernelInterface
@@ -37,7 +37,7 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
      * @param class-string<KernelInterface> $kernelClass
      * @param string[]|SmartFileInfo[] $configs
      */
-    protected function bootKernelWithConfigs(string $kernelClass, array $configs) : \Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface
+    protected function bootKernelWithConfigs(string $kernelClass, array $configs) : \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface
     {
         // unwrap file infos to real paths
         $configFilePaths = $this->resolveConfigFilePaths($configs);
@@ -51,7 +51,7 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
      * @param class-string<KernelInterface> $kernelClass
      * @param string[]|SmartFileInfo[] $configs
      */
-    protected function bootKernelWithConfigsAndStaticCache(string $kernelClass, array $configs) : \Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface
+    protected function bootKernelWithConfigsAndStaticCache(string $kernelClass, array $configs) : \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface
     {
         // unwrap file infos to real paths
         $configFilePaths = $this->resolveConfigFilePaths($configs);
@@ -76,7 +76,7 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
     protected function getService(string $type) : object
     {
         if (self::$container === null) {
-            throw new \Typo3RectorPrefix20210227\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('First, crewate container with booKernel(KernelClass::class)');
+            throw new \Typo3RectorPrefix20210228\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('First, crewate container with booKernel(KernelClass::class)');
         }
         return self::$container->get($type);
     }
@@ -84,8 +84,8 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
     {
         $this->ensureKernelShutdown();
         $kernel = new $kernelClass('test', \true);
-        if (!$kernel instanceof \Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface) {
-            throw new \Typo3RectorPrefix20210227\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$kernel instanceof \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface) {
+            throw new \Typo3RectorPrefix20210228\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         static::$kernel = $this->bootAndReturnKernel($kernel);
     }
@@ -104,7 +104,7 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
             if ($kernel !== null) {
                 $container = static::$kernel->getContainer();
                 static::$kernel->shutdown();
-                if ($container instanceof \Typo3RectorPrefix20210227\Symfony\Contracts\Service\ResetInterface) {
+                if ($container instanceof \Typo3RectorPrefix20210228\Symfony\Contracts\Service\ResetInterface) {
                     $container->reset();
                 }
             }
@@ -130,18 +130,18 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
     {
         $configFilePaths = [];
         foreach ($configs as $config) {
-            $configFilePaths[] = $config instanceof \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo ? $config->getRealPath() : $config;
+            $configFilePaths[] = $config instanceof \Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo ? $config->getRealPath() : $config;
         }
         return $configFilePaths;
     }
-    private function ensureIsConfigAwareKernel(\Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface $kernel) : void
+    private function ensureIsConfigAwareKernel(\Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface $kernel) : void
     {
-        if ($kernel instanceof \Typo3RectorPrefix20210227\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface) {
+        if ($kernel instanceof \Typo3RectorPrefix20210228\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface) {
             return;
         }
-        throw new \Typo3RectorPrefix20210227\Symplify\PackageBuilder\Exception\HttpKernel\MissingInterfaceException(\sprintf('"%s" is missing an "%s" interface', \get_class($kernel), \Typo3RectorPrefix20210227\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class));
+        throw new \Typo3RectorPrefix20210228\Symplify\PackageBuilder\Exception\HttpKernel\MissingInterfaceException(\sprintf('"%s" is missing an "%s" interface', \get_class($kernel), \Typo3RectorPrefix20210228\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class));
     }
-    private function bootAndReturnKernel(\Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface $kernel) : \Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface
+    private function bootAndReturnKernel(\Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface $kernel) : \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface
     {
         $kernel->boot();
         $container = $kernel->getContainer();
@@ -149,13 +149,13 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
         if ($container->has('test.service_container')) {
             $container = $container->get('test.service_container');
         }
-        if (!$container instanceof \Typo3RectorPrefix20210227\Symfony\Component\DependencyInjection\ContainerInterface) {
-            throw new \Typo3RectorPrefix20210227\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$container instanceof \Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\ContainerInterface) {
+            throw new \Typo3RectorPrefix20210228\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         // has output? keep it silent out of tests
-        if ($container->has(\Typo3RectorPrefix20210227\Symfony\Component\Console\Style\SymfonyStyle::class)) {
-            $symfonyStyle = $container->get(\Typo3RectorPrefix20210227\Symfony\Component\Console\Style\SymfonyStyle::class);
-            $symfonyStyle->setVerbosity(\Typo3RectorPrefix20210227\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+        if ($container->has(\Typo3RectorPrefix20210228\Symfony\Component\Console\Style\SymfonyStyle::class)) {
+            $symfonyStyle = $container->get(\Typo3RectorPrefix20210228\Symfony\Component\Console\Style\SymfonyStyle::class);
+            $symfonyStyle->setVerbosity(\Typo3RectorPrefix20210228\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
         }
         static::$container = $container;
         return $kernel;
@@ -163,7 +163,7 @@ abstract class AbstractKernelTestCase extends \Typo3RectorPrefix20210227\PHPUnit
     /**
      * @param string[] $configFilePaths
      */
-    private function createBootedKernelFromConfigs(string $kernelClass, string $configsHash, array $configFilePaths) : \Typo3RectorPrefix20210227\Symfony\Component\HttpKernel\KernelInterface
+    private function createBootedKernelFromConfigs(string $kernelClass, string $configsHash, array $configFilePaths) : \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelInterface
     {
         $kernel = new $kernelClass('test_' . $configsHash, \true);
         $this->ensureIsConfigAwareKernel($kernel);

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\RectorPhp71\Tests\Finalize;
 
-use Typo3RectorPrefix20210227\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210228\Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */

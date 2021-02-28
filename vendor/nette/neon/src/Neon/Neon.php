@@ -5,30 +5,32 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Nette\Neon;
+namespace Typo3RectorPrefix20210228\Nette\Neon;
 
 /**
  * Simple parser & generator for Nette Object Notation.
+ * @see https://ne-on.org
  */
 final class Neon
 {
-    public const BLOCK = \Typo3RectorPrefix20210227\Nette\Neon\Encoder::BLOCK;
+    public const BLOCK = \Typo3RectorPrefix20210228\Nette\Neon\Encoder::BLOCK;
     public const CHAIN = '!!chain';
     /**
-     * Returns the NEON representation of a value.
+     * Returns value converted to NEON. The flag can be Neon::BLOCK, which will create multiline output.
      */
-    public static function encode($var, int $flags = 0) : string
+    public static function encode($value, int $flags = 0) : string
     {
-        $encoder = new \Typo3RectorPrefix20210227\Nette\Neon\Encoder();
-        return $encoder->encode($var, $flags);
+        $encoder = new \Typo3RectorPrefix20210228\Nette\Neon\Encoder();
+        return $encoder->encode($value, $flags);
     }
     /**
-     * Decodes a NEON string.
+     * Converts given NEON to PHP value.
+     * Returns scalars, arrays, DateTimeImmutable and Entity objects.
      * @return mixed
      */
     public static function decode(string $input)
     {
-        $decoder = new \Typo3RectorPrefix20210227\Nette\Neon\Decoder();
+        $decoder = new \Typo3RectorPrefix20210228\Nette\Neon\Decoder();
         return $decoder->decode($input);
     }
 }

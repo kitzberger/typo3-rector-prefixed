@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Symplify\Astral\Contract;
+namespace Typo3RectorPrefix20210228\Symplify\Astral\Contract;
 
 use PhpParser\Node;
 interface NodeNameResolverInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210227\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210228\Doctrine\Common\Annotations;
 
 use ReflectionClass;
 use ReflectionMethod;

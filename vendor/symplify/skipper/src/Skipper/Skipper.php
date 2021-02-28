@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210227\Symplify\Skipper\Skipper;
+namespace Typo3RectorPrefix20210228\Symplify\Skipper\Skipper;
 
-use Typo3RectorPrefix20210227\Symplify\Skipper\Contract\SkipVoterInterface;
-use Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210228\Symplify\Skipper\Contract\SkipVoterInterface;
+use Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\Skipper\Tests\Skipper\Skipper\SkipperTest
  */
@@ -30,17 +30,17 @@ final class Skipper
      */
     public function shouldSkipElement($element) : bool
     {
-        $fileInfo = new \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo(__FILE__);
+        $fileInfo = new \Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo(__FILE__);
         return $this->shouldSkipElementAndFileInfo($element, $fileInfo);
     }
-    public function shouldSkipFileInfo(\Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function shouldSkipFileInfo(\Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         return $this->shouldSkipElementAndFileInfo(self::FILE_ELEMENT, $smartFileInfo);
     }
     /**
      * @param string|object $element
      */
-    public function shouldSkipElementAndFileInfo($element, \Typo3RectorPrefix20210227\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function shouldSkipElementAndFileInfo($element, \Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         foreach ($this->skipVoters as $skipVoter) {
             if ($skipVoter->match($element)) {

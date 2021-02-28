@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210227;
+namespace Typo3RectorPrefix20210228;
 
 class ValueError extends \Error
 {
 }
-\class_alias('Typo3RectorPrefix20210227\\ValueError', 'ValueError', \false);
+\class_alias('Typo3RectorPrefix20210228\\ValueError', 'ValueError', \false);

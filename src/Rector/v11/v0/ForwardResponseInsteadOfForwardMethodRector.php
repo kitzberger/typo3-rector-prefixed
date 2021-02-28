@@ -9,7 +9,7 @@ use PhpParser\Node\Expr\New_;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Return_;
-use Typo3RectorPrefix20210227\Psr\Http\Message\ResponseInterface;
+use Typo3RectorPrefix20210228\Psr\Http\Message\ResponseInterface;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -88,7 +88,7 @@ CODE_SAMPLE
         }
         // Add returnType only if it is the only statement, otherwise it is not reliable
         if (\is_countable($node->stmts) && 1 === \count($node->stmts)) {
-            $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210227\Psr\Http\Message\ResponseInterface::class);
+            $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210228\Psr\Http\Message\ResponseInterface::class);
         }
         return $node;
     }

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210227\Symfony\Component\String\Inflector;
+namespace Typo3RectorPrefix20210228\Symfony\Component\String\Inflector;
 
-final class EnglishInflector implements \Typo3RectorPrefix20210227\Symfony\Component\String\Inflector\InflectorInterface
+final class EnglishInflector implements \Typo3RectorPrefix20210228\Symfony\Component\String\Inflector\InflectorInterface
 {
     /**
      * Map English plural to singular suffixes.

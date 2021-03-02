@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocInfo\PhpDocInfoPrinter\Source\Doctrine;
 
-use Typo3RectorPrefix20210228\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210302\Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(
  *     name="building",

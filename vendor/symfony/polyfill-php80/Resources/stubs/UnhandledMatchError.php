@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210228;
+namespace Typo3RectorPrefix20210302;
 
 class UnhandledMatchError extends \Error
 {
 }
-\class_alias('Typo3RectorPrefix20210228\\UnhandledMatchError', 'UnhandledMatchError', \false);
+\class_alias('Typo3RectorPrefix20210302\\UnhandledMatchError', 'UnhandledMatchError', \false);

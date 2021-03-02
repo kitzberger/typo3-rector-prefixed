@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210228\Psr\Log;
+namespace Typo3RectorPrefix20210302\Psr\Log;
 
 /**
  * Basic Implementation of LoggerAwareInterface.
@@ -18,7 +18,7 @@ trait LoggerAwareTrait
      *
      * @param LoggerInterface $logger
      */
-    public function setLogger(\Typo3RectorPrefix20210228\Psr\Log\LoggerInterface $logger)
+    public function setLogger(\Typo3RectorPrefix20210302\Psr\Log\LoggerInterface $logger)
     {
         $this->logger = $logger;
     }

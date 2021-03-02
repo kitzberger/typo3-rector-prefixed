@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210228\Symfony\Component\Process;
+namespace Typo3RectorPrefix20210302\Symfony\Component\Process;
 
-use Typo3RectorPrefix20210228\Symfony\Component\Process\Exception\LogicException;
-use Typo3RectorPrefix20210228\Symfony\Component\Process\Exception\RuntimeException;
+use Typo3RectorPrefix20210302\Symfony\Component\Process\Exception\LogicException;
+use Typo3RectorPrefix20210302\Symfony\Component\Process\Exception\RuntimeException;
 /**
  * PhpProcess runs a PHP script in an independent process.
  *
@@ -21,7 +21,7 @@ use Typo3RectorPrefix20210228\Symfony\Component\Process\Exception\RuntimeExcepti
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class PhpProcess extends \Typo3RectorPrefix20210228\Symfony\Component\Process\Process
+class PhpProcess extends \Typo3RectorPrefix20210302\Symfony\Component\Process\Process
 {
     /**
      * @param string      $script  The PHP script to run (as a string)
@@ -33,7 +33,7 @@ class PhpProcess extends \Typo3RectorPrefix20210228\Symfony\Component\Process\Pr
     public function __construct(string $script, string $cwd = null, array $env = null, int $timeout = 60, array $php = null)
     {
         if (null === $php) {
-            $executableFinder = new \Typo3RectorPrefix20210228\Symfony\Component\Process\PhpExecutableFinder();
+            $executableFinder = new \Typo3RectorPrefix20210302\Symfony\Component\Process\PhpExecutableFinder();
             $php = $executableFinder->find(\false);
             $php = \false === $php ? null : \array_merge([$php], $executableFinder->findArguments());
         }
@@ -51,7 +51,7 @@ class PhpProcess extends \Typo3RectorPrefix20210228\Symfony\Component\Process\Pr
      */
     public static function fromShellCommandline(string $command, string $cwd = null, array $env = null, $input = null, ?float $timeout = 60)
     {
-        throw new \Typo3RectorPrefix20210228\Symfony\Component\Process\Exception\LogicException(\sprintf('The "%s()" method cannot be called when using "%s".', __METHOD__, self::class));
+        throw new \Typo3RectorPrefix20210302\Symfony\Component\Process\Exception\LogicException(\sprintf('The "%s()" method cannot be called when using "%s".', __METHOD__, self::class));
     }
     /**
      * {@inheritdoc}
@@ -59,7 +59,7 @@ class PhpProcess extends \Typo3RectorPrefix20210228\Symfony\Component\Process\Pr
     public function start(callable $callback = null, array $env = [])
     {
         if (null === $this->getCommandLine()) {
-            throw new \Typo3RectorPrefix20210228\Symfony\Component\Process\Exception\RuntimeException('Unable to find the PHP executable.');
+            throw new \Typo3RectorPrefix20210302\Symfony\Component\Process\Exception\RuntimeException('Unable to find the PHP executable.');
         }
         parent::start($callback, $env);
     }

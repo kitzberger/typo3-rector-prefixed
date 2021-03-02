@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210228;
+namespace Typo3RectorPrefix20210302;
 
 if ('cli-server' !== \PHP_SAPI) {
     // safe guard against unwanted execution

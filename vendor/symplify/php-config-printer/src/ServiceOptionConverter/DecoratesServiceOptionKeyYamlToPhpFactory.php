@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ServiceOptionConverter;
+namespace Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ServiceOptionConverter;
 
 use PhpParser\Node\Expr\MethodCall;
-use Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey;
-final class DecoratesServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
+use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey;
+final class DecoratesServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
 {
     /**
      * @var string
@@ -36,7 +36,7 @@ final class DecoratesServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPre
      * @var CommonNodeFactory
      */
     private $commonNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter $yamlArgumentSorter, \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter $yamlArgumentSorter, \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
     {
         $this->argsNodeFactory = $argsNodeFactory;
         $this->yamlArgumentSorter = $yamlArgumentSorter;
@@ -46,7 +46,7 @@ final class DecoratesServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPre
     {
         $arguments = $this->yamlArgumentSorter->sortArgumentsByKeyIfExists($values, [self::DECORATION_INNER_NAME => null, self::DECORATION_PRIORITY => 0, self::DECORATION_ON_INVALID => null]);
         if (isset($arguments[self::DECORATION_ON_INVALID])) {
-            $arguments[self::DECORATION_ON_INVALID] = $arguments[self::DECORATION_ON_INVALID] === 'exception' ? $this->commonNodeFactory->createConstFetch(\Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\ContainerInterface::class, 'EXCEPTION_ON_INVALID_REFERENCE') : $this->commonNodeFactory->createConstFetch(\Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\ContainerInterface::class, 'IGNORE_ON_INVALID_REFERENCE');
+            $arguments[self::DECORATION_ON_INVALID] = $arguments[self::DECORATION_ON_INVALID] === 'exception' ? $this->commonNodeFactory->createConstFetch(\Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerInterface::class, 'EXCEPTION_ON_INVALID_REFERENCE') : $this->commonNodeFactory->createConstFetch(\Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerInterface::class, 'IGNORE_ON_INVALID_REFERENCE');
         }
         // Don't write the next arguments if they are null.
         if ($arguments[self::DECORATION_ON_INVALID] === null && $arguments[self::DECORATION_PRIORITY] === 0) {
@@ -61,6 +61,6 @@ final class DecoratesServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPre
     }
     public function isMatch($key, $values) : bool
     {
-        return $key === \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey::DECORATES;
+        return $key === \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey::DECORATES;
     }
 }

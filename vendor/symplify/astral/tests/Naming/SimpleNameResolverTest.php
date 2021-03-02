@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\Symplify\Astral\Tests\Naming;
+namespace Typo3RectorPrefix20210302\Symplify\Astral\Tests\Naming;
 
 use Iterator;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
-use Typo3RectorPrefix20210228\Symplify\Astral\HttpKernel\AstralKernel;
-use Typo3RectorPrefix20210228\Symplify\Astral\Naming\SimpleNameResolver;
-use Typo3RectorPrefix20210228\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class SimpleNameResolverTest extends \Typo3RectorPrefix20210228\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210302\Symplify\Astral\HttpKernel\AstralKernel;
+use Typo3RectorPrefix20210302\Symplify\Astral\Naming\SimpleNameResolver;
+use Typo3RectorPrefix20210302\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class SimpleNameResolverTest extends \Typo3RectorPrefix20210302\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var SimpleNameResolver
@@ -17,8 +17,8 @@ final class SimpleNameResolverTest extends \Typo3RectorPrefix20210228\Symplify\P
     private $simpleNameResolver;
     protected function setUp() : void
     {
-        $this->bootKernel(\Typo3RectorPrefix20210228\Symplify\Astral\HttpKernel\AstralKernel::class);
-        $this->simpleNameResolver = $this->getService(\Typo3RectorPrefix20210228\Symplify\Astral\Naming\SimpleNameResolver::class);
+        $this->bootKernel(\Typo3RectorPrefix20210302\Symplify\Astral\HttpKernel\AstralKernel::class);
+        $this->simpleNameResolver = $this->getService(\Typo3RectorPrefix20210302\Symplify\Astral\Naming\SimpleNameResolver::class);
     }
     /**
      * @dataProvider provideData()

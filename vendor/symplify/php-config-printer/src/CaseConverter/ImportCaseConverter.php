@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\CaseConverter;
+namespace Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\CaseConverter;
 
-use Typo3RectorPrefix20210228\Nette\Utils\Strings;
+use Typo3RectorPrefix20210302\Nette\Utils\Strings;
 use PhpParser\BuilderHelpers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -11,18 +11,18 @@ use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Expression;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Exception\NotImplementedYetException;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\VariableName;
-use Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Exception\NotImplementedYetException;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\VariableName;
+use Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
 /**
  * Handles this part:
  *
  * imports: <---
  */
-final class ImportCaseConverter implements \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
+final class ImportCaseConverter implements \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
 {
     /**
      * @see https://regex101.com/r/hOTdIE/1
@@ -37,29 +37,29 @@ final class ImportCaseConverter implements \Typo3RectorPrefix20210228\Symplify\P
      * @var CommonNodeFactory
      */
     private $commonNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter $yamlArgumentSorter, \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Sorter\YamlArgumentSorter $yamlArgumentSorter, \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
     {
         $this->yamlArgumentSorter = $yamlArgumentSorter;
         $this->commonNodeFactory = $commonNodeFactory;
     }
     public function match(string $rootKey, $key, $values) : bool
     {
-        return $rootKey === \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IMPORTS;
+        return $rootKey === \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IMPORTS;
     }
     public function convertToMethodCall($key, $values) : \PhpParser\Node\Stmt\Expression
     {
         if (\is_array($values)) {
-            $arguments = $this->yamlArgumentSorter->sortArgumentsByKeyIfExists($values, [\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlKey::RESOURCE => '', 'type' => null, \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS => \false]);
+            $arguments = $this->yamlArgumentSorter->sortArgumentsByKeyIfExists($values, [\Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlKey::RESOURCE => '', 'type' => null, \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS => \false]);
             return $this->createImportMethodCall($arguments);
         }
-        throw new \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Exception\NotImplementedYetException();
+        throw new \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Exception\NotImplementedYetException();
     }
     /**
      * @param mixed[] $arguments
      */
     private function createImportMethodCall(array $arguments) : \PhpParser\Node\Stmt\Expression
     {
-        $containerConfiguratorVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\VariableName::CONTAINER_CONFIGURATOR);
+        $containerConfiguratorVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\VariableName::CONTAINER_CONFIGURATOR);
         $args = $this->createArgs($arguments);
         $methodCall = new \PhpParser\Node\Expr\MethodCall($containerConfiguratorVariable, 'import', $args);
         return new \PhpParser\Node\Stmt\Expression($methodCall);
@@ -83,7 +83,7 @@ final class ImportCaseConverter implements \Typo3RectorPrefix20210228\Symplify\P
     private function shouldSkipDefaultValue(string $name, $value, array $arguments) : bool
     {
         // skip default value for "ignore_errors"
-        if ($name === \Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS && $value === \false) {
+        if ($name === \Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS && $value === \false) {
             return \true;
         }
         // check if default value for "type"
@@ -94,10 +94,10 @@ final class ImportCaseConverter implements \Typo3RectorPrefix20210228\Symplify\P
             return \false;
         }
         // follow by default value for "ignore_errors"
-        if (!isset($arguments[\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS])) {
+        if (!isset($arguments[\Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS])) {
             return \false;
         }
-        return $arguments[\Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS] === \false;
+        return $arguments[\Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ValueObject\YamlKey::IGNORE_ERRORS] === \false;
     }
     /**
      * @return mixed|string
@@ -107,7 +107,7 @@ final class ImportCaseConverter implements \Typo3RectorPrefix20210228\Symplify\P
         if (!\is_string($value)) {
             return $value;
         }
-        return \Typo3RectorPrefix20210228\Nette\Utils\Strings::replace($value, self::INPUT_SUFFIX_REGEX, '.php');
+        return \Typo3RectorPrefix20210302\Nette\Utils\Strings::replace($value, self::INPUT_SUFFIX_REGEX, '.php');
     }
     private function resolveExpr($value) : \PhpParser\Node\Expr
     {

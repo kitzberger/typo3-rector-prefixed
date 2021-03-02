@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection;
+namespace Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection;
 
-use Typo3RectorPrefix20210228\Psr\Container\ContainerInterface as PsrContainerInterface;
-use Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use Typo3RectorPrefix20210228\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Typo3RectorPrefix20210302\Psr\Container\ContainerInterface as PsrContainerInterface;
+use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * ContainerInterface is the interface implemented by service container classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-interface ContainerInterface extends \Typo3RectorPrefix20210228\Psr\Container\ContainerInterface
+interface ContainerInterface extends \Typo3RectorPrefix20210302\Psr\Container\ContainerInterface
 {
     public const RUNTIME_EXCEPTION_ON_INVALID_REFERENCE = 0;
     public const EXCEPTION_ON_INVALID_REFERENCE = 1;

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210228\Symfony\Contracts\EventDispatcher;
+namespace Typo3RectorPrefix20210302\Symfony\Contracts\EventDispatcher;
 
-use Typo3RectorPrefix20210228\Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcherInterface;
+use Typo3RectorPrefix20210302\Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcherInterface;
 /**
  * Allows providing hooks on domain-specific lifecycles by dispatching events.
  */
-interface EventDispatcherInterface extends \Typo3RectorPrefix20210228\Psr\EventDispatcher\EventDispatcherInterface
+interface EventDispatcherInterface extends \Typo3RectorPrefix20210302\Psr\EventDispatcher\EventDispatcherInterface
 {
     /**
      * Dispatches an event to all registered listeners.

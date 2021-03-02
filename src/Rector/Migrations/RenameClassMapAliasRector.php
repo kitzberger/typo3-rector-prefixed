@@ -16,7 +16,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\Renaming\NodeManipulator\ClassRenamer;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Rector\Migrations\RenameClassMapAliasRectorTest
  */
@@ -92,7 +92,7 @@ CODE_SAMPLE
     {
         $classAliasMaps = $configuration[self::CLASS_ALIAS_MAPS] ?? [];
         foreach ($classAliasMaps as $file) {
-            $filePath = new \Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo($file);
+            $filePath = new \Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo($file);
             $classAliasMap = (require $filePath->getRealPath());
             foreach ($classAliasMap as $oldClass => $newClass) {
                 $this->oldToNewClasses[$oldClass] = $newClass;

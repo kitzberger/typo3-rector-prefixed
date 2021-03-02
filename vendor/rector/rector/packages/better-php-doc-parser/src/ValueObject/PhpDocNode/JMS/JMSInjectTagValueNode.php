@@ -25,7 +25,7 @@ final class JMSInjectTagValueNode extends \Rector\BetterPhpDocParser\ValueObject
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210228\\@DI\\Inject';
+        return 'Typo3RectorPrefix20210302\\@DI\\Inject';
     }
     public function getSilentKey() : string
     {

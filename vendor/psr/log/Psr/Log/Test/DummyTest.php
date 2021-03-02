@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210228\Psr\Log\Test;
+namespace Typo3RectorPrefix20210302\Psr\Log\Test;
 
 /**
  * This class is internal and does not follow the BC promise.

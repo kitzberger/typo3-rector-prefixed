@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\Foo;
+namespace Typo3RectorPrefix20210302\Foo;
 
 final class Bar
 {

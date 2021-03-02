@@ -32,24 +32,24 @@ final class NetteFormToSymfonyFormRector extends \Rector\Core\Rector\AbstractRec
      * @var string[]
      */
     private const ADD_METHOD_TO_FORM_TYPE = [
-        'addText' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType',
-        'addPassword' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\PasswordType',
-        'addTextArea' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType',
-        'addEmail' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType',
-        'addInteger' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType',
-        'addHidden' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\HiddenType',
+        'addText' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType',
+        'addPassword' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\PasswordType',
+        'addTextArea' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType',
+        'addEmail' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType',
+        'addInteger' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType',
+        'addHidden' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\HiddenType',
         // https://symfony.com/doc/current/reference/forms/types/checkbox.html
-        'addCheckbox' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\CheckboxType',
-        'addUpload' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType',
-        'addImage' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType',
-        'addMultiUpload' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType',
+        'addCheckbox' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\CheckboxType',
+        'addUpload' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType',
+        'addImage' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType',
+        'addMultiUpload' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType',
         // https://symfony.com/doc/current/reference/forms/types/choice.html#select-tag-checkboxes-or-radio-buttons
-        'addSelect' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
-        'addRadioList' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
-        'addCheckboxList' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
-        'addMultiSelect' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
-        'addSubmit' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType',
-        'addButton' => 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ButtonType',
+        'addSelect' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
+        'addRadioList' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
+        'addCheckboxList' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
+        'addMultiSelect' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType',
+        'addSubmit' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType',
+        'addButton' => 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\Extension\\Core\\Type\\ButtonType',
     ];
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
@@ -105,14 +105,14 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return null;
         }
-        if (!$this->isObjectType($classLike, 'Typo3RectorPrefix20210228\\Nette\\Application\\IPresenter')) {
+        if (!$this->isObjectType($classLike, 'Typo3RectorPrefix20210302\\Nette\\Application\\IPresenter')) {
             return null;
         }
         if ($node instanceof \PhpParser\Node\Expr\New_) {
             return $this->processNew($node);
         }
         /** @var MethodCall $node */
-        if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210228\\Nette\\Application\\UI\\Form')) {
+        if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210302\\Nette\\Application\\UI\\Form')) {
             return null;
         }
         foreach (self::ADD_METHOD_TO_FORM_TYPE as $method => $classType) {
@@ -125,7 +125,7 @@ CODE_SAMPLE
     }
     private function processNew(\PhpParser\Node\Expr\New_ $new) : ?\PhpParser\Node\Expr\MethodCall
     {
-        if (!$this->isName($new->class, 'Typo3RectorPrefix20210228\\Nette\\Application\\UI\\Form')) {
+        if (!$this->isName($new->class, 'Typo3RectorPrefix20210302\\Nette\\Application\\UI\\Form')) {
             return null;
         }
         return $this->nodeFactory->createMethodCall('this', 'createFormBuilder');

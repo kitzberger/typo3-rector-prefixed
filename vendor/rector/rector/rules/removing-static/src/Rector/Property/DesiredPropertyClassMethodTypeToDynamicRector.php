@@ -8,7 +8,7 @@ use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Property;
 use Rector\Core\Configuration\Option;
 use Rector\Core\Rector\AbstractRector;
-use Typo3RectorPrefix20210228\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210302\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -20,7 +20,7 @@ final class DesiredPropertyClassMethodTypeToDynamicRector extends \Rector\Core\R
      * @var class-string[]
      */
     private $classTypes = [];
-    public function __construct(\Typo3RectorPrefix20210228\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Typo3RectorPrefix20210302\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->classTypes = $parameterProvider->provideArrayParameter(\Rector\Core\Configuration\Option::TYPES_TO_REMOVE_STATIC_FROM);
     }

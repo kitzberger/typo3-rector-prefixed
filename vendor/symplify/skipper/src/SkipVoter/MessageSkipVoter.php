@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\Symplify\Skipper\SkipVoter;
+namespace Typo3RectorPrefix20210302\Symplify\Skipper\SkipVoter;
 
-use Typo3RectorPrefix20210228\Symplify\Skipper\Contract\SkipVoterInterface;
-use Typo3RectorPrefix20210228\Symplify\Skipper\Matcher\FileInfoMatcher;
-use Typo3RectorPrefix20210228\Symplify\Skipper\SkipCriteriaResolver\SkippedMessagesResolver;
-use Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo;
-final class MessageSkipVoter implements \Typo3RectorPrefix20210228\Symplify\Skipper\Contract\SkipVoterInterface
+use Typo3RectorPrefix20210302\Symplify\Skipper\Contract\SkipVoterInterface;
+use Typo3RectorPrefix20210302\Symplify\Skipper\Matcher\FileInfoMatcher;
+use Typo3RectorPrefix20210302\Symplify\Skipper\SkipCriteriaResolver\SkippedMessagesResolver;
+use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
+final class MessageSkipVoter implements \Typo3RectorPrefix20210302\Symplify\Skipper\Contract\SkipVoterInterface
 {
     /**
      * @var SkippedMessagesResolver
@@ -17,7 +17,7 @@ final class MessageSkipVoter implements \Typo3RectorPrefix20210228\Symplify\Skip
      * @var FileInfoMatcher
      */
     private $fileInfoMatcher;
-    public function __construct(\Typo3RectorPrefix20210228\Symplify\Skipper\SkipCriteriaResolver\SkippedMessagesResolver $skippedMessagesResolver, \Typo3RectorPrefix20210228\Symplify\Skipper\Matcher\FileInfoMatcher $fileInfoMatcher)
+    public function __construct(\Typo3RectorPrefix20210302\Symplify\Skipper\SkipCriteriaResolver\SkippedMessagesResolver $skippedMessagesResolver, \Typo3RectorPrefix20210302\Symplify\Skipper\Matcher\FileInfoMatcher $fileInfoMatcher)
     {
         $this->skippedMessagesResolver = $skippedMessagesResolver;
         $this->fileInfoMatcher = $fileInfoMatcher;
@@ -35,7 +35,7 @@ final class MessageSkipVoter implements \Typo3RectorPrefix20210228\Symplify\Skip
     /**
      * @param string $element
      */
-    public function shouldSkip($element, \Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function shouldSkip($element, \Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         $skippedMessages = $this->skippedMessagesResolver->resolve();
         if (!\array_key_exists($element, $skippedMessages)) {

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\Symplify\PhpConfigPrinter\Provider;
+namespace Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Provider;
 
 final class CurrentFilePathProvider
 {

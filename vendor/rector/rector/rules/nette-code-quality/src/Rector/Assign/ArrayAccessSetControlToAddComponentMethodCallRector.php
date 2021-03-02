@@ -76,13 +76,13 @@ CODE_SAMPLE
         if (!$assign->var instanceof \PhpParser\Node\Expr\ArrayDimFetch) {
             return \false;
         }
-        if (!$this->isObjectType($assign->expr, 'Typo3RectorPrefix20210228\\Nette\\Application\\UI\\Control')) {
+        if (!$this->isObjectType($assign->expr, 'Typo3RectorPrefix20210302\\Nette\\Application\\UI\\Control')) {
             return \false;
         }
         $arrayDimFetch = $assign->var;
         if (!$arrayDimFetch->var instanceof \PhpParser\Node\Expr\Variable) {
             return \false;
         }
-        return $this->isObjectType($arrayDimFetch->var, 'Typo3RectorPrefix20210228\\Nette\\Application\\UI\\Presenter');
+        return $this->isObjectType($arrayDimFetch->var, 'Typo3RectorPrefix20210302\\Nette\\Application\\UI\\Presenter');
     }
 }

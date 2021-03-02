@@ -20,7 +20,7 @@ final class EmbeddedTagValueNode extends \Rector\BetterPhpDocParser\ValueObject\
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210228\\@ORM\\Embedded';
+        return 'Typo3RectorPrefix20210302\\@ORM\\Embedded';
     }
     public function getColumnPrefix() : ?string
     {

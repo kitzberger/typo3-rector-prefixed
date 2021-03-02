@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\PackageVersions;
+namespace Typo3RectorPrefix20210302\PackageVersions;
 
 use Generator;
 use OutOfBoundsException;

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210228\Symplify\Skipper\Tests\FileSystem;
+namespace Typo3RectorPrefix20210302\Symplify\Skipper\Tests\FileSystem;
 
 use Iterator;
-use Typo3RectorPrefix20210228\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210228\Symplify\Skipper\FileSystem\PathNormalizer;
-use Typo3RectorPrefix20210228\Symplify\Skipper\HttpKernel\SkipperKernel;
-final class PathNormalizerTest extends \Typo3RectorPrefix20210228\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210302\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210302\Symplify\Skipper\FileSystem\PathNormalizer;
+use Typo3RectorPrefix20210302\Symplify\Skipper\HttpKernel\SkipperKernel;
+final class PathNormalizerTest extends \Typo3RectorPrefix20210302\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var PathNormalizer
@@ -15,8 +15,8 @@ final class PathNormalizerTest extends \Typo3RectorPrefix20210228\Symplify\Packa
     private $pathNormalizer;
     protected function setUp() : void
     {
-        $this->bootKernel(\Typo3RectorPrefix20210228\Symplify\Skipper\HttpKernel\SkipperKernel::class);
-        $this->pathNormalizer = $this->getService(\Typo3RectorPrefix20210228\Symplify\Skipper\FileSystem\PathNormalizer::class);
+        $this->bootKernel(\Typo3RectorPrefix20210302\Symplify\Skipper\HttpKernel\SkipperKernel::class);
+        $this->pathNormalizer = $this->getService(\Typo3RectorPrefix20210302\Symplify\Skipper\FileSystem\PathNormalizer::class);
     }
     /**
      * @dataProvider providePaths

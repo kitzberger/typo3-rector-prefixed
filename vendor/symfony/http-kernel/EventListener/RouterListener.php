@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\EventListener;
+namespace Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\EventListener;
 
-use Typo3RectorPrefix20210228\Psr\Log\LoggerInterface;
-use Typo3RectorPrefix20210228\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\RequestStack;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Event\RequestEvent;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Kernel;
-use Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelEvents;
-use Typo3RectorPrefix20210228\Symfony\Component\Routing\Exception\MethodNotAllowedException;
-use Typo3RectorPrefix20210228\Symfony\Component\Routing\Exception\NoConfigurationException;
-use Typo3RectorPrefix20210228\Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Typo3RectorPrefix20210228\Symfony\Component\Routing\Matcher\RequestMatcherInterface;
-use Typo3RectorPrefix20210228\Symfony\Component\Routing\Matcher\UrlMatcherInterface;
-use Typo3RectorPrefix20210228\Symfony\Component\Routing\RequestContext;
-use Typo3RectorPrefix20210228\Symfony\Component\Routing\RequestContextAwareInterface;
+use Typo3RectorPrefix20210302\Psr\Log\LoggerInterface;
+use Typo3RectorPrefix20210302\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\RequestStack;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Event\RequestEvent;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Kernel;
+use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\KernelEvents;
+use Typo3RectorPrefix20210302\Symfony\Component\Routing\Exception\MethodNotAllowedException;
+use Typo3RectorPrefix20210302\Symfony\Component\Routing\Exception\NoConfigurationException;
+use Typo3RectorPrefix20210302\Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Typo3RectorPrefix20210302\Symfony\Component\Routing\Matcher\RequestMatcherInterface;
+use Typo3RectorPrefix20210302\Symfony\Component\Routing\Matcher\UrlMatcherInterface;
+use Typo3RectorPrefix20210302\Symfony\Component\Routing\RequestContext;
+use Typo3RectorPrefix20210302\Symfony\Component\Routing\RequestContextAwareInterface;
 /**
  * Initializes the context from the request and sets request attributes based on a matching route.
  *
@@ -38,7 +38,7 @@ use Typo3RectorPrefix20210228\Symfony\Component\Routing\RequestContextAwareInter
  *
  * @final
  */
-class RouterListener implements \Typo3RectorPrefix20210228\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class RouterListener implements \Typo3RectorPrefix20210302\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $matcher;
     private $context;
@@ -53,12 +53,12 @@ class RouterListener implements \Typo3RectorPrefix20210228\Symfony\Component\Eve
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct($matcher, \Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\RequestStack $requestStack, \Typo3RectorPrefix20210228\Symfony\Component\Routing\RequestContext $context = null, \Typo3RectorPrefix20210228\Psr\Log\LoggerInterface $logger = null, string $projectDir = null, bool $debug = \true)
+    public function __construct($matcher, \Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\RequestStack $requestStack, \Typo3RectorPrefix20210302\Symfony\Component\Routing\RequestContext $context = null, \Typo3RectorPrefix20210302\Psr\Log\LoggerInterface $logger = null, string $projectDir = null, bool $debug = \true)
     {
-        if (!$matcher instanceof \Typo3RectorPrefix20210228\Symfony\Component\Routing\Matcher\UrlMatcherInterface && !$matcher instanceof \Typo3RectorPrefix20210228\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
+        if (!$matcher instanceof \Typo3RectorPrefix20210302\Symfony\Component\Routing\Matcher\UrlMatcherInterface && !$matcher instanceof \Typo3RectorPrefix20210302\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
             throw new \InvalidArgumentException('Matcher must either implement UrlMatcherInterface or RequestMatcherInterface.');
         }
-        if (null === $context && !$matcher instanceof \Typo3RectorPrefix20210228\Symfony\Component\Routing\RequestContextAwareInterface) {
+        if (null === $context && !$matcher instanceof \Typo3RectorPrefix20210302\Symfony\Component\Routing\RequestContextAwareInterface) {
             throw new \InvalidArgumentException('You must either pass a RequestContext or the matcher must implement RequestContextAwareInterface.');
         }
         $this->matcher = $matcher;
@@ -68,13 +68,13 @@ class RouterListener implements \Typo3RectorPrefix20210228\Symfony\Component\Eve
         $this->projectDir = $projectDir;
         $this->debug = $debug;
     }
-    private function setCurrentRequest(\Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\Request $request = null)
+    private function setCurrentRequest(\Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Request $request = null)
     {
         if (null !== $request) {
             try {
                 $this->context->fromRequest($request);
             } catch (\UnexpectedValueException $e) {
-                throw new \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Exception\BadRequestHttpException($e->getMessage(), $e, $e->getCode());
+                throw new \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Exception\BadRequestHttpException($e->getMessage(), $e, $e->getCode());
             }
         }
     }
@@ -82,11 +82,11 @@ class RouterListener implements \Typo3RectorPrefix20210228\Symfony\Component\Eve
      * After a sub-request is done, we need to reset the routing context to the parent request so that the URL generator
      * operates on the correct context again.
      */
-    public function onKernelFinishRequest(\Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event)
+    public function onKernelFinishRequest(\Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event)
     {
         $this->setCurrentRequest($this->requestStack->getParentRequest());
     }
-    public function onKernelRequest(\Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Event\RequestEvent $event)
+    public function onKernelRequest(\Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Event\RequestEvent $event)
     {
         $request = $event->getRequest();
         $this->setCurrentRequest($request);
@@ -97,7 +97,7 @@ class RouterListener implements \Typo3RectorPrefix20210228\Symfony\Component\Eve
         // add attributes based on the request (routing)
         try {
             // matching a request is more powerful than matching a URL path + context, so try that first
-            if ($this->matcher instanceof \Typo3RectorPrefix20210228\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
+            if ($this->matcher instanceof \Typo3RectorPrefix20210302\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
                 $parameters = $this->matcher->matchRequest($request);
             } else {
                 $parameters = $this->matcher->match($request->getPathInfo());
@@ -108,37 +108,37 @@ class RouterListener implements \Typo3RectorPrefix20210228\Symfony\Component\Eve
             $request->attributes->add($parameters);
             unset($parameters['_route'], $parameters['_controller']);
             $request->attributes->set('_route_params', $parameters);
-        } catch (\Typo3RectorPrefix20210228\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
+        } catch (\Typo3RectorPrefix20210302\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
             $message = \sprintf('No route found for "%s %s"', $request->getMethod(), $request->getPathInfo());
             if ($referer = $request->headers->get('referer')) {
                 $message .= \sprintf(' (from "%s")', $referer);
             }
-            throw new \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Exception\NotFoundHttpException($message, $e);
-        } catch (\Typo3RectorPrefix20210228\Symfony\Component\Routing\Exception\MethodNotAllowedException $e) {
+            throw new \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Exception\NotFoundHttpException($message, $e);
+        } catch (\Typo3RectorPrefix20210302\Symfony\Component\Routing\Exception\MethodNotAllowedException $e) {
             $message = \sprintf('No route found for "%s %s": Method Not Allowed (Allow: %s)', $request->getMethod(), $request->getPathInfo(), \implode(', ', $e->getAllowedMethods()));
-            throw new \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException($e->getAllowedMethods(), $message, $e);
+            throw new \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException($e->getAllowedMethods(), $message, $e);
         }
     }
-    public function onKernelException(\Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Event\ExceptionEvent $event)
+    public function onKernelException(\Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Event\ExceptionEvent $event)
     {
-        if (!$this->debug || !($e = $event->getThrowable()) instanceof \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+        if (!$this->debug || !($e = $event->getThrowable()) instanceof \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
             return;
         }
-        if ($e->getPrevious() instanceof \Typo3RectorPrefix20210228\Symfony\Component\Routing\Exception\NoConfigurationException) {
+        if ($e->getPrevious() instanceof \Typo3RectorPrefix20210302\Symfony\Component\Routing\Exception\NoConfigurationException) {
             $event->setResponse($this->createWelcomeResponse());
         }
     }
     public static function getSubscribedEvents() : array
     {
-        return [\Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 32]], \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]], \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', -64]];
+        return [\Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 32]], \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]], \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', -64]];
     }
-    private function createWelcomeResponse() : \Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\Response
+    private function createWelcomeResponse() : \Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response
     {
-        $version = \Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Kernel::VERSION;
+        $version = \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Kernel::VERSION;
         $projectDir = \realpath($this->projectDir) . \DIRECTORY_SEPARATOR;
-        $docVersion = \substr(\Typo3RectorPrefix20210228\Symfony\Component\HttpKernel\Kernel::VERSION, 0, 3);
+        $docVersion = \substr(\Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Kernel::VERSION, 0, 3);
         \ob_start();
         include \dirname(__DIR__) . '/Resources/welcome.html.php';
-        return new \Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\Response(\ob_get_clean(), \Typo3RectorPrefix20210228\Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND);
+        return new \Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response(\ob_get_clean(), \Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND);
     }
 }

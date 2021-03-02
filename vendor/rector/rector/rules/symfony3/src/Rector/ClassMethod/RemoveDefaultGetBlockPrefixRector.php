@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Symfony3\Rector\ClassMethod;
 
-use Typo3RectorPrefix20210228\Nette\Utils\Strings;
+use Typo3RectorPrefix20210302\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt\Class_;
@@ -69,8 +69,8 @@ CODE_SAMPLE
             return null;
         }
         $shortClassName = $this->nodeNameResolver->getShortName($className);
-        if (\Typo3RectorPrefix20210228\Nette\Utils\Strings::endsWith($shortClassName, 'Type')) {
-            $shortClassName = (string) \Typo3RectorPrefix20210228\Nette\Utils\Strings::before($shortClassName, 'Type');
+        if (\Typo3RectorPrefix20210302\Nette\Utils\Strings::endsWith($shortClassName, 'Type')) {
+            $shortClassName = (string) \Typo3RectorPrefix20210302\Nette\Utils\Strings::before($shortClassName, 'Type');
         }
         $underscoredClassShortName = \Rector\Core\Util\StaticRectorStrings::camelCaseToUnderscore($shortClassName);
         if ($underscoredClassShortName !== $returnedValue) {
@@ -85,7 +85,7 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {
             return \false;
         }
-        if (!$this->isObjectType($classMethod, 'Typo3RectorPrefix20210228\\Symfony\\Component\\Form\\AbstractType')) {
+        if (!$this->isObjectType($classMethod, 'Typo3RectorPrefix20210302\\Symfony\\Component\\Form\\AbstractType')) {
             return \false;
         }
         return $this->isName($classMethod->name, 'getBlockPrefix');

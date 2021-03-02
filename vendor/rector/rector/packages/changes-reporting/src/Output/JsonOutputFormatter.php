@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Rector\ChangesReporting\Output;
 
-use Typo3RectorPrefix20210228\Nette\Utils\Json;
+use Typo3RectorPrefix20210302\Nette\Utils\Json;
 use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\ChangesReporting\Contract\Output\OutputFormatterInterface;
 use Rector\Core\Configuration\Configuration;
-use Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileSystem;
 final class JsonOutputFormatter implements \Rector\ChangesReporting\Contract\Output\OutputFormatterInterface
 {
     /**
@@ -22,7 +22,7 @@ final class JsonOutputFormatter implements \Rector\ChangesReporting\Contract\Out
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210228\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->configuration = $configuration;
         $this->smartFileSystem = $smartFileSystem;
@@ -48,7 +48,7 @@ final class JsonOutputFormatter implements \Rector\ChangesReporting\Contract\Out
         if ($errorsData !== []) {
             $errorsArray['errors'] = $errorsData;
         }
-        $json = \Typo3RectorPrefix20210228\Nette\Utils\Json::encode($errorsArray, \Typo3RectorPrefix20210228\Nette\Utils\Json::PRETTY);
+        $json = \Typo3RectorPrefix20210302\Nette\Utils\Json::encode($errorsArray, \Typo3RectorPrefix20210302\Nette\Utils\Json::PRETTY);
         $outputFile = $this->configuration->getOutputFile();
         if ($outputFile !== null) {
             $this->smartFileSystem->dumpFile($outputFile, $json . \PHP_EOL);

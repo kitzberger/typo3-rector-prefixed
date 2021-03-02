@@ -124,7 +124,7 @@ CODE_SAMPLE
         if ($this->classNodeAnalyzer->isAnonymousClass($classLike)) {
             return \true;
         }
-        if ($this->isObjectTypes($classLike, ['Typo3RectorPrefix20210228\\PHPUnit\\Framework\\TestCase', 'Typo3RectorPrefix20210228\\PHP_CodeSniffer\\Sniffs\\Sniff'])) {
+        if ($this->isObjectTypes($classLike, ['Typo3RectorPrefix20210302\\PHPUnit\\Framework\\TestCase', 'Typo3RectorPrefix20210302\\PHP_CodeSniffer\\Sniffs\\Sniff'])) {
             return \true;
         }
         if (!$classLike->isAbstract()) {

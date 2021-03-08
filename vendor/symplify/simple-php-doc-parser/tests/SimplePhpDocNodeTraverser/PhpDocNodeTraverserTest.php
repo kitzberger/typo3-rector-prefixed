@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\SimplePhpDocParser\Tests\SimplePhpDocNodeTraverser;
+namespace Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\Tests\SimplePhpDocNodeTraverser;
 
 use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\VarTagValueNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
-use Typo3RectorPrefix20210302\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210302\Symplify\SimplePhpDocParser\PhpDocNodeTraverser;
-use Typo3RectorPrefix20210302\Symplify\SimplePhpDocParser\Tests\HttpKernel\SimplePhpDocParserKernel;
-final class PhpDocNodeTraverserTest extends \Typo3RectorPrefix20210302\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210308\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\PhpDocNodeTraverser;
+use Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\Tests\HttpKernel\SimplePhpDocParserKernel;
+final class PhpDocNodeTraverserTest extends \Typo3RectorPrefix20210308\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var string
@@ -23,8 +23,8 @@ final class PhpDocNodeTraverserTest extends \Typo3RectorPrefix20210302\Symplify\
     private $phpDocNodeTraverser;
     protected function setUp() : void
     {
-        $this->bootKernel(\Typo3RectorPrefix20210302\Symplify\SimplePhpDocParser\Tests\HttpKernel\SimplePhpDocParserKernel::class);
-        $this->phpDocNodeTraverser = $this->getService(\Typo3RectorPrefix20210302\Symplify\SimplePhpDocParser\PhpDocNodeTraverser::class);
+        $this->bootKernel(\Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\Tests\HttpKernel\SimplePhpDocParserKernel::class);
+        $this->phpDocNodeTraverser = $this->getService(\Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\PhpDocNodeTraverser::class);
     }
     public function test() : void
     {

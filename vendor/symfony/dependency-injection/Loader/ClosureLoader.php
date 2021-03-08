@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Loader;
+namespace Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Loader;
 
-use Typo3RectorPrefix20210302\Symfony\Component\Config\Loader\Loader;
-use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\Loader;
+use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ClosureLoader loads service definitions from a PHP closure.
  *
@@ -19,10 +19,10 @@ use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerBui
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ClosureLoader extends \Typo3RectorPrefix20210302\Symfony\Component\Config\Loader\Loader
+class ClosureLoader extends \Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\Loader
 {
     private $container;
-    public function __construct(\Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }

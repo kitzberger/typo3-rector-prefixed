@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Composer\Semver;
+namespace Typo3RectorPrefix20210308\Composer\Semver;
 
-use Typo3RectorPrefix20210302\Composer\Semver\Constraint\Constraint;
+use Typo3RectorPrefix20210308\Composer\Semver\Constraint\Constraint;
 class Comparator
 {
     /**
@@ -96,7 +96,7 @@ class Comparator
      */
     public static function compare($version1, $operator, $version2)
     {
-        $constraint = new \Typo3RectorPrefix20210302\Composer\Semver\Constraint\Constraint($operator, $version2);
-        return $constraint->matchSpecific(new \Typo3RectorPrefix20210302\Composer\Semver\Constraint\Constraint('==', $version1), \true);
+        $constraint = new \Typo3RectorPrefix20210308\Composer\Semver\Constraint\Constraint($operator, $version2);
+        return $constraint->matchSpecific(new \Typo3RectorPrefix20210308\Composer\Semver\Constraint\Constraint('==', $version1), \true);
     }
 }

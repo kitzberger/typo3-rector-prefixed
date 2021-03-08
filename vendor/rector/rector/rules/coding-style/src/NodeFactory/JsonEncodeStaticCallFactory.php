@@ -34,7 +34,7 @@ final class JsonEncodeStaticCallFactory
     {
         $jsonDataAssign = new \PhpParser\Node\Expr\Assign($assignExpr, $jsonArray);
         $jsonDataVariable = new \PhpParser\Node\Expr\Variable('jsonData');
-        $jsonDataAssign->expr = $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210302\\Nette\\Utils\\Json', 'encode', [$jsonDataVariable]);
+        $jsonDataAssign->expr = $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210308\\Nette\\Utils\\Json', 'encode', [$jsonDataVariable]);
         return $jsonDataAssign;
     }
 }

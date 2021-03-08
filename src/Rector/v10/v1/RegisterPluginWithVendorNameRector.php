@@ -11,8 +11,9 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use UnexpectedValueException;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.1/Deprecation-88995-CallingRegisterPluginWithVendorName.html
  */
@@ -88,6 +89,10 @@ final class RegisterPluginWithVendorNameRector extends \Rector\Core\Rector\Abstr
     private function prepareExtensionName(string $extensionName, int $delimiterPosition) : string
     {
         $extensionName = \substr($extensionName, $delimiterPosition + 1);
-        return \str_replace(' ', '', \ucwords(\str_replace('_', ' ', \strtolower($extensionName))));
+        $underScoredExtensionName = \preg_replace('#[A-Z]#', '_', \lcfirst($extensionName));
+        if (!\is_string($underScoredExtensionName)) {
+            throw new \UnexpectedValueException('The extension name could not be parsed');
+        }
+        return \str_replace(' ', '', \ucwords(\str_replace('_', ' ', \strtolower($underScoredExtensionName))));
     }
 }

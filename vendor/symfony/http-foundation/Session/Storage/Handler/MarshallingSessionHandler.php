@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
-use Typo3RectorPrefix20210302\Symfony\Component\Cache\Marshaller\MarshallerInterface;
+use Typo3RectorPrefix20210308\Symfony\Component\Cache\Marshaller\MarshallerInterface;
 /**
  * @author Ahmed TAILOULOUTE <ahmed.tailouloute@gmail.com>
  */
@@ -18,48 +18,48 @@ class MarshallingSessionHandler implements \SessionHandlerInterface, \SessionUpd
 {
     private $handler;
     private $marshaller;
-    public function __construct(\Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler $handler, \Typo3RectorPrefix20210302\Symfony\Component\Cache\Marshaller\MarshallerInterface $marshaller)
+    public function __construct(\Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler $handler, \Typo3RectorPrefix20210308\Symfony\Component\Cache\Marshaller\MarshallerInterface $marshaller)
     {
         $this->handler = $handler;
         $this->marshaller = $marshaller;
     }
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function open($savePath, $name)
     {
         return $this->handler->open($savePath, $name);
     }
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function close()
     {
         return $this->handler->close();
     }
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function destroy($sessionId)
     {
         return $this->handler->destroy($sessionId);
     }
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function gc($maxlifetime)
     {
         return $this->handler->gc($maxlifetime);
     }
     /**
-     * {@inheritdoc}
+     * @return string
      */
     public function read($sessionId)
     {
         return $this->marshaller->unmarshall($this->handler->read($sessionId));
     }
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function write($sessionId, $data)
     {
@@ -71,14 +71,14 @@ class MarshallingSessionHandler implements \SessionHandlerInterface, \SessionUpd
         return $this->handler->write($sessionId, $marshalledData['data']);
     }
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function validateId($sessionId)
     {
         return $this->handler->validateId($sessionId);
     }
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function updateTimestamp($sessionId, $data)
     {

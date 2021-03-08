@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\SimplePhpDocParser\ValueObject\Ast\PhpDoc;
+namespace Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\ValueObject\Ast\PhpDoc;
 
 use PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;

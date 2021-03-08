@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\Astral\ValueObject\NodeFinder;
+namespace Typo3RectorPrefix20210308\Symplify\Astral\ValueObject\NodeFinder;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Closure;

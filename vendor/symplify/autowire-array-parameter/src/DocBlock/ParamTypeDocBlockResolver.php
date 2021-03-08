@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\AutowireArrayParameter\DocBlock;
+namespace Typo3RectorPrefix20210308\Symplify\AutowireArrayParameter\DocBlock;
 
-use Typo3RectorPrefix20210302\Nette\Utils\Strings;
+use Typo3RectorPrefix20210308\Nette\Utils\Strings;
 /**
  * @see \Symplify\AutowireArrayParameter\Tests\DocBlock\ParamTypeDocBlockResolverTest
  */
@@ -14,7 +14,8 @@ final class ParamTypeDocBlockResolver
      */
     private const TYPE_PART = 'type';
     /**
-     * Copied mostly from https://github.com/nette/di/blob/d1c0598fdecef6d3b01e2ace5f2c30214b3108e6/src/DI/Autowiring.php#L215
+     * Copied mostly from
+     * https://github.com/nette/di/blob/d1c0598fdecef6d3b01e2ace5f2c30214b3108e6/src/DI/Autowiring.php#L215
      *
      * @see https://regex101.com/r/wGteeZ/1
      * @var string
@@ -37,7 +38,7 @@ final class ParamTypeDocBlockResolver
     {
         foreach (self::ARRAY_REGEXES as $arrayRegexWithPlaceholder) {
             $arrayRegex = \str_replace(self::NAME_PLACEHOLDER, $parameterName, $arrayRegexWithPlaceholder);
-            $result = \Typo3RectorPrefix20210302\Nette\Utils\Strings::match($docBlock, $arrayRegex);
+            $result = \Typo3RectorPrefix20210308\Nette\Utils\Strings::match($docBlock, $arrayRegex);
             if (isset($result[self::TYPE_PART])) {
                 return $result[self::TYPE_PART];
             }

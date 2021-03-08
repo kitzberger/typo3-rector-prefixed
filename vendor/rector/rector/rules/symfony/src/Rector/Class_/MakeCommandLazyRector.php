@@ -71,7 +71,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210302\\Symfony\\Component\\Console\\Command\\Command')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210308\\Symfony\\Component\\Console\\Command\\Command')) {
             return null;
         }
         $commandName = $this->resolveCommandNameAndRemove($node);
@@ -98,7 +98,7 @@ CODE_SAMPLE
             if (!$node instanceof \PhpParser\Node\Expr\StaticCall) {
                 return null;
             }
-            if (!$this->isObjectType($node->class, 'Typo3RectorPrefix20210302\\Symfony\\Component\\Console\\Command\\Command')) {
+            if (!$this->isObjectType($node->class, 'Typo3RectorPrefix20210308\\Symfony\\Component\\Console\\Command\\Command')) {
                 return null;
             }
             $commandName = $this->matchCommandNameNodeInConstruct($node);
@@ -116,7 +116,7 @@ CODE_SAMPLE
             if (!$node instanceof \PhpParser\Node\Expr\MethodCall) {
                 return null;
             }
-            if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210302\\Symfony\\Component\\Console\\Command\\Command')) {
+            if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210308\\Symfony\\Component\\Console\\Command\\Command')) {
                 return null;
             }
             if (!$this->isName($node->name, 'setName')) {

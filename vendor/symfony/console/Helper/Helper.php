@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\Console\Helper;
+namespace Typo3RectorPrefix20210308\Symfony\Component\Console\Helper;
 
-use Typo3RectorPrefix20210302\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use Typo3RectorPrefix20210308\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * Helper is the base class for all helper classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Helper implements \Typo3RectorPrefix20210302\Symfony\Component\Console\Helper\HelperInterface
+abstract class Helper implements \Typo3RectorPrefix20210308\Symfony\Component\Console\Helper\HelperInterface
 {
     protected $helperSet = null;
     /**
      * {@inheritdoc}
      */
-    public function setHelperSet(\Typo3RectorPrefix20210302\Symfony\Component\Console\Helper\HelperSet $helperSet = null)
+    public function setHelperSet(\Typo3RectorPrefix20210308\Symfony\Component\Console\Helper\HelperSet $helperSet = null)
     {
         $this->helperSet = $helperSet;
     }
@@ -40,6 +40,7 @@ abstract class Helper implements \Typo3RectorPrefix20210302\Symfony\Component\Co
      */
     public static function strlen(?string $string)
     {
+        $string = (string) $string;
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \strlen($string);
         }
@@ -52,6 +53,7 @@ abstract class Helper implements \Typo3RectorPrefix20210302\Symfony\Component\Co
      */
     public static function substr(string $string, int $from, int $length = null)
     {
+        $string = (string) $string;
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \substr($string, $from, $length);
         }
@@ -84,11 +86,11 @@ abstract class Helper implements \Typo3RectorPrefix20210302\Symfony\Component\Co
         }
         return \sprintf('%d B', $memory);
     }
-    public static function strlenWithoutDecoration(\Typo3RectorPrefix20210302\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
+    public static function strlenWithoutDecoration(\Typo3RectorPrefix20210308\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
     {
         return self::strlen(self::removeDecoration($formatter, $string));
     }
-    public static function removeDecoration(\Typo3RectorPrefix20210302\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
+    public static function removeDecoration(\Typo3RectorPrefix20210308\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
     {
         $isDecorated = $formatter->isDecorated();
         $formatter->setDecorated(\false);

@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\PackageVersions;
+namespace Typo3RectorPrefix20210308\PackageVersions;
 
-use Typo3RectorPrefix20210302\Composer\Composer;
-use Typo3RectorPrefix20210302\Composer\Config;
-use Typo3RectorPrefix20210302\Composer\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210302\Composer\IO\IOInterface;
-use Typo3RectorPrefix20210302\Composer\Package\AliasPackage;
-use Typo3RectorPrefix20210302\Composer\Package\Locker;
-use Typo3RectorPrefix20210302\Composer\Package\PackageInterface;
-use Typo3RectorPrefix20210302\Composer\Package\RootPackageInterface;
-use Typo3RectorPrefix20210302\Composer\Plugin\PluginInterface;
-use Typo3RectorPrefix20210302\Composer\Script\Event;
-use Typo3RectorPrefix20210302\Composer\Script\ScriptEvents;
+use Typo3RectorPrefix20210308\Composer\Composer;
+use Typo3RectorPrefix20210308\Composer\Config;
+use Typo3RectorPrefix20210308\Composer\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210308\Composer\IO\IOInterface;
+use Typo3RectorPrefix20210308\Composer\Package\AliasPackage;
+use Typo3RectorPrefix20210308\Composer\Package\Locker;
+use Typo3RectorPrefix20210308\Composer\Package\PackageInterface;
+use Typo3RectorPrefix20210308\Composer\Package\RootPackageInterface;
+use Typo3RectorPrefix20210308\Composer\Plugin\PluginInterface;
+use Typo3RectorPrefix20210308\Composer\Script\Event;
+use Typo3RectorPrefix20210308\Composer\Script\ScriptEvents;
 use Generator;
 use RuntimeException;
 use function array_key_exists;
@@ -28,7 +28,7 @@ use function rename;
 use function sprintf;
 use function uniqid;
 use function var_export;
-final class Installer implements \Typo3RectorPrefix20210302\Composer\Plugin\PluginInterface, \Typo3RectorPrefix20210302\Composer\EventDispatcher\EventSubscriberInterface
+final class Installer implements \Typo3RectorPrefix20210308\Composer\Plugin\PluginInterface, \Typo3RectorPrefix20210308\Composer\EventDispatcher\EventSubscriberInterface
 {
     private static $generatedClassTemplate = <<<'PHP'
 <?php
@@ -113,15 +113,15 @@ class_exists(InstalledVersions::class);
 }
 
 PHP;
-    public function activate(\Typo3RectorPrefix20210302\Composer\Composer $composer, \Typo3RectorPrefix20210302\Composer\IO\IOInterface $io)
+    public function activate(\Typo3RectorPrefix20210308\Composer\Composer $composer, \Typo3RectorPrefix20210308\Composer\IO\IOInterface $io)
     {
         // Nothing to do here, as all features are provided through event listeners
     }
-    public function deactivate(\Typo3RectorPrefix20210302\Composer\Composer $composer, \Typo3RectorPrefix20210302\Composer\IO\IOInterface $io)
+    public function deactivate(\Typo3RectorPrefix20210308\Composer\Composer $composer, \Typo3RectorPrefix20210308\Composer\IO\IOInterface $io)
     {
         // Nothing to do here, as all features are provided through event listeners
     }
-    public function uninstall(\Typo3RectorPrefix20210302\Composer\Composer $composer, \Typo3RectorPrefix20210302\Composer\IO\IOInterface $io)
+    public function uninstall(\Typo3RectorPrefix20210308\Composer\Composer $composer, \Typo3RectorPrefix20210308\Composer\IO\IOInterface $io)
     {
         // Nothing to do here, as all features are provided through event listeners
     }
@@ -130,12 +130,12 @@ PHP;
      */
     public static function getSubscribedEvents() : array
     {
-        return [\Typo3RectorPrefix20210302\Composer\Script\ScriptEvents::POST_AUTOLOAD_DUMP => 'dumpVersionsClass'];
+        return [\Typo3RectorPrefix20210308\Composer\Script\ScriptEvents::POST_AUTOLOAD_DUMP => 'dumpVersionsClass'];
     }
     /**
      * @throws RuntimeException
      */
-    public static function dumpVersionsClass(\Typo3RectorPrefix20210302\Composer\Script\Event $composerEvent)
+    public static function dumpVersionsClass(\Typo3RectorPrefix20210308\Composer\Script\Event $composerEvent)
     {
         $composer = $composerEvent->getComposer();
         $rootPackage = $composer->getPackage();
@@ -164,7 +164,7 @@ PHP;
     /**
      * @throws RuntimeException
      */
-    private static function writeVersionClassToFile(string $versionClassSource, \Typo3RectorPrefix20210302\Composer\Composer $composer, \Typo3RectorPrefix20210302\Composer\IO\IOInterface $io)
+    private static function writeVersionClassToFile(string $versionClassSource, \Typo3RectorPrefix20210308\Composer\Composer $composer, \Typo3RectorPrefix20210308\Composer\IO\IOInterface $io)
     {
         $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/src/PackageVersions/Versions.php';
         $installDir = \dirname($installPath);
@@ -186,17 +186,17 @@ PHP;
     /**
      * @throws RuntimeException
      */
-    private static function locateRootPackageInstallPath(\Typo3RectorPrefix20210302\Composer\Config $composerConfig, \Typo3RectorPrefix20210302\Composer\Package\RootPackageInterface $rootPackage) : string
+    private static function locateRootPackageInstallPath(\Typo3RectorPrefix20210308\Composer\Config $composerConfig, \Typo3RectorPrefix20210308\Composer\Package\RootPackageInterface $rootPackage) : string
     {
         if (self::getRootPackageAlias($rootPackage)->getName() === 'composer/package-versions-deprecated') {
             return \dirname($composerConfig->get('vendor-dir'));
         }
         return $composerConfig->get('vendor-dir') . '/composer/package-versions-deprecated';
     }
-    private static function getRootPackageAlias(\Typo3RectorPrefix20210302\Composer\Package\RootPackageInterface $rootPackage) : \Typo3RectorPrefix20210302\Composer\Package\PackageInterface
+    private static function getRootPackageAlias(\Typo3RectorPrefix20210308\Composer\Package\RootPackageInterface $rootPackage) : \Typo3RectorPrefix20210308\Composer\Package\PackageInterface
     {
         $package = $rootPackage;
-        while ($package instanceof \Typo3RectorPrefix20210302\Composer\Package\AliasPackage) {
+        while ($package instanceof \Typo3RectorPrefix20210308\Composer\Package\AliasPackage) {
             $package = $package->getAliasOf();
         }
         return $package;
@@ -206,7 +206,7 @@ PHP;
      *
      * @psalm-return Generator<string, string>
      */
-    private static function getVersions(\Typo3RectorPrefix20210302\Composer\Package\Locker $locker, \Typo3RectorPrefix20210302\Composer\Package\RootPackageInterface $rootPackage) : \Generator
+    private static function getVersions(\Typo3RectorPrefix20210308\Composer\Package\Locker $locker, \Typo3RectorPrefix20210308\Composer\Package\RootPackageInterface $rootPackage) : \Generator
     {
         $lockData = $locker->getLockData();
         $lockData['packages-dev'] = $lockData['packages-dev'] ?? [];

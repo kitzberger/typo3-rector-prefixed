@@ -9,10 +9,10 @@ use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Return_;
 use Rector\Core\Rector\AbstractRector;
+use Ssch\TYPO3Rector\ArrayUtility;
 use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/8.6/Deprecation-78899-TCACtrlFieldRequestUpdateDropped.html
  */
@@ -83,7 +83,7 @@ CODE_SAMPLE
                 if (null === $fields) {
                     return null;
                 }
-                $requestUpdateFields = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $fields);
+                $requestUpdateFields = \Ssch\TYPO3Rector\ArrayUtility::trimExplode(',', $fields);
                 $this->removeNode($fieldValue);
             }
         }

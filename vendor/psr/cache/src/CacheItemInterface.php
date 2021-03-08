@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210302\Psr\Cache;
+namespace Typo3RectorPrefix20210308\Psr\Cache;
 
 /**
  * CacheItemInterface defines an interface for interacting with objects inside a cache.

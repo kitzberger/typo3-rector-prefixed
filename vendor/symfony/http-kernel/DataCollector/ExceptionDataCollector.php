@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\DataCollector;
+namespace Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\DataCollector;
 
-use Typo3RectorPrefix20210302\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210308\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Response;
 /**
  * ExceptionDataCollector.
  *
@@ -20,15 +20,15 @@ use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class ExceptionDataCollector extends \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class ExceptionDataCollector extends \Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
     /**
      * {@inheritdoc}
      */
-    public function collect(\Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         if (null !== $exception) {
-            $this->data = ['exception' => \Typo3RectorPrefix20210302\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
+            $this->data = ['exception' => \Typo3RectorPrefix20210308\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
         }
     }
     /**

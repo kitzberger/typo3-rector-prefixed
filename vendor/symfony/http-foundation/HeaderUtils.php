@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation;
+namespace Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation;
 
 /**
  * HTTP header utility functions.
@@ -133,7 +133,7 @@ class HeaderUtils
         return \preg_replace('/\\\\(.)|"/', '$1', $s);
     }
     /**
-     * Generates a HTTP Content-Disposition field-value.
+     * Generates an HTTP Content-Disposition field-value.
      *
      * @param string $disposition      One of "inline" or "attachment"
      * @param string $filename         A unicode string

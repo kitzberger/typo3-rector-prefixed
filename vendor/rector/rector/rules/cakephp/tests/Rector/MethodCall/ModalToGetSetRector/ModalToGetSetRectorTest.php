@@ -5,13 +5,13 @@ namespace Rector\CakePHP\Tests\Rector\MethodCall\ModalToGetSetRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
 final class ModalToGetSetRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

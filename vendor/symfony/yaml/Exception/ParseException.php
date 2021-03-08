@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\Yaml\Exception;
+namespace Typo3RectorPrefix20210308\Symfony\Component\Yaml\Exception;
 
 /**
  * Exception class thrown when an error occurs during parsing.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParseException extends \Typo3RectorPrefix20210302\Symfony\Component\Yaml\Exception\RuntimeException
+class ParseException extends \Typo3RectorPrefix20210308\Symfony\Component\Yaml\Exception\RuntimeException
 {
     private $parsedFile;
     private $parsedLine;
@@ -26,7 +26,6 @@ class ParseException extends \Typo3RectorPrefix20210302\Symfony\Component\Yaml\E
      * @param int             $parsedLine The line where the error occurred
      * @param string|null     $snippet    The snippet of code near the problem
      * @param string|null     $parsedFile The file name where the error occurred
-     * @param \Exception|null $previous   The previous exception
      */
     public function __construct(string $message, int $parsedLine = -1, string $snippet = null, string $parsedFile = null, \Throwable $previous = null)
     {

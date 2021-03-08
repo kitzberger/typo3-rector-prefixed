@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\Cache\DependencyInjection;
+namespace Typo3RectorPrefix20210308\Symfony\Component\Cache\DependencyInjection;
 
-use Typo3RectorPrefix20210302\Symfony\Component\Cache\PruneableInterface;
-use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Reference;
+use Typo3RectorPrefix20210308\Symfony\Component\Cache\PruneableInterface;
+use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Rob Frawley 2nd <rmf@src.run>
  */
-class CachePoolPrunerPass implements \Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class CachePoolPrunerPass implements \Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $cacheCommandServiceId;
     private $cachePoolTag;
@@ -31,7 +31,7 @@ class CachePoolPrunerPass implements \Typo3RectorPrefix20210302\Symfony\Componen
     /**
      * {@inheritdoc}
      */
-    public function process(\Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->hasDefinition($this->cacheCommandServiceId)) {
             return;
@@ -40,12 +40,12 @@ class CachePoolPrunerPass implements \Typo3RectorPrefix20210302\Symfony\Componen
         foreach ($container->findTaggedServiceIds($this->cachePoolTag) as $id => $tags) {
             $class = $container->getParameterBag()->resolveValue($container->getDefinition($id)->getClass());
             if (!($reflection = $container->getReflectionClass($class))) {
-                throw new \Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
+                throw new \Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
             }
-            if ($reflection->implementsInterface(\Typo3RectorPrefix20210302\Symfony\Component\Cache\PruneableInterface::class)) {
-                $services[$id] = new \Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Reference($id);
+            if ($reflection->implementsInterface(\Typo3RectorPrefix20210308\Symfony\Component\Cache\PruneableInterface::class)) {
+                $services[$id] = new \Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Reference($id);
             }
         }
-        $container->getDefinition($this->cacheCommandServiceId)->replaceArgument(0, new \Typo3RectorPrefix20210302\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services));
+        $container->getDefinition($this->cacheCommandServiceId)->replaceArgument(0, new \Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services));
     }
 }

@@ -6,13 +6,13 @@ namespace Rector\DeadCode\Tests\Rector\Switch_\RemoveDuplicatedCaseInSwitchRecto
 use Iterator;
 use Rector\DeadCode\Rector\Switch_\RemoveDuplicatedCaseInSwitchRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
 final class RemoveDuplicatedCaseInSwitchRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

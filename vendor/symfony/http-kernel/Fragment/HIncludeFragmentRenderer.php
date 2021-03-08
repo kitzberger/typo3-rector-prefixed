@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Fragment;
+namespace Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Fragment;
 
-use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Controller\ControllerReference;
-use Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\UriSigner;
-use Typo3RectorPrefix20210302\Twig\Environment;
+use Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\UriSigner;
+use Typo3RectorPrefix20210308\Twig\Environment;
 /**
  * Implements the Hinclude rendering strategy.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class HIncludeFragmentRenderer extends \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer
+class HIncludeFragmentRenderer extends \Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer
 {
     private $globalDefaultTemplate;
     private $signer;
@@ -29,7 +29,7 @@ class HIncludeFragmentRenderer extends \Typo3RectorPrefix20210302\Symfony\Compon
     /**
      * @param string $globalDefaultTemplate The global default content (it can be a template name or the content)
      */
-    public function __construct(\Typo3RectorPrefix20210302\Twig\Environment $twig = null, \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\UriSigner $signer = null, string $globalDefaultTemplate = null, string $charset = 'utf-8')
+    public function __construct(\Typo3RectorPrefix20210308\Twig\Environment $twig = null, \Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\UriSigner $signer = null, string $globalDefaultTemplate = null, string $charset = 'utf-8')
     {
         $this->twig = $twig;
         $this->globalDefaultTemplate = $globalDefaultTemplate;
@@ -54,9 +54,9 @@ class HIncludeFragmentRenderer extends \Typo3RectorPrefix20210302\Symfony\Compon
      *  * id:         An optional hx:include tag id attribute
      *  * attributes: An optional array of hx:include tag attributes
      */
-    public function render($uri, \Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Request $request, array $options = [])
+    public function render($uri, \Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Request $request, array $options = [])
     {
-        if ($uri instanceof \Typo3RectorPrefix20210302\Symfony\Component\HttpKernel\Controller\ControllerReference) {
+        if ($uri instanceof \Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Controller\ControllerReference) {
             if (null === $this->signer) {
                 throw new \LogicException('You must use a proper URI when using the Hinclude rendering strategy or set a URL signer.');
             }
@@ -82,7 +82,7 @@ class HIncludeFragmentRenderer extends \Typo3RectorPrefix20210302\Symfony\Compon
                 $renderedAttributes .= \sprintf(' %s="%s"', \htmlspecialchars($attribute, $flags, $this->charset, \false), \htmlspecialchars($value, $flags, $this->charset, \false));
             }
         }
-        return new \Typo3RectorPrefix20210302\Symfony\Component\HttpFoundation\Response(\sprintf('<hx:include src="%s"%s>%s</hx:include>', $uri, $renderedAttributes, $content));
+        return new \Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Response(\sprintf('<hx:include src="%s"%s>%s</hx:include>', $uri, $renderedAttributes, $content));
     }
     /**
      * {@inheritdoc}

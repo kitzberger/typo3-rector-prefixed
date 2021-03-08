@@ -6,13 +6,13 @@ namespace Rector\CodeQuality\Tests\Rector\Identical\SimplifyConditionsRector;
 use Iterator;
 use Rector\CodeQuality\Rector\Identical\SimplifyConditionsRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
 final class SimplifyConditionsRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

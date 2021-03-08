@@ -1,12 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\Astral\ValueObject;
+namespace Typo3RectorPrefix20210308\Symplify\Astral\ValueObject;
 
 final class CommonAttributeKey
 {
     /**
      * Convention key name in php-parser and PHPStan for parent node
+     *
      * @var string
      */
     public const PARENT = 'parent';

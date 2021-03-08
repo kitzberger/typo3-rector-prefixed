@@ -9,10 +9,10 @@ use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Return_;
 use Rector\Core\Rector\AbstractRector;
+use Ssch\TYPO3Rector\ArrayUtility;
 use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/7.4/Deprecation-67737-TcaDropAdditionalPalette.html
  */
@@ -79,10 +79,10 @@ final class DropAdditionalPaletteRector extends \Rector\Core\Rector\AbstractRect
                 if (null === $showItemValue || !\is_string($showItemValue) || \false === \strpos($showItemValue, ';')) {
                     continue;
                 }
-                $itemList = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $showItemValue, \true);
+                $itemList = \Ssch\TYPO3Rector\ArrayUtility::trimExplode(',', $showItemValue, \true);
                 $newFieldStrings = [];
                 foreach ($itemList as $fieldString) {
-                    $fieldArray = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(';', $fieldString);
+                    $fieldArray = \Ssch\TYPO3Rector\ArrayUtility::trimExplode(';', $fieldString);
                     $fieldArray = [self::FIELD_NAME => $fieldArray[0] ?? '', self::FIELD_LABEL => $fieldArray[1] ?? null, self::PALETTE_NAME => $fieldArray[2] ?? null];
                     if ('--palette--' !== $fieldArray[self::FIELD_NAME] && null !== $fieldArray[self::PALETTE_NAME]) {
                         if ($fieldArray[self::FIELD_LABEL]) {

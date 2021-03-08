@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\Skipper\FileSystem;
+namespace Typo3RectorPrefix20210308\Symplify\Skipper\FileSystem;
 
-use Typo3RectorPrefix20210302\Nette\Utils\Strings;
+use Typo3RectorPrefix20210308\Nette\Utils\Strings;
 /**
  * @see \Symplify\Skipper\Tests\FileSystem\PathNormalizerTest
  */
@@ -19,21 +19,17 @@ final class PathNormalizer
      * @see https://regex101.com/r/aVUDjM/2
      */
     private const ONLY_STARTS_WITH_ASTERISK_REGEX = '#^\\*(.*?)[^*]$#';
-    /**
-     * "value*" → "*value*"
-     * "*value" → "*value*"
-     */
     public function normalizeForFnmatch(string $path) : string
     {
         // ends with *
-        if (\Typo3RectorPrefix20210302\Nette\Utils\Strings::match($path, self::ONLY_ENDS_WITH_ASTERISK_REGEX)) {
+        if (\Typo3RectorPrefix20210308\Nette\Utils\Strings::match($path, self::ONLY_ENDS_WITH_ASTERISK_REGEX)) {
             return '*' . $path;
         }
         // starts with *
-        if (\Typo3RectorPrefix20210302\Nette\Utils\Strings::match($path, self::ONLY_STARTS_WITH_ASTERISK_REGEX)) {
+        if (\Typo3RectorPrefix20210308\Nette\Utils\Strings::match($path, self::ONLY_STARTS_WITH_ASTERISK_REGEX)) {
             return $path . '*';
         }
-        if (\Typo3RectorPrefix20210302\Nette\Utils\Strings::contains($path, '..')) {
+        if (\Typo3RectorPrefix20210308\Nette\Utils\Strings::contains($path, '..')) {
             $path = \realpath($path);
             if ($path === \false) {
                 return '';

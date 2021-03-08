@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\Contract\Converter;
+namespace Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\Contract\Converter;
 
 use PhpParser\Node\Expr\MethodCall;
 interface ServiceOptionsKeyYamlToPhpFactoryInterface

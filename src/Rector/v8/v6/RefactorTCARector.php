@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v8\v6;
 
-use Typo3RectorPrefix20210302\Nette\Utils\Strings;
+use Typo3RectorPrefix20210308\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Return_;
 use Rector\Core\Rector\AbstractRector;
+use Ssch\TYPO3Rector\ArrayUtility;
 use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/8.6/Deprecation-79440-TcaChanges.html
  */
@@ -167,7 +167,7 @@ CODE_SAMPLE
                             continue;
                         }
                         $validWizard = $this->isValidWizard($wizardItemValue);
-                        if ($validWizard || \Typo3RectorPrefix20210302\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_') || $isRte) {
+                        if ($validWizard || \Typo3RectorPrefix20210308\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_') || $isRte) {
                             --$remainingWizards;
                         }
                         if (!$validWizard) {
@@ -272,7 +272,7 @@ CODE_SAMPLE
             if (null === $eval) {
                 continue;
             }
-            $eval = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $eval, \true);
+            $eval = \Ssch\TYPO3Rector\ArrayUtility::trimExplode(',', $eval, \true);
             if (\in_array('date', $eval, \true) || \in_array('datetime', $eval, \true) || \in_array('time', $eval, \true) || \in_array('timesec', $eval, \true)) {
                 $configValue->value->items[] = new \PhpParser\Node\Expr\ArrayItem(new \PhpParser\Node\Scalar\String_('inputDateTime'), new \PhpParser\Node\Scalar\String_('renderType'));
             }

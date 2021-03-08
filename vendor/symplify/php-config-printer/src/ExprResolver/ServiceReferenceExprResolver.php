@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ExprResolver;
+namespace Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\ExprResolver;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -13,7 +13,7 @@ final class ServiceReferenceExprResolver
      * @var StringExprResolver
      */
     private $stringExprResolver;
-    public function __construct(\Typo3RectorPrefix20210302\Symplify\PhpConfigPrinter\ExprResolver\StringExprResolver $stringExprResolver)
+    public function __construct(\Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\ExprResolver\StringExprResolver $stringExprResolver)
     {
         $this->stringExprResolver = $stringExprResolver;
     }

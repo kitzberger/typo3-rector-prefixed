@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Rector\Caching;
 
 use Rector\Caching\Detector\ChangedFilesDetector;
-use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
 final class UnchangedFilesFilter
 {
     /**

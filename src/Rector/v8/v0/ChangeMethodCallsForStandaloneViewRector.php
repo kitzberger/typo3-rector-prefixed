@@ -17,9 +17,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 final class ChangeMethodCallsForStandaloneViewRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * class => [
-     *     oldMethod => newMethod
-     * ].
+     * class => [ oldMethod => newMethod ].
      *
      * @var array<string, array<string, string>>
      */

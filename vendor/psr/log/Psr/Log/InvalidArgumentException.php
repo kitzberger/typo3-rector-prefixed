@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210302\Psr\Log;
+namespace Typo3RectorPrefix20210308\Psr\Log;
 
 class InvalidArgumentException extends \InvalidArgumentException
 {

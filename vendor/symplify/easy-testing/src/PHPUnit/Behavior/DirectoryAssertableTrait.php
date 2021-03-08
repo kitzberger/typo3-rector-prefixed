@@ -1,16 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210302\Symplify\EasyTesting\PHPUnit\Behavior;
+namespace Typo3RectorPrefix20210308\Symplify\EasyTesting\PHPUnit\Behavior;
 
-use Typo3RectorPrefix20210302\Symfony\Component\Finder\Finder;
-use Typo3RectorPrefix20210302\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair;
-use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210308\Symfony\Component\Finder\Finder;
+use Typo3RectorPrefix20210308\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair;
+use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * Use only in "\PHPUnit\Framework\TestCase"
  *
  * Answer here
+ *
  * @see https://stackoverflow.com/questions/54263109/how-to-assert-2-directories-are-identical-in-phpunit
  */
 trait DirectoryAssertableTrait
@@ -35,9 +36,9 @@ trait DirectoryAssertableTrait
      */
     private function findFileInfosInDirectory(string $directory) : array
     {
-        $firstDirectoryFinder = new \Typo3RectorPrefix20210302\Symfony\Component\Finder\Finder();
+        $firstDirectoryFinder = new \Typo3RectorPrefix20210308\Symfony\Component\Finder\Finder();
         $firstDirectoryFinder->files()->in($directory);
-        $finderSanitizer = new \Typo3RectorPrefix20210302\Symplify\SmartFileSystem\Finder\FinderSanitizer();
+        $finderSanitizer = new \Typo3RectorPrefix20210308\Symplify\SmartFileSystem\Finder\FinderSanitizer();
         return $finderSanitizer->sanitize($firstDirectoryFinder);
     }
     /**
@@ -52,14 +53,14 @@ trait DirectoryAssertableTrait
             $relativeFilePath = $expectedFileInfo->getRelativeFilePathFromDirectory($expectedDirectory);
             // match output file info
             $outputFileInfo = $this->resolveFileInfoByRelativeFilePath($outputFileInfos, $outputDirectory, $relativeFilePath);
-            $fileInfosByRelativeFilePath[$relativeFilePath] = new \Typo3RectorPrefix20210302\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair($expectedFileInfo, $outputFileInfo);
+            $fileInfosByRelativeFilePath[$relativeFilePath] = new \Typo3RectorPrefix20210308\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair($expectedFileInfo, $outputFileInfo);
         }
         return $fileInfosByRelativeFilePath;
     }
     /**
      * @param SmartFileInfo[] $fileInfos
      */
-    private function resolveFileInfoByRelativeFilePath(array $fileInfos, string $directory, string $desiredRelativeFilePath) : ?\Typo3RectorPrefix20210302\Symplify\SmartFileSystem\SmartFileInfo
+    private function resolveFileInfoByRelativeFilePath(array $fileInfos, string $directory, string $desiredRelativeFilePath) : ?\Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo
     {
         foreach ($fileInfos as $fileInfo) {
             $relativeFilePath = $fileInfo->getRelativeFilePathFromDirectory($directory);

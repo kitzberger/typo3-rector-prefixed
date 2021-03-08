@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\AttributeAwarePhpDoc\Ast\Type;
 
-use Typo3RectorPrefix20210302\Nette\Utils\Strings;
+use Typo3RectorPrefix20210308\Nette\Utils\Strings;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
 use Rector\BetterPhpDocParser\Attributes\Attribute\AttributeTrait;
@@ -26,7 +26,7 @@ final class AttributeAwareUnionTypeNode extends \PHPStan\PhpDocParser\Ast\Type\U
     public function __construct(array $types, string $originalContent = '')
     {
         parent::__construct($types);
-        $this->isWrappedWithBrackets = (bool) \Typo3RectorPrefix20210302\Nette\Utils\Strings::match($originalContent, self::BRACKET_WRAPPING_REGEX);
+        $this->isWrappedWithBrackets = (bool) \Typo3RectorPrefix20210308\Nette\Utils\Strings::match($originalContent, self::BRACKET_WRAPPING_REGEX);
     }
     /**
      * Preserve common format

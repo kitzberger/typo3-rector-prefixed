@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210302;
+namespace Typo3RectorPrefix20210308;
 
 if (\PHP_VERSION_ID < 80000) {
     interface Stringable

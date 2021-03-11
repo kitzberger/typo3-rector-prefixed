@@ -22,7 +22,7 @@ final class BuildFormClassMethodFactory
     public function create(\PhpParser\Node\Expr\Variable $formBuilderVariable) : \PhpParser\Node\Stmt\ClassMethod
     {
         $buildFormClassMethod = $this->nodeFactory->createPublicMethod('buildForm');
-        $buildFormClassMethod->params[] = new \PhpParser\Node\Param($formBuilderVariable, null, new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210308\\Symfony\\Component\\Form\\FormBuilderInterface'));
+        $buildFormClassMethod->params[] = new \PhpParser\Node\Param($formBuilderVariable, null, new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210311\\Symfony\\Component\\Form\\FormBuilderInterface'));
         $buildFormClassMethod->params[] = new \PhpParser\Node\Param(new \PhpParser\Node\Expr\Variable('options'), null, new \PhpParser\Node\Identifier('array'));
         return $buildFormClassMethod;
     }

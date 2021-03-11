@@ -1,5 +1,5 @@
 <div class="exception-summary <?php 
-namespace Typo3RectorPrefix20210308;
+namespace Typo3RectorPrefix20210311;
 
 echo !$exceptionMessage ? 'exception-without-message' : '';
 ?>">

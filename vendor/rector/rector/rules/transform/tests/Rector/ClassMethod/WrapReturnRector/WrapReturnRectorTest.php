@@ -5,13 +5,13 @@ namespace Rector\Transform\Tests\Rector\ClassMethod\WrapReturnRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
 final class WrapReturnRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

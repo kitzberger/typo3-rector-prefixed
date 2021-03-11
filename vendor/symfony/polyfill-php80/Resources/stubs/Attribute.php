@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210308;
+namespace Typo3RectorPrefix20210311;
 
 #[Attribute(\Attribute::TARGET_CLASS)]
 final class Attribute
@@ -20,4 +20,4 @@ final class Attribute
         $this->flags = $flags;
     }
 }
-\class_alias('Typo3RectorPrefix20210308\\Attribute', 'Attribute', \false);
+\class_alias('Typo3RectorPrefix20210311\\Attribute', 'Attribute', \false);

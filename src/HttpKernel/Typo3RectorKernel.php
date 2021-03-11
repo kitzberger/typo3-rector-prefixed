@@ -9,24 +9,24 @@ use Rector\Core\DependencyInjection\Collector\ConfigureCallValuesCollector;
 use Rector\Core\DependencyInjection\CompilerPass\MakeRectorsPublicCompilerPass;
 use Rector\Core\DependencyInjection\CompilerPass\MergeImportedRectorConfigureCallValuesCompilerPass;
 use Rector\Core\DependencyInjection\Loader\ConfigurableCallValuesCollectingPhpFileLoader;
-use Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\DelegatingLoader;
-use Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\GlobFileLoader;
-use Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\LoaderInterface;
-use Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\LoaderResolver;
-use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Config\FileLocator;
-use Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Kernel;
-use Typo3RectorPrefix20210308\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-use Typo3RectorPrefix20210308\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle;
-use Typo3RectorPrefix20210308\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle;
-use Typo3RectorPrefix20210308\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
-use Typo3RectorPrefix20210308\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
-use Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle;
-use Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\Bundle\SimplePhpDocParserBundle;
-use Typo3RectorPrefix20210308\Symplify\Skipper\Bundle\SkipperBundle;
-final class Typo3RectorKernel extends \Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Kernel implements \Typo3RectorPrefix20210308\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
+use Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\DelegatingLoader;
+use Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\GlobFileLoader;
+use Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\LoaderInterface;
+use Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\LoaderResolver;
+use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\Config\FileLocator;
+use Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\Kernel;
+use Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+use Typo3RectorPrefix20210311\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle;
+use Typo3RectorPrefix20210311\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle;
+use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use Typo3RectorPrefix20210311\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
+use Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle;
+use Typo3RectorPrefix20210311\Symplify\SimplePhpDocParser\Bundle\SimplePhpDocParserBundle;
+use Typo3RectorPrefix20210311\Symplify\Skipper\Bundle\SkipperBundle;
+final class Typo3RectorKernel extends \Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\Kernel implements \Typo3RectorPrefix20210311\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
 {
     /**
      * @var string[]
@@ -51,7 +51,7 @@ final class Typo3RectorKernel extends \Typo3RectorPrefix20210308\Symfony\Compone
         // manually configured, so it can be replaced in phar
         return \sys_get_temp_dir() . '/typo3_rector_log';
     }
-    public function registerContainerConfiguration(\Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         $possibleRectorConfigPaths = [__DIR__ . '/../../vendor/rector/rector/config/config.php', __DIR__ . '/../../../../rector/rector/config/config.php'];
         foreach ($possibleRectorConfigPaths as $rectorConfig) {
@@ -76,13 +76,13 @@ final class Typo3RectorKernel extends \Typo3RectorPrefix20210308\Symfony\Compone
      */
     public function registerBundles() : array
     {
-        return [new \Typo3RectorPrefix20210308\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle(), new \Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle(), new \Typo3RectorPrefix20210308\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle(), new \Typo3RectorPrefix20210308\Symplify\Skipper\Bundle\SkipperBundle(), new \Typo3RectorPrefix20210308\Symplify\SimplePhpDocParser\Bundle\SimplePhpDocParserBundle()];
+        return [new \Typo3RectorPrefix20210311\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle(), new \Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle(), new \Typo3RectorPrefix20210311\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle(), new \Typo3RectorPrefix20210311\Symplify\Skipper\Bundle\SkipperBundle(), new \Typo3RectorPrefix20210311\Symplify\SimplePhpDocParser\Bundle\SimplePhpDocParserBundle()];
     }
-    protected function build(\Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    protected function build(\Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
-        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210308\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
+        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
         // autowire Rectors by default (mainly for 3rd party code)
-        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210308\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Rector\Core\Contract\Rector\RectorInterface::class]));
+        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210311\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Rector\Core\Contract\Rector\RectorInterface::class]));
         $containerBuilder->addCompilerPass(new \Rector\Core\DependencyInjection\CompilerPass\MakeRectorsPublicCompilerPass());
         // add all merged arguments of Rector services
         $containerBuilder->addCompilerPass(new \Rector\Core\DependencyInjection\CompilerPass\MergeImportedRectorConfigureCallValuesCompilerPass($this->configureCallValuesCollector));
@@ -92,13 +92,13 @@ final class Typo3RectorKernel extends \Typo3RectorPrefix20210308\Symfony\Compone
      *
      * @param ContainerInterface|ContainerBuilder $container
      */
-    protected function getContainerLoader(\Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerInterface $container) : \Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\DelegatingLoader
+    protected function getContainerLoader(\Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerInterface $container) : \Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\DelegatingLoader
     {
-        $fileLocator = new \Typo3RectorPrefix20210308\Symfony\Component\HttpKernel\Config\FileLocator($this);
-        if (!$container instanceof \Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder) {
-            throw new \InvalidArgumentException(\sprintf('The container must be of type %s', \Typo3RectorPrefix20210308\Symfony\Component\DependencyInjection\ContainerBuilder::class));
+        $fileLocator = new \Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\Config\FileLocator($this);
+        if (!$container instanceof \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerBuilder) {
+            throw new \InvalidArgumentException(\sprintf('The container must be of type %s', \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerBuilder::class));
         }
-        $loaderResolver = new \Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\LoaderResolver([new \Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\GlobFileLoader($fileLocator), new \Rector\Core\DependencyInjection\Loader\ConfigurableCallValuesCollectingPhpFileLoader($container, $fileLocator, $this->configureCallValuesCollector)]);
-        return new \Typo3RectorPrefix20210308\Symfony\Component\Config\Loader\DelegatingLoader($loaderResolver);
+        $loaderResolver = new \Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\LoaderResolver([new \Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\GlobFileLoader($fileLocator), new \Rector\Core\DependencyInjection\Loader\ConfigurableCallValuesCollectingPhpFileLoader($container, $fileLocator, $this->configureCallValuesCollector)]);
+        return new \Typo3RectorPrefix20210311\Symfony\Component\Config\Loader\DelegatingLoader($loaderResolver);
     }
 }

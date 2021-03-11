@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Printer;
 
-use Typo3RectorPrefix20210308\Nette\Utils\Strings;
+use Typo3RectorPrefix20210311\Nette\Utils\Strings;
 use Rector\BetterPhpDocParser\ValueObject\TagValueNodeConfiguration;
 final class TagValueNodePrinter
 {
@@ -45,7 +45,7 @@ final class TagValueNodePrinter
                 continue;
             }
             // do not quote constant references... unless twig template
-            if (\Typo3RectorPrefix20210308\Nette\Utils\Strings::match($item, self::CONSTANT_REFERENCE_REGEX) && !\Typo3RectorPrefix20210308\Nette\Utils\Strings::endsWith($item, '.twig')) {
+            if (\Typo3RectorPrefix20210311\Nette\Utils\Strings::match($item, self::CONSTANT_REFERENCE_REGEX) && !\Typo3RectorPrefix20210311\Nette\Utils\Strings::endsWith($item, '.twig')) {
                 continue;
             }
             // no original quoting

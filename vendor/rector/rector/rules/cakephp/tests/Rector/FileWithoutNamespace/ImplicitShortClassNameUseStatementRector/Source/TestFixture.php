@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210308;
+namespace Typo3RectorPrefix20210311;
 
 class TestFixture
 {
 }
-\class_alias('Typo3RectorPrefix20210308\\TestFixture', 'TestFixture', \false);
+\class_alias('Typo3RectorPrefix20210311\\TestFixture', 'TestFixture', \false);

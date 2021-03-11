@@ -5,8 +5,8 @@ namespace Rector\Composer\Contract\Rector;
 
 use Rector\Core\Contract\Rector\ConfigurableRectorInterface;
 use Rector\Core\Contract\Rector\RectorInterface;
-use Typo3RectorPrefix20210308\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210311\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 interface ComposerRectorInterface extends \Rector\Core\Contract\Rector\RectorInterface, \Rector\Core\Contract\Rector\ConfigurableRectorInterface
 {
-    public function refactor(\Typo3RectorPrefix20210308\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void;
+    public function refactor(\Typo3RectorPrefix20210311\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void;
 }

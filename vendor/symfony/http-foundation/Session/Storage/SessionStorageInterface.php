@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Session\Storage;
+namespace Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Session\Storage;
 
-use Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * StorageInterface.
  *
@@ -110,7 +110,7 @@ interface SessionStorageInterface
     /**
      * Registers a SessionBagInterface for use.
      */
-    public function registerBag(\Typo3RectorPrefix20210308\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag);
+    public function registerBag(\Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag);
     /**
      * @return MetadataBag
      */

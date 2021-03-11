@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210308\Symfony\Component\VarDumper\Caster;
+namespace Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Caster;
 
-use Typo3RectorPrefix20210308\ProxyManager\Proxy\ProxyInterface;
-use Typo3RectorPrefix20210308\Symfony\Component\VarDumper\Cloner\Stub;
+use Typo3RectorPrefix20210311\ProxyManager\Proxy\ProxyInterface;
+use Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
@@ -19,7 +19,7 @@ use Typo3RectorPrefix20210308\Symfony\Component\VarDumper\Cloner\Stub;
  */
 class ProxyManagerCaster
 {
-    public static function castProxy(\Typo3RectorPrefix20210308\ProxyManager\Proxy\ProxyInterface $c, array $a, \Typo3RectorPrefix20210308\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
+    public static function castProxy(\Typo3RectorPrefix20210311\ProxyManager\Proxy\ProxyInterface $c, array $a, \Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
     {
         if ($parent = \get_parent_class($c)) {
             $stub->class .= ' - ' . $parent;

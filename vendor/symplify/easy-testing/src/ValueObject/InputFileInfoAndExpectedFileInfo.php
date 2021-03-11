@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210308\Symplify\EasyTesting\ValueObject;
+namespace Typo3RectorPrefix20210311\Symplify\EasyTesting\ValueObject;
 
-use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
 final class InputFileInfoAndExpectedFileInfo
 {
     /**
@@ -14,16 +14,16 @@ final class InputFileInfoAndExpectedFileInfo
      * @var SmartFileInfo
      */
     private $expectedFileInfo;
-    public function __construct(\Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, \Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo)
+    public function __construct(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo)
     {
         $this->inputFileInfo = $inputFileInfo;
         $this->expectedFileInfo = $expectedFileInfo;
     }
-    public function getInputFileInfo() : \Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo
+    public function getInputFileInfo() : \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->inputFileInfo;
     }
-    public function getExpectedFileInfo() : \Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo
+    public function getExpectedFileInfo() : \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->expectedFileInfo;
     }

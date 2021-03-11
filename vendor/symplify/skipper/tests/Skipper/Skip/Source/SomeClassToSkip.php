@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210308\Symplify\Skipper\Tests\Skipper\Skip\Source;
+namespace Typo3RectorPrefix20210311\Symplify\Skipper\Tests\Skipper\Skip\Source;
 
 final class SomeClassToSkip
 {

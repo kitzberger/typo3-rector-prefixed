@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\ExprResolver;
+namespace Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\ExprResolver;
 
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
-use Typo3RectorPrefix20210308\Symfony\Component\Yaml\Tag\TaggedValue;
-use Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\Configuration\SymfonyFunctionNameProvider;
+use Typo3RectorPrefix20210311\Symfony\Component\Yaml\Tag\TaggedValue;
+use Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\Configuration\SymfonyFunctionNameProvider;
 final class TaggedReturnsCloneResolver
 {
     /**
@@ -17,12 +17,12 @@ final class TaggedReturnsCloneResolver
      * @var SymfonyFunctionNameProvider
      */
     private $symfonyFunctionNameProvider;
-    public function __construct(\Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\Configuration\SymfonyFunctionNameProvider $symfonyFunctionNameProvider, \Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\ExprResolver\ServiceReferenceExprResolver $serviceReferenceExprResolver)
+    public function __construct(\Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\Configuration\SymfonyFunctionNameProvider $symfonyFunctionNameProvider, \Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\ExprResolver\ServiceReferenceExprResolver $serviceReferenceExprResolver)
     {
         $this->serviceReferenceExprResolver = $serviceReferenceExprResolver;
         $this->symfonyFunctionNameProvider = $symfonyFunctionNameProvider;
     }
-    public function resolve(\Typo3RectorPrefix20210308\Symfony\Component\Yaml\Tag\TaggedValue $taggedValue) : \PhpParser\Node\Expr\Array_
+    public function resolve(\Typo3RectorPrefix20210311\Symfony\Component\Yaml\Tag\TaggedValue $taggedValue) : \PhpParser\Node\Expr\Array_
     {
         $serviceName = $taggedValue->getValue()[0];
         $functionName = $this->symfonyFunctionNameProvider->provideRefOrService();

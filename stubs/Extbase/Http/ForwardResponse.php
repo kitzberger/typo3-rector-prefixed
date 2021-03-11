@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace TYPO3\CMS\Extbase\Http;
 
-use Typo3RectorPrefix20210308\Psr\Http\Message\ResponseInterface;
+use Typo3RectorPrefix20210311\Psr\Http\Message\ResponseInterface;
 if (\class_exists(\TYPO3\CMS\Extbase\Http\ForwardResponse::class)) {
     return;
 }
-final class ForwardResponse implements \Typo3RectorPrefix20210308\Psr\Http\Message\ResponseInterface
+final class ForwardResponse implements \Typo3RectorPrefix20210311\Psr\Http\Message\ResponseInterface
 {
     /**
      * @var string
@@ -65,7 +65,7 @@ final class ForwardResponse implements \Typo3RectorPrefix20210308\Psr\Http\Messa
         $this->arguments = [];
         return $clone;
     }
-    public function withStatus(string $code, string $reasonPhrase = '') : \Typo3RectorPrefix20210308\Psr\Http\Message\ResponseInterface
+    public function withStatus(string $code, string $reasonPhrase = '') : \Typo3RectorPrefix20210311\Psr\Http\Message\ResponseInterface
     {
     }
 }

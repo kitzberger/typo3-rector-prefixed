@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210308\Symplify\PhpConfigPrinter\Naming;
+namespace Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\Naming;
 
-use Typo3RectorPrefix20210308\Nette\Utils\Strings;
+use Typo3RectorPrefix20210311\Nette\Utils\Strings;
 final class ClassNaming
 {
     public function getShortName(string $class) : string
     {
-        if (\Typo3RectorPrefix20210308\Nette\Utils\Strings::contains($class, '\\')) {
-            return (string) \Typo3RectorPrefix20210308\Nette\Utils\Strings::after($class, '\\', -1);
+        if (\Typo3RectorPrefix20210311\Nette\Utils\Strings::contains($class, '\\')) {
+            return (string) \Typo3RectorPrefix20210311\Nette\Utils\Strings::after($class, '\\', -1);
         }
         return $class;
     }

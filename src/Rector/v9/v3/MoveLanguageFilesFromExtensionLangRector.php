@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v9\v3;
 
-use Typo3RectorPrefix20210308\Nette\Utils\Strings;
+use Typo3RectorPrefix20210311\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\Rector\AbstractRector;
@@ -32,7 +32,7 @@ final class MoveLanguageFilesFromExtensionLangRector extends \Rector\Core\Rector
             return null;
         }
         foreach (self::MAPPING_OLD_TO_NEW_PATHS as $oldPath => $newPath) {
-            if (\Typo3RectorPrefix20210308\Nette\Utils\Strings::contains($value, $oldPath)) {
+            if (\Typo3RectorPrefix20210311\Nette\Utils\Strings::contains($value, $oldPath)) {
                 return new \PhpParser\Node\Scalar\String_(\str_replace($oldPath, $newPath, $value));
             }
         }

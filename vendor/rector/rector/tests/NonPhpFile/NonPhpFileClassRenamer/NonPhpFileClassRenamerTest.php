@@ -9,22 +9,22 @@ use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\NonPhpFile\NonPhpFileClassRenamer;
 use Rector\Renaming\Tests\Rector\Name\RenameClassRector\Source\NewClass;
 use Rector\Renaming\Tests\Rector\Name\RenameClassRector\Source\OldClass;
-use Typo3RectorPrefix20210308\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210308\Symplify\EasyTesting\StaticFixtureSplitter;
-use Typo3RectorPrefix20210308\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210308\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo;
-final class NonPhpFileClassRenamerTest extends \Typo3RectorPrefix20210308\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210311\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210311\Symplify\EasyTesting\StaticFixtureSplitter;
+use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
+final class NonPhpFileClassRenamerTest extends \Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var array<string, string>
      */
     private const CLASS_RENAMES = [
-        'Session' => 'Typo3RectorPrefix20210308\\Illuminate\\Support\\Facades\\Session',
+        'Session' => 'Typo3RectorPrefix20210311\\Illuminate\\Support\\Facades\\Session',
         \Rector\Renaming\Tests\Rector\Name\RenameClassRector\Source\OldClass::class => \Rector\Renaming\Tests\Rector\Name\RenameClassRector\Source\NewClass::class,
         // Laravel
-        'Form' => 'Typo3RectorPrefix20210308\\Collective\\Html\\FormFacade',
-        'Html' => 'Typo3RectorPrefix20210308\\Collective\\Html\\HtmlFacade',
+        'Form' => 'Typo3RectorPrefix20210311\\Collective\\Html\\FormFacade',
+        'Html' => 'Typo3RectorPrefix20210311\\Collective\\Html\\HtmlFacade',
     ];
     /**
      * @var NonPhpFileClassRenamer
@@ -38,20 +38,20 @@ final class NonPhpFileClassRenamerTest extends \Typo3RectorPrefix20210308\Sympli
     {
         $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
         $this->nonPhpFileClassRenamer = $this->getService(\Rector\Core\NonPhpFile\NonPhpFileClassRenamer::class);
-        $this->parameterProvider = $this->getService(\Typo3RectorPrefix20210308\Symplify\PackageBuilder\Parameter\ParameterProvider::class);
+        $this->parameterProvider = $this->getService(\Typo3RectorPrefix20210311\Symplify\PackageBuilder\Parameter\ParameterProvider::class);
     }
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210308\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : void
+    public function test(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : void
     {
         $this->parameterProvider->changeParameter(\Rector\Core\Configuration\Option::AUTO_IMPORT_NAMES, \false);
-        $inputAndExpected = \Typo3RectorPrefix20210308\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToInputAndExpected($fixtureFileInfo);
+        $inputAndExpected = \Typo3RectorPrefix20210311\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToInputAndExpected($fixtureFileInfo);
         $changedContent = $this->nonPhpFileClassRenamer->renameClasses($inputAndExpected->getInput(), self::CLASS_RENAMES);
         $this->assertSame($inputAndExpected->getExpected(), $changedContent);
     }
     public function provideData() : \Iterator
     {
-        return \Typo3RectorPrefix20210308\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture', '*');
+        return \Typo3RectorPrefix20210311\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture', '*');
     }
 }

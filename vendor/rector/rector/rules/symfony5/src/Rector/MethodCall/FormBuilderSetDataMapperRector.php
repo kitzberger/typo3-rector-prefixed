@@ -20,15 +20,15 @@ final class FormBuilderSetDataMapperRector extends \Rector\Core\Rector\AbstractR
     /**
      * @var string
      */
-    private const REQUIRED_TYPE = 'Typo3RectorPrefix20210311\\Symfony\\Component\\Form\\FormConfigBuilderInterface';
+    private const REQUIRED_TYPE = 'Typo3RectorPrefix20210315\\Symfony\\Component\\Form\\FormConfigBuilderInterface';
     /**
      * @var string
      */
-    private const ARG_CORRECT_TYPE = 'Typo3RectorPrefix20210311\\Symfony\\Component\\Form\\Extension\\Core\\DataMapper\\DataMapper';
+    private const ARG_CORRECT_TYPE = 'Typo3RectorPrefix20210315\\Symfony\\Component\\Form\\Extension\\Core\\DataMapper\\DataMapper';
     /**
      * @var string
      */
-    private const ARG_MAPPER_TYPE = 'Typo3RectorPrefix20210311\\Symfony\\Component\\Form\\Extension\\Core\\DataAccessor\\PropertyPathAccessor';
+    private const ARG_MAPPER_TYPE = 'Typo3RectorPrefix20210315\\Symfony\\Component\\Form\\Extension\\Core\\DataAccessor\\PropertyPathAccessor';
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrates from deprecated Form Builder->setDataMapper(new PropertyPathMapper()) to Builder->setDataMapper(new DataMapper(new PropertyPathAccessor()))', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'

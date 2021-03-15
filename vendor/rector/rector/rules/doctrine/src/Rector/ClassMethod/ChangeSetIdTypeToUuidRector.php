@@ -7,7 +7,7 @@ use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\ClassMethod;
-use Typo3RectorPrefix20210311\Ramsey\Uuid\UuidInterface;
+use Typo3RectorPrefix20210315\Ramsey\Uuid\UuidInterface;
 use Rector\Core\Rector\AbstractRector;
 use Rector\Doctrine\PhpDocParser\DoctrineDocBlockResolver;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -85,11 +85,11 @@ CODE_SAMPLE
         // is already set?
         if ($node->params[0]->type !== null) {
             $currentType = $this->getName($node->params[0]->type);
-            if ($currentType === \Typo3RectorPrefix20210311\Ramsey\Uuid\UuidInterface::class) {
+            if ($currentType === \Typo3RectorPrefix20210315\Ramsey\Uuid\UuidInterface::class) {
                 return null;
             }
         }
-        $node->params[0]->type = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210311\\Ramsey\\Uuid\\UuidInterface');
+        $node->params[0]->type = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210315\\Ramsey\\Uuid\\UuidInterface');
         return $node;
     }
     private function renameUuidVariableToId(\PhpParser\Node\Stmt\ClassMethod $classMethod) : void

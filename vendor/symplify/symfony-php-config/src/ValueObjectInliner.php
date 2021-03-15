@@ -5,15 +5,15 @@ namespace Symplify\SymfonyPhpConfig;
 
 use ReflectionClass;
 use ReflectionMethod;
-use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator;
-use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
-use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator;
+use Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator;
+use Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
+use Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator;
 use Symplify\SymfonyPhpConfig\Reflection\ArgumentAndParameterFactory;
-use function Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\inline_service;
-use function Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use function Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\inline_service;
+use function Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 final class ValueObjectInliner
 {
-    public static function inlineArgumentObject(object $object, \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $servicesConfigurator) : \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
+    public static function inlineArgumentObject(object $object, \Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $servicesConfigurator) : \Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
     {
         $reflectionClass = new \ReflectionClass($object);
         $className = $reflectionClass->getName();
@@ -22,8 +22,8 @@ final class ValueObjectInliner
         // @see https://symfony.com/doc/current/service_container/factories.html#passing-arguments-to-the-factory-method
         $servicesConfigurator->set(\Symplify\SymfonyPhpConfig\Reflection\ArgumentAndParameterFactory::class);
         $argumentValues = self::resolveArgumentValues($reflectionClass, $object);
-        $servicesConfigurator->set($className)->factory([\Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\service(\Symplify\SymfonyPhpConfig\Reflection\ArgumentAndParameterFactory::class), 'create'])->args([$className, $argumentValues, $propertyValues]);
-        return \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\service($className);
+        $servicesConfigurator->set($className)->factory([\Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\service(\Symplify\SymfonyPhpConfig\Reflection\ArgumentAndParameterFactory::class), 'create'])->args([$className, $argumentValues, $propertyValues]);
+        return \Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\service($className);
     }
     /**
      * @param object|object[] $object
@@ -42,12 +42,12 @@ final class ValueObjectInliner
     public static function resolveArgumentValues(\ReflectionClass $reflectionClass, object $object) : array
     {
         $argumentValues = [];
-        $constructorMethodReflection = $reflectionClass->getConstructor();
-        if (!$constructorMethodReflection instanceof \ReflectionMethod) {
+        $constructorReflectionMethod = $reflectionClass->getConstructor();
+        if (!$constructorReflectionMethod instanceof \ReflectionMethod) {
             // value object without constructor
             return [];
         }
-        foreach ($constructorMethodReflection->getParameters() as $reflectionParameter) {
+        foreach ($constructorReflectionMethod->getParameters() as $reflectionParameter) {
             $parameterName = $reflectionParameter->getName();
             $propertyReflection = $reflectionClass->getProperty($parameterName);
             $propertyReflection->setAccessible(\true);
@@ -82,17 +82,21 @@ final class ValueObjectInliner
         }
         return $propertyValues;
     }
-    private static function inlineSingle(object $object) : \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator
+    private static function inlineSingle(object $object) : \Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator
     {
         $reflectionClass = new \ReflectionClass($object);
         $className = $reflectionClass->getName();
         $argumentValues = self::resolveArgumentValues($reflectionClass, $object);
-        $inlineServiceConfigurator = \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\Configurator\inline_service($className);
+        $inlineServiceConfigurator = \Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\Configurator\inline_service($className);
         if ($argumentValues !== []) {
             $inlineServiceConfigurator->args($argumentValues);
         }
         return $inlineServiceConfigurator;
     }
+    /**
+     * @param mixed|mixed[] $resolvedValue
+     * @return mixed|mixed[]
+     */
     private static function inlineNestedArrayObjects($resolvedValue)
     {
         if (\is_array($resolvedValue)) {

@@ -8,34 +8,34 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210311\Symfony\Component\Cache\DataCollector;
+namespace Typo3RectorPrefix20210315\Symfony\Component\Cache\DataCollector;
 
-use Typo3RectorPrefix20210311\Symfony\Component\Cache\Adapter\TraceableAdapter;
-use Typo3RectorPrefix20210311\Symfony\Component\Cache\Adapter\TraceableAdapterEvent;
-use Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\DataCollector\DataCollector;
-use Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
+use Typo3RectorPrefix20210315\Symfony\Component\Cache\Adapter\TraceableAdapter;
+use Typo3RectorPrefix20210315\Symfony\Component\Cache\Adapter\TraceableAdapterEvent;
+use Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210315\Symfony\Component\HttpKernel\DataCollector\DataCollector;
+use Typo3RectorPrefix20210315\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
 /**
  * @author Aaron Scherer <aequasi@gmail.com>
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  *
  * @final
  */
-class CacheDataCollector extends \Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class CacheDataCollector extends \Typo3RectorPrefix20210315\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \Typo3RectorPrefix20210315\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     /**
      * @var TraceableAdapter[]
      */
     private $instances = [];
-    public function addInstance(string $name, \Typo3RectorPrefix20210311\Symfony\Component\Cache\Adapter\TraceableAdapter $instance)
+    public function addInstance(string $name, \Typo3RectorPrefix20210315\Symfony\Component\Cache\Adapter\TraceableAdapter $instance)
     {
         $this->instances[$name] = $instance;
     }
     /**
      * {@inheritdoc}
      */
-    public function collect(\Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         $empty = ['calls' => [], 'config' => [], 'options' => [], 'statistics' => []];
         $this->data = ['instances' => $empty, 'total' => $empty];

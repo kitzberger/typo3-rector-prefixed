@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteCodeQuality\Tests\Rector\Assign\MakeGetComponentAssignAnnotatedRector\Source;
 
-use Typo3RectorPrefix20210311\Nette\Application\UI\Control;
-final class AnotherControl extends \Typo3RectorPrefix20210311\Nette\Application\UI\Control
+use Typo3RectorPrefix20210315\Nette\Application\UI\Control;
+final class AnotherControl extends \Typo3RectorPrefix20210315\Nette\Application\UI\Control
 {
 }

@@ -9,7 +9,7 @@ use PhpParser\Node\Stmt\Class_;
 use PHPStan\Type\ObjectType;
 use Rector\NodeTypeResolver\NodeTypeResolver;
 use Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType;
-use Typo3RectorPrefix20210311\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210315\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class StaticTypesInClassResolver
 {
     /**
@@ -20,7 +20,7 @@ final class StaticTypesInClassResolver
      * @var NodeTypeResolver
      */
     private $nodeTypeResolver;
-    public function __construct(\Typo3RectorPrefix20210311\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver)
+    public function __construct(\Typo3RectorPrefix20210315\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver)
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->nodeTypeResolver = $nodeTypeResolver;

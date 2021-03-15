@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\SetConfigResolver\Config;
+namespace Typo3RectorPrefix20210315\Symplify\SetConfigResolver\Config;
 
-use Typo3RectorPrefix20210311\Symfony\Component\Config\FileLocator;
-use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use Typo3RectorPrefix20210311\Symfony\Component\Yaml\Yaml;
-use Typo3RectorPrefix20210311\Symplify\SetConfigResolver\SetResolver;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210315\Symfony\Component\Config\FileLocator;
+use Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Typo3RectorPrefix20210315\Symplify\Astral\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210315\Symplify\SetConfigResolver\SetResolver;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
 final class SetsParameterResolver
 {
     /**
@@ -19,7 +19,7 @@ final class SetsParameterResolver
      * @var SetResolver
      */
     private $setResolver;
-    public function __construct(\Typo3RectorPrefix20210311\Symplify\SetConfigResolver\SetResolver $setResolver)
+    public function __construct(\Typo3RectorPrefix20210315\Symplify\SetConfigResolver\SetResolver $setResolver)
     {
         $this->setResolver = $setResolver;
     }
@@ -41,29 +41,21 @@ final class SetsParameterResolver
     /**
      * @return string[]
      */
-    private function resolveSetsFromFileInfo(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $configFileInfo) : array
+    private function resolveSetsFromFileInfo(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $configFileInfo) : array
     {
         if ($configFileInfo->hasSuffixes(['yml', 'yaml'])) {
-            return $this->resolveSetsParameterFromYamlFileInfo($configFileInfo);
+            throw new \Typo3RectorPrefix20210315\Symplify\Astral\Exception\ShouldNotHappenException('Only PHP config suffix is supported now. Migrete your Symfony config to PHP');
         }
         return $this->resolveSetsParameterFromPhpFileInfo($configFileInfo);
     }
     /**
      * @return string[]
      */
-    private function resolveSetsParameterFromYamlFileInfo(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $configFileInfo) : array
-    {
-        $configContent = \Typo3RectorPrefix20210311\Symfony\Component\Yaml\Yaml::parse($configFileInfo->getContents());
-        return (array) ($configContent['parameters'][self::SETS] ?? []);
-    }
-    /**
-     * @return string[]
-     */
-    private function resolveSetsParameterFromPhpFileInfo(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $configFileInfo) : array
+    private function resolveSetsParameterFromPhpFileInfo(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $configFileInfo) : array
     {
         // php file loader
-        $containerBuilder = new \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\ContainerBuilder();
-        $phpFileLoader = new \Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \Typo3RectorPrefix20210311\Symfony\Component\Config\FileLocator());
+        $containerBuilder = new \Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\ContainerBuilder();
+        $phpFileLoader = new \Typo3RectorPrefix20210315\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \Typo3RectorPrefix20210315\Symfony\Component\Config\FileLocator());
         $phpFileLoader->load($configFileInfo->getRealPath());
         if (!$containerBuilder->hasParameter(self::SETS)) {
             return [];

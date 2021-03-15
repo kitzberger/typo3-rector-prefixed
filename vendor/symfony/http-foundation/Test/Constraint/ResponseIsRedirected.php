@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use Typo3RectorPrefix20210311\PHPUnit\Framework\Constraint\Constraint;
-use Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Response;
-final class ResponseIsRedirected extends \Typo3RectorPrefix20210311\PHPUnit\Framework\Constraint\Constraint
+use Typo3RectorPrefix20210315\PHPUnit\Framework\Constraint\Constraint;
+use Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Response;
+final class ResponseIsRedirected extends \Typo3RectorPrefix20210315\PHPUnit\Framework\Constraint\Constraint
 {
     /**
      * {@inheritdoc}

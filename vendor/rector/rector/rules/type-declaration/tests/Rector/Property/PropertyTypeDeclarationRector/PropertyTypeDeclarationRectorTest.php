@@ -6,13 +6,13 @@ namespace Rector\TypeDeclaration\Tests\Rector\Property\PropertyTypeDeclarationRe
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
 use Rector\TypeDeclaration\Rector\Property\PropertyTypeDeclarationRector;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
 final class PropertyTypeDeclarationRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

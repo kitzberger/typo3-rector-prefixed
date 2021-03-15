@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\Astral\NodeValue;
+namespace Typo3RectorPrefix20210315\Symplify\Astral\NodeValue;
 
 use PhpParser\ConstExprEvaluationException;
 use PhpParser\ConstExprEvaluator;
@@ -19,9 +19,9 @@ use PhpParser\Node\Scalar\MagicConst\Dir;
 use PhpParser\Node\Scalar\MagicConst\File;
 use PhpParser\Node\Stmt\ClassLike;
 use ReflectionClassConstant;
-use Typo3RectorPrefix20210311\Symplify\Astral\Naming\SimpleNameResolver;
-use Typo3RectorPrefix20210311\Symplify\Astral\NodeFinder\ParentNodeFinder;
-use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Php\TypeChecker;
+use Typo3RectorPrefix20210315\Symplify\Astral\Naming\SimpleNameResolver;
+use Typo3RectorPrefix20210315\Symplify\Astral\NodeFinder\SimpleNodeFinder;
+use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Php\TypeChecker;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  */
@@ -44,17 +44,17 @@ final class NodeValueResolver
      */
     private $currentFilePath;
     /**
-     * @var ParentNodeFinder
+     * @var SimpleNodeFinder
      */
-    private $parentNodeFinder;
-    public function __construct(\Typo3RectorPrefix20210311\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \Typo3RectorPrefix20210311\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Typo3RectorPrefix20210311\Symplify\Astral\NodeFinder\ParentNodeFinder $parentNodeFinder)
+    private $simpleNodeFinder;
+    public function __construct(\Typo3RectorPrefix20210315\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \Typo3RectorPrefix20210315\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Typo3RectorPrefix20210315\Symplify\Astral\NodeFinder\SimpleNodeFinder $simpleNodeFinder)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->constExprEvaluator = new \PhpParser\ConstExprEvaluator(function (\PhpParser\Node\Expr $expr) {
             return $this->resolveByNode($expr);
         });
         $this->typeChecker = $typeChecker;
-        $this->parentNodeFinder = $parentNodeFinder;
+        $this->simpleNodeFinder = $simpleNodeFinder;
     }
     /**
      * @return array|bool|float|int|mixed|string|null
@@ -75,7 +75,7 @@ final class NodeValueResolver
     {
         $className = $this->simpleNameResolver->getName($classConstFetch->class);
         if ($className === 'self') {
-            $classLike = $this->parentNodeFinder->findFirstParentByType($classConstFetch, \PhpParser\Node\Stmt\ClassLike::class);
+            $classLike = $this->simpleNodeFinder->findFirstParentByType($classConstFetch, \PhpParser\Node\Stmt\ClassLike::class);
             if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
                 return null;
             }

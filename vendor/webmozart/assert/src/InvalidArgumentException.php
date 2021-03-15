@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210311\Webmozart\Assert;
+namespace Typo3RectorPrefix20210315\Webmozart\Assert;
 
 class InvalidArgumentException extends \InvalidArgumentException
 {

@@ -79,7 +79,7 @@ CODE_SAMPLE
         if (!$node->var instanceof \PhpParser\Node\Expr\PropertyFetch) {
             return null;
         }
-        if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210311\\Nette\\DI\\Container')) {
+        if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210315\\Nette\\DI\\Container')) {
             return null;
         }
         if (!$this->isName($node->name, 'getByType')) {

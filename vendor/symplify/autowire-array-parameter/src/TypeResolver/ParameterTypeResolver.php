@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\TypeResolver;
+namespace Typo3RectorPrefix20210315\Symplify\AutowireArrayParameter\TypeResolver;
 
-use Typo3RectorPrefix20210311\Nette\Utils\Reflection;
+use Typo3RectorPrefix20210315\Nette\Utils\Reflection;
 use ReflectionMethod;
-use Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+use Typo3RectorPrefix20210315\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
 final class ParameterTypeResolver
 {
     /**
@@ -16,7 +16,7 @@ final class ParameterTypeResolver
      * @var array<string, string>
      */
     private $resolvedParameterTypesCached = [];
-    public function __construct(\Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver $paramTypeDocBlockResolver)
+    public function __construct(\Typo3RectorPrefix20210315\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver $paramTypeDocBlockResolver)
     {
         $this->paramTypeDocBlockResolver = $paramTypeDocBlockResolver;
     }
@@ -26,8 +26,8 @@ final class ParameterTypeResolver
         if ($docComment === \false) {
             return null;
         }
-        $declaringClassReflection = $reflectionMethod->getDeclaringClass();
-        $uniqueKey = $parameterName . $declaringClassReflection->getName() . $reflectionMethod->getName();
+        $declaringReflectionClass = $reflectionMethod->getDeclaringClass();
+        $uniqueKey = $parameterName . $declaringReflectionClass->getName() . $reflectionMethod->getName();
         if (isset($this->resolvedParameterTypesCached[$uniqueKey])) {
             return $this->resolvedParameterTypesCached[$uniqueKey];
         }
@@ -39,7 +39,7 @@ final class ParameterTypeResolver
         if (\ctype_lower($resolvedType[0])) {
             return null;
         }
-        $resolvedClass = \Typo3RectorPrefix20210311\Nette\Utils\Reflection::expandClassName($resolvedType, $declaringClassReflection);
+        $resolvedClass = \Typo3RectorPrefix20210315\Nette\Utils\Reflection::expandClassName($resolvedType, $declaringReflectionClass);
         $this->resolvedParameterTypesCached[$uniqueKey] = $resolvedClass;
         return $resolvedClass;
     }

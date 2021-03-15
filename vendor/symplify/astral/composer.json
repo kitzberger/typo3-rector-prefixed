@@ -6,28 +6,28 @@
         "php": ">=7.3",
         "nette\/utils": "^3.2",
         "symfony\/dependency-injection": "^5.2",
-        "symplify\/autowire-array-parameter": "^9.2.6",
+        "symplify\/autowire-array-parameter": "^9.2.11",
         "symfony\/http-kernel": "^4.4|^5.2",
         "nikic\/php-parser": "^4.10.4",
-        "symplify\/package-builder": "^9.2.6"
+        "symplify\/package-builder": "^9.2.11"
     },
     "require-dev": {
-        "symplify\/easy-testing": "^9.2.6",
+        "symplify\/easy-testing": "^9.2.11",
         "phpunit\/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210311\\Symplify\\Astral\\": "src"
+            "Typo3RectorPrefix20210315\\Symplify\\Astral\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210311\\Symplify\\Astral\\Tests\\": "tests"
+            "Typo3RectorPrefix20210315\\Symplify\\Astral\\Tests\\": "tests"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "9.3-dev"
+            "dev-main": "9.3-dev"
         }
     },
     "minimum-stability": "dev",

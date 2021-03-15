@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocInfo\PhpDocInfoPrinter\Source;
 
-use Typo3RectorPrefix20210311\JMS\Serializer\Annotation as Serializer;
-use Typo3RectorPrefix20210311\Symfony\Component\Validator\Constraints as Assert;
+use Typo3RectorPrefix20210315\JMS\Serializer\Annotation as Serializer;
+use Typo3RectorPrefix20210315\Symfony\Component\Validator\Constraints as Assert;
 final class AnotherPropertyClass
 {
     /**

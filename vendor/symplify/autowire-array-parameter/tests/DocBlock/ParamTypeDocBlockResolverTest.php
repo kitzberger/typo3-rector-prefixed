@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\Tests\DocBlock;
+namespace Typo3RectorPrefix20210315\Symplify\AutowireArrayParameter\Tests\DocBlock;
 
 use Iterator;
-use Typo3RectorPrefix20210311\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
-final class ParamTypeDocBlockResolverTest extends \Typo3RectorPrefix20210311\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210315\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210315\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+final class ParamTypeDocBlockResolverTest extends \Typo3RectorPrefix20210315\PHPUnit\Framework\TestCase
 {
     /**
      * @var ParamTypeDocBlockResolver
@@ -14,7 +14,7 @@ final class ParamTypeDocBlockResolverTest extends \Typo3RectorPrefix20210311\PHP
     private $paramTypeDocBlockResolver;
     protected function setUp() : void
     {
-        $this->paramTypeDocBlockResolver = new \Typo3RectorPrefix20210311\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver();
+        $this->paramTypeDocBlockResolver = new \Typo3RectorPrefix20210315\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver();
     }
     /**
      * @dataProvider provideData()
@@ -38,6 +38,9 @@ final class ParamTypeDocBlockResolverTest extends \Typo3RectorPrefix20210311\PHP
         $resolvedType = $this->paramTypeDocBlockResolver->resolve($docBlock, $parameterName);
         $this->assertNull($resolvedType);
     }
+    /**
+     * @return Iterator<string[]>
+     */
     public function provideDataMissmatchName() : \Iterator
     {
         (yield ['/** @param Type[] $name */', '___not']);

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\SmartFileSystem\Tests\Normalizer;
+namespace Typo3RectorPrefix20210315\Symplify\SmartFileSystem\Tests\Normalizer;
 
 use Iterator;
-use Typo3RectorPrefix20210311\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\Normalizer\PathNormalizer;
-final class PathNormalizerTest extends \Typo3RectorPrefix20210311\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210315\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\Normalizer\PathNormalizer;
+final class PathNormalizerTest extends \Typo3RectorPrefix20210315\PHPUnit\Framework\TestCase
 {
     /**
      * @var PathNormalizer
@@ -14,7 +14,7 @@ final class PathNormalizerTest extends \Typo3RectorPrefix20210311\PHPUnit\Framew
     private $pathNormalizer;
     protected function setUp() : void
     {
-        $this->pathNormalizer = new \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\Normalizer\PathNormalizer();
+        $this->pathNormalizer = new \Typo3RectorPrefix20210315\Symplify\SmartFileSystem\Normalizer\PathNormalizer();
     }
     /**
      * @dataProvider provideData()
@@ -24,10 +24,13 @@ final class PathNormalizerTest extends \Typo3RectorPrefix20210311\PHPUnit\Framew
         $normalizedPath = $this->pathNormalizer->normalizePath($inputPath);
         $this->assertSame($expectedNormalizedPath, $normalizedPath);
     }
+    /**
+     * @return Iterator<string[]>
+     */
     public function provideData() : \Iterator
     {
         // based on Linux
         (yield ['/any/path', '/any/path']);
-        (yield ['Typo3RectorPrefix20210311\\any\\path', '/any/path']);
+        (yield ['Typo3RectorPrefix20210315\\any\\path', '/any/path']);
     }
 }

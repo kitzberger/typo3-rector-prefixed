@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210311\Symfony\Component\ErrorHandler;
+namespace Typo3RectorPrefix20210315\Symfony\Component\ErrorHandler;
 
-use Typo3RectorPrefix20210311\Psr\Log\AbstractLogger;
+use Typo3RectorPrefix20210315\Psr\Log\AbstractLogger;
 /**
  * A buffering logger that stacks logs for later.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class BufferingLogger extends \Typo3RectorPrefix20210311\Psr\Log\AbstractLogger
+class BufferingLogger extends \Typo3RectorPrefix20210315\Psr\Log\AbstractLogger
 {
     private $logs = [];
     public function log($level, $message, array $context = []) : void

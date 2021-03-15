@@ -21,18 +21,18 @@ final class ControlDimFetchAnalyzer
     }
     public function matchNameOnFormOrControlVariable(\PhpParser\Node $node) : ?string
     {
-        return $this->matchNameOnVariableTypes($node, ['Typo3RectorPrefix20210311\\Nette\\Application\\UI\\Form']);
+        return $this->matchNameOnVariableTypes($node, ['Typo3RectorPrefix20210315\\Nette\\Application\\UI\\Form']);
     }
     public function matchNameOnControlVariable(\PhpParser\Node $node) : ?string
     {
-        return $this->matchNameOnVariableTypes($node, ['Typo3RectorPrefix20210311\\Nette\\Application\\UI\\Control']);
+        return $this->matchNameOnVariableTypes($node, ['Typo3RectorPrefix20210315\\Nette\\Application\\UI\\Control']);
     }
     public function matchName(\PhpParser\Node $node) : ?string
     {
         if (!$node instanceof \PhpParser\Node\Expr\ArrayDimFetch) {
             return null;
         }
-        if (!$this->isVariableTypes($node->var, ['Typo3RectorPrefix20210311\\Nette\\ComponentModel\\IContainer'])) {
+        if (!$this->isVariableTypes($node->var, ['Typo3RectorPrefix20210315\\Nette\\ComponentModel\\IContainer'])) {
             return null;
         }
         if (!$node->dim instanceof \PhpParser\Node\Scalar\String_) {

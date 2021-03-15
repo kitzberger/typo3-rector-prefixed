@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\Astral\Tests\Naming;
+namespace Typo3RectorPrefix20210315\Symplify\Astral\Tests\Naming;
 
 use Iterator;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
-use Typo3RectorPrefix20210311\Symplify\Astral\HttpKernel\AstralKernel;
-use Typo3RectorPrefix20210311\Symplify\Astral\Naming\SimpleNameResolver;
-use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class SimpleNameResolverTest extends \Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210315\Symplify\Astral\HttpKernel\AstralKernel;
+use Typo3RectorPrefix20210315\Symplify\Astral\Naming\SimpleNameResolver;
+use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class SimpleNameResolverTest extends \Typo3RectorPrefix20210315\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var SimpleNameResolver
@@ -17,8 +17,8 @@ final class SimpleNameResolverTest extends \Typo3RectorPrefix20210311\Symplify\P
     private $simpleNameResolver;
     protected function setUp() : void
     {
-        $this->bootKernel(\Typo3RectorPrefix20210311\Symplify\Astral\HttpKernel\AstralKernel::class);
-        $this->simpleNameResolver = $this->getService(\Typo3RectorPrefix20210311\Symplify\Astral\Naming\SimpleNameResolver::class);
+        $this->bootKernel(\Typo3RectorPrefix20210315\Symplify\Astral\HttpKernel\AstralKernel::class);
+        $this->simpleNameResolver = $this->getService(\Typo3RectorPrefix20210315\Symplify\Astral\Naming\SimpleNameResolver::class);
     }
     /**
      * @dataProvider provideData()
@@ -28,6 +28,9 @@ final class SimpleNameResolverTest extends \Typo3RectorPrefix20210311\Symplify\P
         $resolvedName = $this->simpleNameResolver->getName($node);
         $this->assertSame($expectedName, $resolvedName);
     }
+    /**
+     * @return Iterator<string[]|Identifier[]>
+     */
     public function provideData() : \Iterator
     {
         $identifier = new \PhpParser\Node\Identifier('first name');

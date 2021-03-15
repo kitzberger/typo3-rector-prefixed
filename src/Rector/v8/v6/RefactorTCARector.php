@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v8\v6;
 
-use Typo3RectorPrefix20210311\Nette\Utils\Strings;
+use Typo3RectorPrefix20210315\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
@@ -23,7 +23,7 @@ final class RefactorTCARector extends \Rector\Core\Rector\AbstractRector
     /**
      * @var array
      */
-    private const MAP_WIZARD_TO_FIELD_CONTROL = ['edit' => 'editPopup', 'add' => 'addRecord', 'list' => 'listModule', 'link' => 'linkPopup'];
+    private const MAP_WIZARD_TO_FIELD_CONTROL = ['edit' => 'editPopup', 'add' => 'addRecord', 'list' => 'listModule', 'link' => 'linkPopup', 'RTE' => 'fullScreenRichtext'];
     /**
      * @var array
      */
@@ -146,7 +146,7 @@ CODE_SAMPLE
                     if (null === $configItemValue->key) {
                         continue;
                     }
-                    if (!$this->valueResolver->isValues($configItemValue->key, ['wizards', 'RTE'])) {
+                    if (!$this->valueResolver->isValues($configItemValue->key, ['wizards'])) {
                         continue;
                     }
                     if (!$configItemValue->value instanceof \PhpParser\Node\Expr\Array_) {
@@ -154,10 +154,11 @@ CODE_SAMPLE
                     }
                     $fieldControl = [];
                     $customTypeOptions = [];
-                    $isRte = $this->valueResolver->isValue($configItemValue->key, 'RTE');
-                    if ($isRte) {
-                        $fieldControl['fullScreenRichtext']['disabled'] = \false;
-                    }
+                    //                    $isRte = $this->valueResolver->isValue($configItemValue->key, 'RTE');
+                    //                    if ($isRte) {
+                    //                        $fieldControl['fullScreenRichtext']['disabled'] = false;
+                    //                    }
+                    //
                     $remainingWizards = \count($configItemValue->value->items);
                     foreach ($configItemValue->value->items as $wizardItemValue) {
                         if (null === $wizardItemValue) {
@@ -167,7 +168,7 @@ CODE_SAMPLE
                             continue;
                         }
                         $validWizard = $this->isValidWizard($wizardItemValue);
-                        if ($validWizard || \Typo3RectorPrefix20210311\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_') || $isRte) {
+                        if ($validWizard || \Typo3RectorPrefix20210315\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_')) {
                             --$remainingWizards;
                         }
                         if (!$validWizard) {

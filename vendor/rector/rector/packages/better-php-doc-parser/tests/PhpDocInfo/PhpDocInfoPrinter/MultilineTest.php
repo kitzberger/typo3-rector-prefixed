@@ -18,7 +18,7 @@ use Rector\BetterPhpDocParser\Tests\PhpDocInfo\PhpDocInfoPrinter\Source\RoutePro
 use Rector\BetterPhpDocParser\Tests\PhpDocInfo\PhpDocInfoPrinter\Source\SinglePropertyClass;
 use Rector\BetterPhpDocParser\Tests\PhpDocInfo\PhpDocInfoPrinter\Source\TableClass;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
 final class MultilineTest extends \Rector\BetterPhpDocParser\Tests\PhpDocInfo\PhpDocInfoPrinter\AbstractPhpDocInfoPrinterTest
 {
     /**
@@ -30,7 +30,7 @@ final class MultilineTest extends \Rector\BetterPhpDocParser\Tests\PhpDocInfo\Ph
     {
         $docComment = $this->smartFileSystem->readFile($docFilePath);
         $phpDocInfo = $this->createPhpDocInfoFromDocCommentAndNode($docComment, $node);
-        $fileInfo = new \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo($docFilePath);
+        $fileInfo = new \Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo($docFilePath);
         $relativeFilePathFromCwd = $fileInfo->getRelativeFilePathFromCwd();
         $printedPhpDocInfo = $this->phpDocInfoPrinter->printFormatPreserving($phpDocInfo);
         $this->assertSame($docComment, $printedPhpDocInfo, $relativeFilePathFromCwd);

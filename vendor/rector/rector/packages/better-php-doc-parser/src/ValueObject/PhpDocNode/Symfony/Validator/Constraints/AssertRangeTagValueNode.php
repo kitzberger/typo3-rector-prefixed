@@ -11,7 +11,7 @@ final class AssertRangeTagValueNode extends \Rector\BetterPhpDocParser\ValueObje
 {
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210311\\@Assert\\Range';
+        return 'Typo3RectorPrefix20210315\\@Assert\\Range';
     }
     /**
      * @return mixed[]
@@ -22,6 +22,6 @@ final class AssertRangeTagValueNode extends \Rector\BetterPhpDocParser\ValueObje
     }
     public function getAttributeClassName() : string
     {
-        return 'Typo3RectorPrefix20210311\\Symfony\\Component\\Validator\\Constraints\\Range';
+        return 'Typo3RectorPrefix20210315\\Symfony\\Component\\Validator\\Constraints\\Range';
     }
 }

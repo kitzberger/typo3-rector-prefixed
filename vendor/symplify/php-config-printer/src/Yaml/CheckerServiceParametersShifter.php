@@ -1,12 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\Yaml;
+namespace Typo3RectorPrefix20210315\Symplify\PhpConfigPrinter\Yaml;
 
-use Typo3RectorPrefix20210311\Nette\Utils\Strings;
-use ReflectionClass;
-use Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Strings\StringFormatConverter;
+use Typo3RectorPrefix20210315\Nette\Utils\Strings;
+use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Strings\StringFormatConverter;
 /**
  * @copy of https://github.com/symplify/symplify/blob/d4beda1b1af847599aa035ead755e03db81c7247/packages/easy-coding-standard/src/Yaml/CheckerServiceParametersShifter.php
  *
@@ -39,25 +37,17 @@ final class CheckerServiceParametersShifter
      */
     private const SERVICES_KEY = 'services';
     /**
-     * @var string
-     */
-    private const SERVICE_KEYWORDS_KEY_STATIC = 'serviceKeywords';
-    /**
-     * @var string
-     */
-    private const SERVICE_KEYWORDS_KEY_CONST = 'SERVICE_KEYWORDS';
-    /**
+     * @see \Symfony\Component\DependencyInjection\Loader\YamlFileLoader::SERVICE_KEYWORDS
      * @var string[]
      */
-    private $serviceKeywords = [];
+    private const SERVICE_KEYWORDS = ['alias', 'parent', 'class', 'shared', 'synthetic', 'lazy', 'public', 'abstract', 'deprecated', 'factory', 'file', 'arguments', 'properties', 'configurator', 'calls', 'tags', 'decorates', 'decoration_inner_name', 'decoration_priority', 'decoration_on_invalid', 'autowire', 'autoconfigure', 'bind'];
     /**
      * @var StringFormatConverter
      */
     private $stringFormatConverter;
     public function __construct()
     {
-        $this->stringFormatConverter = new \Typo3RectorPrefix20210311\Symplify\PackageBuilder\Strings\StringFormatConverter();
-        $this->initializeServiceKeywords();
+        $this->stringFormatConverter = new \Typo3RectorPrefix20210315\Symplify\PackageBuilder\Strings\StringFormatConverter();
     }
     /**
      * @param mixed[] $configuration
@@ -90,10 +80,10 @@ final class CheckerServiceParametersShifter
             if ($serviceDefinition === []) {
                 continue;
             }
-            if (\Typo3RectorPrefix20210311\Nette\Utils\Strings::endsWith($serviceName, 'Fixer')) {
+            if (\Typo3RectorPrefix20210315\Nette\Utils\Strings::endsWith($serviceName, 'Fixer')) {
                 $services = $this->processFixer($services, $serviceName, $serviceDefinition);
             }
-            if (\Typo3RectorPrefix20210311\Nette\Utils\Strings::endsWith($serviceName, 'Sniff')) {
+            if (\Typo3RectorPrefix20210315\Nette\Utils\Strings::endsWith($serviceName, 'Sniff')) {
                 $services = $this->processSniff($services, $serviceName, $serviceDefinition);
             }
             // cleanup parameters
@@ -103,7 +93,10 @@ final class CheckerServiceParametersShifter
     }
     private function isCheckerClass(string $checker) : bool
     {
-        return \Typo3RectorPrefix20210311\Nette\Utils\Strings::endsWith($checker, 'Fixer') || \Typo3RectorPrefix20210311\Nette\Utils\Strings::endsWith($checker, 'Sniff');
+        if (\Typo3RectorPrefix20210315\Nette\Utils\Strings::endsWith($checker, 'Fixer')) {
+            return \true;
+        }
+        return \Typo3RectorPrefix20210315\Nette\Utils\Strings::endsWith($checker, 'Sniff');
     }
     /**
      * @param mixed[] $services
@@ -161,7 +154,7 @@ final class CheckerServiceParametersShifter
         if (!\is_string($key)) {
             return \false;
         }
-        return \in_array($key, $this->serviceKeywords, \true);
+        return \in_array($key, self::SERVICE_KEYWORDS, \true);
     }
     /**
      * @return mixed|mixed[]|string
@@ -177,23 +170,6 @@ final class CheckerServiceParametersShifter
             }
             return $value;
         }
-        return \Typo3RectorPrefix20210311\Nette\Utils\Strings::replace($value, '#^@#', '@@');
-    }
-    private function initializeServiceKeywords() : void
-    {
-        $reflectionClass = new \ReflectionClass(\Typo3RectorPrefix20210311\Symfony\Component\DependencyInjection\Loader\YamlFileLoader::class);
-        /** @var array<string, mixed> $constants */
-        $constants = $reflectionClass->getConstants();
-        if (\array_key_exists(self::SERVICE_KEYWORDS_KEY_CONST, $constants)) {
-            /** @var string[] $serviceKeywordsProperty */
-            $serviceKeywordsProperty = $constants[self::SERVICE_KEYWORDS_KEY_CONST];
-            $this->serviceKeywords = $serviceKeywordsProperty;
-            return;
-        }
-        /** @var array<string, mixed> $staticProperties */
-        $staticProperties = $reflectionClass->getStaticProperties();
-        /** @var string[] $serviceKeywordsProperty */
-        $serviceKeywordsProperty = $staticProperties[self::SERVICE_KEYWORDS_KEY_STATIC];
-        $this->serviceKeywords = $serviceKeywordsProperty;
+        return \Typo3RectorPrefix20210315\Nette\Utils\Strings::replace($value, '#^@#', '@@');
     }
 }

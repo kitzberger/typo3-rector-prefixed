@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\NodeTraverser;
+namespace Typo3RectorPrefix20210315\Symplify\PhpConfigPrinter\NodeTraverser;
 
-use Typo3RectorPrefix20210311\Nette\Utils\Strings;
+use Typo3RectorPrefix20210315\Nette\Utils\Strings;
 use PhpParser\BuilderFactory;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Nop;
 use PhpParser\Node\Stmt\Use_;
 use PhpParser\NodeTraverser;
-use Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\NodeVisitor\ImportFullyQualifiedNamesNodeVisitor;
+use Typo3RectorPrefix20210315\Symplify\PhpConfigPrinter\NodeVisitor\ImportFullyQualifiedNamesNodeVisitor;
 final class ImportFullyQualifiedNamesNodeTraverser
 {
     /**
@@ -21,7 +21,7 @@ final class ImportFullyQualifiedNamesNodeTraverser
      * @var BuilderFactory
      */
     private $builderFactory;
-    public function __construct(\Typo3RectorPrefix20210311\Symplify\PhpConfigPrinter\NodeVisitor\ImportFullyQualifiedNamesNodeVisitor $importFullyQualifiedNamesNodeVisitor, \PhpParser\BuilderFactory $builderFactory)
+    public function __construct(\Typo3RectorPrefix20210315\Symplify\PhpConfigPrinter\NodeVisitor\ImportFullyQualifiedNamesNodeVisitor $importFullyQualifiedNamesNodeVisitor, \PhpParser\BuilderFactory $builderFactory)
     {
         $this->importFullyQualifiedNamesNodeVisitor = $importFullyQualifiedNamesNodeVisitor;
         $this->builderFactory = $builderFactory;
@@ -73,7 +73,7 @@ final class ImportFullyQualifiedNamesNodeTraverser
     {
         $useImports = [];
         foreach ($nameImports as $nameImport) {
-            $shortNameImport = \Typo3RectorPrefix20210311\Nette\Utils\Strings::after($nameImport, '\\', -1);
+            $shortNameImport = \Typo3RectorPrefix20210315\Nette\Utils\Strings::after($nameImport, '\\', -1);
             if (\function_exists($nameImport) || $shortNameImport === 'ref') {
                 $useBuilder = $this->builderFactory->useFunction(new \PhpParser\Node\Name($nameImport));
                 /** @var Use_ $use */

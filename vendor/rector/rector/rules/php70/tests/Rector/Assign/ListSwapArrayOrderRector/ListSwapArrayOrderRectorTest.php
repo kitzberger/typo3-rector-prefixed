@@ -6,13 +6,13 @@ namespace Rector\Php70\Tests\Rector\Assign\ListSwapArrayOrderRector;
 use Iterator;
 use Rector\Php70\Rector\Assign\ListSwapArrayOrderRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
 final class ListSwapArrayOrderRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

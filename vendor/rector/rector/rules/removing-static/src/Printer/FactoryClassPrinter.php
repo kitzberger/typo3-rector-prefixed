@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Rector\RemovingStatic\Printer;
 
-use Typo3RectorPrefix20210311\Nette\Utils\Strings;
+use Typo3RectorPrefix20210315\Nette\Utils\Strings;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Namespace_;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileSystem;
 final class FactoryClassPrinter
 {
     /**
@@ -26,7 +26,7 @@ final class FactoryClassPrinter
      * @var BetterStandardPrinter
      */
     private $betterStandardPrinter;
-    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver)
+    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver)
     {
         $this->nodeNameResolver = $nodeNameResolver;
         $this->betterStandardPrinter = $betterStandardPrinter;
@@ -50,15 +50,15 @@ final class FactoryClassPrinter
     private function createFactoryClassFilePath(\PhpParser\Node\Stmt\Class_ $oldClass) : string
     {
         $classFileInfo = $oldClass->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$classFileInfo instanceof \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$classFileInfo instanceof \Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo) {
             throw new \Rector\Core\Exception\ShouldNotHappenException();
         }
-        $directoryPath = \Typo3RectorPrefix20210311\Nette\Utils\Strings::before($classFileInfo->getRealPath(), \DIRECTORY_SEPARATOR, -1);
+        $directoryPath = \Typo3RectorPrefix20210315\Nette\Utils\Strings::before($classFileInfo->getRealPath(), \DIRECTORY_SEPARATOR, -1);
         $resolvedOldClass = $this->nodeNameResolver->getName($oldClass);
         if ($resolvedOldClass === null) {
             throw new \Rector\Core\Exception\ShouldNotHappenException();
         }
-        $bareClassName = \Typo3RectorPrefix20210311\Nette\Utils\Strings::after($resolvedOldClass, '\\', -1) . 'Factory.php';
+        $bareClassName = \Typo3RectorPrefix20210315\Nette\Utils\Strings::after($resolvedOldClass, '\\', -1) . 'Factory.php';
         return $directoryPath . \DIRECTORY_SEPARATOR . $bareClassName;
     }
 }

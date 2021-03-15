@@ -27,9 +27,9 @@ final class NetteClassAnalyzer
         if (!$class instanceof \PhpParser\Node\Stmt\Class_) {
             return \false;
         }
-        if (!$this->nodeTypeResolver->isObjectType($class, 'Typo3RectorPrefix20210311\\Nette\\Application\\UI\\Control')) {
+        if (!$this->nodeTypeResolver->isObjectType($class, 'Typo3RectorPrefix20210315\\Nette\\Application\\UI\\Control')) {
             return \false;
         }
-        return !$this->nodeTypeResolver->isObjectType($class, 'Typo3RectorPrefix20210311\\Nette\\Application\\UI\\Presenter');
+        return !$this->nodeTypeResolver->isObjectType($class, 'Typo3RectorPrefix20210315\\Nette\\Application\\UI\\Presenter');
     }
 }

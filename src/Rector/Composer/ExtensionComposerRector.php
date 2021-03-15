@@ -4,11 +4,11 @@ declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\Composer;
 
 use Rector\Composer\Contract\Rector\ComposerRectorInterface;
-use Typo3RectorPrefix20210311\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210315\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\RuleDocGenerator\Contract\DocumentedRuleInterface;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ExtensionArchitecture/ComposerJson/Index.html#extra
  * @see \Ssch\TYPO3Rector\Tests\Rector\Composer\ExtensionComposerRector\ExtensionComposerRectorTest
@@ -23,7 +23,7 @@ final class ExtensionComposerRector implements \Rector\Composer\Contract\Rector\
      * @var mixed|string|string[]
      */
     private $defaultTypo3VersionConstraint = '';
-    public function refactor(\Typo3RectorPrefix20210311\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function refactor(\Typo3RectorPrefix20210315\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         if ('typo3-cms-extension' !== $composerJson->getType()) {
             return;
@@ -32,16 +32,10 @@ final class ExtensionComposerRector implements \Rector\Composer\Contract\Rector\
             $composerJson->addRequiredPackage('typo3/cms-core', $this->defaultTypo3VersionConstraint);
             $composerJson->changePackageVersion('typo3/cms-core', $this->defaultTypo3VersionConstraint);
         }
-        $extra = $composerJson->getExtra();
-        if (isset($extra['typo3/cms']['extension-key'])) {
-            return;
-        }
-        $fileInfo = $composerJson->getFileInfo();
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo) {
-            return;
-        }
-        $extra['typo3/cms'] = ['extension-key' => \basename(\dirname($fileInfo->getRealPath()))];
-        $composerJson->setExtra($extra);
+        $this->addExtensionKey($composerJson);
+        $this->addDescription($composerJson);
+        $this->addLicense($composerJson);
+        $this->fixPackageName($composerJson);
     }
     /**
      * @param array<string, string[]> $configuration
@@ -73,5 +67,48 @@ CODE_SAMPLE
 }
 CODE_SAMPLE
 , [self::TYPO3_VERSION_CONSTRAINT => '^10.4'])]);
+    }
+    private function addExtensionKey(\Typo3RectorPrefix20210315\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    {
+        $extra = $composerJson->getExtra();
+        if (isset($extra['typo3/cms']['extension-key'])) {
+            return;
+        }
+        $fileInfo = $composerJson->getFileInfo();
+        if (!$fileInfo instanceof \Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo) {
+            return;
+        }
+        $extra['typo3/cms']['extension-key'] = \basename(\dirname($fileInfo->getRealPath()));
+        $composerJson->setExtra($extra);
+    }
+    private function addDescription(\Typo3RectorPrefix20210315\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    {
+        $description = $composerJson->getDescription();
+        if ('' !== $description && null !== $description) {
+            return;
+        }
+        $composerJson->setDescription('Add description...');
+    }
+    private function addLicense(\Typo3RectorPrefix20210315\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    {
+        $license = $composerJson->getLicense();
+        if ('' !== $license && null !== $license && [] !== $license) {
+            return;
+        }
+        $composerJson->setLicense('GPL-2.0-or-later');
+    }
+    private function fixPackageName(\Typo3RectorPrefix20210315\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    {
+        $name = $composerJson->getName();
+        if ('' === $name) {
+            return;
+        }
+        if (null === $name) {
+            return;
+        }
+        if (\false === \strpos($name, '_')) {
+            return;
+        }
+        $composerJson->setName(\str_replace('_', '-', $name));
     }
 }

@@ -5,8 +5,8 @@ namespace Rector\RectorGenerator\Tests\Provider;
 
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\RectorGenerator\Provider\PackageNamesProvider;
-use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class PackageNamesProviderTest extends \Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class PackageNamesProviderTest extends \Typo3RectorPrefix20210315\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var PackageNamesProvider

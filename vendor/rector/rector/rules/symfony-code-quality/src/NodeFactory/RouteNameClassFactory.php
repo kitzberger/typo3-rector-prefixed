@@ -8,8 +8,8 @@ use Rector\Core\PhpParser\Node\NodeFactory;
 use Rector\SymfonyCodeQuality\Composer\ComposerNamespaceMatcher;
 use Rector\SymfonyCodeQuality\ValueObject\ClassName;
 use Rector\SymfonyCodeQuality\ValueObject\ConstantNameAndValue;
-use Typo3RectorPrefix20210311\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder;
-use Typo3RectorPrefix20210311\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder;
+use Typo3RectorPrefix20210315\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder;
+use Typo3RectorPrefix20210315\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder;
 final class RouteNameClassFactory
 {
     /**
@@ -30,7 +30,7 @@ final class RouteNameClassFactory
      */
     public function create(array $constantNamesAndValues, string $fileLocation) : \PhpParser\Node\Stmt\Namespace_
     {
-        $classBuilder = new \Typo3RectorPrefix20210311\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder(\Rector\SymfonyCodeQuality\ValueObject\ClassName::ROUTE_CLASS_SHORT_NAME);
+        $classBuilder = new \Typo3RectorPrefix20210315\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder(\Rector\SymfonyCodeQuality\ValueObject\ClassName::ROUTE_CLASS_SHORT_NAME);
         $classBuilder->makeFinal();
         $namespaceName = $this->composerNamespaceMatcher->matchNamespaceForLocation($fileLocation);
         if ($namespaceName === null) {
@@ -42,7 +42,7 @@ final class RouteNameClassFactory
             $classConst = $this->nodeFactory->createPublicClassConst($constantNameAndValue->getName(), $constantNameAndValue->getValue());
             $classBuilder->addStmt($classConst);
         }
-        $namespaceBuilder = new \Typo3RectorPrefix20210311\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder($namespaceName);
+        $namespaceBuilder = new \Typo3RectorPrefix20210315\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder($namespaceName);
         $namespaceBuilder->addStmt($classBuilder->getNode());
         return $namespaceBuilder->getNode();
     }

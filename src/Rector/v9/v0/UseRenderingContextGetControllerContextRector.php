@@ -4,12 +4,14 @@ declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v9\v0;
 
 use PhpParser\Node;
+use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Stmt\Class_;
-use PhpParser\Node\Stmt\Property;
 use Rector\Core\Rector\AbstractRector;
+use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper as CoreAbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.0/Breaking-82414-RemoveCMSBaseViewHelperClasses.html
@@ -28,10 +30,9 @@ final class UseRenderingContextGetControllerContextRector extends \Rector\Core\R
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectTypes($node, [\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class, \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class])) {
+        if (!$this->isObjectTypes($node, [\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class, \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::class])) {
             return null;
         }
-        $this->removeProperties($node, ['controllerContext']);
         $this->replaceWithRenderingContextGetControllerContext($node);
         return null;
     }
@@ -43,8 +44,6 @@ final class UseRenderingContextGetControllerContextRector extends \Rector\Core\R
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Get controllerContext from renderingContext', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 class MyViewHelperAccessingControllerContext extends AbstractViewHelper
 {
-    protected $controllerContext;
-
     public function render()
     {
         $controllerContext = $this->controllerContext;
@@ -72,23 +71,12 @@ CODE_SAMPLE
                 if (!$this->isName($node, 'controllerContext')) {
                     return null;
                 }
+                $parentNode = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE);
+                if ($parentNode instanceof \PhpParser\Node\Expr\Assign && $parentNode->var === $node) {
+                    return null;
+                }
                 return $this->nodeFactory->createMethodCall($this->nodeFactory->createPropertyFetch('this', 'renderingContext'), 'getControllerContext');
             });
         }
-    }
-    /**
-     * @param string[] $propertyNames
-     */
-    private function removeProperties(\PhpParser\Node\Stmt\Class_ $class, array $propertyNames) : void
-    {
-        $this->traverseNodesWithCallable($class, function (\PhpParser\Node $node) use($propertyNames) {
-            if (!$node instanceof \PhpParser\Node\Stmt\Property) {
-                return null;
-            }
-            if (!$this->isNames($node, $propertyNames)) {
-                return null;
-            }
-            $this->removeNode($node);
-        });
     }
 }

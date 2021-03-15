@@ -8,11 +8,11 @@ use Rector\Comments\CommentRemover;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
 use Rector\FileSystemRector\Parser\FileInfoParser;
-use Typo3RectorPrefix20210311\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210311\Symplify\EasyTesting\StaticFixtureSplitter;
-use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo;
-final class CommentRemoverTest extends \Typo3RectorPrefix20210311\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210315\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210315\Symplify\EasyTesting\StaticFixtureSplitter;
+use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
+final class CommentRemoverTest extends \Typo3RectorPrefix20210315\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var CommentRemover
@@ -36,9 +36,9 @@ final class CommentRemoverTest extends \Typo3RectorPrefix20210311\Symplify\Packa
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210311\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function test(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
-        $fileInfoToLocalInputAndExpected = \Typo3RectorPrefix20210311\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToLocalInputAndExpected($smartFileInfo);
+        $fileInfoToLocalInputAndExpected = \Typo3RectorPrefix20210315\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToLocalInputAndExpected($smartFileInfo);
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($fileInfoToLocalInputAndExpected->getInputFileInfo());
         $nodesWithoutComments = $this->commentRemover->removeFromNode($nodes);
         $fileContent = $this->betterStandardPrinter->print($nodesWithoutComments);
@@ -51,6 +51,6 @@ final class CommentRemoverTest extends \Typo3RectorPrefix20210311\Symplify\Packa
     }
     public function provideData() : \Iterator
     {
-        return \Typo3RectorPrefix20210311\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture', '*.php.inc');
+        return \Typo3RectorPrefix20210315\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture', '*.php.inc');
     }
 }

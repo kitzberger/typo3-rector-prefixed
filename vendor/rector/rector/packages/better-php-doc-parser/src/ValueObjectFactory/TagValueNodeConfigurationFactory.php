@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\ValueObjectFactory;
 
-use Typo3RectorPrefix20210311\Nette\Utils\Strings;
+use Typo3RectorPrefix20210315\Nette\Utils\Strings;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
 use Rector\BetterPhpDocParser\Contract\Doctrine\DoctrineTagNodeInterface;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\SilentKeyNodeInterface;
@@ -11,7 +11,7 @@ use Rector\BetterPhpDocParser\Utils\ArrayItemStaticHelper;
 use Rector\BetterPhpDocParser\ValueObject\PhpDocNode\Sensio\SensioRouteTagValueNode;
 use Rector\BetterPhpDocParser\ValueObject\PhpDocNode\Symfony\SymfonyRouteTagValueNode;
 use Rector\BetterPhpDocParser\ValueObject\TagValueNodeConfiguration;
-use Typo3RectorPrefix20210311\Symplify\PackageBuilder\Php\TypeChecker;
+use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Php\TypeChecker;
 /**
  * @see \Rector\BetterPhpDocParser\Tests\ValueObjectFactory\TagValueNodeConfigurationFactoryTest
  */
@@ -46,7 +46,7 @@ final class TagValueNodeConfigurationFactory
      * @var TypeChecker
      */
     private $typeChecker;
-    public function __construct(\Typo3RectorPrefix20210311\Symplify\PackageBuilder\Php\TypeChecker $typeChecker)
+    public function __construct(\Typo3RectorPrefix20210315\Symplify\PackageBuilder\Php\TypeChecker $typeChecker)
     {
         $this->typeChecker = $typeChecker;
     }
@@ -57,15 +57,15 @@ final class TagValueNodeConfigurationFactory
         }
         $silentKey = $this->resolveSilentKey($phpDocTagValueNode);
         $orderedVisibleItems = \Rector\BetterPhpDocParser\Utils\ArrayItemStaticHelper::resolveAnnotationItemsOrder($originalContent, $silentKey);
-        $hasNewlineAfterOpening = (bool) \Typo3RectorPrefix20210311\Nette\Utils\Strings::match($originalContent, self::NEWLINE_AFTER_OPENING_REGEX);
-        $hasNewlineBeforeClosing = (bool) \Typo3RectorPrefix20210311\Nette\Utils\Strings::match($originalContent, self::NEWLINE_BEFORE_CLOSING_REGEX);
-        $hasOpeningBracket = (bool) \Typo3RectorPrefix20210311\Nette\Utils\Strings::match($originalContent, self::OPENING_BRACKET_REGEX);
-        $hasClosingBracket = (bool) \Typo3RectorPrefix20210311\Nette\Utils\Strings::match($originalContent, self::CLOSING_BRACKET_REGEX);
+        $hasNewlineAfterOpening = (bool) \Typo3RectorPrefix20210315\Nette\Utils\Strings::match($originalContent, self::NEWLINE_AFTER_OPENING_REGEX);
+        $hasNewlineBeforeClosing = (bool) \Typo3RectorPrefix20210315\Nette\Utils\Strings::match($originalContent, self::NEWLINE_BEFORE_CLOSING_REGEX);
+        $hasOpeningBracket = (bool) \Typo3RectorPrefix20210315\Nette\Utils\Strings::match($originalContent, self::OPENING_BRACKET_REGEX);
+        $hasClosingBracket = (bool) \Typo3RectorPrefix20210315\Nette\Utils\Strings::match($originalContent, self::CLOSING_BRACKET_REGEX);
         $keysByQuotedStatus = [];
         foreach ($orderedVisibleItems as $orderedVisibleItem) {
             $keysByQuotedStatus[$orderedVisibleItem] = $this->isKeyQuoted($originalContent, $orderedVisibleItem, $silentKey);
         }
-        $isSilentKeyExplicit = \Typo3RectorPrefix20210311\Nette\Utils\Strings::contains($originalContent, \sprintf('%s=', $silentKey));
+        $isSilentKeyExplicit = \Typo3RectorPrefix20210315\Nette\Utils\Strings::contains($originalContent, \sprintf('%s=', $silentKey));
         $arrayEqualSign = $this->resolveArraySeparatorSign($originalContent, $phpDocTagValueNode);
         return new \Rector\BetterPhpDocParser\ValueObject\TagValueNodeConfiguration($originalContent, $orderedVisibleItems, $hasNewlineAfterOpening, $hasNewlineBeforeClosing, $hasOpeningBracket, $hasClosingBracket, $keysByQuotedStatus, $silentKey, $isSilentKeyExplicit, $arrayEqualSign);
     }
@@ -80,16 +80,16 @@ final class TagValueNodeConfigurationFactory
     {
         $escapedKey = \preg_quote($key, '#');
         $quotedKeyPattern = $this->createQuotedKeyPattern($silentKey, $key, $escapedKey);
-        if ((bool) \Typo3RectorPrefix20210311\Nette\Utils\Strings::match($originalContent, $quotedKeyPattern)) {
+        if ((bool) \Typo3RectorPrefix20210315\Nette\Utils\Strings::match($originalContent, $quotedKeyPattern)) {
             return \true;
         }
         // @see https://regex101.com/r/VgvK8C/5/
         $quotedArrayPattern = \sprintf('#%s=\\{"(.*)"\\}|\\{"(.*)"\\}#', $escapedKey);
-        return (bool) \Typo3RectorPrefix20210311\Nette\Utils\Strings::match($originalContent, $quotedArrayPattern);
+        return (bool) \Typo3RectorPrefix20210315\Nette\Utils\Strings::match($originalContent, $quotedArrayPattern);
     }
     private function resolveArraySeparatorSign(string $originalContent, \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode $phpDocTagValueNode) : string
     {
-        $hasArrayColonSeparator = (bool) \Typo3RectorPrefix20210311\Nette\Utils\Strings::match($originalContent, self::ARRAY_COLON_SEPARATOR_REGEX);
+        $hasArrayColonSeparator = (bool) \Typo3RectorPrefix20210315\Nette\Utils\Strings::match($originalContent, self::ARRAY_COLON_SEPARATOR_REGEX);
         if ($hasArrayColonSeparator) {
             return ':';
         }

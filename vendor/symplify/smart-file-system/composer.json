@@ -14,17 +14,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210311\\Symplify\\SmartFileSystem\\": "src"
+            "Typo3RectorPrefix20210315\\Symplify\\SmartFileSystem\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210311\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+            "Typo3RectorPrefix20210315\\Symplify\\SmartFileSystem\\Tests\\": "tests"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "9.3-dev"
+            "dev-main": "9.3-dev"
         }
     },
     "minimum-stability": "dev",

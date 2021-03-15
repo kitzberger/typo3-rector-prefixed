@@ -58,7 +58,7 @@ final class PhpDocTagNodeFactory
     }
     public function createUuidInterfaceVarTagValueNode() : \Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareVarTagValueNode
     {
-        $identifierTypeNode = new \PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode('Typo3RectorPrefix20210311\\Ramsey\\Uuid\\UuidInterface');
+        $identifierTypeNode = new \PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode('Typo3RectorPrefix20210315\\Ramsey\\Uuid\\UuidInterface');
         return $this->createVarTagValueNodeWithType($identifierTypeNode);
     }
     public function createIdColumnTagValueNode() : \Rector\BetterPhpDocParser\ValueObject\PhpDocNode\Doctrine\Property_\ColumnTagValueNode

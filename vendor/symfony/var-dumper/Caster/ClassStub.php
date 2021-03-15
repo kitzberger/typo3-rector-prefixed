@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Caster;
+namespace Typo3RectorPrefix20210315\Symfony\Component\VarDumper\Caster;
 
-use Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Cloner\Stub;
+use Typo3RectorPrefix20210315\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Represents a PHP class identifier.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ClassStub extends \Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Caster\ConstStub
+class ClassStub extends \Typo3RectorPrefix20210315\Symfony\Component\VarDumper\Caster\ConstStub
 {
     /**
      * @param string   $identifier A PHP identifier, e.g. a class, method, interface, etc. name
@@ -56,8 +56,8 @@ class ClassStub extends \Typo3RectorPrefix20210311\Symfony\Component\VarDumper\C
                 }, $identifier);
             }
             if (null !== $callable && $r instanceof \ReflectionFunctionAbstract) {
-                $s = \Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Caster\ReflectionCaster::castFunctionAbstract($r, [], new \Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Cloner\Stub(), \true, \Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_VERBOSE);
-                $s = \Typo3RectorPrefix20210311\Symfony\Component\VarDumper\Caster\ReflectionCaster::getSignature($s);
+                $s = \Typo3RectorPrefix20210315\Symfony\Component\VarDumper\Caster\ReflectionCaster::castFunctionAbstract($r, [], new \Typo3RectorPrefix20210315\Symfony\Component\VarDumper\Cloner\Stub(), \true, \Typo3RectorPrefix20210315\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_VERBOSE);
+                $s = \Typo3RectorPrefix20210315\Symfony\Component\VarDumper\Caster\ReflectionCaster::getSignature($s);
                 if ('()' === \substr($identifier, -2)) {
                     $this->value = \substr_replace($identifier, $s, -2);
                 } else {

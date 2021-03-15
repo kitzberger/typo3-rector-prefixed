@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210311\Nette\Utils;
+namespace Typo3RectorPrefix20210315\Nette\Utils;
 
-use Typo3RectorPrefix20210311\Nette;
+use Typo3RectorPrefix20210315\Nette;
 /**
  * Provides objects to work as array.
  */
@@ -48,7 +48,7 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     {
         if (!\is_scalar($key)) {
             // prevents null
-            throw new \Typo3RectorPrefix20210311\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
+            throw new \Typo3RectorPrefix20210315\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
         }
         $this->{$key} = $value;
     }

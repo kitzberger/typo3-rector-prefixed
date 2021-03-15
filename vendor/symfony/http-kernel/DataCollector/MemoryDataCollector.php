@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\DataCollector;
+namespace Typo3RectorPrefix20210315\Symfony\Component\HttpKernel\DataCollector;
 
-use Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Response;
 /**
  * MemoryDataCollector.
  *
@@ -19,7 +19,7 @@ use Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class MemoryDataCollector extends \Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \Typo3RectorPrefix20210311\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class MemoryDataCollector extends \Typo3RectorPrefix20210315\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \Typo3RectorPrefix20210315\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     public function __construct()
     {
@@ -28,7 +28,7 @@ class MemoryDataCollector extends \Typo3RectorPrefix20210311\Symfony\Component\H
     /**
      * {@inheritdoc}
      */
-    public function collect(\Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210311\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210315\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         $this->updateMemoryUsage();
     }

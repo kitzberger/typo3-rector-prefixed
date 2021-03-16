@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210315\Symfony\Component\Cache\Traits;
+namespace Typo3RectorPrefix20210316\Symfony\Component\Cache\Traits;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>

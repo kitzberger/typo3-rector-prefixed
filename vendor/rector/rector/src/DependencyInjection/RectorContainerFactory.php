@@ -3,24 +3,24 @@
 declare (strict_types=1);
 namespace Rector\Core\DependencyInjection;
 
-use Typo3RectorPrefix20210315\Psr\Container\ContainerInterface;
+use Typo3RectorPrefix20210316\Psr\Container\ContainerInterface;
 use Rector\Caching\Detector\ChangedFilesDetector;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\Stubs\StubLoader;
 use Rector\Core\ValueObject\Bootstrap\BootstrapConfigs;
-use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
-use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210316\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
+use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
 final class RectorContainerFactory
 {
     /**
      * @param SmartFileInfo[] $configFileInfos
      * @api
      */
-    public function createFromConfigs(array $configFileInfos) : \Typo3RectorPrefix20210315\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFileInfos) : \Typo3RectorPrefix20210316\Psr\Container\ContainerInterface
     {
         // to override the configs without clearing cache
-        $isDebug = \Typo3RectorPrefix20210315\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug();
+        $isDebug = \Typo3RectorPrefix20210316\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug();
         $environment = $this->createEnvironment($configFileInfos);
         $rectorKernel = new \Rector\Core\HttpKernel\RectorKernel($environment, $isDebug);
         if ($configFileInfos !== []) {
@@ -32,7 +32,7 @@ final class RectorContainerFactory
         $rectorKernel->boot();
         return $rectorKernel->getContainer();
     }
-    public function createFromBootstrapConfigs(\Rector\Core\ValueObject\Bootstrap\BootstrapConfigs $bootstrapConfigs) : \Typo3RectorPrefix20210315\Psr\Container\ContainerInterface
+    public function createFromBootstrapConfigs(\Rector\Core\ValueObject\Bootstrap\BootstrapConfigs $bootstrapConfigs) : \Typo3RectorPrefix20210316\Psr\Container\ContainerInterface
     {
         $container = $this->createFromConfigs($bootstrapConfigs->getConfigFileInfos());
         $mainConfigFileInfo = $bootstrapConfigs->getMainConfigFileInfo();

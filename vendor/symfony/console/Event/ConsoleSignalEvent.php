@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210315\Symfony\Component\Console\Event;
+namespace Typo3RectorPrefix20210316\Symfony\Component\Console\Event;
 
-use Typo3RectorPrefix20210315\Symfony\Component\Console\Command\Command;
-use Typo3RectorPrefix20210315\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210315\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210316\Symfony\Component\Console\Command\Command;
+use Typo3RectorPrefix20210316\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210316\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author marie <marie@users.noreply.github.com>
  */
-final class ConsoleSignalEvent extends \Typo3RectorPrefix20210315\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleSignalEvent extends \Typo3RectorPrefix20210316\Symfony\Component\Console\Event\ConsoleEvent
 {
     private $handlingSignal;
-    public function __construct(\Typo3RectorPrefix20210315\Symfony\Component\Console\Command\Command $command, \Typo3RectorPrefix20210315\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210315\Symfony\Component\Console\Output\OutputInterface $output, int $handlingSignal)
+    public function __construct(\Typo3RectorPrefix20210316\Symfony\Component\Console\Command\Command $command, \Typo3RectorPrefix20210316\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210316\Symfony\Component\Console\Output\OutputInterface $output, int $handlingSignal)
     {
         parent::__construct($command, $input, $output);
         $this->handlingSignal = $handlingSignal;

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210315;
+namespace Typo3RectorPrefix20210316;
 
 // faking cake php App class
 // see https://github.com/cakephp/cakephp/blob/2.4.1/lib/Cake/Core/App.php#L521
@@ -14,4 +14,4 @@ final class App
 }
 // faking cake php App class
 // see https://github.com/cakephp/cakephp/blob/2.4.1/lib/Cake/Core/App.php#L521
-\class_alias('Typo3RectorPrefix20210315\\App', 'App', \false);
+\class_alias('Typo3RectorPrefix20210316\\App', 'App', \false);

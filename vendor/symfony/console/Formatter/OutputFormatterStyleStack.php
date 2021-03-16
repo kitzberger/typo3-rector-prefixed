@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210315\Symfony\Component\Console\Formatter;
+namespace Typo3RectorPrefix20210316\Symfony\Component\Console\Formatter;
 
-use Typo3RectorPrefix20210315\Symfony\Component\Console\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210315\Symfony\Contracts\Service\ResetInterface;
+use Typo3RectorPrefix20210316\Symfony\Component\Console\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210316\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class OutputFormatterStyleStack implements \Typo3RectorPrefix20210315\Symfony\Contracts\Service\ResetInterface
+class OutputFormatterStyleStack implements \Typo3RectorPrefix20210316\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * @var OutputFormatterStyleInterface[]
      */
     private $styles;
     private $emptyStyle;
-    public function __construct(\Typo3RectorPrefix20210315\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
+    public function __construct(\Typo3RectorPrefix20210316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
     {
-        $this->emptyStyle = $emptyStyle ?: new \Typo3RectorPrefix20210315\Symfony\Component\Console\Formatter\OutputFormatterStyle();
+        $this->emptyStyle = $emptyStyle ?: new \Typo3RectorPrefix20210316\Symfony\Component\Console\Formatter\OutputFormatterStyle();
         $this->reset();
     }
     /**
@@ -37,7 +37,7 @@ class OutputFormatterStyleStack implements \Typo3RectorPrefix20210315\Symfony\Co
     /**
      * Pushes a style in the stack.
      */
-    public function push(\Typo3RectorPrefix20210315\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
+    public function push(\Typo3RectorPrefix20210316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
     {
         $this->styles[] = $style;
     }
@@ -48,7 +48,7 @@ class OutputFormatterStyleStack implements \Typo3RectorPrefix20210315\Symfony\Co
      *
      * @throws InvalidArgumentException When style tags incorrectly nested
      */
-    public function pop(\Typo3RectorPrefix20210315\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null)
+    public function pop(\Typo3RectorPrefix20210316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null)
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -62,7 +62,7 @@ class OutputFormatterStyleStack implements \Typo3RectorPrefix20210315\Symfony\Co
                 return $stackedStyle;
             }
         }
-        throw new \Typo3RectorPrefix20210315\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
+        throw new \Typo3RectorPrefix20210316\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
     }
     /**
      * Computes current style with stacks top codes.
@@ -79,7 +79,7 @@ class OutputFormatterStyleStack implements \Typo3RectorPrefix20210315\Symfony\Co
     /**
      * @return $this
      */
-    public function setEmptyStyle(\Typo3RectorPrefix20210315\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
+    public function setEmptyStyle(\Typo3RectorPrefix20210316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
     {
         $this->emptyStyle = $emptyStyle;
         return $this;

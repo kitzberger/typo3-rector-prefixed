@@ -6,13 +6,13 @@ namespace Rector\Symfony4\Tests\Rector\MethodCall\ProcessBuilderGetProcessRector
 use Iterator;
 use Rector\Symfony4\Rector\MethodCall\ProcessBuilderGetProcessRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
 final class ProcessBuilderGetProcessRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

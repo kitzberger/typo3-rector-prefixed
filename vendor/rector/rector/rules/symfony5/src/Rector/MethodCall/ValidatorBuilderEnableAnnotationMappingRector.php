@@ -17,11 +17,11 @@ final class ValidatorBuilderEnableAnnotationMappingRector extends \Rector\Core\R
     /**
      * @var string
      */
-    private const REQUIRED_TYPE = 'Typo3RectorPrefix20210315\\Symfony\\Component\\Validator\\ValidatorBuilder';
+    private const REQUIRED_TYPE = 'Typo3RectorPrefix20210316\\Symfony\\Component\\Validator\\ValidatorBuilder';
     /**
      * @var string
      */
-    private const ARG_OLD_TYPE = 'Typo3RectorPrefix20210315\\Doctrine\\Common\\Annotations\\Reader';
+    private const ARG_OLD_TYPE = 'Typo3RectorPrefix20210316\\Doctrine\\Common\\Annotations\\Reader';
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Migrates from deprecated ValidatorBuilder->enableAnnotationMapping($reader) to ValidatorBuilder->enableAnnotationMapping(true)->setDoctrineAnnotationReader($reader)', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'

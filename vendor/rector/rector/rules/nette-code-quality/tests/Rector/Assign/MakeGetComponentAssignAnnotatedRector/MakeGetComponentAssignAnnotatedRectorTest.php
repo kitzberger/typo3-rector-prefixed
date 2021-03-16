@@ -6,13 +6,13 @@ namespace Rector\NetteCodeQuality\Tests\Rector\Assign\MakeGetComponentAssignAnno
 use Iterator;
 use Rector\NetteCodeQuality\Rector\Assign\MakeGetComponentAssignAnnotatedRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
 final class MakeGetComponentAssignAnnotatedRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

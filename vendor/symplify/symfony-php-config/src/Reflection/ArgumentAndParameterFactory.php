@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\SymfonyPhpConfig\Reflection;
 
-use Typo3RectorPrefix20210315\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use Typo3RectorPrefix20210316\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 final class ArgumentAndParameterFactory
 {
     /**
@@ -12,7 +12,7 @@ final class ArgumentAndParameterFactory
     private $privatesAccessor;
     public function __construct()
     {
-        $this->privatesAccessor = new \Typo3RectorPrefix20210315\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
+        $this->privatesAccessor = new \Typo3RectorPrefix20210316\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
     }
     /**
      * @param array<string, mixed> $arguments

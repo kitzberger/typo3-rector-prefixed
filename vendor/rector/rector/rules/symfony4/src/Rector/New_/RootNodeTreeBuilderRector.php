@@ -48,7 +48,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->class, 'Typo3RectorPrefix20210315\\Symfony\\Component\\Config\\Definition\\Builder\\TreeBuilder')) {
+        if (!$this->isObjectType($node->class, 'Typo3RectorPrefix20210316\\Symfony\\Component\\Config\\Definition\\Builder\\TreeBuilder')) {
             return null;
         }
         if (isset($node->args[1])) {
@@ -80,7 +80,7 @@ CODE_SAMPLE
             if (!$node instanceof \PhpParser\Node\Expr\MethodCall) {
                 return \false;
             }
-            if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210315\\Symfony\\Component\\Config\\Definition\\Builder\\TreeBuilder')) {
+            if (!$this->isObjectType($node->var, 'Typo3RectorPrefix20210316\\Symfony\\Component\\Config\\Definition\\Builder\\TreeBuilder')) {
                 return \false;
             }
             if (!$this->isName($node->name, 'root')) {

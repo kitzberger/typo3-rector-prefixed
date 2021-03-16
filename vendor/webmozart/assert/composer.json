@@ -31,13 +31,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210315\\Webmozart\\Assert\\": "src\/"
+            "Typo3RectorPrefix20210316\\Webmozart\\Assert\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210315\\Webmozart\\Assert\\Tests\\": "tests\/",
-            "Typo3RectorPrefix20210315\\Webmozart\\Assert\\Bin\\": "bin\/src"
+            "Typo3RectorPrefix20210316\\Webmozart\\Assert\\Tests\\": "tests\/",
+            "Typo3RectorPrefix20210316\\Webmozart\\Assert\\Bin\\": "bin\/src"
         }
     }
 }

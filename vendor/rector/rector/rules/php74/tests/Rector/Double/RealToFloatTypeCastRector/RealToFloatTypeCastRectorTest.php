@@ -6,7 +6,7 @@ namespace Rector\Php74\Tests\Rector\Double\RealToFloatTypeCastRector;
 use Iterator;
 use Rector\Php74\Rector\Double\RealToFloatTypeCastRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @requires PHP < 8.0
  */
@@ -15,7 +15,7 @@ final class RealToFloatTypeCastRectorTest extends \Rector\Testing\PHPUnit\Abstra
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210315\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

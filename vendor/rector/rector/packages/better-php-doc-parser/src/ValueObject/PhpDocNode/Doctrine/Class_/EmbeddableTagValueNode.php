@@ -8,6 +8,6 @@ final class EmbeddableTagValueNode extends \Rector\BetterPhpDocParser\ValueObjec
 {
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210315\\@ORM\\Embeddable';
+        return 'Typo3RectorPrefix20210316\\@ORM\\Embeddable';
     }
 }

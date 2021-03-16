@@ -14,7 +14,7 @@ final class GeneratedValueTagValueNode extends \Rector\BetterPhpDocParser\ValueO
 {
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210315\\@ORM\\GeneratedValue';
+        return 'Typo3RectorPrefix20210316\\@ORM\\GeneratedValue';
     }
     public function getSilentKey() : string
     {

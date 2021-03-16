@@ -2156,6 +2156,7 @@ return array(
     'Ssch\\TYPO3Rector\\NodeFactory\\HelperArgumentAssignFactory' => $baseDir . '/src/NodeFactory/HelperArgumentAssignFactory.php',
     'Ssch\\TYPO3Rector\\NodeFactory\\InitializeArgumentsClassMethodFactory' => $baseDir . '/src/NodeFactory/InitializeArgumentsClassMethodFactory.php',
     'Ssch\\TYPO3Rector\\Rector\\Composer\\ExtensionComposerRector' => $baseDir . '/src/Rector/Composer/ExtensionComposerRector.php',
+    'Ssch\\TYPO3Rector\\Rector\\Composer\\RemoveCmsPackageDirFromExtraRector' => $baseDir . '/src/Rector/Composer/RemoveCmsPackageDirFromExtraRector.php',
     'Ssch\\TYPO3Rector\\Rector\\Composer\\ReplacePackageComposerRector' => $baseDir . '/src/Rector/Composer/ReplacePackageComposerRector.php',
     'Ssch\\TYPO3Rector\\Rector\\Experimental\\OptionalConstructorToHardRequirementRector' => $baseDir . '/src/Rector/Experimental/OptionalConstructorToHardRequirementRector.php',
     'Ssch\\TYPO3Rector\\Rector\\Extensions\\solr\\ApacheSolrDocumentToSolariumDocumentRector' => $baseDir . '/src/Rector/Extensions/solr/ApacheSolrDocumentToSolariumDocumentRector.php',

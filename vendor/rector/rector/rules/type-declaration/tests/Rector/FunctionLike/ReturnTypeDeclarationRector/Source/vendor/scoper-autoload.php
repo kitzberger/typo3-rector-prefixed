@@ -12,8 +12,8 @@ if (!class_exists('AutoloadIncluder', false) && !interface_exists('AutoloadInclu
 if (!class_exists('Swift_Attachment', false) && !interface_exists('Swift_Attachment', false) && !trait_exists('Swift_Attachment', false)) {
     spl_autoload_call('Typo3RectorPrefix20210316\Swift_Attachment');
 }
-if (!class_exists('ComposerAutoloaderInit45719fac9e368198ccfd9aea6dbb89c5', false) && !interface_exists('ComposerAutoloaderInit45719fac9e368198ccfd9aea6dbb89c5', false) && !trait_exists('ComposerAutoloaderInit45719fac9e368198ccfd9aea6dbb89c5', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210316\ComposerAutoloaderInit45719fac9e368198ccfd9aea6dbb89c5');
+if (!class_exists('ComposerAutoloaderInit17a55d72ea2bfbcaa916a58f4c3a3b30', false) && !interface_exists('ComposerAutoloaderInit17a55d72ea2bfbcaa916a58f4c3a3b30', false) && !trait_exists('ComposerAutoloaderInit17a55d72ea2bfbcaa916a58f4c3a3b30', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210316\ComposerAutoloaderInit17a55d72ea2bfbcaa916a58f4c3a3b30');
 }
 if (!class_exists('Doctrine\Inflector\Inflector', false) && !interface_exists('Doctrine\Inflector\Inflector', false) && !trait_exists('Doctrine\Inflector\Inflector', false)) {
     spl_autoload_call('Typo3RectorPrefix20210316\Doctrine\Inflector\Inflector');
@@ -114,9 +114,9 @@ if (!class_exists('ValueError', false) && !interface_exists('ValueError', false)
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire45719fac9e368198ccfd9aea6dbb89c5')) {
-    function composerRequire45719fac9e368198ccfd9aea6dbb89c5() {
-        return \Typo3RectorPrefix20210316\composerRequire45719fac9e368198ccfd9aea6dbb89c5(...func_get_args());
+if (!function_exists('composerRequire17a55d72ea2bfbcaa916a58f4c3a3b30')) {
+    function composerRequire17a55d72ea2bfbcaa916a58f4c3a3b30() {
+        return \Typo3RectorPrefix20210316\composerRequire17a55d72ea2bfbcaa916a58f4c3a3b30(...func_get_args());
     }
 }
 if (!function_exists('parseArgs')) {

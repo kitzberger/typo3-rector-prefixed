@@ -5,6 +5,7 @@ namespace Typo3RectorPrefix20210316;
 
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
+use Ssch\TYPO3Rector\Rector\Composer\RemoveCmsPackageDirFromExtraRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\CheckForExtensionInfoRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\CheckForExtensionVersionRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\FindByPidsAndAuthorIdRector;
@@ -56,4 +57,5 @@ return static function (\Typo3RectorPrefix20210316\Symfony\Component\DependencyI
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\RefactorBackendUtilityGetPagesTSconfigRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\UseExtensionConfigurationApiRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\ReplaceExtKeyWithExtensionKeyRector::class);
+    $services->set(\Ssch\TYPO3Rector\Rector\Composer\RemoveCmsPackageDirFromExtraRector::class);
 };

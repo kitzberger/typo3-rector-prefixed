@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter;
+namespace Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter;
 
-use Typo3RectorPrefix20210316\Symfony\Component\Yaml\Parser;
-use Typo3RectorPrefix20210316\Symfony\Component\Yaml\Yaml;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\ContainerConfiguratorReturnClosureFactory;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\RoutingConfiguratorReturnClosureFactory;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Printer\PhpParserPhpConfigPrinter;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Yaml\CheckerServiceParametersShifter;
+use Typo3RectorPrefix20210317\Symfony\Component\Yaml\Parser;
+use Typo3RectorPrefix20210317\Symfony\Component\Yaml\Yaml;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\ContainerConfiguratorReturnClosureFactory;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\RoutingConfiguratorReturnClosureFactory;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Printer\PhpParserPhpConfigPrinter;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Yaml\CheckerServiceParametersShifter;
 /**
  * @source https://raw.githubusercontent.com/archeoprog/maker-bundle/make-convert-services/src/Util/PhpServicesCreator.php
  * @see \Symplify\PhpConfigPrinter\Tests\YamlToPhpConverter\YamlToPhpConverterTest
@@ -44,7 +44,7 @@ final class YamlToPhpConverter
      * @var RoutingConfiguratorReturnClosureFactory
      */
     private $routingConfiguratorReturnClosureFactory;
-    public function __construct(\Typo3RectorPrefix20210316\Symfony\Component\Yaml\Parser $yamlParser, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Printer\PhpParserPhpConfigPrinter $phpParserPhpConfigPrinter, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\ContainerConfiguratorReturnClosureFactory $returnClosureNodesFactory, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\RoutingConfiguratorReturnClosureFactory $routingConfiguratorReturnClosureFactory, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface $yamlFileContentProvider, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Yaml\CheckerServiceParametersShifter $checkerServiceParametersShifter)
+    public function __construct(\Typo3RectorPrefix20210317\Symfony\Component\Yaml\Parser $yamlParser, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Printer\PhpParserPhpConfigPrinter $phpParserPhpConfigPrinter, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\ContainerConfiguratorReturnClosureFactory $returnClosureNodesFactory, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\RoutingConfiguratorReturnClosureFactory $routingConfiguratorReturnClosureFactory, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface $yamlFileContentProvider, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Yaml\CheckerServiceParametersShifter $checkerServiceParametersShifter)
     {
         $this->yamlParser = $yamlParser;
         $this->phpParserPhpConfigPrinter = $phpParserPhpConfigPrinter;
@@ -57,7 +57,7 @@ final class YamlToPhpConverter
     {
         $this->yamlFileContentProvider->setContent($yaml);
         /** @var mixed[]|null $yamlArray */
-        $yamlArray = $this->yamlParser->parse($yaml, \Typo3RectorPrefix20210316\Symfony\Component\Yaml\Yaml::PARSE_CUSTOM_TAGS | \Typo3RectorPrefix20210316\Symfony\Component\Yaml\Yaml::PARSE_CONSTANT);
+        $yamlArray = $this->yamlParser->parse($yaml, \Typo3RectorPrefix20210317\Symfony\Component\Yaml\Yaml::PARSE_CUSTOM_TAGS | \Typo3RectorPrefix20210317\Symfony\Component\Yaml\Yaml::PARSE_CONSTANT);
         if ($yamlArray === null) {
             return '';
         }

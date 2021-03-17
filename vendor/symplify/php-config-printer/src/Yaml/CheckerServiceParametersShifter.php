@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Yaml;
+namespace Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Yaml;
 
-use Typo3RectorPrefix20210316\Nette\Utils\Strings;
-use Typo3RectorPrefix20210316\Symplify\PackageBuilder\Strings\StringFormatConverter;
+use Typo3RectorPrefix20210317\Nette\Utils\Strings;
+use Typo3RectorPrefix20210317\Symplify\PackageBuilder\Strings\StringFormatConverter;
 /**
  * @copy of https://github.com/symplify/symplify/blob/d4beda1b1af847599aa035ead755e03db81c7247/packages/easy-coding-standard/src/Yaml/CheckerServiceParametersShifter.php
  *
@@ -47,7 +47,7 @@ final class CheckerServiceParametersShifter
     private $stringFormatConverter;
     public function __construct()
     {
-        $this->stringFormatConverter = new \Typo3RectorPrefix20210316\Symplify\PackageBuilder\Strings\StringFormatConverter();
+        $this->stringFormatConverter = new \Typo3RectorPrefix20210317\Symplify\PackageBuilder\Strings\StringFormatConverter();
     }
     /**
      * @param mixed[] $configuration
@@ -80,10 +80,10 @@ final class CheckerServiceParametersShifter
             if ($serviceDefinition === []) {
                 continue;
             }
-            if (\Typo3RectorPrefix20210316\Nette\Utils\Strings::endsWith($serviceName, 'Fixer')) {
+            if (\Typo3RectorPrefix20210317\Nette\Utils\Strings::endsWith($serviceName, 'Fixer')) {
                 $services = $this->processFixer($services, $serviceName, $serviceDefinition);
             }
-            if (\Typo3RectorPrefix20210316\Nette\Utils\Strings::endsWith($serviceName, 'Sniff')) {
+            if (\Typo3RectorPrefix20210317\Nette\Utils\Strings::endsWith($serviceName, 'Sniff')) {
                 $services = $this->processSniff($services, $serviceName, $serviceDefinition);
             }
             // cleanup parameters
@@ -93,10 +93,10 @@ final class CheckerServiceParametersShifter
     }
     private function isCheckerClass(string $checker) : bool
     {
-        if (\Typo3RectorPrefix20210316\Nette\Utils\Strings::endsWith($checker, 'Fixer')) {
+        if (\Typo3RectorPrefix20210317\Nette\Utils\Strings::endsWith($checker, 'Fixer')) {
             return \true;
         }
-        return \Typo3RectorPrefix20210316\Nette\Utils\Strings::endsWith($checker, 'Sniff');
+        return \Typo3RectorPrefix20210317\Nette\Utils\Strings::endsWith($checker, 'Sniff');
     }
     /**
      * @param mixed[] $services
@@ -170,6 +170,6 @@ final class CheckerServiceParametersShifter
             }
             return $value;
         }
-        return \Typo3RectorPrefix20210316\Nette\Utils\Strings::replace($value, '#^@#', '@@');
+        return \Typo3RectorPrefix20210317\Nette\Utils\Strings::replace($value, '#^@#', '@@');
     }
 }

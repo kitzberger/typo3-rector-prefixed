@@ -57,6 +57,6 @@ CODE_SAMPLE
         if (\count($node->args) !== 2) {
             return null;
         }
-        return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210316\\Nette\\Utils\\FileSystem', 'write', $node->args);
+        return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210317\\Nette\\Utils\\FileSystem', 'write', $node->args);
     }
 }

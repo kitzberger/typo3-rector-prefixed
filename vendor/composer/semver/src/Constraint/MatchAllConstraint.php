@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210316\Composer\Semver\Constraint;
+namespace Typo3RectorPrefix20210317\Composer\Semver\Constraint;
 
 /**
  * Defines the absence of a constraint.
  *
  * This constraint matches everything.
  */
-class MatchAllConstraint implements \Typo3RectorPrefix20210316\Composer\Semver\Constraint\ConstraintInterface
+class MatchAllConstraint implements \Typo3RectorPrefix20210317\Composer\Semver\Constraint\ConstraintInterface
 {
     /** @var string|null */
     protected $prettyString;
@@ -24,7 +24,7 @@ class MatchAllConstraint implements \Typo3RectorPrefix20210316\Composer\Semver\C
      *
      * @return bool
      */
-    public function matches(\Typo3RectorPrefix20210316\Composer\Semver\Constraint\ConstraintInterface $provider)
+    public function matches(\Typo3RectorPrefix20210317\Composer\Semver\Constraint\ConstraintInterface $provider)
     {
         return \true;
     }
@@ -61,13 +61,13 @@ class MatchAllConstraint implements \Typo3RectorPrefix20210316\Composer\Semver\C
      */
     public function getUpperBound()
     {
-        return \Typo3RectorPrefix20210316\Composer\Semver\Constraint\Bound::positiveInfinity();
+        return \Typo3RectorPrefix20210317\Composer\Semver\Constraint\Bound::positiveInfinity();
     }
     /**
      * {@inheritDoc}
      */
     public function getLowerBound()
     {
-        return \Typo3RectorPrefix20210316\Composer\Semver\Constraint\Bound::zero();
+        return \Typo3RectorPrefix20210317\Composer\Semver\Constraint\Bound::zero();
     }
 }

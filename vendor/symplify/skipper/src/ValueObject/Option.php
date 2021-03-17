@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316\Symplify\Skipper\ValueObject;
+namespace Typo3RectorPrefix20210317\Symplify\Skipper\ValueObject;
 
 final class Option
 {

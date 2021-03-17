@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
+namespace Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
 
-use Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\Definition;
+use Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Definition;
 /**
  * {@inheritdoc}
  *
@@ -19,12 +19,12 @@ use Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\Definition;
  *
  * @author Marco Pivetta <ocramius@gmail.com>
  */
-class RealServiceInstantiator implements \Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
+class RealServiceInstantiator implements \Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function instantiateProxy(\Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\ContainerInterface $container, \Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator)
+    public function instantiateProxy(\Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\ContainerInterface $container, \Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator)
     {
         return $realInstantiator();
     }

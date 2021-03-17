@@ -14,7 +14,7 @@ use Rector\NodeTypeResolver\PhpDoc\NodeAnalyzer\DocBlockTagReplacer;
 use Rector\Renaming\ValueObject\RenameAnnotation;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210316\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210317\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Renaming\Tests\Rector\ClassMethod\RenameAnnotationRector\RenameAnnotationRectorTest
  */
@@ -60,7 +60,7 @@ class SomeTest extends PHPUnit\Framework\TestCase
     }
 }
 CODE_SAMPLE
-, [self::RENAMED_ANNOTATIONS_IN_TYPES => [new \Rector\Renaming\ValueObject\RenameAnnotation('Typo3RectorPrefix20210316\\PHPUnit\\Framework\\TestCase', 'test', 'scenario')]])]);
+, [self::RENAMED_ANNOTATIONS_IN_TYPES => [new \Rector\Renaming\ValueObject\RenameAnnotation('Typo3RectorPrefix20210317\\PHPUnit\\Framework\\TestCase', 'test', 'scenario')]])]);
     }
     /**
      * @return string[]
@@ -90,7 +90,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $renamedAnnotationsInTypes = $configuration[self::RENAMED_ANNOTATIONS_IN_TYPES] ?? [];
-        \Typo3RectorPrefix20210316\Webmozart\Assert\Assert::allIsInstanceOf($renamedAnnotationsInTypes, \Rector\Renaming\ValueObject\RenameAnnotation::class);
+        \Typo3RectorPrefix20210317\Webmozart\Assert\Assert::allIsInstanceOf($renamedAnnotationsInTypes, \Rector\Renaming\ValueObject\RenameAnnotation::class);
         $this->renamedAnnotations = $renamedAnnotationsInTypes;
     }
 }

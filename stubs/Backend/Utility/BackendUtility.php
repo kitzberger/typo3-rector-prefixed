@@ -37,6 +37,10 @@ final class BackendUtility
     public static function wrapClickMenuOnIcon($content, $table, $uid = 0, $context = '', $_addParams = '', $_enDisItems = '', $returnTagParameters = \false) : void
     {
     }
+    public static function thumbCode($row, $table, $field) : string
+    {
+        return '';
+    }
     public static function shortcutExists(string $url) : bool
     {
         return \true;

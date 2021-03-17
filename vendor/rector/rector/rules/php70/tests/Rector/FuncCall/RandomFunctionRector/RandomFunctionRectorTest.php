@@ -6,7 +6,7 @@ namespace Rector\Php70\Tests\Rector\FuncCall\RandomFunctionRector;
 use Iterator;
 use Rector\Php70\Rector\FuncCall\RandomFunctionRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * Some tests copied from https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.12/tests/Fixer/Alias/RandomApiMigrationFixerTest.php
  */
@@ -15,7 +15,7 @@ final class RandomFunctionRectorTest extends \Rector\Testing\PHPUnit\AbstractRec
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

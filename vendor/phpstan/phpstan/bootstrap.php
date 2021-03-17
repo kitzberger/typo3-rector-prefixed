@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316;
+namespace Typo3RectorPrefix20210317;
 
 \spl_autoload_register(function (string $class) : void {
     static $composerAutoloader;

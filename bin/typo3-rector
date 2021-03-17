@@ -1,5 +1,5 @@
 #!/usr/bin/env php
 <?php 
-namespace Typo3RectorPrefix20210316;
+namespace Typo3RectorPrefix20210317;
 
 require_once __DIR__ . '/typo3-rector.php';

@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Rector\CodingStyle\Naming;
 
-use Typo3RectorPrefix20210316\Nette\Utils\Strings;
+use Typo3RectorPrefix20210317\Nette\Utils\Strings;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\Function_;
 use Rector\Core\Util\StaticRectorStrings;
 use Rector\Testing\PHPUnit\StaticPHPUnitEnvironment;
-use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
 final class ClassNaming
 {
     /**
@@ -41,19 +41,19 @@ final class ClassNaming
             $name = $name->toString();
         }
         $name = \trim($name, '\\');
-        return \Typo3RectorPrefix20210316\Nette\Utils\Strings::after($name, '\\', -1) ?: $name;
+        return \Typo3RectorPrefix20210317\Nette\Utils\Strings::after($name, '\\', -1) ?: $name;
     }
     public function getNamespace(string $fullyQualifiedName) : ?string
     {
         $fullyQualifiedName = \trim($fullyQualifiedName, '\\');
-        return \Typo3RectorPrefix20210316\Nette\Utils\Strings::before($fullyQualifiedName, '\\', -1) ?: null;
+        return \Typo3RectorPrefix20210317\Nette\Utils\Strings::before($fullyQualifiedName, '\\', -1) ?: null;
     }
-    public function getNameFromFileInfo(\Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    public function getNameFromFileInfo(\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
     {
         $basenameWithoutSuffix = $smartFileInfo->getBasenameWithoutSuffix();
         // remove PHPUnit fixture file prefix
         if (\Rector\Testing\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun()) {
-            $basenameWithoutSuffix = \Typo3RectorPrefix20210316\Nette\Utils\Strings::replace($basenameWithoutSuffix, self::INPUT_HASH_NAMING_REGEX, '');
+            $basenameWithoutSuffix = \Typo3RectorPrefix20210317\Nette\Utils\Strings::replace($basenameWithoutSuffix, self::INPUT_HASH_NAMING_REGEX, '');
         }
         return \Rector\Core\Util\StaticRectorStrings::underscoreToPascalCase($basenameWithoutSuffix);
     }
@@ -67,10 +67,10 @@ final class ClassNaming
     }
     public function replaceSuffix(string $content, string $oldSuffix, string $newSuffix) : string
     {
-        if (!\Typo3RectorPrefix20210316\Nette\Utils\Strings::endsWith($content, $oldSuffix)) {
+        if (!\Typo3RectorPrefix20210317\Nette\Utils\Strings::endsWith($content, $oldSuffix)) {
             return $content . $newSuffix;
         }
-        $contentWithoutOldSuffix = \Typo3RectorPrefix20210316\Nette\Utils\Strings::substring($content, 0, -\Typo3RectorPrefix20210316\Nette\Utils\Strings::length($oldSuffix));
+        $contentWithoutOldSuffix = \Typo3RectorPrefix20210317\Nette\Utils\Strings::substring($content, 0, -\Typo3RectorPrefix20210317\Nette\Utils\Strings::length($oldSuffix));
         return $contentWithoutOldSuffix . $newSuffix;
     }
 }

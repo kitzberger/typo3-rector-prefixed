@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316;
+namespace Typo3RectorPrefix20210317;
 
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\Rector\StaticCall\RenameStaticMethodRector;
@@ -20,20 +20,14 @@ use Ssch\TYPO3Rector\Rector\v8\v0\RemoveLangCsConvObjAndParserFactoryRector;
 use Ssch\TYPO3Rector\Rector\v8\v0\RemovePropertyUserAuthenticationRector;
 use Ssch\TYPO3Rector\Rector\v8\v0\RemoveRteHtmlParserEvalWriteFileRector;
 use Ssch\TYPO3Rector\Rector\v8\v0\RemoveWakeupCallFromEntityRector;
+use Ssch\TYPO3Rector\Rector\v8\v0\RenderCharsetDefaultsToUtf8Rector;
 use Ssch\TYPO3Rector\Rector\v8\v0\RequireMethodsToNativeFunctionsRector;
 use Ssch\TYPO3Rector\Rector\v8\v0\RteHtmlParserRector;
 use Ssch\TYPO3Rector\Rector\v8\v0\TimeTrackerGlobalsToSingletonRector;
 use Ssch\TYPO3Rector\Rector\v8\v0\TimeTrackerInsteadOfNullTimeTrackerRector;
-use Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
-use TYPO3\CMS\Core\TypoScript\TemplateService;
-use TYPO3\CMS\Core\Utility\ArrayUtility;
-use TYPO3\CMS\Core\Utility\CommandUtility;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
-use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
-return static function (\Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/../services.php');
     $services = $containerConfigurator->services();
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v0\ChangeMethodCallsForStandaloneViewRector::class);
@@ -56,4 +50,5 @@ return static function (\Typo3RectorPrefix20210316\Symfony\Component\DependencyI
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v0\RemoveCharsetConverterParametersRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v0\GetFileAbsFileNameRemoveDeprecatedArgumentsRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v0\RemoveLangCsConvObjAndParserFactoryRector::class);
+    $services->set(\Ssch\TYPO3Rector\Rector\v8\v0\RenderCharsetDefaultsToUtf8Rector::class);
 };

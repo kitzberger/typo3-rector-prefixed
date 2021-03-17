@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210316\Symfony\Contracts\HttpClient;
+namespace Typo3RectorPrefix20210317\Symfony\Contracts\HttpClient;
 
-use Typo3RectorPrefix20210316\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 /**
  * A (lazily retrieved) HTTP response.
  *

@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316;
+namespace Typo3RectorPrefix20210317;
 
 use Rector\CodeQuality\Rector\BooleanAnd\SimplifyEmptyArrayCheckRector;
 use Rector\Core\Configuration\Option;
 use Rector\Renaming\Rector\Name\RenameClassRector;
 use Rector\Renaming\Tests\Rector\Name\RenameClassRector\Source\NewClass;
 use Rector\Renaming\Tests\Rector\Name\RenameClassRector\Source\OldClass;
-use Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\Typo3RectorPrefix20210316\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(\Rector\Core\Configuration\Option::AUTO_IMPORT_NAMES, \true);
     $services = $containerConfigurator->services();

@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210316\Symfony\Component\Cache\Adapter;
+namespace Typo3RectorPrefix20210317\Symfony\Component\Cache\Adapter;
 
-use Typo3RectorPrefix20210316\Psr\Cache\CacheItemInterface;
-use Typo3RectorPrefix20210316\Symfony\Component\Cache\CacheItem;
-use Typo3RectorPrefix20210316\Symfony\Component\Cache\PruneableInterface;
-use Typo3RectorPrefix20210316\Symfony\Component\Cache\ResettableInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\Cache\CacheInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\Service\ResetInterface;
+use Typo3RectorPrefix20210317\Psr\Cache\CacheItemInterface;
+use Typo3RectorPrefix20210317\Symfony\Component\Cache\CacheItem;
+use Typo3RectorPrefix20210317\Symfony\Component\Cache\PruneableInterface;
+use Typo3RectorPrefix20210317\Symfony\Component\Cache\ResettableInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\Cache\CacheInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\Service\ResetInterface;
 /**
  * An adapter that collects data about all cache calls.
  *
@@ -23,11 +23,11 @@ use Typo3RectorPrefix20210316\Symfony\Contracts\Service\ResetInterface;
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\Cache\Adapter\AdapterInterface, \Typo3RectorPrefix20210316\Symfony\Contracts\Cache\CacheInterface, \Typo3RectorPrefix20210316\Symfony\Component\Cache\PruneableInterface, \Typo3RectorPrefix20210316\Symfony\Component\Cache\ResettableInterface
+class TraceableAdapter implements \Typo3RectorPrefix20210317\Symfony\Component\Cache\Adapter\AdapterInterface, \Typo3RectorPrefix20210317\Symfony\Contracts\Cache\CacheInterface, \Typo3RectorPrefix20210317\Symfony\Component\Cache\PruneableInterface, \Typo3RectorPrefix20210317\Symfony\Component\Cache\ResettableInterface
 {
     protected $pool;
     private $calls = [];
-    public function __construct(\Typo3RectorPrefix20210316\Symfony\Component\Cache\Adapter\AdapterInterface $pool)
+    public function __construct(\Typo3RectorPrefix20210317\Symfony\Component\Cache\Adapter\AdapterInterface $pool)
     {
         $this->pool = $pool;
     }
@@ -36,11 +36,11 @@ class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\C
      */
     public function get(string $key, callable $callback, float $beta = null, array &$metadata = null)
     {
-        if (!$this->pool instanceof \Typo3RectorPrefix20210316\Symfony\Contracts\Cache\CacheInterface) {
-            throw new \BadMethodCallException(\sprintf('Cannot call "%s::get()": this class doesn\'t implement "%s".', \get_debug_type($this->pool), \Typo3RectorPrefix20210316\Symfony\Contracts\Cache\CacheInterface::class));
+        if (!$this->pool instanceof \Typo3RectorPrefix20210317\Symfony\Contracts\Cache\CacheInterface) {
+            throw new \BadMethodCallException(\sprintf('Cannot call "%s::get()": this class doesn\'t implement "%s".', \get_debug_type($this->pool), \Typo3RectorPrefix20210317\Symfony\Contracts\Cache\CacheInterface::class));
         }
         $isHit = \true;
-        $callback = function (\Typo3RectorPrefix20210316\Symfony\Component\Cache\CacheItem $item, bool &$save) use($callback, &$isHit) {
+        $callback = function (\Typo3RectorPrefix20210317\Symfony\Component\Cache\CacheItem $item, bool &$save) use($callback, &$isHit) {
             $isHit = $item->isHit();
             return $callback($item, $save);
         };
@@ -109,7 +109,7 @@ class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\C
      *
      * @return bool
      */
-    public function save(\Typo3RectorPrefix20210316\Psr\Cache\CacheItemInterface $item)
+    public function save(\Typo3RectorPrefix20210317\Psr\Cache\CacheItemInterface $item)
     {
         $event = $this->start(__FUNCTION__);
         try {
@@ -123,7 +123,7 @@ class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\C
      *
      * @return bool
      */
-    public function saveDeferred(\Typo3RectorPrefix20210316\Psr\Cache\CacheItemInterface $item)
+    public function saveDeferred(\Typo3RectorPrefix20210317\Psr\Cache\CacheItemInterface $item)
     {
         $event = $this->start(__FUNCTION__);
         try {
@@ -165,7 +165,7 @@ class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\C
     {
         $event = $this->start(__FUNCTION__);
         try {
-            if ($this->pool instanceof \Typo3RectorPrefix20210316\Symfony\Component\Cache\Adapter\AdapterInterface) {
+            if ($this->pool instanceof \Typo3RectorPrefix20210317\Symfony\Component\Cache\Adapter\AdapterInterface) {
                 return $event->result = $this->pool->clear($prefix);
             }
             return $event->result = $this->pool->clear();
@@ -207,7 +207,7 @@ class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\C
      */
     public function prune()
     {
-        if (!$this->pool instanceof \Typo3RectorPrefix20210316\Symfony\Component\Cache\PruneableInterface) {
+        if (!$this->pool instanceof \Typo3RectorPrefix20210317\Symfony\Component\Cache\PruneableInterface) {
             return \false;
         }
         $event = $this->start(__FUNCTION__);
@@ -222,7 +222,7 @@ class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\C
      */
     public function reset()
     {
-        if ($this->pool instanceof \Typo3RectorPrefix20210316\Symfony\Contracts\Service\ResetInterface) {
+        if ($this->pool instanceof \Typo3RectorPrefix20210317\Symfony\Contracts\Service\ResetInterface) {
             $this->pool->reset();
         }
         $this->clearCalls();
@@ -249,7 +249,7 @@ class TraceableAdapter implements \Typo3RectorPrefix20210316\Symfony\Component\C
     }
     protected function start($name)
     {
-        $this->calls[] = $event = new \Typo3RectorPrefix20210316\Symfony\Component\Cache\Adapter\TraceableAdapterEvent();
+        $this->calls[] = $event = new \Typo3RectorPrefix20210317\Symfony\Component\Cache\Adapter\TraceableAdapterEvent();
         $event->name = $name;
         $event->start = \microtime(\true);
         return $event;

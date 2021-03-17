@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Console\Output;
 
-use Typo3RectorPrefix20210316\Nette\Utils\Strings;
+use Typo3RectorPrefix20210317\Nette\Utils\Strings;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
@@ -19,9 +19,9 @@ use Rector\NodeTypeResolver\Node\AttributeKey;
 use ReflectionClass;
 use ReflectionException;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
-use Typo3RectorPrefix20210316\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210316\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210317\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210317\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
 final class DecoratedConsoleOutputFormatter implements \Rector\ChangesReporting\Contract\Output\OutputFormatterInterface
 {
     /**
@@ -57,7 +57,7 @@ final class DecoratedConsoleOutputFormatter implements \Rector\ChangesReporting\
      * @var Lexer
      */
     private $lexer;
-    public function __construct(\Rector\ChangesReporting\Contract\Output\OutputFormatterInterface $consoleOutputFormatter, \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210316\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\BetterPhpDocParser\PhpDocParser\BetterPhpDocParser $betterPhpDocParser, \Typo3RectorPrefix20210316\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \PHPStan\PhpDocParser\Lexer\Lexer $lexer)
+    public function __construct(\Rector\ChangesReporting\Contract\Output\OutputFormatterInterface $consoleOutputFormatter, \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210317\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\BetterPhpDocParser\PhpDocParser\BetterPhpDocParser $betterPhpDocParser, \Typo3RectorPrefix20210317\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \PHPStan\PhpDocParser\Lexer\Lexer $lexer)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->betterStandardPrinter = $betterStandardPrinter;
@@ -176,8 +176,8 @@ final class DecoratedConsoleOutputFormatter implements \Rector\ChangesReporting\
     }
     private function normalizePathsToRelativeWithLine(string $errorMessage) : string
     {
-        $errorMessage = \Typo3RectorPrefix20210316\Nette\Utils\Strings::replace($errorMessage, '#' . \preg_quote(\getcwd(), '#') . '/#');
-        return \Typo3RectorPrefix20210316\Nette\Utils\Strings::replace($errorMessage, self::ON_LINE_REGEX, ':');
+        $errorMessage = \Typo3RectorPrefix20210317\Nette\Utils\Strings::replace($errorMessage, '#' . \preg_quote(\getcwd(), '#') . '/#');
+        return \Typo3RectorPrefix20210317\Nette\Utils\Strings::replace($errorMessage, self::ON_LINE_REGEX, ':');
     }
     private function reportRemovedNodes(\Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector) : void
     {
@@ -195,7 +195,7 @@ final class DecoratedConsoleOutputFormatter implements \Rector\ChangesReporting\
                 $this->symfonyStyle->writeln($message);
                 $printedNode = $this->betterStandardPrinter->print($removedNode);
                 // color red + prefix with "-" to visually demonstrate removal
-                $printedNode = '-' . \Typo3RectorPrefix20210316\Nette\Utils\Strings::replace($printedNode, '#\\n#', "\n-");
+                $printedNode = '-' . \Typo3RectorPrefix20210317\Nette\Utils\Strings::replace($printedNode, '#\\n#', "\n-");
                 $printedNode = $this->colorTextToRed($printedNode);
                 $this->symfonyStyle->writeln($printedNode);
                 $this->symfonyStyle->newLine(1);

@@ -6,13 +6,13 @@ namespace Rector\Php52\Tests\Rector\Switch_\ContinueToBreakInSwitchRector;
 use Iterator;
 use Rector\Php52\Rector\Switch_\ContinueToBreakInSwitchRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
 final class ContinueToBreakInSwitchRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfoWithoutAutoload($fileInfo);
     }

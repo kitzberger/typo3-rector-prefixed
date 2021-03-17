@@ -28,7 +28,7 @@ final class ServiceEntityRepositoryParentCallToDIRector extends \Rector\Core\Rec
     /**
      * @var string
      */
-    private const SERVICE_ENTITY_REPOSITORY_CLASS = 'Typo3RectorPrefix20210316\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository';
+    private const SERVICE_ENTITY_REPOSITORY_CLASS = 'Typo3RectorPrefix20210317\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository';
     /**
      * @var RepositoryNodeFactory
      */
@@ -113,7 +113,7 @@ CODE_SAMPLE
         // 4. add $repository property
         $this->addRepositoryProperty($classLike, $entityReferenceExpr);
         // 5. add param + add property, dependency
-        $this->addServiceConstructorDependencyToClass($classLike, 'Typo3RectorPrefix20210316\\Doctrine\\ORM\\EntityManagerInterface');
+        $this->addServiceConstructorDependencyToClass($classLike, 'Typo3RectorPrefix20210317\\Doctrine\\ORM\\EntityManagerInterface');
         return $node;
     }
     private function shouldSkipClassMethod(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool

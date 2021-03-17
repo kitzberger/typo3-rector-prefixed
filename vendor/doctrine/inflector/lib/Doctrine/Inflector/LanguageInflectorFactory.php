@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316\Doctrine\Inflector;
+namespace Typo3RectorPrefix20210317\Doctrine\Inflector;
 
-use Typo3RectorPrefix20210316\Doctrine\Inflector\Rules\Ruleset;
+use Typo3RectorPrefix20210317\Doctrine\Inflector\Rules\Ruleset;
 interface LanguageInflectorFactory
 {
     /**
@@ -13,7 +13,7 @@ interface LanguageInflectorFactory
      *
      * @return $this
      */
-    public function withSingularRules(?\Typo3RectorPrefix20210316\Doctrine\Inflector\Rules\Ruleset $singularRules, bool $reset = \false) : self;
+    public function withSingularRules(?\Typo3RectorPrefix20210317\Doctrine\Inflector\Rules\Ruleset $singularRules, bool $reset = \false) : self;
     /**
      * Applies custom rules for pluralisation
      *
@@ -21,9 +21,9 @@ interface LanguageInflectorFactory
      *
      * @return $this
      */
-    public function withPluralRules(?\Typo3RectorPrefix20210316\Doctrine\Inflector\Rules\Ruleset $pluralRules, bool $reset = \false) : self;
+    public function withPluralRules(?\Typo3RectorPrefix20210317\Doctrine\Inflector\Rules\Ruleset $pluralRules, bool $reset = \false) : self;
     /**
      * Builds the inflector instance with all applicable rules
      */
-    public function build() : \Typo3RectorPrefix20210316\Doctrine\Inflector\Inflector;
+    public function build() : \Typo3RectorPrefix20210317\Doctrine\Inflector\Inflector;
 }

@@ -14,7 +14,7 @@ final class JoinColumnTagValueNode extends \Rector\BetterPhpDocParser\ValueObjec
     /**
      * @var string
      */
-    private $shortName = 'Typo3RectorPrefix20210316\\@ORM\\JoinColumn';
+    private $shortName = 'Typo3RectorPrefix20210317\\@ORM\\JoinColumn';
     /**
      * @var string|null
      */

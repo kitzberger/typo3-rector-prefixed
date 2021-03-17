@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210316\Symfony\Component\HttpFoundation\Session\Attribute;
+namespace Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Session\Attribute;
 
-use Typo3RectorPrefix20210316\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * Attributes store.
  *
  * @author Drak <drak@zikula.org>
  */
-interface AttributeBagInterface extends \Typo3RectorPrefix20210316\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+interface AttributeBagInterface extends \Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     /**
      * Checks if an attribute is defined.

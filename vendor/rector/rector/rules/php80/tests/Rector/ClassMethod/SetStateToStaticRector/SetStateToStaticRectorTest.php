@@ -6,14 +6,14 @@ namespace Rector\Php80\Tests\Rector\ClassMethod\SetStateToStaticRector;
 use Iterator;
 use Rector\Php80\Rector\ClassMethod\SetStateToStaticRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
 final class SetStateToStaticRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      * @requires PHP < 8.0
      */
-    public function test(\Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210316\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210317\Doctrine\Common\Annotations;
 
 use ReflectionClass;
 use ReflectionFunction;
@@ -49,7 +49,7 @@ final class PhpParser
         }
         $namespace = \preg_quote($reflection->getNamespaceName());
         $content = \preg_replace('/^.*?(\\bnamespace\\s+' . $namespace . '\\s*[;{].*)$/s', '\\1', $content);
-        $tokenizer = new \Typo3RectorPrefix20210316\Doctrine\Common\Annotations\TokenParser('<?php ' . $content);
+        $tokenizer = new \Typo3RectorPrefix20210317\Doctrine\Common\Annotations\TokenParser('<?php ' . $content);
         return $tokenizer->parseUseStatements($reflection->getNamespaceName());
     }
     /**

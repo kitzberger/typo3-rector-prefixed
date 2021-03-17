@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ServiceOptionConverter;
+namespace Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ServiceOptionConverter;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey;
-final class BindAutowireAutoconfigureServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey;
+final class BindAutowireAutoconfigureServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
 {
     /**
      * @var CommonNodeFactory
      */
     private $commonNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
     {
         $this->commonNodeFactory = $commonNodeFactory;
     }
@@ -33,6 +33,6 @@ final class BindAutowireAutoconfigureServiceOptionKeyYamlToPhpFactory implements
     }
     public function isMatch($key, $values) : bool
     {
-        return \in_array($key, [\Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey::BIND, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ValueObject\YamlKey::AUTOWIRE, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ValueObject\YamlKey::AUTOCONFIGURE], \true);
+        return \in_array($key, [\Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey::BIND, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlKey::AUTOWIRE, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlKey::AUTOCONFIGURE], \true);
     }
 }

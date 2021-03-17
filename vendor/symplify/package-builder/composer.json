@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210316\\Symplify\\PackageBuilder\\": "src"
+            "Typo3RectorPrefix20210317\\Symplify\\PackageBuilder\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210316\\Symplify\\PackageBuilder\\Tests\\": "tests"
+            "Typo3RectorPrefix20210317\\Symplify\\PackageBuilder\\Tests\\": "tests"
         }
     },
     "extra": {

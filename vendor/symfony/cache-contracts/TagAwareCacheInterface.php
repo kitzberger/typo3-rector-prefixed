@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210316\Symfony\Contracts\Cache;
+namespace Typo3RectorPrefix20210317\Symfony\Contracts\Cache;
 
-use Typo3RectorPrefix20210316\Psr\Cache\InvalidArgumentException;
+use Typo3RectorPrefix20210317\Psr\Cache\InvalidArgumentException;
 /**
  * Allows invalidating cached items using tags.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-interface TagAwareCacheInterface extends \Typo3RectorPrefix20210316\Symfony\Contracts\Cache\CacheInterface
+interface TagAwareCacheInterface extends \Typo3RectorPrefix20210317\Symfony\Contracts\Cache\CacheInterface
 {
     /**
      * Invalidates cached items using tags.

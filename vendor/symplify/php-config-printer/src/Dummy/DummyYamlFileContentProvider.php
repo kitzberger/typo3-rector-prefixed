@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Dummy;
+namespace Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Dummy;
 
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface;
-final class DummyYamlFileContentProvider implements \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface;
+final class DummyYamlFileContentProvider implements \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\YamlFileContentProviderInterface
 {
     public function setContent(string $yamlContent) : void
     {

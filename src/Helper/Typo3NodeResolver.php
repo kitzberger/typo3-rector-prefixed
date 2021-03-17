@@ -204,7 +204,7 @@ final class Typo3NodeResolver
         if (!$parentNode->expr instanceof \PhpParser\Node\Expr\PropertyFetch) {
             return \false;
         }
-        $objectType = $this->nodeTypeResolver->getStaticType($parentNode->expr->var);
+        $objectType = $this->nodeTypeResolver->resolve($parentNode->expr->var);
         if (!$objectType instanceof \PHPStan\Type\ObjectType) {
             return \false;
         }

@@ -64,24 +64,24 @@ final class NewUniqueObjectToEntityFactoryRector extends \Rector\Core\Rector\Abs
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Convert new X to new factories', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample(<<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210316;
+namespace Typo3RectorPrefix20210317;
 
 class SomeClass
 {
     public function run()
     {
-        return new \Typo3RectorPrefix20210316\AnotherClass();
+        return new \Typo3RectorPrefix20210317\AnotherClass();
     }
 }
-\class_alias('Typo3RectorPrefix20210316\\SomeClass', 'SomeClass', \false);
+\class_alias('Typo3RectorPrefix20210317\\SomeClass', 'SomeClass', \false);
 class AnotherClass
 {
     public function someFun()
     {
-        return \Typo3RectorPrefix20210316\StaticClass::staticMethod();
+        return \Typo3RectorPrefix20210317\StaticClass::staticMethod();
     }
 }
-\class_alias('Typo3RectorPrefix20210316\\AnotherClass', 'AnotherClass', \false);
+\class_alias('Typo3RectorPrefix20210317\\AnotherClass', 'AnotherClass', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 class SomeClass

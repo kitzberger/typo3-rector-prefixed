@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210316\Symfony\Contracts\Service\Test;
+namespace Typo3RectorPrefix20210317\Symfony\Contracts\Service\Test;
 
-use Typo3RectorPrefix20210316\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210316\Psr\Container\ContainerInterface;
-use Typo3RectorPrefix20210316\Symfony\Contracts\Service\ServiceLocatorTrait;
-abstract class ServiceLocatorTest extends \Typo3RectorPrefix20210316\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210317\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210317\Psr\Container\ContainerInterface;
+use Typo3RectorPrefix20210317\Symfony\Contracts\Service\ServiceLocatorTrait;
+abstract class ServiceLocatorTest extends \Typo3RectorPrefix20210317\PHPUnit\Framework\TestCase
 {
     protected function getServiceLocator(array $factories)
     {
-        return new class($factories) implements \Typo3RectorPrefix20210316\Psr\Container\ContainerInterface
+        return new class($factories) implements \Typo3RectorPrefix20210317\Psr\Container\ContainerInterface
         {
             use ServiceLocatorTrait;
         };
@@ -59,7 +59,7 @@ abstract class ServiceLocatorTest extends \Typo3RectorPrefix20210316\PHPUnit\Fra
     public function testThrowsOnUndefinedInternalService()
     {
         if (!$this->getExpectedException()) {
-            $this->expectException('Typo3RectorPrefix20210316\\Psr\\Container\\NotFoundExceptionInterface');
+            $this->expectException('Typo3RectorPrefix20210317\\Psr\\Container\\NotFoundExceptionInterface');
             $this->expectExceptionMessage('The service "foo" has a dependency on a non-existent service "bar". This locator only knows about the "foo" service.');
         }
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
@@ -69,7 +69,7 @@ abstract class ServiceLocatorTest extends \Typo3RectorPrefix20210316\PHPUnit\Fra
     }
     public function testThrowsOnCircularReference()
     {
-        $this->expectException('Typo3RectorPrefix20210316\\Psr\\Container\\ContainerExceptionInterface');
+        $this->expectException('Typo3RectorPrefix20210317\\Psr\\Container\\ContainerExceptionInterface');
         $this->expectExceptionMessage('Circular reference detected for service "bar", path: "bar -> baz -> bar".');
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
             return $locator->get('bar');

@@ -10,7 +10,7 @@ use PhpParser\NodeFinder;
 use PhpParser\Parser;
 use PHPStan\Reflection\MethodReflection;
 use ReflectionFunction;
-use Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileSystem;
 final class FunctionLikeParser
 {
     /**
@@ -25,7 +25,7 @@ final class FunctionLikeParser
      * @var NodeFinder
      */
     private $nodeFinder;
-    public function __construct(\PhpParser\Parser $parser, \Typo3RectorPrefix20210316\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \PhpParser\NodeFinder $nodeFinder)
+    public function __construct(\PhpParser\Parser $parser, \Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \PhpParser\NodeFinder $nodeFinder)
     {
         $this->parser = $parser;
         $this->smartFileSystem = $smartFileSystem;

@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210316\\Symfony\\Component\\HttpFoundation\\": ""
+            "Typo3RectorPrefix20210317\\Symfony\\Component\\HttpFoundation\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

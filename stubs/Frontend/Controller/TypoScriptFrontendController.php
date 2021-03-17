@@ -112,6 +112,10 @@ final class TypoScriptFrontendController
      * @var FrontendUserAuthentication
      */
     public $fe_user;
+    /**
+     * @var string
+     */
+    public $renderCharset = '';
     public function initTemplate() : void
     {
     }

@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ServiceOptionConverter;
+namespace Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ServiceOptionConverter;
 
 use PhpParser\Node\Expr\MethodCall;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ServiceOptionAnalyzer\ServiceOptionAnalyzer;
-use Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey;
-final class ArgumentsServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ServiceOptionAnalyzer\ServiceOptionAnalyzer;
+use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey;
+final class ArgumentsServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
 {
     /**
      * @var ArgsNodeFactory
@@ -18,7 +18,7 @@ final class ArgumentsServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPre
      * @var ServiceOptionAnalyzer
      */
     private $serviceOptionAnalyzer;
-    public function __construct(\Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ServiceOptionAnalyzer\ServiceOptionAnalyzer $serviceOptionAnalyzer)
+    public function __construct(\Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ServiceOptionAnalyzer\ServiceOptionAnalyzer $serviceOptionAnalyzer)
     {
         $this->argsNodeFactory = $argsNodeFactory;
         $this->serviceOptionAnalyzer = $serviceOptionAnalyzer;
@@ -37,6 +37,6 @@ final class ArgumentsServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPre
     }
     public function isMatch($key, $values) : bool
     {
-        return $key === \Typo3RectorPrefix20210316\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey::ARGUMENTS;
+        return $key === \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlServiceKey::ARGUMENTS;
     }
 }

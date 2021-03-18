@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Symfony3\Tests\Rector\MethodCall\FormTypeInstanceToClassConstRector\Source;
 
-use Typo3RectorPrefix20210317\Symfony\Component\Form\FormTypeInterface;
-class AnotherFormTypeClass implements \Typo3RectorPrefix20210317\Symfony\Component\Form\FormTypeInterface
+use Typo3RectorPrefix20210318\Symfony\Component\Form\FormTypeInterface;
+class AnotherFormTypeClass implements \Typo3RectorPrefix20210318\Symfony\Component\Form\FormTypeInterface
 {
 }

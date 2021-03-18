@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210317;
+namespace Typo3RectorPrefix20210318;
 
 use Rector\Core\Stubs\StubLoader;
-use Typo3RectorPrefix20210317\Tracy\Debugger;
+use Typo3RectorPrefix20210318\Tracy\Debugger;
 require_once __DIR__ . '/../vendor/autoload.php';
 // @see https://github.com/phpstan/phpstan/issues/4541#issuecomment-779434916
 require_once 'phar://vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/ReflectionUnionType.php';
@@ -17,4 +17,4 @@ require_once 'phar://vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/Attribute
 $stubLoader = new \Rector\Core\Stubs\StubLoader();
 $stubLoader->loadStubs();
 // make dump() useful and not nest infinity spam
-\Typo3RectorPrefix20210317\Tracy\Debugger::$maxDepth = 2;
+\Typo3RectorPrefix20210318\Tracy\Debugger::$maxDepth = 2;

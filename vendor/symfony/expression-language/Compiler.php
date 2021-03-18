@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210317\Symfony\Component\ExpressionLanguage;
+namespace Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage;
 
-use Typo3RectorPrefix20210317\Symfony\Contracts\Service\ResetInterface;
+use Typo3RectorPrefix20210318\Symfony\Contracts\Service\ResetInterface;
 /**
  * Compiles a node to PHP code.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Compiler implements \Typo3RectorPrefix20210317\Symfony\Contracts\Service\ResetInterface
+class Compiler implements \Typo3RectorPrefix20210318\Symfony\Contracts\Service\ResetInterface
 {
     private $source;
     private $functions;
@@ -47,12 +47,12 @@ class Compiler implements \Typo3RectorPrefix20210317\Symfony\Contracts\Service\R
      *
      * @return $this
      */
-    public function compile(\Typo3RectorPrefix20210317\Symfony\Component\ExpressionLanguage\Node\Node $node)
+    public function compile(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node\Node $node)
     {
         $node->compile($this);
         return $this;
     }
-    public function subcompile(\Typo3RectorPrefix20210317\Symfony\Component\ExpressionLanguage\Node\Node $node)
+    public function subcompile(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node\Node $node)
     {
         $current = $this->source;
         $this->source = '';

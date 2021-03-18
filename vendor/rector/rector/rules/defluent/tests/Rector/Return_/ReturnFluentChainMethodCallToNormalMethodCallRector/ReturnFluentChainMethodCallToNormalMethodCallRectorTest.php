@@ -6,13 +6,13 @@ namespace Rector\Defluent\Tests\Rector\Return_\ReturnFluentChainMethodCallToNorm
 use Iterator;
 use Rector\Defluent\Rector\Return_\ReturnFluentChainMethodCallToNormalMethodCallRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
 final class ReturnFluentChainMethodCallToNormalMethodCallRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

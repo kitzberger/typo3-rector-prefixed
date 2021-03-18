@@ -9,7 +9,7 @@ final class InheritanceTypeTagValueNode extends \Rector\BetterPhpDocParser\Value
 {
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210317\\@ORM\\InheritanceType';
+        return 'Typo3RectorPrefix20210318\\@ORM\\InheritanceType';
     }
     public function getSilentKey() : string
     {

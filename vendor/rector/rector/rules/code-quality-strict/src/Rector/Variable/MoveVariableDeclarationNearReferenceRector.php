@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodeQualityStrict\Rector\Variable;
 
-use Typo3RectorPrefix20210317\Nette\Utils\Strings;
+use Typo3RectorPrefix20210318\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ArrayDimFetch;
@@ -222,7 +222,7 @@ CODE_SAMPLE
             if ($funcName === null) {
                 return \false;
             }
-            return \Typo3RectorPrefix20210317\Nette\Utils\Strings::startsWith($funcName, 'ob_');
+            return \Typo3RectorPrefix20210318\Nette\Utils\Strings::startsWith($funcName, 'ob_');
         });
     }
     private function getCountFound(\PhpParser\Node $node, \PhpParser\Node\Expr\Variable $variable) : int

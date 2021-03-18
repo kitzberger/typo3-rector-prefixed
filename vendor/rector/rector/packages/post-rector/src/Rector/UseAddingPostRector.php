@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\PostRector\Rector;
 
-use Typo3RectorPrefix20210317\Nette\Utils\Strings;
+use Typo3RectorPrefix20210318\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Stmt\Namespace_;
@@ -17,7 +17,7 @@ use Rector\NodeTypeResolver\PHPStan\Type\TypeFactory;
 use Rector\PostRector\Collector\UseNodesToAddCollector;
 use Rector\PostRector\Contract\Rector\PostRectorInterface;
 use Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType;
-use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
 final class UseAddingPostRector extends \PhpParser\NodeVisitorAbstract implements \Rector\PostRector\Contract\Rector\PostRectorInterface
 {
     /**
@@ -59,7 +59,7 @@ final class UseAddingPostRector extends \PhpParser\NodeVisitorAbstract implement
             return $nodes;
         }
         $smartFileInfo = $this->getSmartFileInfo($nodes);
-        if (!$smartFileInfo instanceof \Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$smartFileInfo instanceof \Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo) {
             return $nodes;
         }
         $useImportTypes = $this->useNodesToAddCollector->getObjectImportsByFileInfo($smartFileInfo);
@@ -100,7 +100,7 @@ final class UseAddingPostRector extends \PhpParser\NodeVisitorAbstract implement
     /**
      * @param Node[] $nodes
      */
-    private function getSmartFileInfo(array $nodes) : ?\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo
+    private function getSmartFileInfo(array $nodes) : ?\Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo
     {
         foreach ($nodes as $node) {
             /** @var SmartFileInfo|null $smartFileInfo */
@@ -120,7 +120,7 @@ final class UseAddingPostRector extends \PhpParser\NodeVisitorAbstract implement
     {
         $namespacedUseImportTypes = [];
         foreach ($useImportTypes as $useImportType) {
-            if (!\Typo3RectorPrefix20210317\Nette\Utils\Strings::contains($useImportType->getClassName(), '\\')) {
+            if (!\Typo3RectorPrefix20210318\Nette\Utils\Strings::contains($useImportType->getClassName(), '\\')) {
                 continue;
             }
             $namespacedUseImportTypes[] = $useImportType;

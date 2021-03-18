@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210317\Symplify\MarkdownDiff\Bundle;
+namespace Typo3RectorPrefix20210318\Symplify\MarkdownDiff\Bundle;
 
-use Typo3RectorPrefix20210317\Symfony\Component\HttpKernel\Bundle\Bundle;
-use Typo3RectorPrefix20210317\Symplify\MarkdownDiff\DependencyInjection\Extension\MarkdownDiffExtension;
-final class MarkdownDiffBundle extends \Typo3RectorPrefix20210317\Symfony\Component\HttpKernel\Bundle\Bundle
+use Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Bundle\Bundle;
+use Typo3RectorPrefix20210318\Symplify\MarkdownDiff\DependencyInjection\Extension\MarkdownDiffExtension;
+final class MarkdownDiffBundle extends \Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Bundle\Bundle
 {
-    protected function createContainerExtension() : \Typo3RectorPrefix20210317\Symplify\MarkdownDiff\DependencyInjection\Extension\MarkdownDiffExtension
+    protected function createContainerExtension() : \Typo3RectorPrefix20210318\Symplify\MarkdownDiff\DependencyInjection\Extension\MarkdownDiffExtension
     {
-        return new \Typo3RectorPrefix20210317\Symplify\MarkdownDiff\DependencyInjection\Extension\MarkdownDiffExtension();
+        return new \Typo3RectorPrefix20210318\Symplify\MarkdownDiff\DependencyInjection\Extension\MarkdownDiffExtension();
     }
 }

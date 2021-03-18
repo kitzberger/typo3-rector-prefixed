@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210317\\Symplify\\EasyTesting\\": "src"
+            "Typo3RectorPrefix20210318\\Symplify\\EasyTesting\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210317\\Symplify\\EasyTesting\\Tests\\": "tests"
+            "Typo3RectorPrefix20210318\\Symplify\\EasyTesting\\Tests\\": "tests"
         }
     },
     "extra": {

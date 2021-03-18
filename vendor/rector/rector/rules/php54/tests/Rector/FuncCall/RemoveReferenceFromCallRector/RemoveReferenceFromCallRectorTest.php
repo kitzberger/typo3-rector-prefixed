@@ -6,13 +6,13 @@ namespace Rector\Php54\Tests\Rector\FuncCall\RemoveReferenceFromCallRector;
 use Iterator;
 use Rector\Php54\Rector\FuncCall\RemoveReferenceFromCallRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
 final class RemoveReferenceFromCallRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfoWithoutAutoload($fileInfo);
     }

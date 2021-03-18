@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace PhpParser\Builder;
 
-use Typo3RectorPrefix20210317\PhpParser;
+use Typo3RectorPrefix20210318\PhpParser;
 use PhpParser\BuilderHelpers;
 abstract class Declaration implements \PhpParser\Builder
 {

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210317\Symfony\Contracts\Service\Attribute;
+namespace Typo3RectorPrefix20210318\Symfony\Contracts\Service\Attribute;
 
 use Attribute;
 /**
@@ -19,7 +19,7 @@ use Attribute;
  *
  * @author Alexander M. Turek <me@derrabus.de>
  */
-#[Attribute(\Attribute::TARGET_METHOD | \Attribute::TARGET_PROPERTY)]
+#[Attribute(Attribute::TARGET_METHOD | Attribute::TARGET_PROPERTY)]
 final class Required
 {
 }

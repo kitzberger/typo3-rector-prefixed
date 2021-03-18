@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210317\Symfony\Component\HttpKernel\DataCollector;
+namespace Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\DataCollector;
 
-use Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210318\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210318\Symfony\Component\HttpFoundation\Response;
 /**
  * AjaxDataCollector.
  *
@@ -19,9 +19,9 @@ use Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class AjaxDataCollector extends \Typo3RectorPrefix20210317\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class AjaxDataCollector extends \Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
-    public function collect(\Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210317\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\Typo3RectorPrefix20210318\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210318\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         // all collecting is done client side
     }

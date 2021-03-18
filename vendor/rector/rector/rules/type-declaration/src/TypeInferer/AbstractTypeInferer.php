@@ -7,7 +7,7 @@ use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\NodeTypeResolver;
 use Rector\NodeTypeResolver\PHPStan\Type\TypeFactory;
 use Rector\StaticTypeMapper\StaticTypeMapper;
-use Typo3RectorPrefix20210317\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210318\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 abstract class AbstractTypeInferer
 {
     /**
@@ -33,7 +33,7 @@ abstract class AbstractTypeInferer
     /**
      * @required
      */
-    public function autowireAbstractTypeInferer(\Typo3RectorPrefix20210317\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\StaticTypeMapper\StaticTypeMapper $staticTypeMapper, \Rector\NodeTypeResolver\PHPStan\Type\TypeFactory $typeFactory) : void
+    public function autowireAbstractTypeInferer(\Typo3RectorPrefix20210318\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\StaticTypeMapper\StaticTypeMapper $staticTypeMapper, \Rector\NodeTypeResolver\PHPStan\Type\TypeFactory $typeFactory) : void
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->nodeNameResolver = $nodeNameResolver;

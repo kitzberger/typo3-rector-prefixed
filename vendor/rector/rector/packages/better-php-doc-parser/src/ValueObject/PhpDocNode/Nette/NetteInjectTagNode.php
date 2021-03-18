@@ -28,7 +28,7 @@ final class NetteInjectTagNode extends \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTa
     }
     public function getAttributeClassName() : string
     {
-        return 'Typo3RectorPrefix20210317\\Nette\\DI\\Attributes\\Inject';
+        return 'Typo3RectorPrefix20210318\\Nette\\DI\\Attributes\\Inject';
     }
     /**
      * @return mixed[]

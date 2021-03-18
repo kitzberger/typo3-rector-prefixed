@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\RuleDocGenerator\ValueObject;
 
 use Symplify\RuleDocGenerator\Contract\CodeSampleInterface;
-use Typo3RectorPrefix20210317\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210318\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 abstract class AbstractCodeSample implements \Symplify\RuleDocGenerator\Contract\CodeSampleInterface
 {
     /**
@@ -20,11 +20,11 @@ abstract class AbstractCodeSample implements \Symplify\RuleDocGenerator\Contract
         $badCode = \trim($badCode);
         $goodCode = \trim($goodCode);
         if ($badCode === '') {
-            throw new \Typo3RectorPrefix20210317\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('Bad sample good code cannot be empty');
+            throw new \Typo3RectorPrefix20210318\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('Bad sample good code cannot be empty');
         }
         if ($goodCode === $badCode) {
             $errorMessage = \sprintf('Good and bad code cannot be identical: "%s"', $goodCode);
-            throw new \Typo3RectorPrefix20210317\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
+            throw new \Typo3RectorPrefix20210318\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
         }
         $this->goodCode = $goodCode;
         $this->badCode = $badCode;

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210317;
+namespace Typo3RectorPrefix20210318;
 
 use Rector\Core\Configuration\Option;
 use Rector\Core\ValueObject\ProjectType;
-use Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/../packages/*/config/config.php');
     $containerConfigurator->import(__DIR__ . '/../rules/*/config/config.php');
     $containerConfigurator->import(__DIR__ . '/services.php');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210317;
+namespace Typo3RectorPrefix20210318;
 
 /*
  * This file is part of the Symfony package.

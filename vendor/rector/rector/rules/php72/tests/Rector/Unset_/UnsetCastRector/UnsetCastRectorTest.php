@@ -6,7 +6,7 @@ namespace Rector\Php72\Tests\Rector\Unset_\UnsetCastRector;
 use Iterator;
 use Rector\Php72\Rector\Unset_\UnsetCastRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @requires PHP <= 8.0
  */
@@ -15,7 +15,7 @@ final class UnsetCastRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTe
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210317\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

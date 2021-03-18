@@ -69,7 +69,7 @@ CODE_SAMPLE
         if (!$hasEntityGetIdMethodCall) {
             return null;
         }
-        $node->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210317\\Ramsey\\Uuid\\UuidInterface');
+        $node->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210318\\Ramsey\\Uuid\\UuidInterface');
         return $node;
     }
     private function hasEntityGetIdMethodCall(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool

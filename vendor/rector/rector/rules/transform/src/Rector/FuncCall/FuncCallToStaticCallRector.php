@@ -10,7 +10,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\Transform\ValueObject\FuncCallToStaticCall;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210317\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210318\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Transform\Tests\Rector\FuncCall\FuncCallToStaticCallRector\FuncCallToStaticCallRectorTest
  */
@@ -51,7 +51,7 @@ final class FuncCallToStaticCallRector extends \Rector\Core\Rector\AbstractRecto
     public function configure(array $configuration) : void
     {
         $funcCallsToStaticCalls = $configuration[self::FUNC_CALLS_TO_STATIC_CALLS] ?? [];
-        \Typo3RectorPrefix20210317\Webmozart\Assert\Assert::allIsInstanceOf($funcCallsToStaticCalls, \Rector\Transform\ValueObject\FuncCallToStaticCall::class);
+        \Typo3RectorPrefix20210318\Webmozart\Assert\Assert::allIsInstanceOf($funcCallsToStaticCalls, \Rector\Transform\ValueObject\FuncCallToStaticCall::class);
         $this->funcCallsToStaticCalls = $funcCallsToStaticCalls;
     }
 }

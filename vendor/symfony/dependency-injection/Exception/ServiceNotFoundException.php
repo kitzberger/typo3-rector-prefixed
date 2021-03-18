@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Exception;
+namespace Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Exception;
 
-use Typo3RectorPrefix20210317\Psr\Container\NotFoundExceptionInterface;
+use Typo3RectorPrefix20210318\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent service is requested.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ServiceNotFoundException extends \Typo3RectorPrefix20210317\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \Typo3RectorPrefix20210317\Psr\Container\NotFoundExceptionInterface
+class ServiceNotFoundException extends \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \Typo3RectorPrefix20210318\Psr\Container\NotFoundExceptionInterface
 {
     private $id;
     private $sourceId;

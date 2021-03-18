@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="<?php 
-namespace Typo3RectorPrefix20210317;
+namespace Typo3RectorPrefix20210318;
 
 echo $this->charset;
 ?>" />

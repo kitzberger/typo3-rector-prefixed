@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210317\Symplify\Skipper\SkipCriteriaResolver;
+namespace Typo3RectorPrefix20210318\Symplify\Skipper\SkipCriteriaResolver;
 
-use Typo3RectorPrefix20210317\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210317\Symplify\Skipper\ValueObject\Option;
+use Typo3RectorPrefix20210318\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210318\Symplify\Skipper\ValueObject\Option;
 final class SkippedClassAndCodesResolver
 {
     /**
@@ -15,7 +15,7 @@ final class SkippedClassAndCodesResolver
      * @var ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\Typo3RectorPrefix20210317\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Typo3RectorPrefix20210318\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->parameterProvider = $parameterProvider;
     }
@@ -27,7 +27,7 @@ final class SkippedClassAndCodesResolver
         if ($this->skippedClassAndCodes !== []) {
             return $this->skippedClassAndCodes;
         }
-        $skip = $this->parameterProvider->provideArrayParameter(\Typo3RectorPrefix20210317\Symplify\Skipper\ValueObject\Option::SKIP);
+        $skip = $this->parameterProvider->provideArrayParameter(\Typo3RectorPrefix20210318\Symplify\Skipper\ValueObject\Option::SKIP);
         foreach ($skip as $key => $value) {
             // e.g. [SomeClass::class] → shift values to [SomeClass::class => null]
             if (\is_int($key)) {

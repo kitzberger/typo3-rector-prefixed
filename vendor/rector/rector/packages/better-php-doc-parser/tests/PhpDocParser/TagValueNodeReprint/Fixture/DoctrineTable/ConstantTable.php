@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocParser\TagValueNodeReprint\Fixture\DoctrineTable;
 
-use Typo3RectorPrefix20210317\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210318\Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name=ConstantTable::TABLE_NAME)
  */

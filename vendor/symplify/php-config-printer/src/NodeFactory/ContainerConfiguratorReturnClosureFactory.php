@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory;
+namespace Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\NodeFactory;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
@@ -9,11 +9,11 @@ use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\Return_;
-use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
-use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory;
-use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\MethodName;
-use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\VariableName;
-use Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
+use Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
+use Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory;
+use Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\MethodName;
+use Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\VariableName;
+use Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
 final class ContainerConfiguratorReturnClosureFactory
 {
     /**
@@ -31,7 +31,7 @@ final class ContainerConfiguratorReturnClosureFactory
     /**
      * @param CaseConverterInterface[] $caseConverters
      */
-    public function __construct(\Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory $configuratorClosureNodeFactory, array $caseConverters, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\NodeFactory\ContainerNestedNodesFactory $containerNestedNodesFactory)
+    public function __construct(\Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory $configuratorClosureNodeFactory, array $caseConverters, \Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\NodeFactory\ContainerNestedNodesFactory $containerNestedNodesFactory)
     {
         $this->configuratorClosureNodeFactory = $configuratorClosureNodeFactory;
         $this->caseConverters = $caseConverters;
@@ -81,7 +81,7 @@ final class ContainerConfiguratorReturnClosureFactory
     private function createInitializeAssign(string $variableName, string $methodName) : \PhpParser\Node\Stmt\Expression
     {
         $servicesVariable = new \PhpParser\Node\Expr\Variable($variableName);
-        $containerConfiguratorVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\VariableName::CONTAINER_CONFIGURATOR);
+        $containerConfiguratorVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\VariableName::CONTAINER_CONFIGURATOR);
         $assign = new \PhpParser\Node\Expr\Assign($servicesVariable, new \PhpParser\Node\Expr\MethodCall($containerConfiguratorVariable, $methodName));
         return new \PhpParser\Node\Stmt\Expression($assign);
     }
@@ -90,11 +90,11 @@ final class ContainerConfiguratorReturnClosureFactory
      */
     private function createInitializeNode(string $key, array $nodes) : array
     {
-        if ($key === \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlKey::SERVICES) {
-            $nodes[] = $this->createInitializeAssign(\Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\MethodName::SERVICES);
+        if ($key === \Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\YamlKey::SERVICES) {
+            $nodes[] = $this->createInitializeAssign(\Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES, \Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\MethodName::SERVICES);
         }
-        if ($key === \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\YamlKey::PARAMETERS) {
-            $nodes[] = $this->createInitializeAssign(\Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\VariableName::PARAMETERS, \Typo3RectorPrefix20210317\Symplify\PhpConfigPrinter\ValueObject\MethodName::PARAMETERS);
+        if ($key === \Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\YamlKey::PARAMETERS) {
+            $nodes[] = $this->createInitializeAssign(\Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\VariableName::PARAMETERS, \Typo3RectorPrefix20210318\Symplify\PhpConfigPrinter\ValueObject\MethodName::PARAMETERS);
         }
         return $nodes;
     }

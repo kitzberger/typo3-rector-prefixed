@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210317\Symplify\MarkdownDiff\Differ;
+namespace Typo3RectorPrefix20210318\Symplify\MarkdownDiff\Differ;
 
-use Typo3RectorPrefix20210317\Nette\Utils\Strings;
-use Typo3RectorPrefix20210317\SebastianBergmann\Diff\Differ;
+use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210318\SebastianBergmann\Diff\Differ;
 /**
  * @see \Symplify\MarkdownDiff\Tests\Differ\MarkdownDifferTest
  */
@@ -24,7 +24,7 @@ final class MarkdownDiffer
      * @var Differ
      */
     private $markdownDiffer;
-    public function __construct(\Typo3RectorPrefix20210317\SebastianBergmann\Diff\Differ $markdownDiffer)
+    public function __construct(\Typo3RectorPrefix20210318\SebastianBergmann\Diff\Differ $markdownDiffer)
     {
         $this->markdownDiffer = $markdownDiffer;
     }
@@ -43,7 +43,7 @@ final class MarkdownDiffer
      */
     private function removeTrailingWhitespaces(string $diff) : string
     {
-        $diff = \Typo3RectorPrefix20210317\Nette\Utils\Strings::replace($diff, self::SPACE_AND_NEWLINE_REGEX, \PHP_EOL);
+        $diff = \Typo3RectorPrefix20210318\Nette\Utils\Strings::replace($diff, self::SPACE_AND_NEWLINE_REGEX, \PHP_EOL);
         return \rtrim($diff);
     }
     private function warpToDiffCode(string $content) : string
@@ -52,6 +52,6 @@ final class MarkdownDiffer
     }
     private function clearUnifiedDiffOutputFirstLine(string $diff) : string
     {
-        return \Typo3RectorPrefix20210317\Nette\Utils\Strings::replace($diff, self::METADATA_REGEX, '');
+        return \Typo3RectorPrefix20210318\Nette\Utils\Strings::replace($diff, self::METADATA_REGEX, '');
     }
 }

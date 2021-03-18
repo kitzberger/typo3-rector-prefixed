@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\SymfonyCodeQuality\ApplicationMetadata;
 
-use Typo3RectorPrefix20210317\Nette\Utils\Strings;
+use Typo3RectorPrefix20210318\Nette\Utils\Strings;
 use Rector\Symfony\ServiceMapProvider;
 use Rector\Symfony\ValueObject\ServiceDefinition;
 use Rector\Symfony\ValueObject\Tag\EventListenerTag;
@@ -42,7 +42,7 @@ final class ListenerServiceDefinitionProvider
         $eventListeners = $serviceMap->getServicesByTag('kernel.event_listener');
         foreach ($eventListeners as $eventListener) {
             // skip Symfony core listeners
-            if (\Typo3RectorPrefix20210317\Nette\Utils\Strings::match((string) $eventListener->getClass(), self::SYMFONY_FAMILY_REGEX)) {
+            if (\Typo3RectorPrefix20210318\Nette\Utils\Strings::match((string) $eventListener->getClass(), self::SYMFONY_FAMILY_REGEX)) {
                 continue;
             }
             foreach ($eventListener->getTags() as $tag) {

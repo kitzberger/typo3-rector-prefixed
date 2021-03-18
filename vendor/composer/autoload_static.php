@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitdadf96fa2d2d78f41b7a0600dedbac1e
+class ComposerStaticInite894a518caaae783c8297c24a09a24c0
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -3044,6 +3044,7 @@ class ComposerStaticInitdadf96fa2d2d78f41b7a0600dedbac1e
         'Ssch\\TYPO3Rector\\Rector\\v8\\v3\\RefactorQueryViewTableWrapRector' => __DIR__ . '/../..' . '/src/Rector/v8/v3/RefactorQueryViewTableWrapRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v8\\v3\\RemovedTcaSelectTreeOptionsRector' => __DIR__ . '/../..' . '/src/Rector/v8/v3/RemovedTcaSelectTreeOptionsRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v8\\v3\\SoftReferencesFunctionalityRemovedRector' => __DIR__ . '/../..' . '/src/Rector/v8/v3/SoftReferencesFunctionalityRemovedRector.php',
+        'Ssch\\TYPO3Rector\\Rector\\v8\\v4\\ExtensionManagementUtilityExtRelPathRector' => __DIR__ . '/../..' . '/src/Rector/v8/v4/ExtensionManagementUtilityExtRelPathRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v8\\v4\\RemoveOptionShowIfRteRector' => __DIR__ . '/../..' . '/src/Rector/v8/v4/RemoveOptionShowIfRteRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v8\\v4\\SubstituteOldWizardIconsRector' => __DIR__ . '/../..' . '/src/Rector/v8/v4/SubstituteOldWizardIconsRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v8\\v5\\CharsetConverterToMultiByteFunctionsRector' => __DIR__ . '/../..' . '/src/Rector/v8/v5/CharsetConverterToMultiByteFunctionsRector.php',
@@ -4428,9 +4429,9 @@ class ComposerStaticInitdadf96fa2d2d78f41b7a0600dedbac1e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitdadf96fa2d2d78f41b7a0600dedbac1e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitdadf96fa2d2d78f41b7a0600dedbac1e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitdadf96fa2d2d78f41b7a0600dedbac1e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite894a518caaae783c8297c24a09a24c0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite894a518caaae783c8297c24a09a24c0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite894a518caaae783c8297c24a09a24c0::$classMap;
 
         }, null, ClassLoader::class);
     }

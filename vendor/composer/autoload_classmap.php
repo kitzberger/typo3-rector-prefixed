@@ -2247,6 +2247,7 @@ return array(
     'Ssch\\TYPO3Rector\\Rector\\v8\\v3\\RefactorQueryViewTableWrapRector' => $baseDir . '/src/Rector/v8/v3/RefactorQueryViewTableWrapRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v8\\v3\\RemovedTcaSelectTreeOptionsRector' => $baseDir . '/src/Rector/v8/v3/RemovedTcaSelectTreeOptionsRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v8\\v3\\SoftReferencesFunctionalityRemovedRector' => $baseDir . '/src/Rector/v8/v3/SoftReferencesFunctionalityRemovedRector.php',
+    'Ssch\\TYPO3Rector\\Rector\\v8\\v4\\ExtensionManagementUtilityExtRelPathRector' => $baseDir . '/src/Rector/v8/v4/ExtensionManagementUtilityExtRelPathRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v8\\v4\\RemoveOptionShowIfRteRector' => $baseDir . '/src/Rector/v8/v4/RemoveOptionShowIfRteRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v8\\v4\\SubstituteOldWizardIconsRector' => $baseDir . '/src/Rector/v8/v4/SubstituteOldWizardIconsRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v8\\v5\\CharsetConverterToMultiByteFunctionsRector' => $baseDir . '/src/Rector/v8/v5/CharsetConverterToMultiByteFunctionsRector.php',

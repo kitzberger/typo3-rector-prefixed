@@ -2298,6 +2298,7 @@ return array(
     'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\ReplaceExtKeyWithExtensionKeyRector' => $baseDir . '/src/Rector/v9/v0/ReplaceExtKeyWithExtensionKeyRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\SubstituteCacheWrapperMethodsRector' => $baseDir . '/src/Rector/v9/v0/SubstituteCacheWrapperMethodsRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\SubstituteConstantParsetimeStartRector' => $baseDir . '/src/Rector/v9/v0/SubstituteConstantParsetimeStartRector.php',
+    'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\SubstituteGeneralUtilityDevLogRector' => $baseDir . '/src/Rector/v9/v0/SubstituteGeneralUtilityDevLogRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\UseExtensionConfigurationApiRector' => $baseDir . '/src/Rector/v9/v0/UseExtensionConfigurationApiRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\UseLogMethodInsteadOfNewLog2Rector' => $baseDir . '/src/Rector/v9/v0/UseLogMethodInsteadOfNewLog2Rector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\UseNewComponentIdForPageTreeRector' => $baseDir . '/src/Rector/v9/v0/UseNewComponentIdForPageTreeRector.php',

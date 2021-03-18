@@ -59,8 +59,14 @@ final class SubstituteGeneralUtilityDevLogRector extends \Rector\Core\Rector\Abs
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute GeneralUtility::devLog() to Logging API', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+GeneralUtility::devLog('message', 'foo', 0, $data);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
+use TYPO3\CMS\Core\Log\LogLevel;
+use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__)->log(LogLevel::INFO, 'message', $data);
 CODE_SAMPLE
 )]);
     }

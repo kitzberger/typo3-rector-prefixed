@@ -107,10 +107,13 @@ CODE_SAMPLE
             return \true;
         }
         // negate + negate → skip for now
-        if ($this->valueResolver->isFalse($returnedExpr) && \Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($this->print($if->cond), '!=')) {
-            return \true;
+        if (!$this->valueResolver->isFalse($returnedExpr)) {
+            return !$this->valueResolver->isTrueOrFalse($nextNode->expr);
         }
-        return !$this->valueResolver->isTrueOrFalse($nextNode->expr);
+        if (!\Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($this->print($if->cond), '!=')) {
+            return !$this->valueResolver->isTrueOrFalse($nextNode->expr);
+        }
+        return \true;
     }
     private function processReturnTrue(\PhpParser\Node\Stmt\If_ $if, \PhpParser\Node\Stmt\Return_ $nextReturnNode) : \PhpParser\Node\Stmt\Return_
     {

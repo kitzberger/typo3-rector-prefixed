@@ -74,7 +74,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isVariableName($node->var, 'this')) {
+        if (!$this->nodeNameResolver->isVariableName($node->var, 'this')) {
             return null;
         }
         $methodName = $this->getName($node->name);
@@ -107,9 +107,12 @@ CODE_SAMPLE
             return 'self';
         }
         $methodReflection = $this->methodReflectionProvider->provideByMethodCall($methodCall);
-        if ($methodReflection instanceof \ReflectionMethod && $methodReflection->isPrivate()) {
-            return 'self';
+        if (!$methodReflection instanceof \ReflectionMethod) {
+            return 'static';
         }
-        return 'static';
+        if (!$methodReflection->isPrivate()) {
+            return 'static';
+        }
+        return 'self';
     }
 }

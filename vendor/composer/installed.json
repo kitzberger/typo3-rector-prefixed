@@ -876,17 +876,17 @@
         },
         {
             "name": "phpstan\/phpstan",
-            "version": "0.12.82",
-            "version_normalized": "0.12.82.0",
+            "version": "0.12.81",
+            "version_normalized": "0.12.81.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/phpstan\/phpstan.git",
-                "reference": "3920f0fb0aff39263d3a4cb0bca120a67a1a6a11"
+                "reference": "0dd5b0ebeff568f7000022ea5f04aa86ad3124b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpstan\/zipball\/3920f0fb0aff39263d3a4cb0bca120a67a1a6a11",
-                "reference": "3920f0fb0aff39263d3a4cb0bca120a67a1a6a11",
+                "url": "https:\/\/api.github.com\/repos\/phpstan\/phpstan\/zipball\/0dd5b0ebeff568f7000022ea5f04aa86ad3124b8",
+                "reference": "0dd5b0ebeff568f7000022ea5f04aa86ad3124b8",
                 "shasum": ""
             },
             "require": {
@@ -895,7 +895,7 @@
             "conflict": {
                 "phpstan\/phpstan-shim": "*"
             },
-            "time": "2021-03-19T06:08:17+00:00",
+            "time": "2021-03-08T22:03:02+00:00",
             "bin": [
                 "phpstan",
                 "phpstan.phar"
@@ -919,7 +919,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https:\/\/github.com\/phpstan\/phpstan\/issues",
-                "source": "https:\/\/github.com\/phpstan\/phpstan\/tree\/0.12.82"
+                "source": "https:\/\/github.com\/phpstan\/phpstan\/tree\/0.12.81"
             },
             "funding": [
                 {
@@ -1260,17 +1260,17 @@
         },
         {
             "name": "rector\/rector",
-            "version": "0.9.30",
-            "version_normalized": "0.9.30.0",
+            "version": "0.9.33",
+            "version_normalized": "0.9.33.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/rectorphp\/rector.git",
-                "reference": "8c079420dc169a6398cb6a99ee3f5e5015898923"
+                "reference": "5ecfec4ae83f6187f09584579cacee08658dc3a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/8c079420dc169a6398cb6a99ee3f5e5015898923",
-                "reference": "8c079420dc169a6398cb6a99ee3f5e5015898923",
+                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/5ecfec4ae83f6187f09584579cacee08658dc3a9",
+                "reference": "5ecfec4ae83f6187f09584579cacee08658dc3a9",
                 "shasum": ""
             },
             "require": {
@@ -1285,8 +1285,8 @@
                 "nette\/utils": "^3.2",
                 "nikic\/php-parser": "^4.10.4",
                 "php": "^7.3|^8.0",
-                "phpstan\/phpdoc-parser": "^0.4.9",
-                "phpstan\/phpstan": "^0.12.76",
+                "phpstan\/phpdoc-parser": "^0.4.9, <0.5",
+                "phpstan\/phpstan": "^0.12.76, <0.12.82",
                 "phpstan\/phpstan-phpunit": "^0.12.17",
                 "psr\/simple-cache": "^1.0",
                 "sebastian\/diff": "^4.0.4",
@@ -1302,6 +1302,7 @@
                 "symplify\/console-color-diff": "^9.1.9",
                 "symplify\/package-builder": "^9.1.9",
                 "symplify\/rule-doc-generator": "^9.1.9",
+                "symplify\/rule-doc-generator-contracts": "^9.2",
                 "symplify\/set-config-resolver": "^9.1.9",
                 "symplify\/simple-php-doc-parser": "^9.1.9",
                 "symplify\/skipper": "^9.1.9",
@@ -1332,7 +1333,7 @@
                 "symplify\/phpstan-rules": "^9.1.9",
                 "tracy\/tracy": "^2.8"
             },
-            "time": "2021-02-21T00:05:22+00:00",
+            "time": "2021-03-19T22:46:33+00:00",
             "bin": [
                 "bin\/rector"
             ],
@@ -1460,7 +1461,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/rectorphp\/rector\/issues",
-                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/0.9.30"
+                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/0.9.33"
             },
             "funding": [
                 {
@@ -4347,6 +4348,58 @@
                 }
             ],
             "install-path": "..\/symplify\/rule-doc-generator"
+        },
+        {
+            "name": "symplify\/rule-doc-generator-contracts",
+            "version": "v9.2.13",
+            "version_normalized": "9.2.13.0",
+            "source": {
+                "type": "git",
+                "url": "https:\/\/github.com\/symplify\/rule-doc-generator-contracts.git",
+                "reference": "b02f4b86397534e1afcf5d6466b15fb54b89f11c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https:\/\/api.github.com\/repos\/symplify\/rule-doc-generator-contracts\/zipball\/b02f4b86397534e1afcf5d6466b15fb54b89f11c",
+                "reference": "b02f4b86397534e1afcf5d6466b15fb54b89f11c",
+                "shasum": ""
+            },
+            "require": {
+                "nette\/utils": "^3.2",
+                "php": ">=7.3"
+            },
+            "time": "2021-03-18T11:17:08+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "9.3-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Symplify\\RuleDocGenerator\\": "src"
+                }
+            },
+            "notification-url": "https:\/\/packagist.org\/downloads\/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Contracts for production code of RuleDocGenerator",
+            "support": {
+                "source": "https:\/\/github.com\/symplify\/rule-doc-generator-contracts\/tree\/v9.2.13"
+            },
+            "funding": [
+                {
+                    "url": "https:\/\/www.paypal.me\/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https:\/\/github.com\/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "install-path": "..\/symplify\/rule-doc-generator-contracts"
         },
         {
             "name": "symplify\/set-config-resolver",

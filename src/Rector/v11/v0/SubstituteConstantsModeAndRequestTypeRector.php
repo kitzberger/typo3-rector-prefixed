@@ -43,7 +43,7 @@ final class SubstituteConstantsModeAndRequestTypeRector extends \Rector\Core\Rec
         if (!$fileInfo instanceof \Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo) {
             return null;
         }
-        if ($this->isFuncCallName($node, 'defined')) {
+        if ($this->nodeNameResolver->isFuncCallName($node, 'defined')) {
             return $this->refactorProbablySecurityGate($node);
         }
         if ($this->isExtLocalConf($fileInfo) || $this->isExtTables($fileInfo)) {

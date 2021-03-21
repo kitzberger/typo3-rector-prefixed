@@ -59,7 +59,7 @@ return array(
     'Typo3RectorPrefix20210321\\Composer\\XdebugHandler\\' => array($vendorDir . '/composer/xdebug-handler/src'),
     'Typo3RectorPrefix20210321\\Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
     'Symplify\\SymfonyPhpConfig\\' => array($vendorDir . '/symplify/symfony-php-config/src'),
-    'Symplify\\RuleDocGenerator\\' => array($vendorDir . '/symplify/rule-doc-generator/src'),
+    'Symplify\\RuleDocGenerator\\' => array($vendorDir . '/symplify/rule-doc-generator/src', $vendorDir . '/symplify/rule-doc-generator-contracts/src'),
     'Ssch\\TYPO3Rector\\PHPStan\\' => array($baseDir . '/utils/phpstan/src'),
     'Ssch\\TYPO3Rector\\ComposerPackages\\' => array($baseDir . '/utils/composer-packages/src'),
     'Ssch\\TYPO3Rector\\Compiler\\' => array($baseDir . '/utils/compiler/src'),

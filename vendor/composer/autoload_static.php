@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit34934f1eca9ad98b8465217226958e97
+class ComposerStaticInitc0534fc94ec0bac872eb76e5ff7ad165
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -403,7 +403,6 @@ class ComposerStaticInit34934f1eca9ad98b8465217226958e97
         'Symplify\\RuleDocGenerator\\' => 
         array (
             0 => __DIR__ . '/..' . '/symplify/rule-doc-generator/src',
-            1 => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src',
         ),
         'Ssch\\TYPO3Rector\\PHPStan\\' => 
         array (
@@ -3147,14 +3146,7 @@ class ComposerStaticInit34934f1eca9ad98b8465217226958e97
         'Ssch\\TYPO3Rector\\ValueObject\\ReplacePackage' => __DIR__ . '/../..' . '/src/ValueObject/ReplacePackage.php',
         'Symplify\\RuleDocGenerator\\Category\\CategoryResolver' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/Category/CategoryResolver.php',
         'Symplify\\RuleDocGenerator\\Command\\GenerateCommand' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/Command/GenerateCommand.php',
-        'Symplify\\RuleDocGenerator\\Contract\\Category\\CategoryInfererInterface' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/Contract/Category/CategoryInfererInterface.php',
-        'Symplify\\RuleDocGenerator\\Contract\\CodeSampleInterface' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/Contract/CodeSampleInterface.php',
-        'Symplify\\RuleDocGenerator\\Contract\\ConfigurableRuleInterface' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/Contract/ConfigurableRuleInterface.php',
-        'Symplify\\RuleDocGenerator\\Contract\\DocumentedRuleInterface' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/Contract/DocumentedRuleInterface.php',
-        'Symplify\\RuleDocGenerator\\Contract\\RuleCodeSamplePrinterInterface' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/Contract/RuleCodeSamplePrinterInterface.php',
         'Symplify\\RuleDocGenerator\\DirectoryToMarkdownPrinter' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/DirectoryToMarkdownPrinter.php',
-        'Symplify\\RuleDocGenerator\\Exception\\PoorDocumentationException' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/Exception/PoorDocumentationException.php',
-        'Symplify\\RuleDocGenerator\\Exception\\ShouldNotHappenException' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/Exception/ShouldNotHappenException.php',
         'Symplify\\RuleDocGenerator\\Finder\\ClassByTypeFinder' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/Finder/ClassByTypeFinder.php',
         'Symplify\\RuleDocGenerator\\HttpKernel\\RuleDocGeneratorKernel' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/HttpKernel/RuleDocGeneratorKernel.php',
         'Symplify\\RuleDocGenerator\\Printer\\CodeSamplePrinter\\BadGoodCodeSamplePrinter' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/Printer/CodeSamplePrinter/BadGoodCodeSamplePrinter.php',
@@ -3169,14 +3161,8 @@ class ComposerStaticInit34934f1eca9ad98b8465217226958e97
         'Symplify\\RuleDocGenerator\\RuleCodeSamplePrinter\\RectorRuleCodeSamplePrinter' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/RuleCodeSamplePrinter/RectorRuleCodeSamplePrinter.php',
         'Symplify\\RuleDocGenerator\\RuleDefinitionsResolver' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/RuleDefinitionsResolver.php',
         'Symplify\\RuleDocGenerator\\Text\\KeywordHighlighter' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/Text/KeywordHighlighter.php',
-        'Symplify\\RuleDocGenerator\\ValueObject\\AbstractCodeSample' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/ValueObject/AbstractCodeSample.php',
-        'Symplify\\RuleDocGenerator\\ValueObject\\CodeSample\\CodeSample' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/ValueObject/CodeSample/CodeSample.php',
-        'Symplify\\RuleDocGenerator\\ValueObject\\CodeSample\\ComposerJsonAwareCodeSample' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/ValueObject/CodeSample/ComposerJsonAwareCodeSample.php',
-        'Symplify\\RuleDocGenerator\\ValueObject\\CodeSample\\ConfiguredCodeSample' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/ValueObject/CodeSample/ConfiguredCodeSample.php',
-        'Symplify\\RuleDocGenerator\\ValueObject\\CodeSample\\ExtraFileCodeSample' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/ValueObject/CodeSample/ExtraFileCodeSample.php',
         'Symplify\\RuleDocGenerator\\ValueObject\\Option' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/ValueObject/Option.php',
         'Symplify\\RuleDocGenerator\\ValueObject\\RuleClassWithFilePath' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/ValueObject/RuleClassWithFilePath.php',
-        'Symplify\\RuleDocGenerator\\ValueObject\\RuleDefinition' => __DIR__ . '/..' . '/symplify/rule-doc-generator-contracts/src/ValueObject/RuleDefinition.php',
         'Symplify\\SymfonyPhpConfig\\Exception\\ValueObjectException' => __DIR__ . '/..' . '/symplify/symfony-php-config/src/Exception/ValueObjectException.php',
         'Symplify\\SymfonyPhpConfig\\Reflection\\ArgumentAndParameterFactory' => __DIR__ . '/..' . '/symplify/symfony-php-config/src/Reflection/ArgumentAndParameterFactory.php',
         'Symplify\\SymfonyPhpConfig\\ValueObjectInliner' => __DIR__ . '/..' . '/symplify/symfony-php-config/src/ValueObjectInliner.php',
@@ -4432,9 +4418,9 @@ class ComposerStaticInit34934f1eca9ad98b8465217226958e97
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit34934f1eca9ad98b8465217226958e97::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit34934f1eca9ad98b8465217226958e97::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit34934f1eca9ad98b8465217226958e97::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc0534fc94ec0bac872eb76e5ff7ad165::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc0534fc94ec0bac872eb76e5ff7ad165::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc0534fc94ec0bac872eb76e5ff7ad165::$classMap;
 
         }, null, ClassLoader::class);
     }

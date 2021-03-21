@@ -33,7 +33,7 @@ final class SwiftMailerBasedMailMessageToMailerBasedMessageRector extends \Recto
         if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Mail\MailMessage::class)) {
             return null;
         }
-        if (!$this->isNames($node->name, ['setBody', 'addPart', 'attach'])) {
+        if (!$this->isNames($node->name, ['setBody', 'addPart', 'attach', 'embed'])) {
             return null;
         }
         if ($this->isName($node->name, 'setBody')) {
@@ -42,7 +42,10 @@ final class SwiftMailerBasedMailMessageToMailerBasedMessageRector extends \Recto
         if ($this->isName($node->name, 'addPart')) {
             return $this->refactorMethodAddPart($node);
         }
-        return $this->refactorAttachMethod($node);
+        if ($this->isName($node->name, 'attach')) {
+            return $this->refactorAttachMethod($node);
+        }
+        return $this->refactorEmbedMethod($node);
     }
     /**
      * @codeCoverageIgnore
@@ -126,6 +129,22 @@ CODE_SAMPLE
             return null;
         }
         $node->name = new \PhpParser\Node\Identifier('attachFromPath');
+        $node->args = $this->nodeFactory->createArgs($firstArgument->args);
+        return $node;
+    }
+    private function refactorEmbedMethod(\PhpParser\Node\Expr\MethodCall $node) : ?\PhpParser\Node
+    {
+        $firstArgument = $node->args[0]->value;
+        if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
+            return null;
+        }
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, \Typo3RectorPrefix20210321\Swift_Image::class)) {
+            return null;
+        }
+        if (!$this->isName($firstArgument->name, 'fromPath')) {
+            return null;
+        }
+        $node->name = new \PhpParser\Node\Identifier('embedFromPath');
         $node->args = $this->nodeFactory->createArgs($firstArgument->args);
         return $node;
     }

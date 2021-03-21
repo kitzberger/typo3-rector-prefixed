@@ -21,6 +21,7 @@ use Ssch\TYPO3Rector\Rector\v9\v0\RemoveMethodInitTCARector;
 use Ssch\TYPO3Rector\Rector\v9\v0\RemovePropertiesFromSimpleDataHandlerControllerRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\RemoveSecondArgumentGeneralUtilityMkdirDeepRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\ReplaceAnnotationRector;
+use Ssch\TYPO3Rector\Rector\v9\v0\ReplacedGeneralUtilitySysLogWithLogginApiRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\ReplaceExtKeyWithExtensionKeyRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\SubstituteCacheWrapperMethodsRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\SubstituteConstantParsetimeStartRector;
@@ -59,4 +60,5 @@ return static function (\Typo3RectorPrefix20210321\Symfony\Component\DependencyI
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\ReplaceExtKeyWithExtensionKeyRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\Composer\RemoveCmsPackageDirFromExtraRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\SubstituteGeneralUtilityDevLogRector::class);
+    $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\ReplacedGeneralUtilitySysLogWithLogginApiRector::class);
 };

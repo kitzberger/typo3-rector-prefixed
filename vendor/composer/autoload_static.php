@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitcf4a9e1187dd29f290c5287c08a81c2e
+class ComposerStaticInit237b84c33a56d894d07dae756a753568
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -2947,6 +2947,7 @@ class ComposerStaticInitcf4a9e1187dd29f290c5287c08a81c2e
         'Ssch\\TYPO3Rector\\Helper\\Database\\Refactorings\\DatabaseConnectionExecTruncateTableRefactoring' => __DIR__ . '/../..' . '/src/Helper/Database/Refactorings/DatabaseConnectionExecTruncateTableRefactoring.php',
         'Ssch\\TYPO3Rector\\Helper\\Database\\Refactorings\\DatabaseConnectionToDbalRefactoring' => __DIR__ . '/../..' . '/src/Helper/Database/Refactorings/DatabaseConnectionToDbalRefactoring.php',
         'Ssch\\TYPO3Rector\\Helper\\FileHelperTrait' => __DIR__ . '/../..' . '/src/Helper/FileHelperTrait.php',
+        'Ssch\\TYPO3Rector\\Helper\\OldSeverityToLogLevelMapper' => __DIR__ . '/../..' . '/src/Helper/OldSeverityToLogLevelMapper.php',
         'Ssch\\TYPO3Rector\\Helper\\TcaHelperTrait' => __DIR__ . '/../..' . '/src/Helper/TcaHelperTrait.php',
         'Ssch\\TYPO3Rector\\Helper\\Typo3NodeResolver' => __DIR__ . '/../..' . '/src/Helper/Typo3NodeResolver.php',
         'Ssch\\TYPO3Rector\\HttpKernel\\Typo3RectorKernel' => __DIR__ . '/../..' . '/src/HttpKernel/Typo3RectorKernel.php',
@@ -3094,6 +3095,7 @@ class ComposerStaticInitcf4a9e1187dd29f290c5287c08a81c2e
         'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\RemoveSecondArgumentGeneralUtilityMkdirDeepRector' => __DIR__ . '/../..' . '/src/Rector/v9/v0/RemoveSecondArgumentGeneralUtilityMkdirDeepRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\ReplaceAnnotationRector' => __DIR__ . '/../..' . '/src/Rector/v9/v0/ReplaceAnnotationRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\ReplaceExtKeyWithExtensionKeyRector' => __DIR__ . '/../..' . '/src/Rector/v9/v0/ReplaceExtKeyWithExtensionKeyRector.php',
+        'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\ReplacedGeneralUtilitySysLogWithLogginApiRector' => __DIR__ . '/../..' . '/src/Rector/v9/v0/ReplacedGeneralUtilitySysLogWithLogginApiRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\SubstituteCacheWrapperMethodsRector' => __DIR__ . '/../..' . '/src/Rector/v9/v0/SubstituteCacheWrapperMethodsRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\SubstituteConstantParsetimeStartRector' => __DIR__ . '/../..' . '/src/Rector/v9/v0/SubstituteConstantParsetimeStartRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v0\\SubstituteGeneralUtilityDevLogRector' => __DIR__ . '/../..' . '/src/Rector/v9/v0/SubstituteGeneralUtilityDevLogRector.php',
@@ -4432,9 +4434,9 @@ class ComposerStaticInitcf4a9e1187dd29f290c5287c08a81c2e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitcf4a9e1187dd29f290c5287c08a81c2e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitcf4a9e1187dd29f290c5287c08a81c2e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitcf4a9e1187dd29f290c5287c08a81c2e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit237b84c33a56d894d07dae756a753568::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit237b84c33a56d894d07dae756a753568::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit237b84c33a56d894d07dae756a753568::$classMap;
 
         }, null, ClassLoader::class);
     }

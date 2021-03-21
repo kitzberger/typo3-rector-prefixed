@@ -15,9 +15,9 @@ use TYPO3\CMS\Core\Log\LogLevel;
 use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
- * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.0/Deprecation-52694-DeprecatedGeneralUtilitydevLog.html
+ * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.0/Breaking-82430-ReplacedGeneralUtilitysysLogWithLoggingAPI.html
  */
-final class SubstituteGeneralUtilityDevLogRector extends \Rector\Core\Rector\AbstractRector
+final class ReplacedGeneralUtilitySysLogWithLogginApiRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
      * @var OldSeverityToLogLevelMapper
@@ -42,7 +42,11 @@ final class SubstituteGeneralUtilityDevLogRector extends \Rector\Core\Rector\Abs
         if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\GeneralUtility::class)) {
             return null;
         }
-        if (!$this->isName($node->name, 'devLog')) {
+        if (!$this->isNames($node->name, ['initSysLog', 'sysLog'])) {
+            return null;
+        }
+        if ($this->isName($node->name, 'initSysLog')) {
+            $this->removeNode($node);
             return null;
         }
         $makeInstanceCall = $this->nodeFactory->createStaticCall(\TYPO3\CMS\Core\Utility\GeneralUtility::class, 'makeInstance', [$this->nodeFactory->createClassConstReference(\TYPO3\CMS\Core\Log\LogManager::class)]);
@@ -54,7 +58,6 @@ final class SubstituteGeneralUtilityDevLogRector extends \Rector\Core\Rector\Abs
         }
         $args[] = $severity;
         $args[] = $node->args[0] ?? $this->nodeFactory->createArg(new \PhpParser\Node\Scalar\String_(''));
-        $args[] = $node->args[3] ?? $this->nodeFactory->createArg(new \PhpParser\Node\Scalar\String_(''));
         return $this->nodeFactory->createMethodCall($loggerCall, 'log', $args);
     }
     /**
@@ -62,15 +65,16 @@ final class SubstituteGeneralUtilityDevLogRector extends \Rector\Core\Rector\Abs
      */
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Substitute GeneralUtility::devLog() to Logging API', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replaced GeneralUtility::sysLog with Logging API', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-GeneralUtility::devLog('message', 'foo', 0, $data);
+GeneralUtility::initSysLog();
+GeneralUtility::sysLog('message', 'foo', 0);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
-use TYPO3\CMS\Core\Log\LogLevel;
 use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Log\LogLevel;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__)->log(LogLevel::INFO, 'message', $data);
+GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__)->log(LogLevel::INFO, 'message');
 CODE_SAMPLE
 )]);
     }

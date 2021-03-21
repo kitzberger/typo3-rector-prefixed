@@ -58,13 +58,10 @@ CODE_SAMPLE
         if ($identical->left instanceof \PhpParser\Node\Expr\FuncCall && $this->isNames($identical->left, self::FUNC_FREAD_FWRITE)) {
             return $identical->right;
         }
-        if (!$identical->right instanceof \PhpParser\Node\Expr\FuncCall) {
-            return null;
+        if ($identical->right instanceof \PhpParser\Node\Expr\FuncCall && $this->isNames($identical->right, self::FUNC_FREAD_FWRITE)) {
+            return $identical->left;
         }
-        if (!$this->isNames($identical->right, self::FUNC_FREAD_FWRITE)) {
-            return null;
-        }
-        return $identical->left;
+        return null;
     }
     private function getFunction(\PhpParser\Node\Expr\BinaryOp\Identical $identical) : \PhpParser\Node\Expr\FuncCall
     {

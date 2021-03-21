@@ -94,13 +94,9 @@ CODE_SAMPLE
             }
             $useUse = $stmt->uses[0];
             // already there
-            if (!$this->isName($useUse->name, $completeImportForPartialAnnotation->getUse())) {
-                continue;
+            if ($this->isName($useUse->name, $completeImportForPartialAnnotation->getUse()) && (string) $useUse->alias === $completeImportForPartialAnnotation->getAlias()) {
+                return $namespace;
             }
-            if ((string) $useUse->alias !== $completeImportForPartialAnnotation->getAlias()) {
-                continue;
-            }
-            return $namespace;
         }
         return $this->addImportToNamespace($namespace, $completeImportForPartialAnnotation);
     }

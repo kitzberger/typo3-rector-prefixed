@@ -103,7 +103,7 @@ CODE_SAMPLE
             return null;
         }
         // nothing to change
-        if ($this->nodeNameResolver->isStaticCallNamed($argValue, 'Typo3RectorPrefix20210321\\Carbon\\Carbon', 'today')) {
+        if ($this->isStaticCallNamed($argValue, 'Typo3RectorPrefix20210321\\Carbon\\Carbon', 'today')) {
             return null;
         }
         if ($this->valueResolver->isValues($methodCall->args[1]->value, ['>=', '<='])) {

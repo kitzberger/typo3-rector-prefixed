@@ -145,14 +145,10 @@ CODE_SAMPLE
         if ($keysToRemove === []) {
             return [];
         }
-        if ($keysToKeep === []) {
-            /** @var int[] $keysToRemove */
-            return $keysToRemove;
+        if ($keysToKeep !== [] && \max($keysToKeep) > \max($keysToRemove)) {
+            return [];
         }
-        if (\max($keysToKeep) <= \max($keysToRemove)) {
-            /** @var int[] $keysToRemove */
-            return $keysToRemove;
-        }
-        return [];
+        /** @var int[] $keysToRemove */
+        return $keysToRemove;
     }
 }

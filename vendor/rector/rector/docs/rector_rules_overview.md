@@ -16,7 +16,7 @@
 
 - [CodeQualityStrict](#codequalitystrict) (4)
 
-- [CodingStyle](#codingstyle) (37)
+- [CodingStyle](#codingstyle) (38)
 
 - [Composer](#composer) (5)
 
@@ -136,7 +136,7 @@
 
 - [SymfonyPhpConfig](#symfonyphpconfig) (1)
 
-- [Transform](#transform) (35)
+- [Transform](#transform) (34)
 
 - [TypeDeclaration](#typedeclaration) (17)
 
@@ -2262,6 +2262,76 @@ include/require should be followed by absolute path
      {
 -        require 'autoload.php';
 +        require __DIR__ . '/autoload.php';
+     }
+ }
+```
+
+<br>
+
+### FunctionCallToConstantRector
+
+Changes use of function calls to use constants
+
+:wrench: **configure it!**
+
+- class: `Rector\CodingStyle\Rector\FuncCall\FunctionCallToConstantRector`
+
+```php
+use Rector\CodingStyle\Rector\FuncCall\FunctionCallToConstantRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+
+    $services->set(FunctionCallToConstantRector::class)
+        ->call('configure', [[
+            FunctionCallToConstantRector::FUNCTIONS_TO_CONSTANTS => [
+                'php_sapi_name' => 'PHP_SAPI',
+            ],
+        ]]);
+};
+```
+
+↓
+
+```diff
+ class SomeClass
+ {
+     public function run()
+     {
+-        $value = php_sapi_name();
++        $value = PHP_SAPI;
+     }
+ }
+```
+
+<br>
+
+```php
+use Rector\CodingStyle\Rector\FuncCall\FunctionCallToConstantRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+
+    $services->set(FunctionCallToConstantRector::class)
+        ->call('configure', [[
+            FunctionCallToConstantRector::FUNCTIONS_TO_CONSTANTS => [
+                'pi' => 'M_PI',
+            ],
+        ]]);
+};
+```
+
+↓
+
+```diff
+ class SomeClass
+ {
+     public function run()
+     {
+-        $value = pi();
++        $value = M_PI;
      }
  }
 ```
@@ -15291,45 +15361,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
          $routeList = new RouteList();
 -        $routeList[] = new Route('...');
 +        $routeList->addRoute('...');
-     }
- }
-```
-
-<br>
-
-### FuncCallToConstFetchRector
-
-Changes use of function calls to use constants
-
-:wrench: **configure it!**
-
-- class: `Rector\Transform\Rector\FuncCall\FuncCallToConstFetchRector`
-
-```php
-use Rector\Transform\Rector\FuncCall\FuncCallToConstFetchRector;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $services = $containerConfigurator->services();
-
-    $services->set(FuncCallToConstFetchRector::class)
-        ->call('configure', [[
-            FuncCallToConstFetchRector::FUNCTIONS_TO_CONSTANTS => [
-                'php_sapi_name' => 'PHP_SAPI',
-            ],
-        ]]);
-};
-```
-
-↓
-
-```diff
- class SomeClass
- {
-     public function run()
-     {
--        $value = php_sapi_name();
-+        $value = PHP_SAPI;
      }
  }
 ```

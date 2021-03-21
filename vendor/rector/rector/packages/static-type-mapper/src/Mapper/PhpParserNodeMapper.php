@@ -30,13 +30,10 @@ final class PhpParserNodeMapper
             }
             // do not let Expr collect all the types
             // note: can be solve later with priorities on mapper interface, making this last
-            if ($phpParserNodeMapper->getNodeType() !== \PhpParser\Node\Expr::class) {
-                return $phpParserNodeMapper->mapToPHPStan($node);
+            if ($phpParserNodeMapper->getNodeType() === \PhpParser\Node\Expr::class && \is_a($node, \PhpParser\Node\Scalar\String_::class)) {
+                continue;
             }
-            if (!\is_a($node, \PhpParser\Node\Scalar\String_::class)) {
-                return $phpParserNodeMapper->mapToPHPStan($node);
-            }
-            continue;
+            return $phpParserNodeMapper->mapToPHPStan($node);
         }
         throw new \Rector\Core\Exception\NotImplementedYetException(\get_class($node));
     }

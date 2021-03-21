@@ -52,13 +52,10 @@ final class ScopeNestingComparator
         if ($this->isInBothIfElseBranch($foundParent, $expr)) {
             return \false;
         }
-        if (!$foundParent instanceof \PhpParser\Node\Stmt\Else_) {
-            return !$foundParent instanceof \PhpParser\Node\FunctionLike;
+        if ($foundParent instanceof \PhpParser\Node\Stmt\Else_ && $this->nodeComparator->areNodesEqual($expr, $this->doubleIfBranchExprs)) {
+            return \false;
         }
-        if (!$this->nodeComparator->areNodesEqual($expr, $this->doubleIfBranchExprs)) {
-            return !$foundParent instanceof \PhpParser\Node\FunctionLike;
-        }
-        return \false;
+        return !$foundParent instanceof \PhpParser\Node\FunctionLike;
     }
     public function isInBothIfElseBranch(\PhpParser\Node $foundParentNode, \PhpParser\Node\Expr $seekedExpr) : bool
     {

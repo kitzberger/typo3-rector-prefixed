@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace Rector\NodeTypeResolver\NodeVisitor;
 
 use PhpParser\Node;
+use PhpParser\Node\Stmt\Declare_;
 use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Node\Stmt\Use_;
 use PhpParser\NodeVisitorAbstract;
@@ -11,6 +12,10 @@ use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 final class NamespaceNodeVisitor extends \PhpParser\NodeVisitorAbstract
 {
+    /**
+     * @var Declare_[]
+     */
+    private $declares = [];
     /**
      * @var Use_[]
      */
@@ -43,6 +48,9 @@ final class NamespaceNodeVisitor extends \PhpParser\NodeVisitorAbstract
         /** @var Use_[] $uses */
         $uses = $this->betterNodeFinder->findInstanceOf($nodes, \PhpParser\Node\Stmt\Use_::class);
         $this->useNodes = $uses;
+        /** @var Declare_[] $declares */
+        $declares = $this->betterNodeFinder->findInstanceOf($nodes, \PhpParser\Node\Stmt\Declare_::class);
+        $this->declares = $declares;
         return null;
     }
     public function enterNode(\PhpParser\Node $node) : ?\PhpParser\Node
@@ -57,6 +65,7 @@ final class NamespaceNodeVisitor extends \PhpParser\NodeVisitorAbstract
         $node->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::NAMESPACE_NAME, $this->namespaceName);
         $node->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::NAMESPACE_NODE, $this->namespace);
         $node->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::USE_NODES, $this->useNodes);
+        $node->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::DECLARES, $this->declares);
         return $node;
     }
 }

@@ -91,15 +91,9 @@ CODE_SAMPLE
     private function processVariableNum(\PhpParser\Node\Stmt\Continue_ $continue, \PhpParser\Node\Expr\Variable $numVariable) : \PhpParser\Node\Stmt
     {
         $staticType = $this->getStaticType($numVariable);
-        if (!$staticType instanceof \PHPStan\Type\ConstantType) {
-            return $continue;
+        if ($staticType instanceof \PHPStan\Type\ConstantType && $staticType instanceof \PHPStan\Type\Constant\ConstantIntegerType && $staticType->getValue() <= 1) {
+            return new \PhpParser\Node\Stmt\Break_();
         }
-        if (!$staticType instanceof \PHPStan\Type\Constant\ConstantIntegerType) {
-            return $continue;
-        }
-        if ($staticType->getValue() > 1) {
-            return $continue;
-        }
-        return new \PhpParser\Node\Stmt\Break_();
+        return $continue;
     }
 }

@@ -95,7 +95,7 @@ CODE_SAMPLE
     private function replaceMockWithMockerMockAndCollectMockVariableName(\PhpParser\Node\Stmt\ClassMethod $classMethod) : void
     {
         $this->traverseNodesWithCallable((array) $classMethod->stmts, function (\PhpParser\Node $node) : ?StaticCall {
-            if (!$this->nodeNameResolver->isFuncCallName($node, 'mock')) {
+            if (!$this->isFuncCallName($node, 'mock')) {
                 return null;
             }
             /** @var FuncCall $node */

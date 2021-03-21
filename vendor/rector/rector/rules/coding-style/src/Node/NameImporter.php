@@ -154,13 +154,10 @@ final class NameImporter
         if ($autoImportNames && !$parentNode instanceof \PhpParser\Node && !\Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($fullName, '\\') && \function_exists($fullName)) {
             return \true;
         }
-        if ($parentNode instanceof \PhpParser\Node\Expr\ConstFetch) {
-            return \count($name->parts) === 1;
+        if (!$parentNode instanceof \PhpParser\Node\Expr\ConstFetch && !$parentNode instanceof \PhpParser\Node\Expr\FuncCall) {
+            return \false;
         }
-        if ($parentNode instanceof \PhpParser\Node\Expr\FuncCall) {
-            return \count($name->parts) === 1;
-        }
-        return \false;
+        return \count($name->parts) === 1;
     }
     private function isNonExistingClassLikeAndFunctionFullyQualifiedName(\PhpParser\Node\Name $name) : bool
     {

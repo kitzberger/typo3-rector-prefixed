@@ -149,11 +149,8 @@ CODE_SAMPLE
     {
         /** @var SmartFileInfo $smartFileInfo */
         $smartFileInfo = $mainNode->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        $declares = [];
-        $declare = $this->betterNodeFinder->findFirstPreviousOfTypes($mainNode, [\PhpParser\Node\Stmt\Declare_::class]);
-        if ($declare instanceof \PhpParser\Node\Stmt\Declare_) {
-            $declares = [$declare];
-        }
+        /** @var Declare_[] $declares */
+        $declares = (array) $mainNode->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::DECLARES);
         if ($mainNode instanceof \Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace) {
             $nodesToPrint = \array_merge($declares, [$classLike]);
         } else {

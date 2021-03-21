@@ -231,13 +231,9 @@ CODE_SAMPLE
         $parentReflectionMethod = new \ReflectionMethod($parentClassName, $methodName);
         $parentReflectionMethodParams = $parentReflectionMethod->getParameters();
         foreach ($parentReflectionMethodParams as $reflectionParameter) {
-            if ($reflectionParameter->name !== $paramName) {
-                continue;
+            if ($reflectionParameter->name === $paramName && $reflectionParameter->getType() !== null) {
+                return \true;
             }
-            if ($reflectionParameter->getType() === null) {
-                continue;
-            }
-            return \true;
         }
         return \false;
     }

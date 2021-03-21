@@ -172,13 +172,9 @@ final class GetSubscribedEventsClassMethodFactory
         /** @var EventListenerTag[]|Tag[] $eventTags */
         $eventTags = $serviceDefinition->getTags();
         foreach ($eventTags as $eventTag) {
-            if (!$eventTag instanceof \Rector\Symfony\ValueObject\Tag\EventListenerTag) {
-                continue;
+            if ($eventTag instanceof \Rector\Symfony\ValueObject\Tag\EventListenerTag && $eventTag->getEvent() === $eventName) {
+                return $eventTag->getMethod();
             }
-            if ($eventTag->getEvent() !== $eventName) {
-                continue;
-            }
-            return $eventTag->getMethod();
         }
         return null;
     }
@@ -187,13 +183,9 @@ final class GetSubscribedEventsClassMethodFactory
         /** @var EventListenerTag[]|Tag[] $eventTags */
         $eventTags = $serviceDefinition->getTags();
         foreach ($eventTags as $eventTag) {
-            if (!$eventTag instanceof \Rector\Symfony\ValueObject\Tag\EventListenerTag) {
-                continue;
+            if ($eventTag instanceof \Rector\Symfony\ValueObject\Tag\EventListenerTag && $eventTag->getEvent() === $eventName) {
+                return $eventTag->getPriority();
             }
-            if ($eventTag->getEvent() !== $eventName) {
-                continue;
-            }
-            return $eventTag->getPriority();
         }
         return null;
     }

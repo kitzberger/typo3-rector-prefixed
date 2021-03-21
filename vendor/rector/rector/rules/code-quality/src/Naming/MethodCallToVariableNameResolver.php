@@ -76,16 +76,10 @@ final class MethodCallToVariableNameResolver
             return $this->getStringVarName($argValue, $methodCallVarName, $fallbackVarName);
         }
         $argumentName = $this->nodeNameResolver->getName($argValue);
-        if (!$argValue instanceof \PhpParser\Node\Expr\Variable) {
-            return $fallbackVarName;
+        if ($argValue instanceof \PhpParser\Node\Expr\Variable && $argumentName !== null && $variableName !== null) {
+            return $argumentName . \ucfirst($variableName);
         }
-        if ($argumentName === null) {
-            return $fallbackVarName;
-        }
-        if ($variableName === null) {
-            return $fallbackVarName;
-        }
-        return $argumentName . \ucfirst($variableName);
+        return $fallbackVarName;
     }
     private function getFallbackVarName(string $methodCallVarName, string $methodCallName) : string
     {
@@ -109,13 +103,10 @@ final class MethodCallToVariableNameResolver
     private function getStringVarName(\PhpParser\Node\Scalar\String_ $string, string $methodCallVarName, string $fallbackVarName) : string
     {
         $normalizeStringVariableName = $this->normalizeStringVariableName($string->value . \ucfirst($fallbackVarName));
-        if (!\Typo3RectorPrefix20210321\Nette\Utils\Strings::match($normalizeStringVariableName, self::START_ALPHA_REGEX)) {
-            return $fallbackVarName;
+        if (\Typo3RectorPrefix20210321\Nette\Utils\Strings::match($normalizeStringVariableName, self::START_ALPHA_REGEX) && $normalizeStringVariableName !== $methodCallVarName) {
+            return $normalizeStringVariableName;
         }
-        if ($normalizeStringVariableName === $methodCallVarName) {
-            return $fallbackVarName;
-        }
-        return $normalizeStringVariableName;
+        return $fallbackVarName;
     }
     private function normalizeStringVariableName(string $string) : string
     {

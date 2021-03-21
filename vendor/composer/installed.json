@@ -1260,17 +1260,17 @@
         },
         {
             "name": "rector\/rector",
-            "version": "0.9.31",
-            "version_normalized": "0.9.31.0",
+            "version": "0.9.30",
+            "version_normalized": "0.9.30.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/rectorphp\/rector.git",
-                "reference": "cbbd008f50e3365bc48ddc74ba0d9190854a8fb3"
+                "reference": "8c079420dc169a6398cb6a99ee3f5e5015898923"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/cbbd008f50e3365bc48ddc74ba0d9190854a8fb3",
-                "reference": "cbbd008f50e3365bc48ddc74ba0d9190854a8fb3",
+                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/8c079420dc169a6398cb6a99ee3f5e5015898923",
+                "reference": "8c079420dc169a6398cb6a99ee3f5e5015898923",
                 "shasum": ""
             },
             "require": {
@@ -1332,7 +1332,7 @@
                 "symplify\/phpstan-rules": "^9.1.9",
                 "tracy\/tracy": "^2.8"
             },
-            "time": "2021-02-22T10:01:01+00:00",
+            "time": "2021-02-21T00:05:22+00:00",
             "bin": [
                 "bin\/rector"
             ],
@@ -1460,7 +1460,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/rectorphp\/rector\/issues",
-                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/0.9.31"
+                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/0.9.30"
             },
             "funding": [
                 {

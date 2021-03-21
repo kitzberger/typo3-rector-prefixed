@@ -70,13 +70,10 @@ final class TypeComparator
         if ($mainType instanceof \PHPStan\Type\MixedType) {
             return \false;
         }
-        if (!$mainType instanceof \PHPStan\Type\ArrayType) {
-            return $mainType->isSuperTypeOf($checkedType)->yes();
+        if ($mainType instanceof \PHPStan\Type\ArrayType && $checkedType instanceof \PHPStan\Type\Constant\ConstantArrayType) {
+            return \false;
         }
-        if (!$checkedType instanceof \PHPStan\Type\Constant\ConstantArrayType) {
-            return $mainType->isSuperTypeOf($checkedType)->yes();
-        }
-        return \false;
+        return $mainType->isSuperTypeOf($checkedType)->yes();
     }
     private function areBothSameScalarType(\PHPStan\Type\Type $firstType, \PHPStan\Type\Type $secondType) : bool
     {

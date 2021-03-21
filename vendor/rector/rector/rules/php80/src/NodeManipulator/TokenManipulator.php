@@ -232,13 +232,10 @@ final class TokenManipulator
         if ($identical->left instanceof \PhpParser\Node\Expr\ArrayDimFetch && $identical->right instanceof \PhpParser\Node\Expr\ConstFetch) {
             return new \Rector\Php80\ValueObject\ArrayDimFetchAndConstFetch($identical->left, $identical->right);
         }
-        if (!$identical->right instanceof \PhpParser\Node\Expr\ArrayDimFetch) {
-            return null;
+        if ($identical->right instanceof \PhpParser\Node\Expr\ArrayDimFetch && $identical->left instanceof \PhpParser\Node\Expr\ConstFetch) {
+            return new \Rector\Php80\ValueObject\ArrayDimFetchAndConstFetch($identical->right, $identical->left);
         }
-        if (!$identical->left instanceof \PhpParser\Node\Expr\ConstFetch) {
-            return null;
-        }
-        return new \Rector\Php80\ValueObject\ArrayDimFetchAndConstFetch($identical->right, $identical->left);
+        return null;
     }
     private function createIsTConstTypeMethodCall(\PhpParser\Node\Expr\ArrayDimFetch $arrayDimFetch, \PhpParser\Node\Expr\ConstFetch $constFetch) : \PhpParser\Node\Expr\MethodCall
     {

@@ -78,7 +78,7 @@ CODE_SAMPLE
             if (!$node instanceof \PhpParser\Node\Expr\StaticCall) {
                 return \false;
             }
-            return $this->nodeNameResolver->isStaticCallNamed($node, 'App', 'uses');
+            return $this->isStaticCallNamed($node, 'App', 'uses');
         });
         return $appUsesStaticCalls;
     }

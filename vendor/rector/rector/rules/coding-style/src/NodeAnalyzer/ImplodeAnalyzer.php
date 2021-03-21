@@ -32,9 +32,9 @@ final class ImplodeAnalyzer
             return \false;
         }
         $firstArgumentValue = $expr->args[0]->value;
-        if (!$firstArgumentValue instanceof \PhpParser\Node\Scalar\String_) {
-            return \true;
+        if ($firstArgumentValue instanceof \PhpParser\Node\Scalar\String_ && $firstArgumentValue->value !== '","') {
+            return \false;
         }
-        return $firstArgumentValue->value === '","';
+        return \true;
     }
 }

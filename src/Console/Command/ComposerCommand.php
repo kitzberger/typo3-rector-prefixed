@@ -70,6 +70,11 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
     {
         $this->configuration->setIsDryRun((bool) $input->getOption(\Rector\Core\Configuration\Option::OPTION_DRY_RUN));
         $paths = $this->configuration->getPaths();
+        $commandLinePaths = (array) $input->getArgument(\Rector\Core\Configuration\Option::SOURCE);
+        // manual command line value has priority
+        if ([] !== $commandLinePaths) {
+            $paths = $commandLinePaths;
+        }
         $this->additionalAutoloader->autoloadWithInputAndSource($input, $paths);
         $composerJsonFiles = $this->filesFinder->findInDirectoriesAndFiles($paths, ['json']);
         foreach ($composerJsonFiles as $composerJsonFile) {

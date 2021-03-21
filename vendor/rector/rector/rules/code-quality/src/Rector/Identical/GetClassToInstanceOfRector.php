@@ -81,11 +81,11 @@ final class GetClassToInstanceOfRector extends \Rector\Core\Rector\AbstractRecto
     }
     private function isClassReference(\PhpParser\Node $node) : bool
     {
-        if (!$node instanceof \PhpParser\Node\Expr\ClassConstFetch) {
-            // might be
-            return $node instanceof \PhpParser\Node\Scalar\String_;
+        if ($node instanceof \PhpParser\Node\Expr\ClassConstFetch && $this->isName($node->name, 'class')) {
+            return \true;
         }
-        return $this->isName($node->name, 'class');
+        // might be
+        return $node instanceof \PhpParser\Node\Scalar\String_;
     }
     private function isGetClassFuncCallNode(\PhpParser\Node $node) : bool
     {

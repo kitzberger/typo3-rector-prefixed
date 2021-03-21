@@ -149,13 +149,10 @@ final class ProcessCommand extends \Rector\Core\Console\Command\AbstractCommand
             return \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode::ERROR;
         }
         // inverse error code for CI dry-run
-        if (!$this->configuration->isDryRun()) {
-            return \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        if ($this->configuration->isDryRun() && $this->errorAndDiffCollector->getFileDiffsCount()) {
+            return \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode::ERROR;
         }
-        if ($this->errorAndDiffCollector->getFileDiffsCount() === 0) {
-            return \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
-        }
-        return \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode::ERROR;
+        return \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
     /**
      * @param string[] $paths

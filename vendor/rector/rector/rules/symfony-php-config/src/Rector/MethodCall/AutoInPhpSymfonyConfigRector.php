@@ -79,7 +79,7 @@ CODE_SAMPLE
         if ($missingMethodNames === []) {
             return null;
         }
-        $node->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::DO_NOT_CHANGE, \true);
+        $node->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::IS_FRESH_NODE, \true);
         $methodCall = clone $node;
         foreach ($missingMethodNames as $missingMethodName) {
             $methodCall = new \PhpParser\Node\Expr\MethodCall($methodCall, $missingMethodName);
@@ -88,8 +88,8 @@ CODE_SAMPLE
     }
     private function shouldSkipMethodCall(\PhpParser\Node\Expr\MethodCall $methodCall) : bool
     {
-        $doNotChange = (bool) $methodCall->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::DO_NOT_CHANGE);
-        if ($doNotChange) {
+        $isFreshNode = $methodCall->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::IS_FRESH_NODE);
+        if ($isFreshNode) {
             return \true;
         }
         $closure = $methodCall->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLOSURE_NODE);

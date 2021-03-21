@@ -64,16 +64,10 @@ CODE_SAMPLE
         if ($parentNode instanceof \PhpParser\Node\Expr\ArrayDimFetch && $this->nodeComparator->areNodesEqual($parentNode->dim, $node)) {
             return $this->processPreArray($node, $parentNode);
         }
-        if (!$parentNode instanceof \PhpParser\Node\Stmt\For_) {
-            return null;
+        if ($parentNode instanceof \PhpParser\Node\Stmt\For_ && \count($parentNode->loop) === 1 && $this->nodeComparator->areNodesEqual($parentNode->loop[0], $node)) {
+            return $this->processPreFor($node, $parentNode);
         }
-        if (\count($parentNode->loop) !== 1) {
-            return null;
-        }
-        if (!$this->nodeComparator->areNodesEqual($parentNode->loop[0], $node)) {
-            return null;
-        }
-        return $this->processPreFor($node, $parentNode);
+        return null;
     }
     private function isAnExpression(?\PhpParser\Node $node = null) : bool
     {

@@ -88,7 +88,7 @@ CODE_SAMPLE
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $methodCall) : bool
     {
-        if (!$this->isObjectType($methodCall->var, 'Typo3RectorPrefix20210318\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor')) {
+        if (!$this->isObjectType($methodCall->var, 'Typo3RectorPrefix20210321\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor')) {
             return \true;
         }
         if (!$this->isNames($methodCall->name, self::METHODS_WITH_OPTION)) {
@@ -123,11 +123,11 @@ CODE_SAMPLE
     }
     private function prepareEnableMagicMethodsExtractionFlags(bool $enableMagicCallExtractionValue) : \PhpParser\Node\Expr\BinaryOp\BitwiseOr
     {
-        $magicGetClassConstFetch = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210318\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor', 'MAGIC_GET');
-        $magicSetClassConstFetch = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210318\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor', 'MAGIC_SET');
+        $magicGetClassConstFetch = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210321\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor', 'MAGIC_GET');
+        $magicSetClassConstFetch = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210321\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor', 'MAGIC_SET');
         if (!$enableMagicCallExtractionValue) {
             return new \PhpParser\Node\Expr\BinaryOp\BitwiseOr($magicGetClassConstFetch, $magicSetClassConstFetch);
         }
-        return new \PhpParser\Node\Expr\BinaryOp\BitwiseOr(new \PhpParser\Node\Expr\BinaryOp\BitwiseOr($this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210318\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor', 'MAGIC_CALL'), $magicGetClassConstFetch), $magicSetClassConstFetch);
+        return new \PhpParser\Node\Expr\BinaryOp\BitwiseOr(new \PhpParser\Node\Expr\BinaryOp\BitwiseOr($this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210321\\Symfony\\Component\\PropertyInfo\\Extractor\\ReflectionExtractor', 'MAGIC_CALL'), $magicGetClassConstFetch), $magicSetClassConstFetch);
     }
 }

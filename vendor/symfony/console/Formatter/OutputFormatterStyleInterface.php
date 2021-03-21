@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\Console\Formatter;
+namespace Typo3RectorPrefix20210321\Symfony\Component\Console\Formatter;
 
 /**
  * Formatter style interface for defining styles.

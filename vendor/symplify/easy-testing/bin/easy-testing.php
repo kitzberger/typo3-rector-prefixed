@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210318;
+namespace Typo3RectorPrefix20210321;
 
-use Typo3RectorPrefix20210318\Symplify\EasyTesting\HttpKernel\EasyTestingKernel;
-use Typo3RectorPrefix20210318\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use Typo3RectorPrefix20210321\Symplify\EasyTesting\HttpKernel\EasyTestingKernel;
+use Typo3RectorPrefix20210321\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',
@@ -19,5 +19,5 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
         break;
     }
 }
-$kernelBootAndApplicationRun = new \Typo3RectorPrefix20210318\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Typo3RectorPrefix20210318\Symplify\EasyTesting\HttpKernel\EasyTestingKernel::class);
+$kernelBootAndApplicationRun = new \Typo3RectorPrefix20210321\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Typo3RectorPrefix20210321\Symplify\EasyTesting\HttpKernel\EasyTestingKernel::class);
 $kernelBootAndApplicationRun->run();

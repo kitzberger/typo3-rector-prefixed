@@ -6,8 +6,8 @@ namespace Rector\AttributeAwarePhpDoc\Ast\PhpDoc;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode;
 use Rector\BetterPhpDocParser\Attributes\Attribute\AttributeTrait;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
-use Typo3RectorPrefix20210318\Symplify\SimplePhpDocParser\ValueObject\Ast\PhpDoc\SimplePhpDocNode;
-final class AttributeAwarePhpDocNode extends \Typo3RectorPrefix20210318\Symplify\SimplePhpDocParser\ValueObject\Ast\PhpDoc\SimplePhpDocNode implements \Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface
+use Typo3RectorPrefix20210321\Symplify\SimplePhpDocParser\ValueObject\Ast\PhpDoc\SimplePhpDocNode;
+final class AttributeAwarePhpDocNode extends \Typo3RectorPrefix20210321\Symplify\SimplePhpDocParser\ValueObject\Ast\PhpDoc\SimplePhpDocNode implements \Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface
 {
     use AttributeTrait;
     /**

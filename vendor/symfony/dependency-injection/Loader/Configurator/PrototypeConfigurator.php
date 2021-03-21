@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class PrototypeConfigurator extends \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class PrototypeConfigurator extends \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     public const FACTORY = 'load';
     use Traits\AbstractTrait;
@@ -37,9 +37,9 @@ class PrototypeConfigurator extends \Typo3RectorPrefix20210318\Symfony\Component
     private $resource;
     private $excludes;
     private $allowParent;
-    public function __construct(\Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
+    public function __construct(\Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
     {
-        $definition = new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition();
+        $definition = new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition();
         if (!$defaults->isPublic() || !$defaults->isPrivate()) {
             $definition->setPublic($defaults->isPublic());
         }

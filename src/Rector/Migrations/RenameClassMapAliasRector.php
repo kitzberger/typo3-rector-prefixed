@@ -13,10 +13,10 @@ use PhpParser\Node\Stmt\Property;
 use Rector\Core\Configuration\RenamedClassesDataCollector;
 use Rector\Core\Contract\Rector\ConfigurableRectorInterface;
 use Rector\Core\Rector\AbstractRector;
-use Rector\Renaming\NodeManipulator\ClassRenamer;
+use Ssch\TYPO3Rector\Renaming\NodeManipulator\ClassRenamer;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Rector\Migrations\RenameClassMapAliasRectorTest
  */
@@ -39,7 +39,7 @@ final class RenameClassMapAliasRector extends \Rector\Core\Rector\AbstractRector
      * @var RenamedClassesDataCollector
      */
     private $renamedClassesDataCollector;
-    public function __construct(\Rector\Core\Configuration\RenamedClassesDataCollector $renamedClassesDataCollector, \Rector\Renaming\NodeManipulator\ClassRenamer $classRenamer)
+    public function __construct(\Rector\Core\Configuration\RenamedClassesDataCollector $renamedClassesDataCollector, \Ssch\TYPO3Rector\Renaming\NodeManipulator\ClassRenamer $classRenamer)
     {
         $this->classRenamer = $classRenamer;
         $this->renamedClassesDataCollector = $renamedClassesDataCollector;
@@ -92,7 +92,7 @@ CODE_SAMPLE
     {
         $classAliasMaps = $configuration[self::CLASS_ALIAS_MAPS] ?? [];
         foreach ($classAliasMaps as $file) {
-            $filePath = new \Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo($file);
+            $filePath = new \Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo($file);
             $classAliasMap = (require $filePath->getRealPath());
             foreach ($classAliasMap as $oldClass => $newClass) {
                 $this->oldToNewClasses[$oldClass] = $newClass;

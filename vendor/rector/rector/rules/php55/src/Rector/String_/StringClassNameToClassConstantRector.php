@@ -15,7 +15,7 @@ use Rector\Core\Util\StaticRectorStrings;
 use Rector\Core\ValueObject\PhpVersionFeature;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use ReflectionClass;
-use Typo3RectorPrefix20210318\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -51,7 +51,7 @@ final class StringClassNameToClassConstantRector extends \Rector\Core\Rector\Abs
      * @var ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\Typo3RectorPrefix20210318\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(\Typo3RectorPrefix20210321\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->classLikeExistenceChecker = $classLikeExistenceChecker;
     }
@@ -154,7 +154,7 @@ CODE_SAMPLE
         if (!$parentParent instanceof \PhpParser\Node) {
             return \false;
         }
-        return $this->isFuncCallName($parentParent, 'is_a');
+        return $this->nodeNameResolver->isFuncCallName($parentParent, 'is_a');
     }
     private function shouldSkip(string $classLikeName, \PhpParser\Node\Scalar\String_ $string) : bool
     {

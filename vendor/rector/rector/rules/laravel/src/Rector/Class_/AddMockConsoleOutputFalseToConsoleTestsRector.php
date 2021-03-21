@@ -6,7 +6,6 @@ namespace Rector\Laravel\Rector\Class_;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\PropertyFetch;
-use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\Class_;
 use Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer;
@@ -82,7 +81,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210318\\Illuminate\\Foundation\\Testing\\TestCase')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210321\\Illuminate\\Foundation\\Testing\\TestCase')) {
             return null;
         }
         if (!$this->isTestingConsoleOutput($node)) {
@@ -99,15 +98,7 @@ CODE_SAMPLE
     private function isTestingConsoleOutput(\PhpParser\Node\Stmt\Class_ $class) : bool
     {
         return (bool) $this->betterNodeFinder->findFirst($class->stmts, function (\PhpParser\Node $node) : bool {
-            //            if ($node instanceof StaticCall) {
-            //                // covers new()
-            //                if ($this->isObjectType($node->class, 'Illuminate\Support\Facades\Artisan')) {
-            //                    if ($this->nodeNameResolver->isName($node->name, 'output')) {
-            //                        return true;
-            //                    }
-            //                }
-            //            }
-            return $this->isStaticCallNamed($node, 'Typo3RectorPrefix20210318\\Illuminate\\Support\\Facades\\Artisan', 'output');
+            return $this->nodeNameResolver->isStaticCallNamed($node, 'Typo3RectorPrefix20210321\\Illuminate\\Support\\Facades\\Artisan', 'output');
         });
     }
     private function hasMockConsoleOutputFalse(\PhpParser\Node\Stmt\Class_ $class) : bool

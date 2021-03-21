@@ -56,7 +56,7 @@ final class ManyToManyTagValueNode extends \Rector\BetterPhpDocParser\ValueObjec
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210318\\@ORM\\ManyToMany';
+        return 'Typo3RectorPrefix20210321\\@ORM\\ManyToMany';
     }
     public function getAttributeClassName() : string
     {

@@ -8,32 +8,32 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node;
+namespace Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Node;
 
-use Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Compiler;
+use Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Compiler;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @internal
  */
-class ArrayNode extends \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node\Node
+class ArrayNode extends \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Node\Node
 {
     protected $index;
     public function __construct()
     {
         $this->index = -1;
     }
-    public function addElement(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node\Node $value, \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node\Node $key = null)
+    public function addElement(\Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Node\Node $value, \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Node\Node $key = null)
     {
         if (null === $key) {
-            $key = new \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node\ConstantNode(++$this->index);
+            $key = new \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Node\ConstantNode(++$this->index);
         }
         \array_push($this->nodes, $key, $value);
     }
     /**
      * Compiles the node to PHP.
      */
-    public function compile(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Compiler $compiler)
+    public function compile(\Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Compiler $compiler)
     {
         $compiler->raw('[');
         $this->compileArguments($compiler);
@@ -57,7 +57,7 @@ class ArrayNode extends \Typo3RectorPrefix20210318\Symfony\Component\ExpressionL
         if ($this->isHash($value)) {
             foreach ($value as $k => $v) {
                 $array[] = ', ';
-                $array[] = new \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Node\ConstantNode($k);
+                $array[] = new \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Node\ConstantNode($k);
                 $array[] = ': ';
                 $array[] = $v;
             }
@@ -81,7 +81,7 @@ class ArrayNode extends \Typo3RectorPrefix20210318\Symfony\Component\ExpressionL
         }
         return $pairs;
     }
-    protected function compileArguments(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Compiler $compiler, $withKeys = \true)
+    protected function compileArguments(\Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Compiler $compiler, $withKeys = \true)
     {
         $first = \true;
         foreach ($this->getKeyValuePairs() as $pair) {

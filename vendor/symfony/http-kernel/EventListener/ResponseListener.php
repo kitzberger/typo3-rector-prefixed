@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\EventListener;
+namespace Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\EventListener;
 
-use Typo3RectorPrefix20210318\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\KernelEvents;
+use Typo3RectorPrefix20210321\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * ResponseListener fixes the Response headers based on the Request.
  *
@@ -20,7 +20,7 @@ use Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class ResponseListener implements \Typo3RectorPrefix20210318\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ResponseListener implements \Typo3RectorPrefix20210321\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $charset;
     public function __construct(string $charset)
@@ -30,7 +30,7 @@ class ResponseListener implements \Typo3RectorPrefix20210318\Symfony\Component\E
     /**
      * Filters the Response.
      */
-    public function onKernelResponse(\Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Event\ResponseEvent $event)
+    public function onKernelResponse(\Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Event\ResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {
             return;
@@ -43,6 +43,6 @@ class ResponseListener implements \Typo3RectorPrefix20210318\Symfony\Component\E
     }
     public static function getSubscribedEvents() : array
     {
-        return [\Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
+        return [\Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
     }
 }

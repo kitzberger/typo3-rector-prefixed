@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210318\Doctrine\Common\Annotations\Annotation;
+namespace Typo3RectorPrefix20210321\Doctrine\Common\Annotations\Annotation;
 
 /**
  * Annotation that can be used to signal to the parser

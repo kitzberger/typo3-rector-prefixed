@@ -23,7 +23,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210318\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210321\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Arguments\Tests\Rector\ClassMethod\ArgumentAdderRector\ArgumentAdderRectorTest
  */
@@ -103,7 +103,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $addedArguments = $configuration[self::ADDED_ARGUMENTS] ?? [];
-        \Typo3RectorPrefix20210318\Webmozart\Assert\Assert::allIsInstanceOf($addedArguments, \Rector\Arguments\ValueObject\ArgumentAdder::class);
+        \Typo3RectorPrefix20210321\Webmozart\Assert\Assert::allIsInstanceOf($addedArguments, \Rector\Arguments\ValueObject\ArgumentAdder::class);
         $this->addedArguments = $addedArguments;
     }
     /**
@@ -167,11 +167,15 @@ CODE_SAMPLE
             return $this->isName($node->params[$position], $argumentName);
         }
         // already added?
-        if (isset($node->args[$position]) && $this->isName($node->args[$position], $argumentName)) {
-            return \true;
+        if (!isset($node->args[$position])) {
+            // is correct scope?
+            return !$this->argumentAddingScope->isInCorrectScope($node, $argumentAdder);
         }
-        // is correct scope?
-        return !$this->argumentAddingScope->isInCorrectScope($node, $argumentAdder);
+        if (!$this->isName($node->args[$position], $argumentName)) {
+            // is correct scope?
+            return !$this->argumentAddingScope->isInCorrectScope($node, $argumentAdder);
+        }
+        return \true;
     }
     /**
      * @param mixed $defaultValue

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210318\Symplify\SetConfigResolver\Tests\Bootstrap;
+namespace Typo3RectorPrefix20210321\Symplify\SetConfigResolver\Tests\Bootstrap;
 
-use Typo3RectorPrefix20210318\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210318\Symplify\SetConfigResolver\Bootstrap\InvalidSetReporter;
-use Typo3RectorPrefix20210318\Symplify\SetConfigResolver\Exception\SetNotFoundException;
-final class InvalidSetReporterTest extends \Typo3RectorPrefix20210318\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210321\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210321\Symplify\SetConfigResolver\Bootstrap\InvalidSetReporter;
+use Typo3RectorPrefix20210321\Symplify\SetConfigResolver\Exception\SetNotFoundException;
+final class InvalidSetReporterTest extends \Typo3RectorPrefix20210321\PHPUnit\Framework\TestCase
 {
     /**
      * @var InvalidSetReporter
@@ -14,14 +14,14 @@ final class InvalidSetReporterTest extends \Typo3RectorPrefix20210318\PHPUnit\Fr
     private $invalidSetReporter;
     protected function setUp() : void
     {
-        $this->invalidSetReporter = new \Typo3RectorPrefix20210318\Symplify\SetConfigResolver\Bootstrap\InvalidSetReporter();
+        $this->invalidSetReporter = new \Typo3RectorPrefix20210321\Symplify\SetConfigResolver\Bootstrap\InvalidSetReporter();
     }
     /**
      * @doesNotPerformAssertions
      */
     public function test() : void
     {
-        $setNotFoundException = new \Typo3RectorPrefix20210318\Symplify\SetConfigResolver\Exception\SetNotFoundException('not found', 'one', ['two', 'three']);
+        $setNotFoundException = new \Typo3RectorPrefix20210321\Symplify\SetConfigResolver\Exception\SetNotFoundException('not found', 'one', ['two', 'three']);
         $this->invalidSetReporter->report($setNotFoundException);
     }
 }

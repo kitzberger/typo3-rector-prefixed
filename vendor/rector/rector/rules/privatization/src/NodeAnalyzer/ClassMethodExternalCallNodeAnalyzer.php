@@ -100,9 +100,13 @@ final class ClassMethodExternalCallNodeAnalyzer
         });
         $className = $classMethod->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLASS_NAME);
         foreach ($arrayCallables as $arrayCallable) {
-            if ($className === $arrayCallable->getClass() && $methodName === $arrayCallable->getMethod()) {
-                return \true;
+            if ($className !== $arrayCallable->getClass()) {
+                continue;
             }
+            if ($methodName !== $arrayCallable->getMethod()) {
+                continue;
+            }
+            return \true;
         }
         return \false;
     }
@@ -112,7 +116,7 @@ final class ClassMethodExternalCallNodeAnalyzer
         if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {
             return \false;
         }
-        if (!$this->nodeTypeResolver->isObjectType($classLike, 'Typo3RectorPrefix20210318\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface')) {
+        if (!$this->nodeTypeResolver->isObjectType($classLike, 'Typo3RectorPrefix20210321\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface')) {
             return \false;
         }
         $getSubscribedEventsClassMethod = $classLike->getMethod('getSubscribedEvents');

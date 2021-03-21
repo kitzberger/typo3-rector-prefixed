@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\Config\Definition\Exception;
+namespace Typo3RectorPrefix20210321\Symfony\Component\Config\Definition\Exception;
 
 /**
  * This exception is thrown whenever the key of an array is not unique. This can
@@ -16,6 +16,6 @@ namespace Typo3RectorPrefix20210318\Symfony\Component\Config\Definition\Exceptio
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class DuplicateKeyException extends \Typo3RectorPrefix20210318\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+class DuplicateKeyException extends \Typo3RectorPrefix20210321\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
 {
 }

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\PHPOffice\Rector\StaticCall;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
@@ -83,7 +83,7 @@ CODE_SAMPLE
             if (isset($node->args[$position])) {
                 continue;
             }
-            if (\is_string($defaultValue) && \Typo3RectorPrefix20210318\Nette\Utils\Strings::contains($defaultValue, '::')) {
+            if (\is_string($defaultValue) && \Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($defaultValue, '::')) {
                 [$className, $constant] = \explode('::', $defaultValue);
                 $classConstant = $this->nodeFactory->createClassConstFetch($className, $constant);
                 $arg = new \PhpParser\Node\Arg($classConstant);

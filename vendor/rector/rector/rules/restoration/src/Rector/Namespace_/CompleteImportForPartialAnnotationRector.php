@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Restoration\Rector\Namespace_;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Stmt\Class_;
@@ -12,7 +12,7 @@ use PhpParser\Node\Stmt\Use_;
 use Rector\Core\Contract\Rector\ConfigurableRectorInterface;
 use Rector\Core\Rector\AbstractRector;
 use Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation;
-use Typo3RectorPrefix20210318\Symplify\Astral\ValueObject\NodeBuilder\UseBuilder;
+use Typo3RectorPrefix20210321\Symplify\Astral\ValueObject\NodeBuilder\UseBuilder;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -51,7 +51,7 @@ class SomeClass
     public $id;
 }
 CODE_SAMPLE
-, [self::USE_IMPORTS_TO_RESTORE => [new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210318\\Doctrine\\ORM\\Mapping', 'ORM')]])]);
+, [self::USE_IMPORTS_TO_RESTORE => [new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210321\\Doctrine\\ORM\\Mapping', 'ORM')]])]);
     }
     /**
      * @return string[]
@@ -71,7 +71,7 @@ CODE_SAMPLE
         }
         foreach ($this->useImportsToRestore as $useImportToRestore) {
             $annotationToSeek = '#\\*\\s+\\@' . $useImportToRestore->getAlias() . '#';
-            if (!\Typo3RectorPrefix20210318\Nette\Utils\Strings::match($this->print($class), $annotationToSeek)) {
+            if (!\Typo3RectorPrefix20210321\Nette\Utils\Strings::match($this->print($class), $annotationToSeek)) {
                 continue;
             }
             $node = $this->addImportToNamespaceIfMissing($node, $useImportToRestore);
@@ -83,7 +83,7 @@ CODE_SAMPLE
      */
     public function configure(array $configuration) : void
     {
-        $default = [new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210318\\Doctrine\\ORM\\Mapping', 'ORM'), new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210318\\Symfony\\Component\\Validator\\Constraints', 'Assert'), new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210318\\JMS\\Serializer\\Annotation', 'Serializer')];
+        $default = [new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210321\\Doctrine\\ORM\\Mapping', 'ORM'), new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210321\\Symfony\\Component\\Validator\\Constraints', 'Assert'), new \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation('Typo3RectorPrefix20210321\\JMS\\Serializer\\Annotation', 'Serializer')];
         $this->useImportsToRestore = \array_merge($configuration[self::USE_IMPORTS_TO_RESTORE] ?? [], $default);
     }
     private function addImportToNamespaceIfMissing(\PhpParser\Node\Stmt\Namespace_ $namespace, \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation $completeImportForPartialAnnotation) : \PhpParser\Node\Stmt\Namespace_
@@ -94,15 +94,19 @@ CODE_SAMPLE
             }
             $useUse = $stmt->uses[0];
             // already there
-            if ($this->isName($useUse->name, $completeImportForPartialAnnotation->getUse()) && (string) $useUse->alias === $completeImportForPartialAnnotation->getAlias()) {
-                return $namespace;
+            if (!$this->isName($useUse->name, $completeImportForPartialAnnotation->getUse())) {
+                continue;
             }
+            if ((string) $useUse->alias !== $completeImportForPartialAnnotation->getAlias()) {
+                continue;
+            }
+            return $namespace;
         }
         return $this->addImportToNamespace($namespace, $completeImportForPartialAnnotation);
     }
     private function addImportToNamespace(\PhpParser\Node\Stmt\Namespace_ $namespace, \Rector\Restoration\ValueObject\CompleteImportForPartialAnnotation $completeImportForPartialAnnotation) : \PhpParser\Node\Stmt\Namespace_
     {
-        $useBuilder = new \Typo3RectorPrefix20210318\Symplify\Astral\ValueObject\NodeBuilder\UseBuilder($completeImportForPartialAnnotation->getUse());
+        $useBuilder = new \Typo3RectorPrefix20210321\Symplify\Astral\ValueObject\NodeBuilder\UseBuilder($completeImportForPartialAnnotation->getUse());
         if ($completeImportForPartialAnnotation->getAlias() !== '') {
             $useBuilder->as($completeImportForPartialAnnotation->getAlias());
         }

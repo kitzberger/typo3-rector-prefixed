@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Rector\Class_;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Stmt\Class_;
@@ -116,7 +116,7 @@ CODE_SAMPLE
             if (!$varType instanceof \PHPStan\Type\ObjectType) {
                 continue;
             }
-            if (!\Typo3RectorPrefix20210318\Nette\Utils\Strings::contains($varType->getClassName(), 'UuidInterface')) {
+            if (!\Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($varType->getClassName(), 'UuidInterface')) {
                 continue;
             }
             return $property;
@@ -133,7 +133,7 @@ CODE_SAMPLE
             if (!$node instanceof \PhpParser\Node\Expr\Assign) {
                 return \false;
             }
-            if (!$this->isStaticCallNamed($node->expr, 'Typo3RectorPrefix20210318\\Ramsey\\Uuid\\Uuid', 'uuid4')) {
+            if (!$this->nodeNameResolver->isStaticCallNamed($node->expr, 'Typo3RectorPrefix20210321\\Ramsey\\Uuid\\Uuid', 'uuid4')) {
                 return \false;
             }
             return $this->isName($node->var, $uuidPropertyName);

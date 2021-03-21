@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage;
+namespace Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage;
 
-use Typo3RectorPrefix20210318\Psr\Cache\CacheItemPoolInterface;
-use Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Typo3RectorPrefix20210321\Psr\Cache\CacheItemPoolInterface;
+use Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ArrayAdapter;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\ParsedExpression::class);
+\class_exists(\Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\ParsedExpression::class);
 /**
  * Allows to compile and evaluate expressions written in your own DSL.
  *
@@ -29,9 +29,9 @@ class ExpressionLanguage
     /**
      * @param ExpressionFunctionProviderInterface[] $providers
      */
-    public function __construct(\Typo3RectorPrefix20210318\Psr\Cache\CacheItemPoolInterface $cache = null, array $providers = [])
+    public function __construct(\Typo3RectorPrefix20210321\Psr\Cache\CacheItemPoolInterface $cache = null, array $providers = [])
     {
-        $this->cache = $cache ?: new \Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ArrayAdapter();
+        $this->cache = $cache ?: new \Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ArrayAdapter();
         $this->registerFunctions();
         foreach ($providers as $provider) {
             $this->registerProvider($provider);
@@ -68,7 +68,7 @@ class ExpressionLanguage
      */
     public function parse($expression, array $names)
     {
-        if ($expression instanceof \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\ParsedExpression) {
+        if ($expression instanceof \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\ParsedExpression) {
             return $expression;
         }
         \asort($names);
@@ -79,7 +79,7 @@ class ExpressionLanguage
         $cacheItem = $this->cache->getItem(\rawurlencode($expression . '//' . \implode('|', $cacheKeyItems)));
         if (null === ($parsedExpression = $cacheItem->get())) {
             $nodes = $this->getParser()->parse($this->getLexer()->tokenize((string) $expression), $names);
-            $parsedExpression = new \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\ParsedExpression((string) $expression, $nodes);
+            $parsedExpression = new \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\ParsedExpression((string) $expression, $nodes);
             $cacheItem->set($parsedExpression);
             $this->cache->save($cacheItem);
         }
@@ -95,7 +95,7 @@ class ExpressionLanguage
      */
     public function lint($expression, ?array $names) : void
     {
-        if ($expression instanceof \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\ParsedExpression) {
+        if ($expression instanceof \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\ParsedExpression) {
             return;
         }
         $this->getParser()->lint($this->getLexer()->tokenize((string) $expression), $names);
@@ -117,11 +117,11 @@ class ExpressionLanguage
         }
         $this->functions[$name] = ['compiler' => $compiler, 'evaluator' => $evaluator];
     }
-    public function addFunction(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\ExpressionFunction $function)
+    public function addFunction(\Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\ExpressionFunction $function)
     {
         $this->register($function->getName(), $function->getCompiler(), $function->getEvaluator());
     }
-    public function registerProvider(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface $provider)
+    public function registerProvider(\Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface $provider)
     {
         foreach ($provider->getFunctions() as $function) {
             $this->addFunction($function);
@@ -129,26 +129,26 @@ class ExpressionLanguage
     }
     protected function registerFunctions()
     {
-        $this->addFunction(\Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\ExpressionFunction::fromPhp('constant'));
+        $this->addFunction(\Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\ExpressionFunction::fromPhp('constant'));
     }
-    private function getLexer() : \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Lexer
+    private function getLexer() : \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Lexer
     {
         if (null === $this->lexer) {
-            $this->lexer = new \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Lexer();
+            $this->lexer = new \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Lexer();
         }
         return $this->lexer;
     }
-    private function getParser() : \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Parser
+    private function getParser() : \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Parser
     {
         if (null === $this->parser) {
-            $this->parser = new \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Parser($this->functions);
+            $this->parser = new \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Parser($this->functions);
         }
         return $this->parser;
     }
-    private function getCompiler() : \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Compiler
+    private function getCompiler() : \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Compiler
     {
         if (null === $this->compiler) {
-            $this->compiler = new \Typo3RectorPrefix20210318\Symfony\Component\ExpressionLanguage\Compiler($this->functions);
+            $this->compiler = new \Typo3RectorPrefix20210321\Symfony\Component\ExpressionLanguage\Compiler($this->functions);
         }
         return $this->compiler->reset();
     }

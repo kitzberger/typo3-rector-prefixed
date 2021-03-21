@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use Typo3RectorPrefix20210318\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
-use Typo3RectorPrefix20210318\Symfony\Component\Stopwatch\Stopwatch;
+use Typo3RectorPrefix20210321\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use Typo3RectorPrefix20210321\Symfony\Component\Stopwatch\Stopwatch;
 /**
  * Provides timing information via the stopwatch.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class TraceableValueResolver implements \Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class TraceableValueResolver implements \Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     private $inner;
     private $stopwatch;
-    public function __construct(\Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface $inner, \Typo3RectorPrefix20210318\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
+    public function __construct(\Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface $inner, \Typo3RectorPrefix20210321\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
     {
         $this->inner = $inner;
         $this->stopwatch = $stopwatch;
@@ -31,7 +31,7 @@ final class TraceableValueResolver implements \Typo3RectorPrefix20210318\Symfony
     /**
      * {@inheritdoc}
      */
-    public function supports(\Typo3RectorPrefix20210318\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
+    public function supports(\Typo3RectorPrefix20210321\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
     {
         $method = \get_class($this->inner) . '::' . __FUNCTION__;
         $this->stopwatch->start($method, 'controller.argument_value_resolver');
@@ -42,7 +42,7 @@ final class TraceableValueResolver implements \Typo3RectorPrefix20210318\Symfony
     /**
      * {@inheritdoc}
      */
-    public function resolve(\Typo3RectorPrefix20210318\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210318\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
+    public function resolve(\Typo3RectorPrefix20210321\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
     {
         $method = \get_class($this->inner) . '::' . __FUNCTION__;
         $this->stopwatch->start($method, 'controller.argument_value_resolver');

@@ -5,7 +5,7 @@ namespace Rector\DoctrineGedmoToKnplabs\Tests\Rector\Class_\TranslationBehaviorR
 /**
  * @ORM\Entity
  */
-class SomeClassTranslation implements \Typo3RectorPrefix20210318\Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface
+class SomeClassTranslation implements \Typo3RectorPrefix20210321\Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface
 {
     use \Knp\DoctrineBehaviors\Model\Translatable\TranslationTrait;
     /**

@@ -50,13 +50,13 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isStaticCallNamed($node, 'PHPExcel_Settings', 'setChartRenderer')) {
+        if (!$this->nodeNameResolver->isStaticCallNamed($node, 'PHPExcel_Settings', 'setChartRenderer')) {
             return null;
         }
         if (\count($node->args) === 1) {
             return null;
         }
-        $arg = new \PhpParser\Node\Arg($this->nodeFactory->createClassConstReference('Typo3RectorPrefix20210318\\PhpOffice\\PhpSpreadsheet\\Chart\\Renderer\\JpGraph'));
+        $arg = new \PhpParser\Node\Arg($this->nodeFactory->createClassConstReference('Typo3RectorPrefix20210321\\PhpOffice\\PhpSpreadsheet\\Chart\\Renderer\\JpGraph'));
         $node->args = [$arg];
         return $node;
     }

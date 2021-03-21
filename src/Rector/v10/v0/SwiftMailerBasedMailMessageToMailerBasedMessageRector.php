@@ -119,7 +119,7 @@ CODE_SAMPLE
         if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, \Typo3RectorPrefix20210318\Swift_Attachment::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, \Typo3RectorPrefix20210321\Swift_Attachment::class)) {
             return null;
         }
         if (!$this->isName($firstArgument->name, 'fromPath')) {

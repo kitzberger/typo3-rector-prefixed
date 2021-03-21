@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\PHPStanStaticTypeMapper\TypeMapper;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Name\FullyQualified;
@@ -45,7 +45,7 @@ final class ObjectTypeMapper implements \Rector\PHPStanStaticTypeMapper\Contract
             return new \Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareIdentifierTypeNode($type->getClassName());
         }
         if ($type instanceof \PHPStan\Type\Generic\GenericObjectType) {
-            if (\Typo3RectorPrefix20210318\Nette\Utils\Strings::contains($type->getClassName(), '\\')) {
+            if (\Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($type->getClassName(), '\\')) {
                 $name = '\\' . $type->getClassName();
             } else {
                 $name = $type->getClassName();
@@ -77,11 +77,15 @@ final class ObjectTypeMapper implements \Rector\PHPStanStaticTypeMapper\Contract
         if ($type instanceof \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType) {
             return new \PhpParser\Node\Name\FullyQualified($type->getClassName());
         }
-        if ($type instanceof \PHPStan\Type\Generic\GenericObjectType && $type->getClassName() === 'object') {
-            return new \PhpParser\Node\Name('object');
+        if (!$type instanceof \PHPStan\Type\Generic\GenericObjectType) {
+            // fallback
+            return new \PhpParser\Node\Name\FullyQualified($type->getClassName());
         }
-        // fallback
-        return new \PhpParser\Node\Name\FullyQualified($type->getClassName());
+        if ($type->getClassName() !== 'object') {
+            // fallback
+            return new \PhpParser\Node\Name\FullyQualified($type->getClassName());
+        }
+        return new \PhpParser\Node\Name('object');
     }
     /**
      * @param ObjectType $type

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter;
+namespace Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter;
 
-use Typo3RectorPrefix20210318\Doctrine\Common\Cache\CacheProvider;
+use Typo3RectorPrefix20210321\Doctrine\Common\Cache\CacheProvider;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class DoctrineAdapter extends \Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\AbstractAdapter
+class DoctrineAdapter extends \Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\AbstractAdapter
 {
     private $provider;
-    public function __construct(\Typo3RectorPrefix20210318\Doctrine\Common\Cache\CacheProvider $provider, string $namespace = '', int $defaultLifetime = 0)
+    public function __construct(\Typo3RectorPrefix20210321\Doctrine\Common\Cache\CacheProvider $provider, string $namespace = '', int $defaultLifetime = 0)
     {
         parent::__construct('', $defaultLifetime);
         $this->provider = $provider;

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210318\Symplify\Astral\NodeNameResolver;
+namespace Typo3RectorPrefix20210321\Symplify\Astral\NodeNameResolver;
 
 use PhpParser\Node;
 use PhpParser\Node\Attribute;
-use Typo3RectorPrefix20210318\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class AttributeNodeNameResolver implements \Typo3RectorPrefix20210318\Symplify\Astral\Contract\NodeNameResolverInterface
+use Typo3RectorPrefix20210321\Symplify\Astral\Contract\NodeNameResolverInterface;
+final class AttributeNodeNameResolver implements \Typo3RectorPrefix20210321\Symplify\Astral\Contract\NodeNameResolverInterface
 {
     public function match(\PhpParser\Node $node) : bool
     {

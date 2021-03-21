@@ -1,6 +1,6 @@
 <table class="logs" data-filter-level="Emergency,Alert,Critical,Error,Warning,Notice,Info,Debug" data-filters>
 <?php 
-namespace Typo3RectorPrefix20210318;
+namespace Typo3RectorPrefix20210321;
 
 $channelIsDefined = isset($logs[0]['channel']);
 ?>

@@ -3,11 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\RuleDocGenerator\Printer;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use Symplify\RuleDocGenerator\Category\CategoryResolver;
 use Symplify\RuleDocGenerator\Printer\CodeSamplePrinter\CodeSamplePrinter;
 use Symplify\RuleDocGenerator\Text\KeywordHighlighter;
-use Symplify\RuleDocGenerator\ValueObject\Lines;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 final class RuleDefinitionsPrinter
 {
@@ -80,7 +79,7 @@ final class RuleDefinitionsPrinter
             }
             $lines[] = $this->keywordHighlighter->highlight($ruleDefinition->getDescription());
             if ($ruleDefinition->isConfigurable()) {
-                $lines[] = \Symplify\RuleDocGenerator\ValueObject\Lines::CONFIGURE_IT;
+                $lines[] = ':wrench: **configure it!**';
             }
             $lines[] = '- class: [`' . $ruleDefinition->getRuleClass() . '`](' . $ruleDefinition->getRuleFilePath() . ')';
             $codeSampleLines = $this->codeSamplePrinter->print($ruleDefinition);
@@ -98,7 +97,7 @@ final class RuleDefinitionsPrinter
         $lines[] = '<br>';
         $lines[] = '## Categories';
         foreach ($ruleDefinitionsByCategory as $category => $ruleDefinitions) {
-            $lines[] = \sprintf('- [%s](#%s) (%d)', $category, \Typo3RectorPrefix20210318\Nette\Utils\Strings::webalize($category), \count($ruleDefinitions));
+            $lines[] = \sprintf('- [%s](#%s) (%d)', $category, \Typo3RectorPrefix20210321\Nette\Utils\Strings::webalize($category), \count($ruleDefinitions));
         }
         $lines[] = '<br>';
         return $lines;

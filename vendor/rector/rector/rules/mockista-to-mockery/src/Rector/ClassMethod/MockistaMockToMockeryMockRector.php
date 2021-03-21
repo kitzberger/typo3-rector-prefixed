@@ -16,7 +16,7 @@ use Rector\MockeryToProphecy\Collector\MockVariableCollector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\PHPUnit\NodeAnalyzer\TestsNodeAnalyzer;
 use ReflectionMethod;
-use Typo3RectorPrefix20210318\Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Typo3RectorPrefix20210321\Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -95,7 +95,7 @@ CODE_SAMPLE
     private function replaceMockWithMockerMockAndCollectMockVariableName(\PhpParser\Node\Stmt\ClassMethod $classMethod) : void
     {
         $this->traverseNodesWithCallable((array) $classMethod->stmts, function (\PhpParser\Node $node) : ?StaticCall {
-            if (!$this->isFuncCallName($node, 'mock')) {
+            if (!$this->nodeNameResolver->isFuncCallName($node, 'mock')) {
                 return null;
             }
             /** @var FuncCall $node */

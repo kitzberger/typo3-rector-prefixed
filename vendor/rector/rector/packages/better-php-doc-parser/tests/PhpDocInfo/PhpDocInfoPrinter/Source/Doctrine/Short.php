@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocInfo\PhpDocInfoPrinter\Source\Doctrine;
 
-use Typo3RectorPrefix20210318\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210321\Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 /**
  * @ORM\Table(

@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\Cache;
+namespace Typo3RectorPrefix20210321\Symfony\Component\Cache;
 
-use Typo3RectorPrefix20210318\Doctrine\Common\Cache\CacheProvider;
-use Typo3RectorPrefix20210318\Psr\Cache\CacheItemPoolInterface;
-use Typo3RectorPrefix20210318\Symfony\Contracts\Service\ResetInterface;
+use Typo3RectorPrefix20210321\Doctrine\Common\Cache\CacheProvider;
+use Typo3RectorPrefix20210321\Psr\Cache\CacheItemPoolInterface;
+use Typo3RectorPrefix20210321\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class DoctrineProvider extends \Typo3RectorPrefix20210318\Doctrine\Common\Cache\CacheProvider implements \Typo3RectorPrefix20210318\Symfony\Component\Cache\PruneableInterface, \Typo3RectorPrefix20210318\Symfony\Component\Cache\ResettableInterface
+class DoctrineProvider extends \Typo3RectorPrefix20210321\Doctrine\Common\Cache\CacheProvider implements \Typo3RectorPrefix20210321\Symfony\Component\Cache\PruneableInterface, \Typo3RectorPrefix20210321\Symfony\Component\Cache\ResettableInterface
 {
     private $pool;
-    public function __construct(\Typo3RectorPrefix20210318\Psr\Cache\CacheItemPoolInterface $pool)
+    public function __construct(\Typo3RectorPrefix20210321\Psr\Cache\CacheItemPoolInterface $pool)
     {
         $this->pool = $pool;
     }
@@ -28,14 +28,14 @@ class DoctrineProvider extends \Typo3RectorPrefix20210318\Doctrine\Common\Cache\
      */
     public function prune()
     {
-        return $this->pool instanceof \Typo3RectorPrefix20210318\Symfony\Component\Cache\PruneableInterface && $this->pool->prune();
+        return $this->pool instanceof \Typo3RectorPrefix20210321\Symfony\Component\Cache\PruneableInterface && $this->pool->prune();
     }
     /**
      * {@inheritdoc}
      */
     public function reset()
     {
-        if ($this->pool instanceof \Typo3RectorPrefix20210318\Symfony\Contracts\Service\ResetInterface) {
+        if ($this->pool instanceof \Typo3RectorPrefix20210321\Symfony\Contracts\Service\ResetInterface) {
             $this->pool->reset();
         }
         $this->setNamespace($this->getNamespace());

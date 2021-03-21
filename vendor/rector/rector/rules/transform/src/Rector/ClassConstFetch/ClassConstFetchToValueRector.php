@@ -11,7 +11,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\Transform\ValueObject\ClassConstFetchToValue;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210318\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210321\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Transform\Tests\Rector\ClassConstFetch\ClassConstFetchToValueRector\ClassConstFetchToValueRectorTest
  */
@@ -27,7 +27,7 @@ final class ClassConstFetchToValueRector extends \Rector\Core\Rector\AbstractRec
     private $classConstFetchesToValues = [];
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        $configuration = [self::CLASS_CONST_FETCHES_TO_VALUES => [new \Rector\Transform\ValueObject\ClassConstFetchToValue('Typo3RectorPrefix20210318\\Nette\\Configurator', 'DEVELOPMENT', 'development'), new \Rector\Transform\ValueObject\ClassConstFetchToValue('Typo3RectorPrefix20210318\\Nette\\Configurator', 'PRODUCTION', 'production')]];
+        $configuration = [self::CLASS_CONST_FETCHES_TO_VALUES => [new \Rector\Transform\ValueObject\ClassConstFetchToValue('Typo3RectorPrefix20210321\\Nette\\Configurator', 'DEVELOPMENT', 'development'), new \Rector\Transform\ValueObject\ClassConstFetchToValue('Typo3RectorPrefix20210321\\Nette\\Configurator', 'PRODUCTION', 'production')]];
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replaces constant by value', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample('$value === Nette\\Configurator::DEVELOPMENT', '$value === "development"', $configuration)]);
     }
     /**
@@ -59,7 +59,7 @@ final class ClassConstFetchToValueRector extends \Rector\Core\Rector\AbstractRec
     public function configure(array $configuration) : void
     {
         $classConstFetchesToValues = $configuration[self::CLASS_CONST_FETCHES_TO_VALUES] ?? [];
-        \Typo3RectorPrefix20210318\Webmozart\Assert\Assert::allIsInstanceOf($classConstFetchesToValues, \Rector\Transform\ValueObject\ClassConstFetchToValue::class);
+        \Typo3RectorPrefix20210321\Webmozart\Assert\Assert::allIsInstanceOf($classConstFetchesToValues, \Rector\Transform\ValueObject\ClassConstFetchToValue::class);
         $this->classConstFetchesToValues = $classConstFetchesToValues;
     }
 }

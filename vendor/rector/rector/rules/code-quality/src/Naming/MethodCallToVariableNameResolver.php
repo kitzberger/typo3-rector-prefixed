@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodeQuality\Naming;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
@@ -56,7 +56,7 @@ final class MethodCallToVariableNameResolver
             return null;
         }
         $result = $this->getVariableName($methodCall, $methodCallVarName, $methodCallName);
-        if (!\Typo3RectorPrefix20210318\Nette\Utils\Strings::match($result, self::SPACE_REGEX)) {
+        if (!\Typo3RectorPrefix20210321\Nette\Utils\Strings::match($result, self::SPACE_REGEX)) {
             return $result;
         }
         return $this->getFallbackVarName($methodCallVarName, $methodCallName);
@@ -76,10 +76,16 @@ final class MethodCallToVariableNameResolver
             return $this->getStringVarName($argValue, $methodCallVarName, $fallbackVarName);
         }
         $argumentName = $this->nodeNameResolver->getName($argValue);
-        if ($argValue instanceof \PhpParser\Node\Expr\Variable && $argumentName !== null && $variableName !== null) {
-            return $argumentName . \ucfirst($variableName);
+        if (!$argValue instanceof \PhpParser\Node\Expr\Variable) {
+            return $fallbackVarName;
         }
-        return $fallbackVarName;
+        if ($argumentName === null) {
+            return $fallbackVarName;
+        }
+        if ($variableName === null) {
+            return $fallbackVarName;
+        }
+        return $argumentName . \ucfirst($variableName);
     }
     private function getFallbackVarName(string $methodCallVarName, string $methodCallName) : string
     {
@@ -91,7 +97,7 @@ final class MethodCallToVariableNameResolver
         $name = $classConstFetch->name;
         $argValueName = \strtolower($name->toString());
         if ($argValueName !== 'class') {
-            return \Typo3RectorPrefix20210318\Nette\Utils\Strings::replace($argValueName, self::CONSTANT_REGEX, function ($matches) : string {
+            return \Typo3RectorPrefix20210321\Nette\Utils\Strings::replace($argValueName, self::CONSTANT_REGEX, function ($matches) : string {
                 return \strtoupper($matches[2]);
             });
         }
@@ -103,10 +109,13 @@ final class MethodCallToVariableNameResolver
     private function getStringVarName(\PhpParser\Node\Scalar\String_ $string, string $methodCallVarName, string $fallbackVarName) : string
     {
         $normalizeStringVariableName = $this->normalizeStringVariableName($string->value . \ucfirst($fallbackVarName));
-        if (\Typo3RectorPrefix20210318\Nette\Utils\Strings::match($normalizeStringVariableName, self::START_ALPHA_REGEX) && $normalizeStringVariableName !== $methodCallVarName) {
-            return $normalizeStringVariableName;
+        if (!\Typo3RectorPrefix20210321\Nette\Utils\Strings::match($normalizeStringVariableName, self::START_ALPHA_REGEX)) {
+            return $fallbackVarName;
         }
-        return $fallbackVarName;
+        if ($normalizeStringVariableName === $methodCallVarName) {
+            return $fallbackVarName;
+        }
+        return $normalizeStringVariableName;
     }
     private function normalizeStringVariableName(string $string) : string
     {

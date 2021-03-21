@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\PHPOffice\Rector\StaticCall;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\New_;
 use PhpParser\Node\Expr\StaticCall;
@@ -54,21 +54,21 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if ($this->isStaticCallNamed($node, 'PHPExcel_Settings', 'setPdfRendererName')) {
+        if ($this->nodeNameResolver->isStaticCallNamed($node, 'PHPExcel_Settings', 'setPdfRendererName')) {
             $this->removeNode($node);
             return null;
         }
-        if ($this->isStaticCallNamed($node, 'PHPExcel_Settings', 'setPdfRenderer')) {
+        if ($this->nodeNameResolver->isStaticCallNamed($node, 'PHPExcel_Settings', 'setPdfRenderer')) {
             $this->removeNode($node);
             return null;
         }
-        if ($this->isStaticCallNamed($node, 'PHPExcel_IOFactory', 'createWriter')) {
+        if ($this->nodeNameResolver->isStaticCallNamed($node, 'PHPExcel_IOFactory', 'createWriter')) {
             if (!isset($node->args[1])) {
                 return null;
             }
             $secondArgValue = $this->valueResolver->getValue($node->args[1]->value);
-            if (\Typo3RectorPrefix20210318\Nette\Utils\Strings::match($secondArgValue, '#pdf#i')) {
-                return new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210318\\PhpOffice\\PhpSpreadsheet\\Writer\\Pdf\\Mpdf'), [$node->args[0]]);
+            if (\Typo3RectorPrefix20210321\Nette\Utils\Strings::match($secondArgValue, '#pdf#i')) {
+                return new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210321\\PhpOffice\\PhpSpreadsheet\\Writer\\Pdf\\Mpdf'), [$node->args[0]]);
             }
         }
         return $node;

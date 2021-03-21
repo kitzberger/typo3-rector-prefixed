@@ -23,7 +23,7 @@ final class GetRequestRector extends \Rector\Core\Rector\AbstractRector
     /**
      * @var string
      */
-    private const REQUEST_CLASS = 'Typo3RectorPrefix20210318\\Symfony\\Component\\HttpFoundation\\Request';
+    private const REQUEST_CLASS = 'Typo3RectorPrefix20210321\\Symfony\\Component\\HttpFoundation\\Request';
     /**
      * @var string
      */
@@ -127,7 +127,7 @@ CODE_SAMPLE
             return \false;
         }
         // must be $this->getRequest() in controller
-        if (!$this->isVariableName($node->var, 'this')) {
+        if (!$this->nodeNameResolver->isVariableName($node->var, 'this')) {
             return \false;
         }
         if (!$this->isName($node->name, 'getRequest') && !$this->isGetMethodCallWithRequestParameters($node)) {

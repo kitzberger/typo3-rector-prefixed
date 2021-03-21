@@ -16,8 +16,8 @@ use PhpParser\Node\Scalar\String_;
 use PHPStan\Type\StringType;
 use Rector\Core\PhpParser\NodeTransformer;
 use Rector\Core\Rector\AbstractRector;
-use Typo3RectorPrefix20210318\Symfony\Component\Console\Input\StringInput;
-use Typo3RectorPrefix20210318\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use Typo3RectorPrefix20210321\Symfony\Component\Console\Input\StringInput;
+use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Reflection\PrivatesCaller;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -59,10 +59,10 @@ CODE_SAMPLE
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
         $expr = $node instanceof \PhpParser\Node\Expr\New_ ? $node->class : $node->var;
-        if ($this->isObjectType($expr, 'Typo3RectorPrefix20210318\\Symfony\\Component\\Process\\Process')) {
+        if ($this->isObjectType($expr, 'Typo3RectorPrefix20210321\\Symfony\\Component\\Process\\Process')) {
             return $this->processArgumentPosition($node, 0);
         }
-        if ($this->isObjectType($expr, 'Typo3RectorPrefix20210318\\Symfony\\Component\\Console\\Helper\\ProcessHelper')) {
+        if ($this->isObjectType($expr, 'Typo3RectorPrefix20210321\\Symfony\\Component\\Console\\Helper\\ProcessHelper')) {
             return $this->processArgumentPosition($node, 1);
         }
         return null;
@@ -97,7 +97,7 @@ CODE_SAMPLE
             }
             return;
         }
-        if ($firstArgumentExpr instanceof \PhpParser\Node\Expr\FuncCall && $this->isFuncCallName($firstArgumentExpr, 'sprintf')) {
+        if ($firstArgumentExpr instanceof \PhpParser\Node\Expr\FuncCall && $this->isName($firstArgumentExpr, 'sprintf')) {
             $arrayNode = $this->nodeTransformer->transformSprintfToArray($firstArgumentExpr);
             if ($arrayNode !== null) {
                 $expr->args[$argumentPosition]->value = $arrayNode;
@@ -113,8 +113,8 @@ CODE_SAMPLE
      */
     private function splitProcessCommandToItems(string $process) : array
     {
-        $privatesCaller = new \Typo3RectorPrefix20210318\Symplify\PackageBuilder\Reflection\PrivatesCaller();
-        return $privatesCaller->callPrivateMethod(new \Typo3RectorPrefix20210318\Symfony\Component\Console\Input\StringInput(''), 'tokenize', [$process]);
+        $privatesCaller = new \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Reflection\PrivatesCaller();
+        return $privatesCaller->callPrivateMethod(new \Typo3RectorPrefix20210321\Symfony\Component\Console\Input\StringInput(''), 'tokenize', [$process]);
     }
     private function processPreviousAssign(\PhpParser\Node $node, \PhpParser\Node\Expr $firstArgumentExpr) : void
     {
@@ -122,7 +122,7 @@ CODE_SAMPLE
         if (!$previousNodeAssign instanceof \PhpParser\Node\Expr\Assign) {
             return;
         }
-        if (!$this->isFuncCallName($previousNodeAssign->expr, 'sprintf')) {
+        if (!$this->nodeNameResolver->isFuncCallName($previousNodeAssign->expr, 'sprintf')) {
             return;
         }
         /** @var FuncCall $funcCall */

@@ -13,7 +13,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use UnexpectedValueException;
 /**

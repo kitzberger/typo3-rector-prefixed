@@ -54,14 +54,14 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210318\\Symfony\\Component\\Console\\Style\\SymfonyStyle')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210321\\Symfony\\Component\\Console\\Style\\SymfonyStyle')) {
             return null;
         }
         if (!isset($node->args[0])) {
             return null;
         }
         $argValue = $node->args[0]->value;
-        if (!$this->isFuncCallName($argValue, 'sprintf')) {
+        if (!$this->nodeNameResolver->isFuncCallName($argValue, 'sprintf')) {
             return null;
         }
         $messageVariable = new \PhpParser\Node\Expr\Variable('message');

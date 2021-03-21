@@ -5,7 +5,7 @@ namespace Rector\CodingStyle\Tests\Rector\Namespace_\ImportFullyQualifiedNamesRe
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Rector\PostRector\Rector\NameImportingPostRector
  */
@@ -14,7 +14,7 @@ final class NonNamespacedTest extends \Rector\Testing\PHPUnit\AbstractRectorTest
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

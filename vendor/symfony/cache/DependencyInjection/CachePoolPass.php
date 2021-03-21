@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\Cache\DependencyInjection;
+namespace Typo3RectorPrefix20210321\Symfony\Component\Cache\DependencyInjection;
 
-use Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\AbstractAdapter;
-use Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ArrayAdapter;
-use Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ChainAdapter;
-use Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ParameterNormalizer;
-use Typo3RectorPrefix20210318\Symfony\Component\Cache\Messenger\EarlyExpirationDispatcher;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ChildDefinition;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference;
+use Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\AbstractAdapter;
+use Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ChainAdapter;
+use Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ParameterNormalizer;
+use Typo3RectorPrefix20210321\Symfony\Component\Cache\Messenger\EarlyExpirationDispatcher;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ChildDefinition;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CachePoolPass implements \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class CachePoolPass implements \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $cachePoolTag;
     private $kernelResetTag;
@@ -50,7 +50,7 @@ class CachePoolPass implements \Typo3RectorPrefix20210318\Symfony\Component\Depe
     /**
      * {@inheritdoc}
      */
-    public function process(\Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if ($container->hasParameter('cache.prefix.seed')) {
             $seed = $container->getParameterBag()->resolveValue($container->getParameter('cache.prefix.seed'));
@@ -68,7 +68,7 @@ class CachePoolPass implements \Typo3RectorPrefix20210318\Symfony\Component\Depe
                 continue;
             }
             $class = $adapter->getClass();
-            while ($adapter instanceof \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ChildDefinition) {
+            while ($adapter instanceof \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ChildDefinition) {
                 $adapter = $container->findDefinition($adapter->getParent());
                 $class = $class ?: $adapter->getClass();
                 if ($t = $adapter->getTag($this->cachePoolTag)) {
@@ -93,33 +93,33 @@ class CachePoolPass implements \Typo3RectorPrefix20210318\Symfony\Component\Depe
             }
             unset($tags[0]['clearer'], $tags[0]['name']);
             if (isset($tags[0]['provider'])) {
-                $tags[0]['provider'] = new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference(static::getServiceProvider($container, $tags[0]['provider']));
+                $tags[0]['provider'] = new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference(static::getServiceProvider($container, $tags[0]['provider']));
             }
-            if (\Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ChainAdapter::class === $class) {
+            if (\Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ChainAdapter::class === $class) {
                 $adapters = [];
                 foreach ($adapter->getArgument(0) as $provider => $adapter) {
-                    if ($adapter instanceof \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ChildDefinition) {
+                    if ($adapter instanceof \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ChildDefinition) {
                         $chainedPool = $adapter;
                     } else {
-                        $chainedPool = $adapter = new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ChildDefinition($adapter);
+                        $chainedPool = $adapter = new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ChildDefinition($adapter);
                     }
                     $chainedTags = [\is_int($provider) ? [] : ['provider' => $provider]];
                     $chainedClass = '';
-                    while ($adapter instanceof \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ChildDefinition) {
+                    while ($adapter instanceof \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ChildDefinition) {
                         $adapter = $container->findDefinition($adapter->getParent());
                         $chainedClass = $chainedClass ?: $adapter->getClass();
                         if ($t = $adapter->getTag($this->cachePoolTag)) {
                             $chainedTags[0] += $t[0];
                         }
                     }
-                    if (\Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ChainAdapter::class === $chainedClass) {
-                        throw new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": chain of adapters cannot reference another chain, found "%s".', $id, $chainedPool->getParent()));
+                    if (\Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ChainAdapter::class === $chainedClass) {
+                        throw new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": chain of adapters cannot reference another chain, found "%s".', $id, $chainedPool->getParent()));
                     }
                     $i = 0;
                     if (isset($chainedTags[0]['provider'])) {
-                        $chainedPool->replaceArgument($i++, new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference(static::getServiceProvider($container, $chainedTags[0]['provider'])));
+                        $chainedPool->replaceArgument($i++, new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference(static::getServiceProvider($container, $chainedTags[0]['provider'])));
                     }
-                    if (isset($tags[0]['namespace']) && \Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ArrayAdapter::class !== $adapter->getClass()) {
+                    if (isset($tags[0]['namespace']) && \Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ArrayAdapter::class !== $adapter->getClass()) {
                         $chainedPool->replaceArgument($i++, $tags[0]['namespace']);
                     }
                     if (isset($tags[0]['default_lifetime'])) {
@@ -142,24 +142,24 @@ class CachePoolPass implements \Typo3RectorPrefix20210318\Symfony\Component\Depe
                     }
                 } elseif ('early_expiration_message_bus' === $attr) {
                     $needsMessageHandler = \true;
-                    $pool->addMethodCall('setCallbackWrapper', [(new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition(\Typo3RectorPrefix20210318\Symfony\Component\Cache\Messenger\EarlyExpirationDispatcher::class))->addArgument(new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference($tags[0]['early_expiration_message_bus']))->addArgument(new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference($this->reverseContainerId))->addArgument((new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition('callable'))->setFactory([new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference($id), 'setCallbackWrapper'])->addArgument(null))]);
+                    $pool->addMethodCall('setCallbackWrapper', [(new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition(\Typo3RectorPrefix20210321\Symfony\Component\Cache\Messenger\EarlyExpirationDispatcher::class))->addArgument(new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference($tags[0]['early_expiration_message_bus']))->addArgument(new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference($this->reverseContainerId))->addArgument((new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition('callable'))->setFactory([new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference($id), 'setCallbackWrapper'])->addArgument(null))]);
                     $pool->addTag($this->reversibleTag);
-                } elseif ('namespace' !== $attr || \Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ArrayAdapter::class !== $class) {
+                } elseif ('namespace' !== $attr || \Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ArrayAdapter::class !== $class) {
                     $argument = $tags[0][$attr];
                     if ('default_lifetime' === $attr && !\is_numeric($argument)) {
-                        $argument = (new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition('int', [$argument]))->setFactory([\Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\ParameterNormalizer::class, 'normalizeDuration']);
+                        $argument = (new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition('int', [$argument]))->setFactory([\Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\ParameterNormalizer::class, 'normalizeDuration']);
                     }
                     $pool->replaceArgument($i++, $argument);
                 }
                 unset($tags[0][$attr]);
             }
             if (!empty($tags[0])) {
-                throw new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "%s" tag for service "%s": accepted attributes are "clearer", "provider", "name", "namespace", "default_lifetime", "early_expiration_message_bus" and "reset", found "%s".', $this->cachePoolTag, $id, \implode('", "', \array_keys($tags[0]))));
+                throw new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "%s" tag for service "%s": accepted attributes are "clearer", "provider", "name", "namespace", "default_lifetime", "early_expiration_message_bus" and "reset", found "%s".', $this->cachePoolTag, $id, \implode('", "', \array_keys($tags[0]))));
             }
             if (null !== $clearer) {
-                $clearers[$clearer][$name] = new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference($id, $container::IGNORE_ON_UNINITIALIZED_REFERENCE);
+                $clearers[$clearer][$name] = new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference($id, $container::IGNORE_ON_UNINITIALIZED_REFERENCE);
             }
-            $allPools[$name] = new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Reference($id, $container::IGNORE_ON_UNINITIALIZED_REFERENCE);
+            $allPools[$name] = new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Reference($id, $container::IGNORE_ON_UNINITIALIZED_REFERENCE);
         }
         if (!$needsMessageHandler) {
             $container->removeDefinition($this->messageHandlerId);
@@ -173,7 +173,7 @@ class CachePoolPass implements \Typo3RectorPrefix20210318\Symfony\Component\Depe
         }
         foreach ($clearers as $id => $pools) {
             $clearer = $container->getDefinition($id);
-            if ($clearer instanceof \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ChildDefinition) {
+            if ($clearer instanceof \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ChildDefinition) {
                 $clearer->replaceArgument(0, $pools);
             } else {
                 $clearer->setArgument(0, $pools);
@@ -194,15 +194,15 @@ class CachePoolPass implements \Typo3RectorPrefix20210318\Symfony\Component\Depe
     /**
      * @internal
      */
-    public static function getServiceProvider(\Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ContainerBuilder $container, $name)
+    public static function getServiceProvider(\Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ContainerBuilder $container, $name)
     {
         $container->resolveEnvPlaceholders($name, null, $usedEnvs);
         if ($usedEnvs || \preg_match('#^[a-z]++:#', $name)) {
             $dsn = $name;
-            if (!$container->hasDefinition($name = '.cache_connection.' . \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ContainerBuilder::hash($dsn))) {
-                $definition = new \Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Definition(\Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\AbstractAdapter::class);
+            if (!$container->hasDefinition($name = '.cache_connection.' . \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ContainerBuilder::hash($dsn))) {
+                $definition = new \Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Definition(\Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\AbstractAdapter::class);
                 $definition->setPublic(\false);
-                $definition->setFactory([\Typo3RectorPrefix20210318\Symfony\Component\Cache\Adapter\AbstractAdapter::class, 'createConnection']);
+                $definition->setFactory([\Typo3RectorPrefix20210321\Symfony\Component\Cache\Adapter\AbstractAdapter::class, 'createConnection']);
                 $definition->setArguments([$dsn, ['lazy' => \true]]);
                 $container->setDefinition($name, $definition);
             }

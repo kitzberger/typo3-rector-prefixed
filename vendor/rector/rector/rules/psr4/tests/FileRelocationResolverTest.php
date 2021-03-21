@@ -7,9 +7,9 @@ use Iterator;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\PSR4\FileRelocationResolver;
 use Rector\PSR4\Tests\Source\SomeFile;
-use Typo3RectorPrefix20210318\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
-final class FileRelocationResolverTest extends \Typo3RectorPrefix20210318\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
+final class FileRelocationResolverTest extends \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var FileRelocationResolver
@@ -25,7 +25,7 @@ final class FileRelocationResolverTest extends \Typo3RectorPrefix20210318\Sympli
      */
     public function test(string $file, string $oldClass, string $newClass, string $expectedNewFileLocation) : void
     {
-        $smartFileInfo = new \Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo($file);
+        $smartFileInfo = new \Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo($file);
         $newFileLocation = $this->fileRelocationResolver->resolveNewFileLocationFromOldClassToNewClass($smartFileInfo, $oldClass, $newClass);
         $this->assertSame($expectedNewFileLocation, $newFileLocation);
     }

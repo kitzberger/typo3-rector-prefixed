@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\ParameterBag;
+namespace Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ParameterBag;
 
-use Typo3RectorPrefix20210318\Psr\Container\ContainerInterface;
-use Typo3RectorPrefix20210318\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use Typo3RectorPrefix20210321\Psr\Container\ContainerInterface;
+use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * ContainerBagInterface is the interface implemented by objects that manage service container parameters.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-interface ContainerBagInterface extends \Typo3RectorPrefix20210318\Psr\Container\ContainerInterface
+interface ContainerBagInterface extends \Typo3RectorPrefix20210321\Psr\Container\ContainerInterface
 {
     /**
      * Gets the service container parameters.

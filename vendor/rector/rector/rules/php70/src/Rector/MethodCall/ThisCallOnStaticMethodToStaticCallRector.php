@@ -74,7 +74,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isVariableName($node->var, 'this')) {
+        if (!$this->nodeNameResolver->isVariableName($node->var, 'this')) {
             return null;
         }
         $methodName = $this->getName($node->name);
@@ -82,7 +82,7 @@ CODE_SAMPLE
             return null;
         }
         // skip PHPUnit calls, as they accept both self:: and $this-> formats
-        if ($this->isObjectType($node->var, 'Typo3RectorPrefix20210318\\PHPUnit\\Framework\\TestCase')) {
+        if ($this->isObjectType($node->var, 'Typo3RectorPrefix20210321\\PHPUnit\\Framework\\TestCase')) {
             return null;
         }
         /** @var class-string $className */
@@ -107,9 +107,12 @@ CODE_SAMPLE
             return 'self';
         }
         $methodReflection = $this->methodReflectionProvider->provideByMethodCall($methodCall);
-        if ($methodReflection instanceof \ReflectionMethod && $methodReflection->isPrivate()) {
-            return 'self';
+        if (!$methodReflection instanceof \ReflectionMethod) {
+            return 'static';
         }
-        return 'static';
+        if (!$methodReflection->isPrivate()) {
+            return 'static';
+        }
+        return 'self';
     }
 }

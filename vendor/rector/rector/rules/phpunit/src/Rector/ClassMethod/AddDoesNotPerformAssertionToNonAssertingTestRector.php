@@ -16,7 +16,7 @@ use Rector\PHPUnit\NodeAnalyzer\TestsNodeAnalyzer;
 use ReflectionMethod;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see https://phpunit.readthedocs.io/en/7.3/annotations.html#doesnotperformassertions
  * @see https://github.com/sebastianbergmann/phpunit/issues/2484
@@ -153,16 +153,25 @@ CODE_SAMPLE
     private function hasDirectAssertCall(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool
     {
         return (bool) $this->betterNodeFinder->findFirst((array) $classMethod->stmts, function (\PhpParser\Node $node) : bool {
-            if (!$node instanceof \PhpParser\Node\Expr\MethodCall && !$node instanceof \PhpParser\Node\Expr\StaticCall) {
-                return \false;
+            if ($node instanceof \PhpParser\Node\Expr\MethodCall) {
+                return $this->isNames($node->name, [
+                    // phpunit
+                    '*assert',
+                    'assert*',
+                    'expectException*',
+                    'setExpectedException*',
+                ]);
             }
-            return $this->isNames($node->name, [
-                // phpunit
-                '*assert',
-                'assert*',
-                'expectException*',
-                'setExpectedException*',
-            ]);
+            if ($node instanceof \PhpParser\Node\Expr\StaticCall) {
+                return $this->isNames($node->name, [
+                    // phpunit
+                    '*assert',
+                    'assert*',
+                    'expectException*',
+                    'setExpectedException*',
+                ]);
+            }
+            return \false;
         });
     }
     private function hasNestedAssertCall(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool
@@ -237,7 +246,7 @@ CODE_SAMPLE
         if (isset($this->analyzedMethodsInFileName[$fileName][$methodName])) {
             return $this->analyzedMethodsInFileName[$fileName][$methodName];
         }
-        $smartFileInfo = new \Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo($fileName);
+        $smartFileInfo = new \Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo($fileName);
         $examinedMethodNodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($smartFileInfo);
         /** @var ClassMethod|null $examinedClassMethod */
         $examinedClassMethod = $this->betterNodeFinder->findFirst($examinedMethodNodes, function (\PhpParser\Node $node) use($methodName) : bool {

@@ -14,6 +14,7 @@ use Rector\Core\ValueObject\MethodName;
 use Rector\Doctrine\NodeFactory\RepositoryNodeFactory;
 use Rector\Doctrine\Type\RepositoryTypeFactory;
 use Rector\NodeTypeResolver\Node\AttributeKey;
+use Rector\PostRector\Collector\PropertyToAddCollector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -28,7 +29,7 @@ final class ServiceEntityRepositoryParentCallToDIRector extends \Rector\Core\Rec
     /**
      * @var string
      */
-    private const SERVICE_ENTITY_REPOSITORY_CLASS = 'Typo3RectorPrefix20210318\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository';
+    private const SERVICE_ENTITY_REPOSITORY_CLASS = 'Typo3RectorPrefix20210321\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository';
     /**
      * @var RepositoryNodeFactory
      */
@@ -37,10 +38,15 @@ final class ServiceEntityRepositoryParentCallToDIRector extends \Rector\Core\Rec
      * @var RepositoryTypeFactory
      */
     private $repositoryTypeFactory;
-    public function __construct(\Rector\Doctrine\NodeFactory\RepositoryNodeFactory $repositoryNodeFactory, \Rector\Doctrine\Type\RepositoryTypeFactory $repositoryTypeFactory)
+    /**
+     * @var PropertyToAddCollector
+     */
+    private $propertyToAddCollector;
+    public function __construct(\Rector\Doctrine\NodeFactory\RepositoryNodeFactory $repositoryNodeFactory, \Rector\Doctrine\Type\RepositoryTypeFactory $repositoryTypeFactory, \Rector\PostRector\Collector\PropertyToAddCollector $propertyToAddCollector)
     {
         $this->repositoryNodeFactory = $repositoryNodeFactory;
         $this->repositoryTypeFactory = $repositoryTypeFactory;
+        $this->propertyToAddCollector = $propertyToAddCollector;
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
@@ -113,7 +119,7 @@ CODE_SAMPLE
         // 4. add $repository property
         $this->addRepositoryProperty($classLike, $entityReferenceExpr);
         // 5. add param + add property, dependency
-        $this->addServiceConstructorDependencyToClass($classLike, 'Typo3RectorPrefix20210318\\Doctrine\\ORM\\EntityManagerInterface');
+        $this->propertyAdder->addServiceConstructorDependencyToClass($classLike, 'Typo3RectorPrefix20210321\\Doctrine\\ORM\\EntityManagerInterface');
         return $node;
     }
     private function shouldSkipClassMethod(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool
@@ -149,6 +155,6 @@ CODE_SAMPLE
     private function addRepositoryProperty(\PhpParser\Node\Stmt\Class_ $class, \PhpParser\Node\Expr $entityReferenceExpr) : void
     {
         $genericObjectType = $this->repositoryTypeFactory->createRepositoryPropertyType($entityReferenceExpr);
-        $this->addPropertyToClass($class, $genericObjectType, 'repository');
+        $this->propertyToAddCollector->addPropertyWithoutConstructorToClass('repository', $genericObjectType, $class);
     }
 }

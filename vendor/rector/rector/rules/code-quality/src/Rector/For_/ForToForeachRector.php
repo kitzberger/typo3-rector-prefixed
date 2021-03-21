@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodeQuality\Rector\For_;
 
-use Typo3RectorPrefix20210318\Doctrine\Inflector\Inflector;
+use Typo3RectorPrefix20210321\Doctrine\Inflector\Inflector;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ArrayDimFetch;
@@ -56,7 +56,7 @@ final class ForToForeachRector extends \Rector\Core\Rector\AbstractRector
      * @var ForeachFactory
      */
     private $foreachFactory;
-    public function __construct(\Typo3RectorPrefix20210318\Doctrine\Inflector\Inflector $inflector, \Rector\CodeQuality\NodeAnalyzer\ForNodeAnalyzer $forNodeAnalyzer, \Rector\CodeQuality\NodeFactory\ForeachFactory $foreachFactory)
+    public function __construct(\Typo3RectorPrefix20210321\Doctrine\Inflector\Inflector $inflector, \Rector\CodeQuality\NodeAnalyzer\ForNodeAnalyzer $forNodeAnalyzer, \Rector\CodeQuality\NodeFactory\ForeachFactory $foreachFactory)
     {
         $this->inflector = $inflector;
         $this->forNodeAnalyzer = $forNodeAnalyzer;
@@ -181,7 +181,7 @@ CODE_SAMPLE
             if ($this->valueResolver->isValue($initExpr->expr, 0)) {
                 $this->keyValueName = $this->getName($initExpr->var);
             }
-            if ($this->isFuncCallName($initExpr->expr, self::COUNT)) {
+            if ($this->nodeNameResolver->isFuncCallName($initExpr->expr, self::COUNT)) {
                 $this->countValueVariable = $initExpr->var;
                 $this->countValueName = $this->getName($initExpr->var);
                 $this->iteratedExpr = $initExpr->expr->args[0]->value;
@@ -205,7 +205,7 @@ CODE_SAMPLE
             return \false;
         }
         // count($values)
-        if ($this->isFuncCallName($condExprs[0]->right, self::COUNT)) {
+        if ($this->nodeNameResolver->isFuncCallName($condExprs[0]->right, self::COUNT)) {
             /** @var FuncCall $countFuncCall */
             $countFuncCall = $condExprs[0]->right;
             $this->iteratedExpr = $countFuncCall->args[0]->value;
@@ -239,7 +239,7 @@ CODE_SAMPLE
             if ($node->dim === null) {
                 return null;
             }
-            if (!$this->isVariableName($node->dim, $this->keyValueName)) {
+            if (!$this->nodeNameResolver->isVariableName($node->dim, $this->keyValueName)) {
                 return null;
             }
             return $singleValue;

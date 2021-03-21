@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\PhpDocNodeFactory\JMS;
 
-use Typo3RectorPrefix20210318\JMS\DiExtraBundle\Annotation\Inject;
+use Typo3RectorPrefix20210321\JMS\DiExtraBundle\Annotation\Inject;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Property;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
@@ -39,7 +39,7 @@ final class JMSInjectPhpDocNodeFactory extends \Rector\BetterPhpDocParser\PhpDoc
      */
     public function getClasses() : array
     {
-        return ['Typo3RectorPrefix20210318\\JMS\\DiExtraBundle\\Annotation\\Inject'];
+        return ['Typo3RectorPrefix20210321\\JMS\\DiExtraBundle\\Annotation\\Inject'];
     }
     /**
      * @return JMSInjectTagValueNode|null
@@ -50,7 +50,7 @@ final class JMSInjectPhpDocNodeFactory extends \Rector\BetterPhpDocParser\PhpDoc
             return null;
         }
         $inject = $this->nodeAnnotationReader->readPropertyAnnotation($node, $annotationClass);
-        if (!$inject instanceof \Typo3RectorPrefix20210318\JMS\DiExtraBundle\Annotation\Inject) {
+        if (!$inject instanceof \Typo3RectorPrefix20210321\JMS\DiExtraBundle\Annotation\Inject) {
             return null;
         }
         $serviceName = $inject->value === null ? $this->nodeNameResolver->getName($node) : $inject->value;

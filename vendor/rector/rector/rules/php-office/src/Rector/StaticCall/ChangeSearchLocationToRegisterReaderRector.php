@@ -51,10 +51,10 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isStaticCallNamed($node, 'PHPExcel_IOFactory', 'addSearchLocation')) {
+        if (!$this->nodeNameResolver->isStaticCallNamed($node, 'PHPExcel_IOFactory', 'addSearchLocation')) {
             return null;
         }
-        $node->class = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210318\\PhpOffice\\PhpSpreadsheet\\IOFactory');
+        $node->class = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210321\\PhpOffice\\PhpSpreadsheet\\IOFactory');
         $node->name = new \PhpParser\Node\Identifier('registerReader');
         // remove middle argument
         $args = $node->args;

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\AttributeAwarePhpDoc\Ast\Type;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PHPStan\PhpDocParser\Ast\Type\CallableTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
@@ -23,7 +23,7 @@ final class AttributeAwareCallableTypeNode extends \PHPStan\PhpDocParser\Ast\Typ
         $returnType = $this->returnType;
         $parameterTypeString = $this->createParameterTypeString();
         $returnTypeAsString = (string) $returnType;
-        if (\Typo3RectorPrefix20210318\Nette\Utils\Strings::contains($returnTypeAsString, '|')) {
+        if (\Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($returnTypeAsString, '|')) {
             $returnTypeAsString = '(' . $returnTypeAsString . ')';
         }
         $parameterTypeString = $this->normalizeParameterType($parameterTypeString, $returnTypeAsString);
@@ -44,16 +44,22 @@ final class AttributeAwareCallableTypeNode extends \PHPStan\PhpDocParser\Ast\Typ
         if ($parameterTypeString !== '') {
             return '(' . $parameterTypeString . ')';
         }
-        if ($returnTypeAsString !== 'mixed' && $returnTypeAsString !== '') {
-            return '()';
+        if ($returnTypeAsString === 'mixed') {
+            return $parameterTypeString;
         }
-        return $parameterTypeString;
+        if ($returnTypeAsString === '') {
+            return $parameterTypeString;
+        }
+        return '()';
     }
     private function normalizeReturnType(string $parameterTypeString, string $returnTypeAsString) : string
     {
-        if ($returnTypeAsString === 'mixed' && $parameterTypeString === '') {
-            return '';
+        if ($returnTypeAsString !== 'mixed') {
+            return ':' . $returnTypeAsString;
         }
-        return ':' . $returnTypeAsString;
+        if ($parameterTypeString !== '') {
+            return ':' . $returnTypeAsString;
+        }
+        return '';
     }
 }

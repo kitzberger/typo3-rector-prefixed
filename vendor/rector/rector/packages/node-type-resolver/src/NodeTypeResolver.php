@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NodeTypeResolver;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -112,7 +112,7 @@ final class NodeTypeResolver
     public function isObjectType(\PhpParser\Node $node, $requiredType) : bool
     {
         $this->ensureRequiredTypeIsStringOrObjectType($requiredType, __METHOD__);
-        if (\is_string($requiredType) && \Typo3RectorPrefix20210318\Nette\Utils\Strings::contains($requiredType, '*')) {
+        if (\is_string($requiredType) && \Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($requiredType, '*')) {
             return $this->isFnMatch($node, $requiredType);
         }
         $resolvedType = $this->resolve($node);
@@ -363,10 +363,13 @@ final class NodeTypeResolver
         }
         $type = $nodeScope->getType($node);
         // hot fix for phpstan not resolving chain method calls
-        if ($node instanceof \PhpParser\Node\Expr\MethodCall && $type instanceof \PHPStan\Type\MixedType) {
-            return $this->resolveFirstType($node->var);
+        if (!$node instanceof \PhpParser\Node\Expr\MethodCall) {
+            return $type;
         }
-        return $type;
+        if (!$type instanceof \PHPStan\Type\MixedType) {
+            return $type;
+        }
+        return $this->resolveFirstType($node->var);
     }
     private function isArrayExpr(\PhpParser\Node $node) : bool
     {

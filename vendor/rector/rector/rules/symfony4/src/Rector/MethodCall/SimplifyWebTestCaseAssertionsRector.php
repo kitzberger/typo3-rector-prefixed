@@ -120,7 +120,7 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return \false;
         }
-        return $this->isObjectType($classLike, 'Typo3RectorPrefix20210318\\Symfony\\Bundle\\FrameworkBundle\\Test\\WebTestCase');
+        return $this->isObjectType($classLike, 'Typo3RectorPrefix20210321\\Symfony\\Bundle\\FrameworkBundle\\Test\\WebTestCase');
     }
     private function processAssertResponseStatusCodeSame(\PhpParser\Node\Expr\MethodCall $methodCall) : ?\PhpParser\Node\Expr\MethodCall
     {
@@ -152,7 +152,7 @@ CODE_SAMPLE
         if (!$comparedNode->var instanceof \PhpParser\Node\Expr\MethodCall) {
             return null;
         }
-        if (!$this->isVariableName($comparedNode->var->var, 'crawler')) {
+        if (!$this->nodeNameResolver->isVariableName($comparedNode->var->var, 'crawler')) {
             return null;
         }
         if (!$this->isName($comparedNode->name, 'text')) {

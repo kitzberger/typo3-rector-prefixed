@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodingStyle\ClassNameImport;
 
-use Typo3RectorPrefix20210318\Nette\Utils\Strings;
+use Typo3RectorPrefix20210321\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Use_;
@@ -35,7 +35,7 @@ final class ClassNameImportSkipper
     public function isShortNameInUseStatement(\PhpParser\Node\Name $name) : bool
     {
         $longName = $name->toString();
-        if (\Typo3RectorPrefix20210318\Nette\Utils\Strings::contains($longName, '\\')) {
+        if (\Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($longName, '\\')) {
             return \false;
         }
         return $this->isFoundInUse($name);
@@ -47,9 +47,13 @@ final class ClassNameImportSkipper
         foreach ($uses as $use) {
             $useUses = $use->uses;
             foreach ($useUses as $useUse) {
-                if ($useUse->name instanceof \PhpParser\Node\Name && $useUse->name->getLast() === $name->getLast()) {
-                    return \true;
+                if (!$useUse->name instanceof \PhpParser\Node\Name) {
+                    continue;
                 }
+                if ($useUse->name->getLast() !== $name->getLast()) {
+                    continue;
+                }
+                return \true;
             }
         }
         return \false;

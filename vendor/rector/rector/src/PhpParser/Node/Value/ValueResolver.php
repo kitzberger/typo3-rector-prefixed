@@ -20,8 +20,8 @@ use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\NodeTypeResolver\NodeTypeResolver;
 use ReflectionClass;
-use Typo3RectorPrefix20210318\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Rector\Core\Tests\PhpParser\Node\Value\ValueResolverTest
  */
@@ -47,7 +47,7 @@ final class ValueResolver
      * @var ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\Core\NodeAnalyzer\ConstFetchAnalyzer $constFetchAnalyzer, \Typo3RectorPrefix20210318\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\Core\NodeAnalyzer\ConstFetchAnalyzer $constFetchAnalyzer, \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->nodeNameResolver = $nodeNameResolver;
         $this->nodeTypeResolver = $nodeTypeResolver;
@@ -134,10 +134,13 @@ final class ValueResolver
     public function areValues(array $nodes, array $expectedValues) : bool
     {
         foreach ($nodes as $i => $node) {
-            if ($node !== null && $this->isValue($node, $expectedValues[$i])) {
-                continue;
+            if ($node === null) {
+                return \false;
             }
-            return \false;
+            if (!$this->isValue($node, $expectedValues[$i])) {
+                return \false;
+            }
+            continue;
         }
         return \true;
     }
@@ -194,7 +197,7 @@ final class ValueResolver
     private function resolveDirConstant(\PhpParser\Node\Scalar\MagicConst\Dir $dir) : string
     {
         $fileInfo = $dir->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$fileInfo instanceof \Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo) {
             throw new \Rector\Core\Exception\ShouldNotHappenException();
         }
         return $fileInfo->getPath();
@@ -202,7 +205,7 @@ final class ValueResolver
     private function resolveFileConstant(\PhpParser\Node\Scalar\MagicConst\File $file) : string
     {
         $fileInfo = $file->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$fileInfo instanceof \Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo) {
             throw new \Rector\Core\Exception\ShouldNotHappenException();
         }
         return $fileInfo->getPathname();

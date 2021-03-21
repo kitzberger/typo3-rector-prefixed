@@ -21,7 +21,7 @@ final class ConsoleExceptionToErrorEventConstantRector extends \Rector\Core\Rect
     /**
      * @var string
      */
-    private const CONSOLE_EVENTS_CLASS = 'Typo3RectorPrefix20210318\\Symfony\\Component\\Console\\ConsoleEvents';
+    private const CONSOLE_EVENTS_CLASS = 'Typo3RectorPrefix20210321\\Symfony\\Component\\Console\\ConsoleEvents';
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns old event name with EXCEPTION to ERROR constant in Console in Symfony', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample('"console.exception"', 'Symfony\\Component\\Console\\ConsoleEvents::ERROR'), new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample('Symfony\\Component\\Console\\ConsoleEvents::EXCEPTION', 'Symfony\\Component\\Console\\ConsoleEvents::ERROR')]);
@@ -41,9 +41,12 @@ final class ConsoleExceptionToErrorEventConstantRector extends \Rector\Core\Rect
         if ($node instanceof \PhpParser\Node\Expr\ClassConstFetch && ($this->isObjectType($node, self::CONSOLE_EVENTS_CLASS) && $this->isName($node->name, 'EXCEPTION'))) {
             return $this->nodeFactory->createClassConstFetch(self::CONSOLE_EVENTS_CLASS, 'ERROR');
         }
-        if ($node instanceof \PhpParser\Node\Scalar\String_ && $node->value === 'console.exception') {
-            return $this->nodeFactory->createClassConstFetch(self::CONSOLE_EVENTS_CLASS, 'ERROR');
+        if (!$node instanceof \PhpParser\Node\Scalar\String_) {
+            return null;
         }
-        return null;
+        if ($node->value !== 'console.exception') {
+            return null;
+        }
+        return $this->nodeFactory->createClassConstFetch(self::CONSOLE_EVENTS_CLASS, 'ERROR');
     }
 }

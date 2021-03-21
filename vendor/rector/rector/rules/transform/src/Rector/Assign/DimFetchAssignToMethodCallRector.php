@@ -14,7 +14,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\Transform\ValueObject\DimFetchAssignToMethodCall;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210318\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210321\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Transform\Tests\Rector\Assign\DimFetchAssignToMethodCallRector\DimFetchAssignToMethodCallRectorTest
  */
@@ -55,7 +55,7 @@ class RouterFactory
     }
 }
 CODE_SAMPLE
-, [self::DIM_FETCH_ASSIGN_TO_METHOD_CALL => [new \Rector\Transform\ValueObject\DimFetchAssignToMethodCall('Typo3RectorPrefix20210318\\Nette\\Application\\Routers\\RouteList', 'Typo3RectorPrefix20210318\\Nette\\Application\\Routers\\Route', 'addRoute')]])]);
+, [self::DIM_FETCH_ASSIGN_TO_METHOD_CALL => [new \Rector\Transform\ValueObject\DimFetchAssignToMethodCall('Typo3RectorPrefix20210321\\Nette\\Application\\Routers\\RouteList', 'Typo3RectorPrefix20210321\\Nette\\Application\\Routers\\Route', 'addRoute')]])]);
     }
     /**
      * @return string[]
@@ -88,7 +88,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $dimFetchAssignToMethodCalls = $configuration[self::DIM_FETCH_ASSIGN_TO_METHOD_CALL] ?? [];
-        \Typo3RectorPrefix20210318\Webmozart\Assert\Assert::allIsInstanceOf($dimFetchAssignToMethodCalls, \Rector\Transform\ValueObject\DimFetchAssignToMethodCall::class);
+        \Typo3RectorPrefix20210321\Webmozart\Assert\Assert::allIsInstanceOf($dimFetchAssignToMethodCalls, \Rector\Transform\ValueObject\DimFetchAssignToMethodCall::class);
         $this->dimFetchAssignToMethodCalls = $dimFetchAssignToMethodCalls;
     }
     private function findDimFetchAssignToMethodCall(\PhpParser\Node\Expr\Assign $assign) : ?\Rector\Transform\ValueObject\DimFetchAssignToMethodCall
@@ -96,9 +96,13 @@ CODE_SAMPLE
         /** @var ArrayDimFetch $arrayDimFetch */
         $arrayDimFetch = $assign->var;
         foreach ($this->dimFetchAssignToMethodCalls as $dimFetchAssignToMethodCall) {
-            if ($this->isObjectType($arrayDimFetch->var, $dimFetchAssignToMethodCall->getListClass()) && $this->isObjectType($assign->expr, $dimFetchAssignToMethodCall->getItemClass())) {
-                return $dimFetchAssignToMethodCall;
+            if (!$this->isObjectType($arrayDimFetch->var, $dimFetchAssignToMethodCall->getListClass())) {
+                continue;
             }
+            if (!$this->isObjectType($assign->expr, $dimFetchAssignToMethodCall->getItemClass())) {
+                continue;
+            }
+            return $dimFetchAssignToMethodCall;
         }
         return null;
     }

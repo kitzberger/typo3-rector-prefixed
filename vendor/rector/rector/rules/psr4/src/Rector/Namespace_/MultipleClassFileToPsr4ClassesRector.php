@@ -15,7 +15,7 @@ use Rector\PSR4\FileInfoAnalyzer\FileInfoDeletionAnalyzer;
 use Rector\PSR4\NodeManipulator\NamespaceManipulator;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Rector\PSR4\Tests\Rector\Namespace_\MultipleClassFileToPsr4ClassesRector\MultipleClassFileToPsr4ClassesRectorTest
  */
@@ -149,8 +149,11 @@ CODE_SAMPLE
     {
         /** @var SmartFileInfo $smartFileInfo */
         $smartFileInfo = $mainNode->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        /** @var Declare_[] $declares */
-        $declares = (array) $mainNode->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::DECLARES);
+        $declares = [];
+        $declare = $this->betterNodeFinder->findFirstPreviousOfTypes($mainNode, [\PhpParser\Node\Stmt\Declare_::class]);
+        if ($declare instanceof \PhpParser\Node\Stmt\Declare_) {
+            $declares = [$declare];
+        }
         if ($mainNode instanceof \Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace) {
             $nodesToPrint = \array_merge($declares, [$classLike]);
         } else {
@@ -160,7 +163,7 @@ CODE_SAMPLE
         $movedFileWithNodes = new \Rector\FileSystemRector\ValueObject\MovedFileWithNodes($nodesToPrint, $fileDestination, $smartFileInfo);
         $this->removedAndAddedFilesCollector->addMovedFile($movedFileWithNodes);
     }
-    private function createClassLikeFileDestination(\PhpParser\Node\Stmt\ClassLike $classLike, \Typo3RectorPrefix20210318\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    private function createClassLikeFileDestination(\PhpParser\Node\Stmt\ClassLike $classLike, \Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
     {
         $currentDirectory = \dirname($smartFileInfo->getRealPath());
         return $currentDirectory . \DIRECTORY_SEPARATOR . $classLike->name . '.php';

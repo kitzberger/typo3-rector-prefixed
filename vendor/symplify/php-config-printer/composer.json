@@ -8,20 +8,20 @@
         "nikic\/php-parser": "^4.10.4",
         "symfony\/http-kernel": "^4.4|^5.2",
         "symfony\/yaml": "^4.4|^5.2",
-        "symplify\/symplify-kernel": "^9.2.11"
+        "symplify\/symplify-kernel": "^9.2.13"
     },
     "require-dev": {
-        "symplify\/easy-testing": "^9.2.11",
+        "symplify\/easy-testing": "^9.2.13",
         "phpunit\/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210318\\Symplify\\PhpConfigPrinter\\": "src"
+            "Typo3RectorPrefix20210321\\Symplify\\PhpConfigPrinter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210318\\Symplify\\PhpConfigPrinter\\Tests\\": "tests"
+            "Typo3RectorPrefix20210321\\Symplify\\PhpConfigPrinter\\Tests\\": "tests"
         },
         "files": [
             "tests\/Printer\/SmartPhpConfigPrinter\/Source\/custom_inline_objects_function.php",

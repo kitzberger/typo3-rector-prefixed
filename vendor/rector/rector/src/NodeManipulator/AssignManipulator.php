@@ -21,7 +21,7 @@ use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210318\Symplify\PackageBuilder\Php\TypeChecker;
+use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Php\TypeChecker;
 final class AssignManipulator
 {
     /**
@@ -48,7 +48,7 @@ final class AssignManipulator
      * @var TypeChecker
      */
     private $typeChecker;
-    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator, \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer $propertyFetchAnalyzer, \Typo3RectorPrefix20210318\Symplify\PackageBuilder\Php\TypeChecker $typeChecker)
+    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator, \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer $propertyFetchAnalyzer, \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Php\TypeChecker $typeChecker)
     {
         $this->nodeNameResolver = $nodeNameResolver;
         $this->betterNodeFinder = $betterNodeFinder;

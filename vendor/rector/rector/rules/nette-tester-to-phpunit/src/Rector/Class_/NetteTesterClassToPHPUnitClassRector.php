@@ -75,7 +75,7 @@ CODE_SAMPLE
             $this->processAboveTestInclude($node);
             return null;
         }
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210318\\Tester\\TestCase')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210321\\Tester\\TestCase')) {
             return null;
         }
         if ($node instanceof \PhpParser\Node\Expr\MethodCall) {
@@ -101,7 +101,7 @@ CODE_SAMPLE
     }
     private function processExtends(\PhpParser\Node\Stmt\Class_ $class) : void
     {
-        $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210318\\PHPUnit\\Framework\\TestCase');
+        $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210321\\PHPUnit\\Framework\\TestCase');
     }
     private function processMethods(\PhpParser\Node\Stmt\Class_ $class) : void
     {

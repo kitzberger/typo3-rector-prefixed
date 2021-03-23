@@ -7,13 +7,13 @@ use Typo3RectorPrefix20210323\Nette\Utils\JsonException;
 use Rector\Caching\Detector\ChangedFilesDetector;
 use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\ChangesReporting\Output\ConsoleOutputFormatter;
-use Rector\Composer\Processor\ComposerProcessor;
 use Rector\Core\Autoloading\AdditionalAutoloader;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\Configuration\Option;
 use Rector\Core\Console\Command\AbstractCommand;
 use Rector\Core\Console\Output\OutputFormatterCollector;
 use Rector\Core\FileSystem\FilesFinder;
+use Ssch\TYPO3Rector\Composer\ComposerProcessor;
 use Typo3RectorPrefix20210323\Symfony\Component\Console\Input\InputArgument;
 use Typo3RectorPrefix20210323\Symfony\Component\Console\Input\InputInterface;
 use Typo3RectorPrefix20210323\Symfony\Component\Console\Input\InputOption;
@@ -45,7 +45,7 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
      * @var ComposerProcessor
      */
     private $composerProcessor;
-    public function __construct(\Rector\Core\Autoloading\AdditionalAutoloader $additionalAutoloader, \Rector\Caching\Detector\ChangedFilesDetector $changedFilesDetector, \Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\FileSystem\FilesFinder $phpFilesFinder, \Rector\Core\Console\Output\OutputFormatterCollector $outputFormatterCollector, \Rector\Composer\Processor\ComposerProcessor $composerProcessor)
+    public function __construct(\Rector\Core\Autoloading\AdditionalAutoloader $additionalAutoloader, \Rector\Caching\Detector\ChangedFilesDetector $changedFilesDetector, \Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\FileSystem\FilesFinder $phpFilesFinder, \Rector\Core\Console\Output\OutputFormatterCollector $outputFormatterCollector, \Ssch\TYPO3Rector\Composer\ComposerProcessor $composerProcessor)
     {
         $this->filesFinder = $phpFilesFinder;
         $this->additionalAutoloader = $additionalAutoloader;

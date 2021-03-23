@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210321\Symfony\Component\Console\Helper;
+namespace Typo3RectorPrefix20210323\Symfony\Component\Console\Helper;
 
-use Typo3RectorPrefix20210321\Symfony\Component\Console\Output\OutputInterface;
-use Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Cloner\ClonerInterface;
-use Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Cloner\VarCloner;
-use Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Dumper\CliDumper;
+use Typo3RectorPrefix20210323\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Cloner\ClonerInterface;
+use Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Cloner\VarCloner;
+use Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
@@ -23,16 +23,16 @@ final class Dumper
     private $dumper;
     private $cloner;
     private $handler;
-    public function __construct(\Typo3RectorPrefix20210321\Symfony\Component\Console\Output\OutputInterface $output, \Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Dumper\CliDumper $dumper = null, \Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Cloner\ClonerInterface $cloner = null)
+    public function __construct(\Typo3RectorPrefix20210323\Symfony\Component\Console\Output\OutputInterface $output, \Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Dumper\CliDumper $dumper = null, \Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Cloner\ClonerInterface $cloner = null)
     {
         $this->output = $output;
         $this->dumper = $dumper;
         $this->cloner = $cloner;
-        if (\class_exists(\Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Dumper\CliDumper::class)) {
+        if (\class_exists(\Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Dumper\CliDumper::class)) {
             $this->handler = function ($var) : string {
-                $dumper = $this->dumper ?? ($this->dumper = new \Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, \Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY | \Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR));
+                $dumper = $this->dumper ?? ($this->dumper = new \Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, \Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY | \Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR));
                 $dumper->setColors($this->output->isDecorated());
-                return \rtrim($dumper->dump(($this->cloner ?? ($this->cloner = new \Typo3RectorPrefix20210321\Symfony\Component\VarDumper\Cloner\VarCloner()))->cloneVar($var)->withRefHandles(\false), \true));
+                return \rtrim($dumper->dump(($this->cloner ?? ($this->cloner = new \Typo3RectorPrefix20210323\Symfony\Component\VarDumper\Cloner\VarCloner()))->cloneVar($var)->withRefHandles(\false), \true));
             };
         } else {
             $this->handler = function ($var) : string {

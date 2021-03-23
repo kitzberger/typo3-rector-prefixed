@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Annotation;
 
-use Typo3RectorPrefix20210321\Doctrine\Common\Annotations\Annotation;
-use Typo3RectorPrefix20210321\Nette\Utils\Strings;
+use Typo3RectorPrefix20210323\Doctrine\Common\Annotations\Annotation;
+use Typo3RectorPrefix20210323\Nette\Utils\Strings;
 final class AnnotationItemsResolver
 {
     /**
@@ -38,7 +38,7 @@ final class AnnotationItemsResolver
     {
         $items = [];
         foreach ((array) $object as $messedPropertyName => $value) {
-            $propertyName = \Typo3RectorPrefix20210321\Nette\Utils\Strings::after($messedPropertyName, "\0", -1);
+            $propertyName = \Typo3RectorPrefix20210323\Nette\Utils\Strings::after($messedPropertyName, "\0", -1);
             $items[$propertyName] = $value;
         }
         return $items;

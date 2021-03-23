@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210321\Symfony\Contracts\Cache;
+namespace Typo3RectorPrefix20210323\Symfony\Contracts\Cache;
 
-use Typo3RectorPrefix20210321\Psr\Cache\CacheItemInterface;
-use Typo3RectorPrefix20210321\Psr\Cache\InvalidArgumentException;
+use Typo3RectorPrefix20210323\Psr\Cache\CacheItemInterface;
+use Typo3RectorPrefix20210323\Psr\Cache\InvalidArgumentException;
 /**
  * Covers most simple to advanced caching needs.
  *

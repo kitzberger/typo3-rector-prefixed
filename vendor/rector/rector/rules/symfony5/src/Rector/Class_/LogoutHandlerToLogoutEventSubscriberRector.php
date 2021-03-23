@@ -23,7 +23,7 @@ final class LogoutHandlerToLogoutEventSubscriberRector extends \Rector\Core\Rect
     /**
      * @var string
      */
-    private const LOGOUT_HANDLER_TYPE = 'Typo3RectorPrefix20210321\\Symfony\\Component\\Security\\Http\\Logout\\LogoutHandlerInterface';
+    private const LOGOUT_HANDLER_TYPE = 'Typo3RectorPrefix20210323\\Symfony\\Component\\Security\\Http\\Logout\\LogoutHandlerInterface';
     /**
      * @var OnLogoutClassMethodFactory
      */
@@ -102,7 +102,7 @@ CODE_SAMPLE
         $node->stmts[] = $this->onLogoutClassMethodFactory->createFromLogoutClassMethod($logoutClassMethod);
         $this->removeNode($logoutClassMethod);
         // 3. add getSubscribedEvents() class method
-        $classConstFetch = $this->nodeFactory->createClassConstReference('Typo3RectorPrefix20210321\\Symfony\\Component\\Security\\Http\\Event\\LogoutEvent');
+        $classConstFetch = $this->nodeFactory->createClassConstReference('Typo3RectorPrefix20210323\\Symfony\\Component\\Security\\Http\\Event\\LogoutEvent');
         $eventReferencesToMethodNames = [new \Rector\SymfonyCodeQuality\ValueObject\EventReferenceToMethodName($classConstFetch, 'onLogout')];
         $getSubscribedEventsClassMethod = $this->getSubscribedEventsClassMethodFactory->create($eventReferencesToMethodNames);
         $node->stmts[] = $getSubscribedEventsClassMethod;
@@ -110,7 +110,7 @@ CODE_SAMPLE
     }
     private function refactorImplements(\PhpParser\Node\Stmt\Class_ $class) : void
     {
-        $class->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210321\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface');
+        $class->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210323\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface');
         foreach ($class->implements as $key => $implement) {
             if (!$this->isName($implement, self::LOGOUT_HANDLER_TYPE)) {
                 continue;

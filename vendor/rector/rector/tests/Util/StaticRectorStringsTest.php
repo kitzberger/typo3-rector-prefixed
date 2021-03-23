@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Rector\Core\Tests\Util;
 
 use Iterator;
-use Typo3RectorPrefix20210321\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210323\PHPUnit\Framework\TestCase;
 use Rector\Core\Util\StaticRectorStrings;
-final class StaticRectorStringsTest extends \Typo3RectorPrefix20210321\PHPUnit\Framework\TestCase
+final class StaticRectorStringsTest extends \Typo3RectorPrefix20210323\PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider provideDataForDashesToCamelCase()

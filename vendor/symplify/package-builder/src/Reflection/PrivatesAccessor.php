@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210321\Symplify\PackageBuilder\Reflection;
+namespace Typo3RectorPrefix20210323\Symplify\PackageBuilder\Reflection;
 
 use ReflectionProperty;
-use Typo3RectorPrefix20210321\Symplify\PHPStanRules\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210323\Symplify\PHPStanRules\Exception\ShouldNotHappenException;
 /**
  * @see \Symplify\PackageBuilder\Tests\Reflection\PrivatesAccessorTest
  */
@@ -32,7 +32,7 @@ final class PrivatesAccessor
         }
         $parentClass = \get_parent_class($object);
         if ($parentClass === \false) {
-            throw new \Typo3RectorPrefix20210321\Symplify\PHPStanRules\Exception\ShouldNotHappenException();
+            throw new \Typo3RectorPrefix20210323\Symplify\PHPStanRules\Exception\ShouldNotHappenException();
         }
         return new \ReflectionProperty($parentClass, $propertyName);
     }

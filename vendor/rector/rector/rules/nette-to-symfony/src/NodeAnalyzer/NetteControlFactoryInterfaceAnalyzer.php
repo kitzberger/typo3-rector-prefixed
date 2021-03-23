@@ -33,10 +33,10 @@ final class NetteControlFactoryInterfaceAnalyzer
                 return \false;
             }
             $className = $this->nodeTypeResolver->getFullyQualifiedClassName($returnType);
-            if (\is_a($className, 'Typo3RectorPrefix20210321\\Nette\\Application\\UI\\Control', \true)) {
+            if (\is_a($className, 'Typo3RectorPrefix20210323\\Nette\\Application\\UI\\Control', \true)) {
                 return \true;
             }
-            if (\is_a($className, 'Typo3RectorPrefix20210321\\Nette\\Application\\UI\\Form', \true)) {
+            if (\is_a($className, 'Typo3RectorPrefix20210323\\Nette\\Application\\UI\\Form', \true)) {
                 return \true;
             }
         }

@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Rector\CodingStyle\Rector\Assign;
 
-use Typo3RectorPrefix20210321\Nette\Utils\Json;
-use Typo3RectorPrefix20210321\Nette\Utils\JsonException;
-use Typo3RectorPrefix20210321\Nette\Utils\Strings;
+use Typo3RectorPrefix20210323\Nette\Utils\Json;
+use Typo3RectorPrefix20210323\Nette\Utils\JsonException;
+use Typo3RectorPrefix20210323\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\Assign;
@@ -139,12 +139,12 @@ CODE_SAMPLE
     }
     private function isJsonString(string $stringValue) : bool
     {
-        if (!(bool) \Typo3RectorPrefix20210321\Nette\Utils\Strings::match($stringValue, self::JSON_STRING_REGEX)) {
+        if (!(bool) \Typo3RectorPrefix20210323\Nette\Utils\Strings::match($stringValue, self::JSON_STRING_REGEX)) {
             return \false;
         }
         try {
-            return (bool) \Typo3RectorPrefix20210321\Nette\Utils\Json::decode($stringValue, \Typo3RectorPrefix20210321\Nette\Utils\Json::FORCE_ARRAY);
-        } catch (\Typo3RectorPrefix20210321\Nette\Utils\JsonException $jsonException) {
+            return (bool) \Typo3RectorPrefix20210323\Nette\Utils\Json::decode($stringValue, \Typo3RectorPrefix20210323\Nette\Utils\Json::FORCE_ARRAY);
+        } catch (\Typo3RectorPrefix20210323\Nette\Utils\JsonException $jsonException) {
             return \false;
         }
     }
@@ -184,7 +184,7 @@ CODE_SAMPLE
      */
     private function removeNodesAndCreateJsonEncodeFromStringValue(array $nodesToRemove, string $stringValue, array $placeholderNodes, \PhpParser\Node\Expr\Assign $assign) : ?\PhpParser\Node\Expr\Assign
     {
-        $stringValue = \Typo3RectorPrefix20210321\Nette\Utils\Strings::replace($stringValue, self::UNQUOTED_OBJECT_HASH_REGEX, '$1"$2"');
+        $stringValue = \Typo3RectorPrefix20210323\Nette\Utils\Strings::replace($stringValue, self::UNQUOTED_OBJECT_HASH_REGEX, '$1"$2"');
         if (!$this->isJsonString($stringValue)) {
             return null;
         }

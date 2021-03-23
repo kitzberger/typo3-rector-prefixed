@@ -6,13 +6,13 @@ namespace Rector\DoctrineGedmoToKnplabs\Tests\Rector\Class_\LoggableBehaviorRect
 use Iterator;
 use Rector\DoctrineGedmoToKnplabs\Rector\Class_\LoggableBehaviorRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
 final class LoggableBehaviorRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

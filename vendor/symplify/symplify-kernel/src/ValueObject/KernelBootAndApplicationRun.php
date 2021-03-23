@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210321\Symplify\SymplifyKernel\ValueObject;
+namespace Typo3RectorPrefix20210323\Symplify\SymplifyKernel\ValueObject;
 
-use Typo3RectorPrefix20210321\Symfony\Component\Console\Application;
-use Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\KernelInterface;
-use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
-use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode;
-use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use Typo3RectorPrefix20210321\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
-use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210321\Symplify\SymplifyKernel\Exception\BootException;
+use Typo3RectorPrefix20210323\Symfony\Component\Console\Application;
+use Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\KernelInterface;
+use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
+use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\ShellCode;
+use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210323\Symplify\SymplifyKernel\Exception\BootException;
 use Throwable;
 final class KernelBootAndApplicationRun
 {
@@ -36,44 +36,44 @@ final class KernelBootAndApplicationRun
         try {
             $this->booKernelAndRunApplication();
         } catch (\Throwable $throwable) {
-            $symfonyStyleFactory = new \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory();
+            $symfonyStyleFactory = new \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory();
             $symfonyStyle = $symfonyStyleFactory->create();
             $symfonyStyle->error($throwable->getMessage());
-            exit(\Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\ShellCode::ERROR);
+            exit(\Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\ShellCode::ERROR);
         }
     }
-    private function createKernel() : \Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\KernelInterface
+    private function createKernel() : \Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\KernelInterface
     {
         // random has is needed, so cache is invalidated and changes from config are loaded
         $environment = 'prod' . \random_int(1, 100000);
         $kernelClass = $this->kernelClass;
-        $kernel = new $kernelClass($environment, \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug());
+        $kernel = new $kernelClass($environment, \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug());
         $this->setExtraConfigs($kernel, $kernelClass);
         return $kernel;
     }
     private function booKernelAndRunApplication() : void
     {
         $kernel = $this->createKernel();
-        if ($kernel instanceof \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface && $this->extraConfigs !== []) {
+        if ($kernel instanceof \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface && $this->extraConfigs !== []) {
             $kernel->setConfigs($this->extraConfigs);
         }
         $kernel->boot();
         $container = $kernel->getContainer();
         /** @var Application $application */
-        $application = $container->get(\Typo3RectorPrefix20210321\Symfony\Component\Console\Application::class);
+        $application = $container->get(\Typo3RectorPrefix20210323\Symfony\Component\Console\Application::class);
         exit($application->run());
     }
-    private function setExtraConfigs(\Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\KernelInterface $kernel, string $kernelClass) : void
+    private function setExtraConfigs(\Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\KernelInterface $kernel, string $kernelClass) : void
     {
         if ($this->extraConfigs === []) {
             return;
         }
-        if (\is_a($kernel, \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class, \true)) {
+        if (\is_a($kernel, \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class, \true)) {
             /** @var ExtraConfigAwareKernelInterface $kernel */
             $kernel->setConfigs($this->extraConfigs);
         } else {
-            $message = \sprintf('Extra configs are set, but the "%s" kernel class is missing "%s" interface', $kernelClass, \Typo3RectorPrefix20210321\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class);
-            throw new \Typo3RectorPrefix20210321\Symplify\SymplifyKernel\Exception\BootException($message);
+            $message = \sprintf('Extra configs are set, but the "%s" kernel class is missing "%s" interface', $kernelClass, \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class);
+            throw new \Typo3RectorPrefix20210323\Symplify\SymplifyKernel\Exception\BootException($message);
         }
     }
     /**
@@ -81,9 +81,9 @@ final class KernelBootAndApplicationRun
      */
     private function setKernelClass(string $kernelClass) : void
     {
-        if (!\is_a($kernelClass, \Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\KernelInterface::class, \true)) {
-            $message = \sprintf('Class "%s" must by type of "%s"', $kernelClass, \Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\KernelInterface::class);
-            throw new \Typo3RectorPrefix20210321\Symplify\SymplifyKernel\Exception\BootException($message);
+        if (!\is_a($kernelClass, \Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\KernelInterface::class, \true)) {
+            $message = \sprintf('Class "%s" must by type of "%s"', $kernelClass, \Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\KernelInterface::class);
+            throw new \Typo3RectorPrefix20210323\Symplify\SymplifyKernel\Exception\BootException($message);
         }
         $this->kernelClass = $kernelClass;
     }

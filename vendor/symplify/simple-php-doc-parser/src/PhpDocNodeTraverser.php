@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210321\Symplify\SimplePhpDocParser;
+namespace Typo3RectorPrefix20210323\Symplify\SimplePhpDocParser;
 
 use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueNode;

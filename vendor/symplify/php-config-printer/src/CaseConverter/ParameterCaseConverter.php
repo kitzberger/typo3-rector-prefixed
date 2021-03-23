@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\CaseConverter;
+namespace Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\CaseConverter;
 
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\Expression;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\Provider\CurrentFilePathProvider;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\ValueObject\MethodName;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\ValueObject\VariableName;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\Provider\CurrentFilePathProvider;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\ValueObject\MethodName;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\ValueObject\VariableName;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
 /**
  * Handles this part:
  *
  * parameters: <---
  */
-final class ParameterCaseConverter implements \Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
+final class ParameterCaseConverter implements \Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
 {
     /**
      * @var ArgsNodeFactory
@@ -33,7 +33,7 @@ final class ParameterCaseConverter implements \Typo3RectorPrefix20210321\Symplif
      * @var CommonNodeFactory
      */
     private $commonNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\Provider\CurrentFilePathProvider $currentFilePathProvider, \Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\Provider\CurrentFilePathProvider $currentFilePathProvider, \Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory)
     {
         $this->argsNodeFactory = $argsNodeFactory;
         $this->currentFilePathProvider = $currentFilePathProvider;
@@ -41,7 +41,7 @@ final class ParameterCaseConverter implements \Typo3RectorPrefix20210321\Symplif
     }
     public function match(string $rootKey, $key, $values) : bool
     {
-        return $rootKey === \Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\ValueObject\YamlKey::PARAMETERS;
+        return $rootKey === \Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\ValueObject\YamlKey::PARAMETERS;
     }
     public function convertToMethodCall($key, $values) : \PhpParser\Node\Stmt\Expression
     {
@@ -57,8 +57,8 @@ final class ParameterCaseConverter implements \Typo3RectorPrefix20210321\Symplif
             }
         }
         $args = $this->argsNodeFactory->createFromValues([$key, $values]);
-        $parametersVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\ValueObject\VariableName::PARAMETERS);
-        $methodCall = new \PhpParser\Node\Expr\MethodCall($parametersVariable, \Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\ValueObject\MethodName::SET, $args);
+        $parametersVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\ValueObject\VariableName::PARAMETERS);
+        $methodCall = new \PhpParser\Node\Expr\MethodCall($parametersVariable, \Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\ValueObject\MethodName::SET, $args);
         return new \PhpParser\Node\Stmt\Expression($methodCall);
     }
     /**

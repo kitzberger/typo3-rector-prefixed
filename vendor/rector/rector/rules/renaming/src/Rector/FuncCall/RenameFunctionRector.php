@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Renaming\Rector\FuncCall;
 
-use Typo3RectorPrefix20210321\Nette\Utils\Strings;
+use Typo3RectorPrefix20210323\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Name;
@@ -27,7 +27,7 @@ final class RenameFunctionRector extends \Rector\Core\Rector\AbstractRector impl
     private $oldFunctionToNewFunction = [];
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns defined function call new one.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample('view("...", []);', 'Laravel\\Templating\\render("...", []);', [self::OLD_FUNCTION_TO_NEW_FUNCTION => ['view' => 'Typo3RectorPrefix20210321\\Laravel\\Templating\\render']])]);
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns defined function call new one.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample('view("...", []);', 'Laravel\\Templating\\render("...", []);', [self::OLD_FUNCTION_TO_NEW_FUNCTION => ['view' => 'Typo3RectorPrefix20210323\\Laravel\\Templating\\render']])]);
     }
     /**
      * @return string[]
@@ -58,7 +58,7 @@ final class RenameFunctionRector extends \Rector\Core\Rector\AbstractRector impl
     }
     private function createName(string $newFunction) : \PhpParser\Node\Name
     {
-        if (\Typo3RectorPrefix20210321\Nette\Utils\Strings::contains($newFunction, '\\')) {
+        if (\Typo3RectorPrefix20210323\Nette\Utils\Strings::contains($newFunction, '\\')) {
             return new \PhpParser\Node\Name\FullyQualified($newFunction);
         }
         return new \PhpParser\Node\Name($newFunction);

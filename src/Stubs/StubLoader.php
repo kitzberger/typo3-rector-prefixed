@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Stubs;
 
-use Typo3RectorPrefix20210321\Nette\Loaders\RobotLoader;
+use Typo3RectorPrefix20210323\Nette\Loaders\RobotLoader;
 final class StubLoader
 {
     /**
@@ -20,7 +20,7 @@ final class StubLoader
             return;
         }
         $stubDirectory = __DIR__ . '/../../stubs';
-        $robotLoader = new \Typo3RectorPrefix20210321\Nette\Loaders\RobotLoader();
+        $robotLoader = new \Typo3RectorPrefix20210323\Nette\Loaders\RobotLoader();
         $robotLoader->acceptFiles = ['*.php', '*.stub'];
         $robotLoader->addDirectory($stubDirectory);
         $robotLoader->setTempDirectory(\sys_get_temp_dir() . '/_typo3_rector_stubs');

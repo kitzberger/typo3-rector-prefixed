@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210321\Symfony\Component\HttpFoundation\Session\Storage;
+namespace Typo3RectorPrefix20210323\Symfony\Component\HttpFoundation\Session\Storage;
 
-use Typo3RectorPrefix20210321\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use Typo3RectorPrefix20210323\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * Metadata container.
  *
@@ -18,7 +18,7 @@ use Typo3RectorPrefix20210321\Symfony\Component\HttpFoundation\Session\SessionBa
  *
  * @author Drak <drak@zikula.org>
  */
-class MetadataBag implements \Typo3RectorPrefix20210321\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+class MetadataBag implements \Typo3RectorPrefix20210323\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     public const CREATED = 'c';
     public const UPDATED = 'u';

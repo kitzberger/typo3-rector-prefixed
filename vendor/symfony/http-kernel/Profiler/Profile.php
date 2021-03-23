@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Profiler;
+namespace Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\Profiler;
 
-use Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
+use Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 /**
  * Profile.
  *
@@ -218,7 +218,7 @@ class Profile
     /**
      * Adds a Collector.
      */
-    public function addCollector(\Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
+    public function addCollector(\Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
     {
         $this->collectors[$collector->getName()] = $collector;
     }

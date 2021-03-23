@@ -18,7 +18,7 @@ final class Redirect301ToPermanentRedirectRector extends \Rector\Core\Rector\Abs
     /**
      * @var string[]
      */
-    private const ROUTE_TYPES = ['Typo3RectorPrefix20210321\\Illuminate\\Support\\Facades\\Route', 'Typo3RectorPrefix20210321\\Illuminate\\Routing\\Route'];
+    private const ROUTE_TYPES = ['Typo3RectorPrefix20210323\\Illuminate\\Support\\Facades\\Route', 'Typo3RectorPrefix20210323\\Illuminate\\Routing\\Route'];
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Change "redirect" call with 301 to "permanentRedirect"', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'

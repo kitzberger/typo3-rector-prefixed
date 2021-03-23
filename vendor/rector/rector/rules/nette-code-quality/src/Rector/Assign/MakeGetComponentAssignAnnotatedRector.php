@@ -124,7 +124,7 @@ CODE_SAMPLE
     }
     private function isGetComponentMethodCallOrArrayDimFetchOnControl(\PhpParser\Node\Expr $expr) : bool
     {
-        if ($this->isOnClassMethodCall($expr, 'Typo3RectorPrefix20210321\\Nette\\Application\\UI\\Control', 'getComponent')) {
+        if ($this->isOnClassMethodCall($expr, 'Typo3RectorPrefix20210323\\Nette\\Application\\UI\\Control', 'getComponent')) {
             return \true;
         }
         return $this->isArrayDimFetchStringOnControlVariable($expr);
@@ -155,7 +155,7 @@ CODE_SAMPLE
         if (!$varStaticType instanceof \PHPStan\Type\TypeWithClassName) {
             return \false;
         }
-        return \is_a($varStaticType->getClassName(), 'Typo3RectorPrefix20210321\\Nette\\Application\\UI\\Control', \true);
+        return \is_a($varStaticType->getClassName(), 'Typo3RectorPrefix20210323\\Nette\\Application\\UI\\Control', \true);
     }
     private function resolveCreateComponentMethodCallReturnType(\PhpParser\Node\Expr\MethodCall $methodCall) : \PHPStan\Type\Type
     {

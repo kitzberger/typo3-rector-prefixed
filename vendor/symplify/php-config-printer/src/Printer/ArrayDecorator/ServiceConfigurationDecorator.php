@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\Printer\ArrayDecorator;
+namespace Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\Printer\ArrayDecorator;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Name\FullyQualified;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\NodeFactory\NewValueObjectFactory;
-use Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\Reflection\ConstantNameFromValueResolver;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\NodeFactory\NewValueObjectFactory;
+use Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\Reflection\ConstantNameFromValueResolver;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
 final class ServiceConfigurationDecorator
 {
@@ -21,7 +21,7 @@ final class ServiceConfigurationDecorator
      * @var NewValueObjectFactory
      */
     private $newValueObjectFactory;
-    public function __construct(\Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\Reflection\ConstantNameFromValueResolver $constantNameFromValueResolver, \Typo3RectorPrefix20210321\Symplify\PhpConfigPrinter\NodeFactory\NewValueObjectFactory $newValueObjectFactory)
+    public function __construct(\Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\Reflection\ConstantNameFromValueResolver $constantNameFromValueResolver, \Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\NodeFactory\NewValueObjectFactory $newValueObjectFactory)
     {
         $this->constantNameFromValueResolver = $constantNameFromValueResolver;
         $this->newValueObjectFactory = $newValueObjectFactory;

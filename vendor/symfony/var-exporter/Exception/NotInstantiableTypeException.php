@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210321\Symfony\Component\VarExporter\Exception;
+namespace Typo3RectorPrefix20210323\Symfony\Component\VarExporter\Exception;
 
-class NotInstantiableTypeException extends \Exception implements \Typo3RectorPrefix20210321\Symfony\Component\VarExporter\Exception\ExceptionInterface
+class NotInstantiableTypeException extends \Exception implements \Typo3RectorPrefix20210323\Symfony\Component\VarExporter\Exception\ExceptionInterface
 {
     public function __construct(string $type, \Throwable $previous = null)
     {

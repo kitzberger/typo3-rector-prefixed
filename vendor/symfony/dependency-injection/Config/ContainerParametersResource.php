@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\Config;
+namespace Typo3RectorPrefix20210323\Symfony\Component\DependencyInjection\Config;
 
-use Typo3RectorPrefix20210321\Symfony\Component\Config\Resource\ResourceInterface;
+use Typo3RectorPrefix20210323\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Tracks container parameters.
  *
@@ -18,7 +18,7 @@ use Typo3RectorPrefix20210321\Symfony\Component\Config\Resource\ResourceInterfac
  *
  * @final
  */
-class ContainerParametersResource implements \Typo3RectorPrefix20210321\Symfony\Component\Config\Resource\ResourceInterface
+class ContainerParametersResource implements \Typo3RectorPrefix20210323\Symfony\Component\Config\Resource\ResourceInterface
 {
     private $parameters;
     /**

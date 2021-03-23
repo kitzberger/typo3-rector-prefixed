@@ -9,11 +9,11 @@ use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
+use Ssch\TYPO3Rector\Helper\Strings;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210321\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
-use UnexpectedValueException;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.1/Deprecation-88995-CallingRegisterPluginWithVendorName.html
  */
@@ -72,7 +72,7 @@ final class RegisterPluginWithVendorNameRector extends \Rector\Core\Rector\Abstr
         if (\false === $delimiterPosition) {
             return null;
         }
-        $extensionName = $this->prepareExtensionName($extensionName, $delimiterPosition);
+        $extensionName = \Ssch\TYPO3Rector\Helper\Strings::prepareExtensionName($extensionName, $delimiterPosition);
         $node->args[0] = $this->nodeFactory->createArg($extensionName);
         return $node;
     }
@@ -85,14 +85,5 @@ final class RegisterPluginWithVendorNameRector extends \Rector\Core\Rector\Abstr
             return \false;
         }
         return $this->isNames($extensionNameArgumentValue->right, ['_EXTKEY', 'extensionKey']);
-    }
-    private function prepareExtensionName(string $extensionName, int $delimiterPosition) : string
-    {
-        $extensionName = \substr($extensionName, $delimiterPosition + 1);
-        $underScoredExtensionName = \preg_replace('#[A-Z]#', '_', \lcfirst($extensionName));
-        if (!\is_string($underScoredExtensionName)) {
-            throw new \UnexpectedValueException('The extension name could not be parsed');
-        }
-        return \str_replace(' ', '', \ucwords(\str_replace('_', ' ', \strtolower($underScoredExtensionName))));
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210321\Doctrine\Inflector\Rules;
+namespace Typo3RectorPrefix20210323\Doctrine\Inflector\Rules;
 
 class Ruleset
 {
@@ -11,21 +11,21 @@ class Ruleset
     private $uninflected;
     /** @var Substitutions */
     private $irregular;
-    public function __construct(\Typo3RectorPrefix20210321\Doctrine\Inflector\Rules\Transformations $regular, \Typo3RectorPrefix20210321\Doctrine\Inflector\Rules\Patterns $uninflected, \Typo3RectorPrefix20210321\Doctrine\Inflector\Rules\Substitutions $irregular)
+    public function __construct(\Typo3RectorPrefix20210323\Doctrine\Inflector\Rules\Transformations $regular, \Typo3RectorPrefix20210323\Doctrine\Inflector\Rules\Patterns $uninflected, \Typo3RectorPrefix20210323\Doctrine\Inflector\Rules\Substitutions $irregular)
     {
         $this->regular = $regular;
         $this->uninflected = $uninflected;
         $this->irregular = $irregular;
     }
-    public function getRegular() : \Typo3RectorPrefix20210321\Doctrine\Inflector\Rules\Transformations
+    public function getRegular() : \Typo3RectorPrefix20210323\Doctrine\Inflector\Rules\Transformations
     {
         return $this->regular;
     }
-    public function getUninflected() : \Typo3RectorPrefix20210321\Doctrine\Inflector\Rules\Patterns
+    public function getUninflected() : \Typo3RectorPrefix20210323\Doctrine\Inflector\Rules\Patterns
     {
         return $this->uninflected;
     }
-    public function getIrregular() : \Typo3RectorPrefix20210321\Doctrine\Inflector\Rules\Substitutions
+    public function getIrregular() : \Typo3RectorPrefix20210323\Doctrine\Inflector\Rules\Substitutions
     {
         return $this->irregular;
     }

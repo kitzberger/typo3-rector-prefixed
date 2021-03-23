@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210321\Symplify\ConsolePackageBuilder\Bundle;
+namespace Typo3RectorPrefix20210323\Symplify\ConsolePackageBuilder\Bundle;
 
-use Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Bundle\Bundle;
-use Typo3RectorPrefix20210321\Symplify\ConsolePackageBuilder\DependencyInjection\CompilerPass\NamelessConsoleCommandCompilerPass;
-final class NamelessConsoleCommandBundle extends \Typo3RectorPrefix20210321\Symfony\Component\HttpKernel\Bundle\Bundle
+use Typo3RectorPrefix20210323\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\Bundle\Bundle;
+use Typo3RectorPrefix20210323\Symplify\ConsolePackageBuilder\DependencyInjection\CompilerPass\NamelessConsoleCommandCompilerPass;
+final class NamelessConsoleCommandBundle extends \Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\Bundle\Bundle
 {
-    public function build(\Typo3RectorPrefix20210321\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function build(\Typo3RectorPrefix20210323\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
-        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210321\Symplify\ConsolePackageBuilder\DependencyInjection\CompilerPass\NamelessConsoleCommandCompilerPass());
+        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210323\Symplify\ConsolePackageBuilder\DependencyInjection\CompilerPass\NamelessConsoleCommandCompilerPass());
     }
 }

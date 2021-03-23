@@ -28,7 +28,7 @@ final class NettePersistentTagNode extends \PHPStan\PhpDocParser\Ast\PhpDoc\PhpD
     }
     public function getAttributeClassName() : string
     {
-        return 'Typo3RectorPrefix20210321\\Nette\\Application\\Attributes\\Persistent';
+        return 'Typo3RectorPrefix20210323\\Nette\\Application\\Attributes\\Persistent';
     }
     /**
      * @return mixed[]

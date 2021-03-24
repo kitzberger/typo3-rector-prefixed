@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit27ae6d5f26cb49e38fcef11757475c03
+class ComposerStaticInitc25880fdbff9901873eeef67f1d192fd
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -3129,6 +3129,7 @@ class ComposerStaticInit27ae6d5f26cb49e38fcef11757475c03
         'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveInitMethodGraphicalFunctionsRector' => __DIR__ . '/../..' . '/src/Rector/v9/v4/RemoveInitMethodGraphicalFunctionsRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveInitMethodTemplateServiceRector' => __DIR__ . '/../..' . '/src/Rector/v9/v4/RemoveInitMethodTemplateServiceRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveInitTemplateMethodCallRector' => __DIR__ . '/../..' . '/src/Rector/v9/v4/RemoveInitTemplateMethodCallRector.php',
+        'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveMethodsFromEidUtilityAndTsfeRector' => __DIR__ . '/../..' . '/src/Rector/v9/v4/RemoveMethodsFromEidUtilityAndTsfeRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\SystemEnvironmentBuilderConstantsRector' => __DIR__ . '/../..' . '/src/Rector/v9/v4/SystemEnvironmentBuilderConstantsRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\TemplateGetFileNameToFilePathSanitizerRector' => __DIR__ . '/../..' . '/src/Rector/v9/v4/TemplateGetFileNameToFilePathSanitizerRector.php',
         'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\UseAddJsFileInsteadOfLoadJavascriptLibRector' => __DIR__ . '/../..' . '/src/Rector/v9/v4/UseAddJsFileInsteadOfLoadJavascriptLibRector.php',
@@ -4438,9 +4439,9 @@ class ComposerStaticInit27ae6d5f26cb49e38fcef11757475c03
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit27ae6d5f26cb49e38fcef11757475c03::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit27ae6d5f26cb49e38fcef11757475c03::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit27ae6d5f26cb49e38fcef11757475c03::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc25880fdbff9901873eeef67f1d192fd::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc25880fdbff9901873eeef67f1d192fd::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc25880fdbff9901873eeef67f1d192fd::$classMap;
 
         }, null, ClassLoader::class);
     }

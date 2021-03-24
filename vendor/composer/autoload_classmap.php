@@ -2331,6 +2331,7 @@ return array(
     'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveInitMethodGraphicalFunctionsRector' => $baseDir . '/src/Rector/v9/v4/RemoveInitMethodGraphicalFunctionsRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveInitMethodTemplateServiceRector' => $baseDir . '/src/Rector/v9/v4/RemoveInitMethodTemplateServiceRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveInitTemplateMethodCallRector' => $baseDir . '/src/Rector/v9/v4/RemoveInitTemplateMethodCallRector.php',
+    'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\RemoveMethodsFromEidUtilityAndTsfeRector' => $baseDir . '/src/Rector/v9/v4/RemoveMethodsFromEidUtilityAndTsfeRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\SystemEnvironmentBuilderConstantsRector' => $baseDir . '/src/Rector/v9/v4/SystemEnvironmentBuilderConstantsRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\TemplateGetFileNameToFilePathSanitizerRector' => $baseDir . '/src/Rector/v9/v4/TemplateGetFileNameToFilePathSanitizerRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v4\\UseAddJsFileInsteadOfLoadJavascriptLibRector' => $baseDir . '/src/Rector/v9/v4/UseAddJsFileInsteadOfLoadJavascriptLibRector.php',

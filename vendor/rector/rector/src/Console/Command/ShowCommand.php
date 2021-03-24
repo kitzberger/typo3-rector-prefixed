@@ -5,12 +5,12 @@ namespace Rector\Core\Console\Command;
 
 use Rector\Core\Application\ActiveRectorsProvider;
 use Rector\Core\Configuration\Option;
-use Typo3RectorPrefix20210323\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210323\Symfony\Component\Console\Output\OutputInterface;
-use Typo3RectorPrefix20210323\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\ShellCode;
-use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210324\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210324\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210324\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210324\Symplify\PackageBuilder\Console\ShellCode;
+use Typo3RectorPrefix20210324\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
 final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
 {
     /**
@@ -25,7 +25,7 @@ final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
      * @var ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\Typo3RectorPrefix20210323\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Application\ActiveRectorsProvider $activeRectorsProvider, \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Typo3RectorPrefix20210324\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Application\ActiveRectorsProvider $activeRectorsProvider, \Typo3RectorPrefix20210324\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->activeRectorsProvider = $activeRectorsProvider;
@@ -36,11 +36,11 @@ final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
     {
         $this->setDescription('Show loaded Rectors with their configuration');
     }
-    protected function execute(\Typo3RectorPrefix20210323\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210323\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\Typo3RectorPrefix20210324\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210324\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->reportLoadedRectors();
         $this->reportLoadedSets();
-        return \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \Typo3RectorPrefix20210324\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
     private function reportLoadedRectors() : void
     {
@@ -69,7 +69,7 @@ final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
         \sort($sets);
         $setFilePaths = [];
         foreach ($sets as $set) {
-            $setFileInfo = new \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo($set);
+            $setFileInfo = new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo($set);
             $setFilePaths[] = $setFileInfo->getRelativeFilePathFromCwd();
         }
         $this->symfonyStyle->listing($setFilePaths);

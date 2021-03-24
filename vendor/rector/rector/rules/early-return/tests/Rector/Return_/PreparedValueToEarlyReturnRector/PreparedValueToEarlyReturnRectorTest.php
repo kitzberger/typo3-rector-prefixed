@@ -6,13 +6,13 @@ namespace Rector\EarlyReturn\Tests\Rector\Return_\PreparedValueToEarlyReturnRect
 use Iterator;
 use Rector\EarlyReturn\Rector\Return_\PreparedValueToEarlyReturnRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
 final class PreparedValueToEarlyReturnRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

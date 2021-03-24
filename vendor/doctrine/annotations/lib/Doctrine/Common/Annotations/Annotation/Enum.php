@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210323\Doctrine\Common\Annotations\Annotation;
+namespace Typo3RectorPrefix20210324\Doctrine\Common\Annotations\Annotation;
 
 use InvalidArgumentException;
 use function get_class;

@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210323\Symplify\SymplifyKernel\Bundle;
+namespace Typo3RectorPrefix20210324\Symplify\SymplifyKernel\Bundle;
 
-use Typo3RectorPrefix20210323\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\Bundle\Bundle;
-use Typo3RectorPrefix20210323\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-use Typo3RectorPrefix20210323\Symplify\SymplifyKernel\DependencyInjection\CompilerPass\PrepareConsoleApplicationCompilerPass;
-use Typo3RectorPrefix20210323\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension;
-final class SymplifyKernelBundle extends \Typo3RectorPrefix20210323\Symfony\Component\HttpKernel\Bundle\Bundle
+use Typo3RectorPrefix20210324\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210324\Symfony\Component\HttpKernel\Bundle\Bundle;
+use Typo3RectorPrefix20210324\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+use Typo3RectorPrefix20210324\Symplify\SymplifyKernel\DependencyInjection\CompilerPass\PrepareConsoleApplicationCompilerPass;
+use Typo3RectorPrefix20210324\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension;
+final class SymplifyKernelBundle extends \Typo3RectorPrefix20210324\Symfony\Component\HttpKernel\Bundle\Bundle
 {
-    public function build(\Typo3RectorPrefix20210323\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function build(\Typo3RectorPrefix20210324\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
-        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210323\Symplify\SymplifyKernel\DependencyInjection\CompilerPass\PrepareConsoleApplicationCompilerPass());
-        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210323\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
+        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210324\Symplify\SymplifyKernel\DependencyInjection\CompilerPass\PrepareConsoleApplicationCompilerPass());
+        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210324\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
     }
-    protected function createContainerExtension() : \Typo3RectorPrefix20210323\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension
+    protected function createContainerExtension() : \Typo3RectorPrefix20210324\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension
     {
-        return new \Typo3RectorPrefix20210323\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension();
+        return new \Typo3RectorPrefix20210324\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension();
     }
 }

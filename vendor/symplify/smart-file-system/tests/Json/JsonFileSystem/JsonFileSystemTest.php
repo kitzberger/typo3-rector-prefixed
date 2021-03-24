@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210323\Symplify\SmartFileSystem\Tests\Json\JsonFileSystem;
+namespace Typo3RectorPrefix20210324\Symplify\SmartFileSystem\Tests\Json\JsonFileSystem;
 
-use Typo3RectorPrefix20210323\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\FileSystemGuard;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\Json\JsonFileSystem;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileSystem;
-final class JsonFileSystemTest extends \Typo3RectorPrefix20210323\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210324\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\FileSystemGuard;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\Json\JsonFileSystem;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileSystem;
+final class JsonFileSystemTest extends \Typo3RectorPrefix20210324\PHPUnit\Framework\TestCase
 {
     /**
      * @var string
@@ -23,8 +23,8 @@ final class JsonFileSystemTest extends \Typo3RectorPrefix20210323\PHPUnit\Framew
     private $smartFileSystem;
     protected function setUp() : void
     {
-        $this->smartFileSystem = new \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileSystem();
-        $this->jsonFileSystem = new \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\Json\JsonFileSystem(new \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\FileSystemGuard(), $this->smartFileSystem);
+        $this->smartFileSystem = new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileSystem();
+        $this->jsonFileSystem = new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\Json\JsonFileSystem(new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\FileSystemGuard(), $this->smartFileSystem);
     }
     public function testLoadFilePathToJson() : void
     {

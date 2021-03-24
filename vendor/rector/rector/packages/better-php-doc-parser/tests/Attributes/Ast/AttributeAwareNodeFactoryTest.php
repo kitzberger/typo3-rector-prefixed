@@ -16,8 +16,8 @@ use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareIdentifierTypeNode;
 use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareNullableTypeNode;
 use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
 use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class AttributeAwareNodeFactoryTest extends \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210324\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class AttributeAwareNodeFactoryTest extends \Typo3RectorPrefix20210324\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var AttributeAwareNodeFactory

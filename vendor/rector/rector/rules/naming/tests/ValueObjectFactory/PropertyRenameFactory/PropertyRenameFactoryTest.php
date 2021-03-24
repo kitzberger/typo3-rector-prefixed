@@ -12,9 +12,9 @@ use Rector\FileSystemRector\Parser\FileInfoParser;
 use Rector\Naming\ExpectedNameResolver\MatchPropertyTypeExpectedNameResolver;
 use Rector\Naming\ValueObject\PropertyRename;
 use Rector\Naming\ValueObjectFactory\PropertyRenameFactory;
-use Typo3RectorPrefix20210323\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
-final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210323\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210324\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
+final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210324\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var PropertyRenameFactory
@@ -43,7 +43,7 @@ final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210323\Symplif
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo $fileInfoWithProperty, string $expectedName, string $currentName) : void
+    public function test(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfoWithProperty, string $expectedName, string $currentName) : void
     {
         $property = $this->getPropertyFromFileInfo($fileInfoWithProperty);
         $actualPropertyRename = $this->propertyRenameFactory->create($property, $this->matchPropertyTypeExpectedNameResolver);
@@ -55,9 +55,9 @@ final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210323\Symplif
     }
     public function provideData() : \Iterator
     {
-        (yield [new \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/skip_some_class.php.inc'), 'eliteManager', 'eventManager']);
+        (yield [new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/skip_some_class.php.inc'), 'eliteManager', 'eventManager']);
     }
-    private function getPropertyFromFileInfo(\Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : \PhpParser\Node\Stmt\Property
+    private function getPropertyFromFileInfo(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : \PhpParser\Node\Stmt\Property
     {
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($fileInfo);
         $property = $this->betterNodeFinder->findFirstInstanceOf($nodes, \PhpParser\Node\Stmt\Property::class);

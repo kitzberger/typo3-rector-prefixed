@@ -31,8 +31,8 @@ final class TranslationClassNodeFactory
     public function create(string $classShortName) : \PhpParser\Node\Stmt\Class_
     {
         $class = new \PhpParser\Node\Stmt\Class_($classShortName);
-        $class->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210323\\Knp\\DoctrineBehaviors\\Contract\\Entity\\TranslationInterface');
-        $this->classInsertManipulator->addAsFirstTrait($class, 'Typo3RectorPrefix20210323\\Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslationTrait');
+        $class->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210324\\Knp\\DoctrineBehaviors\\Contract\\Entity\\TranslationInterface');
+        $this->classInsertManipulator->addAsFirstTrait($class, 'Typo3RectorPrefix20210324\\Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslationTrait');
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($class);
         $entityTagValueNode = $this->entityTagValueNodeFactory->create();
         $phpDocInfo->addTagValueNodeWithShortName($entityTagValueNode);

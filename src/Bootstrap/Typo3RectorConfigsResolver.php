@@ -6,10 +6,10 @@ namespace Ssch\TYPO3Rector\Bootstrap;
 use Rector\Core\ValueObject\Bootstrap\BootstrapConfigs;
 use Rector\Set\RectorSetProvider;
 use Ssch\TYPO3Rector\Set\Typo3RectorSetProvider;
-use Typo3RectorPrefix20210323\Symfony\Component\Console\Input\ArgvInput;
-use Typo3RectorPrefix20210323\Symplify\SetConfigResolver\ConfigResolver;
-use Typo3RectorPrefix20210323\Symplify\SetConfigResolver\SetAwareConfigResolver;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210324\Symfony\Component\Console\Input\ArgvInput;
+use Typo3RectorPrefix20210324\Symplify\SetConfigResolver\ConfigResolver;
+use Typo3RectorPrefix20210324\Symplify\SetConfigResolver\SetAwareConfigResolver;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
 final class Typo3RectorConfigsResolver
 {
     /**
@@ -26,14 +26,14 @@ final class Typo3RectorConfigsResolver
     private $resolvedConfigFileInfos = [];
     public function __construct()
     {
-        $this->configResolver = new \Typo3RectorPrefix20210323\Symplify\SetConfigResolver\ConfigResolver();
+        $this->configResolver = new \Typo3RectorPrefix20210324\Symplify\SetConfigResolver\ConfigResolver();
         $rectorSetProvider = new \Ssch\TYPO3Rector\Set\Typo3RectorSetProvider(new \Rector\Set\RectorSetProvider());
-        $this->setAwareConfigResolver = new \Typo3RectorPrefix20210323\Symplify\SetConfigResolver\SetAwareConfigResolver($rectorSetProvider);
+        $this->setAwareConfigResolver = new \Typo3RectorPrefix20210324\Symplify\SetConfigResolver\SetAwareConfigResolver($rectorSetProvider);
     }
     /**
      * @return SmartFileInfo[]
      */
-    public function resolveFromConfigFileInfo(\Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo $configFileInfo) : array
+    public function resolveFromConfigFileInfo(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $configFileInfo) : array
     {
         $hash = \sha1($configFileInfo->getRealPath());
         if (isset($this->resolvedConfigFileInfos[$hash])) {
@@ -47,7 +47,7 @@ final class Typo3RectorConfigsResolver
     public function provide() : \Rector\Core\ValueObject\Bootstrap\BootstrapConfigs
     {
         $configFileInfos = [];
-        $argvInput = new \Typo3RectorPrefix20210323\Symfony\Component\Console\Input\ArgvInput();
+        $argvInput = new \Typo3RectorPrefix20210324\Symfony\Component\Console\Input\ArgvInput();
         $mainConfigFileInfo = $this->configResolver->resolveFromInputWithFallback($argvInput, ['rector.php']);
         if (null !== $mainConfigFileInfo) {
             $setFileInfos = $this->setAwareConfigResolver->resolveFromParameterSetsFromConfigFiles([$mainConfigFileInfo]);
@@ -57,7 +57,7 @@ final class Typo3RectorConfigsResolver
             // autoload rector recipe file if present, just for \Rector\RectorGenerator\Command\GenerateCommand
             $rectorRecipeFilePath = \getcwd() . '/rector-recipe.php';
             if (\file_exists($rectorRecipeFilePath)) {
-                $configFileInfos[] = new \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo($rectorRecipeFilePath);
+                $configFileInfos[] = new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo($rectorRecipeFilePath);
             }
         }
         return new \Rector\Core\ValueObject\Bootstrap\BootstrapConfigs($mainConfigFileInfo, $configFileInfos);

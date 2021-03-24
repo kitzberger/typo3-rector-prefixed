@@ -6,13 +6,13 @@ namespace Rector\Php70\Tests\Rector\Ternary\TernaryToSpaceshipRector;
 use Iterator;
 use Rector\Php70\Rector\Ternary\TernaryToSpaceshipRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
 final class TernaryToSpaceshipRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

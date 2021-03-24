@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210323\Symplify\PackageBuilder\Composer;
+namespace Typo3RectorPrefix20210324\Symplify\PackageBuilder\Composer;
 
-use Typo3RectorPrefix20210323\Composer\Autoload\ClassLoader;
-use Typo3RectorPrefix20210323\Nette\Utils\Strings;
+use Typo3RectorPrefix20210324\Composer\Autoload\ClassLoader;
+use Typo3RectorPrefix20210324\Nette\Utils\Strings;
 use ReflectionClass;
 /**
  * @see \Symplify\PackageBuilder\Tests\Composer\VendorDirProviderTest
@@ -15,7 +15,7 @@ final class VendorDirProvider
     {
         $rootFolder = \getenv('SystemDrive', \true) . \DIRECTORY_SEPARATOR;
         $path = __DIR__;
-        while (!\Typo3RectorPrefix20210323\Nette\Utils\Strings::endsWith($path, 'vendor') && $path !== $rootFolder) {
+        while (!\Typo3RectorPrefix20210324\Nette\Utils\Strings::endsWith($path, 'vendor') && $path !== $rootFolder) {
             $path = \dirname($path);
         }
         if ($path !== $rootFolder) {
@@ -25,7 +25,7 @@ final class VendorDirProvider
     }
     private function reflectionFallback() : string
     {
-        $reflectionClass = new \ReflectionClass(\Typo3RectorPrefix20210323\Composer\Autoload\ClassLoader::class);
+        $reflectionClass = new \ReflectionClass(\Typo3RectorPrefix20210324\Composer\Autoload\ClassLoader::class);
         return \dirname($reflectionClass->getFileName(), 2);
     }
 }

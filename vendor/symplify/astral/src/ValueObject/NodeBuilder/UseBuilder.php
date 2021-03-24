@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210323\Symplify\Astral\ValueObject\NodeBuilder;
+namespace Typo3RectorPrefix20210324\Symplify\Astral\ValueObject\NodeBuilder;
 
 use PhpParser\Builder\Use_;
 use PhpParser\Node\Stmt\Use_ as UseStmt;

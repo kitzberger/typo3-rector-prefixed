@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210323\Symplify\PhpConfigPrinter\ValueObject;
+namespace Typo3RectorPrefix20210324\Symplify\PhpConfigPrinter\ValueObject;
 
 final class AttributeKey
 {

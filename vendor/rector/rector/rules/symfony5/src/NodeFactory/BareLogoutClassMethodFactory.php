@@ -39,7 +39,7 @@ final class BareLogoutClassMethodFactory
     private function createLogoutEventParam(\PhpParser\Node\Expr\Variable $variable) : \PhpParser\Node\Param
     {
         $param = new \PhpParser\Node\Param($variable);
-        $param->type = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210323\\Symfony\\Component\\Security\\Http\\Event\\LogoutEvent');
+        $param->type = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210324\\Symfony\\Component\\Security\\Http\\Event\\LogoutEvent');
         return $param;
     }
 }

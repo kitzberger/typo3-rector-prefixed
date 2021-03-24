@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210323\Symfony\Component\Console\Exception;
+namespace Typo3RectorPrefix20210324\Symfony\Component\Console\Exception;
 
 /**
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \Typo3RectorPrefix20210323\Symfony\Component\Console\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \Typo3RectorPrefix20210324\Symfony\Component\Console\Exception\ExceptionInterface
 {
 }

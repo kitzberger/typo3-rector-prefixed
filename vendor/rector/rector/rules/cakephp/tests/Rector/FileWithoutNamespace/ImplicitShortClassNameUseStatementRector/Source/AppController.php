@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210323;
+namespace Typo3RectorPrefix20210324;
 
 class AppController
 {
 }
-\class_alias('Typo3RectorPrefix20210323\\AppController', 'AppController', \false);
+\class_alias('Typo3RectorPrefix20210324\\AppController', 'AppController', \false);

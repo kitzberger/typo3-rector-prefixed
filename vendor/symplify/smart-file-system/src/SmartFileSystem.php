@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210323\Symplify\SmartFileSystem;
+namespace Typo3RectorPrefix20210324\Symplify\SmartFileSystem;
 
-use Typo3RectorPrefix20210323\Nette\Utils\Strings;
-use Typo3RectorPrefix20210323\Symfony\Component\Filesystem\Exception\IOException;
-use Typo3RectorPrefix20210323\Symfony\Component\Filesystem\Filesystem;
+use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210324\Symfony\Component\Filesystem\Exception\IOException;
+use Typo3RectorPrefix20210324\Symfony\Component\Filesystem\Filesystem;
 /**
  * @see \Symplify\SmartFileSystem\Tests\SmartFileSystem\SmartFileSystemTest
  */
-final class SmartFileSystem extends \Typo3RectorPrefix20210323\Symfony\Component\Filesystem\Filesystem
+final class SmartFileSystem extends \Typo3RectorPrefix20210324\Symfony\Component\Filesystem\Filesystem
 {
     /**
      * @var string
@@ -24,13 +24,13 @@ final class SmartFileSystem extends \Typo3RectorPrefix20210323\Symfony\Component
         $source = @\file_get_contents($filename);
         if (!$source) {
             $message = \sprintf('Failed to read "%s" file: "%s"', $filename, $this->getLastError());
-            throw new \Typo3RectorPrefix20210323\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
+            throw new \Typo3RectorPrefix20210324\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
         }
         return $source;
     }
-    public function readFileToSmartFileInfo(string $filename) : \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo
+    public function readFileToSmartFileInfo(string $filename) : \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo
     {
-        return new \Typo3RectorPrefix20210323\Symplify\SmartFileSystem\SmartFileInfo($filename);
+        return new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo($filename);
     }
     /**
      * Converts given HTML code to plain text
@@ -63,6 +63,6 @@ final class SmartFileSystem extends \Typo3RectorPrefix20210323\Symfony\Component
     {
         $message = \error_get_last()['message'] ?? '';
         $message = \ini_get('html_errors') ? $this->htmlToText($message) : $message;
-        return \Typo3RectorPrefix20210323\Nette\Utils\Strings::replace($message, self::BEFORE_COLLON_REGEX, '');
+        return \Typo3RectorPrefix20210324\Nette\Utils\Strings::replace($message, self::BEFORE_COLLON_REGEX, '');
     }
 }

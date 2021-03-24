@@ -41,7 +41,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210323\\Symfony\\Component\\DependencyInjection\\ContainerBuilder')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210324\\Symfony\\Component\\DependencyInjection\\ContainerBuilder')) {
             return null;
         }
         if (!$this->isName($node->name, 'compile')) {

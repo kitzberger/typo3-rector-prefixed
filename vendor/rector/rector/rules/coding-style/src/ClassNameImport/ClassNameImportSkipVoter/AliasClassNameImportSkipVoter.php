@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodingStyle\ClassNameImport\ClassNameImportSkipVoter;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use PhpParser\Node;
 use Rector\CodingStyle\ClassNameImport\AliasUsesResolver;
 use Rector\CodingStyle\Contract\ClassNameImport\ClassNameImportSkipVoterInterface;
@@ -33,7 +33,7 @@ final class AliasClassNameImportSkipVoter implements \Rector\CodingStyle\Contrac
         foreach ($aliasedUses as $aliasedUse) {
             $aliasedUseLowered = \strtolower($aliasedUse);
             // its aliased, we cannot just rename it
-            if (\Typo3RectorPrefix20210324\Nette\Utils\Strings::endsWith($aliasedUseLowered, '\\' . $fullyQualifiedObjectType->getShortNameLowered())) {
+            if (\Typo3RectorPrefix20210326\Nette\Utils\Strings::endsWith($aliasedUseLowered, '\\' . $fullyQualifiedObjectType->getShortNameLowered())) {
                 return \true;
             }
         }

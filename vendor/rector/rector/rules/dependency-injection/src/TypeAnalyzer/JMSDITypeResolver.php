@@ -12,7 +12,7 @@ use Rector\BetterPhpDocParser\ValueObject\PhpDocNode\JMS\JMSInjectTagValueNode;
 use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\Symfony\ServiceMapProvider;
-use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
 final class JMSDITypeResolver
 {
     /**

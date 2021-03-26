@@ -21,7 +21,7 @@ use Rector\Nette\NodeFactory\ActionRenderFactory;
 use Rector\NetteToSymfony\NodeAnalyzer\ClassMethodRenderAnalyzer;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType;
-use Typo3RectorPrefix20210324\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Response;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -101,7 +101,7 @@ CODE_SAMPLE
         $shortClassName = $this->nodeNameResolver->getShortName($node);
         $shortClassName = $this->classNaming->replaceSuffix($shortClassName, 'Control', 'Controller');
         $node->name = new \PhpParser\Node\Identifier($shortClassName);
-        $node->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210324\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
+        $node->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210326\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
         $classMethod = $node->getMethod('render');
         if ($classMethod !== null) {
             $this->processRenderMethod($classMethod);
@@ -118,7 +118,7 @@ CODE_SAMPLE
         $return = new \PhpParser\Node\Stmt\Return_($methodCall);
         $classMethod->stmts[] = $return;
         if ($this->isAtLeastPhpVersion(\Rector\Core\ValueObject\PhpVersionFeature::SCALAR_TYPES)) {
-            $classMethod->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210324\Symfony\Component\HttpFoundation\Response::class);
+            $classMethod->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Response::class);
         }
         $this->removeNodes($classMethodRender->getNodesToRemove());
     }
@@ -142,7 +142,7 @@ CODE_SAMPLE
             if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {
                 throw new \Rector\Core\Exception\ShouldNotHappenException();
             }
-            $this->addConstructorDependencyToClass($classLike, new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType('Typo3RectorPrefix20210324\\Nette\\Http\\Session'), 'session');
+            $this->addConstructorDependencyToClass($classLike, new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType('Typo3RectorPrefix20210326\\Nette\\Http\\Session'), 'session');
             return $node;
         });
     }

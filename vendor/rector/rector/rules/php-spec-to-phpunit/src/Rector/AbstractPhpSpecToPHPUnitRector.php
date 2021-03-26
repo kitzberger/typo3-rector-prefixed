@@ -60,6 +60,6 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return \false;
         }
-        return $this->isObjectType($classLike, 'Typo3RectorPrefix20210324\\PhpSpec\\ObjectBehavior');
+        return $this->isObjectType($classLike, 'Typo3RectorPrefix20210326\\PhpSpec\\ObjectBehavior');
     }
 }

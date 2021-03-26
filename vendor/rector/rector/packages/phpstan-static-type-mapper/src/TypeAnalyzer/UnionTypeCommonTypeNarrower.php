@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\PHPStanStaticTypeMapper\TypeAnalyzer;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\BinaryOp;
@@ -89,7 +89,7 @@ final class UnionTypeCommonTypeNarrower
     {
         foreach ($interfaces as $key => $implementedInterface) {
             // remove native interfaces
-            if (\Typo3RectorPrefix20210324\Nette\Utils\Strings::contains($implementedInterface, '\\')) {
+            if (\Typo3RectorPrefix20210326\Nette\Utils\Strings::contains($implementedInterface, '\\')) {
                 continue;
             }
             unset($interfaces[$key]);

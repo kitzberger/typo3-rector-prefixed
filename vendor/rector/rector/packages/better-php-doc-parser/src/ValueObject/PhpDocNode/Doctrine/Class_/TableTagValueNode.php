@@ -64,7 +64,7 @@ final class TableTagValueNode extends \Rector\BetterPhpDocParser\ValueObject\Php
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210324\\@ORM\\Table';
+        return 'Typo3RectorPrefix20210326\\@ORM\\Table';
     }
     public function getSilentKey() : string
     {

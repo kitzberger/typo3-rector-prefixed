@@ -6,13 +6,13 @@ namespace Rector\CakePHP\Tests\Rector\FileWithoutNamespace\ImplicitShortClassNam
 use Iterator;
 use Rector\CakePHP\Rector\FileWithoutNamespace\ImplicitShortClassNameUseStatementRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
 final class ImplicitShortClassNameUseStatementRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

@@ -6,13 +6,13 @@ namespace Rector\CodeQuality\Tests\Rector\If_\SimplifyIfNotNullReturnRector;
 use Iterator;
 use Rector\CodeQuality\Rector\If_\SimplifyIfNotNullReturnRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
 final class SimplifyIfNotNullReturnRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

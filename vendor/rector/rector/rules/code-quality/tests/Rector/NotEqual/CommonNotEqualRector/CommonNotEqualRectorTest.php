@@ -6,13 +6,13 @@ namespace Rector\CodeQuality\Tests\Rector\NotEqual\CommonNotEqualRector;
 use Iterator;
 use Rector\CodeQuality\Rector\NotEqual\CommonNotEqualRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
 final class CommonNotEqualRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

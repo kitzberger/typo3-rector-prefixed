@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Set;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Util\StaticRectorStrings;
 use ReflectionClass;
-use Typo3RectorPrefix20210324\Symplify\SetConfigResolver\Contract\SetProviderInterface;
-use Typo3RectorPrefix20210324\Symplify\SetConfigResolver\Exception\SetNotFoundException;
-use Typo3RectorPrefix20210324\Symplify\SetConfigResolver\Provider\AbstractSetProvider;
-use Typo3RectorPrefix20210324\Symplify\SetConfigResolver\ValueObject\Set;
-use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
-final class Typo3RectorSetProvider extends \Typo3RectorPrefix20210324\Symplify\SetConfigResolver\Provider\AbstractSetProvider
+use Typo3RectorPrefix20210326\Symplify\SetConfigResolver\Contract\SetProviderInterface;
+use Typo3RectorPrefix20210326\Symplify\SetConfigResolver\Exception\SetNotFoundException;
+use Typo3RectorPrefix20210326\Symplify\SetConfigResolver\Provider\AbstractSetProvider;
+use Typo3RectorPrefix20210326\Symplify\SetConfigResolver\ValueObject\Set;
+use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
+final class Typo3RectorSetProvider extends \Typo3RectorPrefix20210326\Symplify\SetConfigResolver\Provider\AbstractSetProvider
 {
     /**
      * @var string
@@ -27,7 +27,7 @@ final class Typo3RectorSetProvider extends \Typo3RectorPrefix20210324\Symplify\S
      * @var Set[]
      */
     private $sets = [];
-    public function __construct(\Typo3RectorPrefix20210324\Symplify\SetConfigResolver\Contract\SetProviderInterface $rectorSetProvider)
+    public function __construct(\Typo3RectorPrefix20210326\Symplify\SetConfigResolver\Contract\SetProviderInterface $rectorSetProvider)
     {
         $setListReflectionClass = new \ReflectionClass(\Ssch\TYPO3Rector\Set\Typo3SetList::class);
         $this->hydrateSetsFromConstants($setListReflectionClass);
@@ -37,11 +37,11 @@ final class Typo3RectorSetProvider extends \Typo3RectorPrefix20210324\Symplify\S
     {
         return \array_merge($this->sets, $this->rectorSetProvider->provide());
     }
-    public function provideByName(string $desiredSetName) : ?\Typo3RectorPrefix20210324\Symplify\SetConfigResolver\ValueObject\Set
+    public function provideByName(string $desiredSetName) : ?\Typo3RectorPrefix20210326\Symplify\SetConfigResolver\ValueObject\Set
     {
         try {
             $foundSet = parent::provideByName($desiredSetName);
-            if ($foundSet instanceof \Typo3RectorPrefix20210324\Symplify\SetConfigResolver\ValueObject\Set) {
+            if ($foundSet instanceof \Typo3RectorPrefix20210326\Symplify\SetConfigResolver\ValueObject\Set) {
                 return $foundSet;
             }
             // second approach by set path
@@ -49,15 +49,15 @@ final class Typo3RectorSetProvider extends \Typo3RectorPrefix20210324\Symplify\S
                 if (!\file_exists($desiredSetName)) {
                     continue;
                 }
-                $desiredSetFileInfo = new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo($desiredSetName);
+                $desiredSetFileInfo = new \Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo($desiredSetName);
                 if ($set->getSetFileInfo()->getRealPath() !== $desiredSetFileInfo->getRealPath()) {
                     continue;
                 }
                 return $set;
             }
             $message = \sprintf('Set "%s" was not found', $desiredSetName);
-            throw new \Typo3RectorPrefix20210324\Symplify\SetConfigResolver\Exception\SetNotFoundException($message, $desiredSetName, $this->provideSetNames());
-        } catch (\Typo3RectorPrefix20210324\Symplify\SetConfigResolver\Exception\SetNotFoundException $setNotFoundException) {
+            throw new \Typo3RectorPrefix20210326\Symplify\SetConfigResolver\Exception\SetNotFoundException($message, $desiredSetName, $this->provideSetNames());
+        } catch (\Typo3RectorPrefix20210326\Symplify\SetConfigResolver\Exception\SetNotFoundException $setNotFoundException) {
             return $this->rectorSetProvider->provideByName($desiredSetName);
         }
     }
@@ -70,8 +70,8 @@ final class Typo3RectorSetProvider extends \Typo3RectorPrefix20210324\Symplify\S
             }
             $setName = \Rector\Core\Util\StaticRectorStrings::constantToDashes($name);
             // remove `-` before numbers
-            $setName = \Typo3RectorPrefix20210324\Nette\Utils\Strings::replace($setName, self::DASH_NUMBER_REGEX, '$1');
-            $this->sets[] = new \Typo3RectorPrefix20210324\Symplify\SetConfigResolver\ValueObject\Set($setName, new \Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo($setPath));
+            $setName = \Typo3RectorPrefix20210326\Nette\Utils\Strings::replace($setName, self::DASH_NUMBER_REGEX, '$1');
+            $this->sets[] = new \Typo3RectorPrefix20210326\Symplify\SetConfigResolver\ValueObject\Set($setName, new \Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo($setPath));
         }
     }
 }

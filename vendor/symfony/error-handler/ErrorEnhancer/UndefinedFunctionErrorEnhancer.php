@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210324\Symfony\Component\ErrorHandler\ErrorEnhancer;
+namespace Typo3RectorPrefix20210326\Symfony\Component\ErrorHandler\ErrorEnhancer;
 
-use Typo3RectorPrefix20210324\Symfony\Component\ErrorHandler\Error\FatalError;
-use Typo3RectorPrefix20210324\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError;
+use Typo3RectorPrefix20210326\Symfony\Component\ErrorHandler\Error\FatalError;
+use Typo3RectorPrefix20210326\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class UndefinedFunctionErrorEnhancer implements \Typo3RectorPrefix20210324\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
+class UndefinedFunctionErrorEnhancer implements \Typo3RectorPrefix20210326\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
 {
     /**
      * {@inheritdoc}
      */
     public function enhance(\Throwable $error) : ?\Throwable
     {
-        if ($error instanceof \Typo3RectorPrefix20210324\Symfony\Component\ErrorHandler\Error\FatalError) {
+        if ($error instanceof \Typo3RectorPrefix20210326\Symfony\Component\ErrorHandler\Error\FatalError) {
             return null;
         }
         $message = $error->getMessage();
@@ -72,6 +72,6 @@ class UndefinedFunctionErrorEnhancer implements \Typo3RectorPrefix20210324\Symfo
             }
             $message .= "\nDid you mean to call " . $candidates;
         }
-        return new \Typo3RectorPrefix20210324\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError($message, $error);
+        return new \Typo3RectorPrefix20210326\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError($message, $error);
     }
 }

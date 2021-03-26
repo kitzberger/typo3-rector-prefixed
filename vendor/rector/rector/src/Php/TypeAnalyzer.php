@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\Php;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use Rector\Core\ValueObject\PhpVersionFeature;
 final class TypeAnalyzer
 {
@@ -38,7 +38,7 @@ final class TypeAnalyzer
         foreach ($types as $singleType) {
             $singleType = \strtolower($singleType);
             // remove [] from arrays
-            $singleType = \Typo3RectorPrefix20210324\Nette\Utils\Strings::replace($singleType, self::SQUARE_BRACKET_REGEX, '');
+            $singleType = \Typo3RectorPrefix20210326\Nette\Utils\Strings::replace($singleType, self::SQUARE_BRACKET_REGEX, '');
             if (\in_array($singleType, $reservedTypes, \true)) {
                 return \true;
             }
@@ -60,7 +60,7 @@ final class TypeAnalyzer
         if ($loweredType === 'callback') {
             return 'callable';
         }
-        if (\Typo3RectorPrefix20210324\Nette\Utils\Strings::match($loweredType, self::ARRAY_TYPE_REGEX)) {
+        if (\Typo3RectorPrefix20210326\Nette\Utils\Strings::match($loweredType, self::ARRAY_TYPE_REGEX)) {
             return 'array';
         }
         return $type;

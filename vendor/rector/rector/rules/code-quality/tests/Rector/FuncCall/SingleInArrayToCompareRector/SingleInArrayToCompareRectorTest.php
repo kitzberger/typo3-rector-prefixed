@@ -6,13 +6,13 @@ namespace Rector\CodeQuality\Tests\Rector\FuncCall\SingleInArrayToCompareRector;
 use Iterator;
 use Rector\CodeQuality\Rector\FuncCall\SingleInArrayToCompareRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
 final class SingleInArrayToCompareRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

@@ -8,14 +8,14 @@ use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\MethodCall;
 use Rector\Core\Rector\AbstractRector;
 use Rector\Symfony3\FormHelper\FormTypeStringToTypeProvider;
-use Typo3RectorPrefix20210324\Symfony\Component\Form\FormBuilderInterface;
-use Typo3RectorPrefix20210324\Symfony\Component\Form\FormInterface;
+use Typo3RectorPrefix20210326\Symfony\Component\Form\FormBuilderInterface;
+use Typo3RectorPrefix20210326\Symfony\Component\Form\FormInterface;
 abstract class AbstractFormAddRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
      * @var class-string<FormBuilderInterface>[]|class-string<FormInterface>[]
      */
-    private const FORM_TYPES = ['Typo3RectorPrefix20210324\\Symfony\\Component\\Form\\FormBuilderInterface', 'Typo3RectorPrefix20210324\\Symfony\\Component\\Form\\FormInterface'];
+    private const FORM_TYPES = ['Typo3RectorPrefix20210326\\Symfony\\Component\\Form\\FormBuilderInterface', 'Typo3RectorPrefix20210326\\Symfony\\Component\\Form\\FormInterface'];
     /**
      * @var FormTypeStringToTypeProvider
      */
@@ -58,7 +58,7 @@ abstract class AbstractFormAddRector extends \Rector\Core\Rector\AbstractRector
         if (!$typeValue instanceof \PhpParser\Node\Expr\ClassConstFetch) {
             return $this->valueResolver->isValue($typeValue, 'collection');
         }
-        if (!$this->isName($typeValue->class, 'Typo3RectorPrefix20210324\\Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType')) {
+        if (!$this->isName($typeValue->class, 'Typo3RectorPrefix20210326\\Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType')) {
             return $this->valueResolver->isValue($typeValue, 'collection');
         }
         return \true;

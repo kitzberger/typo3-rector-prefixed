@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\RuleDocGenerator\ValueObject;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use Symplify\RuleDocGenerator\Contract\CodeSampleInterface;
 use Symplify\RuleDocGenerator\Exception\PoorDocumentationException;
 use Symplify\RuleDocGenerator\Exception\ShouldNotHappenException;
@@ -66,7 +66,7 @@ final class RuleDefinition
     }
     public function getRuleShortClass() : string
     {
-        return (string) \Typo3RectorPrefix20210324\Nette\Utils\Strings::after($this->ruleClass, '\\', -1);
+        return (string) \Typo3RectorPrefix20210326\Nette\Utils\Strings::after($this->ruleClass, '\\', -1);
     }
     /**
      * @return CodeSampleInterface[]

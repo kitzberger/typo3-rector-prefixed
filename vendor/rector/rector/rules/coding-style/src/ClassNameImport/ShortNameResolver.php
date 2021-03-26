@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodingStyle\ClassNameImport;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
@@ -21,8 +21,8 @@ use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
 use Rector\CodingStyle\Naming\ClassNaming;
 use Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210324\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
-use Typo3RectorPrefix20210324\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210326\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
 final class ShortNameResolver
 {
     /**
@@ -50,7 +50,7 @@ final class ShortNameResolver
      * @var ClassNaming
      */
     private $classNaming;
-    public function __construct(\Typo3RectorPrefix20210324\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider $currentFileInfoProvider, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory $phpDocInfoFactory, \Rector\CodingStyle\Naming\ClassNaming $classNaming)
+    public function __construct(\Typo3RectorPrefix20210326\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider $currentFileInfoProvider, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory $phpDocInfoFactory, \Rector\CodingStyle\Naming\ClassNaming $classNaming)
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->currentFileInfoProvider = $currentFileInfoProvider;
@@ -132,7 +132,7 @@ final class ShortNameResolver
                 return;
             }
             // already short
-            if (\Typo3RectorPrefix20210324\Nette\Utils\Strings::contains($originalName->toString(), '\\')) {
+            if (\Typo3RectorPrefix20210326\Nette\Utils\Strings::contains($originalName->toString(), '\\')) {
                 return;
             }
             $shortNames[$originalName->toString()] = $node->toString();
@@ -166,7 +166,7 @@ final class ShortNameResolver
         }
         $tagName = \ltrim($phpDocChildNode->name, '@');
         // is annotation class - big letter?
-        if (\Typo3RectorPrefix20210324\Nette\Utils\Strings::match($tagName, self::BIG_LETTER_START_REGEX)) {
+        if (\Typo3RectorPrefix20210326\Nette\Utils\Strings::match($tagName, self::BIG_LETTER_START_REGEX)) {
             return $tagName;
         }
         if (!$this->isValueNodeWithType($phpDocChildNode->value)) {
@@ -176,7 +176,7 @@ final class ShortNameResolver
         if (!$typeNode instanceof \PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode) {
             return null;
         }
-        if (\Typo3RectorPrefix20210324\Nette\Utils\Strings::contains($typeNode->name, '\\')) {
+        if (\Typo3RectorPrefix20210326\Nette\Utils\Strings::contains($typeNode->name, '\\')) {
             return null;
         }
         return $typeNode->name;

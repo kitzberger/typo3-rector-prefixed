@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\SymfonyCodeQuality\Rector\Class_;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name\FullyQualified;
@@ -23,15 +23,15 @@ final class EventListenerToEventSubscriberRector extends \Rector\Core\Rector\Abs
     /**
      * @var string
      */
-    private const EVENT_SUBSCRIBER_INTERFACE = 'Typo3RectorPrefix20210324\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface';
+    private const EVENT_SUBSCRIBER_INTERFACE = 'Typo3RectorPrefix20210326\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface';
     /**
      * @var string
      */
-    private const KERNEL_EVENTS_CLASS = 'Typo3RectorPrefix20210324\\Symfony\\Component\\HttpKernel\\KernelEvents';
+    private const KERNEL_EVENTS_CLASS = 'Typo3RectorPrefix20210326\\Symfony\\Component\\HttpKernel\\KernelEvents';
     /**
      * @var string
      */
-    private const CONSOLE_EVENTS_CLASS = 'Typo3RectorPrefix20210324\\Symfony\\Component\\Console\\ConsoleEvents';
+    private const CONSOLE_EVENTS_CLASS = 'Typo3RectorPrefix20210326\\Symfony\\Component\\Console\\ConsoleEvents';
     /**
      * @var string
      * @see https://regex101.com/r/qiHZ4T/1
@@ -139,7 +139,7 @@ CODE_SAMPLE
     private function isAlreadyEventSubscriber(\PhpParser\Node\Stmt\Class_ $class) : bool
     {
         foreach ($class->implements as $implement) {
-            if ($this->isName($implement, 'Typo3RectorPrefix20210324\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface')) {
+            if ($this->isName($implement, 'Typo3RectorPrefix20210326\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface')) {
                 return \true;
             }
         }
@@ -153,7 +153,7 @@ CODE_SAMPLE
         $class->implements[] = new \PhpParser\Node\Name\FullyQualified(self::EVENT_SUBSCRIBER_INTERFACE);
         $classShortName = $this->nodeNameResolver->getShortName($class);
         // remove suffix
-        $classShortName = \Typo3RectorPrefix20210324\Nette\Utils\Strings::replace($classShortName, self::LISTENER_MATCH_REGEX, '$1');
+        $classShortName = \Typo3RectorPrefix20210326\Nette\Utils\Strings::replace($classShortName, self::LISTENER_MATCH_REGEX, '$1');
         $class->name = new \PhpParser\Node\Identifier($classShortName . 'EventSubscriber');
         $classMethod = $this->getSubscribedEventsClassMethodFactory->createFromServiceDefinitionsAndEventsToMethods($eventsToMethods, $this->eventNamesToClassConstants);
         $class->stmts[] = $classMethod;

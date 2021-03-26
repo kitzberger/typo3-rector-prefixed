@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\StaticTypeMapper\PhpParser;
 
-use Typo3RectorPrefix20210324\Nette\Utils\Strings;
+use Typo3RectorPrefix20210326\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Name\FullyQualified;
 use PHPStan\Type\Type;
@@ -38,6 +38,6 @@ final class FullyQualifiedNodeMapper implements \Rector\StaticTypeMapper\Contrac
         if ($originalName === $fullyQualifiedName) {
             return \false;
         }
-        return !\Typo3RectorPrefix20210324\Nette\Utils\Strings::endsWith($fullyQualifiedName, '\\' . $originalName);
+        return !\Typo3RectorPrefix20210326\Nette\Utils\Strings::endsWith($fullyQualifiedName, '\\' . $originalName);
     }
 }

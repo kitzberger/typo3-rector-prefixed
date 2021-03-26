@@ -56,8 +56,14 @@ final class RemoveMethodsFromEidUtilityAndTsfeRector extends \Rector\Core\Rector
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Remove EidUtility and various TSFE methods', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+use TYPO3\CMS\Frontend\Utility\EidUtility;
+EidUtility::initExtensionTCA('foo');
+EidUtility::initFeUser();
+EidUtility::initLanguage();
+EidUtility::initTCA();
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
+''
 CODE_SAMPLE
 )]);
     }

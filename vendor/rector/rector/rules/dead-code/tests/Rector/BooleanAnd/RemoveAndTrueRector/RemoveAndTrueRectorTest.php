@@ -6,13 +6,13 @@ namespace Rector\DeadCode\Tests\Rector\BooleanAnd\RemoveAndTrueRector;
 use Iterator;
 use Rector\DeadCode\Rector\BooleanAnd\RemoveAndTrueRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
 final class RemoveAndTrueRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

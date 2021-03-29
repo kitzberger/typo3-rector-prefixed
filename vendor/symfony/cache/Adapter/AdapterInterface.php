@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210326\Symfony\Component\Cache\Adapter;
+namespace Typo3RectorPrefix20210329\Symfony\Component\Cache\Adapter;
 
-use Typo3RectorPrefix20210326\Psr\Cache\CacheItemPoolInterface;
-use Typo3RectorPrefix20210326\Symfony\Component\Cache\CacheItem;
+use Typo3RectorPrefix20210329\Psr\Cache\CacheItemPoolInterface;
+use Typo3RectorPrefix20210329\Symfony\Component\Cache\CacheItem;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\Typo3RectorPrefix20210326\Symfony\Component\Cache\CacheItem::class);
+\class_exists(\Typo3RectorPrefix20210329\Symfony\Component\Cache\CacheItem::class);
 /**
  * Interface for adapters managing instances of Symfony's CacheItem.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
-interface AdapterInterface extends \Typo3RectorPrefix20210326\Psr\Cache\CacheItemPoolInterface
+interface AdapterInterface extends \Typo3RectorPrefix20210329\Psr\Cache\CacheItemPoolInterface
 {
     /**
      * {@inheritdoc}

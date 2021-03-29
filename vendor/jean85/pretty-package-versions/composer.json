@@ -39,12 +39,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210326\\Jean85\\": "src\/"
+            "Typo3RectorPrefix20210329\\Jean85\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210326\\Tests\\": "tests"
+            "Typo3RectorPrefix20210329\\Tests\\": "tests"
         }
     }
 }

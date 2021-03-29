@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210326\Symfony\Component\ErrorHandler\Exception;
+namespace Typo3RectorPrefix20210329\Symfony\Component\ErrorHandler\Exception;
 
-use Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface;
-use Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210326\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface;
+use Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210329\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 /**
  * FlattenException wraps a PHP Error or Exception to be able to serialize it.
  *
@@ -22,17 +22,29 @@ use Typo3RectorPrefix20210326\Symfony\Component\HttpKernel\Exception\HttpExcepti
  */
 class FlattenException
 {
+    /** @var string */
     private $message;
+    /** @var int|string */
     private $code;
+    /** @var self|null */
     private $previous;
+    /** @var array */
     private $trace;
+    /** @var string */
     private $traceAsString;
+    /** @var string */
     private $class;
+    /** @var int */
     private $statusCode;
+    /** @var string */
     private $statusText;
+    /** @var array */
     private $headers;
+    /** @var string */
     private $file;
+    /** @var int */
     private $line;
+    /** @var string|null */
     private $asString;
     /**
      * @return static
@@ -49,17 +61,17 @@ class FlattenException
         $e = new static();
         $e->setMessage($exception->getMessage());
         $e->setCode($exception->getCode());
-        if ($exception instanceof \Typo3RectorPrefix20210326\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface) {
+        if ($exception instanceof \Typo3RectorPrefix20210329\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface) {
             $statusCode = $exception->getStatusCode();
             $headers = \array_merge($headers, $exception->getHeaders());
-        } elseif ($exception instanceof \Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface) {
+        } elseif ($exception instanceof \Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface) {
             $statusCode = 400;
         }
         if (null === $statusCode) {
             $statusCode = 500;
         }
-        if (\class_exists(\Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Response::class) && isset(\Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode])) {
-            $statusText = \Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode];
+        if (\class_exists(\Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Response::class) && isset(\Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode])) {
+            $statusText = \Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode];
         } else {
             $statusText = 'Whoops, looks like something went wrong.';
         }
@@ -89,6 +101,8 @@ class FlattenException
         return $this->statusCode;
     }
     /**
+     * @param int $code
+     *
      * @return $this
      */
     public function setStatusCode($code) : self
@@ -113,6 +127,8 @@ class FlattenException
         return $this->class;
     }
     /**
+     * @param string $class
+     *
      * @return $this
      */
     public function setClass($class) : self
@@ -125,6 +141,8 @@ class FlattenException
         return $this->file;
     }
     /**
+     * @param string $file
+     *
      * @return $this
      */
     public function setFile($file) : self
@@ -137,6 +155,8 @@ class FlattenException
         return $this->line;
     }
     /**
+     * @param int $line
+     *
      * @return $this
      */
     public function setLine($line) : self
@@ -158,6 +178,8 @@ class FlattenException
         return $this->message;
     }
     /**
+     * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message) : self
@@ -178,6 +200,8 @@ class FlattenException
         return $this->code;
     }
     /**
+     * @param int|string $code
+     *
      * @return $this
      */
     public function setCode($code) : self
@@ -222,6 +246,10 @@ class FlattenException
         return $this->setTrace($throwable->getTrace(), $throwable->getFile(), $throwable->getLine());
     }
     /**
+     * @param array       $trace
+     * @param string|null $file
+     * @param int|null    $line
+     *
      * @return $this
      */
     public function setTrace($trace, $file, $line) : self

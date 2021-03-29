@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\AttributeAwarePhpDoc\Ast\Type;
 
-use Typo3RectorPrefix20210326\Nette\Utils\Strings;
+use Typo3RectorPrefix20210329\Nette\Utils\Strings;
 use PHPStan\PhpDocParser\Ast\Type\CallableTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
@@ -23,7 +23,7 @@ final class AttributeAwareCallableTypeNode extends \PHPStan\PhpDocParser\Ast\Typ
         $returnType = $this->returnType;
         $parameterTypeString = $this->createParameterTypeString();
         $returnTypeAsString = (string) $returnType;
-        if (\Typo3RectorPrefix20210326\Nette\Utils\Strings::contains($returnTypeAsString, '|')) {
+        if (\Typo3RectorPrefix20210329\Nette\Utils\Strings::contains($returnTypeAsString, '|')) {
             $returnTypeAsString = '(' . $returnTypeAsString . ')';
         }
         $parameterTypeString = $this->normalizeParameterType($parameterTypeString, $returnTypeAsString);

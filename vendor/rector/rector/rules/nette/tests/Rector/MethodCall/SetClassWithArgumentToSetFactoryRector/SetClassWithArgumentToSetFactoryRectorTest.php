@@ -6,13 +6,13 @@ namespace Rector\Nette\Tests\Rector\MethodCall\SetClassWithArgumentToSetFactoryR
 use Iterator;
 use Rector\Nette\Rector\MethodCall\SetClassWithArgumentToSetFactoryRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
 final class SetClassWithArgumentToSetFactoryRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

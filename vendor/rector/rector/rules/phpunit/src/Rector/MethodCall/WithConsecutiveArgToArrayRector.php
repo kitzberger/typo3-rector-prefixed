@@ -14,7 +14,7 @@ use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\NodeManipulator\MethodCallManipulator;
 use Rector\Core\Rector\AbstractRector;
 use ReflectionMethod;
-use Typo3RectorPrefix20210326\Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Typo3RectorPrefix20210329\Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -96,7 +96,7 @@ CODE_SAMPLE
             return null;
         }
         // is a mock?
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210326\\PHPUnit\\Framework\\MockObject\\Builder\\InvocationMocker')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210329\\PHPUnit\\Framework\\MockObject\\Builder\\InvocationMocker')) {
             return null;
         }
         $mockClass = $this->inferMockedClassName($node);

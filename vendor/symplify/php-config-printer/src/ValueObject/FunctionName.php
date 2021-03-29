@@ -1,24 +1,24 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210326\Symplify\PhpConfigPrinter\ValueObject;
+namespace Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject;
 
 final class FunctionName
 {
     /**
      * @var string
      */
-    public const INLINE_SERVICE = 'Typo3RectorPrefix20210326\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\inline_service';
+    public const INLINE_SERVICE = 'Typo3RectorPrefix20210329\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\inline_service';
     /**
      * @var string
      */
-    public const SERVICE = 'Typo3RectorPrefix20210326\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\service';
+    public const SERVICE = 'Typo3RectorPrefix20210329\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\service';
     /**
      * @var string
      */
-    public const REF = 'Typo3RectorPrefix20210326\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ref';
+    public const REF = 'Typo3RectorPrefix20210329\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ref';
     /**
      * @var string
      */
-    public const EXPR = 'Typo3RectorPrefix20210326\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\expr';
+    public const EXPR = 'Typo3RectorPrefix20210329\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\expr';
 }

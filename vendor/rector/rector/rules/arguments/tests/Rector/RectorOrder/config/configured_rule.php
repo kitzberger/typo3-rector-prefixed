@@ -1,12 +1,12 @@
 <?php
 
-namespace Typo3RectorPrefix20210326;
+namespace Typo3RectorPrefix20210329;
 
 use Rector\PHPUnit\Rector\MethodCall\AssertComparisonToSpecificMethodRector;
 use Rector\PHPUnit\Rector\MethodCall\AssertFalseStrposToContainsRector;
 use Rector\PHPUnit\Rector\MethodCall\AssertSameBoolNullToSpecificMethodRector;
-use Typo3RectorPrefix20210326\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\Typo3RectorPrefix20210326\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->set(\Rector\PHPUnit\Rector\MethodCall\AssertComparisonToSpecificMethodRector::class);
     $services->set(\Rector\PHPUnit\Rector\MethodCall\AssertSameBoolNullToSpecificMethodRector::class);

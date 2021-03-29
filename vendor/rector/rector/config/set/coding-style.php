@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210326;
+namespace Typo3RectorPrefix20210329;
 
 use Rector\CodingStyle\Rector\Assign\ManualJsonStringToJsonEncodeArrayRector;
 use Rector\CodingStyle\Rector\Assign\PHPStormVarAnnotationRector;
@@ -35,8 +35,8 @@ use Rector\CodingStyle\Rector\Use_\RemoveUnusedAliasRector;
 use Rector\CodingStyle\Rector\Use_\SplitGroupedUseImportsRector;
 use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
 use Rector\Transform\Rector\FuncCall\FuncCallToConstFetchRector;
-use Typo3RectorPrefix20210326\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\Typo3RectorPrefix20210326\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->set(\Rector\CodingStyle\Rector\Assign\PHPStormVarAnnotationRector::class);
     $services->set(\Rector\CodingStyle\Rector\If_\NullableCompareToNullRector::class);

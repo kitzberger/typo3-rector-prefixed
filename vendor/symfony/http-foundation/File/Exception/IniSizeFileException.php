@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\File\Exception;
+namespace Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\File\Exception;
 
 /**
  * Thrown when an UPLOAD_ERR_INI_SIZE error occurred with UploadedFile.
  *
  * @author Florent Mata <florentmata@gmail.com>
  */
-class IniSizeFileException extends \Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\File\Exception\FileException
+class IniSizeFileException extends \Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
 }

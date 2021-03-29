@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210326;
+namespace Typo3RectorPrefix20210329;
 
 final class JustOneExceptionWithoutNamespace
 {
 }
-\class_alias('Typo3RectorPrefix20210326\\JustOneExceptionWithoutNamespace', 'JustOneExceptionWithoutNamespace', \false);
+\class_alias('Typo3RectorPrefix20210329\\JustOneExceptionWithoutNamespace', 'JustOneExceptionWithoutNamespace', \false);
 final class JustTwoExceptionWithoutNamespace
 {
 }
-\class_alias('Typo3RectorPrefix20210326\\JustTwoExceptionWithoutNamespace', 'JustTwoExceptionWithoutNamespace', \false);
+\class_alias('Typo3RectorPrefix20210329\\JustTwoExceptionWithoutNamespace', 'JustTwoExceptionWithoutNamespace', \false);

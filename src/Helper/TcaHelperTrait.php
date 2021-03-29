@@ -102,10 +102,6 @@ trait TcaHelperTrait
         }
         return null;
     }
-    private function configIsOfType(\PhpParser\Node\Expr\Array_ $configValue, string $expectedType) : bool
-    {
-        return $this->configKeyIsOfValue($configValue, 'type', $expectedType);
-    }
     private function configIsOfInternalType(\PhpParser\Node\Expr\Array_ $configValue, string $expectedType) : bool
     {
         return $this->configKeyIsOfValue($configValue, 'internal_type', $expectedType);

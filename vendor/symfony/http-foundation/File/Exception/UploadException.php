@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\File\Exception;
+namespace Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\File\Exception;
 
 /**
  * Thrown when an error occurred during file upload.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class UploadException extends \Typo3RectorPrefix20210326\Symfony\Component\HttpFoundation\File\Exception\FileException
+class UploadException extends \Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
 }

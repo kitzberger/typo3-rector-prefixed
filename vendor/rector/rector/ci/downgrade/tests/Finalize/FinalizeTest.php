@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Rector\RectorPhp71\Tests\Finalize;
 
-use Typo3RectorPrefix20210326\PHPUnit\Framework\TestCase;
-final class FinalizeTest extends \Typo3RectorPrefix20210326\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210329\PHPUnit\Framework\TestCase;
+final class FinalizeTest extends \Typo3RectorPrefix20210329\PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider getFiles

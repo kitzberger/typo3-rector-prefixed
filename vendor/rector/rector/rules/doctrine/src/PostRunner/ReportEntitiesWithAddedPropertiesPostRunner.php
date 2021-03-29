@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\PostRunner;
 
-use Typo3RectorPrefix20210326\Nette\Utils\Json;
+use Typo3RectorPrefix20210329\Nette\Utils\Json;
 use Rector\Core\Contract\PostRunnerInterface;
 use Rector\Doctrine\Collector\UuidMigrationDataCollector;
-use Typo3RectorPrefix20210326\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210329\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @deprecated Replace with interface. Remove whole event system to keep 1 less pattern for same thing
  */
@@ -25,7 +25,7 @@ final class ReportEntitiesWithAddedPropertiesPostRunner implements \Rector\Core\
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210326\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Doctrine\Collector\UuidMigrationDataCollector $uuidMigrationDataCollector)
+    public function __construct(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210329\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Doctrine\Collector\UuidMigrationDataCollector $uuidMigrationDataCollector)
     {
         $this->uuidMigrationDataCollector = $uuidMigrationDataCollector;
         $this->symfonyStyle = $symfonyStyle;
@@ -44,7 +44,7 @@ final class ReportEntitiesWithAddedPropertiesPostRunner implements \Rector\Core\
         if ($data === []) {
             return;
         }
-        $jsonContent = \Typo3RectorPrefix20210326\Nette\Utils\Json::encode(['new_columns_by_class' => $data], \Typo3RectorPrefix20210326\Nette\Utils\Json::PRETTY);
+        $jsonContent = \Typo3RectorPrefix20210329\Nette\Utils\Json::encode(['new_columns_by_class' => $data], \Typo3RectorPrefix20210329\Nette\Utils\Json::PRETTY);
         $filePath = \getcwd() . '/' . $fileName;
         $this->smartFileSystem->dumpFile($filePath, $jsonContent);
         $message = \sprintf('See freshly created "%s" file for changes on entities', $fileName);

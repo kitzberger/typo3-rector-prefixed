@@ -1,19 +1,19 @@
 <?php
 
-namespace Typo3RectorPrefix20210326;
+namespace Typo3RectorPrefix20210329;
 
-use Typo3RectorPrefix20210326\Nette\Utils\Html;
+use Typo3RectorPrefix20210329\Nette\Utils\Html;
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\Tests\Rector\MethodCall\RenameMethodRector\Source\AbstractType;
 use Rector\Renaming\ValueObject\MethodCallRename;
 use Rector\Renaming\ValueObject\MethodCallRenameWithArrayKey;
-use Typo3RectorPrefix20210326\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
-return static function (\Typo3RectorPrefix20210326\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->set(\Rector\Renaming\Rector\MethodCall\RenameMethodRector::class)->call('configure', [[\Rector\Renaming\Rector\MethodCall\RenameMethodRector::METHOD_CALL_RENAMES => \Symplify\SymfonyPhpConfig\ValueObjectInliner::inline([
         new \Rector\Renaming\ValueObject\MethodCallRename(\Rector\Renaming\Tests\Rector\MethodCall\RenameMethodRector\Source\AbstractType::class, 'setDefaultOptions', 'configureOptions'),
-        new \Rector\Renaming\ValueObject\MethodCallRename(\Typo3RectorPrefix20210326\Nette\Utils\Html::class, 'add', 'addHtml'),
+        new \Rector\Renaming\ValueObject\MethodCallRename(\Typo3RectorPrefix20210329\Nette\Utils\Html::class, 'add', 'addHtml'),
         new \Rector\Renaming\ValueObject\MethodCallRename('Rector\\Renaming\\Tests\\Rector\\MethodCall\\RenameMethodRector\\Fixture\\DemoFile', 'notify', '__invoke'),
         new \Rector\Renaming\ValueObject\MethodCallRename('Rector\\Renaming\\Tests\\Rector\\MethodCall\\RenameMethodRector\\Fixture\\SomeSubscriber', 'old', 'new'),
         new \Rector\Renaming\ValueObject\MethodCallRename('Rector\\Renaming\\Tests\\Rector\\MethodCall\\RenameMethodRector\\Fixture\\*WildcardSubscriber', 'old', 'new'),
@@ -22,6 +22,6 @@ return static function (\Typo3RectorPrefix20210326\Symfony\Component\DependencyI
         new \Rector\Renaming\ValueObject\MethodCallRename('*SkipProtectedToInvoke', 'run', '__invoke'),
         new \Rector\Renaming\ValueObject\MethodCallRename(\Rector\Renaming\Tests\Rector\MethodCall\RenameMethodRector\Fixture\SkipSelfMethodRename::class, 'preventPHPStormRefactoring', 'gone'),
         // with array key
-        new \Rector\Renaming\ValueObject\MethodCallRenameWithArrayKey(\Typo3RectorPrefix20210326\Nette\Utils\Html::class, 'addToArray', 'addToHtmlArray', 'hey'),
+        new \Rector\Renaming\ValueObject\MethodCallRenameWithArrayKey(\Typo3RectorPrefix20210329\Nette\Utils\Html::class, 'addToArray', 'addToHtmlArray', 'hey'),
     ])]]);
 };

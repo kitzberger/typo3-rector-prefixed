@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210326\Symfony\Contracts\Cache;
+namespace Typo3RectorPrefix20210329\Symfony\Contracts\Cache;
 
-use Typo3RectorPrefix20210326\Psr\Cache\CacheException;
-use Typo3RectorPrefix20210326\Psr\Cache\CacheItemInterface;
-use Typo3RectorPrefix20210326\Psr\Cache\InvalidArgumentException;
+use Typo3RectorPrefix20210329\Psr\Cache\CacheException;
+use Typo3RectorPrefix20210329\Psr\Cache\CacheItemInterface;
+use Typo3RectorPrefix20210329\Psr\Cache\InvalidArgumentException;
 /**
  * Augments PSR-6's CacheItemInterface with support for tags and metadata.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-interface ItemInterface extends \Typo3RectorPrefix20210326\Psr\Cache\CacheItemInterface
+interface ItemInterface extends \Typo3RectorPrefix20210329\Psr\Cache\CacheItemInterface
 {
     /**
      * References the Unix timestamp stating when the item will expire.

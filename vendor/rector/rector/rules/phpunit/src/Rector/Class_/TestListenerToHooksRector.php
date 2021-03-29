@@ -24,18 +24,18 @@ final class TestListenerToHooksRector extends \Rector\Core\Rector\AbstractRector
      * @var string[][]
      */
     private const LISTENER_METHOD_TO_HOOK_INTERFACES = [
-        'addIncompleteTest' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterIncompleteTestHook', 'executeAfterIncompleteTest'],
-        'addRiskyTest' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterRiskyTestHook', 'executeAfterRiskyTest'],
-        'addSkippedTest' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterSkippedTestHook', 'executeAfterSkippedTest'],
-        'addError' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterTestErrorHook', 'executeAfterTestError'],
-        'addFailure' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterTestFailureHook', 'executeAfterTestFailure'],
-        'addWarning' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterTestWarningHook', 'executeAfterTestWarning'],
+        'addIncompleteTest' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterIncompleteTestHook', 'executeAfterIncompleteTest'],
+        'addRiskyTest' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterRiskyTestHook', 'executeAfterRiskyTest'],
+        'addSkippedTest' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterSkippedTestHook', 'executeAfterSkippedTest'],
+        'addError' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterTestErrorHook', 'executeAfterTestError'],
+        'addFailure' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterTestFailureHook', 'executeAfterTestFailure'],
+        'addWarning' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterTestWarningHook', 'executeAfterTestWarning'],
         # test
-        'startTest' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\BeforeTestHook', 'executeBeforeTest'],
-        'endTest' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterTestHook', 'executeAfterTest'],
+        'startTest' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\BeforeTestHook', 'executeBeforeTest'],
+        'endTest' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterTestHook', 'executeAfterTest'],
         # suite
-        'startTestSuite' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\BeforeFirstTestHook', 'executeBeforeFirstTest'],
-        'endTestSuite' => ['Typo3RectorPrefix20210326\\PHPUnit\\Runner\\AfterLastTestHook', 'executeAfterLastTest'],
+        'startTestSuite' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\BeforeFirstTestHook', 'executeBeforeFirstTest'],
+        'endTestSuite' => ['Typo3RectorPrefix20210329\\PHPUnit\\Runner\\AfterLastTestHook', 'executeAfterLastTest'],
     ];
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
@@ -121,11 +121,11 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210326\\PHPUnit\\Framework\\TestListener')) {
+        if (!$this->isObjectType($node, 'Typo3RectorPrefix20210329\\PHPUnit\\Framework\\TestListener')) {
             return null;
         }
         foreach ($node->implements as $implement) {
-            if ($this->isName($implement, 'Typo3RectorPrefix20210326\\PHPUnit\\Framework\\TestListener')) {
+            if ($this->isName($implement, 'Typo3RectorPrefix20210329\\PHPUnit\\Framework\\TestListener')) {
                 $this->removeNode($implement);
             }
         }

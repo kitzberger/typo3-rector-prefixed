@@ -6,9 +6,9 @@ namespace Rector\Core\Tests\FileSystem\FilesFinder;
 use Iterator;
 use Rector\Core\FileSystem\FilesFinder;
 use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210326\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210326\Symplify\SmartFileSystem\SmartFileInfo;
-final class FilesFinderTest extends \Typo3RectorPrefix20210326\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210329\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
+final class FilesFinderTest extends \Typo3RectorPrefix20210329\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var FilesFinder

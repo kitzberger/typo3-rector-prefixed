@@ -5,12 +5,12 @@ namespace Ssch\TYPO3Rector\Composer;
 
 use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\Core\Configuration\Configuration;
+use Ssch\TYPO3Rector\Processor\ProcessorInterface;
 use Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
 use Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileSystem;
-final class ComposerProcessor
+final class ComposerProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInterface
 {
     /**
      * @var ComposerJsonFactory
@@ -29,41 +29,44 @@ final class ComposerProcessor
      */
     private $errorAndDiffCollector;
     /**
-     * @var SmartFileSystem
-     */
-    private $smartFileSystem;
-    /**
      * @var ComposerModifier
      */
     private $composerModifier;
-    public function __construct(\Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter, \Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Ssch\TYPO3Rector\Composer\ComposerModifier $composerModifier)
+    public function __construct(\Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter, \Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Ssch\TYPO3Rector\Composer\ComposerModifier $composerModifier)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->composerJsonPrinter = $composerJsonPrinter;
         $this->configuration = $configuration;
         $this->errorAndDiffCollector = $errorAndDiffCollector;
-        $this->smartFileSystem = $smartFileSystem;
         $this->composerModifier = $composerModifier;
     }
-    public function process(string $composerJsonFilePath) : void
+    public function process(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
     {
-        if (!$this->smartFileSystem->exists($composerJsonFilePath)) {
-            return;
-        }
         // to avoid modification of file
         if (!$this->composerModifier->enabled()) {
-            return;
+            return null;
         }
-        $smartFileInfo = new \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo($composerJsonFilePath);
         $composerJson = $this->composerJsonFactory->createFromFileInfo($smartFileInfo);
         $oldComposerJson = clone $composerJson;
         $this->composerModifier->modify($composerJson);
         // nothing has changed
         if ($oldComposerJson->getJsonArray() === $composerJson->getJsonArray()) {
-            return;
+            return null;
         }
         $this->addComposerJsonFileDiff($oldComposerJson, $composerJson, $smartFileInfo);
         $this->reportFileContentChange($composerJson, $smartFileInfo);
+        return null;
+    }
+    public function canProcess(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    {
+        return \in_array($smartFileInfo->getExtension(), $this->allowedFileExtensions(), \true);
+    }
+    /**
+     * @return string[]
+     */
+    public function allowedFileExtensions() : array
+    {
+        return ['json'];
     }
     private function addComposerJsonFileDiff(\Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $oldComposerJson, \Typo3RectorPrefix20210330\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson, \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {

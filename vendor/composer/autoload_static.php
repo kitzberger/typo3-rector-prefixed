@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
+class ComposerStaticInit67d129ddc81f072baadc0bdd20bb5c3e
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -69,6 +69,7 @@ class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
             'Typo3RectorPrefix20210330\\Psr\\Container\\' => 40,
             'Typo3RectorPrefix20210330\\Psr\\Cache\\' => 36,
             'Typo3RectorPrefix20210330\\Jean85\\' => 33,
+            'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\' => 51,
             'Typo3RectorPrefix20210330\\Doctrine\\Inflector\\' => 45,
             'Typo3RectorPrefix20210330\\Doctrine\\Common\\Lexer\\' => 48,
             'Typo3RectorPrefix20210330\\Doctrine\\Common\\Annotations\\' => 54,
@@ -375,6 +376,10 @@ class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
         'Typo3RectorPrefix20210330\\Jean85\\' => 
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
+        ),
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src',
         ),
         'Typo3RectorPrefix20210330\\Doctrine\\Inflector\\' => 
         array (
@@ -2941,8 +2946,8 @@ class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
         'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerRectorInterface' => __DIR__ . '/../..' . '/src/Composer/ExtensionComposerRectorInterface.php',
         'Ssch\\TYPO3Rector\\Configuration\\Typo3Option' => __DIR__ . '/../..' . '/src/Configuration/Typo3Option.php',
         'Ssch\\TYPO3Rector\\Console\\Application' => __DIR__ . '/../..' . '/src/Console/Application.php',
-        'Ssch\\TYPO3Rector\\Console\\Command\\ComposerCommand' => __DIR__ . '/../..' . '/src/Console/Command/ComposerCommand.php',
         'Ssch\\TYPO3Rector\\Console\\Command\\Typo3InitCommand' => __DIR__ . '/../..' . '/src/Console/Command/Typo3InitCommand.php',
+        'Ssch\\TYPO3Rector\\Console\\Command\\Typo3ProcessCommand' => __DIR__ . '/../..' . '/src/Console/Command/Typo3ProcessCommand.php',
         'Ssch\\TYPO3Rector\\Console\\Output\\DecoratedConsoleOutputFormatter' => __DIR__ . '/../..' . '/src/Console/Output/DecoratedConsoleOutputFormatter.php',
         'Ssch\\TYPO3Rector\\DependencyInjection\\Typo3RectorContainerFactory' => __DIR__ . '/../..' . '/src/DependencyInjection/Typo3RectorContainerFactory.php',
         'Ssch\\TYPO3Rector\\Helper\\Database\\Refactorings\\ConnectionCallFactory' => __DIR__ . '/../..' . '/src/Helper/Database/Refactorings/ConnectionCallFactory.php',
@@ -2958,6 +2963,8 @@ class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
         'Ssch\\TYPO3Rector\\NodeAnalyzer\\ClassConstAnalyzer' => __DIR__ . '/../..' . '/src/NodeAnalyzer/ClassConstAnalyzer.php',
         'Ssch\\TYPO3Rector\\NodeFactory\\HelperArgumentAssignFactory' => __DIR__ . '/../..' . '/src/NodeFactory/HelperArgumentAssignFactory.php',
         'Ssch\\TYPO3Rector\\NodeFactory\\InitializeArgumentsClassMethodFactory' => __DIR__ . '/../..' . '/src/NodeFactory/InitializeArgumentsClassMethodFactory.php',
+        'Ssch\\TYPO3Rector\\Processor\\ConfigurableProcessorInterface' => __DIR__ . '/../..' . '/src/Processor/ConfigurableProcessorInterface.php',
+        'Ssch\\TYPO3Rector\\Processor\\ProcessorInterface' => __DIR__ . '/../..' . '/src/Processor/ProcessorInterface.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\ExtensionComposerRector' => __DIR__ . '/../..' . '/src/Rector/Composer/ExtensionComposerRector.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\RemoveCmsPackageDirFromExtraRector' => __DIR__ . '/../..' . '/src/Rector/Composer/RemoveCmsPackageDirFromExtraRector.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\ReplacePackageComposerRector' => __DIR__ . '/../..' . '/src/Rector/Composer/ReplacePackageComposerRector.php',
@@ -3152,6 +3159,27 @@ class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
         'Ssch\\TYPO3Rector\\Set\\Typo3RectorSetProvider' => __DIR__ . '/../..' . '/src/Set/Typo3RectorSetProvider.php',
         'Ssch\\TYPO3Rector\\Set\\Typo3SetList' => __DIR__ . '/../..' . '/src/Set/Typo3SetList.php',
         'Ssch\\TYPO3Rector\\Stubs\\StubLoader' => __DIR__ . '/../..' . '/src/Stubs/StubLoader.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\AbstractRootlineConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/AbstractRootlineConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\ApplicationContextConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/ApplicationContextConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\BrowserConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/BrowserConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\CompatVersionConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/CompatVersionConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\GlobalStringConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/GlobalStringConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\GlobalVarConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/GlobalVarConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\IPConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/IPConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\LanguageConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/LanguageConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\LoginUserConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/LoginUserConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\PIDinRootlineConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/PIDinRootlineConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\PIDupinRootlineConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/PIDupinRootlineConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\PageConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/PageConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\TimeConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/TimeConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\TreeLevelConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/TreeLevelConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\TyposcriptConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/TyposcriptConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\UsergroupConditionMatcherMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/UsergroupConditionMatcherMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Conditions\\VersionConditionMatcher' => __DIR__ . '/../..' . '/src/TypoScript/Conditions/VersionConditionMatcher.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Parser\\Printer\\PrettyPrinter' => __DIR__ . '/../..' . '/src/TypoScript/Parser/Printer/PrettyPrinter.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\TypoScriptProcessor' => __DIR__ . '/../..' . '/src/TypoScript/TypoScriptProcessor.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\AbstractVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/AbstractVisitor.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\OldConditionToExpressionLanguageVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/OldConditionToExpressionLanguageVisitor.php',
         'Ssch\\TYPO3Rector\\ValueObject\\ReplacePackage' => __DIR__ . '/../..' . '/src/ValueObject/ReplacePackage.php',
         'Symplify\\RuleDocGenerator\\Category\\CategoryResolver' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/Category/CategoryResolver.php',
         'Symplify\\RuleDocGenerator\\Command\\GenerateCommand' => __DIR__ . '/..' . '/symplify/rule-doc-generator/src/Command/GenerateCommand.php',
@@ -3269,6 +3297,60 @@ class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
         'Typo3RectorPrefix20210330\\Doctrine\\Inflector\\Rules\\Word' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/Rules/Word.php',
         'Typo3RectorPrefix20210330\\Doctrine\\Inflector\\RulesetInflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/RulesetInflector.php',
         'Typo3RectorPrefix20210330\\Doctrine\\Inflector\\WordInflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/WordInflector.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Builder' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Builder.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Comment' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Comment.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\ConditionalStatement' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/ConditionalStatement.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\DirectoryIncludeStatement' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/DirectoryIncludeStatement.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\FileIncludeStatement' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/FileIncludeStatement.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\IncludeStatement' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/IncludeStatement.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\MultilineComment' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/MultilineComment.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\NestedAssignment' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/NestedAssignment.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\ObjectPath' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/ObjectPath.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\Assignment' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/Assignment.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\BinaryObjectOperator' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/BinaryObjectOperator.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\BinaryOperator' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/BinaryOperator.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\Builder' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/Builder.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\Copy' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/Copy.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\Delete' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/Delete.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\Modification' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/Modification.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\ModificationCall' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/ModificationCall.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\ObjectCreation' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/ObjectCreation.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\Reference' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/Reference.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Operator\\UnaryOperator' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Operator/UnaryOperator.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\RootObjectPath' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/RootObjectPath.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Scalar' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Scalar.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\AST\\Statement' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/AST/Statement.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\ParseError' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/ParseError.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\Parser' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/Parser.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\ParserInterface' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/ParserInterface.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\ParserState' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/ParserState.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\Printer\\ASTPrinterInterface' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/Printer/ASTPrinterInterface.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\Printer\\PrettyPrinter' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/Printer/PrettyPrinter.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\TokenStream' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/TokenStream.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\Traverser\\AggregatingVisitor' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/Traverser/AggregatingVisitor.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\Traverser\\Traverser' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/Traverser/Traverser.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Parser\\Traverser\\Visitor' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Parser/Traverser/Visitor.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\LineGrouper' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/LineGrouper.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\MultilineTokenBuilder' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/MultilineTokenBuilder.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Preprocessing\\NoOpPreprocessor' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Preprocessing/NoOpPreprocessor.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Preprocessing\\Preprocessor' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Preprocessing/Preprocessor.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Preprocessing\\ProcessorChain' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Preprocessing/ProcessorChain.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Preprocessing\\RemoveTrailingWhitespacePreprocessor' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Preprocessing/RemoveTrailingWhitespacePreprocessor.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Preprocessing\\StandardPreprocessor' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Preprocessing/StandardPreprocessor.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Preprocessing\\UnifyLineEndingsPreprocessor' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Preprocessing/UnifyLineEndingsPreprocessor.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Printer\\CodeTokenPrinter' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Printer/CodeTokenPrinter.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Printer\\StructuredTokenPrinter' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Printer/StructuredTokenPrinter.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Printer\\TokenPrinterInterface' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Printer/TokenPrinterInterface.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Scanner' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Scanner.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\ScannerLine' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/ScannerLine.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Token' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Token.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\TokenInterface' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/TokenInterface.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\TokenStreamBuilder' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/TokenStreamBuilder.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/Tokenizer.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\TokenizerException' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/TokenizerException.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\TokenizerInterface' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/TokenizerInterface.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\Tokenizer\\UnknownOperatorException' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/Tokenizer/UnknownOperatorException.php',
+        'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\TypoScriptParserExtension' => __DIR__ . '/..' . '/helmich/typo3-typoscript-parser/src/TypoScriptParserExtension.php',
         'Typo3RectorPrefix20210330\\Jean85\\Exception\\ProvidedPackageException' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/Exception/ProvidedPackageException.php',
         'Typo3RectorPrefix20210330\\Jean85\\Exception\\ReplacedPackageException' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/Exception/ReplacedPackageException.php',
         'Typo3RectorPrefix20210330\\Jean85\\Exception\\VersionMissingExceptionInterface' => __DIR__ . '/..' . '/jean85/pretty-package-versions/src/Exception/VersionMissingExceptionInterface.php',
@@ -4440,9 +4522,9 @@ class ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit4ffc2d8af2a123c51083efd13076a17b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit67d129ddc81f072baadc0bdd20bb5c3e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit67d129ddc81f072baadc0bdd20bb5c3e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit67d129ddc81f072baadc0bdd20bb5c3e::$classMap;
 
         }, null, ClassLoader::class);
     }

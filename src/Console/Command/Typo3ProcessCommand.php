@@ -3,7 +3,6 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Console\Command;
 
-use Typo3RectorPrefix20210330\Nette\Utils\JsonException;
 use Rector\Caching\Detector\ChangedFilesDetector;
 use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\ChangesReporting\Output\ConsoleOutputFormatter;
@@ -13,13 +12,14 @@ use Rector\Core\Configuration\Option;
 use Rector\Core\Console\Command\AbstractCommand;
 use Rector\Core\Console\Output\OutputFormatterCollector;
 use Rector\Core\FileSystem\FilesFinder;
-use Ssch\TYPO3Rector\Composer\ComposerProcessor;
+use Ssch\TYPO3Rector\Processor\ProcessorInterface;
 use Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputArgument;
 use Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputInterface;
 use Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputOption;
 use Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface;
 use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Console\ShellCode;
-final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileSystem;
+final class Typo3ProcessCommand extends \Rector\Core\Console\Command\AbstractCommand
 {
     /**
      * @var FilesFinder
@@ -42,10 +42,17 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
      */
     private $outputFormatterCollector;
     /**
-     * @var ComposerProcessor
+     * @var SmartFileSystem
      */
-    private $composerProcessor;
-    public function __construct(\Rector\Core\Autoloading\AdditionalAutoloader $additionalAutoloader, \Rector\Caching\Detector\ChangedFilesDetector $changedFilesDetector, \Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\FileSystem\FilesFinder $phpFilesFinder, \Rector\Core\Console\Output\OutputFormatterCollector $outputFormatterCollector, \Ssch\TYPO3Rector\Composer\ComposerProcessor $composerProcessor)
+    private $smartFileSystem;
+    /**
+     * @var ProcessorInterface[]
+     */
+    private $processors = [];
+    /**
+     * @param ProcessorInterface[] $processors
+     */
+    public function __construct(\Rector\Core\Autoloading\AdditionalAutoloader $additionalAutoloader, \Rector\Caching\Detector\ChangedFilesDetector $changedFilesDetector, \Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\FileSystem\FilesFinder $phpFilesFinder, \Rector\Core\Console\Output\OutputFormatterCollector $outputFormatterCollector, array $processors, \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->filesFinder = $phpFilesFinder;
         $this->additionalAutoloader = $additionalAutoloader;
@@ -53,13 +60,14 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
         $this->configuration = $configuration;
         $this->outputFormatterCollector = $outputFormatterCollector;
         $this->changedFilesDetector = $changedFilesDetector;
-        $this->composerProcessor = $composerProcessor;
+        $this->smartFileSystem = $smartFileSystem;
+        $this->processors = $processors;
         parent::__construct();
     }
     protected function configure() : void
     {
-        $this->setAliases(['composer']);
-        $this->setDescription('Upgrade custom composer.json');
+        $this->setAliases(['typoscript', 'composer']);
+        $this->setDescription('Upgrade non php files in your TYPO3 installation');
         $this->addArgument(\Rector\Core\Configuration\Option::SOURCE, \Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputArgument::OPTIONAL | \Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Files or directories to be upgraded.');
         $this->addOption(\Rector\Core\Configuration\Option::OPTION_DRY_RUN, 'n', \Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'See diff of changes, do not save them to files.');
         $names = $this->outputFormatterCollector->getNames();
@@ -70,17 +78,18 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
     {
         $this->configuration->setIsDryRun((bool) $input->getOption(\Rector\Core\Configuration\Option::OPTION_DRY_RUN));
         $paths = $this->configuration->getPaths();
-        $commandLinePaths = (array) $input->getArgument(\Rector\Core\Configuration\Option::SOURCE);
-        // manual command line value has priority
-        if ([] !== $commandLinePaths) {
-            $paths = $commandLinePaths;
-        }
         $this->additionalAutoloader->autoloadWithInputAndSource($input, $paths);
-        $composerJsonFiles = $this->filesFinder->findInDirectoriesAndFiles($paths, ['json']);
-        foreach ($composerJsonFiles as $composerJsonFile) {
-            try {
-                $this->composerProcessor->process($composerJsonFile->getRealPath());
-            } catch (\Typo3RectorPrefix20210330\Nette\Utils\JsonException $jsonException) {
+        $fileExtensions = [];
+        foreach ($this->processors as $processor) {
+            $fileExtensions = \array_merge($processor->allowedFileExtensions());
+        }
+        $files = $this->filesFinder->findInDirectoriesAndFiles($paths, $fileExtensions);
+        foreach ($files as $file) {
+            foreach ($this->processors as $processor) {
+                $content = $processor->process($file);
+                if (!$this->configuration->isDryRun() && null !== $content) {
+                    $this->smartFileSystem->dumpFile($file->getPathname(), $content);
+                }
             }
         }
         $outputFormatOption = $input->getOption(\Rector\Core\Configuration\Option::OPTION_OUTPUT_FORMAT);

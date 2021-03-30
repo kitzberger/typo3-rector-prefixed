@@ -53,6 +53,7 @@ return array(
     'Typo3RectorPrefix20210330\\Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Typo3RectorPrefix20210330\\Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'Typo3RectorPrefix20210330\\Jean85\\' => array($vendorDir . '/jean85/pretty-package-versions/src'),
+    'Typo3RectorPrefix20210330\\Helmich\\TypoScriptParser\\' => array($vendorDir . '/helmich/typo3-typoscript-parser/src'),
     'Typo3RectorPrefix20210330\\Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
     'Typo3RectorPrefix20210330\\Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib/Doctrine/Common/Lexer'),
     'Typo3RectorPrefix20210330\\Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations'),

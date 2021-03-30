@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Tests\Rector\ClassMethod\ChangeReturnTypeOfClassMethodWithGetIdRector\Source;
 
-use Typo3RectorPrefix20210329\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210330\Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
 class Building
 {
     private $id;
-    public function getId() : \Typo3RectorPrefix20210329\Ramsey\Uuid\UuidInterface
+    public function getId() : \Typo3RectorPrefix20210330\Ramsey\Uuid\UuidInterface
     {
         return $this->id;
     }

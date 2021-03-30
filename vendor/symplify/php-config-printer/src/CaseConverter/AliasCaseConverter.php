@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\CaseConverter;
+namespace Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\CaseConverter;
 
-use Typo3RectorPrefix20210329\Nette\Utils\Strings;
+use Typo3RectorPrefix20210330\Nette\Utils\Strings;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\BinaryOp\Concat;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Expression;
-use Typo3RectorPrefix20210329\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
-use Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
-use Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
-use Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
-use Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\NodeFactory\Service\ServiceOptionNodeFactory;
-use Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName;
-use Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\VariableName;
-use Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
-use Typo3RectorPrefix20210329\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-final class AliasCaseConverter implements \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
+use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface;
+use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
+use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\Service\ServiceOptionNodeFactory;
+use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName;
+use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\VariableName;
+use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
+use Typo3RectorPrefix20210330\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+final class AliasCaseConverter implements \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\Contract\CaseConverterInterface
 {
     /**
      * @see https://regex101.com/r/BwXkfO/2/
@@ -47,7 +47,7 @@ final class AliasCaseConverter implements \Typo3RectorPrefix20210329\Symplify\Ph
      * @var ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory, \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\NodeFactory\Service\ServiceOptionNodeFactory $serviceOptionNodeFactory, \Typo3RectorPrefix20210329\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\Service\ServiceOptionNodeFactory $serviceOptionNodeFactory, \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->commonNodeFactory = $commonNodeFactory;
         $this->argsNodeFactory = $argsNodeFactory;
@@ -57,37 +57,37 @@ final class AliasCaseConverter implements \Typo3RectorPrefix20210329\Symplify\Ph
     public function convertToMethodCall($key, $values) : \PhpParser\Node\Stmt\Expression
     {
         if (!\is_string($key)) {
-            throw new \Typo3RectorPrefix20210329\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \Typo3RectorPrefix20210330\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
-        $servicesVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES);
+        $servicesVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES);
         if ($this->classLikeExistenceChecker->doesClassLikeExist($key)) {
             return $this->createFromClassLike($key, $values, $servicesVariable);
         }
         // handles: "SomeClass $someVariable: ..."
-        $fullClassName = \Typo3RectorPrefix20210329\Nette\Utils\Strings::before($key, ' $');
+        $fullClassName = \Typo3RectorPrefix20210330\Nette\Utils\Strings::before($key, ' $');
         if ($fullClassName !== null) {
             $methodCall = $this->createAliasNode($key, $fullClassName, $values);
             return new \PhpParser\Node\Stmt\Expression($methodCall);
         }
         if (\is_string($values) && $values[0] === '@') {
             $args = $this->argsNodeFactory->createFromValues([$values], \true);
-            $methodCall = new \PhpParser\Node\Expr\MethodCall($servicesVariable, \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
+            $methodCall = new \PhpParser\Node\Expr\MethodCall($servicesVariable, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
             return new \PhpParser\Node\Stmt\Expression($methodCall);
         }
         if (\is_array($values)) {
             return $this->createFromArrayValues($values, $key, $servicesVariable);
         }
-        throw new \Typo3RectorPrefix20210329\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        throw new \Typo3RectorPrefix20210330\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
     }
     public function match(string $rootKey, $key, $values) : bool
     {
-        if ($rootKey !== \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\YamlKey::SERVICES) {
+        if ($rootKey !== \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\YamlKey::SERVICES) {
             return \false;
         }
-        if (isset($values[\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\YamlKey::ALIAS])) {
+        if (isset($values[\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\YamlKey::ALIAS])) {
             return \true;
         }
-        if (\Typo3RectorPrefix20210329\Nette\Utils\Strings::match($key, self::NAMED_ALIAS_REGEX)) {
+        if (\Typo3RectorPrefix20210330\Nette\Utils\Strings::match($key, self::NAMED_ALIAS_REGEX)) {
             return \true;
         }
         if (!\is_string($values)) {
@@ -99,13 +99,13 @@ final class AliasCaseConverter implements \Typo3RectorPrefix20210329\Symplify\Ph
     {
         $args = [];
         $classConstFetch = $this->commonNodeFactory->createClassReference($fullClassName);
-        \Typo3RectorPrefix20210329\Nette\Utils\Strings::match($key, self::ARGUMENT_NAME_REGEX);
-        $argumentName = '$' . \Typo3RectorPrefix20210329\Nette\Utils\Strings::after($key, '$');
+        \Typo3RectorPrefix20210330\Nette\Utils\Strings::match($key, self::ARGUMENT_NAME_REGEX);
+        $argumentName = '$' . \Typo3RectorPrefix20210330\Nette\Utils\Strings::after($key, '$');
         $concat = new \PhpParser\Node\Expr\BinaryOp\Concat($classConstFetch, new \PhpParser\Node\Scalar\String_(' ' . $argumentName));
         $args[] = new \PhpParser\Node\Arg($concat);
         $serviceName = \ltrim($serviceValues, '@');
         $args[] = new \PhpParser\Node\Arg(new \PhpParser\Node\Scalar\String_($serviceName));
-        return new \PhpParser\Node\Expr\MethodCall(new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES), \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
+        return new \PhpParser\Node\Expr\MethodCall(new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES), \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
     }
     /**
      * @param mixed $values
@@ -115,27 +115,27 @@ final class AliasCaseConverter implements \Typo3RectorPrefix20210329\Symplify\Ph
         $classReference = $this->commonNodeFactory->createClassReference($key);
         $argValues = [];
         $argValues[] = $classReference;
-        $argValues[] = $values[\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS] ?? $values;
+        $argValues[] = $values[\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS] ?? $values;
         $args = $this->argsNodeFactory->createFromValues($argValues, \true);
-        $methodCall = new \PhpParser\Node\Expr\MethodCall($servicesVariable, \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
+        $methodCall = new \PhpParser\Node\Expr\MethodCall($servicesVariable, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
         return new \PhpParser\Node\Stmt\Expression($methodCall);
     }
     private function createFromAlias(string $className, string $key, \PhpParser\Node\Expr\Variable $servicesVariable) : \PhpParser\Node\Expr\MethodCall
     {
         $classReference = $this->commonNodeFactory->createClassReference($className);
         $args = $this->argsNodeFactory->createFromValues([$key, $classReference]);
-        return new \PhpParser\Node\Expr\MethodCall($servicesVariable, \Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
+        return new \PhpParser\Node\Expr\MethodCall($servicesVariable, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS, $args);
     }
     /**
      * @param mixed[] $values
      */
     private function createFromArrayValues(array $values, string $key, \PhpParser\Node\Expr\Variable $servicesVariable) : \PhpParser\Node\Stmt\Expression
     {
-        if (isset($values[\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS])) {
-            $methodCall = $this->createFromAlias($values[\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS], $key, $servicesVariable);
-            unset($values[\Typo3RectorPrefix20210329\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS]);
+        if (isset($values[\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS])) {
+            $methodCall = $this->createFromAlias($values[\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS], $key, $servicesVariable);
+            unset($values[\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\MethodName::ALIAS]);
         } else {
-            throw new \Typo3RectorPrefix20210329\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \Typo3RectorPrefix20210330\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         /** @var MethodCall $methodCall */
         $methodCall = $this->serviceOptionNodeFactory->convertServiceOptionsToNodes($values, $methodCall);

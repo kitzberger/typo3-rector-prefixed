@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteToSymfony\Rector\ClassMethod;
 
-use Typo3RectorPrefix20210329\Nette\Utils\Strings;
+use Typo3RectorPrefix20210330\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\ArrayDimFetch;
 use PhpParser\Node\Expr\Assign;
@@ -41,7 +41,7 @@ final class RouterListToControllerAnnotationsRector extends \Rector\Core\Rector\
      *
      * @var string
      */
-    private const ROUTE_LIST_CLASS = 'Typo3RectorPrefix20210329\\Nette\\Application\\Routers\\RouteList';
+    private const ROUTE_LIST_CLASS = 'Typo3RectorPrefix20210330\\Nette\\Application\\Routers\\RouteList';
     /**
      * @var RouteInfoFactory
      */
@@ -172,7 +172,7 @@ CODE_SAMPLE
             if (!$node->var instanceof \PhpParser\Node\Expr\ArrayDimFetch) {
                 return \false;
             }
-            if ($this->isObjectTypes($node->expr, ['Typo3RectorPrefix20210329\\Nette\\Application\\IRouter', 'Typo3RectorPrefix20210329\\Nette\\Routing\\Router'])) {
+            if ($this->isObjectTypes($node->expr, ['Typo3RectorPrefix20210330\\Nette\\Application\\IRouter', 'Typo3RectorPrefix20210330\\Nette\\Routing\\Router'])) {
                 return \true;
             }
             if ($node->expr instanceof \PhpParser\Node\Expr\StaticCall) {
@@ -243,7 +243,7 @@ CODE_SAMPLE
             return \false;
         }
         $staticCallReturnType = (string) $reflectionMethod->getReturnType();
-        return \is_a($staticCallReturnType, 'Typo3RectorPrefix20210329\\Nette\\Application\\IRouter', \true);
+        return \is_a($staticCallReturnType, 'Typo3RectorPrefix20210330\\Nette\\Application\\IRouter', \true);
     }
     private function shouldSkipClassMethod(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool
     {
@@ -267,10 +267,10 @@ CODE_SAMPLE
         /** @var string $presenterName */
         $presenterName = $this->getName($class);
         /** @var string $presenterPart */
-        $presenterPart = \Typo3RectorPrefix20210329\Nette\Utils\Strings::after($presenterName, '\\', -1);
-        $presenterPart = \Typo3RectorPrefix20210329\Nette\Utils\Strings::substring($presenterPart, 0, -\Typo3RectorPrefix20210329\Nette\Utils\Strings::length('Presenter'));
+        $presenterPart = \Typo3RectorPrefix20210330\Nette\Utils\Strings::after($presenterName, '\\', -1);
+        $presenterPart = \Typo3RectorPrefix20210330\Nette\Utils\Strings::substring($presenterPart, 0, -\Typo3RectorPrefix20210330\Nette\Utils\Strings::length('Presenter'));
         $presenterPart = \Rector\Core\Util\StaticRectorStrings::camelCaseToDashes($presenterPart);
-        $match = (array) \Typo3RectorPrefix20210329\Nette\Utils\Strings::match($this->getName($classMethod), self::ACTION_RENDER_NAME_MATCHING_REGEX);
+        $match = (array) \Typo3RectorPrefix20210330\Nette\Utils\Strings::match($this->getName($classMethod), self::ACTION_RENDER_NAME_MATCHING_REGEX);
         $actionPart = \lcfirst($match['short_action_name']);
         return $presenterPart . '/' . $actionPart;
     }

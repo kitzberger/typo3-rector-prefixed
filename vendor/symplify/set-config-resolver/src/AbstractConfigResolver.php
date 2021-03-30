@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210329\Symplify\SetConfigResolver;
+namespace Typo3RectorPrefix20210330\Symplify\SetConfigResolver;
 
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210329\Symplify\SetConfigResolver\Console\Option\OptionName;
-use Typo3RectorPrefix20210329\Symplify\SetConfigResolver\Console\OptionValueResolver;
-use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\Exception\FileNotFoundException;
-use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210330\Symplify\SetConfigResolver\Console\Option\OptionName;
+use Typo3RectorPrefix20210330\Symplify\SetConfigResolver\Console\OptionValueResolver;
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
 abstract class AbstractConfigResolver
 {
     /**
@@ -16,15 +16,15 @@ abstract class AbstractConfigResolver
     private $optionValueResolver;
     public function __construct()
     {
-        $this->optionValueResolver = new \Typo3RectorPrefix20210329\Symplify\SetConfigResolver\Console\OptionValueResolver();
+        $this->optionValueResolver = new \Typo3RectorPrefix20210330\Symplify\SetConfigResolver\Console\OptionValueResolver();
     }
-    public function resolveFromInput(\Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputInterface $input) : ?\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo
+    public function resolveFromInput(\Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputInterface $input) : ?\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo
     {
-        $configValue = $this->optionValueResolver->getOptionValue($input, \Typo3RectorPrefix20210329\Symplify\SetConfigResolver\Console\Option\OptionName::CONFIG);
+        $configValue = $this->optionValueResolver->getOptionValue($input, \Typo3RectorPrefix20210330\Symplify\SetConfigResolver\Console\Option\OptionName::CONFIG);
         if ($configValue !== null) {
             if (!\file_exists($configValue)) {
                 $message = \sprintf('File "%s" was not found', $configValue);
-                throw new \Typo3RectorPrefix20210329\Symplify\SmartFileSystem\Exception\FileNotFoundException($message);
+                throw new \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\Exception\FileNotFoundException($message);
             }
             return $this->createFileInfo($configValue);
         }
@@ -33,7 +33,7 @@ abstract class AbstractConfigResolver
     /**
      * @param string[] $fallbackFiles
      */
-    public function resolveFromInputWithFallback(\Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputInterface $input, array $fallbackFiles) : ?\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo
+    public function resolveFromInputWithFallback(\Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputInterface $input, array $fallbackFiles) : ?\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo
     {
         $configFileInfo = $this->resolveFromInput($input);
         if ($configFileInfo !== null) {
@@ -44,7 +44,7 @@ abstract class AbstractConfigResolver
     /**
      * @param string[] $fallbackFiles
      */
-    private function createFallbackFileInfoIfFound(array $fallbackFiles) : ?\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo
+    private function createFallbackFileInfoIfFound(array $fallbackFiles) : ?\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo
     {
         foreach ($fallbackFiles as $fallbackFile) {
             $rootFallbackFile = \getcwd() . \DIRECTORY_SEPARATOR . $fallbackFile;
@@ -54,8 +54,8 @@ abstract class AbstractConfigResolver
         }
         return null;
     }
-    private function createFileInfo(string $configValue) : \Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo
+    private function createFileInfo(string $configValue) : \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo
     {
-        return new \Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo($configValue);
+        return new \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo($configValue);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210329\Doctrine\Common\Annotations\Annotation;
+namespace Typo3RectorPrefix20210330\Doctrine\Common\Annotations\Annotation;
 
 use InvalidArgumentException;
 use function array_keys;

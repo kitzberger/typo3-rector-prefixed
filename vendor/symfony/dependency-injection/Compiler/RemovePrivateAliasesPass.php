@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Compiler;
+namespace Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\Compiler;
 
-use Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Remove private aliases from the container. They were only used to establish
  * dependencies between services, and these dependencies have been resolved in
@@ -18,12 +18,12 @@ use Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\ContainerBui
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class RemovePrivateAliasesPass implements \Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RemovePrivateAliasesPass implements \Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * Removes private aliases from the ContainerBuilder.
      */
-    public function process(\Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getAliases() as $id => $alias) {
             if ($alias->isPublic()) {

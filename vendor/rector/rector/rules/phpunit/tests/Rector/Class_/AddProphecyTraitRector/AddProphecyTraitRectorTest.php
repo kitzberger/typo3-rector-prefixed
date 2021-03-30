@@ -6,13 +6,13 @@ namespace Rector\PHPUnit\Tests\Rector\Class_\AddProphecyTraitRector;
 use Iterator;
 use Rector\PHPUnit\Rector\Class_\AddProphecyTraitRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
 final class AddProphecyTraitRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

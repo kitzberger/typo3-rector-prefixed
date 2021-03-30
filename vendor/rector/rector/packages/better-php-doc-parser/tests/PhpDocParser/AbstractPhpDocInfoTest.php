@@ -13,10 +13,10 @@ use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\FileSystemRector\Parser\FileInfoParser;
-use Typo3RectorPrefix20210329\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210329\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
-abstract class AbstractPhpDocInfoTest extends \Typo3RectorPrefix20210329\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210330\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
+abstract class AbstractPhpDocInfoTest extends \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var FileInfoParser
@@ -45,7 +45,7 @@ abstract class AbstractPhpDocInfoTest extends \Typo3RectorPrefix20210329\Symplif
     /**
      * @param class-string<\PHPStan\PhpDocParser\Ast\Node> $tagValueNodeType
      */
-    protected function doTestPrintedPhpDocInfo(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, string $tagValueNodeType) : void
+    protected function doTestPrintedPhpDocInfo(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, string $tagValueNodeType) : void
     {
         if (!isset(\Rector\BetterPhpDocParser\Tests\PhpDocParser\Helper\TagValueToPhpParserNodeMap::MAP[$tagValueNodeType])) {
             throw new \Rector\Core\Exception\ShouldNotHappenException(\sprintf('[tests] Add "%s" to %s::%s constant', $tagValueNodeType, \Rector\BetterPhpDocParser\Tests\PhpDocParser\Helper\TagValueToPhpParserNodeMap::class, 'MAP'));
@@ -64,18 +64,18 @@ abstract class AbstractPhpDocInfoTest extends \Typo3RectorPrefix20210329\Symplif
     }
     protected function yieldFilesFromDirectory(string $directory, string $suffix = '*.php') : \Iterator
     {
-        return \Typo3RectorPrefix20210329\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory($directory, $suffix);
+        return \Typo3RectorPrefix20210330\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory($directory, $suffix);
     }
     protected function findFilesFromDirectory(string $directory, string $suffix = '*.php') : \Iterator
     {
-        return \Typo3RectorPrefix20210329\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory($directory, $suffix);
+        return \Typo3RectorPrefix20210330\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory($directory, $suffix);
     }
     /**
      * @template T as Node
      * @param class-string<T> $nodeType
      * @return T
      */
-    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, string $nodeType) : \PhpParser\Node
+    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, string $nodeType) : \PhpParser\Node
     {
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($fileInfo);
         $foundNode = $this->betterNodeFinder->findFirstInstanceOf($nodes, $nodeType);
@@ -89,14 +89,14 @@ abstract class AbstractPhpDocInfoTest extends \Typo3RectorPrefix20210329\Symplif
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);
         return $this->phpDocInfoPrinter->printFormatPreserving($phpDocInfo);
     }
-    private function createErrorMessage(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
+    private function createErrorMessage(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
     {
         return 'Caused by: ' . $fileInfo->getRelativeFilePathFromCwd() . \PHP_EOL;
     }
     /**
      * @param class-string<\PHPStan\PhpDocParser\Ast\Node> $tagValueNodeType
      */
-    private function doTestContainsTagValueNodeType(\PhpParser\Node $node, string $tagValueNodeType, \Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    private function doTestContainsTagValueNodeType(\PhpParser\Node $node, string $tagValueNodeType, \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);
         $hasByType = $phpDocInfo->hasByType($tagValueNodeType);

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210329\Symfony\Component\Console;
+namespace Typo3RectorPrefix20210330\Symfony\Component\Console;
 
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleCommandEvent;
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleSignalEvent;
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleCommandEvent;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleSignalEvent;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleTerminateEvent;
 /**
  * Contains all events dispatched by an Application.
  *
@@ -57,5 +57,5 @@ final class ConsoleEvents
      *
      * These aliases can be consumed by RegisterListenersPass.
      */
-    public const ALIASES = [\Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleCommandEvent::class => self::COMMAND, \Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleErrorEvent::class => self::ERROR, \Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleSignalEvent::class => self::SIGNAL, \Typo3RectorPrefix20210329\Symfony\Component\Console\Event\ConsoleTerminateEvent::class => self::TERMINATE];
+    public const ALIASES = [\Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleCommandEvent::class => self::COMMAND, \Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleErrorEvent::class => self::ERROR, \Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleSignalEvent::class => self::SIGNAL, \Typo3RectorPrefix20210330\Symfony\Component\Console\Event\ConsoleTerminateEvent::class => self::TERMINATE];
 }

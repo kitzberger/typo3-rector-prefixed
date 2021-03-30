@@ -6,13 +6,13 @@ namespace Rector\Php72\Tests\Rector\FuncCall\IsObjectOnIncompleteClassRector;
 use Iterator;
 use Rector\Php72\Rector\FuncCall\IsObjectOnIncompleteClassRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
 final class IsObjectOnIncompleteClassRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

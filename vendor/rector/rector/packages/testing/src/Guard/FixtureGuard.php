@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Rector\Testing\Guard;
 
-use Typo3RectorPrefix20210329\Nette\Utils\Strings;
+use Typo3RectorPrefix20210330\Nette\Utils\Strings;
 use Rector\Core\Exception\Testing\SuperfluousAfterContentFixtureException;
-use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
 final class FixtureGuard
 {
     /**
@@ -13,9 +13,9 @@ final class FixtureGuard
      * @var string
      */
     private const BEFORE_AFTER_CONTENT_REGEX = '#^(?<before_content>.*?)\\-\\-\\-\\-\\-\\n(?<after_content>.*?)$#s';
-    public function ensureFileInfoHasDifferentBeforeAndAfterContent(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function ensureFileInfoHasDifferentBeforeAndAfterContent(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
-        $match = \Typo3RectorPrefix20210329\Nette\Utils\Strings::match($smartFileInfo->getContents(), self::BEFORE_AFTER_CONTENT_REGEX);
+        $match = \Typo3RectorPrefix20210330\Nette\Utils\Strings::match($smartFileInfo->getContents(), self::BEFORE_AFTER_CONTENT_REGEX);
         if ($match === null) {
             return;
         }

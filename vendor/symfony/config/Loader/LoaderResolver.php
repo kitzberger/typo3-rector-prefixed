@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210329\Symfony\Component\Config\Loader;
+namespace Typo3RectorPrefix20210330\Symfony\Component\Config\Loader;
 
 /**
  * LoaderResolver selects a loader for a given resource.
@@ -18,7 +18,7 @@ namespace Typo3RectorPrefix20210329\Symfony\Component\Config\Loader;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class LoaderResolver implements \Typo3RectorPrefix20210329\Symfony\Component\Config\Loader\LoaderResolverInterface
+class LoaderResolver implements \Typo3RectorPrefix20210330\Symfony\Component\Config\Loader\LoaderResolverInterface
 {
     /**
      * @var LoaderInterface[] An array of LoaderInterface objects
@@ -45,7 +45,7 @@ class LoaderResolver implements \Typo3RectorPrefix20210329\Symfony\Component\Con
         }
         return \false;
     }
-    public function addLoader(\Typo3RectorPrefix20210329\Symfony\Component\Config\Loader\LoaderInterface $loader)
+    public function addLoader(\Typo3RectorPrefix20210330\Symfony\Component\Config\Loader\LoaderInterface $loader)
     {
         $this->loaders[] = $loader;
         $loader->setResolver($this);

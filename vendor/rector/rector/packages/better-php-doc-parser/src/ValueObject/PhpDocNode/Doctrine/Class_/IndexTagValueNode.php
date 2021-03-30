@@ -24,6 +24,6 @@ final class IndexTagValueNode extends \Rector\BetterPhpDocParser\ValueObject\Php
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210329\\@ORM\\Index';
+        return 'Typo3RectorPrefix20210330\\@ORM\\Index';
     }
 }

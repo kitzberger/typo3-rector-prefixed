@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210329\Symplify\EasyTesting\ValueObject;
+namespace Typo3RectorPrefix20210330\Symplify\EasyTesting\ValueObject;
 
-use Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
 final class InputFileInfoAndExpected
 {
     /**
@@ -17,7 +17,7 @@ final class InputFileInfoAndExpected
     /**
      * @param mixed $expected
      */
-    public function __construct(\Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, $expected)
+    public function __construct(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, $expected)
     {
         $this->inputFileInfo = $inputFileInfo;
         $this->expected = $expected;
@@ -26,7 +26,7 @@ final class InputFileInfoAndExpected
     {
         return $this->inputFileInfo->getContents();
     }
-    public function getInputFileInfo() : \Typo3RectorPrefix20210329\Symplify\SmartFileSystem\SmartFileInfo
+    public function getInputFileInfo() : \Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->inputFileInfo;
     }

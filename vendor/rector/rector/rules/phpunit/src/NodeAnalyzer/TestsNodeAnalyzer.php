@@ -38,7 +38,7 @@ final class TestsNodeAnalyzer
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return \false;
         }
-        return $this->nodeTypeResolver->isObjectTypes($classLike, ['Typo3RectorPrefix20210329\\PHPUnit\\Framework\\TestCase', 'PHPUnit_Framework_TestCase']);
+        return $this->nodeTypeResolver->isObjectTypes($classLike, ['Typo3RectorPrefix20210330\\PHPUnit\\Framework\\TestCase', 'PHPUnit_Framework_TestCase']);
     }
     public function isTestClassMethod(\PhpParser\Node\Stmt\ClassMethod $classMethod) : bool
     {

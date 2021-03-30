@@ -121,6 +121,6 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {
             return \true;
         }
-        return $this->isObjectType($classLike, 'Typo3RectorPrefix20210329\\PHP_CodeSniffer\\Sniffs\\Sniff');
+        return $this->isObjectType($classLike, 'Typo3RectorPrefix20210330\\PHP_CodeSniffer\\Sniffs\\Sniff');
     }
 }

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210329\Symfony\Component\HttpKernel;
+namespace Typo3RectorPrefix20210330\Symfony\Component\HttpKernel;
 
-use Typo3RectorPrefix20210329\Symfony\Component\Config\Loader\LoaderInterface;
-use Typo3RectorPrefix20210329\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210329\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Typo3RectorPrefix20210330\Symfony\Component\Config\Loader\LoaderInterface;
+use Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210330\Symfony\Component\HttpKernel\Bundle\BundleInterface;
 /**
  * The Kernel is the heart of the Symfony system.
  *
@@ -24,7 +24,7 @@ use Typo3RectorPrefix20210329\Symfony\Component\HttpKernel\Bundle\BundleInterfac
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface KernelInterface extends \Typo3RectorPrefix20210329\Symfony\Component\HttpKernel\HttpKernelInterface
+interface KernelInterface extends \Typo3RectorPrefix20210330\Symfony\Component\HttpKernel\HttpKernelInterface
 {
     /**
      * Returns an array of bundles to register.
@@ -35,7 +35,7 @@ interface KernelInterface extends \Typo3RectorPrefix20210329\Symfony\Component\H
     /**
      * Loads the container configuration.
      */
-    public function registerContainerConfiguration(\Typo3RectorPrefix20210329\Symfony\Component\Config\Loader\LoaderInterface $loader);
+    public function registerContainerConfiguration(\Typo3RectorPrefix20210330\Symfony\Component\Config\Loader\LoaderInterface $loader);
     /**
      * Boots the current kernel.
      */

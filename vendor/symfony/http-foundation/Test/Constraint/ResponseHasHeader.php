@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace Typo3RectorPrefix20210330\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use Typo3RectorPrefix20210329\PHPUnit\Framework\Constraint\Constraint;
-use Typo3RectorPrefix20210329\Symfony\Component\HttpFoundation\Response;
-final class ResponseHasHeader extends \Typo3RectorPrefix20210329\PHPUnit\Framework\Constraint\Constraint
+use Typo3RectorPrefix20210330\PHPUnit\Framework\Constraint\Constraint;
+use Typo3RectorPrefix20210330\Symfony\Component\HttpFoundation\Response;
+final class ResponseHasHeader extends \Typo3RectorPrefix20210330\PHPUnit\Framework\Constraint\Constraint
 {
     private $headerName;
     public function __construct(string $headerName)

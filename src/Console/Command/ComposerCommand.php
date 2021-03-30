@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Console\Command;
 
-use Typo3RectorPrefix20210329\Nette\Utils\JsonException;
+use Typo3RectorPrefix20210330\Nette\Utils\JsonException;
 use Rector\Caching\Detector\ChangedFilesDetector;
 use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\ChangesReporting\Output\ConsoleOutputFormatter;
@@ -14,11 +14,11 @@ use Rector\Core\Console\Command\AbstractCommand;
 use Rector\Core\Console\Output\OutputFormatterCollector;
 use Rector\Core\FileSystem\FilesFinder;
 use Ssch\TYPO3Rector\Composer\ComposerProcessor;
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputArgument;
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputOption;
-use Typo3RectorPrefix20210329\Symfony\Component\Console\Output\OutputInterface;
-use Typo3RectorPrefix20210329\Symplify\PackageBuilder\Console\ShellCode;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputArgument;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputOption;
+use Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Console\ShellCode;
 final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
 {
     /**
@@ -60,13 +60,13 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
     {
         $this->setAliases(['composer']);
         $this->setDescription('Upgrade custom composer.json');
-        $this->addArgument(\Rector\Core\Configuration\Option::SOURCE, \Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputArgument::OPTIONAL | \Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Files or directories to be upgraded.');
-        $this->addOption(\Rector\Core\Configuration\Option::OPTION_DRY_RUN, 'n', \Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'See diff of changes, do not save them to files.');
+        $this->addArgument(\Rector\Core\Configuration\Option::SOURCE, \Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputArgument::OPTIONAL | \Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Files or directories to be upgraded.');
+        $this->addOption(\Rector\Core\Configuration\Option::OPTION_DRY_RUN, 'n', \Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'See diff of changes, do not save them to files.');
         $names = $this->outputFormatterCollector->getNames();
         $description = \sprintf('Select output format: "%s".', \implode('", "', $names));
-        $this->addOption(\Rector\Core\Configuration\Option::OPTION_OUTPUT_FORMAT, 'o', \Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, $description, \Rector\ChangesReporting\Output\ConsoleOutputFormatter::NAME);
+        $this->addOption(\Rector\Core\Configuration\Option::OPTION_OUTPUT_FORMAT, 'o', \Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, $description, \Rector\ChangesReporting\Output\ConsoleOutputFormatter::NAME);
     }
-    protected function execute(\Typo3RectorPrefix20210329\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210329\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\Typo3RectorPrefix20210330\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->configuration->setIsDryRun((bool) $input->getOption(\Rector\Core\Configuration\Option::OPTION_DRY_RUN));
         $paths = $this->configuration->getPaths();
@@ -80,7 +80,7 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
         foreach ($composerJsonFiles as $composerJsonFile) {
             try {
                 $this->composerProcessor->process($composerJsonFile->getRealPath());
-            } catch (\Typo3RectorPrefix20210329\Nette\Utils\JsonException $jsonException) {
+            } catch (\Typo3RectorPrefix20210330\Nette\Utils\JsonException $jsonException) {
             }
         }
         $outputFormatOption = $input->getOption(\Rector\Core\Configuration\Option::OPTION_OUTPUT_FORMAT);
@@ -93,8 +93,8 @@ final class ComposerCommand extends \Rector\Core\Console\Command\AbstractCommand
         $outputFormatter->report($this->errorAndDiffCollector);
         // inverse error code for CI dry-run
         if ($this->configuration->isDryRun() && $this->errorAndDiffCollector->getFileDiffsCount()) {
-            return \Typo3RectorPrefix20210329\Symplify\PackageBuilder\Console\ShellCode::ERROR;
+            return \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Console\ShellCode::ERROR;
         }
-        return \Typo3RectorPrefix20210329\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210329\Psr\Container;
+namespace Typo3RectorPrefix20210330\Psr\Container;
 
 /**
  * Describes the interface of a container that exposes methods to read its entries.

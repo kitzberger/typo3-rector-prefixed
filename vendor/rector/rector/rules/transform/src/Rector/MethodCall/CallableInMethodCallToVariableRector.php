@@ -13,7 +13,7 @@ use Rector\Transform\NodeFactory\UnwrapClosureFactory;
 use Rector\Transform\ValueObject\CallableInMethodCallToVariable;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210329\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210330\Webmozart\Assert\Assert;
 /**
  * @see https://github.com/nette/caching/commit/5ffe263752af5ccf3866a28305e7b2669ab4da82
  *
@@ -62,7 +62,7 @@ final class SomeClass
     }
 }
 CODE_SAMPLE
-, [self::CALLABLE_IN_METHOD_CALL_TO_VARIABLE => [new \Rector\Transform\ValueObject\CallableInMethodCallToVariable('Typo3RectorPrefix20210329\\Nette\\Caching\\Cache', 'save', 1)]])]);
+, [self::CALLABLE_IN_METHOD_CALL_TO_VARIABLE => [new \Rector\Transform\ValueObject\CallableInMethodCallToVariable('Typo3RectorPrefix20210330\\Nette\\Caching\\Cache', 'save', 1)]])]);
     }
     /**
      * @return string[]
@@ -102,7 +102,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $callableInMethodCallToVariable = $configuration[self::CALLABLE_IN_METHOD_CALL_TO_VARIABLE] ?? [];
-        \Typo3RectorPrefix20210329\Webmozart\Assert\Assert::allIsInstanceOf($callableInMethodCallToVariable, \Rector\Transform\ValueObject\CallableInMethodCallToVariable::class);
+        \Typo3RectorPrefix20210330\Webmozart\Assert\Assert::allIsInstanceOf($callableInMethodCallToVariable, \Rector\Transform\ValueObject\CallableInMethodCallToVariable::class);
         $this->callableInMethodCallToVariable = $callableInMethodCallToVariable;
     }
 }

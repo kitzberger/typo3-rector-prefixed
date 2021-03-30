@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210329;
+namespace Typo3RectorPrefix20210330;
 
 final class Twig_Extension_Sandbox
 {
 }
-\class_alias('Typo3RectorPrefix20210329\\Twig_Extension_Sandbox', 'Twig_Extension_Sandbox', \false);
+\class_alias('Typo3RectorPrefix20210330\\Twig_Extension_Sandbox', 'Twig_Extension_Sandbox', \false);

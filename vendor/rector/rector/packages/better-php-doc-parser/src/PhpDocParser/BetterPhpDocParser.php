@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\PhpDocParser;
 
-use Typo3RectorPrefix20210329\Nette\Utils\Strings;
+use Typo3RectorPrefix20210330\Nette\Utils\Strings;
 use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode;
@@ -25,8 +25,8 @@ use Rector\BetterPhpDocParser\Printer\MultilineSpaceFormatPreserver;
 use Rector\BetterPhpDocParser\ValueObject\StartAndEnd;
 use Rector\Core\Configuration\CurrentNodeProvider;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Typo3RectorPrefix20210329\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
-use Typo3RectorPrefix20210329\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Reflection\PrivatesCaller;
 /**
  * @see \Rector\BetterPhpDocParser\Tests\PhpDocParser\TagValueNodeReprint\TagValueNodeReprintTest
  */
@@ -80,8 +80,8 @@ final class BetterPhpDocParser extends \PHPStan\PhpDocParser\Parser\PhpDocParser
     public function __construct(\PHPStan\PhpDocParser\Parser\TypeParser $typeParser, \PHPStan\PhpDocParser\Parser\ConstExprParser $constExprParser, \Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory $attributeAwareNodeFactory, \Rector\BetterPhpDocParser\Printer\MultilineSpaceFormatPreserver $multilineSpaceFormatPreserver, \Rector\Core\Configuration\CurrentNodeProvider $currentNodeProvider, \Rector\BetterPhpDocParser\PhpDocParser\ClassAnnotationMatcher $classAnnotationMatcher, \Rector\BetterPhpDocParser\PhpDocParser\AnnotationContentResolver $annotationContentResolver, array $phpDocNodeFactories = [], array $stringTagMatchingPhpDocNodeFactories = [])
     {
         parent::__construct($typeParser, $constExprParser);
-        $this->privatesCaller = new \Typo3RectorPrefix20210329\Symplify\PackageBuilder\Reflection\PrivatesCaller();
-        $this->privatesAccessor = new \Typo3RectorPrefix20210329\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
+        $this->privatesCaller = new \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Reflection\PrivatesCaller();
+        $this->privatesAccessor = new \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
         $this->attributeAwareNodeFactory = $attributeAwareNodeFactory;
         $this->multilineSpaceFormatPreserver = $multilineSpaceFormatPreserver;
         $this->currentNodeProvider = $currentNodeProvider;
@@ -173,8 +173,8 @@ final class BetterPhpDocParser extends \PHPStan\PhpDocParser\Parser\PhpDocParser
             $originalContent = $this->getOriginalContentFromTokenIterator($tokenIterator);
             // we try to match original content without trimmed spaces
             $currentTextPattern = '#' . \preg_quote($possibleMultilineText, '#') . '#s';
-            $currentTextPattern = \Typo3RectorPrefix20210329\Nette\Utils\Strings::replace($currentTextPattern, '#(\\s)+#', '\\s+');
-            $match = \Typo3RectorPrefix20210329\Nette\Utils\Strings::match($originalContent, $currentTextPattern);
+            $currentTextPattern = \Typo3RectorPrefix20210330\Nette\Utils\Strings::replace($currentTextPattern, '#(\\s)+#', '\\s+');
+            $match = \Typo3RectorPrefix20210330\Nette\Utils\Strings::match($originalContent, $currentTextPattern);
             if (isset($match[0])) {
                 $attributeAwareNode->setAttribute(\Rector\BetterPhpDocParser\Attributes\Attribute\Attribute::ORIGINAL_CONTENT, $match[0]);
             }
@@ -186,7 +186,7 @@ final class BetterPhpDocParser extends \PHPStan\PhpDocParser\Parser\PhpDocParser
         $tag = $tokenIterator->currentTokenValue();
         $tokenIterator->next();
         // basic annotation
-        if (\Typo3RectorPrefix20210329\Nette\Utils\Strings::match($tag, self::TAG_REGEX)) {
+        if (\Typo3RectorPrefix20210330\Nette\Utils\Strings::match($tag, self::TAG_REGEX)) {
             return $tag;
         }
         // is not e.g "@var "

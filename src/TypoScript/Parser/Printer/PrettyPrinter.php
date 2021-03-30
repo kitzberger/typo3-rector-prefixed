@@ -29,7 +29,7 @@ final class PrettyPrinter implements \Typo3RectorPrefix20210330\Helmich\TypoScri
      */
     public function printStatements(array $statements, \Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface $output) : void
     {
-        $this->printStatementList($statements, $output, 0);
+        $this->printStatementList($statements, $output);
     }
     /**
      * @param Statement[]     $statements
@@ -38,7 +38,7 @@ final class PrettyPrinter implements \Typo3RectorPrefix20210330\Helmich\TypoScri
     {
         $indent = $this->getIndent($nesting);
         $count = \count($statements);
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; ++$i) {
             $statement = $statements[$i];
             if ($statement instanceof \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\NestedAssignment) {
                 $this->printNestedAssignment($output, $nesting, $statement);
@@ -87,7 +87,7 @@ final class PrettyPrinter implements \Typo3RectorPrefix20210330\Helmich\TypoScri
     private function printFileIncludeStatement(\Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface $output, \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\FileIncludeStatement $statement) : void
     {
         if ($statement->newSyntax) {
-            $output->writeln('@import \'' . $statement->filename . '\'');
+            $output->writeln("@import '" . $statement->filename . "'");
         } else {
             $attributes = '';
             if ($statement->condition) {

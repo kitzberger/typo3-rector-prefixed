@@ -3,7 +3,6 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Conditions;
 
-use Typo3RectorPrefix20210330\Nette\Utils\Strings;
 use Ssch\TYPO3Rector\ArrayUtility;
 final class ApplicationContextConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher
 {
@@ -30,7 +29,7 @@ final class ApplicationContextConditionMatcher implements \Ssch\TYPO3Rector\Typo
     }
     public function shouldApply(string $condition) : bool
     {
-        return \Typo3RectorPrefix20210330\Nette\Utils\Strings::startsWith($condition, self::TYPE);
+        return 1 === \preg_match('#^' . self::TYPE . self::ZERO_ONE_OR_MORE_WHITESPACES . '=[^=]#', $condition);
     }
     private function isRegularExpression(string $regularExpression) : bool
     {

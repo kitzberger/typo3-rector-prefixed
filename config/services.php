@@ -14,6 +14,7 @@ use Rector\Core\Configuration\Option;
 use Ssch\TYPO3Rector\Console\Application;
 use Ssch\TYPO3Rector\Console\Output\DecoratedConsoleOutputFormatter;
 use Ssch\TYPO3Rector\TypoScript\Parser\Printer\PrettyPrinter;
+use Ssch\TYPO3Rector\TypoScript\TypoScriptProcessor;
 use Typo3RectorPrefix20210330\Symfony\Component\Console\Application as SymfonyApplication;
 use Typo3RectorPrefix20210330\Symfony\Component\Console\Output\BufferedOutput;
 use Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface;
@@ -37,4 +38,5 @@ return static function (\Typo3RectorPrefix20210330\Symfony\Component\DependencyI
     $services->alias(\Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\ParserInterface::class, \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\Parser::class);
     $services->set(\Typo3RectorPrefix20210330\Symfony\Component\Console\Output\BufferedOutput::class);
     $services->alias(\Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface::class, \Typo3RectorPrefix20210330\Symfony\Component\Console\Output\BufferedOutput::class);
+    $services->set(\Ssch\TYPO3Rector\TypoScript\TypoScriptProcessor::class)->call('configure', [[\Ssch\TYPO3Rector\TypoScript\TypoScriptProcessor::ALLOWED_FILE_EXTENSIONS => ['typoscript', 'ts', 'txt', 'pagets', 'tsconfig', 'typoscriptconstants']]]);
 };

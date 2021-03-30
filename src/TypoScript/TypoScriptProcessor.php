@@ -21,7 +21,7 @@ final class TypoScriptProcessor implements \Ssch\TYPO3Rector\Processor\Processor
     /**
      * @var string
      */
-    private const ALLOWED_FILE_EXTENSIONS = 'allowed_file_extensions';
+    public const ALLOWED_FILE_EXTENSIONS = 'allowed_file_extensions';
     /**
      * @var ParserInterface
      */

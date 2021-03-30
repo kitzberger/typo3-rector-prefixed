@@ -11,6 +11,7 @@ use Ssch\TYPO3Rector\Rector\v8\v5\MoveLanguageFilesFromLocallangToResourcesRecto
 use Ssch\TYPO3Rector\Rector\v8\v5\RemoveOptionVersioningFollowPagesRector;
 use Ssch\TYPO3Rector\Rector\v8\v5\RemoveSupportForTransForeignTableRector;
 use Ssch\TYPO3Rector\Rector\v8\v6\AddTypeToColumnConfigRector;
+use Ssch\TYPO3Rector\Rector\v8\v6\MigrateLastPiecesOfDefaultExtrasRector;
 use Ssch\TYPO3Rector\Rector\v8\v6\MigrateOptionsOfTypeGroupRector;
 use Ssch\TYPO3Rector\Rector\v8\v6\MigrateSelectShowIconTableRector;
 use Ssch\TYPO3Rector\Rector\v8\v6\MoveRequestUpdateOptionFromControlToColumnsRector;
@@ -41,4 +42,5 @@ return static function (\Typo3RectorPrefix20210330\Symfony\Component\DependencyI
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v7\RemoveConfigMaxFromInputDateTimeFieldsRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v7\RemoveLocalizationModeKeepIfNeededRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v7\MoveForeignTypesToOverrideChildTcaRector::class);
+    $services->set(\Ssch\TYPO3Rector\Rector\v8\v6\MigrateLastPiecesOfDefaultExtrasRector::class);
 };

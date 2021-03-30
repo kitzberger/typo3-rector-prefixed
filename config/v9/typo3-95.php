@@ -8,7 +8,6 @@ use Rector\Renaming\ValueObject\MethodCallRename;
 use Ssch\TYPO3Rector\Rector\Migrations\RenameClassMapAliasRector;
 use Ssch\TYPO3Rector\Rector\v9\v5\RefactorProcessOutputRector;
 use Ssch\TYPO3Rector\Rector\v9\v5\RefactorPropertiesOfTypoScriptFrontendControllerRector;
-use Ssch\TYPO3Rector\Rector\v9\v5\RefactorTypeInternalTypeFileAndFileReferenceToFalRector;
 use Ssch\TYPO3Rector\Rector\v9\v5\RemoveFlushCachesRector;
 use Ssch\TYPO3Rector\Rector\v9\v5\RemoveInitMethodFromPageRepositoryRector;
 use Ssch\TYPO3Rector\Rector\v9\v5\RemoveInternalAnnotationRector;
@@ -26,5 +25,4 @@ return static function (\Typo3RectorPrefix20210330\Symfony\Component\DependencyI
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v5\RemoveInitMethodFromPageRepositoryRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v5\RefactorProcessOutputRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v5\RefactorPropertiesOfTypoScriptFrontendControllerRector::class);
-    $services->set(\Ssch\TYPO3Rector\Rector\v9\v5\RefactorTypeInternalTypeFileAndFileReferenceToFalRector::class);
 };

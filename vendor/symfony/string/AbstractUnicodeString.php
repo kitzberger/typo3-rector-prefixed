@@ -133,7 +133,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $str->string .= $s;
         return $str;
     }
-    public function camel() : \Typo3RectorPrefix20210330\parent
+    public function camel() : parent
     {
         $str = clone $this;
         $str->string = \str_replace(' ', '', \preg_replace_callback('/\\b./u', static function ($m) use(&$i) {
@@ -156,7 +156,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         }
         return $codePoints;
     }
-    public function folded(bool $compat = \true) : \Typo3RectorPrefix20210330\parent
+    public function folded(bool $compat = \true) : parent
     {
         $str = clone $this;
         if (!$compat || \PHP_VERSION_ID < 70300 || !\defined('Normalizer::NFKC_CF')) {
@@ -167,7 +167,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         }
         return $str;
     }
-    public function join(array $strings, string $lastGlue = null) : \Typo3RectorPrefix20210330\parent
+    public function join(array $strings, string $lastGlue = null) : parent
     {
         $str = clone $this;
         $tail = null !== $lastGlue && 1 < \count($strings) ? $lastGlue . \array_pop($strings) : '';
@@ -177,7 +177,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         }
         return $str;
     }
-    public function lower() : \Typo3RectorPrefix20210330\parent
+    public function lower() : parent
     {
         $str = clone $this;
         $str->string = \mb_strtolower(\str_replace('İ', 'i̇', $str->string), 'UTF-8');
@@ -219,7 +219,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         \normalizer_is_normalized($str->string, $form) ?: ($str->string = \normalizer_normalize($str->string, $form));
         return $str;
     }
-    public function padBoth(int $length, string $padStr = ' ') : \Typo3RectorPrefix20210330\parent
+    public function padBoth(int $length, string $padStr = ' ') : parent
     {
         if ('' === $padStr || !\preg_match('//u', $padStr)) {
             throw new \Typo3RectorPrefix20210330\Symfony\Component\String\Exception\InvalidArgumentException('Invalid UTF-8 string.');
@@ -228,7 +228,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $pad->string = $padStr;
         return $this->pad($length, $pad, \STR_PAD_BOTH);
     }
-    public function padEnd(int $length, string $padStr = ' ') : \Typo3RectorPrefix20210330\parent
+    public function padEnd(int $length, string $padStr = ' ') : parent
     {
         if ('' === $padStr || !\preg_match('//u', $padStr)) {
             throw new \Typo3RectorPrefix20210330\Symfony\Component\String\Exception\InvalidArgumentException('Invalid UTF-8 string.');
@@ -237,7 +237,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $pad->string = $padStr;
         return $this->pad($length, $pad, \STR_PAD_RIGHT);
     }
-    public function padStart(int $length, string $padStr = ' ') : \Typo3RectorPrefix20210330\parent
+    public function padStart(int $length, string $padStr = ' ') : parent
     {
         if ('' === $padStr || !\preg_match('//u', $padStr)) {
             throw new \Typo3RectorPrefix20210330\Symfony\Component\String\Exception\InvalidArgumentException('Invalid UTF-8 string.');
@@ -246,7 +246,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $pad->string = $padStr;
         return $this->pad($length, $pad, \STR_PAD_LEFT);
     }
-    public function replaceMatches(string $fromRegexp, $to) : \Typo3RectorPrefix20210330\parent
+    public function replaceMatches(string $fromRegexp, $to) : parent
     {
         if ($this->ignoreCase) {
             $fromRegexp .= 'i';
@@ -288,19 +288,19 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $str->string = $string;
         return $str;
     }
-    public function reverse() : \Typo3RectorPrefix20210330\parent
+    public function reverse() : parent
     {
         $str = clone $this;
         $str->string = \implode('', \array_reverse(\preg_split('/(\\X)/u', $str->string, -1, \PREG_SPLIT_DELIM_CAPTURE | \PREG_SPLIT_NO_EMPTY)));
         return $str;
     }
-    public function snake() : \Typo3RectorPrefix20210330\parent
+    public function snake() : parent
     {
         $str = $this->camel()->title();
         $str->string = \mb_strtolower(\preg_replace(['/(\\p{Lu}+)(\\p{Lu}\\p{Ll})/u', '/([\\p{Ll}0-9])(\\p{Lu})/u'], 'Typo3RectorPrefix20210330\\1_\\2', $str->string), 'UTF-8');
         return $str;
     }
-    public function title(bool $allWords = \false) : \Typo3RectorPrefix20210330\parent
+    public function title(bool $allWords = \false) : parent
     {
         $str = clone $this;
         $limit = $allWords ? -1 : 1;
@@ -309,7 +309,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         }, $str->string, $limit);
         return $str;
     }
-    public function trim(string $chars = " \t\n\r\0\v\f ﻿") : \Typo3RectorPrefix20210330\parent
+    public function trim(string $chars = " \t\n\r\0\v\f ﻿") : parent
     {
         if (" \t\n\r\0\v\f ﻿" !== $chars && !\preg_match('//u', $chars)) {
             throw new \Typo3RectorPrefix20210330\Symfony\Component\String\Exception\InvalidArgumentException('Invalid UTF-8 chars.');
@@ -319,7 +319,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $str->string = \preg_replace("{^[{$chars}]++|[{$chars}]++\$}uD", '', $str->string);
         return $str;
     }
-    public function trimEnd(string $chars = " \t\n\r\0\v\f ﻿") : \Typo3RectorPrefix20210330\parent
+    public function trimEnd(string $chars = " \t\n\r\0\v\f ﻿") : parent
     {
         if (" \t\n\r\0\v\f ﻿" !== $chars && !\preg_match('//u', $chars)) {
             throw new \Typo3RectorPrefix20210330\Symfony\Component\String\Exception\InvalidArgumentException('Invalid UTF-8 chars.');
@@ -329,7 +329,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $str->string = \preg_replace("{[{$chars}]++\$}uD", '', $str->string);
         return $str;
     }
-    public function trimStart(string $chars = " \t\n\r\0\v\f ﻿") : \Typo3RectorPrefix20210330\parent
+    public function trimStart(string $chars = " \t\n\r\0\v\f ﻿") : parent
     {
         if (" \t\n\r\0\v\f ﻿" !== $chars && !\preg_match('//u', $chars)) {
             throw new \Typo3RectorPrefix20210330\Symfony\Component\String\Exception\InvalidArgumentException('Invalid UTF-8 chars.');
@@ -339,7 +339,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
         $str->string = \preg_replace("{^[{$chars}]++}uD", '', $str->string);
         return $str;
     }
-    public function upper() : \Typo3RectorPrefix20210330\parent
+    public function upper() : parent
     {
         $str = clone $this;
         $str->string = \mb_strtoupper($str->string, 'UTF-8');
@@ -374,7 +374,7 @@ abstract class AbstractUnicodeString extends \Typo3RectorPrefix20210330\Symfony\
     /**
      * @return static
      */
-    private function pad(int $len, self $pad, int $type) : \Typo3RectorPrefix20210330\parent
+    private function pad(int $len, self $pad, int $type) : parent
     {
         $sLen = $this->length();
         if ($len <= $sLen) {

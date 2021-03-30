@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210330;
+
 
 #[Attribute(\Attribute::TARGET_CLASS)]
 final class Attribute

@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210330;
+
 
 class ValueError extends \Error
 {

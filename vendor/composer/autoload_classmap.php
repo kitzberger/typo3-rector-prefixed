@@ -6,7 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayItemNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayItemNode.php',
     'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayNode.php',
     'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprFalseNode' => $vendorDir . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprFalseNode.php',
@@ -2378,6 +2380,7 @@ return array(
     'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\AbstractVisitor' => $baseDir . '/src/TypoScript/Visitors/AbstractVisitor.php',
     'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\OldConditionToExpressionLanguageVisitor' => $baseDir . '/src/TypoScript/Visitors/OldConditionToExpressionLanguageVisitor.php',
     'Ssch\\TYPO3Rector\\ValueObject\\ReplacePackage' => $baseDir . '/src/ValueObject/ReplacePackage.php',
+    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Symplify\\RuleDocGenerator\\Category\\CategoryResolver' => $vendorDir . '/symplify/rule-doc-generator/src/Category/CategoryResolver.php',
     'Symplify\\RuleDocGenerator\\Command\\GenerateCommand' => $vendorDir . '/symplify/rule-doc-generator/src/Command/GenerateCommand.php',
     'Symplify\\RuleDocGenerator\\Contract\\Category\\CategoryInfererInterface' => $vendorDir . '/symplify/rule-doc-generator-contracts/src/Contract/Category/CategoryInfererInterface.php',
@@ -2413,7 +2416,6 @@ return array(
     'Symplify\\SymfonyPhpConfig\\Exception\\ValueObjectException' => $vendorDir . '/symplify/symfony-php-config/src/Exception/ValueObjectException.php',
     'Symplify\\SymfonyPhpConfig\\Reflection\\ArgumentAndParameterFactory' => $vendorDir . '/symplify/symfony-php-config/src/Reflection/ArgumentAndParameterFactory.php',
     'Symplify\\SymfonyPhpConfig\\ValueObjectInliner' => $vendorDir . '/symplify/symfony-php-config/src/ValueObjectInliner.php',
-    'Typo3RectorPrefix20210330\\Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Typo3RectorPrefix20210330\\Composer\\Semver\\Comparator' => $vendorDir . '/composer/semver/src/Comparator.php',
     'Typo3RectorPrefix20210330\\Composer\\Semver\\CompilingMatcher' => $vendorDir . '/composer/semver/src/CompilingMatcher.php',
     'Typo3RectorPrefix20210330\\Composer\\Semver\\Constraint\\Bound' => $vendorDir . '/composer/semver/src/Constraint/Bound.php',
@@ -2553,7 +2555,6 @@ return array(
     'Typo3RectorPrefix20210330\\Jean85\\Exception\\VersionMissingExceptionInterface' => $vendorDir . '/jean85/pretty-package-versions/src/Exception/VersionMissingExceptionInterface.php',
     'Typo3RectorPrefix20210330\\Jean85\\PrettyVersions' => $vendorDir . '/jean85/pretty-package-versions/src/PrettyVersions.php',
     'Typo3RectorPrefix20210330\\Jean85\\Version' => $vendorDir . '/jean85/pretty-package-versions/src/Version.php',
-    'Typo3RectorPrefix20210330\\JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Typo3RectorPrefix20210330\\Nette\\ArgumentOutOfRangeException' => $vendorDir . '/nette/utils/src/exceptions.php',
     'Typo3RectorPrefix20210330\\Nette\\DeprecatedException' => $vendorDir . '/nette/utils/src/exceptions.php',
     'Typo3RectorPrefix20210330\\Nette\\DirectoryNotFoundException' => $vendorDir . '/nette/utils/src/exceptions.php',
@@ -2645,7 +2646,6 @@ return array(
     'Typo3RectorPrefix20210330\\SebastianBergmann\\Diff\\Output\\UnifiedDiffOutputBuilder' => $vendorDir . '/sebastian/diff/src/Output/UnifiedDiffOutputBuilder.php',
     'Typo3RectorPrefix20210330\\SebastianBergmann\\Diff\\Parser' => $vendorDir . '/sebastian/diff/src/Parser.php',
     'Typo3RectorPrefix20210330\\SebastianBergmann\\Diff\\TimeEfficientLongestCommonSubsequenceCalculator' => $vendorDir . '/sebastian/diff/src/TimeEfficientLongestCommonSubsequenceCalculator.php',
-    'Typo3RectorPrefix20210330\\Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Typo3RectorPrefix20210330\\Symfony\\Component\\Cache\\Adapter\\AbstractAdapter' => $vendorDir . '/symfony/cache/Adapter/AbstractAdapter.php',
     'Typo3RectorPrefix20210330\\Symfony\\Component\\Cache\\Adapter\\AbstractTagAwareAdapter' => $vendorDir . '/symfony/cache/Adapter/AbstractTagAwareAdapter.php',
     'Typo3RectorPrefix20210330\\Symfony\\Component\\Cache\\Adapter\\AdapterInterface' => $vendorDir . '/symfony/cache/Adapter/AdapterInterface.php',
@@ -3709,9 +3709,9 @@ return array(
     'Typo3RectorPrefix20210330\\Symplify\\SymplifyKernel\\Strings\\KernelUniqueHasher' => $vendorDir . '/symplify/symplify-kernel/src/Strings/KernelUniqueHasher.php',
     'Typo3RectorPrefix20210330\\Symplify\\SymplifyKernel\\Strings\\StringsConverter' => $vendorDir . '/symplify/symplify-kernel/src/Strings/StringsConverter.php',
     'Typo3RectorPrefix20210330\\Symplify\\SymplifyKernel\\ValueObject\\KernelBootAndApplicationRun' => $vendorDir . '/symplify/symplify-kernel/src/ValueObject/KernelBootAndApplicationRun.php',
-    'Typo3RectorPrefix20210330\\UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-    'Typo3RectorPrefix20210330\\ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'Typo3RectorPrefix20210330\\Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',
     'Typo3RectorPrefix20210330\\Webmozart\\Assert\\InvalidArgumentException' => $vendorDir . '/webmozart/assert/src/InvalidArgumentException.php',
     'Typo3RectorPrefix20210330\\Webmozart\\Assert\\Mixin' => $vendorDir . '/webmozart/assert/src/Mixin.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 );

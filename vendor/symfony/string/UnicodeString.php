@@ -163,7 +163,7 @@ class UnicodeString extends \Typo3RectorPrefix20210330\Symfony\Component\String\
     /**
      * @return static
      */
-    public function normalize(int $form = self::NFC) : \Typo3RectorPrefix20210330\parent
+    public function normalize(int $form = self::NFC) : parent
     {
         $str = clone $this;
         if (\in_array($form, [self::NFC, self::NFKC], \true)) {

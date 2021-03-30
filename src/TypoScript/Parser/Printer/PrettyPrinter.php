@@ -117,7 +117,7 @@ final class PrettyPrinter implements \Typo3RectorPrefix20210330\Helmich\TypoScri
         $this->printStatementList($statement->statements, $output, $nesting + 1);
         $output->writeln($this->getIndent($nesting) . '}');
     }
-    private function printConditionalStatement(\Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface $output, int $nesting, \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement $statement, bool $hasNext = \false, bool $hasPrevious = \false) : void
+    private function printConditionalStatement(\Typo3RectorPrefix20210330\Symfony\Component\Console\Output\OutputInterface $output, int $nesting, \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement $statement) : void
     {
         $output->writeln($statement->condition);
         $this->printStatementList($statement->ifStatements, $output, $nesting);

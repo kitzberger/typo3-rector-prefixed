@@ -51,9 +51,7 @@ final class PrettyPrinter implements \Typo3RectorPrefix20210330\Helmich\TypoScri
             } elseif ($statement instanceof \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\Operator\Modification) {
                 $output->writeln(\sprintf('%s%s := %s(%s)', $indent, $statement->object->relativeName, $statement->call->method, $statement->call->arguments));
             } elseif ($statement instanceof \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement) {
-                $next = $i + 1 < $count ? $statements[$i + 1] : null;
-                $previous = $i - 1 >= 0 ? $statements[$i - 1] : null;
-                $this->printConditionalStatement($output, $nesting, $statement, $next instanceof \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement, $previous instanceof \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement);
+                $this->printConditionalStatement($output, $nesting, $statement);
             } elseif ($statement instanceof \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\IncludeStatement) {
                 $this->printIncludeStatement($output, $statement);
             } elseif ($statement instanceof \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\Comment) {

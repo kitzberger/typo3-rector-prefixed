@@ -7,7 +7,6 @@ use Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ConditionalSta
 use Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\Statement;
 use LogicException;
 use Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher;
-use Typo3RectorPrefix20210330\Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 /**
  * @see \Ssch\TYPO3Rector\Tests\TypoScript\Visitors\OldConditionToExpressionLanguageVisitorTest
  */

@@ -94,7 +94,7 @@ final class Typo3ProcessCommand extends \Rector\Core\Console\Command\AbstractCom
         $this->additionalAutoloader->autoloadWithInputAndSource($input, $paths);
         $fileExtensions = [];
         foreach ($this->processors as $processor) {
-            $fileExtensions = \array_merge($processor->allowedFileExtensions());
+            $fileExtensions = \array_merge($processor->allowedFileExtensions(), $fileExtensions);
         }
         $files = $this->filesFinder->findInDirectoriesAndFiles($paths, $fileExtensions);
         if (\count($files) > 0) {

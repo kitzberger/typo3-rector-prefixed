@@ -6,13 +6,13 @@ namespace Rector\Defluent\Tests\Rector\Return_\ReturnNewFluentChainMethodCallToN
 use Iterator;
 use Rector\Defluent\Rector\Return_\ReturnNewFluentChainMethodCallToNonFluentRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
 final class ReturnNewFluentChainMethodCallToNonFluentRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

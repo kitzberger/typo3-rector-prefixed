@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Symplify\EasyTesting;
+namespace Typo3RectorPrefix20210331\Symplify\EasyTesting;
 
-use Typo3RectorPrefix20210330\Nette\Utils\Strings;
-use Typo3RectorPrefix20210330\Symplify\EasyTesting\ValueObject\Prefix;
-use Typo3RectorPrefix20210330\Symplify\EasyTesting\ValueObject\SplitLine;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210331\Nette\Utils\Strings;
+use Typo3RectorPrefix20210331\Symplify\EasyTesting\ValueObject\Prefix;
+use Typo3RectorPrefix20210331\Symplify\EasyTesting\ValueObject\SplitLine;
+use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyTesting\Tests\MissingSkipPrefixResolver\MissingSkipPrefixResolverTest
  */
@@ -22,7 +22,7 @@ final class MissplacedSkipPrefixResolver
         foreach ($fixtureFileInfos as $fixtureFileInfo) {
             $hasNameSkipStart = $this->hasNameSkipStart($fixtureFileInfo);
             $fileContents = $fixtureFileInfo->getContents();
-            $hasSplitLine = (bool) \Typo3RectorPrefix20210330\Nette\Utils\Strings::match($fileContents, \Typo3RectorPrefix20210330\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
+            $hasSplitLine = (bool) \Typo3RectorPrefix20210331\Nette\Utils\Strings::match($fileContents, \Typo3RectorPrefix20210331\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
             if ($hasNameSkipStart && $hasSplitLine) {
                 $invalidFileInfos['incorrect_skips'][] = $fixtureFileInfo;
                 continue;
@@ -34,8 +34,8 @@ final class MissplacedSkipPrefixResolver
         }
         return $invalidFileInfos;
     }
-    private function hasNameSkipStart(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
+    private function hasNameSkipStart(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
     {
-        return (bool) \Typo3RectorPrefix20210330\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \Typo3RectorPrefix20210330\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
+        return (bool) \Typo3RectorPrefix20210331\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \Typo3RectorPrefix20210331\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
     }
 }

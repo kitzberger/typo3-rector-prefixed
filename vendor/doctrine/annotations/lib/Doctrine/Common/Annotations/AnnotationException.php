@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210330\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210331\Doctrine\Common\Annotations;
 
 use Exception;
 use function get_class;

@@ -6,14 +6,14 @@ namespace Rector\DeadCode\Tests\Rector\ClassMethod\RemoveUnusedParameterRector;
 use Iterator;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedParameterRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
 final class Php80Test extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @requires PHP 8.0
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

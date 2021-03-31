@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210330\Symfony\Contracts\Cache;
+namespace Typo3RectorPrefix20210331\Symfony\Contracts\Cache;
 
-use Typo3RectorPrefix20210330\Psr\Cache\CacheItemInterface;
+use Typo3RectorPrefix20210331\Psr\Cache\CacheItemInterface;
 /**
  * Computes and returns the cached value of an item.
  *
@@ -24,5 +24,5 @@ interface CallbackInterface
      *
      * @return mixed The computed value for the passed item
      */
-    public function __invoke(\Typo3RectorPrefix20210330\Psr\Cache\CacheItemInterface $item, bool &$save);
+    public function __invoke(\Typo3RectorPrefix20210331\Psr\Cache\CacheItemInterface $item, bool &$save);
 }

@@ -1,20 +1,20 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\HttpKernel;
+namespace Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\HttpKernel;
 
-use Typo3RectorPrefix20210330\Symfony\Component\Config\Loader\LoaderInterface;
-use Typo3RectorPrefix20210330\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
-use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle;
-use Typo3RectorPrefix20210330\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class PhpConfigPrinterKernel extends \Typo3RectorPrefix20210330\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel implements \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
+use Typo3RectorPrefix20210331\Symfony\Component\Config\Loader\LoaderInterface;
+use Typo3RectorPrefix20210331\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Typo3RectorPrefix20210331\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle;
+use Typo3RectorPrefix20210331\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class PhpConfigPrinterKernel extends \Typo3RectorPrefix20210331\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel implements \Typo3RectorPrefix20210331\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
 {
     /**
      * @var string[]
      */
     private $configs = [];
-    public function registerContainerConfiguration(\Typo3RectorPrefix20210330\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\Typo3RectorPrefix20210331\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         $loader->load(__DIR__ . '/../../config/config.php');
         foreach ($this->configs as $config) {
@@ -26,7 +26,7 @@ final class PhpConfigPrinterKernel extends \Typo3RectorPrefix20210330\Symplify\S
      */
     public function registerBundles() : iterable
     {
-        return [new \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle()];
+        return [new \Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle()];
     }
     /**
      * @param string[] $configs

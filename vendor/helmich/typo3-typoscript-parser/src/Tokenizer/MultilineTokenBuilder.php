@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Tokenizer;
+namespace Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer;
 
 /**
  * Helper class for building tokens that span multiple lines.
@@ -48,16 +48,16 @@ class MultilineTokenBuilder
      * @param string $append Token content to append
      * @return TokenInterface
      */
-    public function endMultilineToken(string $append = '') : \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Tokenizer\TokenInterface
+    public function endMultilineToken(string $append = '') : \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\TokenInterface
     {
         $value = ($this->value ?? "") . $append;
         $type = $this->type;
         $startLine = $this->startLine;
         $startColumn = $this->startColumn;
         if ($type === null || $startLine === null || $startColumn === null) {
-            throw new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Tokenizer\TokenizerException('cannot call "endMultilineToken" before calling "startMultilineToken"');
+            throw new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\TokenizerException('cannot call "endMultilineToken" before calling "startMultilineToken"');
         }
-        $token = new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Tokenizer\Token($type, \rtrim($value), $startLine, $startColumn);
+        $token = new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\Token($type, \rtrim($value), $startLine, $startColumn);
         $this->reset();
         return $token;
     }

@@ -5,8 +5,8 @@ namespace Rector\RectorGenerator\Tests\Provider;
 
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\RectorGenerator\Provider\NodeTypesProvider;
-use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class NodeTypesProviderTest extends \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210331\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class NodeTypesProviderTest extends \Typo3RectorPrefix20210331\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var NodeTypesProvider
@@ -22,7 +22,7 @@ final class NodeTypesProviderTest extends \Typo3RectorPrefix20210330\Symplify\Pa
         $nodeTypes = $this->nodeTypesProvider->provide();
         $nodeTypeCount = \count($nodeTypes);
         $this->assertGreaterThan(70, $nodeTypeCount);
-        $this->assertContains('Typo3RectorPrefix20210330\\Expr\\New_', $nodeTypes);
+        $this->assertContains('Typo3RectorPrefix20210331\\Expr\\New_', $nodeTypes);
         $this->assertContains('Param', $nodeTypes);
     }
 }

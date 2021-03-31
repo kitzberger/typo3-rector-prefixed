@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\Service;
+namespace Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\Service;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Expression;
-use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
-use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
-use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\VariableName;
+use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory;
+use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\ValueObject\VariableName;
 final class ServicesPhpNodeFactory
 {
     /**
@@ -29,7 +29,7 @@ final class ServicesPhpNodeFactory
      * @var AutoBindNodeFactory
      */
     private $autoBindNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\Service\AutoBindNodeFactory $autoBindNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\CommonNodeFactory $commonNodeFactory, \Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory, \Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\Service\AutoBindNodeFactory $autoBindNodeFactory)
     {
         $this->commonNodeFactory = $commonNodeFactory;
         $this->argsNodeFactory = $argsNodeFactory;
@@ -38,7 +38,7 @@ final class ServicesPhpNodeFactory
     public function createResource(string $serviceKey, array $serviceValues) : \PhpParser\Node\Stmt\Expression
     {
         $servicesLoadMethodCall = $this->createServicesLoadMethodCall($serviceKey, $serviceValues);
-        $servicesLoadMethodCall = $this->autoBindNodeFactory->createAutoBindCalls($serviceValues, $servicesLoadMethodCall, \Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\Service\AutoBindNodeFactory::TYPE_SERVICE);
+        $servicesLoadMethodCall = $this->autoBindNodeFactory->createAutoBindCalls($serviceValues, $servicesLoadMethodCall, \Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\Service\AutoBindNodeFactory::TYPE_SERVICE);
         if (!isset($serviceValues[self::EXCLUDE])) {
             return new \PhpParser\Node\Stmt\Expression($servicesLoadMethodCall);
         }
@@ -56,7 +56,7 @@ final class ServicesPhpNodeFactory
     }
     private function createServicesLoadMethodCall(string $serviceKey, $serviceValues) : \PhpParser\Node\Expr\MethodCall
     {
-        $servicesVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES);
+        $servicesVariable = new \PhpParser\Node\Expr\Variable(\Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\ValueObject\VariableName::SERVICES);
         $resource = $serviceValues['resource'];
         $args = [];
         $args[] = new \PhpParser\Node\Arg(new \PhpParser\Node\Scalar\String_($serviceKey));

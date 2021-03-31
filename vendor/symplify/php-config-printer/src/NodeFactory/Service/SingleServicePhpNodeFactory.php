@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\Service;
+namespace Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\Service;
 
 use PhpParser\BuilderHelpers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
-use Typo3RectorPrefix20210330\Symfony\Component\Yaml\Tag\TaggedValue;
-use Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210331\Symfony\Component\Yaml\Tag\TaggedValue;
+use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
 final class SingleServicePhpNodeFactory
 {
     /**
      * @var ArgsNodeFactory
      */
     private $argsNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210330\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory)
     {
         $this->argsNodeFactory = $argsNodeFactory;
     }
@@ -48,7 +48,7 @@ final class SingleServicePhpNodeFactory
                 $args[] = new \PhpParser\Node\Arg($returnCloneExpr);
             }
             $currentArray = \current($call);
-            if ($currentArray instanceof \Typo3RectorPrefix20210330\Symfony\Component\Yaml\Tag\TaggedValue) {
+            if ($currentArray instanceof \Typo3RectorPrefix20210331\Symfony\Component\Yaml\Tag\TaggedValue) {
                 $args[] = new \PhpParser\Node\Arg(\PhpParser\BuilderHelpers::normalizeValue(\true));
             }
             $methodCall = new \PhpParser\Node\Expr\MethodCall($methodCall, 'call', $args);

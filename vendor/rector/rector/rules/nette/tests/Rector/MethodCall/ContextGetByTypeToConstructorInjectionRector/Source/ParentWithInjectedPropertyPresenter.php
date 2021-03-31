@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Rector\Nette\Tests\Rector\MethodCall\ContextGetByTypeToConstructorInjectionRector\Source;
 
-use Typo3RectorPrefix20210330\Nette\Application\IPresenter;
-use Typo3RectorPrefix20210330\Nette\Application\IResponse;
-use Typo3RectorPrefix20210330\Nette\Application\Request;
-class ParentWithInjectedPropertyPresenter implements \Typo3RectorPrefix20210330\Nette\Application\IPresenter
+use Typo3RectorPrefix20210331\Nette\Application\IPresenter;
+use Typo3RectorPrefix20210331\Nette\Application\IResponse;
+use Typo3RectorPrefix20210331\Nette\Application\Request;
+class ParentWithInjectedPropertyPresenter implements \Typo3RectorPrefix20210331\Nette\Application\IPresenter
 {
     /**
      * @inject
      * @var SomeTypeToInject
      */
     public $someTypeToInject;
-    function run(\Typo3RectorPrefix20210330\Nette\Application\Request $request) : \Typo3RectorPrefix20210330\Nette\Application\IResponse
+    function run(\Typo3RectorPrefix20210331\Nette\Application\Request $request) : \Typo3RectorPrefix20210331\Nette\Application\IResponse
     {
     }
 }

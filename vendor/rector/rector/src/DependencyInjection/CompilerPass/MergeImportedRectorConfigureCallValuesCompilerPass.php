@@ -4,10 +4,10 @@ declare (strict_types=1);
 namespace Rector\Core\DependencyInjection\CompilerPass;
 
 use Rector\Core\DependencyInjection\Collector\ConfigureCallValuesCollector;
-use Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\Definition;
-final class MergeImportedRectorConfigureCallValuesCompilerPass implements \Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+use Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\Definition;
+final class MergeImportedRectorConfigureCallValuesCompilerPass implements \Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * @var string
@@ -21,13 +21,13 @@ final class MergeImportedRectorConfigureCallValuesCompilerPass implements \Typo3
     {
         $this->configureCallValuesCollector = $configureCallValuesCollector;
     }
-    public function process(\Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(\Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         foreach ($containerBuilder->getDefinitions() as $id => $definition) {
             $this->completeCollectedArguments($id, $definition);
         }
     }
-    private function completeCollectedArguments(string $serviceClass, \Typo3RectorPrefix20210330\Symfony\Component\DependencyInjection\Definition $definition) : void
+    private function completeCollectedArguments(string $serviceClass, \Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\Definition $definition) : void
     {
         $configureCallValues = $this->configureCallValuesCollector->getConfigureCallValues($serviceClass);
         if ($configureCallValues === []) {

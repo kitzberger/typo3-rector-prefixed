@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Symplify\PackageBuilder\Contract\HttpKernel;
+namespace Typo3RectorPrefix20210331\Symplify\PackageBuilder\Contract\HttpKernel;
 
-use Typo3RectorPrefix20210330\Symfony\Component\HttpKernel\KernelInterface;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
-interface ExtraConfigAwareKernelInterface extends \Typo3RectorPrefix20210330\Symfony\Component\HttpKernel\KernelInterface
+use Typo3RectorPrefix20210331\Symfony\Component\HttpKernel\KernelInterface;
+use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
+interface ExtraConfigAwareKernelInterface extends \Typo3RectorPrefix20210331\Symfony\Component\HttpKernel\KernelInterface
 {
     /**
      * @param string[]|SmartFileInfo[] $configs

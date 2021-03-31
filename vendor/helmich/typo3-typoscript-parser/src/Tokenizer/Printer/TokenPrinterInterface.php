@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Tokenizer\Printer;
+namespace Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\Printer;
 
-use Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Tokenizer\TokenInterface;
+use Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\TokenInterface;
 /**
  * Interface definition for a class that prints token streams
  *

@@ -1,5 +1,5 @@
 <?php
 
-namespace Typo3RectorPrefix20210330;
+namespace Typo3RectorPrefix20210331;
 
 echo 'hi';

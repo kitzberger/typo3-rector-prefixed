@@ -6,13 +6,13 @@ namespace Rector\Php73\Tests\Rector\FuncCall\SetcookieRector;
 use Iterator;
 use Rector\Php73\Rector\FuncCall\SetCookieRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
 final class SetCookieRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

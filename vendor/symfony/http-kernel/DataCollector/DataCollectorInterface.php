@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210330\Symfony\Component\HttpKernel\DataCollector;
+namespace Typo3RectorPrefix20210331\Symfony\Component\HttpKernel\DataCollector;
 
-use Typo3RectorPrefix20210330\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210330\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210330\Symfony\Contracts\Service\ResetInterface;
+use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210331\Symfony\Contracts\Service\ResetInterface;
 /**
  * DataCollectorInterface.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface DataCollectorInterface extends \Typo3RectorPrefix20210330\Symfony\Contracts\Service\ResetInterface
+interface DataCollectorInterface extends \Typo3RectorPrefix20210331\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * Collects data for the given Request and Response.
      */
-    public function collect(\Typo3RectorPrefix20210330\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210330\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null);
+    public function collect(\Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null);
     /**
      * Returns the name of the collector.
      *

@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Rector\RectorGenerator\Generator;
 
-use Typo3RectorPrefix20210330\Nette\Utils\Strings;
+use Typo3RectorPrefix20210331\Nette\Utils\Strings;
 use Rector\RectorGenerator\FileSystem\TemplateFileSystem;
 use Rector\RectorGenerator\TemplateFactory;
 use Rector\RectorGenerator\ValueObject\RectorRecipe;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileSystem;
 final class FileGenerator
 {
     /**
@@ -28,7 +28,7 @@ final class FileGenerator
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\RectorGenerator\TemplateFactory $templateFactory, \Rector\RectorGenerator\FileSystem\TemplateFileSystem $templateFileSystem)
+    public function __construct(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\RectorGenerator\TemplateFactory $templateFactory, \Rector\RectorGenerator\FileSystem\TemplateFileSystem $templateFileSystem)
     {
         $this->templateFileSystem = $templateFileSystem;
         $this->templateFactory = $templateFactory;
@@ -50,13 +50,13 @@ final class FileGenerator
     /**
      * @param array<string, mixed> $templateVariables
      */
-    private function generateFileInfoWithTemplateVariables(\Typo3RectorPrefix20210330\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, array $templateVariables, \Rector\RectorGenerator\ValueObject\RectorRecipe $rectorRecipe, string $targetDirectory) : string
+    private function generateFileInfoWithTemplateVariables(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, array $templateVariables, \Rector\RectorGenerator\ValueObject\RectorRecipe $rectorRecipe, string $targetDirectory) : string
     {
         $targetFilePath = $this->templateFileSystem->resolveDestination($smartFileInfo, $templateVariables, $rectorRecipe, $targetDirectory);
         $content = $this->templateFactory->create($smartFileInfo->getContents(), $templateVariables);
         // replace "Rector\Utils\" with "Utils\Rector\" for 3rd party packages
         if (!$rectorRecipe->isRectorRepository()) {
-            $content = \Typo3RectorPrefix20210330\Nette\Utils\Strings::replace($content, self::RECTOR_UTILS_REGEX, 'Typo3RectorPrefix20210330\\Utils\\Rector');
+            $content = \Typo3RectorPrefix20210331\Nette\Utils\Strings::replace($content, self::RECTOR_UTILS_REGEX, 'Typo3RectorPrefix20210331\\Utils\\Rector');
         }
         $this->smartFileSystem->dumpFile($targetFilePath, $content);
         return $targetFilePath;

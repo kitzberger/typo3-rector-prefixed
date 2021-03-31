@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser;
+namespace Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser;
 
-use Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\Statement;
+use Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\AST\Statement;
 interface ParserInterface
 {
     /**

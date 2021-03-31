@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210330\Symfony\Component\Config;
+namespace Typo3RectorPrefix20210331\Symfony\Component\Config;
 
-use Typo3RectorPrefix20210330\Symfony\Component\Config\Resource\ResourceInterface;
+use Typo3RectorPrefix20210331\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Interface for ConfigCache.
  *

@@ -11,8 +11,8 @@ use PhpParser\Node\Stmt\ClassLike;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\Core\PhpParser\Parser\SimplePhpParser;
-use Typo3RectorPrefix20210330\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class BetterNodeFinderTest extends \Typo3RectorPrefix20210330\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210331\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class BetterNodeFinderTest extends \Typo3RectorPrefix20210331\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var Node[]

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210330\Symfony\Contracts\HttpClient\Exception;
+namespace Typo3RectorPrefix20210331\Symfony\Contracts\HttpClient\Exception;
 
 /**
  * When any error happens at the transport level.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-interface TransportExceptionInterface extends \Typo3RectorPrefix20210330\Symfony\Contracts\HttpClient\Exception\ExceptionInterface
+interface TransportExceptionInterface extends \Typo3RectorPrefix20210331\Symfony\Contracts\HttpClient\Exception\ExceptionInterface
 {
 }

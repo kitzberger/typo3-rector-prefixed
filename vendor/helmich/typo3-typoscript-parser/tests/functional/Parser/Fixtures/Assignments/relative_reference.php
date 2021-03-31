@@ -1,6 +1,6 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210330;
+namespace Typo3RectorPrefix20210331;
 
-return [new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\Operator\Assignment(new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ObjectPath('bar', 'bar'), new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\Scalar('baz'), 1), new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\Operator\Reference(new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ObjectPath('baz', 'baz'), new \Typo3RectorPrefix20210330\Helmich\TypoScriptParser\Parser\AST\ObjectPath('bar', '.bar'), 2)];
+return [new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\AST\Operator\Assignment(new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\AST\ObjectPath('bar', 'bar'), new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\AST\Scalar('baz'), 1), new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\AST\Operator\Reference(new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\AST\ObjectPath('baz', 'baz'), new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\AST\ObjectPath('bar', '.bar'), 2)];

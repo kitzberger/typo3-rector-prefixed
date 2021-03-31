@@ -30,7 +30,7 @@ final class EmailFinisherTransformer implements \Ssch\TYPO3Rector\Yaml\Form\Tran
             if (!\array_key_exists('identifier', $finisher)) {
                 continue;
             }
-            if ('EmailToReceiver' !== $finisher['identifier']) {
+            if (!\in_array($finisher['identifier'], ['EmailToSender', 'EmailToReceiver'], \true)) {
                 continue;
             }
             if (!\array_key_exists(self::OPTIONS, $finisher)) {

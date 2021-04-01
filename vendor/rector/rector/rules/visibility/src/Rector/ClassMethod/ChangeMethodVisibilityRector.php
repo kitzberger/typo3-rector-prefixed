@@ -12,7 +12,7 @@ use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\Visibility\ValueObject\ChangeMethodVisibility;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210331\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210401\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Visibility\Tests\Rector\ClassMethod\ChangeMethodVisibilityRector\ChangeMethodVisibilityRectorTest
  */
@@ -92,7 +92,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $methodVisibilities = $configuration[self::METHOD_VISIBILITIES] ?? [];
-        \Typo3RectorPrefix20210331\Webmozart\Assert\Assert::allIsInstanceOf($methodVisibilities, \Rector\Visibility\ValueObject\ChangeMethodVisibility::class);
+        \Typo3RectorPrefix20210401\Webmozart\Assert\Assert::allIsInstanceOf($methodVisibilities, \Rector\Visibility\ValueObject\ChangeMethodVisibility::class);
         $this->methodVisibilities = $methodVisibilities;
     }
 }

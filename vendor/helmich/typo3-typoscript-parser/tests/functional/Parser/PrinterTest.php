@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tests\Functional\Parser;
+namespace Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Tests\Functional\Parser;
 
-use Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\Printer\ASTPrinterInterface;
-use Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\Printer\PrettyPrinter;
-use Typo3RectorPrefix20210331\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210331\Symfony\Component\Console\Output\BufferedOutput;
-class PrinterTest extends \Typo3RectorPrefix20210331\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Parser\Printer\ASTPrinterInterface;
+use Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Parser\Printer\PrettyPrinter;
+use Typo3RectorPrefix20210401\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210401\Symfony\Component\Console\Output\BufferedOutput;
+class PrinterTest extends \Typo3RectorPrefix20210401\PHPUnit\Framework\TestCase
 {
     /** @var ASTPrinterInterface */
     private $printer;
     public function setUp() : void
     {
-        $this->printer = new \Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\Printer\PrettyPrinter();
+        $this->printer = new \Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Parser\Printer\PrettyPrinter();
     }
     public function dataForPrinterTest()
     {
@@ -40,7 +40,7 @@ class PrinterTest extends \Typo3RectorPrefix20210331\PHPUnit\Framework\TestCase
      */
     public function testParsedCodeIsCorrectlyPrinted($ast, $expectedOutput)
     {
-        $output = new \Typo3RectorPrefix20210331\Symfony\Component\Console\Output\BufferedOutput();
+        $output = new \Typo3RectorPrefix20210401\Symfony\Component\Console\Output\BufferedOutput();
         $this->printer->printStatements($ast, $output);
         $this->assertEquals(\trim($expectedOutput), \trim($output->fetch()));
     }

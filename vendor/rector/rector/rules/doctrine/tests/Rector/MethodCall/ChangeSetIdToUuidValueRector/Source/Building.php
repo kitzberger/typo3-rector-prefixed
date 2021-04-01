@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Tests\Rector\MethodCall\ChangeSetIdToUuidValueRector\Source;
 
-use Typo3RectorPrefix20210331\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210401\Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */

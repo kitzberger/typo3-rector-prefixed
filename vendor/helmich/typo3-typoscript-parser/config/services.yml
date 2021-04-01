@@ -1,10 +1,10 @@
 services:
   tokenizer:
-    class: Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\Tokenizer
+    class: Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Tokenizer\Tokenizer
   token_printer_structured:
-    class: Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\Printer\StructuredTokenPrinter
+    class: Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Tokenizer\Printer\StructuredTokenPrinter
   token_printer_code:
-    class: Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Tokenizer\Printer\CodeTokenPrinter
+    class: Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Tokenizer\Printer\CodeTokenPrinter
   parser:
-    class: Typo3RectorPrefix20210331\Helmich\TypoScriptParser\Parser\Parser
+    class: Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Parser\Parser
     arguments: ['@tokenizer']

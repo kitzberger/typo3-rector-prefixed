@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\RuleDocGenerator\RuleCodeSamplePrinter;
 
-use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\Printer\SmartPhpConfigPrinter;
+use Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\Printer\SmartPhpConfigPrinter;
 use Symplify\RuleDocGenerator\Printer\CodeSamplePrinter\DiffCodeSamplePrinter;
 use Symplify\RuleDocGenerator\Printer\MarkdownCodeWrapper;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
@@ -22,7 +22,7 @@ final class ConfiguredCodeSamplerPrinter
      * @var DiffCodeSamplePrinter
      */
     private $diffCodeSamplePrinter;
-    public function __construct(\Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\Printer\SmartPhpConfigPrinter $smartPhpConfigPrinter, \Symplify\RuleDocGenerator\Printer\MarkdownCodeWrapper $markdownCodeWrapper, \Symplify\RuleDocGenerator\Printer\CodeSamplePrinter\DiffCodeSamplePrinter $diffCodeSamplePrinter)
+    public function __construct(\Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\Printer\SmartPhpConfigPrinter $smartPhpConfigPrinter, \Symplify\RuleDocGenerator\Printer\MarkdownCodeWrapper $markdownCodeWrapper, \Symplify\RuleDocGenerator\Printer\CodeSamplePrinter\DiffCodeSamplePrinter $diffCodeSamplePrinter)
     {
         $this->smartPhpConfigPrinter = $smartPhpConfigPrinter;
         $this->markdownCodeWrapper = $markdownCodeWrapper;

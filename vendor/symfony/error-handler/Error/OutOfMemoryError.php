@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210331\Symfony\Component\ErrorHandler\Error;
+namespace Typo3RectorPrefix20210401\Symfony\Component\ErrorHandler\Error;
 
-class OutOfMemoryError extends \Typo3RectorPrefix20210331\Symfony\Component\ErrorHandler\Error\FatalError
+class OutOfMemoryError extends \Typo3RectorPrefix20210401\Symfony\Component\ErrorHandler\Error\FatalError
 {
 }

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteToSymfony\Rector\ClassMethod;
 
-use Typo3RectorPrefix20210331\Composer\Script\Event;
+use Typo3RectorPrefix20210401\Composer\Script\Event;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\Array_;
@@ -80,7 +80,7 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return null;
         }
-        if (!$this->isObjectType($classLike, 'Typo3RectorPrefix20210331\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface')) {
+        if (!$this->isObjectType($classLike, 'Typo3RectorPrefix20210401\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface')) {
             return null;
         }
         if (!$this->isName($node, 'getSubscribedEvents')) {

@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210331\Nette\Neon;
+namespace Typo3RectorPrefix20210401\Nette\Neon;
 
 /**
  * Representation of NEON entity 'foo(bar=1)'

@@ -18,8 +18,8 @@ use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTypeChanger;
 use Rector\Core\Contract\Rector\ConfigurableRectorInterface;
 use Rector\Core\Rector\AbstractRector;
 use Rector\Naming\Naming\PropertyNaming;
-use Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
+use Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -55,21 +55,21 @@ final class StaticTypeToSetterInjectionRector extends \Rector\Core\Rector\Abstra
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Changes types to setter injection', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample(<<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210331;
+namespace Typo3RectorPrefix20210401;
 
 final class CheckoutEntityFactory
 {
     public function run()
     {
-        return \Typo3RectorPrefix20210331\SomeStaticClass::go();
+        return \Typo3RectorPrefix20210401\SomeStaticClass::go();
     }
 }
-\class_alias('Typo3RectorPrefix20210331\\CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
+\class_alias('Typo3RectorPrefix20210401\\CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210331;
+namespace Typo3RectorPrefix20210401;
 
 final class CheckoutEntityFactory
 {
@@ -77,7 +77,7 @@ final class CheckoutEntityFactory
      * @var SomeStaticClass
      */
     private $someStaticClass;
-    public function setSomeStaticClass(\Typo3RectorPrefix20210331\SomeStaticClass $someStaticClass)
+    public function setSomeStaticClass(\Typo3RectorPrefix20210401\SomeStaticClass $someStaticClass)
     {
         $this->someStaticClass = $someStaticClass;
     }
@@ -86,7 +86,7 @@ final class CheckoutEntityFactory
         return $this->someStaticClass->go();
     }
 }
-\class_alias('Typo3RectorPrefix20210331\\CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
+\class_alias('Typo3RectorPrefix20210401\\CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
 CODE_SAMPLE
 , [self::STATIC_TYPES => ['SomeStaticClass']])]);
     }
@@ -134,7 +134,7 @@ CODE_SAMPLE
                 $class->implements[] = new \PhpParser\Node\Name\FullyQualified($implements);
             }
             $variableName = $this->propertyNaming->fqnToVariableName($objectType);
-            $paramBuilder = new \Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($variableName);
+            $paramBuilder = new \Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($variableName);
             $paramBuilder->setType(new \PhpParser\Node\Name\FullyQualified($staticType));
             $param = $paramBuilder->getNode();
             $assign = $this->nodeFactory->createPropertyAssignment($variableName);
@@ -157,7 +157,7 @@ CODE_SAMPLE
     private function createSetEntityFactoryClassMethod(string $variableName, \PhpParser\Node\Param $param, \PhpParser\Node\Expr\Assign $assign) : \PhpParser\Node\Stmt\ClassMethod
     {
         $setMethodName = 'set' . \ucfirst($variableName);
-        $setEntityFactoryMethodBuilder = new \Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($setMethodName);
+        $setEntityFactoryMethodBuilder = new \Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($setMethodName);
         $setEntityFactoryMethodBuilder->makePublic();
         $setEntityFactoryMethodBuilder->addParam($param);
         $setEntityFactoryMethodBuilder->setReturnType('void');

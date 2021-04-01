@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210331\Psr\EventDispatcher;
+namespace Typo3RectorPrefix20210401\Psr\EventDispatcher;
 
 /**
  * Defines a dispatcher for events.

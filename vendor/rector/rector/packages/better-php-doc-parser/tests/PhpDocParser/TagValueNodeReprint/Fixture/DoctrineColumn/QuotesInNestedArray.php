@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocParser\TagValueNodeReprint\Fixture\DoctrineColumn;
 
-use Typo3RectorPrefix20210331\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210401\Doctrine\ORM\Mapping as ORM;
 final class QuotesInNestedArray
 {
     /**

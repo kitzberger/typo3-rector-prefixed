@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210331\Symfony\Contracts\HttpClient;
+namespace Typo3RectorPrefix20210401\Symfony\Contracts\HttpClient;
 
 /**
  * Yields response chunks, returned by HttpClientInterface::stream().
@@ -17,6 +17,6 @@ namespace Typo3RectorPrefix20210331\Symfony\Contracts\HttpClient;
  */
 interface ResponseStreamInterface extends \Iterator
 {
-    public function key() : \Typo3RectorPrefix20210331\Symfony\Contracts\HttpClient\ResponseInterface;
-    public function current() : \Typo3RectorPrefix20210331\Symfony\Contracts\HttpClient\ChunkInterface;
+    public function key() : \Typo3RectorPrefix20210401\Symfony\Contracts\HttpClient\ResponseInterface;
+    public function current() : \Typo3RectorPrefix20210401\Symfony\Contracts\HttpClient\ChunkInterface;
 }

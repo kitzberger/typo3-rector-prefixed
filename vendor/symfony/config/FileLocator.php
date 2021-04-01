@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210331\Symfony\Component\Config;
+namespace Typo3RectorPrefix20210401\Symfony\Component\Config;
 
-use Typo3RectorPrefix20210331\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use Typo3RectorPrefix20210401\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * FileLocator uses an array of pre-defined paths to find files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FileLocator implements \Typo3RectorPrefix20210331\Symfony\Component\Config\FileLocatorInterface
+class FileLocator implements \Typo3RectorPrefix20210401\Symfony\Component\Config\FileLocatorInterface
 {
     protected $paths;
     /**
@@ -36,7 +36,7 @@ class FileLocator implements \Typo3RectorPrefix20210331\Symfony\Component\Config
         }
         if ($this->isAbsolutePath($name)) {
             if (!\file_exists($name)) {
-                throw new \Typo3RectorPrefix20210331\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist.', $name), 0, null, [$name]);
+                throw new \Typo3RectorPrefix20210401\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist.', $name), 0, null, [$name]);
             }
             return $name;
         }
@@ -57,7 +57,7 @@ class FileLocator implements \Typo3RectorPrefix20210331\Symfony\Component\Config
             }
         }
         if (!$filepaths) {
-            throw new \Typo3RectorPrefix20210331\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist (in: "%s").', $name, \implode('", "', $paths)), 0, null, $notfound);
+            throw new \Typo3RectorPrefix20210401\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist (in: "%s").', $name, \implode('", "', $paths)), 0, null, $notfound);
         }
         return $filepaths;
     }

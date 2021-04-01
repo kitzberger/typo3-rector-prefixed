@@ -6,13 +6,13 @@ namespace Rector\CodeQuality\Tests\Rector\Identical\FlipTypeControlToUseExclusiv
 use Iterator;
 use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo;
 final class FlipTypeControlToUseExclusiveTypeRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

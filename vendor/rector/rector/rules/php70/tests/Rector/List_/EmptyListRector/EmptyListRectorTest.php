@@ -6,13 +6,13 @@ namespace Rector\Php70\Tests\Rector\List_\EmptyListRector;
 use Iterator;
 use Rector\Php70\Rector\List_\EmptyListRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo;
 final class EmptyListRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfoWithoutAutoload($fileInfo);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210331\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210401\Doctrine\Common\Annotations;
 
 /**
  * Marker interface for PHP7/PHP8 compatible support

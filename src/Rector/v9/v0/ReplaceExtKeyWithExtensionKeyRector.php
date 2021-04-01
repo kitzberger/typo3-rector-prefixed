@@ -11,7 +11,7 @@ use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\FileHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.0/Important-82692-GuidelinesForExtensionFiles.html
  * @see \Ssch\TYPO3Rector\Tests\Rector\v9\v0\ReplaceExtKeyWithExtensionKey\ReplaceExtKeyWithExtensionKeyRectorTest
@@ -58,7 +58,7 @@ CODE_SAMPLE
     {
         /** @var SmartFileInfo $fileInfo */
         $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$fileInfo instanceof \Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo) {
             return null;
         }
         if (!$this->isExtLocalConf($fileInfo) && !$this->isExtTables($fileInfo)) {

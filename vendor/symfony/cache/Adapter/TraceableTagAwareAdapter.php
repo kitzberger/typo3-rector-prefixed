@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210331\Symfony\Component\Cache\Adapter;
+namespace Typo3RectorPrefix20210401\Symfony\Component\Cache\Adapter;
 
-use Typo3RectorPrefix20210331\Symfony\Contracts\Cache\TagAwareCacheInterface;
+use Typo3RectorPrefix20210401\Symfony\Contracts\Cache\TagAwareCacheInterface;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class TraceableTagAwareAdapter extends \Typo3RectorPrefix20210331\Symfony\Component\Cache\Adapter\TraceableAdapter implements \Typo3RectorPrefix20210331\Symfony\Component\Cache\Adapter\TagAwareAdapterInterface, \Typo3RectorPrefix20210331\Symfony\Contracts\Cache\TagAwareCacheInterface
+class TraceableTagAwareAdapter extends \Typo3RectorPrefix20210401\Symfony\Component\Cache\Adapter\TraceableAdapter implements \Typo3RectorPrefix20210401\Symfony\Component\Cache\Adapter\TagAwareAdapterInterface, \Typo3RectorPrefix20210401\Symfony\Contracts\Cache\TagAwareCacheInterface
 {
-    public function __construct(\Typo3RectorPrefix20210331\Symfony\Component\Cache\Adapter\TagAwareAdapterInterface $pool)
+    public function __construct(\Typo3RectorPrefix20210401\Symfony\Component\Cache\Adapter\TagAwareAdapterInterface $pool)
     {
         parent::__construct($pool);
     }

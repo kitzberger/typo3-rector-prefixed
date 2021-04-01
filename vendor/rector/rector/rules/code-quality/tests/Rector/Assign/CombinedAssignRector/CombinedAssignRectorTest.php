@@ -6,7 +6,7 @@ namespace Rector\CodeQuality\Tests\Rector\Assign\CombinedAssignRector;
 use Iterator;
 use Rector\CodeQuality\Rector\Assign\CombinedAssignRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * Some tests used from:
  * - https://github.com/doctrine/coding-standard/pull/83/files
@@ -17,7 +17,7 @@ final class CombinedAssignRectorTest extends \Rector\Testing\PHPUnit\AbstractRec
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210331\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

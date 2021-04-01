@@ -1,5 +1,5 @@
 <?php
 
-namespace Typo3RectorPrefix20210331;
+namespace Typo3RectorPrefix20210401;
 
 return ['TYPO3\\CMS\\T3editor\\CodeCompletion' => \TYPO3\CMS\T3editor\Controller\CodeCompletionController::class, 'TYPO3\\CMS\\T3editor\\TypoScriptReferenceLoader' => \TYPO3\CMS\T3editor\Controller\TypoScriptReferenceController::class];

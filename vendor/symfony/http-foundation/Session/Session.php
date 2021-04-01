@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session;
+namespace Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session;
 
-use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
-use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface;
-use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
-use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
-use Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
+use Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
+use Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface;
+use Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
+use Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag::class);
-\class_exists(\Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Flash\FlashBag::class);
-\class_exists(\Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\SessionBagProxy::class);
+\class_exists(\Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag::class);
+\class_exists(\Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Flash\FlashBag::class);
+\class_exists(\Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\SessionBagProxy::class);
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Drak <drak@zikula.org>
  */
-class Session implements \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\SessionInterface, \IteratorAggregate, \Countable
+class Session implements \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\SessionInterface, \IteratorAggregate, \Countable
 {
     protected $storage;
     private $flashName;
@@ -32,14 +32,14 @@ class Session implements \Typo3RectorPrefix20210331\Symfony\Component\HttpFounda
     private $data = [];
     private $usageIndex = 0;
     private $usageReporter;
-    public function __construct(\Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface $storage = null, \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface $attributes = null, \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface $flashes = null, callable $usageReporter = null)
+    public function __construct(\Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface $storage = null, \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface $attributes = null, \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface $flashes = null, callable $usageReporter = null)
     {
-        $this->storage = $storage ?: new \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage();
+        $this->storage = $storage ?: new \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage();
         $this->usageReporter = $usageReporter;
-        $attributes = $attributes ?: new \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag();
+        $attributes = $attributes ?: new \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag();
         $this->attributeName = $attributes->getName();
         $this->registerBag($attributes);
-        $flashes = $flashes ?: new \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Flash\FlashBag();
+        $flashes = $flashes ?: new \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Flash\FlashBag();
         $this->flashName = $flashes->getName();
         $this->registerBag($flashes);
     }
@@ -212,9 +212,9 @@ class Session implements \Typo3RectorPrefix20210331\Symfony\Component\HttpFounda
     /**
      * {@inheritdoc}
      */
-    public function registerBag(\Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag)
+    public function registerBag(\Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag)
     {
-        $this->storage->registerBag(new \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\SessionBagProxy($bag, $this->data, $this->usageIndex, $this->usageReporter));
+        $this->storage->registerBag(new \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\SessionBagProxy($bag, $this->data, $this->usageIndex, $this->usageReporter));
     }
     /**
      * {@inheritdoc}
@@ -238,7 +238,7 @@ class Session implements \Typo3RectorPrefix20210331\Symfony\Component\HttpFounda
      *
      * Note that this method was added to help with IDE autocompletion.
      */
-    private function getAttributeBag() : \Typo3RectorPrefix20210331\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface
+    private function getAttributeBag() : \Typo3RectorPrefix20210401\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface
     {
         return $this->getBag($this->attributeName);
     }

@@ -19,8 +19,8 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\PhpDoc\NodeAnalyzer\DocBlockTagReplacer;
 use Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType;
 use Rector\StaticTypeMapper\ValueObject\Type\ShortenedObjectType;
-use Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
+use Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -79,7 +79,7 @@ final class InjectAnnotationRector extends \Rector\Core\Rector\AbstractRector
             }
             /** @var string $variableName */
             $variableName = $this->getName($property);
-            $paramBuilder = new \Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($variableName);
+            $paramBuilder = new \Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($variableName);
             $varType = $propertyPhpDocInfo->getVarType();
             if (!$varType instanceof \PHPStan\Type\ObjectType) {
                 continue;
@@ -133,7 +133,7 @@ CODE_SAMPLE
     private function createInjectClassMethod(string $variableName, \PhpParser\Node\Param $param, \PhpParser\Node\Expr\Assign $assign) : \PhpParser\Node\Stmt\ClassMethod
     {
         $injectMethodName = $this->createInjectMethodName($variableName);
-        $injectMethodBuilder = new \Typo3RectorPrefix20210331\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($injectMethodName);
+        $injectMethodBuilder = new \Typo3RectorPrefix20210401\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($injectMethodName);
         $injectMethodBuilder->makePublic();
         $injectMethodBuilder->addParam($param);
         $injectMethodBuilder->setReturnType('void');

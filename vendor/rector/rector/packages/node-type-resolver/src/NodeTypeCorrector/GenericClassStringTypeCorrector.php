@@ -8,14 +8,14 @@ use PHPStan\Type\Generic\GenericClassStringType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeTraverser;
-use Typo3RectorPrefix20210331\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
+use Typo3RectorPrefix20210401\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker;
 final class GenericClassStringTypeCorrector
 {
     /**
      * @var ClassLikeExistenceChecker
      */
     private $classLikeExistenceChecker;
-    public function __construct(\Typo3RectorPrefix20210331\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
+    public function __construct(\Typo3RectorPrefix20210401\Symplify\PackageBuilder\Reflection\ClassLikeExistenceChecker $classLikeExistenceChecker)
     {
         $this->classLikeExistenceChecker = $classLikeExistenceChecker;
     }

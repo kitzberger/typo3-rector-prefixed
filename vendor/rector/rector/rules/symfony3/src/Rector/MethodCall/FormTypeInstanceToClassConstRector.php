@@ -19,8 +19,8 @@ use Rector\Symfony3\NodeFactory\BuilderFormNodeFactory;
 use Rector\Symfony3\NodeFactory\ConfigureOptionsNodeFactory;
 use ReflectionClass;
 use ReflectionMethod;
-use Typo3RectorPrefix20210331\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Typo3RectorPrefix20210331\Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Typo3RectorPrefix20210401\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Typo3RectorPrefix20210401\Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -38,7 +38,7 @@ final class FormTypeInstanceToClassConstRector extends \Rector\Symfony3\Rector\M
     /**
      * @var class-string<AbstractController>[]|class-string<Controller>[]
      */
-    private const CONTROLLER_TYPES = ['Typo3RectorPrefix20210331\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller', 'Typo3RectorPrefix20210331\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController'];
+    private const CONTROLLER_TYPES = ['Typo3RectorPrefix20210401\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller', 'Typo3RectorPrefix20210401\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController'];
     /**
      * @var BuilderFormNodeFactory
      */

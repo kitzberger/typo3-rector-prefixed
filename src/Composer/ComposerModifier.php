@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Composer;
 
-use Typo3RectorPrefix20210331\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210401\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 final class ComposerModifier
 {
     /**
@@ -17,7 +17,7 @@ final class ComposerModifier
     {
         $this->composerRectors = $composerRectors;
     }
-    public function modify(\Typo3RectorPrefix20210331\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function modify(\Typo3RectorPrefix20210401\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         foreach ($this->composerRectors as $composerRector) {
             $composerRector->refactor($composerJson);

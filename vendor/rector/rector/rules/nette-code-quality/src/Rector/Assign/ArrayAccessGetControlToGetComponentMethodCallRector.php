@@ -71,6 +71,6 @@ CODE_SAMPLE
         if (!$assign->expr instanceof \PhpParser\Node\Expr\ArrayDimFetch) {
             return \false;
         }
-        return $this->isObjectType($assign->expr, 'Typo3RectorPrefix20210331\\Nette\\Application\\UI\\Presenter');
+        return $this->isObjectType($assign->expr, 'Typo3RectorPrefix20210401\\Nette\\Application\\UI\\Presenter');
     }
 }

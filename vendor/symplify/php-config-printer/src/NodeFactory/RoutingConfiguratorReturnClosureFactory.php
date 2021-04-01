@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\NodeFactory;
+namespace Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\NodeFactory;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Return_;
-use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\Contract\RoutingCaseConverterInterface;
-use Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory;
+use Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\Contract\RoutingCaseConverterInterface;
+use Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory;
 final class RoutingConfiguratorReturnClosureFactory
 {
     /**
@@ -20,7 +20,7 @@ final class RoutingConfiguratorReturnClosureFactory
     /**
      * @param RoutingCaseConverterInterface[] $routingCaseConverters
      */
-    public function __construct(\Typo3RectorPrefix20210331\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory $containerConfiguratorClosureNodeFactory, array $routingCaseConverters)
+    public function __construct(\Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\PhpParser\NodeFactory\ConfiguratorClosureNodeFactory $containerConfiguratorClosureNodeFactory, array $routingCaseConverters)
     {
         $this->containerConfiguratorClosureNodeFactory = $containerConfiguratorClosureNodeFactory;
         $this->routingCaseConverters = $routingCaseConverters;

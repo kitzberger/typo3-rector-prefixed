@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210331\Cake\Utility;
+namespace Typo3RectorPrefix20210401\Cake\Utility;
 
 final class Xml
 {

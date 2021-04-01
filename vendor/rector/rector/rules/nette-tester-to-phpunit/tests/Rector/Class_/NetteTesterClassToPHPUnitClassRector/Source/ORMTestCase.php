@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteTesterToPHPUnit\Tests\Rector\Class_\NetteTesterClassToPHPUnitClassRector\Source;
 
-use Typo3RectorPrefix20210331\Tester\TestCase;
-abstract class ORMTestCase extends \Typo3RectorPrefix20210331\Tester\TestCase
+use Typo3RectorPrefix20210401\Tester\TestCase;
+abstract class ORMTestCase extends \Typo3RectorPrefix20210401\Tester\TestCase
 {
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210331\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210401\Doctrine\Common\Annotations;
 
 use function array_merge;
 use function count;

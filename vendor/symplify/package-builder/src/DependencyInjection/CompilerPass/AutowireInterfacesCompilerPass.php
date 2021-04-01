@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210331\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
+namespace Typo3RectorPrefix20210401\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
 
-use Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\ContainerBuilder;
-final class AutowireInterfacesCompilerPass implements \Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+use Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\ContainerBuilder;
+final class AutowireInterfacesCompilerPass implements \Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * @var string[]
@@ -18,7 +18,7 @@ final class AutowireInterfacesCompilerPass implements \Typo3RectorPrefix20210331
     {
         $this->typesToAutowire = $typesToAutowire;
     }
-    public function process(\Typo3RectorPrefix20210331\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(\Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $containerBuilderDefinitions = $containerBuilder->getDefinitions();
         foreach ($containerBuilderDefinitions as $definition) {

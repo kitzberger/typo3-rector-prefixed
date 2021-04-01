@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210331\Nette;
+namespace Typo3RectorPrefix20210401\Nette;
 
 /**
  * Static class.
@@ -24,6 +24,6 @@ trait StaticClass
      */
     public static function __callStatic(string $name, array $args)
     {
-        \Typo3RectorPrefix20210331\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
+        \Typo3RectorPrefix20210401\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
     }
 }

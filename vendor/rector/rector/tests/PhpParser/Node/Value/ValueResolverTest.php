@@ -11,8 +11,8 @@ use PhpParser\Node\Name\FullyQualified;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\Value\ValueResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210401\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ValueResolverTest extends \Typo3RectorPrefix20210401\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210402\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class ValueResolverTest extends \Typo3RectorPrefix20210402\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var ValueResolver

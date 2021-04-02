@@ -6,13 +6,13 @@ namespace Rector\Nette\Tests\Rector\FuncCall\FilePutContentsToFileSystemWriteRec
 use Iterator;
 use Rector\Nette\Rector\FuncCall\FilePutContentsToFileSystemWriteRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo;
 final class FilePutContentsToFileSystemWriteRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

@@ -6,13 +6,13 @@ namespace Rector\MockeryToProphecy\Tests\Rector\StaticCall\MockeryToProphecyRect
 use Iterator;
 use Rector\MockeryToProphecy\Rector\StaticCall\MockeryCloseRemoveRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo;
 final class MockeryToProphecyRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileInfo $file) : void
+    public function test(\Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo $file) : void
     {
         $this->doTestFileInfo($file);
     }

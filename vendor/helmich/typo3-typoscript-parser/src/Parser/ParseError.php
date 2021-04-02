@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Parser;
+namespace Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser;
 
 use Exception;
 class ParseError extends \Exception

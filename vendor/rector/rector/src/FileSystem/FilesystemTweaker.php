@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Rector\Core\FileSystem;
 
-use Typo3RectorPrefix20210401\Nette\Utils\Strings;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\FileSystemGuard;
+use Typo3RectorPrefix20210402\Nette\Utils\Strings;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemGuard;
 final class FilesystemTweaker
 {
     /**
      * @var FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\Typo3RectorPrefix20210401\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(\Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
     {
         $this->fileSystemGuard = $fileSystemGuard;
     }
@@ -26,7 +26,7 @@ final class FilesystemTweaker
         $absoluteDirectories = [];
         foreach ($directories as $directory) {
             // is fnmatch for directories
-            if (\Typo3RectorPrefix20210401\Nette\Utils\Strings::contains($directory, '*')) {
+            if (\Typo3RectorPrefix20210402\Nette\Utils\Strings::contains($directory, '*')) {
                 $foundDirectories = $this->foundDirectoriesInGlob($directory);
                 $absoluteDirectories = \array_merge($absoluteDirectories, $foundDirectories);
             } else {

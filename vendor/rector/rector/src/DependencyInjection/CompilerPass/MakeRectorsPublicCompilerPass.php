@@ -4,11 +4,11 @@ declare (strict_types=1);
 namespace Rector\Core\DependencyInjection\CompilerPass;
 
 use Rector\Core\Contract\Rector\RectorInterface;
-use Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\ContainerBuilder;
-final class MakeRectorsPublicCompilerPass implements \Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+use Typo3RectorPrefix20210402\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Typo3RectorPrefix20210402\Symfony\Component\DependencyInjection\ContainerBuilder;
+final class MakeRectorsPublicCompilerPass implements \Typo3RectorPrefix20210402\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
-    public function process(\Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(\Typo3RectorPrefix20210402\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         foreach ($containerBuilder->getDefinitions() as $definition) {
             if ($definition->getClass() === null) {

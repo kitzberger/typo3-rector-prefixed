@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\ServiceOptionConverter;
+namespace Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\ServiceOptionConverter;
 
 use PhpParser\Node\Expr\MethodCall;
-use Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
-use Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
-use Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
-final class FactoryConfiguratorServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
+use Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface;
+use Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory;
+use Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\ValueObject\YamlKey;
+final class FactoryConfiguratorServiceOptionKeyYamlToPhpFactory implements \Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\Contract\Converter\ServiceOptionsKeyYamlToPhpFactoryInterface
 {
     /**
      * @var ArgsNodeFactory
      */
     private $argsNodeFactory;
-    public function __construct(\Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory)
+    public function __construct(\Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\NodeFactory\ArgsNodeFactory $argsNodeFactory)
     {
         $this->argsNodeFactory = $argsNodeFactory;
     }
@@ -24,6 +24,6 @@ final class FactoryConfiguratorServiceOptionKeyYamlToPhpFactory implements \Typo
     }
     public function isMatch($key, $values) : bool
     {
-        return \in_array($key, [\Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\ValueObject\YamlKey::FACTORY, \Typo3RectorPrefix20210401\Symplify\PhpConfigPrinter\ValueObject\YamlKey::CONFIGURATOR], \true);
+        return \in_array($key, [\Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\ValueObject\YamlKey::FACTORY, \Typo3RectorPrefix20210402\Symplify\PhpConfigPrinter\ValueObject\YamlKey::CONFIGURATOR], \true);
     }
 }

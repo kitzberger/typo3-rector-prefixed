@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210401\Doctrine\Common\Annotations\Annotation;
+namespace Typo3RectorPrefix20210402\Doctrine\Common\Annotations\Annotation;
 
 /**
  * Annotation that indicates that the annotated class should be constructed with a named argument call.

@@ -56,6 +56,6 @@ CODE_SAMPLE
         if (\count($node->args) !== 1) {
             return null;
         }
-        return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210401\\Illuminate\\Support\\Facades\\App', 'get', $node->args);
+        return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210402\\Illuminate\\Support\\Facades\\App', 'get', $node->args);
     }
 }

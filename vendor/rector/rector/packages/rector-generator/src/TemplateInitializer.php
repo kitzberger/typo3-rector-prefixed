@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Rector\RectorGenerator;
 
-use Typo3RectorPrefix20210401\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\FileSystemGuard;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210402\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemGuard;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileSystem;
 final class TemplateInitializer
 {
     /**
@@ -20,7 +20,7 @@ final class TemplateInitializer
      * @var FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\Typo3RectorPrefix20210401\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Typo3RectorPrefix20210401\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210401\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(\Typo3RectorPrefix20210402\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->smartFileSystem = $smartFileSystem;

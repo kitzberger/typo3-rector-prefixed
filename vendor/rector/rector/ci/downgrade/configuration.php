@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401;
+namespace Typo3RectorPrefix20210402;
 
 // @see https://github.com/phpstan/phpstan/issues/4541
 require_once 'phar://vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/ReflectionUnionType.php';
@@ -37,4 +37,4 @@ final class DowngradeRectorConfig
 /**
  * Configuration consts for the different rector.php config files
  */
-\class_alias('Typo3RectorPrefix20210401\\DowngradeRectorConfig', 'DowngradeRectorConfig', \false);
+\class_alias('Typo3RectorPrefix20210402\\DowngradeRectorConfig', 'DowngradeRectorConfig', \false);

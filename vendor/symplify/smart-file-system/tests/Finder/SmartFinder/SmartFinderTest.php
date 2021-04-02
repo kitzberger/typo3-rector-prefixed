@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401\Symplify\SmartFileSystem\Tests\Finder\SmartFinder;
+namespace Typo3RectorPrefix20210402\Symplify\SmartFileSystem\Tests\Finder\SmartFinder;
 
 use Iterator;
-use Typo3RectorPrefix20210401\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\FileSystemFilter;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use Typo3RectorPrefix20210401\Symplify\SmartFileSystem\Finder\SmartFinder;
-final class SmartFinderTest extends \Typo3RectorPrefix20210401\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemFilter;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\Finder\SmartFinder;
+final class SmartFinderTest extends \Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase
 {
     /**
      * @var SmartFinder
@@ -16,7 +16,7 @@ final class SmartFinderTest extends \Typo3RectorPrefix20210401\PHPUnit\Framework
     private $smartFinder;
     protected function setUp() : void
     {
-        $this->smartFinder = new \Typo3RectorPrefix20210401\Symplify\SmartFileSystem\Finder\SmartFinder(new \Typo3RectorPrefix20210401\Symplify\SmartFileSystem\Finder\FinderSanitizer(), new \Typo3RectorPrefix20210401\Symplify\SmartFileSystem\FileSystemFilter());
+        $this->smartFinder = new \Typo3RectorPrefix20210402\Symplify\SmartFileSystem\Finder\SmartFinder(new \Typo3RectorPrefix20210402\Symplify\SmartFileSystem\Finder\FinderSanitizer(), new \Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemFilter());
     }
     /**
      * @param string[] $paths

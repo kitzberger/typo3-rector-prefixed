@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401;
+namespace Typo3RectorPrefix20210402;
 
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
@@ -19,6 +19,7 @@ use Ssch\TYPO3Rector\TypoScript\Conditions\BrowserConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\CompatVersionConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\GlobalStringConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\GlobalVarConditionMatcher;
+use Ssch\TYPO3Rector\TypoScript\Conditions\HostnameConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\IPConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\LanguageConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\LoginUserConditionMatcher;
@@ -29,12 +30,12 @@ use Ssch\TYPO3Rector\TypoScript\Conditions\TreeLevelConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\UsergroupConditionMatcherMatcher;
 use Ssch\TYPO3Rector\TypoScript\Conditions\VersionConditionMatcher;
 use Ssch\TYPO3Rector\TypoScript\Visitors\OldConditionToExpressionLanguageVisitor;
-use Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210402\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
 use TYPO3\CMS\Backend\Controller\Page\LocalizationController;
 use TYPO3\CMS\Extbase\Mvc\Controller\Argument;
 use TYPO3\CMS\Extbase\Mvc\Controller\Arguments;
-return static function (\Typo3RectorPrefix20210401\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210402\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/../services.php');
     $services = $containerConfigurator->services();
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v3\RemoveColPosParameterRector::class);
@@ -53,6 +54,7 @@ return static function (\Typo3RectorPrefix20210401\Symfony\Component\DependencyI
     $services->set(\Ssch\TYPO3Rector\TypoScript\Conditions\CompatVersionConditionMatcher::class);
     $services->set(\Ssch\TYPO3Rector\TypoScript\Conditions\GlobalStringConditionMatcher::class);
     $services->set(\Ssch\TYPO3Rector\TypoScript\Conditions\GlobalVarConditionMatcher::class);
+    $services->set(\Ssch\TYPO3Rector\TypoScript\Conditions\HostnameConditionMatcher::class);
     $services->set(\Ssch\TYPO3Rector\TypoScript\Conditions\IPConditionMatcher::class);
     $services->set(\Ssch\TYPO3Rector\TypoScript\Conditions\LanguageConditionMatcher::class);
     $services->set(\Ssch\TYPO3Rector\TypoScript\Conditions\LoginUserConditionMatcher::class);

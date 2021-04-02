@@ -1,14 +1,14 @@
 <?php
 
-namespace Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Tests\Unit\Tokenizer;
+namespace Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tests\Unit\Tokenizer;
 
-use Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Tokenizer\TokenizerException;
-use Typo3RectorPrefix20210401\PHPUnit\Framework\TestCase;
-class TokenizerExceptionTest extends \Typo3RectorPrefix20210401\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\TokenizerException;
+use Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase;
+class TokenizerExceptionTest extends \Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase
 {
     public function testCanGetSourceLine()
     {
-        $exc = new \Typo3RectorPrefix20210401\Helmich\TypoScriptParser\Tokenizer\TokenizerException('Foobar', 1234, null, 4312);
+        $exc = new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\TokenizerException('Foobar', 1234, null, 4312);
         assertThat($exc->getSourceLine(), equalTo(4312));
     }
 }

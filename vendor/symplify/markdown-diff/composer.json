@@ -15,12 +15,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210401\\Symplify\\MarkdownDiff\\": "src"
+            "Typo3RectorPrefix20210402\\Symplify\\MarkdownDiff\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210401\\Symplify\\MarkdownDiff\\Tests\\": "tests"
+            "Typo3RectorPrefix20210402\\Symplify\\MarkdownDiff\\Tests\\": "tests"
         }
     },
     "extra": {

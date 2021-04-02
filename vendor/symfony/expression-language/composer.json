@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210401\\Symfony\\Component\\ExpressionLanguage\\": ""
+            "Typo3RectorPrefix20210402\\Symfony\\Component\\ExpressionLanguage\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

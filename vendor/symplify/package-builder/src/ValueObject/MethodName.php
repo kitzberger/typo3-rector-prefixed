@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401\Symplify\PackageBuilder\ValueObject;
+namespace Typo3RectorPrefix20210402\Symplify\PackageBuilder\ValueObject;
 
 final class MethodName
 {

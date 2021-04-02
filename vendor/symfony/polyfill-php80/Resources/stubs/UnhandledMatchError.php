@@ -5,4 +5,4 @@
 class UnhandledMatchError extends \Error
 {
 }
-\class_alias('Typo3RectorPrefix20210401\\UnhandledMatchError', 'UnhandledMatchError', \false);
+\class_alias('Typo3RectorPrefix20210402\\UnhandledMatchError', 'UnhandledMatchError', \false);

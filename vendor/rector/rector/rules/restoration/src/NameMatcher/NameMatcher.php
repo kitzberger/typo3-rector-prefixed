@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Restoration\NameMatcher;
 
-use Typo3RectorPrefix20210401\Nette\Utils\Strings;
+use Typo3RectorPrefix20210402\Nette\Utils\Strings;
 use Rector\Restoration\ClassMap\ExistingClassesProvider;
 final class NameMatcher
 {
@@ -18,7 +18,7 @@ final class NameMatcher
     public function makeNameFullyQualified(string $shortName) : ?string
     {
         foreach ($this->existingClassesProvider->provide() as $declaredClass) {
-            $declaredShortClass = (string) \Typo3RectorPrefix20210401\Nette\Utils\Strings::after($declaredClass, '\\', -1);
+            $declaredShortClass = (string) \Typo3RectorPrefix20210402\Nette\Utils\Strings::after($declaredClass, '\\', -1);
             if ($declaredShortClass !== $shortName) {
                 continue;
             }

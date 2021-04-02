@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210401\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210402\Doctrine\Common\Annotations;
 
 use BadMethodCallException;
 use function sprintf;

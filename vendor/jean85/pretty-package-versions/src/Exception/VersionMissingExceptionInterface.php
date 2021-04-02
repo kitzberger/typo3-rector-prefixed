@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401\Jean85\Exception;
+namespace Typo3RectorPrefix20210402\Jean85\Exception;
 
 interface VersionMissingExceptionInterface extends \Throwable
 {

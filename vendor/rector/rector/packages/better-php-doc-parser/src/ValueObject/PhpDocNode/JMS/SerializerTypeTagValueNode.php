@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\ValueObject\PhpDocNode\JMS;
 
-use Typo3RectorPrefix20210401\Nette\Utils\Strings;
+use Typo3RectorPrefix20210402\Nette\Utils\Strings;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\ShortNameAwareTagInterface;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\SilentKeyNodeInterface;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\TypeAwareTagValueNodeInterface;
@@ -16,7 +16,7 @@ final class SerializerTypeTagValueNode extends \Rector\BetterPhpDocParser\ValueO
     private const NAME = 'name';
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210401\\@Serializer\\Type';
+        return 'Typo3RectorPrefix20210402\\@Serializer\\Type';
     }
     public function changeName(string $newName) : void
     {
@@ -29,7 +29,7 @@ final class SerializerTypeTagValueNode extends \Rector\BetterPhpDocParser\ValueO
     public function replaceName(string $oldName, string $newName) : bool
     {
         $oldNamePattern = '#\\b' . \preg_quote($oldName, '#') . '\\b#';
-        $newNameValue = \Typo3RectorPrefix20210401\Nette\Utils\Strings::replace($this->items[self::NAME], $oldNamePattern, $newName);
+        $newNameValue = \Typo3RectorPrefix20210402\Nette\Utils\Strings::replace($this->items[self::NAME], $oldNamePattern, $newName);
         if ($newNameValue !== $this->items[self::NAME]) {
             $this->changeName($newNameValue);
             return \true;

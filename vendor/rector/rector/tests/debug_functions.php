@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210401;
+namespace Typo3RectorPrefix20210402;
 
 use PhpParser\Node;
 use PhpParser\PrettyPrinter\Standard;
@@ -15,10 +15,10 @@ function print_node($node) : void
     if (\is_array($node)) {
         foreach ($node as $singleNode) {
             $printedContent = $standard->prettyPrint([$singleNode]);
-            \Typo3RectorPrefix20210401\dump($printedContent);
+            \Typo3RectorPrefix20210402\dump($printedContent);
         }
     } else {
         $printedContent = $standard->prettyPrint([$node]);
-        \Typo3RectorPrefix20210401\dump($printedContent);
+        \Typo3RectorPrefix20210402\dump($printedContent);
     }
 }

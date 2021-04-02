@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf425b4ac5d40ec0265c995eca05641d5
+class ComposerStaticInit5bb89edc7dd8e4dde38c9fa2c332b676
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -2952,6 +2952,9 @@ class ComposerStaticInitf425b4ac5d40ec0265c995eca05641d5
         'Ssch\\TYPO3Rector\\Console\\Command\\Typo3ProcessCommand' => __DIR__ . '/../..' . '/src/Console/Command/Typo3ProcessCommand.php',
         'Ssch\\TYPO3Rector\\Console\\Output\\DecoratedConsoleOutputFormatter' => __DIR__ . '/../..' . '/src/Console/Output/DecoratedConsoleOutputFormatter.php',
         'Ssch\\TYPO3Rector\\DependencyInjection\\Typo3RectorContainerFactory' => __DIR__ . '/../..' . '/src/DependencyInjection/Typo3RectorContainerFactory.php',
+        'Ssch\\TYPO3Rector\\FlexForms\\FlexFormsProcessor' => __DIR__ . '/../..' . '/src/FlexForms/FlexFormsProcessor.php',
+        'Ssch\\TYPO3Rector\\FlexForms\\Transformer\\FlexFormTransformer' => __DIR__ . '/../..' . '/src/FlexForms/Transformer/FlexFormTransformer.php',
+        'Ssch\\TYPO3Rector\\FlexForms\\Transformer\\RenderTypeTransformer' => __DIR__ . '/../..' . '/src/FlexForms/Transformer/RenderTypeTransformer.php',
         'Ssch\\TYPO3Rector\\Helper\\Database\\Refactorings\\ConnectionCallFactory' => __DIR__ . '/../..' . '/src/Helper/Database/Refactorings/ConnectionCallFactory.php',
         'Ssch\\TYPO3Rector\\Helper\\Database\\Refactorings\\DatabaseConnectionExecInsertQueryRefactoring' => __DIR__ . '/../..' . '/src/Helper/Database/Refactorings/DatabaseConnectionExecInsertQueryRefactoring.php',
         'Ssch\\TYPO3Rector\\Helper\\Database\\Refactorings\\DatabaseConnectionExecTruncateTableRefactoring' => __DIR__ . '/../..' . '/src/Helper/Database/Refactorings/DatabaseConnectionExecTruncateTableRefactoring.php',
@@ -4527,9 +4530,9 @@ class ComposerStaticInitf425b4ac5d40ec0265c995eca05641d5
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf425b4ac5d40ec0265c995eca05641d5::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf425b4ac5d40ec0265c995eca05641d5::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf425b4ac5d40ec0265c995eca05641d5::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5bb89edc7dd8e4dde38c9fa2c332b676::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5bb89edc7dd8e4dde38c9fa2c332b676::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5bb89edc7dd8e4dde38c9fa2c332b676::$classMap;
 
         }, null, ClassLoader::class);
     }

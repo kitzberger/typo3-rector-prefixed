@@ -9,7 +9,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\FileSystemRector\ValueObject\MovedFileWithContent;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @sponsor Thanks https://amateri.com for sponsoring this rule - visit them on https://www.startupjobs.cz/startup/scrumworks-s-r-o
  *
@@ -50,7 +50,7 @@ CODE_SAMPLE
             return null;
         }
         $classShortName = $this->nodeNameResolver->getShortName($className);
-        $smartFileInfo = $node->getAttribute(\Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo::class);
+        $smartFileInfo = $node->getAttribute(\Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo::class);
         if ($smartFileInfo === null) {
             return null;
         }

@@ -13,9 +13,9 @@ use PhpParser\Node\Stmt\Expression;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210402\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210402\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210402\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210405\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210405\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210405\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var BetterStandardPrinter
@@ -32,7 +32,7 @@ final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210402\Symplif
         // cannot be on MethodCall, must be Expression
         $methodCallExpression = new \PhpParser\Node\Stmt\Expression($methodCall);
         $methodCallExpression->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::COMMENTS, [new \PhpParser\Comment('// todo: fix')]);
-        $methodBuilder = new \Typo3RectorPrefix20210402\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('run');
+        $methodBuilder = new \Typo3RectorPrefix20210405\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('run');
         $methodBuilder->addStmt($methodCallExpression);
         $classMethod = $methodBuilder->getNode();
         $printed = $this->betterStandardPrinter->print($classMethod) . \PHP_EOL;
@@ -55,7 +55,7 @@ final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210402\Symplif
     }
     public function provideDataForDoubleSlashEscaping() : \Iterator
     {
-        (yield ['Typo3RectorPrefix20210402\\Vendor\\Name', "'Vendor\\Name'"]);
+        (yield ['Typo3RectorPrefix20210405\\Vendor\\Name', "'Vendor\\Name'"]);
         (yield ['Vendor\\', "'Vendor\\\\'"]);
         (yield ["Vendor'Name", "'Vendor\\'Name'"]);
     }

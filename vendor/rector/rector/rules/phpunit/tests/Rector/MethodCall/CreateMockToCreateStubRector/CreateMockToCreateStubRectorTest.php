@@ -6,13 +6,13 @@ namespace Rector\PHPUnit\Tests\Rector\MethodCall\CreateMockToCreateStubRector;
 use Iterator;
 use Rector\PHPUnit\Rector\MethodCall\CreateMockToCreateStubRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo;
 final class CreateMockToCreateStubRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

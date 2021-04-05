@@ -5,13 +5,13 @@ namespace Rector\PSR4\Tests\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo;
 final class NormalizeNamespaceByPSR4ComposerAutoloadRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function test(\Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $this->doTestFileInfo($smartFileInfo);
     }

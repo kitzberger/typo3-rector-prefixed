@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\Traverser;
+namespace Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\Traverser;
 
-use Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement;
-use Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST\NestedAssignment;
-use Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST\Statement;
+use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement;
+use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\NestedAssignment;
+use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\Statement;
 /**
  * Class Traverser
  *
@@ -24,12 +24,12 @@ class Traverser
     public function __construct(array $statements)
     {
         $this->statements = $statements;
-        $this->visitors = new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\Traverser\AggregatingVisitor();
+        $this->visitors = new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\Traverser\AggregatingVisitor();
     }
     /**
      * @param Visitor $visitor
      */
-    public function addVisitor(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\Traverser\Visitor $visitor) : void
+    public function addVisitor(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\Traverser\Visitor $visitor) : void
     {
         $this->visitors->addVisitor($visitor);
     }
@@ -50,9 +50,9 @@ class Traverser
     {
         foreach ($statements as $statement) {
             $this->visitors->enterNode($statement);
-            if ($statement instanceof \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST\NestedAssignment) {
+            if ($statement instanceof \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\NestedAssignment) {
                 $statement->statements = $this->walkRecursive($statement->statements);
-            } elseif ($statement instanceof \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement) {
+            } elseif ($statement instanceof \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement) {
                 $statement->ifStatements = $this->walkRecursive($statement->ifStatements);
                 $statement->elseStatements = $this->walkRecursive($statement->elseStatements);
             }

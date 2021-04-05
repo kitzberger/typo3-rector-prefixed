@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST;
+namespace Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST;
 
 /**
  * An object path.
@@ -46,11 +46,11 @@ class ObjectPath
      *
      * @return ObjectPath The path to the parent object.
      */
-    public function parent() : \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST\ObjectPath
+    public function parent() : \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\ObjectPath
     {
         $components = \explode('.', $this->absoluteName);
         if (\count($components) === 1) {
-            return new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\AST\RootObjectPath();
+            return new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\RootObjectPath();
         }
         \array_pop($components);
         return new self(\implode('.', $components), $components[\count($components) - 1]);

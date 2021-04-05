@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210402\\Psr\\Cache\\": "src\/"
+            "Typo3RectorPrefix20210405\\Psr\\Cache\\": "src\/"
         }
     },
     "extra": {

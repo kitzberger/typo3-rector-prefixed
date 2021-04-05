@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210402\Symplify\SmartFileSystem\Tests\FileSystemFilter;
+namespace Typo3RectorPrefix20210405\Symplify\SmartFileSystem\Tests\FileSystemFilter;
 
-use Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemFilter;
-final class FileSystemFilterTest extends \Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210405\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\FileSystemFilter;
+final class FileSystemFilterTest extends \Typo3RectorPrefix20210405\PHPUnit\Framework\TestCase
 {
     /**
      * @var FileSystemFilter
@@ -13,7 +13,7 @@ final class FileSystemFilterTest extends \Typo3RectorPrefix20210402\PHPUnit\Fram
     private $fileSystemFilter;
     protected function setUp() : void
     {
-        $this->fileSystemFilter = new \Typo3RectorPrefix20210402\Symplify\SmartFileSystem\FileSystemFilter();
+        $this->fileSystemFilter = new \Typo3RectorPrefix20210405\Symplify\SmartFileSystem\FileSystemFilter();
     }
     public function testSeparateFilesAndDirectories() : void
     {

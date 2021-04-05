@@ -23,7 +23,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210402\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210405\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Arguments\Tests\Rector\ClassMethod\ArgumentAdderRector\ArgumentAdderRectorTest
  */
@@ -103,7 +103,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $addedArguments = $configuration[self::ADDED_ARGUMENTS] ?? [];
-        \Typo3RectorPrefix20210402\Webmozart\Assert\Assert::allIsInstanceOf($addedArguments, \Rector\Arguments\ValueObject\ArgumentAdder::class);
+        \Typo3RectorPrefix20210405\Webmozart\Assert\Assert::allIsInstanceOf($addedArguments, \Rector\Arguments\ValueObject\ArgumentAdder::class);
         $this->addedArguments = $addedArguments;
     }
     /**

@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210402\Symfony\Component\Config\Resource;
+namespace Typo3RectorPrefix20210405\Symfony\Component\Config\Resource;
 
-use Typo3RectorPrefix20210402\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210402\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
-use Typo3RectorPrefix20210402\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use Typo3RectorPrefix20210405\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210405\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
+use Typo3RectorPrefix20210405\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @final
  */
-class ReflectionClassResource implements \Typo3RectorPrefix20210402\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ReflectionClassResource implements \Typo3RectorPrefix20210405\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $files = [];
     private $className;
@@ -166,18 +166,18 @@ class ReflectionClassResource implements \Typo3RectorPrefix20210402\Symfony\Comp
         if ($class->isAbstract() || $class->isInterface() || $class->isTrait()) {
             return;
         }
-        if (\interface_exists(\Typo3RectorPrefix20210402\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\Typo3RectorPrefix20210402\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
-            (yield \Typo3RectorPrefix20210402\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
+        if (\interface_exists(\Typo3RectorPrefix20210405\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\Typo3RectorPrefix20210405\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
+            (yield \Typo3RectorPrefix20210405\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedEvents(), \true));
         }
-        if (\interface_exists(\Typo3RectorPrefix20210402\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\Typo3RectorPrefix20210402\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
-            (yield \Typo3RectorPrefix20210402\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
+        if (\interface_exists(\Typo3RectorPrefix20210405\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\Typo3RectorPrefix20210405\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
+            (yield \Typo3RectorPrefix20210405\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
             foreach ($class->name::getHandledMessages() as $key => $value) {
                 (yield $key . \print_r($value, \true));
             }
         }
-        if (\interface_exists(\Typo3RectorPrefix20210402\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\Typo3RectorPrefix20210402\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
-            (yield \Typo3RectorPrefix20210402\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
+        if (\interface_exists(\Typo3RectorPrefix20210405\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\Typo3RectorPrefix20210405\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
+            (yield \Typo3RectorPrefix20210405\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedServices(), \true));
         }
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tests\Unit\Parser;
+namespace Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tests\Unit\Parser;
 
-use Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\TokenStream;
-use Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token;
-use Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\TokenInterface;
-use Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase;
-class TokenStreamTest extends \Typo3RectorPrefix20210402\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\TokenStream;
+use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token;
+use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\TokenInterface;
+use Typo3RectorPrefix20210405\PHPUnit\Framework\TestCase;
+class TokenStreamTest extends \Typo3RectorPrefix20210405\PHPUnit\Framework\TestCase
 {
     /** @var tokenStream */
     private $stream;
@@ -14,8 +14,8 @@ class TokenStreamTest extends \Typo3RectorPrefix20210402\PHPUnit\Framework\TestC
     private $tokens;
     public function setUp() : void
     {
-        $this->tokens = [new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OBJECT_IDENTIFIER, 'foo', 1, 1), new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_WHITESPACE, ' ', 1, 4), new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OPERATOR_ASSIGNMENT, '=', 1, 5), new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_WHITESPACE, ' ', 1, 6), new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_RIGHTVALUE, 'bar', 1, 7)];
-        $this->stream = new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\TokenStream($this->tokens);
+        $this->tokens = [new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OBJECT_IDENTIFIER, 'foo', 1, 1), new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_WHITESPACE, ' ', 1, 4), new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OPERATOR_ASSIGNMENT, '=', 1, 5), new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_WHITESPACE, ' ', 1, 6), new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_RIGHTVALUE, 'bar', 1, 7)];
+        $this->stream = new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\TokenStream($this->tokens);
     }
     public function testCanIterateStream()
     {
@@ -34,12 +34,12 @@ class TokenStreamTest extends \Typo3RectorPrefix20210402\PHPUnit\Framework\TestC
     public function testCannotSet()
     {
         $this->expectException(\BadMethodCallException::class);
-        $this->stream[3] = new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OPERATOR_COPY, '<', 1, 1);
+        $this->stream[3] = new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OPERATOR_COPY, '<', 1, 1);
     }
     public function testCannotAppend()
     {
         $this->expectException(\BadMethodCallException::class);
-        $this->stream[] = new \Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OPERATOR_COPY, '<', 1, 1);
+        $this->stream[] = new \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Tokenizer\Token::TYPE_OPERATOR_COPY, '<', 1, 1);
     }
     public function testCannotUnset()
     {

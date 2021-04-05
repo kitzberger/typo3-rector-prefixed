@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Conditions;
 
-use Typo3RectorPrefix20210402\Nette\Utils\Strings;
+use Typo3RectorPrefix20210405\Nette\Utils\Strings;
 use Ssch\TYPO3Rector\ArrayUtility;
 final class HostnameConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher
 {
@@ -20,7 +20,7 @@ final class HostnameConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Con
         $values = \Ssch\TYPO3Rector\ArrayUtility::trimExplode(',', $matches[1], \true);
         $newConditions = [];
         foreach ($values as $value) {
-            if (\Typo3RectorPrefix20210402\Nette\Utils\Strings::contains($value, '*')) {
+            if (\Typo3RectorPrefix20210405\Nette\Utils\Strings::contains($value, '*')) {
                 $newConditions[] = \sprintf('like(request.getNormalizedParams().getHttpHost(), "%s")', $value);
             } else {
                 $newConditions[] = \sprintf('request.getNormalizedParams().getHttpHost() == "%s"', $value);

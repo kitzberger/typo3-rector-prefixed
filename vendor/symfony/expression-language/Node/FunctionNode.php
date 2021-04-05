@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210402\Symfony\Component\ExpressionLanguage\Node;
+namespace Typo3RectorPrefix20210405\Symfony\Component\ExpressionLanguage\Node;
 
-use Typo3RectorPrefix20210402\Symfony\Component\ExpressionLanguage\Compiler;
+use Typo3RectorPrefix20210405\Symfony\Component\ExpressionLanguage\Compiler;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @internal
  */
-class FunctionNode extends \Typo3RectorPrefix20210402\Symfony\Component\ExpressionLanguage\Node\Node
+class FunctionNode extends \Typo3RectorPrefix20210405\Symfony\Component\ExpressionLanguage\Node\Node
 {
-    public function __construct(string $name, \Typo3RectorPrefix20210402\Symfony\Component\ExpressionLanguage\Node\Node $arguments)
+    public function __construct(string $name, \Typo3RectorPrefix20210405\Symfony\Component\ExpressionLanguage\Node\Node $arguments)
     {
         parent::__construct(['arguments' => $arguments], ['name' => $name]);
     }
-    public function compile(\Typo3RectorPrefix20210402\Symfony\Component\ExpressionLanguage\Compiler $compiler)
+    public function compile(\Typo3RectorPrefix20210405\Symfony\Component\ExpressionLanguage\Compiler $compiler)
     {
         $arguments = [];
         foreach ($this->nodes['arguments']->nodes as $node) {

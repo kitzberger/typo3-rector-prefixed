@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210402\Symplify\SetConfigResolver\Console\Option;
+namespace Typo3RectorPrefix20210405\Symplify\SetConfigResolver\Console\Option;
 
 final class OptionName
 {

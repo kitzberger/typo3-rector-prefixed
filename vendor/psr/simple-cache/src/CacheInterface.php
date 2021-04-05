@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210402\Psr\SimpleCache;
+namespace Typo3RectorPrefix20210405\Psr\SimpleCache;
 
 interface CacheInterface
 {

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210402\Symfony\Component\DependencyInjection\Exception;
+namespace Typo3RectorPrefix20210405\Symfony\Component\DependencyInjection\Exception;
 
-use Typo3RectorPrefix20210402\Psr\Container\ContainerExceptionInterface;
+use Typo3RectorPrefix20210405\Psr\Container\ContainerExceptionInterface;
 /**
  * Base ExceptionInterface for Dependency Injection component.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Bulat Shakirzyanov <bulat@theopenskyproject.com>
  */
-interface ExceptionInterface extends \Typo3RectorPrefix20210402\Psr\Container\ContainerExceptionInterface, \Throwable
+interface ExceptionInterface extends \Typo3RectorPrefix20210405\Psr\Container\ContainerExceptionInterface, \Throwable
 {
 }

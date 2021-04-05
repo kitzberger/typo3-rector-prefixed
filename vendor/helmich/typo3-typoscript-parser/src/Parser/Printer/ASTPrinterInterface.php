@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210402\Helmich\TypoScriptParser\Parser\Printer;
+namespace Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\Printer;
 
-use Typo3RectorPrefix20210402\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210405\Symfony\Component\Console\Output\OutputInterface;
 interface ASTPrinterInterface
 {
     /**
@@ -11,5 +11,5 @@ interface ASTPrinterInterface
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @return void
      */
-    public function printStatements(array $statements, \Typo3RectorPrefix20210402\Symfony\Component\Console\Output\OutputInterface $output) : void;
+    public function printStatements(array $statements, \Typo3RectorPrefix20210405\Symfony\Component\Console\Output\OutputInterface $output) : void;
 }

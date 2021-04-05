@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Rector\Restoration\ClassMap;
 
-use Typo3RectorPrefix20210402\Nette\Loaders\RobotLoader;
-use Typo3RectorPrefix20210402\Nette\Utils\Arrays;
-use Typo3RectorPrefix20210402\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use Typo3RectorPrefix20210405\Nette\Loaders\RobotLoader;
+use Typo3RectorPrefix20210405\Nette\Utils\Arrays;
+use Typo3RectorPrefix20210405\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 final class ExistingClassesProvider
 {
     /**
@@ -16,7 +16,7 @@ final class ExistingClassesProvider
      * @var ComposerJsonFactory
      */
     private $composerJsonFactory;
-    public function __construct(\Typo3RectorPrefix20210402\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory)
+    public function __construct(\Typo3RectorPrefix20210405\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory)
     {
         $this->composerJsonFactory = $composerJsonFactory;
     }
@@ -43,7 +43,7 @@ final class ExistingClassesProvider
         $composerJsonFilePath = \getcwd() . '/composer.json';
         $composerJson = $this->composerJsonFactory->createFromFilePath($composerJsonFilePath);
         $psr4AndClassmapDirectories = $composerJson->getPsr4AndClassmapDirectories();
-        return \Typo3RectorPrefix20210402\Nette\Utils\Arrays::flatten($psr4AndClassmapDirectories);
+        return \Typo3RectorPrefix20210405\Nette\Utils\Arrays::flatten($psr4AndClassmapDirectories);
     }
     /**
      * @param string[] $directories
@@ -51,7 +51,7 @@ final class ExistingClassesProvider
      */
     private function findClassesInDirectories(array $directories) : array
     {
-        $robotLoader = new \Typo3RectorPrefix20210402\Nette\Loaders\RobotLoader();
+        $robotLoader = new \Typo3RectorPrefix20210405\Nette\Loaders\RobotLoader();
         $robotLoader->setTempDirectory(\sys_get_temp_dir() . '/rector_restore');
         foreach ($directories as $path) {
             $robotLoader->addDirectory(\getcwd() . '/' . $path);

@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210402\Symplify\Skipper\SkipVoter;
+namespace Typo3RectorPrefix20210405\Symplify\Skipper\SkipVoter;
 
-use Typo3RectorPrefix20210402\Symplify\Skipper\Contract\SkipVoterInterface;
-use Typo3RectorPrefix20210402\Symplify\Skipper\Matcher\FileInfoMatcher;
-use Typo3RectorPrefix20210402\Symplify\Skipper\SkipCriteriaResolver\SkippedClassAndCodesResolver;
-use Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210405\Symplify\Skipper\Contract\SkipVoterInterface;
+use Typo3RectorPrefix20210405\Symplify\Skipper\Matcher\FileInfoMatcher;
+use Typo3RectorPrefix20210405\Symplify\Skipper\SkipCriteriaResolver\SkippedClassAndCodesResolver;
+use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * Matching class and code, e.g. App\Category\ArraySniff.SomeCode
  */
-final class ClassAndCodeSkipVoter implements \Typo3RectorPrefix20210402\Symplify\Skipper\Contract\SkipVoterInterface
+final class ClassAndCodeSkipVoter implements \Typo3RectorPrefix20210405\Symplify\Skipper\Contract\SkipVoterInterface
 {
     /**
      * @var SkippedClassAndCodesResolver
@@ -20,7 +20,7 @@ final class ClassAndCodeSkipVoter implements \Typo3RectorPrefix20210402\Symplify
      * @var FileInfoMatcher
      */
     private $fileInfoMatcher;
-    public function __construct(\Typo3RectorPrefix20210402\Symplify\Skipper\SkipCriteriaResolver\SkippedClassAndCodesResolver $skippedClassAndCodesResolver, \Typo3RectorPrefix20210402\Symplify\Skipper\Matcher\FileInfoMatcher $fileInfoMatcher)
+    public function __construct(\Typo3RectorPrefix20210405\Symplify\Skipper\SkipCriteriaResolver\SkippedClassAndCodesResolver $skippedClassAndCodesResolver, \Typo3RectorPrefix20210405\Symplify\Skipper\Matcher\FileInfoMatcher $fileInfoMatcher)
     {
         $this->skippedClassAndCodesResolver = $skippedClassAndCodesResolver;
         $this->fileInfoMatcher = $fileInfoMatcher;
@@ -38,7 +38,7 @@ final class ClassAndCodeSkipVoter implements \Typo3RectorPrefix20210402\Symplify
     /**
      * @param string $element
      */
-    public function shouldSkip($element, \Typo3RectorPrefix20210402\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function shouldSkip($element, \Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         $skippedClassAndCodes = $this->skippedClassAndCodesResolver->resolve();
         if (!\array_key_exists($element, $skippedClassAndCodes)) {

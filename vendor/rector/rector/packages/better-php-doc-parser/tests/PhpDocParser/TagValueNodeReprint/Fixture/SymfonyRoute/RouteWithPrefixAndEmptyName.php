@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocParser\TagValueNodeReprint\Fixture\SymfonyRoute;
 
-use Typo3RectorPrefix20210402\Symfony\Component\Routing\Annotation\Route;
+use Typo3RectorPrefix20210405\Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/hello", name="route_name")
  */

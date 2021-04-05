@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\Tests\PhpDocParser\TagValueNodeReprint\Fixture\AssertChoice;
 
-use Typo3RectorPrefix20210402\Symfony\Component\Validator\Constraints as Assert;
+use Typo3RectorPrefix20210405\Symfony\Component\Validator\Constraints as Assert;
 class AssertChoiceWithManyGroups
 {
     /**

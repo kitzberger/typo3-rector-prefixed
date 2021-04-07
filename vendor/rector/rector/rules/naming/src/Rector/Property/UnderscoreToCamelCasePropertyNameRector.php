@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Naming\Rector\Property;
 
-use Typo3RectorPrefix20210405\Nette\Utils\Strings;
+use Typo3RectorPrefix20210407\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Property;
 use Rector\Core\Rector\AbstractRector;
@@ -75,7 +75,7 @@ CODE_SAMPLE
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
         $propertyName = $this->getName($node);
-        if (!\Typo3RectorPrefix20210405\Nette\Utils\Strings::contains($propertyName, '_')) {
+        if (!\Typo3RectorPrefix20210407\Nette\Utils\Strings::contains($propertyName, '_')) {
             return null;
         }
         $propertyRename = $this->propertyRenameFactory->create($node, $this->underscoreCamelCaseExpectedNameResolver);

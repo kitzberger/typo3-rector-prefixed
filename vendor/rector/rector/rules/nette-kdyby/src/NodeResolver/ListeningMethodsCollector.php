@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteKdyby\NodeResolver;
 
-use Typo3RectorPrefix20210405\Nette\Utils\Strings;
+use Typo3RectorPrefix20210407\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ArrayItem;
@@ -15,7 +15,7 @@ use Rector\NetteKdyby\Naming\EventClassNaming;
 use Rector\NetteKdyby\ValueObject\EventClassAndClassMethod;
 use Rector\NetteKdyby\ValueObject\NetteEventToContributeEventClass;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210405\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210407\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class ListeningMethodsCollector
 {
     /**
@@ -42,7 +42,7 @@ final class ListeningMethodsCollector
      * @var EventClassNaming
      */
     private $eventClassNaming;
-    public function __construct(\Typo3RectorPrefix20210405\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NetteKdyby\Naming\EventClassNaming $eventClassNaming, \Rector\Core\PhpParser\Node\Value\ValueResolver $valueResolver)
+    public function __construct(\Typo3RectorPrefix20210407\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NetteKdyby\Naming\EventClassNaming $eventClassNaming, \Rector\Core\PhpParser\Node\Value\ValueResolver $valueResolver)
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->valueResolver = $valueResolver;
@@ -123,7 +123,7 @@ final class ListeningMethodsCollector
         // custom method name
         $classMethodName = $this->valueResolver->getValue($arrayItem->value);
         $classMethod = $class->getMethod($classMethodName);
-        if (\Typo3RectorPrefix20210405\Nette\Utils\Strings::contains($eventClass, '::')) {
+        if (\Typo3RectorPrefix20210407\Nette\Utils\Strings::contains($eventClass, '::')) {
             [$dispatchingClass, $property] = \explode('::', $eventClass);
             $eventClass = $this->eventClassNaming->createEventClassNameFromClassAndProperty($dispatchingClass, $property);
         }

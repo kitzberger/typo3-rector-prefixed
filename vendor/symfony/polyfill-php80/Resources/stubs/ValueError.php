@@ -5,4 +5,4 @@
 class ValueError extends \Error
 {
 }
-\class_alias('Typo3RectorPrefix20210405\\ValueError', 'ValueError', \false);
+\class_alias('Typo3RectorPrefix20210407\\ValueError', 'ValueError', \false);

@@ -5,8 +5,8 @@ namespace Rector\Core\Tests\FileSystem\FilesFinder\ExcludePaths;
 
 use Rector\Core\FileSystem\FilesFinder;
 use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210405\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ExcludePathsTest extends \Typo3RectorPrefix20210405\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210407\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class ExcludePathsTest extends \Typo3RectorPrefix20210407\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var FilesFinder

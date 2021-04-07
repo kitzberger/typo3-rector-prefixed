@@ -69,7 +69,7 @@ class SomeClass
     }
 }
 CODE_SAMPLE
-, [self::DETECTED_TRAITS => ['Typo3RectorPrefix20210405\\Knp\\DoctrineBehaviors\\Model\\Translatable\\Translation', 'Typo3RectorPrefix20210405\\Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslationTrait']])]);
+, [self::DETECTED_TRAITS => ['Typo3RectorPrefix20210407\\Knp\\DoctrineBehaviors\\Model\\Translatable\\Translation', 'Typo3RectorPrefix20210407\\Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslationTrait']])]);
     }
     /**
      * @return string[]

@@ -15,7 +15,7 @@ final class AssertEmailTagValueNode extends \Rector\BetterPhpDocParser\ValueObje
 {
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210405\\@Assert\\Email';
+        return 'Typo3RectorPrefix20210407\\@Assert\\Email';
     }
     public function getSilentKey() : string
     {
@@ -30,6 +30,6 @@ final class AssertEmailTagValueNode extends \Rector\BetterPhpDocParser\ValueObje
     }
     public function getAttributeClassName() : string
     {
-        return 'Typo3RectorPrefix20210405\\Symfony\\Component\\Validator\\Constraints\\Email';
+        return 'Typo3RectorPrefix20210407\\Symfony\\Component\\Validator\\Constraints\\Email';
     }
 }

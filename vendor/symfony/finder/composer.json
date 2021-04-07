@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210405\\Symfony\\Component\\Finder\\": ""
+            "Typo3RectorPrefix20210407\\Symfony\\Component\\Finder\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

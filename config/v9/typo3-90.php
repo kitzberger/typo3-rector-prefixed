@@ -1,10 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405;
+namespace Typo3RectorPrefix20210407;
 
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
+use Ssch\TYPO3Rector\FlexForms\Transformer\RenderTypeTransformer;
 use Ssch\TYPO3Rector\Rector\Composer\RemoveCmsPackageDirFromExtraRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\CheckForExtensionInfoRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\CheckForExtensionVersionRector;
@@ -30,9 +31,9 @@ use Ssch\TYPO3Rector\Rector\v9\v0\UseExtensionConfigurationApiRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\UseLogMethodInsteadOfNewLog2Rector;
 use Ssch\TYPO3Rector\Rector\v9\v0\UseNewComponentIdForPageTreeRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\UseRenderingContextGetControllerContextRector;
-use Typo3RectorPrefix20210405\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
-return static function (\Typo3RectorPrefix20210405\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/../services.php');
     $services = $containerConfigurator->services();
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\MoveRenderArgumentsToInitializeArgumentsMethodRector::class);
@@ -61,4 +62,5 @@ return static function (\Typo3RectorPrefix20210405\Symfony\Component\DependencyI
     $services->set(\Ssch\TYPO3Rector\Rector\Composer\RemoveCmsPackageDirFromExtraRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\SubstituteGeneralUtilityDevLogRector::class);
     $services->set(\Ssch\TYPO3Rector\Rector\v9\v0\ReplacedGeneralUtilitySysLogWithLogginApiRector::class);
+    $services->set(\Ssch\TYPO3Rector\FlexForms\Transformer\RenderTypeTransformer::class);
 };

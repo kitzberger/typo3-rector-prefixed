@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Conditions;
 
-use Typo3RectorPrefix20210405\Nette\Utils\Strings;
+use Typo3RectorPrefix20210407\Nette\Utils\Strings;
 use Ssch\TYPO3Rector\ArrayUtility;
 final class GlobalVarConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher
 {
@@ -73,7 +73,7 @@ final class GlobalVarConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Co
     }
     public function shouldApply(string $condition) : bool
     {
-        return \Typo3RectorPrefix20210405\Nette\Utils\Strings::startsWith($condition, self::TYPE);
+        return \Typo3RectorPrefix20210407\Nette\Utils\Strings::startsWith($condition, self::TYPE);
     }
     private function refactorGetPost(string $property, string $operator, string $value) : string
     {
@@ -88,7 +88,7 @@ final class GlobalVarConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Co
     }
     private function refactorTsfe(string $property, string $operator, string $value) : string
     {
-        if (\Typo3RectorPrefix20210405\Nette\Utils\Strings::startsWith($property, 'page')) {
+        if (\Typo3RectorPrefix20210407\Nette\Utils\Strings::startsWith($property, 'page')) {
             $parameters = \Ssch\TYPO3Rector\ArrayUtility::trimExplode('|', $property, \true);
             return \sprintf('page["%s"] %s %s', $parameters[1], self::OPERATOR_MAPPING[$operator], $value);
         }

@@ -6,13 +6,13 @@ namespace Rector\PHPUnit\Tests\Rector\MethodCall\AssertInstanceOfComparisonRecto
 use Iterator;
 use Rector\PHPUnit\Rector\MethodCall\AssertInstanceOfComparisonRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
 final class AssertInstanceOfComparisonRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

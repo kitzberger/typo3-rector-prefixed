@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210405\\Symplify\\SetConfigResolver\\": "src"
+            "Typo3RectorPrefix20210407\\Symplify\\SetConfigResolver\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210405\\Symplify\\SetConfigResolver\\Tests\\": "tests"
+            "Typo3RectorPrefix20210407\\Symplify\\SetConfigResolver\\Tests\\": "tests"
         }
     },
     "extra": {

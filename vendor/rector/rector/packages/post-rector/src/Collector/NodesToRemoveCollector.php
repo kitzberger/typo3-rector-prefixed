@@ -19,7 +19,7 @@ use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\NodeRemoval\BreakingRemovalGuard;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\PostRector\Contract\Collector\NodeCollectorInterface;
-use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
 final class NodesToRemoveCollector implements \Rector\PostRector\Contract\Collector\NodeCollectorInterface
 {
     /**

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\RectorGenerator\Config;
 
-use Typo3RectorPrefix20210405\Nette\Utils\Strings;
+use Typo3RectorPrefix20210407\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
@@ -12,8 +12,8 @@ use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
 use Rector\RectorGenerator\Rector\Closure\AddNewServiceToSymfonyPhpConfigRector;
 use Rector\RectorGenerator\TemplateFactory;
 use Rector\RectorGenerator\ValueObject\RectorRecipe;
-use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileSystem;
 final class ConfigFilesystem
 {
     /**
@@ -40,7 +40,7 @@ final class ConfigFilesystem
      * @var BetterStandardPrinter
      */
     private $betterStandardPrinter;
-    public function __construct(\Rector\RectorGenerator\Rector\Closure\AddNewServiceToSymfonyPhpConfigRector $addNewServiceToSymfonyPhpConfigRector, \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Rector\Core\PhpParser\Parser\Parser $parser, \Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\RectorGenerator\TemplateFactory $templateFactory)
+    public function __construct(\Rector\RectorGenerator\Rector\Closure\AddNewServiceToSymfonyPhpConfigRector $addNewServiceToSymfonyPhpConfigRector, \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Rector\Core\PhpParser\Parser\Parser $parser, \Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\RectorGenerator\TemplateFactory $templateFactory)
     {
         $this->templateFactory = $templateFactory;
         $this->parser = $parser;
@@ -57,11 +57,11 @@ final class ConfigFilesystem
             return;
         }
         $setFilePath = $rectorRecipe->getSet();
-        $setFileInfo = new \Typo3RectorPrefix20210405\Symplify\SmartFileSystem\SmartFileInfo($setFilePath);
+        $setFileInfo = new \Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo($setFilePath);
         $setFileContents = $setFileInfo->getContents();
         // already added?
         $rectorFqnName = $this->templateFactory->create(self::RECTOR_FQN_NAME_PATTERN, $templateVariables);
-        if (\Typo3RectorPrefix20210405\Nette\Utils\Strings::contains($setFileContents, $rectorFqnName)) {
+        if (\Typo3RectorPrefix20210407\Nette\Utils\Strings::contains($setFileContents, $rectorFqnName)) {
             return;
         }
         // 1. parse the file

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace PhpParser\Builder;
 
-use Typo3RectorPrefix20210405\PhpParser;
+use Typo3RectorPrefix20210407\PhpParser;
 use PhpParser\BuilderHelpers;
 use PhpParser\Node;
 class Param implements \PhpParser\Builder

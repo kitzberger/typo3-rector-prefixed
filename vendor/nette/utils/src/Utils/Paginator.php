@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405\Nette\Utils;
+namespace Typo3RectorPrefix20210407\Nette\Utils;
 
-use Typo3RectorPrefix20210405\Nette;
+use Typo3RectorPrefix20210407\Nette;
 /**
  * Paginating math.
  *

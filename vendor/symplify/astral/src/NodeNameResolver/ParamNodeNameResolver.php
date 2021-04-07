@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405\Symplify\Astral\NodeNameResolver;
+namespace Typo3RectorPrefix20210407\Symplify\Astral\NodeNameResolver;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Param;
-use Typo3RectorPrefix20210405\Symplify\Astral\Contract\NodeNameResolverInterface;
-final class ParamNodeNameResolver implements \Typo3RectorPrefix20210405\Symplify\Astral\Contract\NodeNameResolverInterface
+use Typo3RectorPrefix20210407\Symplify\Astral\Contract\NodeNameResolverInterface;
+final class ParamNodeNameResolver implements \Typo3RectorPrefix20210407\Symplify\Astral\Contract\NodeNameResolverInterface
 {
     public function match(\PhpParser\Node $node) : bool
     {

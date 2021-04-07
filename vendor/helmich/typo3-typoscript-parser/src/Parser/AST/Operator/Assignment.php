@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\Operator;
+namespace Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Parser\AST\Operator;
 
-use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\ObjectPath;
-use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\Scalar;
+use Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Parser\AST\ObjectPath;
+use Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Parser\AST\Scalar;
 /**
  * An assignment statement.
  *
@@ -15,7 +15,7 @@ use Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\Scalar;
  * @package    Helmich\TypoScriptParser
  * @subpackage Parser\AST\Operator
  */
-class Assignment extends \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\Operator\BinaryOperator
+class Assignment extends \Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Parser\AST\Operator\BinaryOperator
 {
     /**
      * The value to be assigned. Should be a scalar value, which MAY contain
@@ -31,7 +31,7 @@ class Assignment extends \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Par
      * @param Scalar     $value      The value to be assigned.
      * @param int        $sourceLine The source line.
      */
-    public function __construct(\Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\ObjectPath $object, \Typo3RectorPrefix20210405\Helmich\TypoScriptParser\Parser\AST\Scalar $value, int $sourceLine)
+    public function __construct(\Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Parser\AST\ObjectPath $object, \Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Parser\AST\Scalar $value, int $sourceLine)
     {
         parent::__construct($sourceLine);
         $this->object = $object;

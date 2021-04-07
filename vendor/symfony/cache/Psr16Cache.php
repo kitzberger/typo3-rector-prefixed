@@ -8,41 +8,41 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210405\Symfony\Component\Cache;
+namespace Typo3RectorPrefix20210407\Symfony\Component\Cache;
 
-use Typo3RectorPrefix20210405\Psr\Cache\CacheException as Psr6CacheException;
-use Typo3RectorPrefix20210405\Psr\Cache\CacheItemPoolInterface;
-use Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException as SimpleCacheException;
-use Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInterface;
-use Typo3RectorPrefix20210405\Symfony\Component\Cache\Adapter\AdapterInterface;
-use Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210405\Symfony\Component\Cache\Traits\ProxyTrait;
+use Typo3RectorPrefix20210407\Psr\Cache\CacheException as Psr6CacheException;
+use Typo3RectorPrefix20210407\Psr\Cache\CacheItemPoolInterface;
+use Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException as SimpleCacheException;
+use Typo3RectorPrefix20210407\Psr\SimpleCache\CacheInterface;
+use Typo3RectorPrefix20210407\Symfony\Component\Cache\Adapter\AdapterInterface;
+use Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210407\Symfony\Component\Cache\Traits\ProxyTrait;
 /**
  * Turns a PSR-6 cache into a PSR-16 one.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInterface, \Typo3RectorPrefix20210405\Symfony\Component\Cache\PruneableInterface, \Typo3RectorPrefix20210405\Symfony\Component\Cache\ResettableInterface
+class Psr16Cache implements \Typo3RectorPrefix20210407\Psr\SimpleCache\CacheInterface, \Typo3RectorPrefix20210407\Symfony\Component\Cache\PruneableInterface, \Typo3RectorPrefix20210407\Symfony\Component\Cache\ResettableInterface
 {
     use ProxyTrait;
     private const METADATA_EXPIRY_OFFSET = 1527506807;
     private $createCacheItem;
     private $cacheItemPrototype;
-    public function __construct(\Typo3RectorPrefix20210405\Psr\Cache\CacheItemPoolInterface $pool)
+    public function __construct(\Typo3RectorPrefix20210407\Psr\Cache\CacheItemPoolInterface $pool)
     {
         $this->pool = $pool;
-        if (!$pool instanceof \Typo3RectorPrefix20210405\Symfony\Component\Cache\Adapter\AdapterInterface) {
+        if (!$pool instanceof \Typo3RectorPrefix20210407\Symfony\Component\Cache\Adapter\AdapterInterface) {
             return;
         }
         $cacheItemPrototype =& $this->cacheItemPrototype;
         $createCacheItem = \Closure::bind(static function ($key, $value, $allowInt = \false) use(&$cacheItemPrototype) {
             $item = clone $cacheItemPrototype;
             $item->poolHash = $item->innerItem = null;
-            $item->key = $allowInt && \is_int($key) ? (string) $key : \Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem::validateKey($key);
+            $item->key = $allowInt && \is_int($key) ? (string) $key : \Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem::validateKey($key);
             $item->value = $value;
             $item->isHit = \false;
             return $item;
-        }, null, \Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem::class);
+        }, null, \Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem::class);
         $this->createCacheItem = function ($key, $value, $allowInt = \false) use($createCacheItem) {
             if (null === $this->cacheItemPrototype) {
                 $this->get($allowInt && \is_int($key) ? (string) $key : $key);
@@ -60,10 +60,10 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
     {
         try {
             $item = $this->pool->getItem($key);
-        } catch (\Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException $e) {
+        } catch (\Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException $e) {
             throw $e;
-        } catch (\Typo3RectorPrefix20210405\Psr\Cache\CacheException $e) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Typo3RectorPrefix20210407\Psr\Cache\CacheException $e) {
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
         if (null === $this->cacheItemPrototype) {
             $this->cacheItemPrototype = clone $item;
@@ -84,10 +84,10 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
             } else {
                 $item = $this->pool->getItem($key)->set($value);
             }
-        } catch (\Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException $e) {
+        } catch (\Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException $e) {
             throw $e;
-        } catch (\Typo3RectorPrefix20210405\Psr\Cache\CacheException $e) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Typo3RectorPrefix20210407\Psr\Cache\CacheException $e) {
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
         if (null !== $ttl) {
             $item->expiresAfter($ttl);
@@ -103,10 +103,10 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
     {
         try {
             return $this->pool->deleteItem($key);
-        } catch (\Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException $e) {
+        } catch (\Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException $e) {
             throw $e;
-        } catch (\Typo3RectorPrefix20210405\Psr\Cache\CacheException $e) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Typo3RectorPrefix20210407\Psr\Cache\CacheException $e) {
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
     }
     /**
@@ -128,17 +128,17 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
         if ($keys instanceof \Traversable) {
             $keys = \iterator_to_array($keys, \false);
         } elseif (!\is_array($keys)) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException(\sprintf('Cache keys must be array or Traversable, "%s" given.', \get_debug_type($keys)));
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException(\sprintf('Cache keys must be array or Traversable, "%s" given.', \get_debug_type($keys)));
         }
         try {
             $items = $this->pool->getItems($keys);
-        } catch (\Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException $e) {
+        } catch (\Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException $e) {
             throw $e;
-        } catch (\Typo3RectorPrefix20210405\Psr\Cache\CacheException $e) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Typo3RectorPrefix20210407\Psr\Cache\CacheException $e) {
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
         $values = [];
-        if (!$this->pool instanceof \Typo3RectorPrefix20210405\Symfony\Component\Cache\Adapter\AdapterInterface) {
+        if (!$this->pool instanceof \Typo3RectorPrefix20210407\Symfony\Component\Cache\Adapter\AdapterInterface) {
             foreach ($items as $key => $item) {
                 $values[$key] = $item->isHit() ? $item->get() : $default;
             }
@@ -153,9 +153,9 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
             if (!($metadata = $item->getMetadata())) {
                 continue;
             }
-            unset($metadata[\Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem::METADATA_TAGS]);
+            unset($metadata[\Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem::METADATA_TAGS]);
             if ($metadata) {
-                $values[$key] = ["" . \pack('VN', (int) (0.1 + $metadata[\Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem::METADATA_EXPIRY] - self::METADATA_EXPIRY_OFFSET), $metadata[\Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem::METADATA_CTIME]) . "_" => $values[$key]];
+                $values[$key] = ["" . \pack('VN', (int) (0.1 + $metadata[\Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem::METADATA_EXPIRY] - self::METADATA_EXPIRY_OFFSET), $metadata[\Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem::METADATA_CTIME]) . "_" => $values[$key]];
             }
         }
         return $values;
@@ -169,7 +169,7 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
     {
         $valuesIsArray = \is_array($values);
         if (!$valuesIsArray && !$values instanceof \Traversable) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException(\sprintf('Cache values must be array or Traversable, "%s" given.', \get_debug_type($values)));
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException(\sprintf('Cache values must be array or Traversable, "%s" given.', \get_debug_type($values)));
         }
         $items = [];
         try {
@@ -192,10 +192,10 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
                     $items[$key] = $this->pool->getItem($key)->set($value);
                 }
             }
-        } catch (\Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException $e) {
+        } catch (\Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException $e) {
             throw $e;
-        } catch (\Typo3RectorPrefix20210405\Psr\Cache\CacheException $e) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Typo3RectorPrefix20210407\Psr\Cache\CacheException $e) {
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
         $ok = \true;
         foreach ($items as $key => $item) {
@@ -219,14 +219,14 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
         if ($keys instanceof \Traversable) {
             $keys = \iterator_to_array($keys, \false);
         } elseif (!\is_array($keys)) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException(\sprintf('Cache keys must be array or Traversable, "%s" given.', \get_debug_type($keys)));
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException(\sprintf('Cache keys must be array or Traversable, "%s" given.', \get_debug_type($keys)));
         }
         try {
             return $this->pool->deleteItems($keys);
-        } catch (\Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException $e) {
+        } catch (\Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException $e) {
             throw $e;
-        } catch (\Typo3RectorPrefix20210405\Psr\Cache\CacheException $e) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Typo3RectorPrefix20210407\Psr\Cache\CacheException $e) {
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
     }
     /**
@@ -238,10 +238,10 @@ class Psr16Cache implements \Typo3RectorPrefix20210405\Psr\SimpleCache\CacheInte
     {
         try {
             return $this->pool->hasItem($key);
-        } catch (\Typo3RectorPrefix20210405\Psr\SimpleCache\CacheException $e) {
+        } catch (\Typo3RectorPrefix20210407\Psr\SimpleCache\CacheException $e) {
             throw $e;
-        } catch (\Typo3RectorPrefix20210405\Psr\Cache\CacheException $e) {
-            throw new \Typo3RectorPrefix20210405\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Typo3RectorPrefix20210407\Psr\Cache\CacheException $e) {
+            throw new \Typo3RectorPrefix20210407\Symfony\Component\Cache\Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
     }
 }

@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210405\Symfony\Component\Cache\Adapter;
+namespace Typo3RectorPrefix20210407\Symfony\Component\Cache\Adapter;
 
-use Typo3RectorPrefix20210405\Psr\Cache\CacheItemInterface;
-use Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem;
-use Typo3RectorPrefix20210405\Symfony\Contracts\Cache\CacheInterface;
+use Typo3RectorPrefix20210407\Psr\Cache\CacheItemInterface;
+use Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem;
+use Typo3RectorPrefix20210407\Symfony\Contracts\Cache\CacheInterface;
 /**
  * @author Titouan Galopin <galopintitouan@gmail.com>
  */
-class NullAdapter implements \Typo3RectorPrefix20210405\Symfony\Component\Cache\Adapter\AdapterInterface, \Typo3RectorPrefix20210405\Symfony\Contracts\Cache\CacheInterface
+class NullAdapter implements \Typo3RectorPrefix20210407\Symfony\Component\Cache\Adapter\AdapterInterface, \Typo3RectorPrefix20210407\Symfony\Contracts\Cache\CacheInterface
 {
     private $createCacheItem;
     public function __construct()
     {
         $this->createCacheItem = \Closure::bind(function ($key) {
-            $item = new \Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem();
+            $item = new \Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem();
             $item->key = $key;
             $item->isHit = \false;
             return $item;
-        }, $this, \Typo3RectorPrefix20210405\Symfony\Component\Cache\CacheItem::class);
+        }, $this, \Typo3RectorPrefix20210407\Symfony\Component\Cache\CacheItem::class);
     }
     /**
      * {@inheritdoc}
@@ -92,7 +92,7 @@ class NullAdapter implements \Typo3RectorPrefix20210405\Symfony\Component\Cache\
      *
      * @return bool
      */
-    public function save(\Typo3RectorPrefix20210405\Psr\Cache\CacheItemInterface $item)
+    public function save(\Typo3RectorPrefix20210407\Psr\Cache\CacheItemInterface $item)
     {
         return \false;
     }
@@ -101,7 +101,7 @@ class NullAdapter implements \Typo3RectorPrefix20210405\Symfony\Component\Cache\
      *
      * @return bool
      */
-    public function saveDeferred(\Typo3RectorPrefix20210405\Psr\Cache\CacheItemInterface $item)
+    public function saveDeferred(\Typo3RectorPrefix20210407\Psr\Cache\CacheItemInterface $item)
     {
         return \false;
     }

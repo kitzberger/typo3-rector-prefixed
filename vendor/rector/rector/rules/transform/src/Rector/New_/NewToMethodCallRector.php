@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Transform\Rector\New_;
 
-use Typo3RectorPrefix20210405\Nette\Utils\Strings;
+use Typo3RectorPrefix20210407\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\New_;
@@ -18,7 +18,7 @@ use Rector\Transform\ValueObject\NewToMethodCall;
 use ReflectionClass;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210405\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210407\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Transform\Tests\Rector\New_\NewToMethodCallRector\NewToMethodCallRectorTest
  */
@@ -97,7 +97,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $newsToMethodCalls = $configuration[self::NEWS_TO_METHOD_CALLS] ?? [];
-        \Typo3RectorPrefix20210405\Webmozart\Assert\Assert::allIsInstanceOf($newsToMethodCalls, \Rector\Transform\ValueObject\NewToMethodCall::class);
+        \Typo3RectorPrefix20210407\Webmozart\Assert\Assert::allIsInstanceOf($newsToMethodCalls, \Rector\Transform\ValueObject\NewToMethodCall::class);
         $this->newsToMethodCalls = $newsToMethodCalls;
     }
     private function getExistingFactoryPropertyName(\PhpParser\Node\Stmt\Class_ $class, string $factoryClass) : ?string
@@ -114,6 +114,6 @@ CODE_SAMPLE
     {
         $reflectionClass = new \ReflectionClass($factoryFullQualifiedName);
         $shortName = $reflectionClass->getShortName();
-        return \Typo3RectorPrefix20210405\Nette\Utils\Strings::firstLower($shortName);
+        return \Typo3RectorPrefix20210407\Nette\Utils\Strings::firstLower($shortName);
     }
 }

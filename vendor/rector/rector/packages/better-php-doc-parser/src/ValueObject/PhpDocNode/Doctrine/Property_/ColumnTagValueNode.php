@@ -22,7 +22,7 @@ final class ColumnTagValueNode extends \Rector\BetterPhpDocParser\ValueObject\Ph
     }
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210405\\@ORM\\Column';
+        return 'Typo3RectorPrefix20210407\\@ORM\\Column';
     }
     /**
      * @return array<string, mixed>

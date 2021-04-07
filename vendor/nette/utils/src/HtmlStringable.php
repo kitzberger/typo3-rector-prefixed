@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405\Nette;
+namespace Typo3RectorPrefix20210407\Nette;
 
 interface HtmlStringable
 {
@@ -14,4 +14,4 @@ interface HtmlStringable
      */
     function __toString() : string;
 }
-\interface_exists(\Typo3RectorPrefix20210405\Nette\Utils\IHtmlString::class);
+\interface_exists(\Typo3RectorPrefix20210407\Nette\Utils\IHtmlString::class);

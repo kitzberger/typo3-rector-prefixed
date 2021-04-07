@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405\Symplify\SetConfigResolver\Contract;
+namespace Typo3RectorPrefix20210407\Symplify\SetConfigResolver\Contract;
 
-use Typo3RectorPrefix20210405\Symplify\SetConfigResolver\ValueObject\Set;
+use Typo3RectorPrefix20210407\Symplify\SetConfigResolver\ValueObject\Set;
 interface SetProviderInterface
 {
     /**
@@ -14,5 +14,5 @@ interface SetProviderInterface
      * @return string[]
      */
     public function provideSetNames() : array;
-    public function provideByName(string $setName) : ?\Typo3RectorPrefix20210405\Symplify\SetConfigResolver\ValueObject\Set;
+    public function provideByName(string $setName) : ?\Typo3RectorPrefix20210407\Symplify\SetConfigResolver\ValueObject\Set;
 }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405\Doctrine\Inflector;
+namespace Typo3RectorPrefix20210407\Doctrine\Inflector;
 
 final class Language
 {

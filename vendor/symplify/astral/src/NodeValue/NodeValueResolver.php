@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210405\Symplify\Astral\NodeValue;
+namespace Typo3RectorPrefix20210407\Symplify\Astral\NodeValue;
 
 use PhpParser\ConstExprEvaluationException;
 use PhpParser\ConstExprEvaluator;
@@ -19,9 +19,9 @@ use PhpParser\Node\Scalar\MagicConst\Dir;
 use PhpParser\Node\Scalar\MagicConst\File;
 use PhpParser\Node\Stmt\ClassLike;
 use ReflectionClassConstant;
-use Typo3RectorPrefix20210405\Symplify\Astral\Naming\SimpleNameResolver;
-use Typo3RectorPrefix20210405\Symplify\Astral\NodeFinder\SimpleNodeFinder;
-use Typo3RectorPrefix20210405\Symplify\PackageBuilder\Php\TypeChecker;
+use Typo3RectorPrefix20210407\Symplify\Astral\Naming\SimpleNameResolver;
+use Typo3RectorPrefix20210407\Symplify\Astral\NodeFinder\SimpleNodeFinder;
+use Typo3RectorPrefix20210407\Symplify\PackageBuilder\Php\TypeChecker;
 /**
  * @see \Symplify\Astral\Tests\NodeValue\NodeValueResolverTest
  */
@@ -47,7 +47,7 @@ final class NodeValueResolver
      * @var SimpleNodeFinder
      */
     private $simpleNodeFinder;
-    public function __construct(\Typo3RectorPrefix20210405\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \Typo3RectorPrefix20210405\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Typo3RectorPrefix20210405\Symplify\Astral\NodeFinder\SimpleNodeFinder $simpleNodeFinder)
+    public function __construct(\Typo3RectorPrefix20210407\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \Typo3RectorPrefix20210407\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Typo3RectorPrefix20210407\Symplify\Astral\NodeFinder\SimpleNodeFinder $simpleNodeFinder)
     {
         $this->simpleNameResolver = $simpleNameResolver;
         $this->constExprEvaluator = new \PhpParser\ConstExprEvaluator(function (\PhpParser\Node\Expr $expr) {

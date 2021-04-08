@@ -24,7 +24,7 @@ final class GlobalVarConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Co
         $subConditions = \Ssch\TYPO3Rector\ArrayUtility::trimExplode(',', $subConditions['subCondition']);
         $conditions = [];
         foreach ($subConditions as $subCondition) {
-            \preg_match('#(?<type>TSFE|GP|GPmerged|_POST|_GET|LIT)\\s*:\\s*(?<property>.*)\\s*(?<operator>' . self::ALLOWED_OPERATORS_REGEX . ')\\s*(?<value>.*)$#Ui', $subCondition, $matches);
+            \preg_match('#(?<type>TSFE|GP|GPmerged|_POST|_GET|LIT)' . self::ZERO_ONE_OR_MORE_WHITESPACES . ':' . self::ZERO_ONE_OR_MORE_WHITESPACES . '(?<property>.*)\\s*(?<operator>' . self::ALLOWED_OPERATORS_REGEX . ')' . self::ZERO_ONE_OR_MORE_WHITESPACES . '(?<value>.*)$#Ui', $subCondition, $matches);
             if (!\is_array($matches)) {
                 continue;
             }
@@ -38,13 +38,9 @@ final class GlobalVarConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Co
             }
             if ('TSFE' === $type) {
                 $conditions[$key][] = $this->refactorTsfe($property, $operator, $value);
-                continue;
-            }
-            if ('GP' === $type) {
+            } elseif ('GP' === $type) {
                 $conditions[$key][] = $this->refactorGetPost($property, $operator, $value);
-                continue;
-            }
-            if ('LIT' === $type) {
+            } elseif ('LIT' === $type) {
                 $conditions[$key][] = \sprintf('"%s" %s "%s"', $value, self::OPERATOR_MAPPING[$operator], $property);
                 continue;
             }
@@ -80,11 +76,14 @@ final class GlobalVarConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Co
         if ('L' === $property) {
             return \sprintf('siteLanguage("languageId") %s "%s"', self::OPERATOR_MAPPING[$operator], $value);
         }
+        if (!\is_numeric($value)) {
+            $value = \sprintf("'%s'", $value);
+        }
         $parameters = \Ssch\TYPO3Rector\ArrayUtility::trimExplode('|', $property);
         if (1 === \count($parameters)) {
-            return \sprintf('request.getQueryParams()[\'%1$s\'] %2$s %3$s', $parameters[0], $operator, $value);
+            return \sprintf('request.getQueryParams()[\'%1$s\'] %2$s %3$s', $parameters[0], self::OPERATOR_MAPPING[$operator], $value);
         }
-        return \sprintf('traverse(request.getQueryParams(), \'%1$s\') %2$s %3$s || traverse(request.getParsedBody(), \'%1$s\') %2$s %3$s', \implode('/', $parameters), $operator, $value);
+        return \sprintf('traverse(request.getQueryParams(), \'%1$s\') %2$s %3$s || traverse(request.getParsedBody(), \'%1$s\') %2$s %3$s', \implode('/', $parameters), self::OPERATOR_MAPPING[$operator], $value);
     }
     private function refactorTsfe(string $property, string $operator, string $value) : string
     {

@@ -37,7 +37,7 @@ final class ReplaceAnnotationRector extends \Rector\Core\Rector\AbstractRector i
         $this->phpDocTagRemover = $phpDocTagRemover;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

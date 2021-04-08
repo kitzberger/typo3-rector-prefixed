@@ -15,7 +15,7 @@ use TYPO3\CMS\Extbase\Utility\TypeHandlingUtility;
 final class UseNativePhpHex2binMethodRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

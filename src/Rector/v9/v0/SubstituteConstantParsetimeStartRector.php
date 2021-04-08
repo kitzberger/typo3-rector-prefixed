@@ -28,7 +28,7 @@ final class SubstituteConstantParsetimeStartRector extends \Rector\Core\Rector\A
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

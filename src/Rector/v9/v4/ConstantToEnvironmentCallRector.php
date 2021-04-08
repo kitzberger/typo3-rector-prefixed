@@ -31,7 +31,7 @@ final class ConstantToEnvironmentCallRector extends \Rector\Core\Rector\Abstract
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Turns defined constant to static method call of new Environment API.', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample('PATH_thisScript;', 'Environment::getCurrentScript();')]);
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

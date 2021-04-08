@@ -25,7 +25,7 @@ final class RenderCharsetDefaultsToUtf8Rector extends \Rector\Core\Rector\Abstra
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

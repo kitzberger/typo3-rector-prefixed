@@ -16,7 +16,7 @@ use TYPO3\CMS\Lowlevel\Utility\ArrayBrowser;
 final class RefactorArrayBrowserWrapValueRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

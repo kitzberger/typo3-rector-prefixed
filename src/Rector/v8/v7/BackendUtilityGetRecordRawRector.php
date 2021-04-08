@@ -28,7 +28,7 @@ final class BackendUtilityGetRecordRawRector extends \Rector\Core\Rector\Abstrac
      */
     private const QUERY_BUILDER = 'queryBuilder';
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

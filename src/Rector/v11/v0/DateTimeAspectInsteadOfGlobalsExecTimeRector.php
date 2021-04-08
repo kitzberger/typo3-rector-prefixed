@@ -25,7 +25,7 @@ final class DateTimeAspectInsteadOfGlobalsExecTimeRector extends \Rector\Core\Re
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

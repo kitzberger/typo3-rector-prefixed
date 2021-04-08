@@ -29,7 +29,7 @@ final class RefactorRemovedMethodsFromContentObjectRendererRector extends \Recto
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

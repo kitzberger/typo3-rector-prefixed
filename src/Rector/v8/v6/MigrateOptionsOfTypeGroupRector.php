@@ -24,7 +24,7 @@ final class MigrateOptionsOfTypeGroupRector extends \Rector\Core\Rector\Abstract
      */
     private const DISABLED = 'disabled';
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

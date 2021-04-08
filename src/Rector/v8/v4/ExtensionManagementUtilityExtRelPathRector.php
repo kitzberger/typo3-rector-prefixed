@@ -17,7 +17,7 @@ use TYPO3\CMS\Core\Utility\PathUtility;
 final class ExtensionManagementUtilityExtRelPathRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

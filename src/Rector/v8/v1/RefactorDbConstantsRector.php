@@ -21,7 +21,7 @@ final class RefactorDbConstantsRector extends \Rector\Core\Rector\AbstractRector
      */
     private const MAP_CONSTANTS_TO_GLOBALS = ['TYPO3_db' => 'dbname', 'TYPO3_db_username' => 'user', 'TYPO3_db_password' => 'password', 'TYPO3_db_host' => 'host'];
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

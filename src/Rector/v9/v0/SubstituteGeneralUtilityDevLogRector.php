@@ -28,7 +28,7 @@ final class SubstituteGeneralUtilityDevLogRector extends \Rector\Core\Rector\Abs
         $this->oldSeverityToLogLevelMapper = $oldSeverityToLogLevelMapper;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

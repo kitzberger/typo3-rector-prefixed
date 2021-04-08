@@ -20,7 +20,7 @@ final class SoftReferencesFunctionalityRemovedRector extends \Rector\Core\Rector
 {
     use TcaHelperTrait;
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

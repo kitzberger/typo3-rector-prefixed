@@ -28,7 +28,7 @@ final class RemoveL10nModeNoCopyRector extends \Rector\Core\Rector\AbstractRecto
      */
     private const ALLOW_LANGUAGE_SYNCHRONIZATION = 'allowLanguageSynchronization';
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

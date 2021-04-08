@@ -28,7 +28,7 @@ final class ReplacedGeneralUtilitySysLogWithLogginApiRector extends \Rector\Core
         $this->oldSeverityToLogLevelMapper = $oldSeverityToLogLevelMapper;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

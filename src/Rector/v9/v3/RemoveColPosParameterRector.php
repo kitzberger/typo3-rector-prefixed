@@ -15,7 +15,7 @@ use TYPO3\CMS\Backend\Domain\Repository\Localization\LocalizationRepository;
 final class RemoveColPosParameterRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 final class DataHandlerVariousMethodsAndMethodArgumentsRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

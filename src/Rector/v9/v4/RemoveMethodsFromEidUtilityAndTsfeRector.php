@@ -26,7 +26,7 @@ final class RemoveMethodsFromEidUtilityAndTsfeRector extends \Rector\Core\Rector
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

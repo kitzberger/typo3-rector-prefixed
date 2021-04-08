@@ -39,7 +39,7 @@ final class MoveRenderArgumentsToInitializeArgumentsMethodRector extends \Rector
         $this->phpDocTagRemover = $phpDocTagRemover;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

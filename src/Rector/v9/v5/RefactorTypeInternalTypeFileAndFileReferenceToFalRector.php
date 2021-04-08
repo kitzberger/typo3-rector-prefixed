@@ -19,7 +19,7 @@ final class RefactorTypeInternalTypeFileAndFileReferenceToFalRector extends \Rec
 {
     use TcaHelperTrait;
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

@@ -39,7 +39,7 @@ final class ExtEmConfRector extends \Rector\Core\Rector\AbstractRector implement
      */
     private $valuesToBeRemoved = ['dependencies', 'conflicts', 'suggests', 'private', 'download_password', 'TYPO3_version', 'PHP_version', 'internal', 'module', 'loadOrder', 'lockType', 'shy', 'priority', 'modify_tables', 'CGLcompliance', 'CGLcompliance_note'];
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

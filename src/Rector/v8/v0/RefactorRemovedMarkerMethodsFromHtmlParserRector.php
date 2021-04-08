@@ -33,7 +33,7 @@ final class RefactorRemovedMarkerMethodsFromHtmlParserRector extends \Rector\Cor
      */
     private const REMOVED_METHODS = ['processTag', 'processContent'];
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

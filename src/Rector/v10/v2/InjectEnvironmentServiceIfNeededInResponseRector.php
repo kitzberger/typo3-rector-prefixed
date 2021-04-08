@@ -41,7 +41,7 @@ final class InjectEnvironmentServiceIfNeededInResponseRector extends \Rector\Cor
         $this->classInsertManipulator = $classInsertManipulator;
     }
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

@@ -32,7 +32,7 @@ final class DropAdditionalPaletteRector extends \Rector\Core\Rector\AbstractRect
      */
     private const PALETTE_NAME = 'paletteName';
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

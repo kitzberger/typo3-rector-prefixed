@@ -28,7 +28,7 @@ final class ExcludeServiceKeysToArrayRector extends \Rector\Core\Rector\Abstract
         $this->arrayTypeAnalyzer = $arrayTypeAnalyzer;
     }
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

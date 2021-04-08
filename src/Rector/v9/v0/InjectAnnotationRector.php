@@ -50,7 +50,7 @@ final class InjectAnnotationRector extends \Rector\Core\Rector\AbstractRector
         $this->docBlockTagReplacer = $docBlockTagReplacer;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

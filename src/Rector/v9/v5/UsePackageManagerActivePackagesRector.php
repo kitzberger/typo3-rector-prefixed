@@ -25,7 +25,7 @@ final class UsePackageManagerActivePackagesRector extends \Rector\Core\Rector\Ab
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

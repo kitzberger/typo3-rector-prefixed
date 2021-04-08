@@ -23,7 +23,7 @@ final class ChangeAttemptsParameterConsoleOutputRector extends \Rector\Core\Rect
      */
     private const SELECT = 'select';
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

@@ -37,7 +37,7 @@ final class TimeTrackerInsteadOfNullTimeTrackerRector extends \Rector\Core\Recto
         $this->classRenamer = $classRenamer;
     }
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

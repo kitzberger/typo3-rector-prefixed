@@ -15,7 +15,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\AbstractController;
 final class RemovePropertyExtensionNameRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

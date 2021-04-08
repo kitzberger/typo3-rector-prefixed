@@ -34,7 +34,7 @@ final class IgnoreValidationAnnotationRector extends \Rector\Core\Rector\Abstrac
         $this->phpDocTagRemover = $phpDocTagRemover;
     }
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

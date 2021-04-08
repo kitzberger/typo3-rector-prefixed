@@ -27,7 +27,7 @@ final class SubstituteConstantsModeAndRequestTypeRector extends \Rector\Core\Rec
 {
     use FileHelperTrait;
     /**
-     * @return string[]
+     * @return array<class-string<\PhpParser\Node>>
      */
     public function getNodeTypes() : array
     {

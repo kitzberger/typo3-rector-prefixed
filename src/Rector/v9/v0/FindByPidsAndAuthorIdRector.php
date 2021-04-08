@@ -16,7 +16,7 @@ use TYPO3\CMS\SysNote\Domain\Repository\SysNoteRepository;
 final class FindByPidsAndAuthorIdRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

@@ -44,7 +44,7 @@ final class RefactorGraphicalFunctionsTempPathAndCreateTemSubDirRector extends \
      */
     private const TMP_PATH = 'tmpPath';
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

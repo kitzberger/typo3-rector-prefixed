@@ -17,7 +17,7 @@ use TYPO3\CMS\Frontend\Page\PageRepository;
 final class RemoveInitMethodFromPageRepositoryRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return string[]
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

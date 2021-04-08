@@ -5,13 +5,13 @@ namespace Rector\Renaming\Tests\Rector\FileWithoutNamespace\PseudoNamespaceToNam
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
 final class PseudoNamespaceToNamespaceRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

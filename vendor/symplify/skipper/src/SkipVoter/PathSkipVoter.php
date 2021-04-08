@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210407\Symplify\Skipper\SkipVoter;
+namespace Typo3RectorPrefix20210408\Symplify\Skipper\SkipVoter;
 
-use Typo3RectorPrefix20210407\Symplify\Skipper\Contract\SkipVoterInterface;
-use Typo3RectorPrefix20210407\Symplify\Skipper\Matcher\FileInfoMatcher;
-use Typo3RectorPrefix20210407\Symplify\Skipper\SkipCriteriaResolver\SkippedPathsResolver;
-use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
-final class PathSkipVoter implements \Typo3RectorPrefix20210407\Symplify\Skipper\Contract\SkipVoterInterface
+use Typo3RectorPrefix20210408\Symplify\Skipper\Contract\SkipVoterInterface;
+use Typo3RectorPrefix20210408\Symplify\Skipper\Matcher\FileInfoMatcher;
+use Typo3RectorPrefix20210408\Symplify\Skipper\SkipCriteriaResolver\SkippedPathsResolver;
+use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+final class PathSkipVoter implements \Typo3RectorPrefix20210408\Symplify\Skipper\Contract\SkipVoterInterface
 {
     /**
      * @var FileInfoMatcher
@@ -17,7 +17,7 @@ final class PathSkipVoter implements \Typo3RectorPrefix20210407\Symplify\Skipper
      * @var SkippedPathsResolver
      */
     private $skippedPathsResolver;
-    public function __construct(\Typo3RectorPrefix20210407\Symplify\Skipper\Matcher\FileInfoMatcher $fileInfoMatcher, \Typo3RectorPrefix20210407\Symplify\Skipper\SkipCriteriaResolver\SkippedPathsResolver $skippedPathsResolver)
+    public function __construct(\Typo3RectorPrefix20210408\Symplify\Skipper\Matcher\FileInfoMatcher $fileInfoMatcher, \Typo3RectorPrefix20210408\Symplify\Skipper\SkipCriteriaResolver\SkippedPathsResolver $skippedPathsResolver)
     {
         $this->fileInfoMatcher = $fileInfoMatcher;
         $this->skippedPathsResolver = $skippedPathsResolver;
@@ -30,9 +30,9 @@ final class PathSkipVoter implements \Typo3RectorPrefix20210407\Symplify\Skipper
         return \true;
     }
     /**
-     * @param string $element
+     * @param string|object $element
      */
-    public function shouldSkip($element, \Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function shouldSkip($element, \Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         $skippedPaths = $this->skippedPathsResolver->resolve();
         return $this->fileInfoMatcher->doesFileInfoMatchPatterns($smartFileInfo, $skippedPaths);

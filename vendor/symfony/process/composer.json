@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210407\\Symfony\\Component\\Process\\": ""
+            "Typo3RectorPrefix20210408\\Symfony\\Component\\Process\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

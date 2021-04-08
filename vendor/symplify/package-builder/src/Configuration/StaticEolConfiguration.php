@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210407\Symplify\PackageBuilder\Configuration;
+namespace Typo3RectorPrefix20210408\Symplify\PackageBuilder\Configuration;
 
 final class StaticEolConfiguration
 {

@@ -32,7 +32,7 @@ final class SymfonyRequiredTagNode extends \PHPStan\PhpDocParser\Ast\PhpDoc\PhpD
     }
     public function getAttributeClassName() : string
     {
-        return 'Typo3RectorPrefix20210407\\Symfony\\Contracts\\Service\\Attribute\\Required';
+        return 'Typo3RectorPrefix20210408\\Symfony\\Contracts\\Service\\Attribute\\Required';
     }
     /**
      * @return mixed[]

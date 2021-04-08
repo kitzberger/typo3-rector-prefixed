@@ -6,13 +6,13 @@ namespace Rector\Php70\Tests\Rector\MethodCall\ThisCallOnStaticMethodToStaticCal
 use Iterator;
 use Rector\Php70\Rector\MethodCall\ThisCallOnStaticMethodToStaticCallRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
 final class ThisCallOnStaticMethodToStaticCallRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

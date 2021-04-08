@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210407\Composer\Semver;
+namespace Typo3RectorPrefix20210408\Composer\Semver;
 
-use Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint;
-use Typo3RectorPrefix20210407\Composer\Semver\Constraint\ConstraintInterface;
+use Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint;
+use Typo3RectorPrefix20210408\Composer\Semver\Constraint\ConstraintInterface;
 /**
  * Helper class to evaluate constraint by compiling and reusing the code to evaluate
  */
@@ -22,7 +22,7 @@ class CompilingMatcher
     /**
      * @phpstan-var array<Constraint::OP_*, string>
      */
-    private static $transOpInt = array(\Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint::OP_EQ => '==', \Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint::OP_LT => '<', \Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint::OP_LE => '<=', \Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint::OP_GT => '>', \Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint::OP_GE => '>=', \Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint::OP_NE => '!=');
+    private static $transOpInt = array(\Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint::OP_EQ => '==', \Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint::OP_LT => '<', \Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint::OP_LE => '<=', \Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint::OP_GT => '>', \Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint::OP_GE => '>=', \Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint::OP_NE => '!=');
     /**
      * Evaluates the expression: $constraint match $operator $version
      *
@@ -33,13 +33,13 @@ class CompilingMatcher
      *
      * @return mixed
      */
-    public static function match(\Typo3RectorPrefix20210407\Composer\Semver\Constraint\ConstraintInterface $constraint, $operator, $version)
+    public static function match(\Typo3RectorPrefix20210408\Composer\Semver\Constraint\ConstraintInterface $constraint, $operator, $version)
     {
         if (self::$enabled === null) {
             self::$enabled = !\in_array('eval', \explode(',', \ini_get('disable_functions')), \true);
         }
         if (!self::$enabled) {
-            return $constraint->matches(new \Typo3RectorPrefix20210407\Composer\Semver\Constraint\Constraint(self::$transOpInt[$operator], $version));
+            return $constraint->matches(new \Typo3RectorPrefix20210408\Composer\Semver\Constraint\Constraint(self::$transOpInt[$operator], $version));
         }
         $cacheKey = $operator . $constraint;
         if (!isset(self::$compiledCheckerCache[$cacheKey])) {

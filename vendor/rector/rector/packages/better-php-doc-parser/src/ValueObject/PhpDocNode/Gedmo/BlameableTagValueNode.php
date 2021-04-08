@@ -9,6 +9,6 @@ final class BlameableTagValueNode extends \Rector\BetterPhpDocParser\ValueObject
 {
     public function getShortName() : string
     {
-        return 'Typo3RectorPrefix20210407\\@Gedmo\\Blameable';
+        return 'Typo3RectorPrefix20210408\\@Gedmo\\Blameable';
     }
 }

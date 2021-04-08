@@ -6,13 +6,13 @@ namespace Rector\Privatization\Tests\Rector\Class_\FinalizeClassesWithoutChildre
 use Iterator;
 use Rector\Privatization\Rector\Class_\FinalizeClassesWithoutChildrenRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
 final class FinalizeClassesWithoutChildrenRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

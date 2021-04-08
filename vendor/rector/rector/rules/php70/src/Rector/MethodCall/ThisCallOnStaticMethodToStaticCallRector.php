@@ -82,7 +82,7 @@ CODE_SAMPLE
             return null;
         }
         // skip PHPUnit calls, as they accept both self:: and $this-> formats
-        if ($this->isObjectType($node->var, 'Typo3RectorPrefix20210407\\PHPUnit\\Framework\\TestCase')) {
+        if ($this->isObjectType($node->var, 'Typo3RectorPrefix20210408\\PHPUnit\\Framework\\TestCase')) {
             return null;
         }
         /** @var class-string $className */

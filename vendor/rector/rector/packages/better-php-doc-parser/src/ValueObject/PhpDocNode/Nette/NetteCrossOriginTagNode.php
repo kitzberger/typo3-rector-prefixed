@@ -25,7 +25,7 @@ final class NetteCrossOriginTagNode extends \PHPStan\PhpDocParser\Ast\PhpDoc\Php
     }
     public function getAttributeClassName() : string
     {
-        return 'Typo3RectorPrefix20210407\\Nette\\Application\\Attributes\\CrossOrigin';
+        return 'Typo3RectorPrefix20210408\\Nette\\Application\\Attributes\\CrossOrigin';
     }
     /**
      * @return mixed[]

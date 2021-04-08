@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection;
+namespace Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection;
 
-use Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
+use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 /**
  * This definition extends another definition.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ChildDefinition extends \Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Definition
+class ChildDefinition extends \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Definition
 {
     private $parent;
     /**
@@ -89,7 +89,7 @@ class ChildDefinition extends \Typo3RectorPrefix20210407\Symfony\Component\Depen
         } elseif (0 === \strpos($index, '$')) {
             $this->arguments[$index] = $value;
         } else {
-            throw new \Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
+            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
         }
         return $this;
     }

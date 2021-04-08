@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210407\Doctrine\Common\Annotations\Annotation;
+namespace Typo3RectorPrefix20210408\Doctrine\Common\Annotations\Annotation;
 
 use RuntimeException;
 use function is_array;

@@ -8,9 +8,9 @@ use Rector\RectorGenerator\Provider\PackageNamesProvider;
 use Rector\RectorGenerator\Provider\SetsListProvider;
 use Rector\RectorGenerator\ValueObject\RectorRecipe;
 use Rector\Set\ValueObject\SetList;
-use Typo3RectorPrefix20210407\Symfony\Component\Console\Question\ChoiceQuestion;
-use Typo3RectorPrefix20210407\Symfony\Component\Console\Question\Question;
-use Typo3RectorPrefix20210407\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210408\Symfony\Component\Console\Question\ChoiceQuestion;
+use Typo3RectorPrefix20210408\Symfony\Component\Console\Question\Question;
+use Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle;
 /**
  * @see \Rector\RectorGenerator\Tests\Provider\RectorRecipeInteractiveProviderTest
  */
@@ -22,7 +22,7 @@ final class RectorRecipeInteractiveFactory
     public const EXAMPLE_CODE_BEFORE = <<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210407;
+namespace Typo3RectorPrefix20210408;
 
 class SomeClass
 {
@@ -31,7 +31,7 @@ class SomeClass
         $this->something();
     }
 }
-\class_alias('Typo3RectorPrefix20210407\\SomeClass', 'SomeClass', \false);
+\class_alias('Typo3RectorPrefix20210408\\SomeClass', 'SomeClass', \false);
 
 CODE_SAMPLE;
     /**
@@ -40,7 +40,7 @@ CODE_SAMPLE;
     public const EXAMPLE_CODE_AFTER = <<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210407;
+namespace Typo3RectorPrefix20210408;
 
 class SomeClass
 {
@@ -49,7 +49,7 @@ class SomeClass
         $this->somethingElse();
     }
 }
-\class_alias('Typo3RectorPrefix20210407\\SomeClass', 'SomeClass', \false);
+\class_alias('Typo3RectorPrefix20210408\\SomeClass', 'SomeClass', \false);
 
 CODE_SAMPLE;
     /**
@@ -68,7 +68,7 @@ CODE_SAMPLE;
      * @var SetsListProvider
      */
     private $setsListProvider;
-    public function __construct(\Rector\RectorGenerator\Provider\PackageNamesProvider $packageNamesProvider, \Rector\RectorGenerator\Provider\NodeTypesProvider $nodeTypesProvider, \Rector\RectorGenerator\Provider\SetsListProvider $setsListProvider, \Typo3RectorPrefix20210407\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\Rector\RectorGenerator\Provider\PackageNamesProvider $packageNamesProvider, \Rector\RectorGenerator\Provider\NodeTypesProvider $nodeTypesProvider, \Rector\RectorGenerator\Provider\SetsListProvider $setsListProvider, \Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->packageNamesProvider = $packageNamesProvider;
         $this->nodeTypesProvider = $nodeTypesProvider;
@@ -87,7 +87,7 @@ CODE_SAMPLE;
     }
     private function askForPackageName() : string
     {
-        $question = new \Typo3RectorPrefix20210407\Symfony\Component\Console\Question\Question(\sprintf('Package name for which Rector should be created (e.g. <fg=yellow>%s</>)', 'Naming'));
+        $question = new \Typo3RectorPrefix20210408\Symfony\Component\Console\Question\Question(\sprintf('Package name for which Rector should be created (e.g. <fg=yellow>%s</>)', 'Naming'));
         $question->setAutocompleterValues($this->packageNamesProvider->provide());
         $packageName = $this->symfonyStyle->askQuestion($question);
         return $packageName ?? $this->askForPackageName();
@@ -103,7 +103,7 @@ CODE_SAMPLE;
      */
     private function askForNodeTypes() : array
     {
-        $choiceQuestion = new \Typo3RectorPrefix20210407\Symfony\Component\Console\Question\ChoiceQuestion(\sprintf('For what Nodes should the Rector be run (e.g. <fg=yellow>%s</>)', 'Expr/MethodCall'), $this->nodeTypesProvider->provide());
+        $choiceQuestion = new \Typo3RectorPrefix20210408\Symfony\Component\Console\Question\ChoiceQuestion(\sprintf('For what Nodes should the Rector be run (e.g. <fg=yellow>%s</>)', 'Expr/MethodCall'), $this->nodeTypesProvider->provide());
         $choiceQuestion->setMultiselect(\true);
         $nodeTypes = $this->symfonyStyle->askQuestion($choiceQuestion);
         $classes = [];
@@ -137,7 +137,7 @@ CODE_SAMPLE;
     }
     private function askForSet() : ?string
     {
-        $question = new \Typo3RectorPrefix20210407\Symfony\Component\Console\Question\Question(\sprintf('Set to which Rector should be added (e.g. <fg=yellow>%s</>)', 'SYMFONY_52'));
+        $question = new \Typo3RectorPrefix20210408\Symfony\Component\Console\Question\Question(\sprintf('Set to which Rector should be added (e.g. <fg=yellow>%s</>)', 'SYMFONY_52'));
         $question->setAutocompleterValues($this->setsListProvider->provide());
         $setName = $this->symfonyStyle->askQuestion($question);
         if ($setName === null) {

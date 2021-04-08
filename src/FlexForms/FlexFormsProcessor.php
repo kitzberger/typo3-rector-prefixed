@@ -6,7 +6,7 @@ namespace Ssch\TYPO3Rector\FlexForms;
 use DOMDocument;
 use Ssch\TYPO3Rector\FlexForms\Transformer\FlexFormTransformer;
 use Ssch\TYPO3Rector\Processor\ProcessorInterface;
-use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
 use UnexpectedValueException;
 /**
  * @see \Ssch\TYPO3Rector\Tests\FlexForms\FlexFormsProcessorTest
@@ -24,7 +24,7 @@ final class FlexFormsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorI
     {
         $this->transformer = $transformer;
     }
-    public function process(\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    public function process(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
     {
         $domDocument = new \DOMDocument();
         $domDocument->formatOutput = \true;
@@ -38,7 +38,7 @@ final class FlexFormsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorI
         }
         return \html_entity_decode($xml) . "\n";
     }
-    public function canProcess(\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function canProcess(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if ([] === $this->transformer) {
             return \false;

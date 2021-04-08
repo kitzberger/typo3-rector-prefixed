@@ -20,6 +20,6 @@ final class GetSubscribedEventsClassMethodProvider
      */
     public function provide() : array
     {
-        return $this->nodeRepository->findClassMethodByTypeAndMethod('Typo3RectorPrefix20210407\\Kdyby\\Events\\Subscriber', 'getSubscribedEvents');
+        return $this->nodeRepository->findClassMethodByTypeAndMethod('Typo3RectorPrefix20210408\\Kdyby\\Events\\Subscriber', 'getSubscribedEvents');
     }
 }

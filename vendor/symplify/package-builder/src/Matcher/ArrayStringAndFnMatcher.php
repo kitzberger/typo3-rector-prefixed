@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210407\Symplify\PackageBuilder\Matcher;
+namespace Typo3RectorPrefix20210408\Symplify\PackageBuilder\Matcher;
 
 final class ArrayStringAndFnMatcher
 {

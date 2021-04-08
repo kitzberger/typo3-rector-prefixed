@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Provider;
 
-use Typo3RectorPrefix20210407\Nette\Utils\Strings;
+use Typo3RectorPrefix20210408\Nette\Utils\Strings;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Property;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
@@ -95,6 +95,6 @@ final class EntityWithMissingUuidProvider
         if ($columnTagValueNode->getType() === null) {
             return \false;
         }
-        return (bool) \Typo3RectorPrefix20210407\Nette\Utils\Strings::match($columnTagValueNode->getType(), self::UUID_PREFIX_REGEX);
+        return (bool) \Typo3RectorPrefix20210408\Nette\Utils\Strings::match($columnTagValueNode->getType(), self::UUID_PREFIX_REGEX);
     }
 }

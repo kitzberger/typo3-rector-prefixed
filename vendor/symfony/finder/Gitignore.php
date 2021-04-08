@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210407\Symfony\Component\Finder;
+namespace Typo3RectorPrefix20210408\Symfony\Component\Finder;
 
 /**
  * Gitignore matches against text.

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210407\Symfony\Component\HttpKernel\DependencyInjection;
+namespace Typo3RectorPrefix20210408\Symfony\Component\HttpKernel\DependencyInjection;
 
-use Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
+use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
 /**
  * Allow adding classes to the class cache.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Extension extends \Typo3RectorPrefix20210407\Symfony\Component\DependencyInjection\Extension\Extension
+abstract class Extension extends \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Extension\Extension
 {
     private $annotatedClasses = [];
     /**

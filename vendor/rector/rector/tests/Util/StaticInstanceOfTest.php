@@ -5,10 +5,10 @@ namespace Rector\Core\Tests\Util;
 
 use DateTime;
 use Iterator;
-use Typo3RectorPrefix20210407\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210408\PHPUnit\Framework\TestCase;
 use Rector\Core\Util\StaticInstanceOf;
 use stdClass;
-final class StaticInstanceOfTest extends \Typo3RectorPrefix20210407\PHPUnit\Framework\TestCase
+final class StaticInstanceOfTest extends \Typo3RectorPrefix20210408\PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider provideIsOneOf()

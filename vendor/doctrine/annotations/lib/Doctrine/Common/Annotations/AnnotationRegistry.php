@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210407\Doctrine\Common\Annotations;
+namespace Typo3RectorPrefix20210408\Doctrine\Common\Annotations;
 
 use function array_key_exists;
 use function array_merge;

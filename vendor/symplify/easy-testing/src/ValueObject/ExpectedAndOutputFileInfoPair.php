@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210407\Symplify\EasyTesting\ValueObject;
+namespace Typo3RectorPrefix20210408\Symplify\EasyTesting\ValueObject;
 
-use Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210407\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210408\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ExpectedAndOutputFileInfoPair
 {
     /**
@@ -15,7 +15,7 @@ final class ExpectedAndOutputFileInfoPair
      * @var SmartFileInfo|null
      */
     private $outputFileInfo;
-    public function __construct(\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo, ?\Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo $outputFileInfo)
+    public function __construct(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo, ?\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $outputFileInfo)
     {
         $this->expectedFileInfo = $expectedFileInfo;
         $this->outputFileInfo = $outputFileInfo;
@@ -32,8 +32,8 @@ final class ExpectedAndOutputFileInfoPair
      */
     public function getOutputFileContent() : string
     {
-        if (!$this->outputFileInfo instanceof \Typo3RectorPrefix20210407\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \Typo3RectorPrefix20210407\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$this->outputFileInfo instanceof \Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo) {
+            throw new \Typo3RectorPrefix20210408\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         return $this->outputFileInfo->getContents();
     }

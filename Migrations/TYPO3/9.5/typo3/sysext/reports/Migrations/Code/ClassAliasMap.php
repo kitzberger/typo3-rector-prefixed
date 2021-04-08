@@ -1,5 +1,5 @@
 <?php
 
-namespace Typo3RectorPrefix20210407;
+namespace Typo3RectorPrefix20210408;
 
 return ['TYPO3\\CMS\\Sv\\Report\\ServicesListReport' => \TYPO3\CMS\Reports\Report\ServicesListReport::class];

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Tokenizer;
+namespace Typo3RectorPrefix20210408\Helmich\TypoScriptParser\Tokenizer;
 
-class Token implements \Typo3RectorPrefix20210407\Helmich\TypoScriptParser\Tokenizer\TokenInterface
+class Token implements \Typo3RectorPrefix20210408\Helmich\TypoScriptParser\Tokenizer\TokenInterface
 {
     /** @var string */
     private $type;

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210407\Symfony\Component\ExpressionLanguage\Node;
+namespace Typo3RectorPrefix20210408\Symfony\Component\ExpressionLanguage\Node;
 
-use Typo3RectorPrefix20210407\Symfony\Component\ExpressionLanguage\Compiler;
+use Typo3RectorPrefix20210408\Symfony\Component\ExpressionLanguage\Compiler;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @internal
  */
-class ConstantNode extends \Typo3RectorPrefix20210407\Symfony\Component\ExpressionLanguage\Node\Node
+class ConstantNode extends \Typo3RectorPrefix20210408\Symfony\Component\ExpressionLanguage\Node\Node
 {
     private $isIdentifier;
     public function __construct($value, bool $isIdentifier = \false)
@@ -24,7 +24,7 @@ class ConstantNode extends \Typo3RectorPrefix20210407\Symfony\Component\Expressi
         $this->isIdentifier = $isIdentifier;
         parent::__construct([], ['value' => $value]);
     }
-    public function compile(\Typo3RectorPrefix20210407\Symfony\Component\ExpressionLanguage\Compiler $compiler)
+    public function compile(\Typo3RectorPrefix20210408\Symfony\Component\ExpressionLanguage\Compiler $compiler)
     {
         $compiler->repr($this->attributes['value']);
     }

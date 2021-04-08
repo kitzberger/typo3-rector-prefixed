@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\RuleDocGenerator\HttpKernel;
 
-use Typo3RectorPrefix20210407\Symfony\Component\Config\Loader\LoaderInterface;
-use Typo3RectorPrefix20210407\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Typo3RectorPrefix20210407\Symplify\MarkdownDiff\Bundle\MarkdownDiffBundle;
-use Typo3RectorPrefix20210407\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle;
-use Typo3RectorPrefix20210407\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
-use Typo3RectorPrefix20210407\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class RuleDocGeneratorKernel extends \Typo3RectorPrefix20210407\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+use Typo3RectorPrefix20210408\Symfony\Component\Config\Loader\LoaderInterface;
+use Typo3RectorPrefix20210408\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Typo3RectorPrefix20210408\Symplify\MarkdownDiff\Bundle\MarkdownDiffBundle;
+use Typo3RectorPrefix20210408\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle;
+use Typo3RectorPrefix20210408\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
+use Typo3RectorPrefix20210408\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class RuleDocGeneratorKernel extends \Typo3RectorPrefix20210408\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
-    public function registerContainerConfiguration(\Typo3RectorPrefix20210407\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\Typo3RectorPrefix20210408\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         $loader->load(__DIR__ . '/../../config/config.php');
         parent::registerContainerConfiguration($loader);
@@ -21,6 +21,6 @@ final class RuleDocGeneratorKernel extends \Typo3RectorPrefix20210407\Symplify\S
      */
     public function registerBundles() : iterable
     {
-        return [new \Typo3RectorPrefix20210407\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle(), new \Typo3RectorPrefix20210407\Symplify\MarkdownDiff\Bundle\MarkdownDiffBundle(), new \Typo3RectorPrefix20210407\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle()];
+        return [new \Typo3RectorPrefix20210408\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle(), new \Typo3RectorPrefix20210408\Symplify\MarkdownDiff\Bundle\MarkdownDiffBundle(), new \Typo3RectorPrefix20210408\Symplify\PhpConfigPrinter\Bundle\PhpConfigPrinterBundle()];
     }
 }

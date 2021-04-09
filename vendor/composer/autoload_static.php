@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
+class ComposerStaticInit70d9e49d42a3f21446da23d2027fed3d
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -936,7 +936,7 @@ class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
         'Rector\\Composer\\Contract\\VersionAwareInterface' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Contract/VersionAwareInterface.php',
         'Rector\\Composer\\Guard\\VersionGuard' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Guard/VersionGuard.php',
         'Rector\\Composer\\Modifier\\ComposerModifier' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Modifier/ComposerModifier.php',
-        'Rector\\Composer\\Processor\\ComposerProcessor' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Processor/ComposerProcessor.php',
+        'Rector\\Composer\\Processor\\ComposerProcessorNonPhp' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Processor/ComposerProcessorNonPhp.php',
         'Rector\\Composer\\Rector\\AddPackageToRequireComposerRector' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Rector/AddPackageToRequireComposerRector.php',
         'Rector\\Composer\\Rector\\AddPackageToRequireDevComposerRector' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Rector/AddPackageToRequireDevComposerRector.php',
         'Rector\\Composer\\Rector\\ChangePackageVersionComposerRector' => __DIR__ . '/..' . '/rector/rector/rules/Composer/Rector/ChangePackageVersionComposerRector.php',
@@ -964,6 +964,7 @@ class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
         'Rector\\Core\\Console\\Style\\SymfonyStyleFactory' => __DIR__ . '/..' . '/rector/rector/src/Console/Style/SymfonyStyleFactory.php',
         'Rector\\Core\\Contract\\PHPStan\\Reflection\\TypeToCallReflectionResolver\\TypeToCallReflectionResolverInterface' => __DIR__ . '/..' . '/rector/rector/src/Contract/PHPStan/Reflection/TypeToCallReflectionResolver/TypeToCallReflectionResolverInterface.php',
         'Rector\\Core\\Contract\\PostRunnerInterface' => __DIR__ . '/..' . '/rector/rector/src/Contract/PostRunnerInterface.php',
+        'Rector\\Core\\Contract\\Processor\\NonPhpFileProcessorInterface' => __DIR__ . '/..' . '/rector/rector/src/Contract/Processor/NonPhpFileProcessorInterface.php',
         'Rector\\Core\\Contract\\Rector\\ConfigurableRectorInterface' => __DIR__ . '/..' . '/rector/rector/src/Contract/Rector/ConfigurableRectorInterface.php',
         'Rector\\Core\\Contract\\Rector\\PhpRectorInterface' => __DIR__ . '/..' . '/rector/rector/src/Contract/Rector/PhpRectorInterface.php',
         'Rector\\Core\\Contract\\Rector\\RectorInterface' => __DIR__ . '/..' . '/rector/rector/src/Contract/Rector/RectorInterface.php',
@@ -1019,6 +1020,7 @@ class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
         'Rector\\Core\\NodeManipulator\\VariableManipulator' => __DIR__ . '/..' . '/rector/rector/src/NodeManipulator/VariableManipulator.php',
         'Rector\\Core\\NonPhpFile\\NonPhpFileClassRenamer' => __DIR__ . '/..' . '/rector/rector/src/NonPhpFile/NonPhpFileClassRenamer.php',
         'Rector\\Core\\NonPhpFile\\NonPhpFileProcessor' => __DIR__ . '/..' . '/rector/rector/src/NonPhpFile/NonPhpFileProcessor.php',
+        'Rector\\Core\\NonPhpFile\\NonPhpFileProcessorService' => __DIR__ . '/..' . '/rector/rector/src/NonPhpFile/NonPhpFileProcessorService.php',
         'Rector\\Core\\PHPStan\\Reflection\\CallReflectionResolver' => __DIR__ . '/..' . '/rector/rector/src/PHPStan/Reflection/CallReflectionResolver.php',
         'Rector\\Core\\PHPStan\\Reflection\\TypeToCallReflectionResolver\\ClosureTypeToCallReflectionResolver' => __DIR__ . '/..' . '/rector/rector/src/PHPStan/Reflection/TypeToCallReflectionResolver/ClosureTypeToCallReflectionResolver.php',
         'Rector\\Core\\PHPStan\\Reflection\\TypeToCallReflectionResolver\\ConstantArrayTypeToCallReflectionResolver' => __DIR__ . '/..' . '/rector/rector/src/PHPStan/Reflection/TypeToCallReflectionResolver/ConstantArrayTypeToCallReflectionResolver.php',
@@ -1064,6 +1066,7 @@ class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
         'Rector\\Core\\ValueObject\\Bootstrap\\BootstrapConfigs' => __DIR__ . '/..' . '/rector/rector/src/ValueObject/Bootstrap/BootstrapConfigs.php',
         'Rector\\Core\\ValueObject\\FrameworkName' => __DIR__ . '/..' . '/rector/rector/src/ValueObject/FrameworkName.php',
         'Rector\\Core\\ValueObject\\MethodName' => __DIR__ . '/..' . '/rector/rector/src/ValueObject/MethodName.php',
+        'Rector\\Core\\ValueObject\\NonPhpFile\\NonPhpFileChange' => __DIR__ . '/..' . '/rector/rector/src/ValueObject/NonPhpFile/NonPhpFileChange.php',
         'Rector\\Core\\ValueObject\\PhpVersion' => __DIR__ . '/..' . '/rector/rector/src/ValueObject/PhpVersion.php',
         'Rector\\Core\\ValueObject\\PhpVersionFeature' => __DIR__ . '/..' . '/rector/rector/src/ValueObject/PhpVersionFeature.php',
         'Rector\\Core\\ValueObject\\ProjectType' => __DIR__ . '/..' . '/rector/rector/src/ValueObject/ProjectType.php',
@@ -2313,12 +2316,11 @@ class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
         'Ssch\\TYPO3Rector\\ArrayUtility' => __DIR__ . '/../..' . '/src/ArrayUtility.php',
         'Ssch\\TYPO3Rector\\Bootstrap\\Typo3RectorConfigsResolver' => __DIR__ . '/../..' . '/src/Bootstrap/Typo3RectorConfigsResolver.php',
         'Ssch\\TYPO3Rector\\Composer\\ComposerModifier' => __DIR__ . '/../..' . '/src/Composer/ComposerModifier.php',
-        'Ssch\\TYPO3Rector\\Composer\\ComposerProcessor' => __DIR__ . '/../..' . '/src/Composer/ComposerProcessor.php',
+        'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerProcessor' => __DIR__ . '/../..' . '/src/Composer/ExtensionComposerProcessor.php',
         'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerRectorInterface' => __DIR__ . '/../..' . '/src/Composer/ExtensionComposerRectorInterface.php',
         'Ssch\\TYPO3Rector\\Configuration\\Typo3Option' => __DIR__ . '/../..' . '/src/Configuration/Typo3Option.php',
         'Ssch\\TYPO3Rector\\Console\\Application' => __DIR__ . '/../..' . '/src/Console/Application.php',
         'Ssch\\TYPO3Rector\\Console\\Command\\Typo3InitCommand' => __DIR__ . '/../..' . '/src/Console/Command/Typo3InitCommand.php',
-        'Ssch\\TYPO3Rector\\Console\\Command\\Typo3ProcessCommand' => __DIR__ . '/../..' . '/src/Console/Command/Typo3ProcessCommand.php',
         'Ssch\\TYPO3Rector\\Console\\Output\\DecoratedConsoleOutputFormatter' => __DIR__ . '/../..' . '/src/Console/Output/DecoratedConsoleOutputFormatter.php',
         'Ssch\\TYPO3Rector\\DependencyInjection\\Typo3RectorContainerFactory' => __DIR__ . '/../..' . '/src/DependencyInjection/Typo3RectorContainerFactory.php',
         'Ssch\\TYPO3Rector\\FlexForms\\FlexFormsProcessor' => __DIR__ . '/../..' . '/src/FlexForms/FlexFormsProcessor.php',
@@ -2338,7 +2340,6 @@ class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
         'Ssch\\TYPO3Rector\\NodeFactory\\HelperArgumentAssignFactory' => __DIR__ . '/../..' . '/src/NodeFactory/HelperArgumentAssignFactory.php',
         'Ssch\\TYPO3Rector\\NodeFactory\\InitializeArgumentsClassMethodFactory' => __DIR__ . '/../..' . '/src/NodeFactory/InitializeArgumentsClassMethodFactory.php',
         'Ssch\\TYPO3Rector\\Processor\\ConfigurableProcessorInterface' => __DIR__ . '/../..' . '/src/Processor/ConfigurableProcessorInterface.php',
-        'Ssch\\TYPO3Rector\\Processor\\ProcessorInterface' => __DIR__ . '/../..' . '/src/Processor/ProcessorInterface.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\ExtensionComposerRector' => __DIR__ . '/../..' . '/src/Rector/Composer/ExtensionComposerRector.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\RemoveCmsPackageDirFromExtraRector' => __DIR__ . '/../..' . '/src/Rector/Composer/RemoveCmsPackageDirFromExtraRector.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\ReplacePackageComposerRector' => __DIR__ . '/../..' . '/src/Rector/Composer/ReplacePackageComposerRector.php',
@@ -3721,9 +3722,9 @@ class ComposerStaticInit14449726b0db522ed71837c4f21ca6e4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit14449726b0db522ed71837c4f21ca6e4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit14449726b0db522ed71837c4f21ca6e4::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit14449726b0db522ed71837c4f21ca6e4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit70d9e49d42a3f21446da23d2027fed3d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit70d9e49d42a3f21446da23d2027fed3d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit70d9e49d42a3f21446da23d2027fed3d::$classMap;
 
         }, null, ClassLoader::class);
     }

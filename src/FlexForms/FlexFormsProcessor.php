@@ -4,14 +4,15 @@ declare (strict_types=1);
 namespace Ssch\TYPO3Rector\FlexForms;
 
 use DOMDocument;
+use Rector\Core\Contract\Processor\NonPhpFileProcessorInterface;
+use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
 use Ssch\TYPO3Rector\FlexForms\Transformer\FlexFormTransformer;
-use Ssch\TYPO3Rector\Processor\ProcessorInterface;
 use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 use UnexpectedValueException;
 /**
  * @see \Ssch\TYPO3Rector\Tests\FlexForms\FlexFormsProcessorTest
  */
-final class FlexFormsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInterface
+final class FlexFormsProcessor implements \Rector\Core\Contract\Processor\NonPhpFileProcessorInterface
 {
     /**
      * @var FlexFormTransformer[]
@@ -24,7 +25,7 @@ final class FlexFormsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorI
     {
         $this->transformer = $transformer;
     }
-    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
     {
         $domDocument = new \DOMDocument();
         $domDocument->formatOutput = \true;
@@ -36,9 +37,9 @@ final class FlexFormsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorI
         if (\false === $xml) {
             throw new \UnexpectedValueException('Could not convert to xml');
         }
-        return \html_entity_decode($xml) . "\n";
+        return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($smartFileInfo->getContents(), \html_entity_decode($xml) . "\n");
     }
-    public function canProcess(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function supports(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if ([] === $this->transformer) {
             return \false;
@@ -52,7 +53,7 @@ final class FlexFormsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorI
         }
         return 'T3DataStructure' === $xml->getName();
     }
-    public function allowedFileExtensions() : array
+    public function getSupportedFileExtensions() : array
     {
         return ['xml'];
     }

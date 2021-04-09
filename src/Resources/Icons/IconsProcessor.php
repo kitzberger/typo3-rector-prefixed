@@ -4,11 +4,12 @@ declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Resources\Icons;
 
 use Rector\Core\Configuration\Configuration;
-use Ssch\TYPO3Rector\Processor\ProcessorInterface;
+use Rector\Core\Contract\Processor\NonPhpFileProcessorInterface;
+use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
 use Typo3RectorPrefix20210409\Symfony\Component\Console\Style\SymfonyStyle;
 use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem;
-final class IconsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInterface
+final class IconsProcessor implements \Rector\Core\Contract\Processor\NonPhpFileProcessorInterface
 {
     /**
      * @var SmartFileSystem
@@ -28,7 +29,7 @@ final class IconsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInter
         $this->symfonyStyle = $symfonyStyle;
         $this->configuration = $configuration;
     }
-    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
     {
         $relativeFilePath = \dirname($smartFileInfo->getRelativeFilePath());
         $realPath = \dirname($smartFileInfo->getRealPath());
@@ -50,7 +51,7 @@ final class IconsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInter
         }
         return null;
     }
-    public function canProcess(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function supports(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if (!\in_array($smartFileInfo->getFilename(), ['ext_icon.png', 'ext_icon.svg', 'ext_icon.gif'], \true)) {
             return \false;
@@ -58,7 +59,7 @@ final class IconsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInter
         $extEmConf = \sprintf('%s/ext_emconf.php', \rtrim(\dirname($smartFileInfo->getRealPath()), '/'));
         return $this->smartFileSystem->exists($extEmConf);
     }
-    public function allowedFileExtensions() : array
+    public function getSupportedFileExtensions() : array
     {
         return ['png', 'gif', 'svg'];
     }

@@ -1206,12 +1206,12 @@
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/rectorphp\/rector.git",
-                "reference": "3e4e9387c6de66f532b41800dceed697380fd85a"
+                "reference": "9be459dd766aa5f2cd6d561f76247c597ca01dcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/3e4e9387c6de66f532b41800dceed697380fd85a",
-                "reference": "3e4e9387c6de66f532b41800dceed697380fd85a",
+                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/9be459dd766aa5f2cd6d561f76247c597ca01dcb",
+                "reference": "9be459dd766aa5f2cd6d561f76247c597ca01dcb",
                 "shasum": ""
             },
             "require": {
@@ -1275,7 +1275,7 @@
                 "symplify\/rule-doc-generator": "^9.2.15",
                 "tracy\/tracy": "^2.8"
             },
-            "time": "2021-04-09T16:27:12+00:00",
+            "time": "2021-04-09T17:36:06+00:00",
             "default-branch": true,
             "bin": [
                 "bin\/rector"
@@ -1323,7 +1323,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/rectorphp\/rector\/issues",
-                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/0.10.4"
+                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/main"
             },
             "funding": [
                 {

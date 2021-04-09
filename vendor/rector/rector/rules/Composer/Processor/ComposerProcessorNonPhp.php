@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Rector\Composer\Processor;
 
-use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\Composer\Modifier\ComposerModifier;
 use Rector\Core\Configuration\Configuration;
+use Rector\Core\Contract\Processor\NonPhpFileProcessorInterface;
+use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
 use Typo3RectorPrefix20210409\Symfony\Component\Process\Process;
 use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
 use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem;
-final class ComposerProcessor
+final class ComposerProcessorNonPhp implements \Rector\Core\Contract\Processor\NonPhpFileProcessorInterface
 {
     /**
      * @var string
@@ -27,55 +27,48 @@ final class ComposerProcessor
      */
     private $composerJsonPrinter;
     /**
-     * @var Configuration
-     */
-    private $configuration;
-    /**
-     * @var ErrorAndDiffCollector
-     */
-    private $errorAndDiffCollector;
-    /**
-     * @var SmartFileSystem
-     */
-    private $smartFileSystem;
-    /**
      * @var ComposerModifier
      */
     private $composerModifier;
-    public function __construct(\Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter, \Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\Composer\Modifier\ComposerModifier $composerModifier)
+    /**
+     * @var Configuration
+     */
+    private $configuration;
+    public function __construct(\Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter, \Rector\Core\Configuration\Configuration $configuration, \Rector\Composer\Modifier\ComposerModifier $composerModifier)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->composerJsonPrinter = $composerJsonPrinter;
         $this->configuration = $configuration;
-        $this->errorAndDiffCollector = $errorAndDiffCollector;
-        $this->smartFileSystem = $smartFileSystem;
         $this->composerModifier = $composerModifier;
     }
-    public function process(string $composerJsonFilePath) : void
+    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
     {
-        if (!$this->smartFileSystem->exists($composerJsonFilePath)) {
-            return;
-        }
         // to avoid modification of file
         if (!$this->composerModifier->enabled()) {
-            return;
+            return null;
         }
-        $smartFileInfo = new \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo($composerJsonFilePath);
         $composerJson = $this->composerJsonFactory->createFromFileInfo($smartFileInfo);
         $oldComposerJson = clone $composerJson;
         $this->composerModifier->modify($composerJson);
         // nothing has changed
         if ($oldComposerJson->getJsonArray() === $composerJson->getJsonArray()) {
-            return;
+            return null;
         }
-        $this->addComposerJsonFileDiff($oldComposerJson, $composerJson, $smartFileInfo);
+        $oldContent = $this->composerJsonPrinter->printToString($oldComposerJson);
+        $newContent = $this->composerJsonPrinter->printToString($composerJson);
         $this->reportFileContentChange($composerJson, $smartFileInfo);
+        return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($oldContent, $newContent);
     }
-    private function addComposerJsonFileDiff(\Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $oldComposerJson, \Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson, \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function supports(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
-        $newContents = $this->composerJsonPrinter->printToString($newComposerJson);
-        $oldContents = $this->composerJsonPrinter->printToString($oldComposerJson);
-        $this->errorAndDiffCollector->addFileDiff($smartFileInfo, $newContents, $oldContents);
+        return $smartFileInfo->getRealPath() === \getcwd() . '/composer.json';
+    }
+    /**
+     * @return string[]
+     */
+    public function getSupportedFileExtensions() : array
+    {
+        return ['json'];
     }
     private function reportFileContentChange(\Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {

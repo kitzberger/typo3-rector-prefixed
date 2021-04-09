@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitab6638fabeb5bc36f791c98ec1a93cf2
+class ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1772,6 +1772,7 @@ class ComposerStaticInitab6638fabeb5bc36f791c98ec1a93cf2
         'Rector\\Php56\\Rector\\FunctionLike\\AddDefaultValueForUndefinedVariableRector' => __DIR__ . '/..' . '/rector/rector/rules/Php56/Rector/FunctionLike/AddDefaultValueForUndefinedVariableRector.php',
         'Rector\\Php70\\EregToPcreTransformer' => __DIR__ . '/..' . '/rector/rector/rules/Php70/EregToPcreTransformer.php',
         'Rector\\Php70\\Exception\\InvalidEregException' => __DIR__ . '/..' . '/rector/rector/rules/Php70/Exception/InvalidEregException.php',
+        'Rector\\Php70\\NodeAnalyzer\\Php4ConstructorClassMethodAnalyzer' => __DIR__ . '/..' . '/rector/rector/rules/Php70/NodeAnalyzer/Php4ConstructorClassMethodAnalyzer.php',
         'Rector\\Php70\\NodeAnalyzer\\VariableNaming' => __DIR__ . '/..' . '/rector/rector/rules/Php70/NodeAnalyzer/VariableNaming.php',
         'Rector\\Php70\\Rector\\Assign\\ListSplitStringRector' => __DIR__ . '/..' . '/rector/rector/rules/Php70/Rector/Assign/ListSplitStringRector.php',
         'Rector\\Php70\\Rector\\Assign\\ListSwapArrayOrderRector' => __DIR__ . '/..' . '/rector/rector/rules/Php70/Rector/Assign/ListSwapArrayOrderRector.php',
@@ -2553,7 +2554,6 @@ class ComposerStaticInitab6638fabeb5bc36f791c98ec1a93cf2
         'Ssch\\TYPO3Rector\\TypoScript\\Parser\\Printer\\PrettyPrinter' => __DIR__ . '/../..' . '/src/TypoScript/Parser/Printer/PrettyPrinter.php',
         'Ssch\\TYPO3Rector\\TypoScript\\TypoScriptProcessor' => __DIR__ . '/../..' . '/src/TypoScript/TypoScriptProcessor.php',
         'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\AbstractVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/AbstractVisitor.php',
-        'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\FileIncludeToImportStatementVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/FileIncludeToImportStatementVisitor.php',
         'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\OldConditionToExpressionLanguageVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/OldConditionToExpressionLanguageVisitor.php',
         'Ssch\\TYPO3Rector\\ValueObject\\ReplacePackage' => __DIR__ . '/../..' . '/src/ValueObject/ReplacePackage.php',
         'Ssch\\TYPO3Rector\\Yaml\\Form\\FormYamlProcessor' => __DIR__ . '/../..' . '/src/Yaml/Form/FormYamlProcessor.php',
@@ -3720,9 +3720,9 @@ class ComposerStaticInitab6638fabeb5bc36f791c98ec1a93cf2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitab6638fabeb5bc36f791c98ec1a93cf2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitab6638fabeb5bc36f791c98ec1a93cf2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitab6638fabeb5bc36f791c98ec1a93cf2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -15,8 +15,8 @@ if (!class_exists('Swift_Attachment', false) && !interface_exists('Swift_Attachm
 if (!class_exists('Swift_Image', false) && !interface_exists('Swift_Image', false) && !trait_exists('Swift_Image', false)) {
     spl_autoload_call('Typo3RectorPrefix20210409\Swift_Image');
 }
-if (!class_exists('ComposerAutoloaderInit70d9e49d42a3f21446da23d2027fed3d', false) && !interface_exists('ComposerAutoloaderInit70d9e49d42a3f21446da23d2027fed3d', false) && !trait_exists('ComposerAutoloaderInit70d9e49d42a3f21446da23d2027fed3d', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210409\ComposerAutoloaderInit70d9e49d42a3f21446da23d2027fed3d');
+if (!class_exists('ComposerAutoloaderInit2b7eb6bfc579d9df292e2d9cef738811', false) && !interface_exists('ComposerAutoloaderInit2b7eb6bfc579d9df292e2d9cef738811', false) && !trait_exists('ComposerAutoloaderInit2b7eb6bfc579d9df292e2d9cef738811', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210409\ComposerAutoloaderInit2b7eb6bfc579d9df292e2d9cef738811');
 }
 if (!class_exists('Doctrine\Inflector\Inflector', false) && !interface_exists('Doctrine\Inflector\Inflector', false) && !trait_exists('Doctrine\Inflector\Inflector', false)) {
     spl_autoload_call('Typo3RectorPrefix20210409\Doctrine\Inflector\Inflector');
@@ -126,9 +126,9 @@ if (!class_exists('ValueError', false) && !interface_exists('ValueError', false)
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire70d9e49d42a3f21446da23d2027fed3d')) {
-    function composerRequire70d9e49d42a3f21446da23d2027fed3d() {
-        return \Typo3RectorPrefix20210409\composerRequire70d9e49d42a3f21446da23d2027fed3d(...func_get_args());
+if (!function_exists('composerRequire2b7eb6bfc579d9df292e2d9cef738811')) {
+    function composerRequire2b7eb6bfc579d9df292e2d9cef738811() {
+        return \Typo3RectorPrefix20210409\composerRequire2b7eb6bfc579d9df292e2d9cef738811(...func_get_args());
     }
 }
 if (!function_exists('parseArgs')) {

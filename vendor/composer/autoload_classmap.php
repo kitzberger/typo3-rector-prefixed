@@ -2198,6 +2198,7 @@ return array(
     'Ssch\\TYPO3Rector\\TypoScript\\Parser\\Printer\\PrettyPrinter' => $baseDir . '/src/TypoScript/Parser/Printer/PrettyPrinter.php',
     'Ssch\\TYPO3Rector\\TypoScript\\TypoScriptProcessor' => $baseDir . '/src/TypoScript/TypoScriptProcessor.php',
     'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\AbstractVisitor' => $baseDir . '/src/TypoScript/Visitors/AbstractVisitor.php',
+    'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\FileIncludeToImportStatementVisitor' => $baseDir . '/src/TypoScript/Visitors/FileIncludeToImportStatementVisitor.php',
     'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\OldConditionToExpressionLanguageVisitor' => $baseDir . '/src/TypoScript/Visitors/OldConditionToExpressionLanguageVisitor.php',
     'Ssch\\TYPO3Rector\\ValueObject\\ReplacePackage' => $baseDir . '/src/ValueObject/ReplacePackage.php',
     'Ssch\\TYPO3Rector\\Yaml\\Form\\FormYamlProcessor' => $baseDir . '/src/Yaml/Form/FormYamlProcessor.php',

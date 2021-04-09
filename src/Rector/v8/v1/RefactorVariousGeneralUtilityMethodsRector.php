@@ -16,6 +16,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Expression;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -54,6 +55,9 @@ final class RefactorVariousGeneralUtilityMethodsRector extends \Rector\Core\Rect
      * @var string
      */
     private const PARTS = 'parts';
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];
@@ -63,7 +67,7 @@ final class RefactorVariousGeneralUtilityMethodsRector extends \Rector\Core\Rect
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\GeneralUtility::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\GeneralUtility::class))) {
             return null;
         }
         if (!$this->isNames($node->name, [self::COMPAT_VERSION, self::CONVERT_MICROTIME, self::RAW_URL_ENCODE_JS, self::RAW_URL_ENCODE_FP, self::LCFIRST, self::GET_MAXIMUM_PATH_LENGTH])) {

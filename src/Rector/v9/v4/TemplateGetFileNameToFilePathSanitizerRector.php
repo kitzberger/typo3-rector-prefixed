@@ -41,6 +41,9 @@ final class TemplateGetFileNameToFilePathSanitizerRector extends \Rector\Core\Re
     {
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];

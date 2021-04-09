@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Rector\Core\Configuration;
 
-use Typo3RectorPrefix20210408\Jean85\PrettyVersions;
+use Typo3RectorPrefix20210409\Jean85\PrettyVersions;
+use Typo3RectorPrefix20210409\Nette\Utils\Strings;
 use Rector\ChangesReporting\Output\ConsoleOutputFormatter;
 use Rector\Core\Exception\Configuration\InvalidConfigurationException;
 use Rector\Core\ValueObject\Bootstrap\BootstrapConfigs;
-use Rector\Testing\PHPUnit\StaticPHPUnitEnvironment;
-use Typo3RectorPrefix20210408\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 final class Configuration
 {
     /**
@@ -21,10 +21,6 @@ final class Configuration
      * @var bool
      */
     private $showProgressBar = \true;
-    /**
-     * @var bool
-     */
-    private $areAnyPhpRectorsLoaded = \false;
     /**
      * @var bool
      */
@@ -69,7 +65,7 @@ final class Configuration
      * @var BootstrapConfigs|null
      */
     private $bootstrapConfigs;
-    public function __construct(\Typo3RectorPrefix20210408\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->isCacheEnabled = (bool) $parameterProvider->provideParameter(\Rector\Core\Configuration\Option::ENABLE_CACHE);
         $this->fileExtensions = (array) $parameterProvider->provideParameter(\Rector\Core\Configuration\Option::FILE_EXTENSIONS);
@@ -79,7 +75,7 @@ final class Configuration
     /**
      * Needs to run in the start of the life cycle, since the rest of workflow uses it.
      */
-    public function resolveFromInput(\Typo3RectorPrefix20210408\Symfony\Component\Console\Input\InputInterface $input) : void
+    public function resolveFromInput(\Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface $input) : void
     {
         $this->isDryRun = (bool) $input->getOption(\Rector\Core\Configuration\Option::OPTION_DRY_RUN);
         $this->shouldClearCache = (bool) $input->getOption(\Rector\Core\Configuration\Option::OPTION_CLEAR_CACHE);
@@ -93,12 +89,13 @@ final class Configuration
         $commandLinePaths = (array) $input->getArgument(\Rector\Core\Configuration\Option::SOURCE);
         // manual command line value has priority
         if ($commandLinePaths !== []) {
+            $commandLinePaths = $this->correctBashSpacePaths($commandLinePaths);
             $this->paths = $commandLinePaths;
         }
     }
     public function getPrettyVersion() : string
     {
-        $version = \Typo3RectorPrefix20210408\Jean85\PrettyVersions::getVersion('rector/rector');
+        $version = \Typo3RectorPrefix20210409\Jean85\PrettyVersions::getVersion('rector/rector');
         return $version->getPrettyVersion();
     }
     /**
@@ -118,17 +115,6 @@ final class Configuration
             return \false;
         }
         return $this->showProgressBar;
-    }
-    public function areAnyPhpRectorsLoaded() : bool
-    {
-        if (\Rector\Testing\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun()) {
-            return \true;
-        }
-        return $this->areAnyPhpRectorsLoaded;
-    }
-    public function setAreAnyPhpRectorsLoaded(bool $areAnyPhpRectorsLoaded) : void
-    {
-        $this->areAnyPhpRectorsLoaded = $areAnyPhpRectorsLoaded;
     }
     public function getOutputFile() : ?string
     {
@@ -208,12 +194,12 @@ final class Configuration
             return null;
         }
         $mainConfigFileInfo = $this->bootstrapConfigs->getMainConfigFileInfo();
-        if (!$mainConfigFileInfo instanceof \Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$mainConfigFileInfo instanceof \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo) {
             return null;
         }
         return $mainConfigFileInfo->getRelativeFilePathFromCwd();
     }
-    private function canShowProgressBar(\Typo3RectorPrefix20210408\Symfony\Component\Console\Input\InputInterface $input) : bool
+    private function canShowProgressBar(\Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface $input) : bool
     {
         $noProgressBar = (bool) $input->getOption(\Rector\Core\Configuration\Option::OPTION_NO_PROGRESS_BAR);
         if ($noProgressBar) {
@@ -228,5 +214,19 @@ final class Configuration
             return null;
         }
         return $outputFileOption;
+    }
+    /**
+     * @param string[] $commandLinePaths
+     * @return string[]
+     */
+    private function correctBashSpacePaths(array $commandLinePaths) : array
+    {
+        // fixes bash edge-case that to merges string with space to one
+        foreach ($commandLinePaths as $commandLinePath) {
+            if (\Typo3RectorPrefix20210409\Nette\Utils\Strings::contains($commandLinePath, ' ')) {
+                $commandLinePaths = \explode(' ', $commandLinePath);
+            }
+        }
+        return $commandLinePaths;
     }
 }

@@ -26,9 +26,13 @@ use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeRemoval\NodeRemover;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\NodeTypeResolver\PhpDoc\NodeAnalyzer\DocBlockClassRenamer;
+use Rector\NodeTypeResolver\ValueObject\OldToNewType;
 use Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType;
-use Typo3RectorPrefix20210408\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210409\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider;
+/**
+ * @todo why is this class overloaded? maybe something that should be improved in Rector itself :)
+ */
 final class ClassRenamer
 {
     /**
@@ -75,7 +79,7 @@ final class ClassRenamer
      * @var ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Typo3RectorPrefix20210408\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\CodingStyle\Naming\ClassNaming $classNaming, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocClassRenamer $phpDocClassRenamer, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory $phpDocInfoFactory, \Rector\NodeTypeResolver\PhpDoc\NodeAnalyzer\DocBlockClassRenamer $docBlockClassRenamer, \PHPStan\Reflection\ReflectionProvider $reflectionProvider, \Rector\NodeRemoval\NodeRemover $nodeRemover, \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Typo3RectorPrefix20210409\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\CodingStyle\Naming\ClassNaming $classNaming, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocClassRenamer $phpDocClassRenamer, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory $phpDocInfoFactory, \Rector\NodeTypeResolver\PhpDoc\NodeAnalyzer\DocBlockClassRenamer $docBlockClassRenamer, \PHPStan\Reflection\ReflectionProvider $reflectionProvider, \Rector\NodeRemoval\NodeRemover $nodeRemover, \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->nodeNameResolver = $nodeNameResolver;
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
@@ -116,12 +120,12 @@ final class ClassRenamer
         if (!$phpDocInfo->hasByType(\Rector\BetterPhpDocParser\Contract\PhpDocNode\TypeAwareTagValueNodeInterface::class)) {
             return;
         }
+        $oldToNewTypes = [];
         foreach ($oldToNewClasses as $oldClass => $newClass) {
-            $oldClassType = new \PHPStan\Type\ObjectType($oldClass);
-            $newClassType = new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType($newClass);
-            $this->docBlockClassRenamer->renamePhpDocType($phpDocInfo, $oldClassType, $newClassType, $node);
+            $oldToNewTypes[] = new \Rector\NodeTypeResolver\ValueObject\OldToNewType(new \PHPStan\Type\ObjectType($oldClass), new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType($newClass));
         }
-        $this->phpDocClassRenamer->changeTypeInAnnotationTypes($phpDocInfo, $oldToNewClasses);
+        $this->docBlockClassRenamer->renamePhpDocType($phpDocInfo, $oldToNewTypes);
+        $this->phpDocClassRenamer->changeTypeInAnnotationTypes($node, $phpDocInfo, $oldToNewClasses);
     }
     /**
      * @param array<string, string> $oldToNewClasses
@@ -288,9 +292,6 @@ final class ClassRenamer
         }
         $classLike->implements = \array_unique($classLike->implements);
         foreach ($classLike->implements as $key => $implementName) {
-            if (!$implementName instanceof \PhpParser\Node\Name) {
-                continue;
-            }
             $virtualNode = $implementName->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::VIRTUAL_NODE);
             if (!$virtualNode) {
                 continue;

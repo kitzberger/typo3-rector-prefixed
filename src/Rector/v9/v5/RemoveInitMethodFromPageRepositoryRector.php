@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v9\v5;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -28,7 +29,7 @@ final class RemoveInitMethodFromPageRepositoryRector extends \Rector\Core\Rector
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\Page\PageRepository::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Page\PageRepository::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'init')) {

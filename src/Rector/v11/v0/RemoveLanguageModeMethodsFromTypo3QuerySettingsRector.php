@@ -5,18 +5,34 @@ namespace Ssch\TYPO3Rector\Rector\v11\v0;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Rector\Defluent\Rector\AbstractFluentChainMethodCallRector;
+use Rector\Core\Rector\AbstractRector;
+use Rector\Defluent\NodeAnalyzer\FluentChainMethodCallNodeAnalyzer;
+use Rector\Defluent\NodeAnalyzer\SameClassMethodCallAnalyzer;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/11.0/Deprecation-89938-DeprecatedLanguageModeInTypo3QuerySettings.html
  */
-final class RemoveLanguageModeMethodsFromTypo3QuerySettingsRector extends \Rector\Defluent\Rector\AbstractFluentChainMethodCallRector
+final class RemoveLanguageModeMethodsFromTypo3QuerySettingsRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @var FluentChainMethodCallNodeAnalyzer
+     */
+    private $fluentChainMethodCallNodeAnalyzer;
+    /**
+     * @var SameClassMethodCallAnalyzer
+     */
+    private $sameClassMethodCallAnalyzer;
+    public function __construct(\Rector\Defluent\NodeAnalyzer\FluentChainMethodCallNodeAnalyzer $fluentChainMethodCallNodeAnalyzer, \Rector\Defluent\NodeAnalyzer\SameClassMethodCallAnalyzer $sameClassMethodCallAnalyzer)
+    {
+        $this->fluentChainMethodCallNodeAnalyzer = $fluentChainMethodCallNodeAnalyzer;
+        $this->sameClassMethodCallAnalyzer = $sameClassMethodCallAnalyzer;
+    }
+    /**
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -27,7 +43,7 @@ final class RemoveLanguageModeMethodsFromTypo3QuerySettingsRector extends \Recto
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class))) {
             return null;
         }
         if (!$this->isNames($node->name, ['setLanguageMode', 'getLanguageMode'])) {

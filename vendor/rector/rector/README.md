@@ -9,7 +9,7 @@ Rector helps you with 2 areas - major code changes and in daily work.
 - Do you have a legacy code base? Do you want to have that latest version of PHP or your favorite framework?
  → **Rector gets you there with instant upgrade**.
 
- <br>
+<br>
 
 - Do you have code quality you need, but struggle to keep it with new developers in your team? Do you wish to have  code-reviews for each member of your team, but don't have time for it?
 → **Add Rector to you CI and let it fix your code for you. Get [instant feedback](https://tomasvotruba.com/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/) after each commit.**
@@ -30,23 +30,25 @@ It supports all versions of PHP from 5.3 and major open-source projects:
 <br>
 
 <p align="center">
-    <img src="/docs/images/php.png">
-    <img src="/docs/images/space.png" width=40>
-    <img src="/docs/images/symfony.png">
-    <img src="/docs/images/space.png" width=40>
+    <img src="https://github.com/rectorphp/rector/blob/main/docs/images/php.png">
+    <img src="https://github.com/rectorphp/rector/blob/main/docs/images/space.png" width=30>
+    <a href="https://github.com/rectorphp/rector-phpunit"><img src="https://github.com/rectorphp/rector/blob/main/docs/images/phpunit.png"></a>
+    <img src="https://github.com/rectorphp/rector/blob/main/docs/images/space.png" width=30>
+    <a href="https://github.com/rectorphp/rector-symfony"><img src="https://github.com/rectorphp/rector/blob/main/docs/images/symfony.png"></a>
+    <img src="https://github.com/rectorphp/rector/blob/main/docs/images/space.png" width=30>
     <a href="https://github.com/palantirnet/drupal-rector">
-        <img src="/docs/images/drupal.png" alt="Drupal Rector rules">
+        <img src="https://github.com/rectorphp/rector/blob/main/docs/images/drupal.png" alt="Drupal Rector rules">
     </a>
     <br>
-    <img src="/docs/images/space.png" height=15>
+    <img src="https://github.com/rectorphp/rector/blob/main/docs/images/space.png" height=15>
     <br>
-    <img src="/docs/images/cakephp.png">
-    <img src="/docs/images/space.png" width=40>
+    <a href="https://github.com/rectorphp/rector-cakephp"><img src="https://github.com/rectorphp/rector/blob/main/docs/images/cakephp.png"></a>
+    <img src="https://github.com/rectorphp/rector/blob/main/docs/images/space.png" width=30>
     <a href="https://github.com/sabbelasichon/typo3-rector">
-        <img src="/docs/images/typo3.png">
+        <img src="https://github.com/rectorphp/rector/blob/main/docs/images/typo3.png">
     </a>
     <br>
-    <img src="/docs/images/space.png" height=15>
+    <img src="https://github.com/rectorphp/rector/blob/main/docs/images/space.png" height=15>
 </p>
 
 ### What Can Rector Do for You?
@@ -62,9 +64,9 @@ It supports all versions of PHP from 5.3 and major open-source projects:
 
 ## Documentation
 
-- [Explore 660+ Rector Rules](/docs/rector_rules_overview.md)
+- [Explore 450+ Rector Rules](/docs/rector_rules_overview.md)
 - [How Does Rector Work?](/docs/how_it_works.md)
-- [PHP Parser Nodes](https://github.com/rectorphp/php-parser-nodes-docs/blob/master/docs/nodes_overview.md)
+- [PHP Parser Nodes](https://github.com/rectorphp/php-parser-nodes-docs/)
 
 ### Advanced
 
@@ -155,12 +157,18 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     // paths to refactor; solid alternative to CLI arguments
     $parameters->set(Option::PATHS, [__DIR__ . '/src', __DIR__ . '/tests']);
 
-    // Rector relies on autoload setup of your project; Composer autoload is included by default; to add more:
+    // Rector is static reflection to load code without running it - see https://phpstan.org/blog/zero-config-analysis-with-static-reflection
     $parameters->set(Option::AUTOLOAD_PATHS, [
         // autoload specific file
-        __DIR__ . '/vendor/squizlabs/php_codesniffer/autoload.php',
+        __DIR__ . '/file-with-functions.php',
         // or full directory
-        __DIR__ . '/vendor/project-without-composer',
+        __DIR__ . '/project-without-composer',
+    ]);
+
+    // do you need to include constants, class aliases or custom autoloader? files listed will be executed
+    $parameters->set(Option::BOOTSTRAP_FILES, [
+        __DIR__ . '/constants.php',
+        __DIR__ . '/project/special/autoload.php',
     ]);
 
     // is your PHP version different from the one your refactor to? [default: your PHP version], uses PHP_VERSION_ID format

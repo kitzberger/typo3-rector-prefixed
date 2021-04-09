@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210408\Jean85;
+namespace Typo3RectorPrefix20210409\Jean85;
 
 class Version
 {

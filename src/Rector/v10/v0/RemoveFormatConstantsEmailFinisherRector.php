@@ -12,6 +12,7 @@ use PhpParser\Node\Expr\BinaryOp\Identical;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -34,6 +35,9 @@ final class RemoveFormatConstantsEmailFinisherRector extends \Rector\Core\Rector
      * @var string
      */
     private const ADD_HTML_PART = 'addHtmlPart';
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\ClassConstFetch::class];
@@ -43,7 +47,7 @@ final class RemoveFormatConstantsEmailFinisherRector extends \Rector\Core\Rector
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, \TYPO3\CMS\Form\Domain\Finishers\EmailFinisher::class)) {
+        if (!$this->isObjectType($node->class, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Form\Domain\Finishers\EmailFinisher::class))) {
             return null;
         }
         if (!$this->isNames($node->name, [self::FORMAT_HTML, 'FORMAT_PLAINTEXT'])) {

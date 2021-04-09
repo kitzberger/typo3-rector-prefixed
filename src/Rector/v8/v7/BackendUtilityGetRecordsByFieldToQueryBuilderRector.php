@@ -18,6 +18,7 @@ use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\Foreach_;
 use PhpParser\Node\Stmt\If_;
 use PhpParser\Node\Stmt\Return_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -41,6 +42,9 @@ final class BackendUtilityGetRecordsByFieldToQueryBuilderRector extends \Rector\
      * @var string
      */
     private const LIMIT_OFFSET_AND_MAX = 'limitOffsetAndMax';
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];
@@ -50,7 +54,7 @@ final class BackendUtilityGetRecordsByFieldToQueryBuilderRector extends \Rector\
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Backend\Utility\BackendUtility::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Backend\Utility\BackendUtility::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'getRecordsByField')) {

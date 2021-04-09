@@ -5,8 +5,8 @@ namespace Ssch\TYPO3Rector\Yaml\Form;
 
 use Ssch\TYPO3Rector\Processor\ProcessorInterface;
 use Ssch\TYPO3Rector\Yaml\Form\Transformer\FormYamlTransformer;
-use Typo3RectorPrefix20210408\Symfony\Component\Yaml\Yaml;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symfony\Component\Yaml\Yaml;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Yaml\Form\FormYamlProcessorTest
  */
@@ -27,18 +27,18 @@ final class FormYamlProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorIn
     {
         $this->transformer = $transformer;
     }
-    public function process(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
     {
-        $yaml = \Typo3RectorPrefix20210408\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
+        $yaml = \Typo3RectorPrefix20210409\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
         if (!\is_array($yaml)) {
             return $smartFileInfo->getContents();
         }
         foreach ($this->transformer as $transformer) {
             $yaml = $transformer->transform($yaml);
         }
-        return \Typo3RectorPrefix20210408\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2);
+        return \Typo3RectorPrefix20210409\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2);
     }
-    public function canProcess(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function canProcess(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if ([] === $this->transformer) {
             return \false;

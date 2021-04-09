@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v10\v0;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -17,6 +18,9 @@ final class ChangeDefaultCachingFrameworkNamesRector extends \Rector\Core\Rector
     /*
      * @return string[]
      */
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -26,7 +30,7 @@ final class ChangeDefaultCachingFrameworkNamesRector extends \Rector\Core\Rector
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isObjectType($node->var, \TYPO3\CMS\Core\Cache\CacheManager::class)) {
+        if (!$this->nodeTypeResolver->isObjectType($node->var, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Cache\CacheManager::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'getCache')) {

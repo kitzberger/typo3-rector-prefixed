@@ -7,6 +7,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Expr\StaticCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -29,7 +30,7 @@ final class RemoveLangCsConvObjAndParserFactoryRector extends \Rector\Core\Recto
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -84,7 +85,7 @@ CODE_SAMPLE
         if (!(\property_exists($node, 'var') && null !== $node->var)) {
             return \false;
         }
-        if ($this->isObjectType($node->var, \TYPO3\CMS\Core\Localization\LanguageService::class)) {
+        if ($this->isObjectType($node->var, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Localization\LanguageService::class))) {
             return \true;
         }
         if ($this->typo3NodeResolver->isPropertyFetchOnAnyPropertyOfGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::LANG)) {

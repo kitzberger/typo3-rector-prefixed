@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v8\v6;
 
-use Typo3RectorPrefix20210408\Nette\Utils\Strings;
+use Typo3RectorPrefix20210409\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
@@ -21,15 +21,15 @@ final class RefactorTCARector extends \Rector\Core\Rector\AbstractRector
 {
     use TcaHelperTrait;
     /**
-     * @var array
+     * @var array<string, string>
      */
     private const MAP_WIZARD_TO_FIELD_CONTROL = ['edit' => 'editPopup', 'add' => 'addRecord', 'list' => 'listModule', 'link' => 'linkPopup', 'RTE' => 'fullScreenRichtext'];
     /**
-     * @var array
+     * @var array<string, string>
      */
     private const MAP_WIZARD_TO_RENDER_TYPE = ['table' => 'textTable', 'colorChoice' => 'colorpicker', 'link' => 'inputLink'];
     /**
-     * @var array
+     * @var array<string, string>
      */
     private const MAP_WIZARD_TO_CUSTOM_TYPE = ['select' => 'valuePicker', 'suggest' => 'suggestOptions', 'angle' => 'slider'];
     /**
@@ -139,7 +139,9 @@ CODE_SAMPLE
                 if ($this->isConfigType($configValue->value, 'input') && !$this->hasRenderType($configValue->value)) {
                     $this->refactorRenderTypeInputDateTime($configValue);
                 }
-                foreach ($configValue->value->items as $configItemValue) {
+                /** @var Array_ $configValueArray */
+                $configValueArray = $configValue->value;
+                foreach ($configValueArray->items as $configItemValue) {
                     if (!$configItemValue instanceof \PhpParser\Node\Expr\ArrayItem) {
                         continue;
                     }
@@ -161,14 +163,14 @@ CODE_SAMPLE
                     //
                     $remainingWizards = \count($configItemValue->value->items);
                     foreach ($configItemValue->value->items as $wizardItemValue) {
-                        if (null === $wizardItemValue) {
+                        if (!$wizardItemValue instanceof \PhpParser\Node\Expr\ArrayItem) {
                             continue;
                         }
                         if (null === $wizardItemValue->key) {
                             continue;
                         }
                         $validWizard = $this->isValidWizard($wizardItemValue);
-                        if ($validWizard || \Typo3RectorPrefix20210408\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_')) {
+                        if ($validWizard || \Typo3RectorPrefix20210409\Nette\Utils\Strings::startsWith($this->valueResolver->getValue($wizardItemValue->key), '_')) {
                             --$remainingWizards;
                         }
                         if (!$validWizard) {

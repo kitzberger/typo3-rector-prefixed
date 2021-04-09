@@ -6,11 +6,12 @@ namespace Rector\Core\NodeManipulator;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Name;
-use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Expression;
+use PHPStan\Analyser\Scope;
+use PHPStan\Reflection\ClassReflection;
 use PHPStan\Type\Type;
 use Rector\Core\NodeAnalyzer\PropertyPresenceChecker;
 use Rector\Core\Php\PhpVersionProvider;
@@ -129,6 +130,10 @@ final class ClassDependencyManipulator
         $constructClassMethod = $class->getMethod(\Rector\Core\ValueObject\MethodName::CONSTRUCT);
         $param = $this->nodeFactory->createPromotedPropertyParam($propertyMetadata);
         if ($constructClassMethod instanceof \PhpParser\Node\Stmt\ClassMethod) {
+            // parameter is already added
+            if ($this->hasMethodParameter($constructClassMethod, $propertyMetadata->getName())) {
+                return;
+            }
             $constructClassMethod->params[] = $param;
         } else {
             $constructClassMethod = $this->nodeFactory->createPublicMethod(\Rector\Core\ValueObject\MethodName::CONSTRUCT);
@@ -140,11 +145,20 @@ final class ClassDependencyManipulator
     }
     private function hasClassParentClassMethod(\PhpParser\Node\Stmt\Class_ $class, string $methodName) : bool
     {
-        $parentClassName = $class->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_CLASS_NAME);
-        if ($parentClassName === null) {
+        $scope = $class->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::SCOPE);
+        if (!$scope instanceof \PHPStan\Analyser\Scope) {
             return \false;
         }
-        return \method_exists($parentClassName, $methodName);
+        $classReflection = $scope->getClassReflection();
+        if (!$classReflection instanceof \PHPStan\Reflection\ClassReflection) {
+            return \false;
+        }
+        foreach ($classReflection->getParents() as $parentClassReflection) {
+            if ($parentClassReflection->hasMethod($methodName)) {
+                return \true;
+            }
+        }
+        return \false;
     }
     private function createParentClassMethodCall(string $methodName) : \PhpParser\Node\Stmt\Expression
     {
@@ -170,5 +184,14 @@ final class ClassDependencyManipulator
             return \false;
         }
         return $this->isParamInConstructor($class, $propertyMetadata->getName());
+    }
+    private function hasMethodParameter(\PhpParser\Node\Stmt\ClassMethod $classMethod, string $name) : bool
+    {
+        foreach ($classMethod->params as $param) {
+            if ($this->nodeNameResolver->isName($param->var, $name)) {
+                return \true;
+            }
+        }
+        return \false;
     }
 }

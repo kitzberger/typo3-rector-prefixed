@@ -7,6 +7,7 @@ use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Scalar\String_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\TypeAnalyzer\ArrayTypeAnalyzer;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -28,7 +29,7 @@ final class ExcludeServiceKeysToArrayRector extends \Rector\Core\Rector\Abstract
         $this->arrayTypeAnalyzer = $arrayTypeAnalyzer;
     }
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -75,9 +76,9 @@ CODE_SAMPLE
     }
     private function isExpectedObjectType(\PhpParser\Node\Expr\StaticCall $node) : bool
     {
-        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class)) {
+        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class))) {
             return \true;
         }
-        return $this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\GeneralUtility::class);
+        return $this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\GeneralUtility::class));
     }
 }

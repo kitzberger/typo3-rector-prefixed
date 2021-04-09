@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v9\v5;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
+use PHPStan\Type\ObjectType;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
 use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTagRemover;
 use Rector\Core\Rector\AbstractRector;
@@ -36,7 +37,7 @@ final class RemoveInternalAnnotationRector extends \Rector\Core\Rector\AbstractR
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, \TYPO3\CMS\Extbase\Mvc\Controller\CommandController::class)) {
+        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Mvc\Controller\CommandController::class))) {
             return null;
         }
         /** @var PhpDocInfo|null $phpDocInfo */

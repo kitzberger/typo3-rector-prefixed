@@ -21,9 +21,10 @@ use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\If_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210408\Symfony\Component\Mime\Address;
+use Typo3RectorPrefix20210409\Symfony\Component\Mime\Address;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -72,6 +73,9 @@ final class SendNotifyEmailToMailApiRector extends \Rector\Core\Rector\AbstractR
      * @var string
      */
     private const PARSED_REPLY_TO = 'parsedReplyTo';
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -81,7 +85,7 @@ final class SendNotifyEmailToMailApiRector extends \Rector\Core\Rector\AbstractR
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class)) {
+        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'sendNotifyEmail')) {
@@ -169,7 +173,7 @@ CODE_SAMPLE
     }
     private function mailFromMethodCall() : \PhpParser\Node\Expr\MethodCall
     {
-        return $this->nodeFactory->createMethodCall(self::MAIL, 'from', [new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210408\Symfony\Component\Mime\Address::class), [$this->nodeFactory->createArg(new \PhpParser\Node\Expr\Variable(self::SENDER_ADDRESS)), $this->nodeFactory->createArg(new \PhpParser\Node\Expr\Variable('senderName'))])]);
+        return $this->nodeFactory->createMethodCall(self::MAIL, 'from', [new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210409\Symfony\Component\Mime\Address::class), [$this->nodeFactory->createArg(new \PhpParser\Node\Expr\Variable(self::SENDER_ADDRESS)), $this->nodeFactory->createArg(new \PhpParser\Node\Expr\Variable('senderName'))])]);
     }
     private function ifSenderAddress() : \PhpParser\Node
     {

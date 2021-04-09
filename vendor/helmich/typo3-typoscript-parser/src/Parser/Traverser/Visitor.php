@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210408\Helmich\TypoScriptParser\Parser\Traverser;
+namespace Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\Traverser;
 
-use Typo3RectorPrefix20210408\Helmich\TypoScriptParser\Parser\AST\Statement;
+use Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\Statement;
 /**
  * Interface Visitor
  *
@@ -21,12 +21,12 @@ interface Visitor
      * @param Statement $statement
      * @return void
      */
-    public function enterNode(\Typo3RectorPrefix20210408\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void;
+    public function enterNode(\Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void;
     /**
      * @param Statement $statement
      * @return void
      */
-    public function exitNode(\Typo3RectorPrefix20210408\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void;
+    public function exitNode(\Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void;
     /**
      * @param Statement[] $statements
      * @return void

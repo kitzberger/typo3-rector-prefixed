@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v10\v0;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -24,6 +25,9 @@ final class SetSystemLocaleFromSiteLanguageRector extends \Rector\Core\Rector\Ab
     {
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -33,7 +37,7 @@ final class SetSystemLocaleFromSiteLanguageRector extends \Rector\Core\Rector\Ab
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class) && !$this->typo3NodeResolver->isAnyMethodCallOnGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class)) && !$this->typo3NodeResolver->isAnyMethodCallOnGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER)) {
             return null;
         }
         if (!$this->isName($node->name, 'settingLocale')) {

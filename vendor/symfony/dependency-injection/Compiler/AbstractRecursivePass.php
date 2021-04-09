@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Compiler;
+namespace Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Compiler;
 
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Definition;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\LogicException;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ExpressionLanguage;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Reference;
-use Typo3RectorPrefix20210408\Symfony\Component\ExpressionLanguage\Expression;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Definition;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\LogicException;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ExpressionLanguage;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Reference;
+use Typo3RectorPrefix20210409\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-abstract class AbstractRecursivePass implements \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+abstract class AbstractRecursivePass implements \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * @var ContainerBuilder
@@ -34,7 +34,7 @@ abstract class AbstractRecursivePass implements \Typo3RectorPrefix20210408\Symfo
     /**
      * {@inheritdoc}
      */
-    public function process(\Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
         try {
@@ -73,11 +73,11 @@ abstract class AbstractRecursivePass implements \Typo3RectorPrefix20210408\Symfo
                     $value[$k] = $processedValue;
                 }
             }
-        } elseif ($value instanceof \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
+        } elseif ($value instanceof \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
             $value->setValues($this->processValue($value->getValues()));
-        } elseif ($value instanceof \Typo3RectorPrefix20210408\Symfony\Component\ExpressionLanguage\Expression && $this->processExpressions) {
+        } elseif ($value instanceof \Typo3RectorPrefix20210409\Symfony\Component\ExpressionLanguage\Expression && $this->processExpressions) {
             $this->getExpressionLanguage()->compile((string) $value, ['this' => 'container']);
-        } elseif ($value instanceof \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Definition) {
+        } elseif ($value instanceof \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Definition) {
             $value->setArguments($this->processValue($value->getArguments()));
             $value->setProperties($this->processValue($value->getProperties()));
             $value->setMethodCalls($this->processValue($value->getMethodCalls()));
@@ -96,14 +96,14 @@ abstract class AbstractRecursivePass implements \Typo3RectorPrefix20210408\Symfo
      *
      * @throws RuntimeException
      */
-    protected function getConstructor(\Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Definition $definition, bool $required)
+    protected function getConstructor(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Definition $definition, bool $required)
     {
         if ($definition->isSynthetic()) {
             return null;
         }
         if (\is_string($factory = $definition->getFactory())) {
             if (!\function_exists($factory)) {
-                throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": function "%s" does not exist.', $this->currentId, $factory));
+                throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": function "%s" does not exist.', $this->currentId, $factory));
             }
             $r = new \ReflectionFunction($factory);
             if (\false !== $r->getFileName() && \file_exists($r->getFileName())) {
@@ -113,32 +113,32 @@ abstract class AbstractRecursivePass implements \Typo3RectorPrefix20210408\Symfo
         }
         if ($factory) {
             [$class, $method] = $factory;
-            if ($class instanceof \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Reference) {
+            if ($class instanceof \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Reference) {
                 $class = $this->container->findDefinition((string) $class)->getClass();
-            } elseif ($class instanceof \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Definition) {
+            } elseif ($class instanceof \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Definition) {
                 $class = $class->getClass();
             } elseif (null === $class) {
                 $class = $definition->getClass();
             }
             if ('__construct' === $method) {
-                throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": "__construct()" cannot be used as a factory method.', $this->currentId));
+                throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": "__construct()" cannot be used as a factory method.', $this->currentId));
             }
-            return $this->getReflectionMethod(new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Definition($class), $method);
+            return $this->getReflectionMethod(new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Definition($class), $method);
         }
         $class = $definition->getClass();
         try {
             if (!($r = $this->container->getReflectionClass($class))) {
-                throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": class "%s" does not exist.', $this->currentId, $class));
+                throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": class "%s" does not exist.', $this->currentId, $class));
             }
         } catch (\ReflectionException $e) {
-            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": ', $this->currentId) . \lcfirst($e->getMessage()));
+            throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": ', $this->currentId) . \lcfirst($e->getMessage()));
         }
         if (!($r = $r->getConstructor())) {
             if ($required) {
-                throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": class%s has no constructor.', $this->currentId, \sprintf($class !== $this->currentId ? ' "%s"' : '', $class)));
+                throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": class%s has no constructor.', $this->currentId, \sprintf($class !== $this->currentId ? ' "%s"' : '', $class)));
             }
         } elseif (!$r->isPublic()) {
-            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": ', $this->currentId) . \sprintf($class !== $this->currentId ? 'constructor of class "%s"' : 'its constructor', $class) . ' must be public.');
+            throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": ', $this->currentId) . \sprintf($class !== $this->currentId ? 'constructor of class "%s"' : 'its constructor', $class) . ' must be public.');
         }
         return $r;
     }
@@ -147,41 +147,41 @@ abstract class AbstractRecursivePass implements \Typo3RectorPrefix20210408\Symfo
      *
      * @return \ReflectionFunctionAbstract
      */
-    protected function getReflectionMethod(\Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Definition $definition, string $method)
+    protected function getReflectionMethod(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Definition $definition, string $method)
     {
         if ('__construct' === $method) {
             return $this->getConstructor($definition, \true);
         }
         if (!($class = $definition->getClass())) {
-            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": the class is not set.', $this->currentId));
+            throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": the class is not set.', $this->currentId));
         }
         if (!($r = $this->container->getReflectionClass($class))) {
-            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": class "%s" does not exist.', $this->currentId, $class));
+            throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": class "%s" does not exist.', $this->currentId, $class));
         }
         if (!$r->hasMethod($method)) {
-            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": method "%s()" does not exist.', $this->currentId, $class !== $this->currentId ? $class . '::' . $method : $method));
+            throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": method "%s()" does not exist.', $this->currentId, $class !== $this->currentId ? $class . '::' . $method : $method));
         }
         $r = $r->getMethod($method);
         if (!$r->isPublic()) {
-            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": method "%s()" must be public.', $this->currentId, $class !== $this->currentId ? $class . '::' . $method : $method));
+            throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Invalid service "%s": method "%s()" must be public.', $this->currentId, $class !== $this->currentId ? $class . '::' . $method : $method));
         }
         return $r;
     }
-    private function getExpressionLanguage() : \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ExpressionLanguage
+    private function getExpressionLanguage() : \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ExpressionLanguage
     {
         if (null === $this->expressionLanguage) {
-            if (!\class_exists(\Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ExpressionLanguage::class)) {
-                throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\LogicException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
+            if (!\class_exists(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ExpressionLanguage::class)) {
+                throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\LogicException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
             }
             $providers = $this->container->getExpressionLanguageProviders();
-            $this->expressionLanguage = new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ExpressionLanguage(null, $providers, function (string $arg) : string {
+            $this->expressionLanguage = new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ExpressionLanguage(null, $providers, function (string $arg) : string {
                 if ('""' === \substr_replace($arg, '', 1, -1)) {
                     $id = \stripcslashes(\substr($arg, 1, -1));
                     $this->inExpression = \true;
-                    $arg = $this->processValue(new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Reference($id));
+                    $arg = $this->processValue(new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Reference($id));
                     $this->inExpression = \false;
-                    if (!$arg instanceof \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Reference) {
-                        throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('"%s::processValue()" must return a Reference when processing an expression, "%s" returned for service("%s").', static::class, \get_debug_type($arg), $id));
+                    if (!$arg instanceof \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Reference) {
+                        throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('"%s::processValue()" must return a Reference when processing an expression, "%s" returned for service("%s").', static::class, \get_debug_type($arg), $id));
                     }
                     $arg = \sprintf('"%s"', $arg);
                 }

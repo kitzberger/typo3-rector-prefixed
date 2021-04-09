@@ -9,6 +9,7 @@ use PhpParser\Node\Expr\ConstFetch;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Name;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -42,6 +43,9 @@ final class ForceTemplateParsingInTsfeAndTemplateServiceRector extends \Rector\C
     {
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\Assign::class];
@@ -119,10 +123,10 @@ CODE_SAMPLE
         if (!$this->isName($nodeName, 'forceTemplateParsing')) {
             return \false;
         }
-        if ($this->isObjectType($node, \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class)) {
+        if ($this->isObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class))) {
             return \true;
         }
-        if ($this->isObjectType($node, \TYPO3\CMS\Core\TypoScript\TemplateService::class)) {
+        if ($this->isObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\TypoScript\TemplateService::class))) {
             return \true;
         }
         if ($this->typo3NodeResolver->isPropertyFetchOnAnyPropertyOfGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER)) {

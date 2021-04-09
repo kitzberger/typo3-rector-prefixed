@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v11\v0;
 
-use Typo3RectorPrefix20210408\Nette\Utils\Strings;
+use Typo3RectorPrefix20210409\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Exit_;
 use PhpParser\Node\Expr\FuncCall;
@@ -11,8 +11,9 @@ use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Return_;
+use PHPStan\Type\ObjectType;
 use PHPStan\Type\TypeWithClassName;
-use Typo3RectorPrefix20210408\Psr\Http\Message\ResponseInterface;
+use Typo3RectorPrefix20210409\Psr\Http\Message\ResponseInterface;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -33,7 +34,7 @@ final class ExtbaseControllerActionsMustReturnResponseInterfaceRector extends \R
      */
     private const HTML_RESPONSE = 'htmlResponse';
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -64,7 +65,7 @@ final class ExtbaseControllerActionsMustReturnResponseInterfaceRector extends \R
                 $returnCall->expr = $this->nodeFactory->createMethodCall(self::THIS, self::HTML_RESPONSE, $args);
             }
         }
-        $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210408\Psr\Http\Message\ResponseInterface::class);
+        $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210409\Psr\Http\Message\ResponseInterface::class);
         $statements = $node->stmts;
         $lastStatement = null;
         if (\is_array($statements)) {
@@ -107,7 +108,7 @@ CODE_SAMPLE
     }
     private function shouldSkip(\PhpParser\Node\Stmt\ClassMethod $node) : bool
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Mvc\Controller\ActionController::class))) {
             return \true;
         }
         if (!$node->isPublic()) {
@@ -117,10 +118,10 @@ CODE_SAMPLE
         if (null === $methodName) {
             return \true;
         }
-        if (!\Typo3RectorPrefix20210408\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
+        if (!\Typo3RectorPrefix20210409\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
             return \true;
         }
-        if (\Typo3RectorPrefix20210408\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
+        if (\Typo3RectorPrefix20210409\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
             return \true;
         }
         if ($this->hasExitCall($node)) {
@@ -146,7 +147,7 @@ CODE_SAMPLE
             if (!$node instanceof \PhpParser\Node\Expr\MethodCall) {
                 return \false;
             }
-            if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::class)) {
+            if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Mvc\Controller\ActionController::class))) {
                 return \false;
             }
             return $this->isNames($node->name, ['redirect', 'redirectToUri']);
@@ -171,7 +172,7 @@ CODE_SAMPLE
             if (!$returnType instanceof \PHPStan\Type\TypeWithClassName) {
                 continue;
             }
-            if (\is_a($returnType->getClassName(), \Typo3RectorPrefix20210408\Psr\Http\Message\ResponseInterface::class, \true)) {
+            if (\is_a($returnType->getClassName(), \Typo3RectorPrefix20210409\Psr\Http\Message\ResponseInterface::class, \true)) {
                 return \true;
             }
         }

@@ -6,12 +6,13 @@ namespace Rector\Core\NodeManipulator;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Expression;
+use PHPStan\Reflection\ReflectionProvider;
 use Rector\Core\NodeAnalyzer\PromotedPropertyParamCleaner;
 use Rector\Core\PhpParser\Node\NodeFactory;
 use Rector\Core\ValueObject\MethodName;
 use Rector\NodeCollector\NodeCollector\NodeRepository;
+use Rector\NodeCollector\ScopeResolver\ParentClassScopeResolver;
 use Rector\NodeNameResolver\NodeNameResolver;
-use Rector\NodeTypeResolver\Node\AttributeKey;
 final class ChildAndParentClassManipulator
 {
     /**
@@ -30,31 +31,48 @@ final class ChildAndParentClassManipulator
      * @var PromotedPropertyParamCleaner
      */
     private $promotedPropertyParamCleaner;
-    public function __construct(\Rector\Core\PhpParser\Node\NodeFactory $nodeFactory, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeCollector\NodeCollector\NodeRepository $nodeRepository, \Rector\Core\NodeAnalyzer\PromotedPropertyParamCleaner $promotedPropertyParamCleaner)
+    /**
+     * @var ReflectionProvider
+     */
+    private $reflectionProvider;
+    /**
+     * @var ParentClassScopeResolver
+     */
+    private $parentClassScopeResolver;
+    public function __construct(\Rector\Core\PhpParser\Node\NodeFactory $nodeFactory, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeCollector\NodeCollector\NodeRepository $nodeRepository, \Rector\Core\NodeAnalyzer\PromotedPropertyParamCleaner $promotedPropertyParamCleaner, \PHPStan\Reflection\ReflectionProvider $reflectionProvider, \Rector\NodeCollector\ScopeResolver\ParentClassScopeResolver $parentClassScopeResolver)
     {
         $this->nodeFactory = $nodeFactory;
         $this->nodeNameResolver = $nodeNameResolver;
         $this->nodeRepository = $nodeRepository;
         $this->promotedPropertyParamCleaner = $promotedPropertyParamCleaner;
+        $this->reflectionProvider = $reflectionProvider;
+        $this->parentClassScopeResolver = $parentClassScopeResolver;
     }
     /**
      * Add "parent::__construct()" where needed
      */
     public function completeParentConstructor(\PhpParser\Node\Stmt\Class_ $class, \PhpParser\Node\Stmt\ClassMethod $classMethod) : void
     {
-        /** @var string|null $parentClassName */
-        $parentClassName = $class->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_CLASS_NAME);
-        if ($parentClassName === null) {
+        $className = $this->nodeNameResolver->getName($class);
+        if ($className === null) {
+            return;
+        }
+        if (!$this->reflectionProvider->hasClass($className)) {
+            return;
+        }
+        $classReflection = $this->reflectionProvider->getClass($className);
+        $parentClassReflection = $classReflection->getParentClass();
+        if ($parentClassReflection === \false) {
             return;
         }
         // not in analyzed scope, nothing we can do
-        $parentClassNode = $this->nodeRepository->findClass($parentClassName);
-        if ($parentClassNode !== null) {
+        $parentClassNode = $this->nodeRepository->findClass($parentClassReflection->getName());
+        if ($parentClassNode instanceof \PhpParser\Node\Stmt\Class_) {
             $this->completeParentConstructorBasedOnParentNode($parentClassNode, $classMethod);
             return;
         }
         // complete parent call for __construct()
-        if ($parentClassName !== '' && \method_exists($parentClassName, \Rector\Core\ValueObject\MethodName::CONSTRUCT)) {
+        if ($parentClassReflection->hasMethod(\Rector\Core\ValueObject\MethodName::CONSTRUCT)) {
             $staticCall = $this->nodeFactory->createParentConstructWithParams([]);
             $classMethod->stmts[] = new \PhpParser\Node\Stmt\Expression($staticCall);
         }
@@ -96,8 +114,7 @@ final class ChildAndParentClassManipulator
             if ($constructMethodNode !== null) {
                 return $constructMethodNode;
             }
-            /** @var string|null $parentClassName */
-            $parentClassName = $class->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_CLASS_NAME);
+            $parentClassName = $this->parentClassScopeResolver->resolveParentClassName($class);
             if ($parentClassName === null) {
                 return null;
             }

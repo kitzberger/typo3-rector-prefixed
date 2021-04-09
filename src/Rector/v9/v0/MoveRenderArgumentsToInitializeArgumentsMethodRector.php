@@ -6,6 +6,7 @@ namespace Ssch\TYPO3Rector\Rector\v9\v0;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassMethod;
+use PHPStan\Type\ObjectType;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
 use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTagRemover;
 use Rector\Core\Rector\AbstractRector;
@@ -53,7 +54,8 @@ final class MoveRenderArgumentsToInitializeArgumentsMethodRector extends \Rector
         if ($node->isAbstract()) {
             return null;
         }
-        if (!$this->isObjectTypes($node, [\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class, \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::class])) {
+        $desiredObjectTypes = [new \PHPStan\Type\ObjectType(\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class), new \PHPStan\Type\ObjectType(\TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::class)];
+        if (!$this->nodeTypeResolver->isObjectTypes($node, $desiredObjectTypes)) {
             return null;
         }
         // Check if the ViewHelper has a render method with params, if not return immediately

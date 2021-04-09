@@ -19,6 +19,9 @@ final class UseClassTypo3VersionRector extends \Rector\Core\Rector\AbstractRecto
      * @var array
      */
     private const CONSTANTS_TO_REFACTOR = ['TYPO3_version', 'TYPO3_branch'];
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\ConstFetch::class];

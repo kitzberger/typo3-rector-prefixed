@@ -6,6 +6,7 @@ namespace Ssch\TYPO3Rector\Rector\v9\v4;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Stmt\Expression;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -45,7 +46,7 @@ final class RemoveInitTemplateMethodCallRector extends \Rector\Core\Rector\Abstr
         if (!$node instanceof \PhpParser\Node\Expr\MethodCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'initTemplate')) {

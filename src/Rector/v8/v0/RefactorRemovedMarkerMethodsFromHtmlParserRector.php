@@ -7,6 +7,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Identifier;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -33,7 +34,7 @@ final class RefactorRemovedMarkerMethodsFromHtmlParserRector extends \Rector\Cor
      */
     private const REMOVED_METHODS = ['processTag', 'processContent'];
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -44,7 +45,7 @@ final class RefactorRemovedMarkerMethodsFromHtmlParserRector extends \Rector\Cor
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Html\HtmlParser::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Html\HtmlParser::class))) {
             return null;
         }
         if ($this->shouldSkip($node)) {

@@ -10,6 +10,7 @@ use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar\String_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -19,6 +20,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class Array2XmlCsToArray2XmlRector extends \Rector\Core\Rector\AbstractRector
 {
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];
@@ -28,7 +32,7 @@ final class Array2XmlCsToArray2XmlRector extends \Rector\Core\Rector\AbstractRec
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\GeneralUtility::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\GeneralUtility::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'array2xml_cs')) {

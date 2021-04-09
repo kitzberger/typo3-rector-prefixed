@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace Rector\Core\NodeManipulator;
 
 use PhpParser\Node;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ArrayDimFetch;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\AssignOp;
@@ -14,6 +15,7 @@ use PhpParser\Node\Expr\PostInc;
 use PhpParser\Node\Expr\PreDec;
 use PhpParser\Node\Expr\PreInc;
 use PhpParser\Node\Expr\PropertyFetch;
+use PhpParser\Node\Expr\StaticPropertyFetch;
 use PhpParser\Node\FunctionLike;
 use PhpParser\Node\Stmt\Expression;
 use Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer;
@@ -21,11 +23,11 @@ use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Php\TypeChecker;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Php\TypeChecker;
 final class AssignManipulator
 {
     /**
-     * @var array<class-string<Node>>
+     * @var array<class-string<Expr>>
      */
     private const MODIFYING_NODE_TYPES = [\PhpParser\Node\Expr\AssignOp::class, \PhpParser\Node\Expr\PreDec::class, \PhpParser\Node\Expr\PostDec::class, \PhpParser\Node\Expr\PreInc::class, \PhpParser\Node\Expr\PostInc::class];
     /**
@@ -48,7 +50,7 @@ final class AssignManipulator
      * @var TypeChecker
      */
     private $typeChecker;
-    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator, \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer $propertyFetchAnalyzer, \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Php\TypeChecker $typeChecker)
+    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator, \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer $propertyFetchAnalyzer, \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Php\TypeChecker $typeChecker)
     {
         $this->nodeNameResolver = $nodeNameResolver;
         $this->betterNodeFinder = $betterNodeFinder;
@@ -106,7 +108,7 @@ final class AssignManipulator
         return \false;
     }
     /**
-     * @return PropertyFetch[]
+     * @return array<PropertyFetch|StaticPropertyFetch>
      */
     public function resolveAssignsToLocalPropertyFetches(\PhpParser\Node\FunctionLike $functionLike) : array
     {

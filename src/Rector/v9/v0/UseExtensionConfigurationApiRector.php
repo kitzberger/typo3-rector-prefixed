@@ -22,6 +22,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class UseExtensionConfigurationApiRector extends \Rector\Core\Rector\AbstractRector
 {
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\FuncCall::class, \PhpParser\Node\Expr\ArrayDimFetch::class];

@@ -128,9 +128,6 @@ CODE_SAMPLE
                         continue;
                     }
                     foreach ($configItemValue->value->items as $behaviourConfigurationItem) {
-                        if (null === $behaviourConfigurationItem) {
-                            continue;
-                        }
                         if (!$behaviourConfigurationItem instanceof \PhpParser\Node\Expr\ArrayItem) {
                             continue;
                         }
@@ -153,9 +150,6 @@ CODE_SAMPLE
         $localizationMode = null;
         $allowLanguageSynchronization = null;
         foreach ($behaviourConfiguration->items as $behaviourConfigurationItem) {
-            if (null === $behaviourConfigurationItem) {
-                continue;
-            }
             if (!$behaviourConfigurationItem instanceof \PhpParser\Node\Expr\ArrayItem) {
                 continue;
             }

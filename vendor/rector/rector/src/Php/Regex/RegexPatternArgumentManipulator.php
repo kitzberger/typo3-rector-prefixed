@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\Php\Regex;
 
-use Typo3RectorPrefix20210408\Nette\Utils\Strings;
+use Typo3RectorPrefix20210409\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\Assign;
@@ -14,6 +14,7 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\ClassConst;
 use PhpParser\Node\Stmt\ClassMethod;
+use PHPStan\Type\ObjectType;
 use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\NodeCollector\NodeCollector\NodeRepository;
@@ -29,7 +30,7 @@ final class RegexPatternArgumentManipulator
     /**
      * @var array<string, array<string, int>>
      */
-    private const STATIC_METHODS_WITH_PATTERNS_TO_ARGUMENT_POSITION = [\Typo3RectorPrefix20210408\Nette\Utils\Strings::class => ['match' => 1, 'matchAll' => 1, 'replace' => 1, 'split' => 1]];
+    private const STATIC_METHODS_WITH_PATTERNS_TO_ARGUMENT_POSITION = [\Typo3RectorPrefix20210409\Nette\Utils\Strings::class => ['match' => 1, 'matchAll' => 1, 'replace' => 1, 'split' => 1]];
     /**
      * @var NodeTypeResolver
      */
@@ -93,7 +94,7 @@ final class RegexPatternArgumentManipulator
     private function processStaticCall(\PhpParser\Node\Expr\StaticCall $staticCall) : array
     {
         foreach (self::STATIC_METHODS_WITH_PATTERNS_TO_ARGUMENT_POSITION as $type => $methodNamesToArgumentPosition) {
-            if (!$this->nodeTypeResolver->isObjectType($staticCall->class, $type)) {
+            if (!$this->nodeTypeResolver->isObjectType($staticCall->class, new \PHPStan\Type\ObjectType($type))) {
                 continue;
             }
             foreach ($methodNamesToArgumentPosition as $methodName => $argumentPosition) {

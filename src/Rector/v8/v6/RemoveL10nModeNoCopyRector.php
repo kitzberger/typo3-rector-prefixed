@@ -124,10 +124,8 @@ final class RemoveL10nModeNoCopyRector extends \Rector\Core\Rector\AbstractRecto
             if (!$addAllowLanguageSynchronization) {
                 continue;
             }
-            if ($configArray instanceof \PhpParser\Node\Expr\Array_) {
-                $configArray->items[] = $newConfiguration;
-                $hasAstBeenChanged = \true;
-            }
+            $configArray->items[] = $newConfiguration;
+            $hasAstBeenChanged = \true;
         }
         return $hasAstBeenChanged ? $node : null;
     }

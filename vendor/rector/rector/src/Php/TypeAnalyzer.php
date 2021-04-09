@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\Php;
 
-use Typo3RectorPrefix20210408\Nette\Utils\Strings;
+use Typo3RectorPrefix20210409\Nette\Utils\Strings;
 use Rector\Core\ValueObject\PhpVersionFeature;
 final class TypeAnalyzer
 {
@@ -35,11 +35,11 @@ final class TypeAnalyzer
     {
         $types = \explode('|', $type);
         $reservedTypes = \array_merge($this->phpSupportedTypes, self::EXTRA_TYPES);
-        foreach ($types as $singleType) {
-            $singleType = \strtolower($singleType);
+        foreach ($types as $type) {
+            $type = \strtolower($type);
             // remove [] from arrays
-            $singleType = \Typo3RectorPrefix20210408\Nette\Utils\Strings::replace($singleType, self::SQUARE_BRACKET_REGEX, '');
-            if (\in_array($singleType, $reservedTypes, \true)) {
+            $type = \Typo3RectorPrefix20210409\Nette\Utils\Strings::replace($type, self::SQUARE_BRACKET_REGEX, '');
+            if (\in_array($type, $reservedTypes, \true)) {
                 return \true;
             }
         }
@@ -60,7 +60,7 @@ final class TypeAnalyzer
         if ($loweredType === 'callback') {
             return 'callable';
         }
-        if (\Typo3RectorPrefix20210408\Nette\Utils\Strings::match($loweredType, self::ARRAY_TYPE_REGEX)) {
+        if (\Typo3RectorPrefix20210409\Nette\Utils\Strings::match($loweredType, self::ARRAY_TYPE_REGEX)) {
             return 'array';
         }
         return $type;

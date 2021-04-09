@@ -9,6 +9,7 @@ use PhpParser\Node\Expr\BooleanNot;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -36,7 +37,7 @@ final class RefactorRemovedMarkerMethodsFromContentObjectRendererRector extends 
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class))) {
             return null;
         }
         if (!$this->isNames($node->name, ['getSubpart', 'substituteSubpart', 'substituteSubpartArray', 'substituteMarker', 'substituteMarkerArrayCached', 'substituteMarkerArray', 'substituteMarkerInObject', 'substituteMarkerAndSubpartArrayRecursive', self::FILL_IN_MARKER_ARRAY])) {

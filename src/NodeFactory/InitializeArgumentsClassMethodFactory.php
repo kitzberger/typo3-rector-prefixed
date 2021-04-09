@@ -17,22 +17,22 @@ use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\Nop;
 use PhpParser\Node\UnionType;
+use PHPStan\Analyser\Scope;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeWithClassName;
-use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareParamTagValueNode;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
 use Rector\Core\PhpParser\Node\NodeFactory;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Rector\PHPStanStaticTypeMapper\PHPStanStaticTypeMapper;
+use Rector\PHPStanStaticTypeMapper\ValueObject\TypeKind;
 use Rector\StaticTypeMapper\StaticTypeMapper;
 use Rector\StaticTypeMapper\ValueObject\Type\ShortenedObjectType;
 use Rector\TypeDeclaration\TypeInferer\ParamTypeInferer;
 use ReflectionClass;
-use Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
 final class InitializeArgumentsClassMethodFactory
 {
     /**
@@ -88,9 +88,8 @@ final class InitializeArgumentsClassMethodFactory
             return $classMethod;
         }
         $classMethod = $this->createNewClassMethod();
-        $parentClassName = $class->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_CLASS_NAME);
-        // not in analyzed scope, nothing we can do
-        if (null !== $parentClassName && \method_exists($parentClassName, self::METHOD_NAME)) {
+        if ($this->doesParentClassMethodExist($class, self::METHOD_NAME)) {
+            // not in analyzed scope, nothing we can do
             $parentConstructCallNode = new \PhpParser\Node\Expr\StaticCall(new \PhpParser\Node\Name('parent'), new \PhpParser\Node\Identifier(self::METHOD_NAME));
             $classMethod->stmts[] = new \PhpParser\Node\Stmt\Expression($parentConstructCallNode);
         }
@@ -101,7 +100,7 @@ final class InitializeArgumentsClassMethodFactory
     }
     private function createNewClassMethod() : \PhpParser\Node\Stmt\ClassMethod
     {
-        $methodBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(self::METHOD_NAME);
+        $methodBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(self::METHOD_NAME);
         $methodBuilder->makePublic();
         $methodBuilder->setReturnType('void');
         return $methodBuilder->getNode();
@@ -129,7 +128,7 @@ final class InitializeArgumentsClassMethodFactory
         return $stmts;
     }
     /**
-     * @return ParamTagValueNode[]
+     * @return array<string, ParamTagValueNode>
      */
     private function getParamTagsByName(\PhpParser\Node\Stmt\ClassMethod $classMethod) : array
     {
@@ -139,8 +138,8 @@ final class InitializeArgumentsClassMethodFactory
         }
         $paramTagsByName = [];
         foreach ($phpDocInfo->getTagsByName('param') as $phpDocTagNode) {
-            /** @var ParamTagValueNode $paramTagValueNode */
             if (\property_exists($phpDocTagNode, 'value')) {
+                /** @var ParamTagValueNode $paramTagValueNode */
                 $paramTagValueNode = $phpDocTagNode->value;
                 $paramName = \ltrim($paramTagValueNode->parameterName, '$');
                 $paramTagsByName[$paramName] = $paramTagValueNode;
@@ -150,7 +149,7 @@ final class InitializeArgumentsClassMethodFactory
     }
     private function getDescription(?\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode $paramTagValueNode) : string
     {
-        return $paramTagValueNode instanceof \Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareParamTagValueNode ? $paramTagValueNode->description : '';
+        return $paramTagValueNode instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode ? $paramTagValueNode->description : '';
     }
     private function createTypeInString(?\PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode $paramTagValueNode, \PhpParser\Node\Param $param) : string
     {
@@ -164,7 +163,7 @@ final class InitializeArgumentsClassMethodFactory
         if ($this->isTraitType($inferedType)) {
             return self::MIXED;
         }
-        $paramTypeNode = $this->staticTypeMapper->mapPHPStanTypeToPhpParserNode($inferedType, \Rector\PHPStanStaticTypeMapper\PHPStanStaticTypeMapper::KIND_PARAM);
+        $paramTypeNode = $this->staticTypeMapper->mapPHPStanTypeToPhpParserNode($inferedType, \Rector\PHPStanStaticTypeMapper\ValueObject\TypeKind::KIND_PARAM);
         if ($paramTypeNode instanceof \PhpParser\Node\UnionType) {
             return self::MIXED;
         }
@@ -209,5 +208,22 @@ final class InitializeArgumentsClassMethodFactory
             return $paramType->toCodeString();
         }
         return $this->nodeNameResolver->getName($paramType) ?? self::MIXED;
+    }
+    private function doesParentClassMethodExist(\PhpParser\Node\Stmt\Class_ $class, string $methodName) : bool
+    {
+        $scope = $class->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::SCOPE);
+        if (!$scope instanceof \PHPStan\Analyser\Scope) {
+            return \false;
+        }
+        $classReflection = $scope->getClassReflection();
+        if (null === $classReflection) {
+            return \false;
+        }
+        foreach ($classReflection->getParents() as $parentClassReflection) {
+            if ($parentClassReflection->hasMethod($methodName)) {
+                return \true;
+            }
+        }
+        return \false;
     }
 }

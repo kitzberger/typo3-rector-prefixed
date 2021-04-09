@@ -5,20 +5,19 @@ namespace Ssch\TYPO3Rector\Rector\Composer;
 
 use BadMethodCallException;
 use Rector\Composer\Contract\Rector\ComposerRectorInterface;
-use Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use Symplify\RuleDocGenerator\Contract\DocumentedRuleInterface;
+use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Rector\Composer\RemoveCmsPackageDirFromExtraRector\RemoveCmsPackageDirFromExtraRectorTest
  */
-final class RemoveCmsPackageDirFromExtraRector implements \Rector\Composer\Contract\Rector\ComposerRectorInterface, \Symplify\RuleDocGenerator\Contract\DocumentedRuleInterface
+final class RemoveCmsPackageDirFromExtraRector implements \Rector\Composer\Contract\Rector\ComposerRectorInterface
 {
     /**
      * @var string
      */
     private const TYPO3_CMS = 'typo3/cms';
-    public function refactor(\Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function refactor(\Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $extra = $composerJson->getExtra();
         if (!isset($extra[self::TYPO3_CMS])) {

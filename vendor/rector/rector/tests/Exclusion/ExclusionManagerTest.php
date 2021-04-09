@@ -5,7 +5,7 @@ namespace Rector\Core\Tests\Exclusion;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Rector\Core\Exclusion\ExclusionManager
  */
@@ -14,15 +14,18 @@ final class ExclusionManagerTest extends \Rector\Testing\PHPUnit\AbstractRectorT
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }
+    /**
+     * @return Iterator<SmartFileInfo>
+     */
     public function provideData() : \Iterator
     {
         return $this->yieldFilesFromDirectory(__DIR__ . '/Fixture');
     }
-    protected function provideConfigFilePath() : string
+    public function provideConfigFilePath() : string
     {
         return __DIR__ . '/config/some_config.php';
     }

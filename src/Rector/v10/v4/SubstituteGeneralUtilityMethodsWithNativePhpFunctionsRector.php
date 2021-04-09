@@ -7,6 +7,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\BinaryOp\Mul;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Scalar\LNumber;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -21,6 +22,9 @@ final class SubstituteGeneralUtilityMethodsWithNativePhpFunctionsRector extends 
      * @var array
      */
     private const METHOD_CALL_TO_REFACTOR = ['IPv6Hex2Bin', 'IPv6Bin2Hex', 'compressIPv6', 'milliseconds'];
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];
@@ -30,7 +34,7 @@ final class SubstituteGeneralUtilityMethodsWithNativePhpFunctionsRector extends 
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\GeneralUtility::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\GeneralUtility::class))) {
             return null;
         }
         if (!$this->isNames($node->name, self::METHOD_CALL_TO_REFACTOR)) {

@@ -10,8 +10,8 @@ use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\NodeFactory;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class NodeFactoryTest extends \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class NodeFactoryTest extends \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var NodeFactory
@@ -31,6 +31,9 @@ final class NodeFactoryTest extends \Typo3RectorPrefix20210408\Symplify\PackageB
         $arrayNode = $this->nodeFactory->createArray($inputArray);
         $this->assertEquals($expectedArrayNode, $arrayNode);
     }
+    /**
+     * @return Iterator<int[][]|array<string, int>|Array_[]>
+     */
     public function provideDataForArray() : \Iterator
     {
         $array = new \PhpParser\Node\Expr\Array_();

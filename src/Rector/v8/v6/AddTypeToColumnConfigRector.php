@@ -23,7 +23,7 @@ final class AddTypeToColumnConfigRector extends \Rector\Core\Rector\AbstractRect
      */
     private const TYPE = 'type';
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

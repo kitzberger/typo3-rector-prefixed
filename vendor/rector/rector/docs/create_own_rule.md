@@ -32,7 +32,7 @@ final class MyFirstRector extends AbstractRector
     public function getNodeTypes(): array
     {
         // what node types are we looking for?
-        // pick any node from https://github.com/rectorphp/rector/blob/master/docs/nodes_overview.md
+        // pick any node from https://github.com/rectorphp/php-parser-nodes-docs/
         return [MethodCall::class];
     }
 
@@ -145,4 +145,4 @@ That's it!
 
 Do you want to save time with making rules and tests?
 
-Use [the `create` command](/docs/rector_recipe.md).
+Use [the `generate` command](https://github.com/rectorphp/rector-generator).

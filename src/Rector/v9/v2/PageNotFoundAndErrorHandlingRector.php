@@ -17,6 +17,7 @@ use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Echo_;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\Throw_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -37,6 +38,9 @@ final class PageNotFoundAndErrorHandlingRector extends \Rector\Core\Rector\Abstr
      * @var array
      */
     private const MAP_METHODS = ['pageNotFoundAndExit' => 'pageNotFoundAction', 'pageUnavailableAndExit' => 'unavailableAction'];
+    /**
+     * @var string[]
+     */
     private const METHODS = ['pageNotFoundAndExit', 'pageUnavailableAndExit', 'checkPageUnavailableHandler', 'pageUnavailableHandler', 'pageNotFoundHandler', 'pageErrorHandler'];
     /**
      * @var Typo3NodeResolver
@@ -124,7 +128,7 @@ CODE_SAMPLE
         if ($this->typo3NodeResolver->isAnyMethodCallOnGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER)) {
             return \false;
         }
-        return !$this->isObjectType($node->var, \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class);
+        return !$this->isObjectType($node->var, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class));
     }
     private function createResponse(\PhpParser\Node\Expr\MethodCall $node) : ?\PhpParser\Node
     {

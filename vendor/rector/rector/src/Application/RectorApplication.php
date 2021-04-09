@@ -11,10 +11,12 @@ use Rector\Core\Application\FileSystem\RemovedAndAddedFilesProcessor;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\Contract\PostRunnerInterface;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Typo3RectorPrefix20210408\Symfony\Component\Console\Helper\ProgressBar;
-use Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Rector\Core\FileSystem\PhpFilesFinder;
+use Rector\Core\StaticReflection\DynamicSourceLocatorDecorator;
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Helper\ProgressBar;
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 use Throwable;
 /**
  * Rector cycle has 3 steps:
@@ -79,9 +81,17 @@ final class RectorApplication
      */
     private $privatesAccessor;
     /**
+     * @var PhpFilesFinder
+     */
+    private $phpFilesFinder;
+    /**
+     * @var DynamicSourceLocatorDecorator
+     */
+    private $dynamicSourceLocatorDecorator;
+    /**
      * @param PostRunnerInterface[] $postRunners
      */
-    public function __construct(\Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\Application\FileProcessor $fileProcessor, \PHPStan\Analyser\NodeScopeResolver $nodeScopeResolver, \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector $removedAndAddedFilesCollector, \Rector\Core\Application\FileSystem\RemovedAndAddedFilesProcessor $removedAndAddedFilesProcessor, \Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Reflection\PrivatesAccessor $privatesAccessor, array $postRunners)
+    public function __construct(\Rector\Core\Configuration\Configuration $configuration, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\Application\FileProcessor $fileProcessor, \PHPStan\Analyser\NodeScopeResolver $nodeScopeResolver, \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector $removedAndAddedFilesCollector, \Rector\Core\Application\FileSystem\RemovedAndAddedFilesProcessor $removedAndAddedFilesProcessor, \Typo3RectorPrefix20210409\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Reflection\PrivatesAccessor $privatesAccessor, \Rector\Core\FileSystem\PhpFilesFinder $phpFilesFinder, \Rector\Core\StaticReflection\DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator, array $postRunners)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->errorAndDiffCollector = $errorAndDiffCollector;
@@ -92,12 +102,15 @@ final class RectorApplication
         $this->nodeScopeResolver = $nodeScopeResolver;
         $this->privatesAccessor = $privatesAccessor;
         $this->postRunners = $postRunners;
+        $this->phpFilesFinder = $phpFilesFinder;
+        $this->dynamicSourceLocatorDecorator = $dynamicSourceLocatorDecorator;
     }
     /**
-     * @param SmartFileInfo[] $phpFileInfos
+     * @param string[] $paths
      */
-    public function runOnFileInfos(array $phpFileInfos) : void
+    public function runOnPaths(array $paths) : void
     {
+        $phpFileInfos = $this->phpFilesFinder->findInPaths($paths);
         $fileCount = \count($phpFileInfos);
         if ($fileCount === 0) {
             return;
@@ -105,19 +118,26 @@ final class RectorApplication
         $this->prepareProgressBar($fileCount);
         // PHPStan has to know about all files!
         $this->configurePHPStanNodeScopeResolver($phpFileInfos);
+        // 0. add files and directories to static locator
+        $this->dynamicSourceLocatorDecorator->addPaths($paths);
         // 1. parse files to nodes
         $this->parseFileInfosToNodes($phpFileInfos);
         // 2. change nodes with Rectors
         $this->refactorNodesWithRectors($phpFileInfos);
         // 3. apply post rectors
         foreach ($phpFileInfos as $phpFileInfo) {
-            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
+            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
                 $this->fileProcessor->postFileRefactor($smartFileInfo);
             }, 'post rectors');
         }
         // 4. print to file or string
         foreach ($phpFileInfos as $phpFileInfo) {
-            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
+            // cannot print file with errors, as print would break everything to orignal nodes
+            if ($this->errorAndDiffCollector->hasErrors($phpFileInfo)) {
+                $this->advance($phpFileInfo, 'printing');
+                continue;
+            }
+            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
                 $this->printFileInfo($smartFileInfo);
             }, 'printing');
         }
@@ -158,7 +178,7 @@ final class RectorApplication
     private function parseFileInfosToNodes(array $phpFileInfos) : void
     {
         foreach ($phpFileInfos as $phpFileInfo) {
-            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
+            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
                 $this->fileProcessor->parseFileInfoToLocalCache($smartFileInfo);
             }, 'parsing');
         }
@@ -169,12 +189,12 @@ final class RectorApplication
     private function refactorNodesWithRectors(array $phpFileInfos) : void
     {
         foreach ($phpFileInfos as $phpFileInfo) {
-            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
+            $this->tryCatchWrapper($phpFileInfo, function (\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void {
                 $this->fileProcessor->refactor($smartFileInfo);
             }, 'refactoring');
         }
     }
-    private function tryCatchWrapper(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, callable $callback, string $phase) : void
+    private function tryCatchWrapper(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, callable $callback, string $phase) : void
     {
         $this->advance($smartFileInfo, $phase);
         try {
@@ -193,7 +213,7 @@ final class RectorApplication
             $this->errorAndDiffCollector->addThrowableWithFileInfo($throwable, $smartFileInfo);
         }
     }
-    private function printFileInfo(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    private function printFileInfo(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         if ($this->removedAndAddedFilesCollector->isFileRemoved($fileInfo)) {
             // skip, because this file exists no more
@@ -210,7 +230,7 @@ final class RectorApplication
     {
         $this->symfonyStyle->progressStart($fileCount * self::PROGRESS_BAR_STEP_MULTIPLIER);
         $progressBar = $this->privatesAccessor->getPrivateProperty($this->symfonyStyle, 'progressBar');
-        if (!$progressBar instanceof \Typo3RectorPrefix20210408\Symfony\Component\Console\Helper\ProgressBar) {
+        if (!$progressBar instanceof \Typo3RectorPrefix20210409\Symfony\Component\Console\Helper\ProgressBar) {
             throw new \Rector\Core\Exception\ShouldNotHappenException();
         }
         if ($progressBar->getMaxSteps() < 40) {
@@ -219,7 +239,7 @@ final class RectorApplication
         $redrawFrequency = (int) ($progressBar->getMaxSteps() / 20);
         $progressBar->setRedrawFrequency($redrawFrequency);
     }
-    private function advance(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $phase) : void
+    private function advance(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $phase) : void
     {
         if ($this->symfonyStyle->isVerbose()) {
             $relativeFilePath = $smartFileInfo->getRelativeFilePathFromDirectory(\getcwd());

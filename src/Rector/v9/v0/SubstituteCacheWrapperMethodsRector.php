@@ -13,6 +13,7 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\If_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -38,6 +39,9 @@ final class SubstituteCacheWrapperMethodsRector extends \Rector\Core\Rector\Abst
      * @var string
      */
     private const HASH_CONTENT = 'hashContent';
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];
@@ -47,7 +51,7 @@ final class SubstituteCacheWrapperMethodsRector extends \Rector\Core\Rector\Abst
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Backend\Utility\BackendUtility::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Backend\Utility\BackendUtility::class))) {
             return null;
         }
         if (!$this->isNames($node->name, ['getHash', 'storeHash'])) {

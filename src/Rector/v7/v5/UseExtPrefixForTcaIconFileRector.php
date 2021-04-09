@@ -10,6 +10,7 @@ use PhpParser\Node\Expr\BinaryOp\Concat;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Return_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -43,7 +44,7 @@ CODE_SAMPLE
 )]);
     }
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -89,7 +90,7 @@ CODE_SAMPLE
             if (!$staticCall instanceof \PhpParser\Node\Expr\StaticCall) {
                 return;
             }
-            if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($staticCall, \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class)) {
+            if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($staticCall, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class))) {
                 return;
             }
             if (!$this->isName($staticCall->name, 'extRelPath')) {

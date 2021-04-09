@@ -1,20 +1,20 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210408\Symplify\Astral\Bundle;
+namespace Typo3RectorPrefix20210409\Symplify\Astral\Bundle;
 
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210408\Symfony\Component\HttpKernel\Bundle\Bundle;
-use Typo3RectorPrefix20210408\Symplify\Astral\DependencyInjection\Extension\AstralExtension;
-use Typo3RectorPrefix20210408\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-final class AstralBundle extends \Typo3RectorPrefix20210408\Symfony\Component\HttpKernel\Bundle\Bundle
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210409\Symfony\Component\HttpKernel\Bundle\Bundle;
+use Typo3RectorPrefix20210409\Symplify\Astral\DependencyInjection\Extension\AstralExtension;
+use Typo3RectorPrefix20210409\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+final class AstralBundle extends \Typo3RectorPrefix20210409\Symfony\Component\HttpKernel\Bundle\Bundle
 {
-    public function build(\Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function build(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
-        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210408\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
+        $containerBuilder->addCompilerPass(new \Typo3RectorPrefix20210409\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
     }
-    protected function createContainerExtension() : \Typo3RectorPrefix20210408\Symplify\Astral\DependencyInjection\Extension\AstralExtension
+    protected function createContainerExtension() : \Typo3RectorPrefix20210409\Symplify\Astral\DependencyInjection\Extension\AstralExtension
     {
-        return new \Typo3RectorPrefix20210408\Symplify\Astral\DependencyInjection\Extension\AstralExtension();
+        return new \Typo3RectorPrefix20210409\Symplify\Astral\DependencyInjection\Extension\AstralExtension();
     }
 }

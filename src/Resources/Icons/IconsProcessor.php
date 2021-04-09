@@ -5,9 +5,9 @@ namespace Ssch\TYPO3Rector\Resources\Icons;
 
 use Rector\Core\Configuration\Configuration;
 use Ssch\TYPO3Rector\Processor\ProcessorInterface;
-use Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem;
 final class IconsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInterface
 {
     /**
@@ -22,13 +22,13 @@ final class IconsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInter
      * @var Configuration
      */
     private $configuration;
-    public function __construct(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
+    public function __construct(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210409\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
     {
         $this->smartFileSystem = $smartFileSystem;
         $this->symfonyStyle = $symfonyStyle;
         $this->configuration = $configuration;
     }
-    public function process(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
     {
         $relativeFilePath = \dirname($smartFileInfo->getRelativeFilePath());
         $realPath = \dirname($smartFileInfo->getRealPath());
@@ -50,7 +50,7 @@ final class IconsProcessor implements \Ssch\TYPO3Rector\Processor\ProcessorInter
         }
         return null;
     }
-    public function canProcess(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function canProcess(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if (!\in_array($smartFileInfo->getFilename(), ['ext_icon.png', 'ext_icon.svg', 'ext_icon.gif'], \true)) {
             return \false;

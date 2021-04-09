@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Rector\Core\PhpParser\Parser;
 
-use Typo3RectorPrefix20210408\Nette\Utils\Strings;
-use PhpParser\Node;
+use Typo3RectorPrefix20210409\Nette\Utils\Strings;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\BinaryOp\Concat;
 use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Expr\StaticPropertyFetch;
@@ -15,7 +15,7 @@ use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
-use Rector\Core\Util\StaticInstanceOf;
+use Rector\Core\Util\StaticNodeInstanceOf;
 use Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator;
 final class InlineCodeParser
 {
@@ -53,36 +53,30 @@ final class InlineCodeParser
     public function parse(string $content) : array
     {
         // wrap code so php-parser can interpret it
-        $content = \Typo3RectorPrefix20210408\Nette\Utils\Strings::startsWith($content, '<?php ') ? $content : '<?php ' . $content;
-        $content = \Typo3RectorPrefix20210408\Nette\Utils\Strings::endsWith($content, ';') ? $content : $content . ';';
+        $content = \Typo3RectorPrefix20210409\Nette\Utils\Strings::startsWith($content, '<?php ') ? $content : '<?php ' . $content;
+        $content = \Typo3RectorPrefix20210409\Nette\Utils\Strings::endsWith($content, ';') ? $content : $content . ';';
         $nodes = (array) $this->parser->parse($content);
         return $this->nodeScopeAndMetadataDecorator->decorateNodesFromString($nodes);
     }
-    /**
-     * @param string|Node $content
-     */
-    public function stringify($content) : string
+    public function stringify(\PhpParser\Node\Expr $expr) : string
     {
-        if (\is_string($content)) {
-            return $content;
+        if ($expr instanceof \PhpParser\Node\Scalar\String_) {
+            return $expr->value;
         }
-        if ($content instanceof \PhpParser\Node\Scalar\String_) {
-            return $content->value;
-        }
-        if ($content instanceof \PhpParser\Node\Scalar\Encapsed) {
+        if ($expr instanceof \PhpParser\Node\Scalar\Encapsed) {
             // remove "
-            $content = \trim($this->betterStandardPrinter->print($content), '""');
+            $expr = \trim($this->betterStandardPrinter->print($expr), '""');
             // use \$ → $
-            $content = \Typo3RectorPrefix20210408\Nette\Utils\Strings::replace($content, self::PRESLASHED_DOLLAR_REGEX, '$');
+            $expr = \Typo3RectorPrefix20210409\Nette\Utils\Strings::replace($expr, self::PRESLASHED_DOLLAR_REGEX, '$');
             // use \'{$...}\' → $...
-            return \Typo3RectorPrefix20210408\Nette\Utils\Strings::replace($content, self::CURLY_BRACKET_WRAPPER_REGEX, '$1');
+            return \Typo3RectorPrefix20210409\Nette\Utils\Strings::replace($expr, self::CURLY_BRACKET_WRAPPER_REGEX, '$1');
         }
-        if ($content instanceof \PhpParser\Node\Expr\BinaryOp\Concat) {
-            return $this->stringify($content->left) . $this->stringify($content->right);
+        if ($expr instanceof \PhpParser\Node\Expr\BinaryOp\Concat) {
+            return $this->stringify($expr->left) . $this->stringify($expr->right);
         }
-        if (\Rector\Core\Util\StaticInstanceOf::isOneOf($content, [\PhpParser\Node\Expr\Variable::class, \PhpParser\Node\Expr\PropertyFetch::class, \PhpParser\Node\Expr\StaticPropertyFetch::class])) {
-            return $this->betterStandardPrinter->print($content);
+        if (\Rector\Core\Util\StaticNodeInstanceOf::isOneOf($expr, [\PhpParser\Node\Expr\Variable::class, \PhpParser\Node\Expr\PropertyFetch::class, \PhpParser\Node\Expr\StaticPropertyFetch::class])) {
+            return $this->betterStandardPrinter->print($expr);
         }
-        throw new \Rector\Core\Exception\ShouldNotHappenException(\get_class($content) . ' ' . __METHOD__);
+        throw new \Rector\Core\Exception\ShouldNotHappenException(\get_class($expr) . ' ' . __METHOD__);
     }
 }

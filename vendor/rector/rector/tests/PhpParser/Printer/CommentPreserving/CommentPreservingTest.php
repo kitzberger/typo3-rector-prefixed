@@ -4,24 +4,26 @@ declare (strict_types=1);
 namespace Rector\Core\Tests\PhpParser\Printer\CommentPreserving;
 
 use Iterator;
-use Rector\Php74\Rector\Property\TypedPropertyRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 final class CommentPreservingTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }
+    /**
+     * @return Iterator<SmartFileInfo>
+     */
     public function provideData() : \Iterator
     {
         return $this->yieldFilesFromDirectory(__DIR__ . '/Fixture');
     }
-    protected function getRectorClass() : string
+    public function provideConfigFilePath() : string
     {
-        return \Rector\Php74\Rector\Property\TypedPropertyRector::class;
+        return __DIR__ . '/config/configured_rule.php';
     }
 }

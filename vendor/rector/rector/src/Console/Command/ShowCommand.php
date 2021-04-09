@@ -5,13 +5,14 @@ namespace Rector\Core\Console\Command;
 
 use Rector\Core\Application\ActiveRectorsProvider;
 use Rector\Core\Configuration\Option;
-use Typo3RectorPrefix20210408\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210408\Symfony\Component\Console\Output\OutputInterface;
-use Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Console\ShellCode;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
-final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Command\Command;
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210409\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\ShellCode;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
+final class ShowCommand extends \Typo3RectorPrefix20210409\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -25,7 +26,7 @@ final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
      * @var ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\Typo3RectorPrefix20210408\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Application\ActiveRectorsProvider $activeRectorsProvider, \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Typo3RectorPrefix20210409\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Application\ActiveRectorsProvider $activeRectorsProvider, \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->activeRectorsProvider = $activeRectorsProvider;
@@ -36,11 +37,11 @@ final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
     {
         $this->setDescription('Show loaded Rectors with their configuration');
     }
-    protected function execute(\Typo3RectorPrefix20210408\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210408\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->reportLoadedRectors();
         $this->reportLoadedSets();
-        return \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
     private function reportLoadedRectors() : void
     {
@@ -48,8 +49,8 @@ final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
         $rectorCount = \count($activeRectors);
         if ($rectorCount > 0) {
             $this->symfonyStyle->title('Loaded Rector rules');
-            foreach ($activeRectors as $rector) {
-                $this->symfonyStyle->writeln(' * ' . \get_class($rector));
+            foreach ($activeRectors as $activeRector) {
+                $this->symfonyStyle->writeln(' * ' . \get_class($activeRector));
             }
             $message = \sprintf('%d loaded Rectors', $rectorCount);
             $this->symfonyStyle->success($message);
@@ -69,7 +70,7 @@ final class ShowCommand extends \Rector\Core\Console\Command\AbstractCommand
         \sort($sets);
         $setFilePaths = [];
         foreach ($sets as $set) {
-            $setFileInfo = new \Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo($set);
+            $setFileInfo = new \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo($set);
             $setFilePaths[] = $setFileInfo->getRelativeFilePathFromCwd();
         }
         $this->symfonyStyle->listing($setFilePaths);

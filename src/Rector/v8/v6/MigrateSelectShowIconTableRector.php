@@ -19,7 +19,7 @@ final class MigrateSelectShowIconTableRector extends \Rector\Core\Rector\Abstrac
 {
     use TcaHelperTrait;
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

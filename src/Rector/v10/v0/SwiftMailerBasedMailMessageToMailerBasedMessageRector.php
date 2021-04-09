@@ -7,8 +7,11 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Identifier;
+use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
 use Rector\Core\Rector\AbstractRector;
+use Typo3RectorPrefix20210409\Swift_Attachment;
+use Typo3RectorPrefix20210409\Swift_Image;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -19,7 +22,7 @@ use TYPO3\CMS\Core\Mail\MailMessage;
 final class SwiftMailerBasedMailMessageToMailerBasedMessageRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -30,7 +33,7 @@ final class SwiftMailerBasedMailMessageToMailerBasedMessageRector extends \Recto
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Mail\MailMessage::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Mail\MailMessage::class))) {
             return null;
         }
         if (!$this->isNames($node->name, ['setBody', 'addPart', 'attach', 'embed'])) {
@@ -122,7 +125,7 @@ CODE_SAMPLE
         if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, \Typo3RectorPrefix20210408\Swift_Attachment::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210409\Swift_Attachment::class))) {
             return null;
         }
         if (!$this->isName($firstArgument->name, 'fromPath')) {
@@ -138,7 +141,7 @@ CODE_SAMPLE
         if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, \Typo3RectorPrefix20210408\Swift_Image::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210409\Swift_Image::class))) {
             return null;
         }
         if (!$this->isName($firstArgument->name, 'fromPath')) {

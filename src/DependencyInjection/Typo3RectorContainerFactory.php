@@ -3,39 +3,33 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\DependencyInjection;
 
-use Typo3RectorPrefix20210408\Psr\Container\ContainerInterface;
+use Typo3RectorPrefix20210409\Psr\Container\ContainerInterface;
 use Rector\Caching\Detector\ChangedFilesDetector;
 use Rector\Core\Configuration\Configuration;
-use Rector\Core\Stubs\StubLoader;
 use Rector\Core\ValueObject\Bootstrap\BootstrapConfigs;
 use Ssch\TYPO3Rector\HttpKernel\Typo3RectorKernel;
-use Ssch\TYPO3Rector\Stubs\StubLoader as Typo3StubsLoader;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 final class Typo3RectorContainerFactory
 {
     /**
      * @param SmartFileInfo[] $configFileInfos
      * @api
      */
-    public function createFromConfigs(array $configFileInfos) : \Typo3RectorPrefix20210408\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFileInfos) : \Typo3RectorPrefix20210409\Psr\Container\ContainerInterface
     {
         // to override the configs without clearing cache
-        $isDebug = \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug();
+        $isDebug = \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug();
         $environment = $this->createEnvironment($configFileInfos);
         $rectorKernel = new \Ssch\TYPO3Rector\HttpKernel\Typo3RectorKernel($environment, $isDebug);
         if ([] !== $configFileInfos) {
             $configFilePaths = $this->unpackRealPathsFromFileInfos($configFileInfos);
             $rectorKernel->setConfigs($configFilePaths);
         }
-        $stubLoader = new \Rector\Core\Stubs\StubLoader();
-        $stubLoader->loadStubs();
-        $typo3StubLoader = new \Ssch\TYPO3Rector\Stubs\StubLoader();
-        $typo3StubLoader->loadStubs();
         $rectorKernel->boot();
         return $rectorKernel->getContainer();
     }
-    public function createFromBootstrapConfigs(\Rector\Core\ValueObject\Bootstrap\BootstrapConfigs $bootstrapConfigs) : \Typo3RectorPrefix20210408\Psr\Container\ContainerInterface
+    public function createFromBootstrapConfigs(\Rector\Core\ValueObject\Bootstrap\BootstrapConfigs $bootstrapConfigs) : \Typo3RectorPrefix20210409\Psr\Container\ContainerInterface
     {
         $container = $this->createFromConfigs($bootstrapConfigs->getConfigFileInfos());
         $mainConfigFileInfo = $bootstrapConfigs->getMainConfigFileInfo();

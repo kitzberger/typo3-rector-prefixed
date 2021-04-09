@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v8\v0;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -15,6 +16,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 final class PrependAbsolutePathToGetFileAbsFileNameRector extends \Rector\Core\Rector\AbstractRector
 {
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -24,7 +28,7 @@ final class PrependAbsolutePathToGetFileAbsFileNameRector extends \Rector\Core\R
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Imaging\GraphicalFunctions::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Imaging\GraphicalFunctions::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'prependAbsolutePath')) {

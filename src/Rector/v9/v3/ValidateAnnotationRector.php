@@ -8,7 +8,6 @@ use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Property;
 use PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode;
-use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwarePhpDocTagNode;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
 use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTagRemover;
 use Rector\Core\Rector\AbstractRector;
@@ -110,13 +109,13 @@ CODE_SAMPLE
         } else {
             $annotation = \sprintf('@TYPO3\\CMS\\Extbase\\Annotation\\Validate(validator="%s")', $validatorAnnotation);
         }
-        return new \Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwarePhpDocTagNode($annotation, $this->createEmptyTagValueNode());
+        return new \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode($annotation, $this->createEmptyTagValueNode());
     }
     private function createMethodAnnotation(string $validatorAnnotation) : \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode
     {
         [$param, $validator] = \explode(' ', $validatorAnnotation);
         $annotation = \sprintf('@TYPO3\\CMS\\Extbase\\Annotation\\Validate(validator="%s", param="%s")', $validator, \ltrim($param, '$'));
-        return new \Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwarePhpDocTagNode($annotation, $this->createEmptyTagValueNode());
+        return new \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode($annotation, $this->createEmptyTagValueNode());
     }
     private function createEmptyTagValueNode() : \PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode
     {

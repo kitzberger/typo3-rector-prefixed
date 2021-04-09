@@ -24,7 +24,7 @@ final class MigrateOptionsOfTypeGroupRector extends \Rector\Core\Rector\Abstract
      */
     private const DISABLED = 'disabled';
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -76,16 +76,17 @@ final class MigrateOptionsOfTypeGroupRector extends \Rector\Core\Rector\Abstract
                     if (!$configItemValue instanceof \PhpParser\Node\Expr\ArrayItem) {
                         continue;
                     }
-                    if (null === $configItemValue->key) {
+                    $arrayItemKey = $configItemValue->key;
+                    if (null === $arrayItemKey) {
                         continue;
                     }
-                    if (!$this->valueResolver->isValues($configItemValue->key, ['selectedListStyle', 'show_thumbs', 'disable_controls'])) {
+                    if (!$this->valueResolver->isValues($arrayItemKey, ['selectedListStyle', 'show_thumbs', 'disable_controls'])) {
                         continue;
                     }
                     $this->removeNode($configItemValue);
                     $hasAstBeenChanged = \true;
                     $configItemValueValue = $this->valueResolver->getValue($configItemValue->value);
-                    if ($this->valueResolver->isValue($configItemValue->key, 'disable_controls') && \is_string($configItemValueValue)) {
+                    if ($this->valueResolver->isValue($arrayItemKey, 'disable_controls') && \is_string($configItemValueValue)) {
                         $controls = \Ssch\TYPO3Rector\ArrayUtility::trimExplode(',', $configItemValueValue, \true);
                         foreach ($controls as $control) {
                             if ('browser' === $control) {
@@ -98,7 +99,7 @@ final class MigrateOptionsOfTypeGroupRector extends \Rector\Core\Rector\Abstract
                                 $addFieldWizards['fileUpload'][self::DISABLED] = \true;
                             }
                         }
-                    } elseif ($this->valueResolver->isValue($configItemValue->key, 'show_thumbs') && \false === (bool) $configItemValueValue) {
+                    } elseif ($this->valueResolver->isValue($arrayItemKey, 'show_thumbs') && !(bool) $configItemValueValue) {
                         if ($this->configIsOfInternalType($configValue->value, 'db')) {
                             $addFieldWizards['recordsOverview'][self::DISABLED] = \true;
                         } elseif ($this->configIsOfInternalType($configValue->value, 'file')) {

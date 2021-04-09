@@ -3,36 +3,42 @@
 declare (strict_types=1);
 namespace Rector\Core\DependencyInjection;
 
-use Typo3RectorPrefix20210408\Psr\Container\ContainerInterface;
 use Rector\Caching\Detector\ChangedFilesDetector;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\HttpKernel\RectorKernel;
-use Rector\Core\Stubs\StubLoader;
+use Rector\Core\Stubs\PHPStanStubLoader;
 use Rector\Core\ValueObject\Bootstrap\BootstrapConfigs;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Rector\Testing\PHPUnit\StaticPHPUnitEnvironment;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 final class RectorContainerFactory
 {
     /**
      * @param SmartFileInfo[] $configFileInfos
      * @api
      */
-    public function createFromConfigs(array $configFileInfos) : \Typo3RectorPrefix20210408\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFileInfos) : \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerInterface
     {
         // to override the configs without clearing cache
-        $isDebug = \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug();
+        $isDebug = \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug();
         $environment = $this->createEnvironment($configFileInfos);
+        // mt_rand is needed to invalidate container cache in case of class changes to be registered as services
+        $isPHPUnitRun = \Rector\Testing\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun();
+        if (!$isPHPUnitRun) {
+            $environment .= \mt_rand(0, 10000);
+        }
         $rectorKernel = new \Rector\Core\HttpKernel\RectorKernel($environment, $isDebug);
         if ($configFileInfos !== []) {
             $configFilePaths = $this->unpackRealPathsFromFileInfos($configFileInfos);
             $rectorKernel->setConfigs($configFilePaths);
         }
-        $stubLoader = new \Rector\Core\Stubs\StubLoader();
-        $stubLoader->loadStubs();
+        $phpStanStubLoader = new \Rector\Core\Stubs\PHPStanStubLoader();
+        $phpStanStubLoader->loadStubs();
         $rectorKernel->boot();
         return $rectorKernel->getContainer();
     }
-    public function createFromBootstrapConfigs(\Rector\Core\ValueObject\Bootstrap\BootstrapConfigs $bootstrapConfigs) : \Typo3RectorPrefix20210408\Psr\Container\ContainerInterface
+    public function createFromBootstrapConfigs(\Rector\Core\ValueObject\Bootstrap\BootstrapConfigs $bootstrapConfigs) : \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerInterface
     {
         $container = $this->createFromConfigs($bootstrapConfigs->getConfigFileInfos());
         $mainConfigFileInfo = $bootstrapConfigs->getMainConfigFileInfo();

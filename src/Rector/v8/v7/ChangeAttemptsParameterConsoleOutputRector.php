@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v8\v7;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -34,7 +35,7 @@ final class ChangeAttemptsParameterConsoleOutputRector extends \Rector\Core\Rect
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Mvc\Cli\ConsoleOutput::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Mvc\Cli\ConsoleOutput::class))) {
             return null;
         }
         if (!$this->isName($node->name, self::SELECT) && !$this->isName($node->name, self::ASK_AND_VALIDATE)) {

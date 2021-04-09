@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\DependencyInjection;
+namespace Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\DependencyInjection;
 
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Reference;
-use Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\EventDispatcher;
-use Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210408\Symfony\Contracts\EventDispatcher\Event;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Reference;
+use Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\EventDispatcher;
+use Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210409\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Compiler pass to register tagged services for an event dispatcher.
  */
-class RegisterListenersPass implements \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RegisterListenersPass implements \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     protected $dispatcherService;
     protected $listenerTag;
@@ -56,7 +56,7 @@ class RegisterListenersPass implements \Typo3RectorPrefix20210408\Symfony\Compon
         $this->noPreloadTagName = $tagName;
         return $this;
     }
-    public function process(\Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->hasDefinition($this->dispatcherService) && !$container->hasAlias($this->dispatcherService)) {
             return;
@@ -91,7 +91,7 @@ class RegisterListenersPass implements \Typo3RectorPrefix20210408\Symfony\Compon
                 if (isset($event['dispatcher'])) {
                     $dispatcherDefinition = $container->getDefinition($event['dispatcher']);
                 }
-                $dispatcherDefinition->addMethodCall('addListener', [$event['event'], [new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument(new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Reference($id)), $event['method']], $priority]);
+                $dispatcherDefinition->addMethodCall('addListener', [$event['event'], [new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument(new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Reference($id)), $event['method']], $priority]);
                 if (isset($this->hotPathEvents[$event['event']])) {
                     $container->getDefinition($id)->addTag($this->hotPathTagName);
                 } elseif (isset($this->noPreloadEvents[$event['event']])) {
@@ -102,16 +102,16 @@ class RegisterListenersPass implements \Typo3RectorPrefix20210408\Symfony\Compon
                 $container->getDefinition($id)->addTag($this->noPreloadTagName);
             }
         }
-        $extractingDispatcher = new \Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher();
+        $extractingDispatcher = new \Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher();
         foreach ($container->findTaggedServiceIds($this->subscriberTag, \true) as $id => $tags) {
             $def = $container->getDefinition($id);
             // We must assume that the class value has been correctly filled, even if the service is created by a factory
             $class = $def->getClass();
             if (!($r = $container->getReflectionClass($class))) {
-                throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
+                throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
             }
-            if (!$r->isSubclassOf(\Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
-                throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Service "%s" must implement interface "%s".', $id, \Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\EventSubscriberInterface::class));
+            if (!$r->isSubclassOf(\Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
+                throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Service "%s" must implement interface "%s".', $id, \Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\EventSubscriberInterface::class));
             }
             $class = $r->name;
             $dispatcherDefinitions = [];
@@ -125,11 +125,11 @@ class RegisterListenersPass implements \Typo3RectorPrefix20210408\Symfony\Compon
                 $dispatcherDefinitions = [$globalDispatcherDefinition];
             }
             $noPreload = 0;
-            \Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher::$aliases = $aliases;
-            \Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher::$subscriber = $class;
+            \Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher::$aliases = $aliases;
+            \Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher::$subscriber = $class;
             $extractingDispatcher->addSubscriber($extractingDispatcher);
             foreach ($extractingDispatcher->listeners as $args) {
-                $args[1] = [new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument(new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Reference($id)), $args[1]];
+                $args[1] = [new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument(new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Reference($id)), $args[1]];
                 foreach ($dispatcherDefinitions as $dispatcherDefinition) {
                     $dispatcherDefinition->addMethodCall('addListener', $args);
                 }
@@ -143,13 +143,13 @@ class RegisterListenersPass implements \Typo3RectorPrefix20210408\Symfony\Compon
                 $container->getDefinition($id)->addTag($this->noPreloadTagName);
             }
             $extractingDispatcher->listeners = [];
-            \Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher::$aliases = [];
+            \Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\DependencyInjection\ExtractingEventDispatcher::$aliases = [];
         }
     }
-    private function getEventFromTypeDeclaration(\Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $id, string $method) : string
+    private function getEventFromTypeDeclaration(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $id, string $method) : string
     {
-        if (null === ($class = $container->getDefinition($id)->getClass()) || !($r = $container->getReflectionClass($class, \false)) || !$r->hasMethod($method) || 1 > ($m = $r->getMethod($method))->getNumberOfParameters() || !($type = $m->getParameters()[0]->getType()) instanceof \ReflectionNamedType || $type->isBuiltin() || \Typo3RectorPrefix20210408\Symfony\Contracts\EventDispatcher\Event::class === ($name = $type->getName())) {
-            throw new \Typo3RectorPrefix20210408\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Service "%s" must define the "event" attribute on "%s" tags.', $id, $this->listenerTag));
+        if (null === ($class = $container->getDefinition($id)->getClass()) || !($r = $container->getReflectionClass($class, \false)) || !$r->hasMethod($method) || 1 > ($m = $r->getMethod($method))->getNumberOfParameters() || !($type = $m->getParameters()[0]->getType()) instanceof \ReflectionNamedType || $type->isBuiltin() || \Typo3RectorPrefix20210409\Symfony\Contracts\EventDispatcher\Event::class === ($name = $type->getName())) {
+            throw new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Service "%s" must define the "event" attribute on "%s" tags.', $id, $this->listenerTag));
         }
         return $name;
     }
@@ -157,7 +157,7 @@ class RegisterListenersPass implements \Typo3RectorPrefix20210408\Symfony\Compon
 /**
  * @internal
  */
-class ExtractingEventDispatcher extends \Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\EventDispatcher implements \Typo3RectorPrefix20210408\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ExtractingEventDispatcher extends \Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\EventDispatcher implements \Typo3RectorPrefix20210409\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     public $listeners = [];
     public static $aliases = [];

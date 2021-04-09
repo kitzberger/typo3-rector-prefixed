@@ -71,7 +71,7 @@ CODE_SAMPLE
 )]);
     }
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -130,7 +130,7 @@ CODE_SAMPLE
                     }
                     $remainingWizards = \count($configItemValue->value->items);
                     foreach ($configItemValue->value->items as $wizardItemValue) {
-                        if (null === $wizardItemValue) {
+                        if (!$wizardItemValue instanceof \PhpParser\Node\Expr\ArrayItem) {
                             continue;
                         }
                         if (!$wizardItemValue->value instanceof \PhpParser\Node\Expr\Array_) {
@@ -171,10 +171,8 @@ CODE_SAMPLE
                             }
                         }
                         if ($isUserFunc && !$enableByTypeConfig) {
-                            if ($wizardItemValue instanceof \PhpParser\Node\Expr\ArrayItem) {
-                                $this->removeNode($wizardItemValue);
-                                $hasAstBeenChanged = \true;
-                            }
+                            $this->removeNode($wizardItemValue);
+                            $hasAstBeenChanged = \true;
                             $configValue->value->items[] = new \PhpParser\Node\Expr\ArrayItem(new \PhpParser\Node\Scalar\String_('t3editor'), new \PhpParser\Node\Scalar\String_('renderType'));
                             if (null !== $format) {
                                 $configValue->value->items[] = new \PhpParser\Node\Expr\ArrayItem($format, new \PhpParser\Node\Scalar\String_('format'));

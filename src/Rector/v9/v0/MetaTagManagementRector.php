@@ -7,6 +7,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Scalar\String_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use ReflectionClass;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -35,6 +36,9 @@ final class MetaTagManagementRector extends \Rector\Core\Rector\AbstractRector
             (?|"\\s*([^"]*?)\\s*"|\'\\s*([^\']*?)\\s*\'|
             ([^"\'>]*?)(?=\\s*/?\\s*>|\\s\\w+\\s*=))
             [^>]*>~ix';
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -84,14 +88,14 @@ CODE_SAMPLE
     }
     private function isMethodAddMetaTag(\PhpParser\Node\Expr\MethodCall $node) : bool
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Page\PageRenderer::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Page\PageRenderer::class))) {
             return \false;
         }
         return $this->isName($node->name, 'addMetaTag');
     }
     private function isMethodXUaCompatible(\PhpParser\Node\Expr\MethodCall $node) : bool
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Backend\Template\DocumentTemplate::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Backend\Template\DocumentTemplate::class))) {
             return \false;
         }
         return $this->isName($node->name, 'xUaCompatible');

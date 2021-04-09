@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210408\Helmich\TypoScriptParser\Parser\AST\Operator;
+namespace Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\Operator;
 
 /**
  * Helper class for quickly building operator AST nodes

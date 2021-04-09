@@ -6,6 +6,7 @@ namespace Ssch\TYPO3Rector\Rector\v10\v0;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\PropertyFetch;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
@@ -25,6 +26,9 @@ final class UseTwoLetterIsoCodeFromSiteLanguageRector extends \Rector\Core\Recto
     {
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\PropertyFetch::class];
@@ -34,7 +38,7 @@ final class UseTwoLetterIsoCodeFromSiteLanguageRector extends \Rector\Core\Recto
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class) && !$this->typo3NodeResolver->isPropertyFetchOnAnyPropertyOfGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER)) {
+        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController::class)) && !$this->typo3NodeResolver->isPropertyFetchOnAnyPropertyOfGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER)) {
             return null;
         }
         if (!$this->isName($node->name, 'sys_language_isocode')) {

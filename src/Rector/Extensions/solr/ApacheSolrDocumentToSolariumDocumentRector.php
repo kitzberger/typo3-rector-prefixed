@@ -3,10 +3,11 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\Extensions\solr;
 
-use Typo3RectorPrefix20210408\Apache_Solr_Document;
+use Typo3RectorPrefix20210409\Apache_Solr_Document;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -16,7 +17,7 @@ use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 final class ApacheSolrDocumentToSolariumDocumentRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -27,7 +28,7 @@ final class ApacheSolrDocumentToSolariumDocumentRector extends \Rector\Core\Rect
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \Typo3RectorPrefix20210408\Apache_Solr_Document::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210409\Apache_Solr_Document::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'setMultiValue')) {

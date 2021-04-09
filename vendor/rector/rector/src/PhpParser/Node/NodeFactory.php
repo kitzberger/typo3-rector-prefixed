@@ -41,12 +41,13 @@ use PhpParser\Node\Stmt\Return_;
 use PhpParser\Node\Stmt\Use_;
 use PhpParser\Node\Stmt\UseUse;
 use PhpParser\Node\UnionType;
+use PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode;
+use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode;
 use PHPStan\Type\Generic\GenericObjectType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
 use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTypeChanger;
-use Rector\BetterPhpDocParser\ValueObject\PhpDocNode\Nette\NetteInjectTagNode;
 use Rector\Core\Configuration\CurrentNodeProvider;
 use Rector\Core\Exception\NotImplementedYetException;
 use Rector\Core\Php\PhpVersionProvider;
@@ -56,9 +57,9 @@ use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\PostRector\ValueObject\PropertyMetadata;
 use Rector\StaticTypeMapper\StaticTypeMapper;
-use Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
-use Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder;
+use Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
+use Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder;
 /**
  * @see \Rector\Core\Tests\PhpParser\Node\NodeFactoryTest
  */
@@ -197,13 +198,13 @@ final class NodeFactory
     }
     public function createPublicMethod(string $name) : \PhpParser\Node\Stmt\ClassMethod
     {
-        $methodBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($name);
+        $methodBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($name);
         $methodBuilder->makePublic();
         return $methodBuilder->getNode();
     }
     public function createParamFromNameAndType(string $name, ?\PHPStan\Type\Type $type) : \PhpParser\Node\Param
     {
-        $paramBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($name);
+        $paramBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($name);
         if ($type !== null) {
             $typeNode = $this->staticTypeMapper->mapPHPStanTypeToPhpParserNode($type);
             if ($typeNode !== null) {
@@ -214,23 +215,21 @@ final class NodeFactory
     }
     public function createPublicInjectPropertyFromNameAndType(string $name, ?\PHPStan\Type\Type $type) : \PhpParser\Node\Stmt\Property
     {
-        $propertyBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
+        $propertyBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
         $propertyBuilder->makePublic();
         $property = $propertyBuilder->getNode();
         $this->addPropertyType($property, $type);
-        $this->decorateParentPropertyProperty($property);
         // add @inject
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($property);
-        $phpDocInfo->addPhpDocTagNode(new \Rector\BetterPhpDocParser\ValueObject\PhpDocNode\Nette\NetteInjectTagNode());
+        $phpDocInfo->addPhpDocTagNode(new \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode('@inject', new \PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode('')));
         return $property;
     }
     public function createPrivatePropertyFromNameAndType(string $name, ?\PHPStan\Type\Type $type) : \PhpParser\Node\Stmt\Property
     {
-        $propertyBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
+        $propertyBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
         $propertyBuilder->makePrivate();
         $property = $propertyBuilder->getNode();
         $this->addPropertyType($property, $type);
-        $this->decorateParentPropertyProperty($property);
         return $property;
     }
     /**
@@ -259,9 +258,7 @@ final class NodeFactory
         if ($variable instanceof \PhpParser\Node\Expr\MethodCall) {
             $variable = new \PhpParser\Node\Expr\MethodCall($variable->var, $variable->name, $variable->args);
         }
-        $methodCallNode = $this->builderFactory->methodCall($variable, $method, $arguments);
-        $variable->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE, $methodCallNode);
-        return $methodCallNode;
+        return $this->builderFactory->methodCall($variable, $method, $arguments);
     }
     /**
      * @param string|Expr $variable
@@ -282,37 +279,32 @@ final class NodeFactory
     }
     public function createStaticProtectedPropertyWithDefault(string $name, \PhpParser\Node $node) : \PhpParser\Node\Stmt\Property
     {
-        $propertyBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
+        $propertyBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
         $propertyBuilder->makeProtected();
         $propertyBuilder->makeStatic();
         $propertyBuilder->setDefault($node);
-        $property = $propertyBuilder->getNode();
-        $this->decorateParentPropertyProperty($property);
-        return $property;
+        return $propertyBuilder->getNode();
     }
     public function createProperty(string $name) : \PhpParser\Node\Stmt\Property
     {
-        $propertyBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
+        $propertyBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
         $property = $propertyBuilder->getNode();
-        $this->decorateParentPropertyProperty($property);
         $this->phpDocInfoFactory->createFromNode($property);
         return $property;
     }
     public function createPrivateProperty(string $name) : \PhpParser\Node\Stmt\Property
     {
-        $propertyBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
+        $propertyBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
         $propertyBuilder->makePrivate();
         $property = $propertyBuilder->getNode();
-        $this->decorateParentPropertyProperty($property);
         $this->phpDocInfoFactory->createFromNode($property);
         return $property;
     }
     public function createPublicProperty(string $name) : \PhpParser\Node\Stmt\Property
     {
-        $propertyBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
+        $propertyBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder($name);
         $propertyBuilder->makePublic();
         $property = $propertyBuilder->getNode();
-        $this->decorateParentPropertyProperty($property);
         $this->phpDocInfoFactory->createFromNode($property);
         return $property;
     }
@@ -336,7 +328,7 @@ final class NodeFactory
     public function createGetterClassMethodFromNameAndType(string $propertyName, ?\PhpParser\Node $typeNode) : \PhpParser\Node\Stmt\ClassMethod
     {
         $getterMethod = 'get' . \ucfirst($propertyName);
-        $methodBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($getterMethod);
+        $methodBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder($getterMethod);
         $methodBuilder->makePublic();
         $propertyFetch = new \PhpParser\Node\Expr\PropertyFetch(new \PhpParser\Node\Expr\Variable(self::THIS), $propertyName);
         $return = new \PhpParser\Node\Stmt\Return_($propertyFetch);
@@ -378,8 +370,8 @@ final class NodeFactory
     public function createUsesFromNames(array $names) : array
     {
         $uses = [];
-        foreach ($names as $resolvedName) {
-            $useUse = new \PhpParser\Node\Stmt\UseUse(new \PhpParser\Node\Name($resolvedName));
+        foreach ($names as $name) {
+            $useUse = new \PhpParser\Node\Stmt\UseUse(new \PhpParser\Node\Name($name));
             $uses[] = new \PhpParser\Node\Stmt\Use_([$useUse]);
         }
         return $uses;
@@ -436,7 +428,7 @@ final class NodeFactory
     }
     public function createPromotedPropertyParam(\Rector\PostRector\ValueObject\PropertyMetadata $propertyMetadata) : \PhpParser\Node\Param
     {
-        $paramBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($propertyMetadata->getName());
+        $paramBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder($propertyMetadata->getName());
         $propertyType = $propertyMetadata->getType();
         if ($propertyType !== null) {
             $typeNode = $this->staticTypeMapper->mapPHPStanTypeToPhpParserNode($propertyType);
@@ -474,7 +466,7 @@ final class NodeFactory
         return $classConstFetch;
     }
     /**
-     * @param NotIdentical[]|BooleanAnd[] $newNodes
+     * @param array<NotIdentical|BooleanAnd> $newNodes
      */
     public function createReturnBooleanAnd(array $newNodes) : ?\PhpParser\Node\Expr
     {
@@ -512,7 +504,8 @@ final class NodeFactory
             $arrayItem = new \PhpParser\Node\Expr\ArrayItem($item->value);
         }
         if ($arrayItem !== null) {
-            return $this->createArrayItemWithKey($key, $arrayItem);
+            $this->decoreateArrayItemWithKey($key, $arrayItem);
+            return $arrayItem;
         }
         throw new \Rector\Core\Exception\NotImplementedYetException(\sprintf('Not implemented yet. Go to "%s()" and add check for "%s" node.', __METHOD__, \is_object($item) ? \get_class($item) : $item));
     }
@@ -545,12 +538,6 @@ final class NodeFactory
         }
         $this->phpDocTypeChanger->changeVarType($phpDocInfo, $type);
     }
-    private function decorateParentPropertyProperty(\PhpParser\Node\Stmt\Property $property) : void
-    {
-        // complete property property parent, needed for other operations
-        $propertyProperty = $property->props[0];
-        $propertyProperty->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE, $property);
-    }
     /**
      * @param mixed $value
      */
@@ -578,12 +565,11 @@ final class NodeFactory
     /**
      * @param int|string|null $key
      */
-    private function createArrayItemWithKey($key, \PhpParser\Node\Expr\ArrayItem $arrayItem) : \PhpParser\Node\Expr\ArrayItem
+    private function decoreateArrayItemWithKey($key, \PhpParser\Node\Expr\ArrayItem $arrayItem) : void
     {
         if ($key !== null) {
             $arrayItem->key = \PhpParser\BuilderHelpers::normalizeValue($key);
         }
-        return $arrayItem;
     }
     /**
      * @param NotIdentical[]|BooleanAnd[] $exprs

@@ -11,8 +11,8 @@ use PhpParser\Node\Stmt\ClassLike;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\Core\PhpParser\Parser\SimplePhpParser;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class BetterNodeFinderTest extends \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class BetterNodeFinderTest extends \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var Node[]
@@ -39,13 +39,13 @@ final class BetterNodeFinderTest extends \Typo3RectorPrefix20210408\Symplify\Pac
         $this->assertInstanceOf(\PhpParser\Node\Expr\Variable::class, $variable);
         $this->assertInstanceOf(\PhpParser\Node\Stmt\Class_::class, $class);
         /** @var Variable $variable */
-        $classLikeNode = $this->betterNodeFinder->findFirstAncestorInstanceOf($variable, \PhpParser\Node\Stmt\ClassLike::class);
+        $classLikeNode = $this->betterNodeFinder->findParentType($variable, \PhpParser\Node\Stmt\ClassLike::class);
         $this->assertSame($classLikeNode, $class);
     }
     public function testFindMissingFirstAncestorInstanceOf() : void
     {
         /** @var Variable $variableNode */
         $variableNode = $this->betterNodeFinder->findFirstInstanceOf($this->nodes, \PhpParser\Node\Expr\Variable::class);
-        $this->assertNull($this->betterNodeFinder->findFirstAncestorInstanceOf($variableNode, \PhpParser\Node\Expr\Array_::class));
+        $this->assertNull($this->betterNodeFinder->findParentType($variableNode, \PhpParser\Node\Expr\Array_::class));
     }
 }

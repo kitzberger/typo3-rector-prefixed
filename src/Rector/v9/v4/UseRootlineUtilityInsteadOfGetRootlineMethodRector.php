@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v9\v4;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
@@ -26,6 +27,9 @@ final class UseRootlineUtilityInsteadOfGetRootlineMethodRector extends \Rector\C
     {
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -61,11 +65,11 @@ CODE_SAMPLE
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool
     {
-        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\Page\PageRepository::class)) {
+        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Page\PageRepository::class))) {
             return \false;
         }
         $node->var->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PHP_DOC_INFO, $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PHP_DOC_INFO));
-        if ($this->isObjectType($node->var, \TYPO3\CMS\Frontend\Page\PageRepository::class)) {
+        if ($this->isObjectType($node->var, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Page\PageRepository::class))) {
             return \false;
         }
         return !$this->typo3NodeResolver->isMethodCallOnPropertyOfGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER, 'sys_page');

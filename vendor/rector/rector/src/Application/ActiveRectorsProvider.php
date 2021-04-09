@@ -5,9 +5,7 @@ namespace Rector\Core\Application;
 
 use Rector\Core\Contract\Rector\RectorInterface;
 use Rector\PostRector\Contract\Rector\PostRectorInterface;
-use Rector\RectorGenerator\Contract\InternalRectorInterface;
-use Typo3RectorPrefix20210408\Symplify\Skipper\Skipper\Skipper;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symplify\Skipper\Skipper\Skipper;
 /**
  * Provides list of Rector rules, that are not internal → only those registered by user
  */
@@ -20,19 +18,19 @@ final class ActiveRectorsProvider
     /**
      * @param RectorInterface[] $rectors
      */
-    public function __construct(array $rectors, \Typo3RectorPrefix20210408\Symplify\Skipper\Skipper\Skipper $skipper)
+    public function __construct(array $rectors, \Typo3RectorPrefix20210409\Symplify\Skipper\Skipper\Skipper $skipper)
     {
-        $dummyFileInfo = new \Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/../../config/config.php');
         foreach ($rectors as $key => $rector) {
-            // @todo add should skip element to avoid faking a file info?
-            if ($skipper->shouldSkipElementAndFileInfo($rector, $dummyFileInfo)) {
+            if ($skipper->shouldSkipElement($rector)) {
                 unset($rectors[$key]);
             }
         }
         $this->rectors = $rectors;
     }
     /**
-     * @return RectorInterface[]
+     * @template T as RectorInterface
+     * @param class-string<T> $type
+     * @return array<T>
      */
     public function provideByType(string $type) : array
     {
@@ -54,13 +52,13 @@ final class ActiveRectorsProvider
     private function filterOutInternalRectorsAndSort(array $rectors) : array
     {
         \sort($rectors);
-        return \array_filter($rectors, function (\Rector\Core\Contract\Rector\RectorInterface $rector) : bool {
-            // utils rules
-            if ($rector instanceof \Rector\RectorGenerator\Contract\InternalRectorInterface) {
-                return \false;
-            }
+        $rectors = \array_filter($rectors, function (\Rector\Core\Contract\Rector\RectorInterface $rector) : bool {
             // skip as internal and always run
             return !$rector instanceof \Rector\PostRector\Contract\Rector\PostRectorInterface;
         });
+        \usort($rectors, function (\Rector\Core\Contract\Rector\RectorInterface $firstRector, \Rector\Core\Contract\Rector\RectorInterface $secondRector) : int {
+            return \get_class($firstRector) <=> \get_class($secondRector);
+        });
+        return $rectors;
     }
 }

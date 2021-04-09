@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210408\Symfony\Component\VarDumper\Cloner;
+namespace Typo3RectorPrefix20210409\Symfony\Component\VarDumper\Cloner;
 
 /**
  * Represents the current state of a dumper while dumping.
@@ -17,10 +17,10 @@ namespace Typo3RectorPrefix20210408\Symfony\Component\VarDumper\Cloner;
  */
 class Cursor
 {
-    public const HASH_INDEXED = \Typo3RectorPrefix20210408\Symfony\Component\VarDumper\Cloner\Stub::ARRAY_INDEXED;
-    public const HASH_ASSOC = \Typo3RectorPrefix20210408\Symfony\Component\VarDumper\Cloner\Stub::ARRAY_ASSOC;
-    public const HASH_OBJECT = \Typo3RectorPrefix20210408\Symfony\Component\VarDumper\Cloner\Stub::TYPE_OBJECT;
-    public const HASH_RESOURCE = \Typo3RectorPrefix20210408\Symfony\Component\VarDumper\Cloner\Stub::TYPE_RESOURCE;
+    public const HASH_INDEXED = \Typo3RectorPrefix20210409\Symfony\Component\VarDumper\Cloner\Stub::ARRAY_INDEXED;
+    public const HASH_ASSOC = \Typo3RectorPrefix20210409\Symfony\Component\VarDumper\Cloner\Stub::ARRAY_ASSOC;
+    public const HASH_OBJECT = \Typo3RectorPrefix20210409\Symfony\Component\VarDumper\Cloner\Stub::TYPE_OBJECT;
+    public const HASH_RESOURCE = \Typo3RectorPrefix20210409\Symfony\Component\VarDumper\Cloner\Stub::TYPE_RESOURCE;
     public $depth = 0;
     public $refIndex = 0;
     public $softRefTo = 0;

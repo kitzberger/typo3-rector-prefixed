@@ -33,6 +33,9 @@ final class DatabaseConnectionToDbalRector extends \Rector\Core\Rector\AbstractR
         $this->typo3NodeResolver = $typo3NodeResolver;
         $this->databaseConnectionRefactorings = $databaseConnectionRefactorings;
     }
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];

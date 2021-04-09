@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v9\v3;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -26,7 +27,7 @@ final class RemoveColPosParameterRector extends \Rector\Core\Rector\AbstractRect
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Backend\Domain\Repository\Localization\LocalizationRepository::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Backend\Domain\Repository\Localization\LocalizationRepository::class))) {
             return null;
         }
         if (!$this->isNames($node->name, ['fetchOriginLanguage', 'getLocalizedRecordCount', 'fetchAvailableLanguages', 'getRecordsToCopyDatabaseResult'])) {

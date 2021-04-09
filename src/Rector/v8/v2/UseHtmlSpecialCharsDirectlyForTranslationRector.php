@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v8\v2;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -60,7 +61,7 @@ CODE_SAMPLE
 )]);
     }
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -84,11 +85,11 @@ CODE_SAMPLE
         if ($this->isLanguageServiceCall($node)) {
             return \false;
         }
-        return !$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\Plugin\AbstractPlugin::class);
+        return !$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\Plugin\AbstractPlugin::class));
     }
     private function isLanguageServiceCall(\PhpParser\Node\Expr\MethodCall $node) : bool
     {
-        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Lang\LanguageService::class)) {
+        if ($this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Lang\LanguageService::class))) {
             return \true;
         }
         return $this->typo3NodeResolver->isAnyMethodCallOnGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::LANG);

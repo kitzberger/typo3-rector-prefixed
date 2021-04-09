@@ -23,6 +23,9 @@ final class RefactorDeprecationLogRector extends \Rector\Core\Rector\AbstractRec
      *
      * @return string[]
      */
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];

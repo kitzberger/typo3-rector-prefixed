@@ -4,18 +4,19 @@ declare (strict_types=1);
 namespace Rector\Core\PHPStan\Reflection;
 
 use PhpParser\Node;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\New_;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
-use PHPStan\Broker\FunctionNotFoundException;
 use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParametersAcceptor;
-use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStan\Type\ObjectType;
+use PHPStan\Type\ThisType;
 use PHPStan\Type\TypeWithClassName;
 use PHPStan\Type\UnionType;
 use Rector\Core\PHPStan\Reflection\TypeToCallReflectionResolver\TypeToCallReflectionResolverRegistry;
@@ -83,19 +84,7 @@ final class CallReflectionResolver
         if ($reflection === null) {
             return null;
         }
-        $variants = $reflection->getVariants();
-        $nbVariants = \count($variants);
-        if ($nbVariants === 0) {
-            return null;
-        }
-        if ($nbVariants === 1) {
-            return \PHPStan\Reflection\ParametersAcceptorSelector::selectSingle($variants);
-        }
-        $scope = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::SCOPE);
-        if (!$scope instanceof \PHPStan\Analyser\Scope) {
-            return null;
-        }
-        return \PHPStan\Reflection\ParametersAcceptorSelector::selectFromArgs($scope, $node->args, $variants);
+        return $reflection->getVariants()[0];
     }
     private function matchConstructorMethodInUnionType(\PHPStan\Type\UnionType $unionType, \PHPStan\Analyser\Scope $scope) : ?\PHPStan\Reflection\MethodReflection
     {
@@ -115,36 +104,46 @@ final class CallReflectionResolver
      */
     private function resolveFunctionCall(\PhpParser\Node\Expr\FuncCall $funcCall)
     {
+        /** @var Scope|null $scope */
         $scope = $funcCall->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::SCOPE);
         if ($funcCall->name instanceof \PhpParser\Node\Name) {
-            try {
+            if ($this->reflectionProvider->hasFunction($funcCall->name, $scope)) {
                 return $this->reflectionProvider->getFunction($funcCall->name, $scope);
-            } catch (\PHPStan\Broker\FunctionNotFoundException $functionNotFoundException) {
-                return null;
             }
+            return null;
         }
         if (!$scope instanceof \PHPStan\Analyser\Scope) {
             return null;
         }
-        return $this->typeToCallReflectionResolverRegistry->resolve($scope->getType($funcCall->name), $scope);
+        $funcCallNameType = $scope->getType($funcCall->name);
+        return $this->typeToCallReflectionResolverRegistry->resolve($funcCallNameType, $scope);
     }
     /**
-     * @param MethodCall|StaticCall $node
+     * @param MethodCall|StaticCall $expr
      */
-    private function resolveMethodCall(\PhpParser\Node $node) : ?\PHPStan\Reflection\MethodReflection
+    private function resolveMethodCall(\PhpParser\Node\Expr $expr) : ?\PHPStan\Reflection\MethodReflection
     {
-        $scope = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::SCOPE);
+        $scope = $expr->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::SCOPE);
         if (!$scope instanceof \PHPStan\Analyser\Scope) {
             return null;
         }
-        $classType = $this->nodeTypeResolver->resolve($node instanceof \PhpParser\Node\Expr\MethodCall ? $node->var : $node->class);
-        $methodName = $this->nodeNameResolver->getName($node->name);
+        $methodName = $this->nodeNameResolver->getName($expr->name);
         if ($methodName === null) {
             return null;
         }
-        if (!$classType->hasMethod($methodName)->yes()) {
-            return null;
+        $classType = $this->nodeTypeResolver->resolve($expr instanceof \PhpParser\Node\Expr\MethodCall ? $expr->var : $expr->class);
+        if ($classType instanceof \PHPStan\Type\ThisType) {
+            $classType = $classType->getStaticObjectType();
         }
-        return $classType->getMethod($methodName, $scope);
+        if ($classType instanceof \PHPStan\Type\ObjectType) {
+            if (!$this->reflectionProvider->hasClass($classType->getClassName())) {
+                return null;
+            }
+            $classReflection = $this->reflectionProvider->getClass($classType->getClassName());
+            if ($classReflection->hasMethod($methodName)) {
+                return $classReflection->getMethod($methodName, $scope);
+            }
+        }
+        return null;
     }
 }

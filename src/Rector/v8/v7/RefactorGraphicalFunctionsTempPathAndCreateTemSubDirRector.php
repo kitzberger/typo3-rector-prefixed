@@ -20,6 +20,7 @@ use PhpParser\Node\Stmt\Else_;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\If_;
 use PhpParser\Node\Stmt\Return_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -79,7 +80,7 @@ CODE_SAMPLE
     }
     private function refactorMethodCall(\PhpParser\Node\Expr\MethodCall $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Imaging\GraphicalFunctions::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Imaging\GraphicalFunctions::class))) {
             return null;
         }
         if (!$this->isName($node->name, self::CREATE_TEMP_SUB_DIR)) {
@@ -117,7 +118,7 @@ CODE_SAMPLE
     }
     private function refactorPropertyFetch(\PhpParser\Node\Expr\PropertyFetch $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, \TYPO3\CMS\Core\Imaging\GraphicalFunctions::class)) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Imaging\GraphicalFunctions::class))) {
             return null;
         }
         if (!$this->isName($node->name, self::TEMP_PATH)) {

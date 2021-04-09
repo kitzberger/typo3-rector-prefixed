@@ -43,25 +43,22 @@ final class ClassConstManipulator
         $this->nodeRepository = $nodeRepository;
         $this->nodeComparator = $nodeComparator;
     }
-    /**
-     * @return ClassConstFetch[]
-     */
-    public function getAllClassConstFetch(\PhpParser\Node\Stmt\ClassConst $classConst) : array
+    public function hasClassConstFetch(\PhpParser\Node\Stmt\ClassConst $classConst) : bool
     {
         $classLike = $classConst->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLASS_NODE);
         if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {
-            return [];
+            return \false;
         }
         $searchInNodes = [$classLike];
         $usedTraitNames = $this->classManipulator->getUsedTraits($classLike);
-        foreach ($usedTraitNames as $name) {
-            $name = $this->nodeRepository->findTrait((string) $name);
-            if (!$name instanceof \PhpParser\Node\Stmt\Trait_) {
+        foreach ($usedTraitNames as $usedTraitName) {
+            $usedTraitName = $this->nodeRepository->findTrait((string) $usedTraitName);
+            if (!$usedTraitName instanceof \PhpParser\Node\Stmt\Trait_) {
                 continue;
             }
-            $searchInNodes[] = $name;
+            $searchInNodes[] = $usedTraitName;
         }
-        return $this->betterNodeFinder->find($searchInNodes, function (\PhpParser\Node $node) use($classConst) : bool {
+        return (bool) $this->betterNodeFinder->find($searchInNodes, function (\PhpParser\Node $node) use($classConst) : bool {
             // itself
             if ($this->nodeComparator->areNodesEqual($node, $classConst)) {
                 return \false;

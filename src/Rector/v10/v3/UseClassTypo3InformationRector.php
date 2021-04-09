@@ -18,6 +18,9 @@ final class UseClassTypo3InformationRector extends \Rector\Core\Rector\AbstractR
      * @var array
      */
     private const CONSTANTS_TO_REFACTOR = ['TYPO3_URL_GENERAL', 'TYPO3_URL_LICENSE', 'TYPO3_URL_EXCEPTION', 'TYPO3_URL_DONATE', 'TYPO3_URL_WIKI_OPCODECACHE'];
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\ConstFetch::class];

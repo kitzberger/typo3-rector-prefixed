@@ -10,12 +10,11 @@ use Rector\Core\PhpParser\Node\CustomNode\FileNode;
 use Rector\Core\PhpParser\NodeTraverser\RectorNodeTraverser;
 use Rector\Core\PhpParser\Parser\Parser;
 use Rector\Core\PhpParser\Printer\FormatPerservingPrinter;
-use Rector\Core\Stubs\StubLoader;
 use Rector\Core\ValueObject\Application\ParsedStmtsAndTokens;
 use Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider;
 use Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator;
 use Rector\PostRector\Application\PostFileProcessor;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileProcessor
 {
     /**
@@ -43,10 +42,6 @@ final class FileProcessor
      */
     private $currentFileInfoProvider;
     /**
-     * @var StubLoader
-     */
-    private $stubLoader;
-    /**
      * @var AffectedFilesCollector
      */
     private $affectedFilesCollector;
@@ -58,7 +53,7 @@ final class FileProcessor
      * @var TokensByFilePathStorage
      */
     private $tokensByFilePathStorage;
-    public function __construct(\Rector\ChangesReporting\Collector\AffectedFilesCollector $affectedFilesCollector, \Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider $currentFileInfoProvider, \Rector\Core\PhpParser\Printer\FormatPerservingPrinter $formatPerservingPrinter, \PhpParser\Lexer $lexer, \Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator, \Rector\Core\PhpParser\Parser\Parser $parser, \Rector\PostRector\Application\PostFileProcessor $postFileProcessor, \Rector\Core\PhpParser\NodeTraverser\RectorNodeTraverser $rectorNodeTraverser, \Rector\Core\Stubs\StubLoader $stubLoader, \Rector\Core\Application\TokensByFilePathStorage $tokensByFilePathStorage)
+    public function __construct(\Rector\ChangesReporting\Collector\AffectedFilesCollector $affectedFilesCollector, \Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider $currentFileInfoProvider, \Rector\Core\PhpParser\Printer\FormatPerservingPrinter $formatPerservingPrinter, \PhpParser\Lexer $lexer, \Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator, \Rector\Core\PhpParser\Parser\Parser $parser, \Rector\PostRector\Application\PostFileProcessor $postFileProcessor, \Rector\Core\PhpParser\NodeTraverser\RectorNodeTraverser $rectorNodeTraverser, \Rector\Core\Application\TokensByFilePathStorage $tokensByFilePathStorage)
     {
         $this->formatPerservingPrinter = $formatPerservingPrinter;
         $this->parser = $parser;
@@ -66,12 +61,11 @@ final class FileProcessor
         $this->rectorNodeTraverser = $rectorNodeTraverser;
         $this->nodeScopeAndMetadataDecorator = $nodeScopeAndMetadataDecorator;
         $this->currentFileInfoProvider = $currentFileInfoProvider;
-        $this->stubLoader = $stubLoader;
         $this->affectedFilesCollector = $affectedFilesCollector;
         $this->postFileProcessor = $postFileProcessor;
         $this->tokensByFilePathStorage = $tokensByFilePathStorage;
     }
-    public function parseFileInfoToLocalCache(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function parseFileInfoToLocalCache(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         if ($this->tokensByFilePathStorage->hasForFileInfo($smartFileInfo)) {
             return;
@@ -81,7 +75,7 @@ final class FileProcessor
         $parsedStmtsAndTokens = $this->parseAndTraverseFileInfoToNodes($smartFileInfo);
         $this->tokensByFilePathStorage->addForRealPath($smartFileInfo, $parsedStmtsAndTokens);
     }
-    public function printToFile(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    public function printToFile(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
     {
         $parsedStmtsAndTokens = $this->tokensByFilePathStorage->getForFileInfo($smartFileInfo);
         return $this->formatPerservingPrinter->printParsedStmstAndTokens($smartFileInfo, $parsedStmtsAndTokens);
@@ -89,15 +83,14 @@ final class FileProcessor
     /**
      * See https://github.com/nikic/PHP-Parser/issues/344#issuecomment-298162516.
      */
-    public function printToString(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    public function printToString(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
     {
         $this->makeSureFileIsParsed($smartFileInfo);
         $parsedStmtsAndTokens = $this->tokensByFilePathStorage->getForFileInfo($smartFileInfo);
         return $this->formatPerservingPrinter->printParsedStmstAndTokensToString($parsedStmtsAndTokens);
     }
-    public function refactor(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function refactor(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
-        $this->stubLoader->loadStubs();
         $this->currentFileInfoProvider->setCurrentFileInfo($smartFileInfo);
         $this->makeSureFileIsParsed($smartFileInfo);
         $parsedStmtsAndTokens = $this->tokensByFilePathStorage->getForFileInfo($smartFileInfo);
@@ -113,7 +106,7 @@ final class FileProcessor
             $this->refactor($otherTouchedFile);
         }
     }
-    public function postFileRefactor(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function postFileRefactor(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         if (!$this->tokensByFilePathStorage->hasForFileInfo($smartFileInfo)) {
             $this->parseFileInfoToLocalCache($smartFileInfo);
@@ -125,7 +118,7 @@ final class FileProcessor
         // this is needed for new tokens added in "afterTraverse()"
         $parsedStmtsAndTokens->updateNewStmts($newStmts);
     }
-    private function parseAndTraverseFileInfoToNodes(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \Rector\Core\ValueObject\Application\ParsedStmtsAndTokens
+    private function parseAndTraverseFileInfoToNodes(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \Rector\Core\ValueObject\Application\ParsedStmtsAndTokens
     {
         $oldStmts = $this->parser->parseFileInfo($smartFileInfo);
         $oldTokens = $this->lexer->getTokens();
@@ -135,7 +128,7 @@ final class FileProcessor
         $newStmts = $this->nodeScopeAndMetadataDecorator->decorateNodesFromFile($oldStmts, $smartFileInfo);
         return new \Rector\Core\ValueObject\Application\ParsedStmtsAndTokens($newStmts, $oldStmts, $oldTokens);
     }
-    private function makeSureFileIsParsed(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    private function makeSureFileIsParsed(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         if ($this->tokensByFilePathStorage->hasForFileInfo($smartFileInfo)) {
             return;

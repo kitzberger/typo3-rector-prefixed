@@ -10,9 +10,9 @@ use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\NodeTraverser;
-use Rector\Core\Util\StaticInstanceOf;
+use Rector\Core\Util\StaticNodeInstanceOf;
 use Rector\NodeNameResolver\NodeNameResolver;
-use Typo3RectorPrefix20210408\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210409\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class ClassMethodPropertyFetchManipulator
 {
     /**
@@ -23,7 +23,7 @@ final class ClassMethodPropertyFetchManipulator
      * @var NodeNameResolver
      */
     private $nodeNameResolver;
-    public function __construct(\Typo3RectorPrefix20210408\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver)
+    public function __construct(\Typo3RectorPrefix20210409\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver)
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->nodeNameResolver = $nodeNameResolver;
@@ -47,7 +47,7 @@ final class ClassMethodPropertyFetchManipulator
             if (!$this->nodeNameResolver->isName($node->var, $propertyName)) {
                 return null;
             }
-            if (\Rector\Core\Util\StaticInstanceOf::isOneOf($node->expr, [\PhpParser\Node\Expr\MethodCall::class, \PhpParser\Node\Expr\StaticCall::class])) {
+            if (\Rector\Core\Util\StaticNodeInstanceOf::isOneOf($node->expr, [\PhpParser\Node\Expr\MethodCall::class, \PhpParser\Node\Expr\StaticCall::class])) {
                 return null;
             }
             $assignedParamName = $this->nodeNameResolver->getName($node->expr);

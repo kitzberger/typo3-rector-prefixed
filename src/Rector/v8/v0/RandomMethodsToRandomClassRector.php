@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v8\v0;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\StaticCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -19,6 +20,9 @@ final class RandomMethodsToRandomClassRector extends \Rector\Core\Rector\Abstrac
      * @var string
      */
     private const GENERATE_RANDOM_BYTES = 'generateRandomBytes';
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];
@@ -28,7 +32,7 @@ final class RandomMethodsToRandomClassRector extends \Rector\Core\Rector\Abstrac
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\GeneralUtility::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\GeneralUtility::class))) {
             return null;
         }
         if (!$this->isNames($node->name, [self::GENERATE_RANDOM_BYTES, 'getRandomHexString'])) {

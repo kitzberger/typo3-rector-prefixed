@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v10\v0;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\PropertyFetch;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -15,7 +16,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\AbstractController;
 final class RemovePropertyExtensionNameRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -26,7 +27,7 @@ final class RemovePropertyExtensionNameRector extends \Rector\Core\Rector\Abstra
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, \TYPO3\CMS\Extbase\Mvc\Controller\AbstractController::class)) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Mvc\Controller\AbstractController::class))) {
             return null;
         }
         if (!$this->isName($node, 'extensionName')) {

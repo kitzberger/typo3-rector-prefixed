@@ -62,7 +62,7 @@ final class ConstantToEnvironmentCallRector extends \Rector\Core\Rector\Abstract
         if (!\in_array($constantName, ['PATH_thisScript', 'PATH_site', 'PATH_typo3', 'PATH_typo3conf', 'TYPO3_OS'], \false)) {
             return null;
         }
-        $property = $this->betterNodeFinder->findFirstAncestorInstanceOf($node, \PhpParser\Node\Stmt\Property::class);
+        $property = $this->betterNodeFinder->findParentType($node, \PhpParser\Node\Stmt\Property::class);
         if (null !== $property) {
             return null;
         }

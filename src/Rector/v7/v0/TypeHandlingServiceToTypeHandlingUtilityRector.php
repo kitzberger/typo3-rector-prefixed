@@ -5,6 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\v7\v0;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -15,6 +16,9 @@ use TYPO3\CMS\Extbase\Utility\TypeHandlingUtility;
  */
 final class TypeHandlingServiceToTypeHandlingUtilityRector extends \Rector\Core\Rector\AbstractRector
 {
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -24,7 +28,7 @@ final class TypeHandlingServiceToTypeHandlingUtilityRector extends \Rector\Core\
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Service\TypeHandlingService::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Service\TypeHandlingService::class))) {
             return null;
         }
         $methodCall = $this->getName($node->name);

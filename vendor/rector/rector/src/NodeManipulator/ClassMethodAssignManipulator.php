@@ -18,7 +18,7 @@ use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\Foreach_;
-use PHPStan\Reflection\ObjectTypeMethodReflection;
+use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\ParametersAcceptor;
 use PHPStan\Type\Type;
@@ -26,10 +26,10 @@ use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\Core\PhpParser\Node\NodeFactory;
 use Rector\Core\PHPStan\Reflection\CallReflectionResolver;
-use Rector\Core\Util\StaticInstanceOf;
+use Rector\Core\Util\StaticNodeInstanceOf;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210408\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210409\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class ClassMethodAssignManipulator
 {
     /**
@@ -60,7 +60,11 @@ final class ClassMethodAssignManipulator
      * @var CallReflectionResolver
      */
     private $callReflectionResolver;
-    public function __construct(\Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Typo3RectorPrefix20210408\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\Core\PhpParser\Node\NodeFactory $nodeFactory, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\Core\NodeManipulator\VariableManipulator $variableManipulator, \Rector\Core\PHPStan\Reflection\CallReflectionResolver $callReflectionResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
+    /**
+     * @var array<string, string[]>
+     */
+    private $alreadyAddedClassMethodNames = [];
+    public function __construct(\Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder, \Typo3RectorPrefix20210409\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\Core\PhpParser\Node\NodeFactory $nodeFactory, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\Core\NodeManipulator\VariableManipulator $variableManipulator, \Rector\Core\PHPStan\Reflection\CallReflectionResolver $callReflectionResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
     {
         $this->variableManipulator = $variableManipulator;
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
@@ -90,6 +94,8 @@ final class ClassMethodAssignManipulator
         }
         $classMethod->params[] = $this->nodeFactory->createParamFromNameAndType($name, $type);
         $classMethod->stmts[] = new \PhpParser\Node\Stmt\Expression($assign);
+        $classMethodHash = \spl_object_hash($classMethod);
+        $this->alreadyAddedClassMethodNames[$classMethodHash][] = $name;
     }
     /**
      * @param Assign[] $variableAssigns
@@ -142,8 +148,8 @@ final class ClassMethodAssignManipulator
     private function filterOutMultiAssigns(array $readOnlyVariableAssigns) : array
     {
         return \array_filter($readOnlyVariableAssigns, function (\PhpParser\Node\Expr\Assign $assign) : bool {
-            $parentNode = $assign->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE);
-            return !$parentNode instanceof \PhpParser\Node\Expr\Assign;
+            $parent = $assign->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE);
+            return !$parent instanceof \PhpParser\Node\Expr\Assign;
         });
     }
     /**
@@ -169,12 +175,16 @@ final class ClassMethodAssignManipulator
     }
     private function hasMethodParameter(\PhpParser\Node\Stmt\ClassMethod $classMethod, string $name) : bool
     {
-        foreach ($classMethod->params as $constructorParameter) {
-            if ($this->nodeNameResolver->isName($constructorParameter->var, $name)) {
+        foreach ($classMethod->params as $param) {
+            if ($this->nodeNameResolver->isName($param->var, $name)) {
                 return \true;
             }
         }
-        return \false;
+        $classMethodHash = \spl_object_hash($classMethod);
+        if (!isset($this->alreadyAddedClassMethodNames[$classMethodHash])) {
+            return \false;
+        }
+        return \in_array($name, $this->alreadyAddedClassMethodNames[$classMethodHash], \true);
     }
     /**
      * @return string[]
@@ -217,19 +227,19 @@ final class ClassMethodAssignManipulator
     }
     private function findParentForeach(\PhpParser\Node\Expr\Assign $assign) : ?\PhpParser\Node\Stmt\Foreach_
     {
-        /** @var Foreach_|FunctionLike|null $foreach */
-        $foreach = $this->betterNodeFinder->findFirstPreviousOfTypes($assign, [\PhpParser\Node\Stmt\Foreach_::class, \PhpParser\Node\FunctionLike::class]);
-        if (!$foreach instanceof \PhpParser\Node\Stmt\Foreach_) {
+        /** @var Foreach_|FunctionLike|null $foundNode */
+        $foundNode = $this->betterNodeFinder->findFirstPreviousOfTypes($assign, [\PhpParser\Node\Stmt\Foreach_::class, \PhpParser\Node\FunctionLike::class]);
+        if (!$foundNode instanceof \PhpParser\Node\Stmt\Foreach_) {
             return null;
         }
-        return $foreach;
+        return $foundNode;
     }
     private function isExplicitlyReferenced(\PhpParser\Node $node) : bool
     {
         if (!\property_exists($node, 'byRef')) {
             return \false;
         }
-        if (\Rector\Core\Util\StaticInstanceOf::isOneOf($node, [\PhpParser\Node\Arg::class, \PhpParser\Node\Expr\ClosureUse::class, \PhpParser\Node\Param::class])) {
+        if (\Rector\Core\Util\StaticNodeInstanceOf::isOneOf($node, [\PhpParser\Node\Arg::class, \PhpParser\Node\Expr\ClosureUse::class, \PhpParser\Node\Param::class])) {
             return $node->byRef;
         }
         return \false;
@@ -250,7 +260,7 @@ final class ClassMethodAssignManipulator
             return \false;
         }
         $methodReflection = $this->callReflectionResolver->resolveCall($node);
-        if (!$methodReflection instanceof \PHPStan\Reflection\ObjectTypeMethodReflection) {
+        if (!$methodReflection instanceof \PHPStan\Reflection\MethodReflection) {
             return \false;
         }
         $variableName = $this->nodeNameResolver->getName($variable);

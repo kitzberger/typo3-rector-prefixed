@@ -6,6 +6,7 @@ namespace Ssch\TYPO3Rector\Rector\v8\v3;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Ternary;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\Typo3NodeResolver;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -24,6 +25,9 @@ final class RefactorMethodFileContentRector extends \Rector\Core\Rector\Abstract
     {
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\MethodCall::class];
@@ -56,7 +60,7 @@ CODE_SAMPLE
     }
     private function shouldSkip(\PhpParser\Node\Expr\MethodCall $node) : bool
     {
-        if ($this->isObjectType($node->var, \TYPO3\CMS\Core\TypoScript\TemplateService::class)) {
+        if ($this->isObjectType($node->var, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\TypoScript\TemplateService::class))) {
             return \false;
         }
         return !$this->typo3NodeResolver->isMethodCallOnPropertyOfGlobals($node, \Ssch\TYPO3Rector\Helper\Typo3NodeResolver::TYPO_SCRIPT_FRONTEND_CONTROLLER, 'tmpl');

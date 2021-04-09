@@ -9,6 +9,7 @@ use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Return_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -176,7 +177,7 @@ CODE_SAMPLE
     private function extractConfigFromGetFileFieldTcaConfig(\PhpParser\Node $columnConfig) : \PhpParser\Node
     {
         if ($columnConfig instanceof \PhpParser\Node\Expr\StaticCall) {
-            if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($columnConfig, \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class)) {
+            if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($columnConfig, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class))) {
                 return $columnConfig;
             }
             if (!$this->isName($columnConfig->name, 'getFileFieldTCAConfig')) {

@@ -4,8 +4,10 @@ declare (strict_types=1);
 namespace PHPStan\PhpDocParser\Ast\PhpDoc;
 
 use PHPStan\PhpDocParser\Ast\Node;
+use PHPStan\PhpDocParser\Ast\NodeAttributes;
 class PhpDocNode implements \PHPStan\PhpDocParser\Ast\Node
 {
+    use NodeAttributes;
     /** @var PhpDocChildNode[] */
     public $children;
     /**
@@ -180,6 +182,6 @@ class PhpDocNode implements \PHPStan\PhpDocParser\Ast\Node
     }
     public function __toString() : string
     {
-        return "/**\n * " . \implode("\n * ", $this->children) . '*/';
+        return "/**\n * " . \implode("\n * ", $this->children) . "\n */";
     }
 }

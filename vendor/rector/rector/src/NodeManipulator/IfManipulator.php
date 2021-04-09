@@ -102,10 +102,11 @@ final class IfManipulator
         if (!$insideIfNode instanceof \PhpParser\Node\Stmt\Expression) {
             return null;
         }
-        if (!$insideIfNode->expr instanceof \PhpParser\Node\Expr\Assign) {
+        $assignedExpr = $insideIfNode->expr;
+        if (!$assignedExpr instanceof \PhpParser\Node\Expr\Assign) {
             return null;
         }
-        return $insideIfNode->expr;
+        return $assignedExpr;
     }
     /**
      * Matches:
@@ -235,6 +236,9 @@ final class IfManipulator
         $ifs[] = $currentIf;
         return $ifs;
     }
+    /**
+     * @param class-string<Node> $className
+     */
     public function isIfWithOnly(\PhpParser\Node $node, string $className) : bool
     {
         if (!$node instanceof \PhpParser\Node\Stmt\If_) {
@@ -303,7 +307,10 @@ final class IfManipulator
         if ($this->nodeComparator->areNodesEqual($notIdentical->left, $notIdentical->right)) {
             return \false;
         }
-        return $this->valueResolver->isNull($notIdentical->right) || $this->valueResolver->isNull($notIdentical->left);
+        if ($this->valueResolver->isNull($notIdentical->right)) {
+            return \true;
+        }
+        return $this->valueResolver->isNull($notIdentical->left);
     }
     private function isIfWithOnlyStmtIf(\PhpParser\Node\Stmt\If_ $if) : bool
     {
@@ -312,6 +319,9 @@ final class IfManipulator
         }
         return $this->hasOnlyStmtOfType($if, \PhpParser\Node\Stmt\If_::class);
     }
+    /**
+     * @param class-string<Node> $desiredType
+     */
     private function hasOnlyStmtOfType(\PhpParser\Node\Stmt\If_ $if, string $desiredType) : bool
     {
         $stmts = $if->stmts;
@@ -320,7 +330,7 @@ final class IfManipulator
         }
         return \is_a($stmts[0], $desiredType);
     }
-    private function getIfCondVar(\PhpParser\Node\Stmt\If_ $if) : \PhpParser\Node
+    private function getIfCondVar(\PhpParser\Node\Stmt\If_ $if) : \PhpParser\Node\Expr
     {
         /** @var Identical|NotIdentical $ifCond */
         $ifCond = $if->cond;

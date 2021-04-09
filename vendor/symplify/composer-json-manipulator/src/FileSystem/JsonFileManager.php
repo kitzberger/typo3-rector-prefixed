@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\FileSystem;
+namespace Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\FileSystem;
 
-use Typo3RectorPrefix20210408\Nette\Utils\Json;
-use Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
-use Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\Json\JsonInliner;
-use Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use Typo3RectorPrefix20210408\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210409\Nette\Utils\Json;
+use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
+use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\Json\JsonInliner;
+use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\FileSystem\JsonFileManager\JsonFileManagerTest
  */
@@ -31,7 +31,7 @@ final class JsonFileManager
      * @var mixed[]
      */
     private $cachedJSONFiles = [];
-    public function __construct(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\Json\JsonCleaner $jsonCleaner, \Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\Json\JsonInliner $jsonInliner)
+    public function __construct(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\Json\JsonCleaner $jsonCleaner, \Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\Json\JsonInliner $jsonInliner)
     {
         $this->smartFileSystem = $smartFileSystem;
         $this->jsonCleaner = $jsonCleaner;
@@ -40,11 +40,11 @@ final class JsonFileManager
     /**
      * @return mixed[]
      */
-    public function loadFromFileInfo(\Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : array
+    public function loadFromFileInfo(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : array
     {
         $realPath = $smartFileInfo->getRealPath();
         if (!isset($this->cachedJSONFiles[$realPath])) {
-            $this->cachedJSONFiles[$realPath] = \Typo3RectorPrefix20210408\Nette\Utils\Json::decode($smartFileInfo->getContents(), \Typo3RectorPrefix20210408\Nette\Utils\Json::FORCE_ARRAY);
+            $this->cachedJSONFiles[$realPath] = \Typo3RectorPrefix20210409\Nette\Utils\Json::decode($smartFileInfo->getContents(), \Typo3RectorPrefix20210409\Nette\Utils\Json::FORCE_ARRAY);
         }
         return $this->cachedJSONFiles[$realPath];
     }
@@ -54,18 +54,18 @@ final class JsonFileManager
     public function loadFromFilePath(string $filePath) : array
     {
         $fileContent = $this->smartFileSystem->readFile($filePath);
-        return \Typo3RectorPrefix20210408\Nette\Utils\Json::decode($fileContent, \Typo3RectorPrefix20210408\Nette\Utils\Json::FORCE_ARRAY);
+        return \Typo3RectorPrefix20210409\Nette\Utils\Json::decode($fileContent, \Typo3RectorPrefix20210409\Nette\Utils\Json::FORCE_ARRAY);
     }
     /**
      * @param mixed[] $json
      */
-    public function printJsonToFileInfo(array $json, \Typo3RectorPrefix20210408\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    public function printJsonToFileInfo(array $json, \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
     {
         $jsonString = $this->encodeJsonToFileContent($json);
         $this->smartFileSystem->dumpFile($smartFileInfo->getPathname(), $jsonString);
         return $jsonString;
     }
-    public function printComposerJsonToFilePath(\Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, string $filePath) : string
+    public function printComposerJsonToFilePath(\Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, string $filePath) : string
     {
         $jsonString = $this->encodeJsonToFileContent($composerJson->getJsonArray());
         $this->smartFileSystem->dumpFile($filePath, $jsonString);
@@ -78,7 +78,7 @@ final class JsonFileManager
     {
         // Empty arrays may lead to bad encoding since we can't be sure whether they need to be arrays or objects.
         $json = $this->jsonCleaner->removeEmptyKeysFromJsonArray($json);
-        $jsonContent = \Typo3RectorPrefix20210408\Nette\Utils\Json::encode($json, \Typo3RectorPrefix20210408\Nette\Utils\Json::PRETTY) . \Typo3RectorPrefix20210408\Symplify\PackageBuilder\Configuration\StaticEolConfiguration::getEolChar();
+        $jsonContent = \Typo3RectorPrefix20210409\Nette\Utils\Json::encode($json, \Typo3RectorPrefix20210409\Nette\Utils\Json::PRETTY) . \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Configuration\StaticEolConfiguration::getEolChar();
         return $this->jsonInliner->inlineSections($jsonContent);
     }
 }

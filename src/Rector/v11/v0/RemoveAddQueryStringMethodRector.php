@@ -6,8 +6,11 @@ namespace Ssch\TYPO3Rector\Rector\v11\v0;
 use PhpParser\Builder\Method;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Rector\Defluent\Rector\AbstractFluentChainMethodCallRector;
+use Rector\Core\Rector\AbstractRector;
+use Rector\Defluent\NodeAnalyzer\FluentChainMethodCallNodeAnalyzer;
+use Rector\Defluent\NodeAnalyzer\SameClassMethodCallAnalyzer;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
@@ -15,10 +18,23 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/11.0/Breaking-93041-RemoveTypoScriptOptionAddQueryStringmethod.html
  */
-final class RemoveAddQueryStringMethodRector extends \Rector\Defluent\Rector\AbstractFluentChainMethodCallRector
+final class RemoveAddQueryStringMethodRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @var FluentChainMethodCallNodeAnalyzer
+     */
+    private $fluentChainMethodCallNodeAnalyzer;
+    /**
+     * @var SameClassMethodCallAnalyzer
+     */
+    private $sameClassMethodCallAnalyzer;
+    public function __construct(\Rector\Defluent\NodeAnalyzer\FluentChainMethodCallNodeAnalyzer $fluentChainMethodCallNodeAnalyzer, \Rector\Defluent\NodeAnalyzer\SameClassMethodCallAnalyzer $sameClassMethodCallAnalyzer)
+    {
+        $this->fluentChainMethodCallNodeAnalyzer = $fluentChainMethodCallNodeAnalyzer;
+        $this->sameClassMethodCallAnalyzer = $sameClassMethodCallAnalyzer;
+    }
+    /**
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -67,14 +83,14 @@ CODE_SAMPLE
     }
     private function isMethodCallOnUriBuilder(\PhpParser\Node\Expr\MethodCall $node) : bool
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder::class))) {
             return \false;
         }
         return $this->isName($node->name, 'setAddQueryStringMethod');
     }
     private function isMethodCallOnContentObjectRenderer(\PhpParser\Node\Expr\MethodCall $node) : bool
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class))) {
             return \false;
         }
         return $this->isName($node->name, 'getQueryArguments');

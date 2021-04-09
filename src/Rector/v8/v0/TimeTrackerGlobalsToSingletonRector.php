@@ -25,7 +25,7 @@ final class TimeTrackerGlobalsToSingletonRector extends \Rector\Core\Rector\Abst
         $this->typo3NodeResolver = $typo3NodeResolver;
     }
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

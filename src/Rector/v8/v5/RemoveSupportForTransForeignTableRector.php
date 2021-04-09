@@ -18,7 +18,7 @@ final class RemoveSupportForTransForeignTableRector extends \Rector\Core\Rector\
 {
     use TcaHelperTrait;
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {

@@ -7,6 +7,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Scalar\String_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -67,13 +68,13 @@ CODE_SAMPLE
      */
     private function isExtensionManagementUtilityIsLoaded(\PhpParser\Node $node) : bool
     {
-        return $node instanceof \PhpParser\Node\Expr\StaticCall && $this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class) && $this->isName($node->name, 'isLoaded');
+        return $node instanceof \PhpParser\Node\Expr\StaticCall && $this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class)) && $this->isName($node->name, 'isLoaded');
     }
     /**
      * @param MethodCall|StaticCall $node
      */
     private function isPackageManagerIsActivePackage(\PhpParser\Node $node) : bool
     {
-        return $this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Package\PackageManager::class) && $this->isName($node->name, 'isPackageActive');
+        return $this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Package\PackageManager::class)) && $this->isName($node->name, 'isPackageActive');
     }
 }

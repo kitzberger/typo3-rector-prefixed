@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210408\Symfony\Component\HttpFoundation\Session\Flash;
+namespace Typo3RectorPrefix20210409\Symfony\Component\HttpFoundation\Session\Flash;
 
-use Typo3RectorPrefix20210408\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use Typo3RectorPrefix20210409\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * FlashBagInterface.
  *
  * @author Drak <drak@zikula.org>
  */
-interface FlashBagInterface extends \Typo3RectorPrefix20210408\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+interface FlashBagInterface extends \Typo3RectorPrefix20210409\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     /**
      * Adds a flash message for the given type.

@@ -7,11 +7,11 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Stmt\Class_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper as CoreAbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 /**
  * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.0/Breaking-82414-RemoveCMSBaseViewHelperClasses.html
@@ -30,7 +30,8 @@ final class UseRenderingContextGetControllerContextRector extends \Rector\Core\R
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectTypes($node, [\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class, \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::class])) {
+        $desiredObjectTypes = [new \PHPStan\Type\ObjectType(\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class), new \PHPStan\Type\ObjectType(\TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::class)];
+        if (!$this->nodeTypeResolver->isObjectTypes($node, $desiredObjectTypes)) {
             return null;
         }
         $this->replaceWithRenderingContextGetControllerContext($node);

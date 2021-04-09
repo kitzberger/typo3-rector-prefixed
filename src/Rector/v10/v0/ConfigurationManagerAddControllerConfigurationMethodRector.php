@@ -9,9 +9,10 @@ use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Nop;
 use PhpParser\Node\Stmt\Return_;
+use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
-use Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
+use Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Extbase\Configuration\AbstractConfigurationManager;
@@ -21,7 +22,7 @@ use TYPO3\CMS\Extbase\Configuration\AbstractConfigurationManager;
 final class ConfigurationManagerAddControllerConfigurationMethodRector extends \Rector\Core\Rector\AbstractRector
 {
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -32,7 +33,7 @@ final class ConfigurationManagerAddControllerConfigurationMethodRector extends \
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, \TYPO3\CMS\Extbase\Configuration\AbstractConfigurationManager::class)) {
+        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Configuration\AbstractConfigurationManager::class))) {
             return null;
         }
         $this->addMethodGetControllerConfiguration($node);
@@ -80,9 +81,9 @@ CODE_SAMPLE
     }
     private function addMethodGetControllerConfiguration(\PhpParser\Node\Stmt\Class_ $node) : void
     {
-        $methodBuilder = new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('getControllerConfiguration');
+        $methodBuilder = new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('getControllerConfiguration');
         $methodBuilder->makeProtected();
-        $methodBuilder->addParams([(new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('extensionName'))->getNode(), (new \Typo3RectorPrefix20210408\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('pluginName'))->getNode()]);
+        $methodBuilder->addParams([(new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('extensionName'))->getNode(), (new \Typo3RectorPrefix20210409\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('pluginName'))->getNode()]);
         $newMethod = $methodBuilder->getNode();
         $newMethod->returnType = new \PhpParser\Node\Identifier('array');
         $newMethod->stmts[] = new \PhpParser\Node\Stmt\Return_($this->nodeFactory->createMethodCall('this', 'getSwitchableControllerActions', [new \PhpParser\Node\Expr\Variable('extensionName'), new \PhpParser\Node\Expr\Variable('pluginName')]));

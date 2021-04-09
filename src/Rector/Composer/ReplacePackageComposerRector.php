@@ -5,14 +5,13 @@ namespace Ssch\TYPO3Rector\Rector\Composer;
 
 use Rector\Composer\Contract\Rector\ComposerRectorInterface;
 use Ssch\TYPO3Rector\ValueObject\ReplacePackage;
-use Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use Symplify\RuleDocGenerator\Contract\DocumentedRuleInterface;
+use Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Rector\Composer\ReplacePackageComposerRector\ReplacePackageComposerRectorTest
  */
-final class ReplacePackageComposerRector implements \Rector\Composer\Contract\Rector\ComposerRectorInterface, \Symplify\RuleDocGenerator\Contract\DocumentedRuleInterface
+final class ReplacePackageComposerRector implements \Rector\Composer\Contract\Rector\ComposerRectorInterface
 {
     /**
      * @var string
@@ -22,7 +21,7 @@ final class ReplacePackageComposerRector implements \Rector\Composer\Contract\Re
      * @var ReplacePackage[]
      */
     private $replacePackages = [];
-    public function refactor(\Typo3RectorPrefix20210408\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function refactor(\Typo3RectorPrefix20210409\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         foreach ($this->replacePackages as $replacePackage) {
             if ($composerJson->hasRequiredPackage($replacePackage->getOldPackageName())) {

@@ -13,6 +13,7 @@ use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Node\Stmt\Property;
+use PHPStan\Type\ObjectType;
 use Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -37,7 +38,7 @@ final class TimeTrackerInsteadOfNullTimeTrackerRector extends \Rector\Core\Recto
         $this->classRenamer = $classRenamer;
     }
     /**
-     * @return array<class-string<\PhpParser\Node>>
+     * @return array<class-string<Node>>
      */
     public function getNodeTypes() : array
     {
@@ -100,7 +101,7 @@ CODE_SAMPLE
         if (!$node instanceof \PhpParser\Node\Expr\StaticCall) {
             return \false;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Core\Utility\GeneralUtility::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Core\Utility\GeneralUtility::class))) {
             return \false;
         }
         return $this->isName($node->name, 'makeInstance');
@@ -110,7 +111,7 @@ CODE_SAMPLE
         if (!$node instanceof \PhpParser\Node\Expr\MethodCall) {
             return \false;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, \TYPO3\CMS\Extbase\Object\ObjectManager::class)) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Object\ObjectManager::class))) {
             return \false;
         }
         return $this->isName($node->name, 'get');

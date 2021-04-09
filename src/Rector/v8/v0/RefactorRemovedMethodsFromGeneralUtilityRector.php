@@ -23,6 +23,9 @@ final class RefactorRemovedMethodsFromGeneralUtilityRector extends \Rector\Core\
      *
      * @return string[]
      */
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes() : array
     {
         return [\PhpParser\Node\Expr\StaticCall::class];

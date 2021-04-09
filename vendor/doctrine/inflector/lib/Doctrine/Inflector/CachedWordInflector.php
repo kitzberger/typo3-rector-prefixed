@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210408\Doctrine\Inflector;
+namespace Typo3RectorPrefix20210409\Doctrine\Inflector;
 
-class CachedWordInflector implements \Typo3RectorPrefix20210408\Doctrine\Inflector\WordInflector
+class CachedWordInflector implements \Typo3RectorPrefix20210409\Doctrine\Inflector\WordInflector
 {
     /** @var WordInflector */
     private $wordInflector;
     /** @var string[] */
     private $cache = [];
-    public function __construct(\Typo3RectorPrefix20210408\Doctrine\Inflector\WordInflector $wordInflector)
+    public function __construct(\Typo3RectorPrefix20210409\Doctrine\Inflector\WordInflector $wordInflector)
     {
         $this->wordInflector = $wordInflector;
     }

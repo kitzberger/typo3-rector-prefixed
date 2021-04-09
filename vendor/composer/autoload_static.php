@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitcac0f5c385c20b6c2dbe73e6330eea0a
+class ComposerStaticInite0420f498ae0f2730822b6ffd5543ace
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -2328,7 +2328,6 @@ class ComposerStaticInitcac0f5c385c20b6c2dbe73e6330eea0a
         'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerProcessor' => __DIR__ . '/../..' . '/src/Composer/ExtensionComposerProcessor.php',
         'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerRectorInterface' => __DIR__ . '/../..' . '/src/Composer/ExtensionComposerRectorInterface.php',
         'Ssch\\TYPO3Rector\\Configuration\\Typo3Option' => __DIR__ . '/../..' . '/src/Configuration/Typo3Option.php',
-        'Ssch\\TYPO3Rector\\Console\\Application' => __DIR__ . '/../..' . '/src/Console/Application.php',
         'Ssch\\TYPO3Rector\\Console\\Command\\Typo3InitCommand' => __DIR__ . '/../..' . '/src/Console/Command/Typo3InitCommand.php',
         'Ssch\\TYPO3Rector\\Console\\Output\\DecoratedConsoleOutputFormatter' => __DIR__ . '/../..' . '/src/Console/Output/DecoratedConsoleOutputFormatter.php',
         'Ssch\\TYPO3Rector\\DependencyInjection\\Typo3RectorContainerFactory' => __DIR__ . '/../..' . '/src/DependencyInjection/Typo3RectorContainerFactory.php',
@@ -3912,9 +3911,9 @@ class ComposerStaticInitcac0f5c385c20b6c2dbe73e6330eea0a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitcac0f5c385c20b6c2dbe73e6330eea0a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitcac0f5c385c20b6c2dbe73e6330eea0a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitcac0f5c385c20b6c2dbe73e6330eea0a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite0420f498ae0f2730822b6ffd5543ace::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite0420f498ae0f2730822b6ffd5543ace::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite0420f498ae0f2730822b6ffd5543ace::$classMap;
 
         }, null, ClassLoader::class);
     }

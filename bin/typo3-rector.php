@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Typo3RectorPrefix20210409;
 
-use Ssch\TYPO3Rector\Console\Application;
+use Rector\Core\Console\ConsoleApplication;
 use Rector\Core\Console\Style\SymfonyStyleFactory;
 use Ssch\TYPO3Rector\Bootstrap\Typo3RectorConfigsResolver;
 use Ssch\TYPO3Rector\DependencyInjection\Typo3RectorContainerFactory;
@@ -41,8 +41,8 @@ try {
     $symfonyStyle->error($throwable->getMessage());
     exit(\Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\ShellCode::ERROR);
 }
-/** @var Application $application */
-$application = $container->get(\Ssch\TYPO3Rector\Console\Application::class);
+/** @var ConsoleApplication $application */
+$application = $container->get(\Rector\Core\Console\ConsoleApplication::class);
 exit($application->run());
 final class AutoloadIncluder
 {

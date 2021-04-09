@@ -1973,7 +1973,6 @@ return array(
     'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerProcessor' => $baseDir . '/src/Composer/ExtensionComposerProcessor.php',
     'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerRectorInterface' => $baseDir . '/src/Composer/ExtensionComposerRectorInterface.php',
     'Ssch\\TYPO3Rector\\Configuration\\Typo3Option' => $baseDir . '/src/Configuration/Typo3Option.php',
-    'Ssch\\TYPO3Rector\\Console\\Application' => $baseDir . '/src/Console/Application.php',
     'Ssch\\TYPO3Rector\\Console\\Command\\Typo3InitCommand' => $baseDir . '/src/Console/Command/Typo3InitCommand.php',
     'Ssch\\TYPO3Rector\\Console\\Output\\DecoratedConsoleOutputFormatter' => $baseDir . '/src/Console/Output/DecoratedConsoleOutputFormatter.php',
     'Ssch\\TYPO3Rector\\DependencyInjection\\Typo3RectorContainerFactory' => $baseDir . '/src/DependencyInjection/Typo3RectorContainerFactory.php',

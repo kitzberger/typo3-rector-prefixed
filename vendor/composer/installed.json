@@ -1323,7 +1323,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/rectorphp\/rector\/issues",
-                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/main"
+                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/0.10.4"
             },
             "funding": [
                 {

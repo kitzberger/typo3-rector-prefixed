@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3
+class ComposerStaticInit9043f54d1b0bec84638563d85c41ba6a
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -2554,6 +2554,7 @@ class ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3
         'Ssch\\TYPO3Rector\\TypoScript\\Parser\\Printer\\PrettyPrinter' => __DIR__ . '/../..' . '/src/TypoScript/Parser/Printer/PrettyPrinter.php',
         'Ssch\\TYPO3Rector\\TypoScript\\TypoScriptProcessor' => __DIR__ . '/../..' . '/src/TypoScript/TypoScriptProcessor.php',
         'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\AbstractVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/AbstractVisitor.php',
+        'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\FileIncludeToImportStatementVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/FileIncludeToImportStatementVisitor.php',
         'Ssch\\TYPO3Rector\\TypoScript\\Visitors\\OldConditionToExpressionLanguageVisitor' => __DIR__ . '/../..' . '/src/TypoScript/Visitors/OldConditionToExpressionLanguageVisitor.php',
         'Ssch\\TYPO3Rector\\ValueObject\\ReplacePackage' => __DIR__ . '/../..' . '/src/ValueObject/ReplacePackage.php',
         'Ssch\\TYPO3Rector\\Yaml\\Form\\FormYamlProcessor' => __DIR__ . '/../..' . '/src/Yaml/Form/FormYamlProcessor.php',
@@ -3720,9 +3721,9 @@ class ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9e1f8682f4be526b3f9d69900b9117a3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9043f54d1b0bec84638563d85c41ba6a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9043f54d1b0bec84638563d85c41ba6a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9043f54d1b0bec84638563d85c41ba6a::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1964,7 +1964,6 @@ return array(
     'Ssch\\TYPO3Rector\\Composer\\ComposerModifier' => $baseDir . '/src/Composer/ComposerModifier.php',
     'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerProcessor' => $baseDir . '/src/Composer/ExtensionComposerProcessor.php',
     'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerRectorInterface' => $baseDir . '/src/Composer/ExtensionComposerRectorInterface.php',
-    'Ssch\\TYPO3Rector\\Configuration\\Typo3Option' => $baseDir . '/src/Configuration/Typo3Option.php',
     'Ssch\\TYPO3Rector\\Console\\Command\\Typo3InitCommand' => $baseDir . '/src/Console/Command/Typo3InitCommand.php',
     'Ssch\\TYPO3Rector\\FlexForms\\FlexFormsProcessor' => $baseDir . '/src/FlexForms/FlexFormsProcessor.php',
     'Ssch\\TYPO3Rector\\FlexForms\\Transformer\\FlexFormTransformer' => $baseDir . '/src/FlexForms/Transformer/FlexFormTransformer.php',

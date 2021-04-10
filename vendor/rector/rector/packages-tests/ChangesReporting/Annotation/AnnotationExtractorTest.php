@@ -13,24 +13,24 @@ final class AnnotationExtractorTest extends \Typo3RectorPrefix20210410\PHPUnit\F
     /**
      * @var AnnotationExtractor
      */
-    private $subject;
+    private $annotationExtractor;
     protected function setUp() : void
     {
-        $this->subject = new \Rector\ChangesReporting\Annotation\AnnotationExtractor();
+        $this->annotationExtractor = new \Rector\ChangesReporting\Annotation\AnnotationExtractor();
     }
     public function extractAnnotationProvider() : \Iterator
     {
-        $classWithChangeLog = new \Rector\Tests\ChangesReporting\ValueObject\Source\RectorWithChangelog();
-        $classWithoutChangeLog = new \Rector\Tests\ChangesReporting\ValueObject\Source\RectorWithOutChangelog();
-        (yield 'Class with changelog annotation' => [\get_class($classWithChangeLog), '@changelog', 'https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md']);
-        (yield 'Class without changelog annotation' => [\get_class($classWithoutChangeLog), '@changelog', null]);
+        $rectorWithChangelog = new \Rector\Tests\ChangesReporting\ValueObject\Source\RectorWithChangelog();
+        (yield 'Class with changelog annotation' => [\get_class($rectorWithChangelog), '@changelog', 'https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md']);
+        $rectorWithOutChangelog = new \Rector\Tests\ChangesReporting\ValueObject\Source\RectorWithOutChangelog();
+        (yield 'Class without changelog annotation' => [\get_class($rectorWithOutChangelog), '@changelog', null]);
     }
     /**
      * @dataProvider extractAnnotationProvider
      */
     public function testExtractAnnotationFromClass(string $className, string $annotation, ?string $expected) : void
     {
-        $value = $this->subject->extractAnnotationFromClass($className, $annotation);
+        $value = $this->annotationExtractor->extractAnnotationFromClass($className, $annotation);
         $this->assertSame($expected, $value);
     }
 }

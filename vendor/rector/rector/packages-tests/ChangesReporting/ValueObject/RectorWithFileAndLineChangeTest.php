@@ -18,6 +18,9 @@ final class RectorWithFileAndLineChangeTest extends \Typo3RectorPrefix20210410\P
     {
         $this->assertSame($expected, $rectorWithFileAndLineChange->getRectorClassWithChangelogUrl(new \Rector\ChangesReporting\Annotation\AnnotationExtractor()));
     }
+    /**
+     * @return Iterator<string[]|RectorWithFileAndLineChange[]<class-string<RectorWithOutChangelog>>>
+     */
     public function rectorsWithFileAndLineChange() : \Iterator
     {
         (yield 'Rector with link' => ['Rector\\Tests\\ChangesReporting\\ValueObject\\Source\\RectorWithChangelog (https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md)', new \Rector\ChangesReporting\ValueObject\RectorWithFileAndLineChange(new \Rector\Tests\ChangesReporting\ValueObject\Source\RectorWithChangelog(), __DIR__ . '/Source/RectorWithLink.php', 1)]);

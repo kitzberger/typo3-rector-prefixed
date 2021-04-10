@@ -1206,12 +1206,12 @@
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/rectorphp\/rector.git",
-                "reference": "ec32714ad95a01f2cc4a235185128a1151b56266"
+                "reference": "2b671a27d5a4b2cca3de305f52b29965c0074a8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/ec32714ad95a01f2cc4a235185128a1151b56266",
-                "reference": "ec32714ad95a01f2cc4a235185128a1151b56266",
+                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/2b671a27d5a4b2cca3de305f52b29965c0074a8b",
+                "reference": "2b671a27d5a4b2cca3de305f52b29965c0074a8b",
                 "shasum": ""
             },
             "require": {
@@ -1275,7 +1275,7 @@
                 "symplify\/rule-doc-generator": "^9.2.15",
                 "tracy\/tracy": "^2.8"
             },
-            "time": "2021-04-10T14:16:24+00:00",
+            "time": "2021-04-10T14:54:24+00:00",
             "default-branch": true,
             "bin": [
                 "bin\/rector"

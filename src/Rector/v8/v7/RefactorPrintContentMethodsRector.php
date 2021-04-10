@@ -15,7 +15,7 @@ use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Backend\Controller\PageLayoutController;
 use TYPO3\CMS\Taskcenter\Controller\TaskModuleController;
 /**
- * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/8.7/Deprecation-80445-DeprecatePrintContentMethods.html
+ * @changelog https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/8.7/Deprecation-80445-DeprecatePrintContentMethods.html
  */
 final class RefactorPrintContentMethodsRector extends \Rector\Core\Rector\AbstractRector
 {

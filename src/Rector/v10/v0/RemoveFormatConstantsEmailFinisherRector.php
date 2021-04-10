@@ -19,7 +19,7 @@ use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
 /**
- * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.0/Deprecation-87200-EmailFinisherFormatContants.html
+ * @changelog https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.0/Deprecation-87200-EmailFinisherFormatContants.html
  */
 final class RemoveFormatConstantsEmailFinisherRector extends \Rector\Core\Rector\AbstractRector
 {

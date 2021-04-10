@@ -21,7 +21,7 @@ use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
 use TYPO3\CMS\Core\Http\ApplicationType;
 /**
- * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/11.0/Deprecation-92947-DeprecateTYPO3_MODEAndTYPO3_REQUESTTYPEConstants.html
+ * @changelog https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/11.0/Deprecation-92947-DeprecateTYPO3_MODEAndTYPO3_REQUESTTYPEConstants.html
  */
 final class SubstituteConstantsModeAndRequestTypeRector extends \Rector\Core\Rector\AbstractRector
 {

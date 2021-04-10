@@ -13,7 +13,7 @@ use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/8.3/Breaking-77081-RemovedTCASelectTreeOptions.html
+ * @changelog https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/8.3/Breaking-77081-RemovedTCASelectTreeOptions.html
  */
 final class RemovedTcaSelectTreeOptionsRector extends \Rector\Core\Rector\AbstractRector
 {

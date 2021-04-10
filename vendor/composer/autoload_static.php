@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita78e738ad499219cf66e09194759be01
+class ComposerStaticInit3b2d8f7cbdb9d380bb9378ce27b55b99
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -760,6 +760,7 @@ class ComposerStaticInita78e738ad499219cf66e09194759be01
         'Rector\\CakePHP\\ValueObject\\RenameMethodCallBasedOnParameter' => __DIR__ . '/..' . '/rector/rector-cakephp/src/ValueObject/RenameMethodCallBasedOnParameter.php',
         'Rector\\Carbon\\Rector\\MethodCall\\ChangeCarbonSingularMethodCallToPluralRector' => __DIR__ . '/..' . '/rector/rector/rules/Carbon/Rector/MethodCall/ChangeCarbonSingularMethodCallToPluralRector.php',
         'Rector\\Carbon\\Rector\\MethodCall\\ChangeDiffForHumansArgsRector' => __DIR__ . '/..' . '/rector/rector/rules/Carbon/Rector/MethodCall/ChangeDiffForHumansArgsRector.php',
+        'Rector\\ChangesReporting\\Annotation\\AnnotationExtractor' => __DIR__ . '/..' . '/rector/rector/packages/ChangesReporting/Annotation/AnnotationExtractor.php',
         'Rector\\ChangesReporting\\Application\\ErrorAndDiffCollector' => __DIR__ . '/..' . '/rector/rector/packages/ChangesReporting/Application/ErrorAndDiffCollector.php',
         'Rector\\ChangesReporting\\Collector\\AffectedFilesCollector' => __DIR__ . '/..' . '/rector/rector/packages/ChangesReporting/Collector/AffectedFilesCollector.php',
         'Rector\\ChangesReporting\\Collector\\RectorChangeCollector' => __DIR__ . '/..' . '/rector/rector/packages/ChangesReporting/Collector/RectorChangeCollector.php',
@@ -2320,7 +2321,6 @@ class ComposerStaticInita78e738ad499219cf66e09194759be01
         'Ssch\\TYPO3Rector\\Composer\\ExtensionComposerRectorInterface' => __DIR__ . '/../..' . '/src/Composer/ExtensionComposerRectorInterface.php',
         'Ssch\\TYPO3Rector\\Configuration\\Typo3Option' => __DIR__ . '/../..' . '/src/Configuration/Typo3Option.php',
         'Ssch\\TYPO3Rector\\Console\\Command\\Typo3InitCommand' => __DIR__ . '/../..' . '/src/Console/Command/Typo3InitCommand.php',
-        'Ssch\\TYPO3Rector\\Console\\Output\\DecoratedConsoleOutputFormatter' => __DIR__ . '/../..' . '/src/Console/Output/DecoratedConsoleOutputFormatter.php',
         'Ssch\\TYPO3Rector\\FlexForms\\FlexFormsProcessor' => __DIR__ . '/../..' . '/src/FlexForms/FlexFormsProcessor.php',
         'Ssch\\TYPO3Rector\\FlexForms\\Transformer\\FlexFormTransformer' => __DIR__ . '/../..' . '/src/FlexForms/Transformer/FlexFormTransformer.php',
         'Ssch\\TYPO3Rector\\FlexForms\\Transformer\\RenderTypeTransformer' => __DIR__ . '/../..' . '/src/FlexForms/Transformer/RenderTypeTransformer.php',
@@ -3718,9 +3718,9 @@ class ComposerStaticInita78e738ad499219cf66e09194759be01
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita78e738ad499219cf66e09194759be01::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita78e738ad499219cf66e09194759be01::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita78e738ad499219cf66e09194759be01::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3b2d8f7cbdb9d380bb9378ce27b55b99::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3b2d8f7cbdb9d380bb9378ce27b55b99::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3b2d8f7cbdb9d380bb9378ce27b55b99::$classMap;
 
         }, null, ClassLoader::class);
     }

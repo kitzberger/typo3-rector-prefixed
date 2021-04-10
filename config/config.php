@@ -9,9 +9,7 @@ use Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\Printer\ASTPrinter
 use Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\Traverser\Traverser;
 use Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Tokenizer\Tokenizer;
 use Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Tokenizer\TokenizerInterface;
-use Rector\ChangesReporting\Output\ConsoleOutputFormatter;
 use Rector\Core\Configuration\Option;
-use Ssch\TYPO3Rector\Console\Output\DecoratedConsoleOutputFormatter;
 use Ssch\TYPO3Rector\TypoScript\Parser\Printer\PrettyPrinter;
 use Ssch\TYPO3Rector\TypoScript\TypoScriptProcessor;
 use Typo3RectorPrefix20210410\Symfony\Component\Console\Output\BufferedOutput;
@@ -25,7 +23,6 @@ return static function (\Typo3RectorPrefix20210410\Symfony\Component\DependencyI
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();
     $services->load('Ssch\\TYPO3Rector\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Rector', __DIR__ . '/../src/Set', __DIR__ . '/../src/ValueObject', __DIR__ . '/../src/TypoScript/Conditions', __DIR__ . '/../src/TypoScript/Visitors', __DIR__ . '/../src/Yaml/Form/Transformer', __DIR__ . '/../src/FlexForms/Transformer', __DIR__ . '/../src/Resources/Icons/IconsProcessor.php']);
-    $services->set(\Ssch\TYPO3Rector\Console\Output\DecoratedConsoleOutputFormatter::class)->decorate(\Rector\ChangesReporting\Output\ConsoleOutputFormatter::class);
     $services->set(\Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\Traverser\Traverser::class);
     $services->set(\Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Tokenizer\Tokenizer::class);
     $services->alias(\Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Tokenizer\TokenizerInterface::class, \Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Tokenizer\Tokenizer::class);

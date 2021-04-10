@@ -8,8 +8,8 @@ use Rector\Core\Configuration\Configuration;
 use Rector\Core\Contract\Processor\NonPhpFileProcessorInterface;
 use Rector\Core\FileSystem\FilesFinder;
 use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileSystem;
 final class NonPhpFileProcessorService
 {
     /**
@@ -35,7 +35,7 @@ final class NonPhpFileProcessorService
     /**
      * @param NonPhpFileProcessorInterface[] $nonPhpFileProcessors
      */
-    public function __construct(\Rector\Core\FileSystem\FilesFinder $filesFinder, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, array $nonPhpFileProcessors = [])
+    public function __construct(\Rector\Core\FileSystem\FilesFinder $filesFinder, \Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector, \Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, array $nonPhpFileProcessors = [])
     {
         $this->nonPhpFileProcessors = $nonPhpFileProcessors;
         $this->smartFileSystem = $smartFileSystem;
@@ -88,7 +88,7 @@ final class NonPhpFileProcessorService
         $nonPhpFileInfos = $this->filesFinder->findInDirectoriesAndFiles($paths, $nonPhpFileExtensions);
         $composerJsonFilePath = \getcwd() . '/composer.json';
         if ($this->smartFileSystem->exists($composerJsonFilePath)) {
-            $nonPhpFileInfos[] = new \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo($composerJsonFilePath);
+            $nonPhpFileInfos[] = new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo($composerJsonFilePath);
         }
         return $nonPhpFileInfos;
     }

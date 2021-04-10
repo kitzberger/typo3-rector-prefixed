@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\GuzzleHttp\Message;
+namespace Typo3RectorPrefix20210410\GuzzleHttp\Message;
 
-if (\interface_exists('Typo3RectorPrefix20210409\\GuzzleHttp\\Message\\MessageInterface')) {
+if (\interface_exists('Typo3RectorPrefix20210410\\GuzzleHttp\\Message\\MessageInterface')) {
     return;
 }
 interface MessageInterface

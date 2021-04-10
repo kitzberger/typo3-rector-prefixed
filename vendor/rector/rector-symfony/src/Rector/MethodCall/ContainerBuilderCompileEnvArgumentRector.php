@@ -42,7 +42,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210409\\Symfony\\Component\\DependencyInjection\\ContainerBuilder'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Symfony\\Component\\DependencyInjection\\ContainerBuilder'))) {
             return null;
         }
         if (!$this->isName($node->name, 'compile')) {

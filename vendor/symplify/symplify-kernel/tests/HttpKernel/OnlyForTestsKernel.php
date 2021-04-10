@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Symplify\SymplifyKernel\Tests\HttpKernel;
+namespace Typo3RectorPrefix20210410\Symplify\SymplifyKernel\Tests\HttpKernel;
 
-use Typo3RectorPrefix20210409\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use Typo3RectorPrefix20210410\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 /**
  * For testing
  */
-final class OnlyForTestsKernel extends \Typo3RectorPrefix20210409\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+final class OnlyForTestsKernel extends \Typo3RectorPrefix20210410\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
 }

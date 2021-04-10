@@ -90,7 +90,7 @@ final class ValueObjectClassAnalyzer
     {
         foreach ($class->getProperties() as $property) {
             $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($property);
-            if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210409\\JMS\\Serializer\\Annotation\\Type')) {
+            if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210410\\JMS\\Serializer\\Annotation\\Type')) {
                 continue;
             }
             return \false;

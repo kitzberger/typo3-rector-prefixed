@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210409\SebastianBergmann\Diff;
+namespace Typo3RectorPrefix20210410\SebastianBergmann\Diff;
 
 final class Chunk
 {
@@ -70,8 +70,8 @@ final class Chunk
     public function setLines(array $lines) : void
     {
         foreach ($lines as $line) {
-            if (!$line instanceof \Typo3RectorPrefix20210409\SebastianBergmann\Diff\Line) {
-                throw new \Typo3RectorPrefix20210409\SebastianBergmann\Diff\InvalidArgumentException();
+            if (!$line instanceof \Typo3RectorPrefix20210410\SebastianBergmann\Diff\Line) {
+                throw new \Typo3RectorPrefix20210410\SebastianBergmann\Diff\InvalidArgumentException();
             }
         }
         $this->lines = $lines;

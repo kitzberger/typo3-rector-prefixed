@@ -30,7 +30,7 @@ final class GetSubscribedEventsClassMethodAnalyzer
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return \false;
         }
-        if (!$this->nodeTypeResolver->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210409\\Kdyby\\Events\\Subscriber'))) {
+        if (!$this->nodeTypeResolver->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Kdyby\\Events\\Subscriber'))) {
             return \false;
         }
         return $this->nodeNameResolver->isName($classMethod, 'getSubscribedEvents');

@@ -5,9 +5,9 @@ namespace Rector\Core\Autoloading;
 
 use Rector\Core\Configuration\Option;
 use Rector\Core\StaticReflection\DynamicSourceLocatorDecorator;
-use Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\FileSystemGuard;
+use Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210410\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\FileSystemGuard;
 /**
  * Should it pass autoload files/directories to PHPStan analyzer?
  */
@@ -25,13 +25,13 @@ final class AdditionalAutoloader
      * @var DynamicSourceLocatorDecorator
      */
     private $dynamicSourceLocatorDecorator;
-    public function __construct(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Rector\Core\StaticReflection\DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator)
+    public function __construct(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Typo3RectorPrefix20210410\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Rector\Core\StaticReflection\DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator)
     {
         $this->fileSystemGuard = $fileSystemGuard;
         $this->parameterProvider = $parameterProvider;
         $this->dynamicSourceLocatorDecorator = $dynamicSourceLocatorDecorator;
     }
-    public function autoloadWithInputAndSource(\Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface $input) : void
+    public function autoloadWithInputAndSource(\Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputInterface $input) : void
     {
         if ($input->hasOption(\Rector\Core\Configuration\Option::OPTION_AUTOLOAD_FILE)) {
             $this->autoloadInputAutoloadFile($input);
@@ -42,7 +42,7 @@ final class AdditionalAutoloader
         }
         $this->dynamicSourceLocatorDecorator->addPaths($autoloadPaths);
     }
-    private function autoloadInputAutoloadFile(\Typo3RectorPrefix20210409\Symfony\Component\Console\Input\InputInterface $input) : void
+    private function autoloadInputAutoloadFile(\Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputInterface $input) : void
     {
         /** @var string|null $autoloadFile */
         $autoloadFile = $input->getOption(\Rector\Core\Configuration\Option::OPTION_AUTOLOAD_FILE);

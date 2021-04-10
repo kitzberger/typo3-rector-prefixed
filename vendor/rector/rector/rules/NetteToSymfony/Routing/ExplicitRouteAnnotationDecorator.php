@@ -24,7 +24,7 @@ final class ExplicitRouteAnnotationDecorator
     public function decorateClassMethodWithRouteAnnotation(\PhpParser\Node\Stmt\ClassMethod $classMethod, \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode $doctrineAnnotationTagValueNode) : void
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
-        $spacelessPhpDocTagNode = new \Rector\BetterPhpDocParser\PhpDoc\SpacelessPhpDocTagNode('Typo3RectorPrefix20210409\\@\\Symfony\\Component\\Routing\\Annotation\\Route', $doctrineAnnotationTagValueNode);
+        $spacelessPhpDocTagNode = new \Rector\BetterPhpDocParser\PhpDoc\SpacelessPhpDocTagNode('Typo3RectorPrefix20210410\\@\\Symfony\\Component\\Routing\\Annotation\\Route', $doctrineAnnotationTagValueNode);
         $phpDocInfo->addPhpDocTagNode($spacelessPhpDocTagNode);
         $classMethod->setAttribute(self::HAS_ROUTE_ANNOTATION, \true);
     }

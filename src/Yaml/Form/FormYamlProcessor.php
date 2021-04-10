@@ -6,8 +6,8 @@ namespace Ssch\TYPO3Rector\Yaml\Form;
 use Rector\Core\Contract\Processor\NonPhpFileProcessorInterface;
 use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
 use Ssch\TYPO3Rector\Yaml\Form\Transformer\FormYamlTransformer;
-use Typo3RectorPrefix20210409\Symfony\Component\Yaml\Yaml;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210410\Symfony\Component\Yaml\Yaml;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Yaml\Form\FormYamlProcessorTest
  */
@@ -28,18 +28,18 @@ final class FormYamlProcessor implements \Rector\Core\Contract\Processor\NonPhpF
     {
         $this->transformer = $transformer;
     }
-    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
+    public function process(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
     {
-        $yaml = \Typo3RectorPrefix20210409\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
+        $yaml = \Typo3RectorPrefix20210410\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
         if (!\is_array($yaml)) {
             return null;
         }
         foreach ($this->transformer as $transformer) {
             $yaml = $transformer->transform($yaml);
         }
-        return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($smartFileInfo->getContents(), \Typo3RectorPrefix20210409\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2));
+        return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($smartFileInfo->getContents(), \Typo3RectorPrefix20210410\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2));
     }
-    public function supports(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function supports(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if ([] === $this->transformer) {
             return \false;

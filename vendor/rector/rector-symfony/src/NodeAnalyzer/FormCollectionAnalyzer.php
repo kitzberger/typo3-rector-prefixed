@@ -28,7 +28,7 @@ final class FormCollectionAnalyzer
         if (!$typeValue instanceof \PhpParser\Node\Expr\ClassConstFetch) {
             return $this->valueResolver->isValue($typeValue, 'collection');
         }
-        if (!$this->nodeNameResolver->isName($typeValue->class, 'Typo3RectorPrefix20210409\\Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType')) {
+        if (!$this->nodeNameResolver->isName($typeValue->class, 'Typo3RectorPrefix20210410\\Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType')) {
             return $this->valueResolver->isValue($typeValue, 'collection');
         }
         return \true;

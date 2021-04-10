@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Symplify\SetConfigResolver\Tests\ConfigResolver;
+namespace Typo3RectorPrefix20210410\Symplify\SetConfigResolver\Tests\ConfigResolver;
 
 use Iterator;
-use Typo3RectorPrefix20210409\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210409\Symfony\Component\Console\Input\ArrayInput;
-use Typo3RectorPrefix20210409\Symplify\SetConfigResolver\Exception\SetNotFoundException;
-use Typo3RectorPrefix20210409\Symplify\SetConfigResolver\SetAwareConfigResolver;
-use Typo3RectorPrefix20210409\Symplify\SetConfigResolver\Tests\ConfigResolver\Source\DummySetProvider;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\Exception\FileNotFoundException;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
-final class SetAwareConfigResolverTest extends \Typo3RectorPrefix20210409\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210410\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210410\Symfony\Component\Console\Input\ArrayInput;
+use Typo3RectorPrefix20210410\Symplify\SetConfigResolver\Exception\SetNotFoundException;
+use Typo3RectorPrefix20210410\Symplify\SetConfigResolver\SetAwareConfigResolver;
+use Typo3RectorPrefix20210410\Symplify\SetConfigResolver\Tests\ConfigResolver\Source\DummySetProvider;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+final class SetAwareConfigResolverTest extends \Typo3RectorPrefix20210410\PHPUnit\Framework\TestCase
 {
     /**
      * @var SetAwareConfigResolver
@@ -19,7 +19,7 @@ final class SetAwareConfigResolverTest extends \Typo3RectorPrefix20210409\PHPUni
     private $setAwareConfigResolver;
     protected function setUp() : void
     {
-        $this->setAwareConfigResolver = new \Typo3RectorPrefix20210409\Symplify\SetConfigResolver\SetAwareConfigResolver(new \Typo3RectorPrefix20210409\Symplify\SetConfigResolver\Tests\ConfigResolver\Source\DummySetProvider());
+        $this->setAwareConfigResolver = new \Typo3RectorPrefix20210410\Symplify\SetConfigResolver\SetAwareConfigResolver(new \Typo3RectorPrefix20210410\Symplify\SetConfigResolver\Tests\ConfigResolver\Source\DummySetProvider());
     }
     /**
      * @dataProvider provideOptionsAndExpectedConfig()
@@ -27,7 +27,7 @@ final class SetAwareConfigResolverTest extends \Typo3RectorPrefix20210409\PHPUni
      */
     public function testDetectFromInputAndProvideWithAbsolutePath(array $options, string $expectedConfig) : void
     {
-        $resolvedConfigFileInfo = $this->setAwareConfigResolver->resolveFromInput(new \Typo3RectorPrefix20210409\Symfony\Component\Console\Input\ArrayInput($options));
+        $resolvedConfigFileInfo = $this->setAwareConfigResolver->resolveFromInput(new \Typo3RectorPrefix20210410\Symfony\Component\Console\Input\ArrayInput($options));
         $this->assertSame($expectedConfig, $resolvedConfigFileInfo->getRealPath());
     }
     public function provideOptionsAndExpectedConfig() : \Iterator
@@ -43,7 +43,7 @@ final class SetAwareConfigResolverTest extends \Typo3RectorPrefix20210409\PHPUni
      */
     public function testDetectFromInputAndProvideWithEmptyConfig(array $options) : void
     {
-        $resolvedConfigFileInfo = $this->setAwareConfigResolver->resolveFromInput(new \Typo3RectorPrefix20210409\Symfony\Component\Console\Input\ArrayInput($options));
+        $resolvedConfigFileInfo = $this->setAwareConfigResolver->resolveFromInput(new \Typo3RectorPrefix20210410\Symfony\Component\Console\Input\ArrayInput($options));
         $this->assertNull($resolvedConfigFileInfo);
     }
     /**
@@ -55,23 +55,23 @@ final class SetAwareConfigResolverTest extends \Typo3RectorPrefix20210409\PHPUni
     }
     public function testSetsNotFound() : void
     {
-        $this->expectException(\Typo3RectorPrefix20210409\Symplify\SetConfigResolver\Exception\SetNotFoundException::class);
-        $basicConfigFileInfo = new \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/missing_set_config.php');
+        $this->expectException(\Typo3RectorPrefix20210410\Symplify\SetConfigResolver\Exception\SetNotFoundException::class);
+        $basicConfigFileInfo = new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/missing_set_config.php');
         $this->setAwareConfigResolver->resolveFromParameterSetsFromConfigFiles([$basicConfigFileInfo]);
     }
     public function testPhpSetsFileInfos() : void
     {
-        $basicConfigFileInfo = new \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/php_config_with_sets.php');
+        $basicConfigFileInfo = new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/php_config_with_sets.php');
         $setFileInfos = $this->setAwareConfigResolver->resolveFromParameterSetsFromConfigFiles([$basicConfigFileInfo]);
         $this->assertCount(1, $setFileInfos);
         $setFileInfo = $setFileInfos[0];
-        $expectedSetFileInfo = new \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/some_php_set.php');
+        $expectedSetFileInfo = new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/some_php_set.php');
         $this->assertEquals($expectedSetFileInfo, $setFileInfo);
     }
     public function testMissingFileInInput() : void
     {
-        $this->expectException(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\Exception\FileNotFoundException::class);
-        $arrayInput = new \Typo3RectorPrefix20210409\Symfony\Component\Console\Input\ArrayInput(['--config' => 'someFile.yml']);
+        $this->expectException(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\Exception\FileNotFoundException::class);
+        $arrayInput = new \Typo3RectorPrefix20210410\Symfony\Component\Console\Input\ArrayInput(['--config' => 'someFile.yml']);
         $this->setAwareConfigResolver->resolveFromInput($arrayInput);
     }
 }

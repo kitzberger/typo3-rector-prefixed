@@ -83,7 +83,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210409\\Illuminate\\Foundation\\Testing\\TestCase'))) {
+        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Illuminate\\Foundation\\Testing\\TestCase'))) {
             return null;
         }
         if (!$this->isTestingConsoleOutput($node)) {
@@ -104,7 +104,7 @@ CODE_SAMPLE
                 return \false;
             }
             $callerType = $this->nodeTypeResolver->resolve($node->class);
-            if (!$callerType->isSuperTypeOf(new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210409\\Illuminate\\Support\\Facades\\Artisan'))->yes()) {
+            if (!$callerType->isSuperTypeOf(new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Illuminate\\Support\\Facades\\Artisan'))->yes()) {
                 return \false;
             }
             return $this->isName($node->name, 'output');

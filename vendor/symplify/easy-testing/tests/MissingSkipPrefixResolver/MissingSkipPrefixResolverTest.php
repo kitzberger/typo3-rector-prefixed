@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Symplify\EasyTesting\Tests\MissingSkipPrefixResolver;
+namespace Typo3RectorPrefix20210410\Symplify\EasyTesting\Tests\MissingSkipPrefixResolver;
 
-use Typo3RectorPrefix20210409\Symplify\EasyTesting\Finder\FixtureFinder;
-use Typo3RectorPrefix20210409\Symplify\EasyTesting\HttpKernel\EasyTestingKernel;
-use Typo3RectorPrefix20210409\Symplify\EasyTesting\MissplacedSkipPrefixResolver;
-use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class MissingSkipPrefixResolverTest extends \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210410\Symplify\EasyTesting\Finder\FixtureFinder;
+use Typo3RectorPrefix20210410\Symplify\EasyTesting\HttpKernel\EasyTestingKernel;
+use Typo3RectorPrefix20210410\Symplify\EasyTesting\MissplacedSkipPrefixResolver;
+use Typo3RectorPrefix20210410\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class MissingSkipPrefixResolverTest extends \Typo3RectorPrefix20210410\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var MissplacedSkipPrefixResolver
@@ -19,9 +19,9 @@ final class MissingSkipPrefixResolverTest extends \Typo3RectorPrefix20210409\Sym
     private $fixtureFinder;
     protected function setUp() : void
     {
-        $this->bootKernel(\Typo3RectorPrefix20210409\Symplify\EasyTesting\HttpKernel\EasyTestingKernel::class);
-        $this->missplacedSkipPrefixResolver = $this->getService(\Typo3RectorPrefix20210409\Symplify\EasyTesting\MissplacedSkipPrefixResolver::class);
-        $this->fixtureFinder = $this->getService(\Typo3RectorPrefix20210409\Symplify\EasyTesting\Finder\FixtureFinder::class);
+        $this->bootKernel(\Typo3RectorPrefix20210410\Symplify\EasyTesting\HttpKernel\EasyTestingKernel::class);
+        $this->missplacedSkipPrefixResolver = $this->getService(\Typo3RectorPrefix20210410\Symplify\EasyTesting\MissplacedSkipPrefixResolver::class);
+        $this->fixtureFinder = $this->getService(\Typo3RectorPrefix20210410\Symplify\EasyTesting\Finder\FixtureFinder::class);
     }
     public function test() : void
     {

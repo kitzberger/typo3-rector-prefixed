@@ -66,24 +66,24 @@ final class PassFactoryToUniqueObjectRector extends \Rector\Core\Rector\Abstract
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Convert new X/Static::call() to factories in entities, pass them via constructor to each other', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample(<<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210409;
+namespace Typo3RectorPrefix20210410;
 
 class SomeClass
 {
     public function run()
     {
-        return new \Typo3RectorPrefix20210409\AnotherClass();
+        return new \Typo3RectorPrefix20210410\AnotherClass();
     }
 }
-\class_alias('Typo3RectorPrefix20210409\\SomeClass', 'SomeClass', \false);
+\class_alias('Typo3RectorPrefix20210410\\SomeClass', 'SomeClass', \false);
 class AnotherClass
 {
     public function someFun()
     {
-        return \Typo3RectorPrefix20210409\StaticClass::staticMethod();
+        return \Typo3RectorPrefix20210410\StaticClass::staticMethod();
     }
 }
-\class_alias('Typo3RectorPrefix20210409\\AnotherClass', 'AnotherClass', \false);
+\class_alias('Typo3RectorPrefix20210410\\AnotherClass', 'AnotherClass', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 class SomeClass

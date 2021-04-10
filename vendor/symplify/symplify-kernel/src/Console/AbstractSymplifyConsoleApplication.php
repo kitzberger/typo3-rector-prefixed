@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Symplify\SymplifyKernel\Console;
+namespace Typo3RectorPrefix20210410\Symplify\SymplifyKernel\Console;
 
-use Typo3RectorPrefix20210409\Symfony\Component\Console\Application;
-use Typo3RectorPrefix20210409\Symfony\Component\Console\Command\Command;
-use Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\Command\CommandNaming;
-abstract class AbstractSymplifyConsoleApplication extends \Typo3RectorPrefix20210409\Symfony\Component\Console\Application
+use Typo3RectorPrefix20210410\Symfony\Component\Console\Application;
+use Typo3RectorPrefix20210410\Symfony\Component\Console\Command\Command;
+use Typo3RectorPrefix20210410\Symplify\PackageBuilder\Console\Command\CommandNaming;
+abstract class AbstractSymplifyConsoleApplication extends \Typo3RectorPrefix20210410\Symfony\Component\Console\Application
 {
     /**
      * @var CommandNaming
@@ -17,7 +17,7 @@ abstract class AbstractSymplifyConsoleApplication extends \Typo3RectorPrefix2021
      */
     public function __construct(array $commands, string $name = 'UNKNOWN', string $version = 'UNKNOWN')
     {
-        $this->commandNaming = new \Typo3RectorPrefix20210409\Symplify\PackageBuilder\Console\Command\CommandNaming();
+        $this->commandNaming = new \Typo3RectorPrefix20210410\Symplify\PackageBuilder\Console\Command\CommandNaming();
         $this->addCommands($commands);
         parent::__construct($name, $version);
     }

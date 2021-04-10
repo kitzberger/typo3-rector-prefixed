@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\Builder;
+namespace Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\Builder;
 
-use Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\VariableNode;
+use Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\VariableNode;
 /**
  * This class provides a fluent interface for defining a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class VariableNodeDefinition extends \Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\Builder\NodeDefinition
+class VariableNodeDefinition extends \Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\Builder\NodeDefinition
 {
     /**
      * Instantiate a Node.
@@ -25,7 +25,7 @@ class VariableNodeDefinition extends \Typo3RectorPrefix20210409\Symfony\Componen
      */
     protected function instantiateNode()
     {
-        return new \Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
+        return new \Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
     }
     /**
      * {@inheritdoc}

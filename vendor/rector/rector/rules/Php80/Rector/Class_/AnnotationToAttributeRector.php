@@ -20,7 +20,7 @@ use Rector\Php80\ValueObject\AnnotationToAttribute;
 use Rector\PhpAttribute\Printer\PhpAttributeGroupFactory;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210409\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210410\Webmozart\Assert\Assert;
 /**
  * @see https://wiki.php.net/rfc/attributes_v2
  * @see https://wiki.php.net/rfc/shorter_attribute_syntax
@@ -77,7 +77,7 @@ class SymfonyRoute
     }
 }
 CODE_SAMPLE
-, [self::ANNOTATION_TO_ATTRIBUTE => [new \Rector\Php80\ValueObject\AnnotationToAttribute('Typo3RectorPrefix20210409\\Symfony\\Component\\Routing\\Annotation\\Route', 'Typo3RectorPrefix20210409\\Symfony\\Component\\Routing\\Annotation\\Route')]])]);
+, [self::ANNOTATION_TO_ATTRIBUTE => [new \Rector\Php80\ValueObject\AnnotationToAttribute('Typo3RectorPrefix20210410\\Symfony\\Component\\Routing\\Annotation\\Route', 'Typo3RectorPrefix20210410\\Symfony\\Component\\Routing\\Annotation\\Route')]])]);
     }
     /**
      * @return array<class-string<Node>>
@@ -130,7 +130,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $annotationsToAttributes = $configuration[self::ANNOTATION_TO_ATTRIBUTE] ?? [];
-        \Typo3RectorPrefix20210409\Webmozart\Assert\Assert::allIsInstanceOf($annotationsToAttributes, \Rector\Php80\ValueObject\AnnotationToAttribute::class);
+        \Typo3RectorPrefix20210410\Webmozart\Assert\Assert::allIsInstanceOf($annotationsToAttributes, \Rector\Php80\ValueObject\AnnotationToAttribute::class);
         $this->annotationsToAttributes = $annotationsToAttributes;
     }
 }

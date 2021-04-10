@@ -22,7 +22,7 @@ final class Redirect301ToPermanentRedirectRector extends \Rector\Core\Rector\Abs
     private $routerObjectTypes = [];
     public function __construct()
     {
-        $this->routerObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210409\\Illuminate\\Support\\Facades\\Route'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210409\\Illuminate\\Routing\\Route')];
+        $this->routerObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Illuminate\\Support\\Facades\\Route'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Illuminate\\Routing\\Route')];
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {

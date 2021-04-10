@@ -1,11 +1,11 @@
 <?php
 
-namespace Typo3RectorPrefix20210409\Carbon;
+namespace Typo3RectorPrefix20210410\Carbon;
 
 use DateInterval;
 use DateTimeInterface;
 use DateTimeZone;
-if (\class_exists('Typo3RectorPrefix20210409\\Carbon\\Carbon')) {
+if (\class_exists('Typo3RectorPrefix20210410\\Carbon\\Carbon')) {
     return;
 }
 class Carbon extends \DateTime

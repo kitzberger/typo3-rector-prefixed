@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210409\Psr\Log;
+namespace Typo3RectorPrefix20210410\Psr\Log;
 
 /**
  * Describes log levels.

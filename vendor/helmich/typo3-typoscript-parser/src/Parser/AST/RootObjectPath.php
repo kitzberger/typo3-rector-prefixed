@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST;
+namespace Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST;
 
 /**
  * Class RootObjectPath
@@ -9,7 +9,7 @@ namespace Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST;
  * @package    Helmich\TypoScriptParser
  * @subpackage Parser\AST
  */
-class RootObjectPath extends \Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\ObjectPath
+class RootObjectPath extends \Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST\ObjectPath
 {
     /**
      * RootObjectPath constructor.
@@ -21,7 +21,7 @@ class RootObjectPath extends \Typo3RectorPrefix20210409\Helmich\TypoScriptParser
     /**
      * @return ObjectPath
      */
-    public function parent() : \Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\ObjectPath
+    public function parent() : \Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST\ObjectPath
     {
         return $this;
     }
@@ -36,8 +36,8 @@ class RootObjectPath extends \Typo3RectorPrefix20210409\Helmich\TypoScriptParser
      * @param string $name
      * @return ObjectPath
      */
-    public function append($name) : \Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\ObjectPath
+    public function append($name) : \Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST\ObjectPath
     {
-        return new \Typo3RectorPrefix20210409\Helmich\TypoScriptParser\Parser\AST\ObjectPath(\ltrim($name, '.'), $name);
+        return new \Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST\ObjectPath(\ltrim($name, '.'), $name);
     }
 }

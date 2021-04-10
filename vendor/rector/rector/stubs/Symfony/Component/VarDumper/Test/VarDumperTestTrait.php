@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Symfony\Component\VarDumper\Test;
+namespace Typo3RectorPrefix20210410\Symfony\Component\VarDumper\Test;
 
-if (\trait_exists('Typo3RectorPrefix20210409\\Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait\\VarDumperTestTrait')) {
+if (\trait_exists('Typo3RectorPrefix20210410\\Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait\\VarDumperTestTrait')) {
     return;
 }
 trait VarDumperTestTrait

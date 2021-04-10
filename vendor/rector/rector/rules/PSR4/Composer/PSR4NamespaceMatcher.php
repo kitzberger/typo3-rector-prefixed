@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Rector\PSR4\Composer;
 
-use Typo3RectorPrefix20210409\Nette\Utils\Strings;
+use Typo3RectorPrefix20210410\Nette\Utils\Strings;
 use PhpParser\Node;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider;
 use Rector\PSR4\Contract\PSR4AutoloadNamespaceMatcherInterface;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
 final class PSR4NamespaceMatcher implements \Rector\PSR4\Contract\PSR4AutoloadNamespaceMatcherInterface
 {
     /**
@@ -27,7 +27,7 @@ final class PSR4NamespaceMatcher implements \Rector\PSR4\Contract\PSR4AutoloadNa
     public function getExpectedNamespace(\PhpParser\Node $node) : ?string
     {
         $smartFileInfo = $this->currentFileInfoProvider->getSmartFileInfo();
-        if (!$smartFileInfo instanceof \Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$smartFileInfo instanceof \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo) {
             throw new \Rector\Core\Exception\ShouldNotHappenException();
         }
         $psr4Autoloads = $this->psr4AutoloadPathsProvider->provide();
@@ -36,7 +36,7 @@ final class PSR4NamespaceMatcher implements \Rector\PSR4\Contract\PSR4AutoloadNa
             $paths = \is_array($path) ? $path : [$path];
             foreach ($paths as $path) {
                 $path = \rtrim($path, '/');
-                if (!\Typo3RectorPrefix20210409\Nette\Utils\Strings::startsWith($smartFileInfo->getRelativeDirectoryPath(), $path)) {
+                if (!\Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($smartFileInfo->getRelativeDirectoryPath(), $path)) {
                     continue;
                 }
                 $expectedNamespace = $namespace . $this->resolveExtraNamespace($smartFileInfo, $path);
@@ -48,10 +48,10 @@ final class PSR4NamespaceMatcher implements \Rector\PSR4\Contract\PSR4AutoloadNa
     /**
      * Get the extra path that is not included in root PSR-4 namespace
      */
-    private function resolveExtraNamespace(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $path) : string
+    private function resolveExtraNamespace(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $path) : string
     {
-        $extraNamespace = \Typo3RectorPrefix20210409\Nette\Utils\Strings::substring($smartFileInfo->getRelativeDirectoryPath(), \Typo3RectorPrefix20210409\Nette\Utils\Strings::length($path) + 1);
-        $extraNamespace = \Typo3RectorPrefix20210409\Nette\Utils\Strings::replace($extraNamespace, '#/#', '\\');
+        $extraNamespace = \Typo3RectorPrefix20210410\Nette\Utils\Strings::substring($smartFileInfo->getRelativeDirectoryPath(), \Typo3RectorPrefix20210410\Nette\Utils\Strings::length($path) + 1);
+        $extraNamespace = \Typo3RectorPrefix20210410\Nette\Utils\Strings::replace($extraNamespace, '#/#', '\\');
         return \trim($extraNamespace);
     }
 }

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\PhpDocParser;
 
-use Typo3RectorPrefix20210409\Nette\Utils\Strings;
+use Typo3RectorPrefix20210410\Nette\Utils\Strings;
 use PhpParser\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
@@ -70,7 +70,7 @@ final class DoctrineAnnotationDecorator
             // known doc tag to annotation class
             $fullyQualifiedAnnotationClass = $this->classAnnotationMatcher->resolveTagFullyQualifiedName($phpDocChildNode->name, $currentPhpNode);
             // not an annotations class
-            if (!\Typo3RectorPrefix20210409\Nette\Utils\Strings::contains($fullyQualifiedAnnotationClass, '\\')) {
+            if (!\Typo3RectorPrefix20210410\Nette\Utils\Strings::contains($fullyQualifiedAnnotationClass, '\\')) {
                 continue;
             }
             $genericTagValueNode = $phpDocChildNode->value;
@@ -105,7 +105,7 @@ final class DoctrineAnnotationDecorator
             $genericTagValueNode = $phpDocChildNode->value;
             /** @var GenericTagValueNode $currentGenericTagValueNode */
             $currentGenericTagValueNode = $genericTagValueNode;
-            while (\Typo3RectorPrefix20210409\Nette\Utils\Strings::match($currentGenericTagValueNode->value, self::OPEN_ANNOTATION_SUFFIX_REGEX)) {
+            while (\Typo3RectorPrefix20210410\Nette\Utils\Strings::match($currentGenericTagValueNode->value, self::OPEN_ANNOTATION_SUFFIX_REGEX)) {
                 $nextPhpDocChildNode = $phpDocNode->children[$key + 1];
                 if (!$nextPhpDocChildNode instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode) {
                     continue;

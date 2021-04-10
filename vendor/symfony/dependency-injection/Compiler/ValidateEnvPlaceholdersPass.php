@@ -8,38 +8,38 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Compiler;
+namespace Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\Compiler;
 
-use Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\BaseNode;
-use Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\ConfigurationInterface;
-use Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\Processor;
-use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\BaseNode;
+use Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\ConfigurationInterface;
+use Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\Processor;
+use Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 /**
  * Validates environment variable placeholders used in extension configuration with dummy values.
  *
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class ValidateEnvPlaceholdersPass implements \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ValidateEnvPlaceholdersPass implements \Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private const TYPE_FIXTURES = ['array' => [], 'bool' => \false, 'float' => 0.0, 'int' => 0, 'string' => ''];
     private $extensionConfig = [];
     /**
      * {@inheritdoc}
      */
-    public function process(\Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->extensionConfig = [];
-        if (!\class_exists(\Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\BaseNode::class) || !($extensions = $container->getExtensions())) {
+        if (!\class_exists(\Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\BaseNode::class) || !($extensions = $container->getExtensions())) {
             return;
         }
         $resolvingBag = $container->getParameterBag();
-        if (!$resolvingBag instanceof \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
+        if (!$resolvingBag instanceof \Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
             return;
         }
-        $defaultBag = new \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($resolvingBag->all());
+        $defaultBag = new \Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($resolvingBag->all());
         $envTypes = $resolvingBag->getProvidedTypes();
         try {
             foreach ($resolvingBag->getEnvPlaceholders() + $resolvingBag->getUnusedEnvPlaceholders() as $env => $placeholders) {
@@ -55,17 +55,17 @@ class ValidateEnvPlaceholdersPass implements \Typo3RectorPrefix20210409\Symfony\
                     }
                 }
                 foreach ($placeholders as $placeholder) {
-                    \Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\BaseNode::setPlaceholder($placeholder, $values);
+                    \Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\BaseNode::setPlaceholder($placeholder, $values);
                 }
             }
-            $processor = new \Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\Processor();
+            $processor = new \Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\Processor();
             foreach ($extensions as $name => $extension) {
-                if (!($extension instanceof \Typo3RectorPrefix20210409\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface || $extension instanceof \Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\ConfigurationInterface) || !($config = \array_filter($container->getExtensionConfig($name)))) {
+                if (!($extension instanceof \Typo3RectorPrefix20210410\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface || $extension instanceof \Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\ConfigurationInterface) || !($config = \array_filter($container->getExtensionConfig($name)))) {
                     // this extension has no semantic configuration or was not called
                     continue;
                 }
                 $config = $resolvingBag->resolveValue($config);
-                if ($extension instanceof \Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\ConfigurationInterface) {
+                if ($extension instanceof \Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\ConfigurationInterface) {
                     $configuration = $extension;
                 } elseif (null === ($configuration = $extension->getConfiguration($config, $container))) {
                     continue;
@@ -73,7 +73,7 @@ class ValidateEnvPlaceholdersPass implements \Typo3RectorPrefix20210409\Symfony\
                 $this->extensionConfig[$name] = $processor->processConfiguration($configuration, $config);
             }
         } finally {
-            \Typo3RectorPrefix20210409\Symfony\Component\Config\Definition\BaseNode::resetPlaceholders();
+            \Typo3RectorPrefix20210410\Symfony\Component\Config\Definition\BaseNode::resetPlaceholders();
         }
         $resolvingBag->clearUnusedEnvPlaceholders();
     }

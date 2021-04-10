@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409;
+namespace Typo3RectorPrefix20210410;
 
 abstract class PHPUnit_Framework_TestCase
 {
 }
-\class_alias('Typo3RectorPrefix20210409\\PHPUnit_Framework_TestCase', 'PHPUnit_Framework_TestCase', \false);
+\class_alias('Typo3RectorPrefix20210410\\PHPUnit_Framework_TestCase', 'PHPUnit_Framework_TestCase', \false);

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210409\Symfony\Component\Console\Logger;
+namespace Typo3RectorPrefix20210410\Symfony\Component\Console\Logger;
 
-use Typo3RectorPrefix20210409\Psr\Log\AbstractLogger;
-use Typo3RectorPrefix20210409\Psr\Log\InvalidArgumentException;
-use Typo3RectorPrefix20210409\Psr\Log\LogLevel;
-use Typo3RectorPrefix20210409\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210410\Psr\Log\AbstractLogger;
+use Typo3RectorPrefix20210410\Psr\Log\InvalidArgumentException;
+use Typo3RectorPrefix20210410\Psr\Log\LogLevel;
+use Typo3RectorPrefix20210410\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface;
 /**
  * PSR-3 compliant console logger.
  *
@@ -22,15 +22,15 @@ use Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface;
  *
  * @see https://www.php-fig.org/psr/psr-3/
  */
-class ConsoleLogger extends \Typo3RectorPrefix20210409\Psr\Log\AbstractLogger
+class ConsoleLogger extends \Typo3RectorPrefix20210410\Psr\Log\AbstractLogger
 {
     public const INFO = 'info';
     public const ERROR = 'error';
     private $output;
-    private $verbosityLevelMap = [\Typo3RectorPrefix20210409\Psr\Log\LogLevel::EMERGENCY => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::ALERT => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::CRITICAL => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::ERROR => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::WARNING => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::NOTICE => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::INFO => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::DEBUG => \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG];
-    private $formatLevelMap = [\Typo3RectorPrefix20210409\Psr\Log\LogLevel::EMERGENCY => self::ERROR, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::ALERT => self::ERROR, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::CRITICAL => self::ERROR, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::ERROR => self::ERROR, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::WARNING => self::INFO, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::NOTICE => self::INFO, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::INFO => self::INFO, \Typo3RectorPrefix20210409\Psr\Log\LogLevel::DEBUG => self::INFO];
+    private $verbosityLevelMap = [\Typo3RectorPrefix20210410\Psr\Log\LogLevel::EMERGENCY => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::ALERT => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::CRITICAL => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::ERROR => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::WARNING => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::NOTICE => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::INFO => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::DEBUG => \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG];
+    private $formatLevelMap = [\Typo3RectorPrefix20210410\Psr\Log\LogLevel::EMERGENCY => self::ERROR, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::ALERT => self::ERROR, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::CRITICAL => self::ERROR, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::ERROR => self::ERROR, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::WARNING => self::INFO, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::NOTICE => self::INFO, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::INFO => self::INFO, \Typo3RectorPrefix20210410\Psr\Log\LogLevel::DEBUG => self::INFO];
     private $errored = \false;
-    public function __construct(\Typo3RectorPrefix20210409\Symfony\Component\Console\Output\OutputInterface $output, array $verbosityLevelMap = [], array $formatLevelMap = [])
+    public function __construct(\Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface $output, array $verbosityLevelMap = [], array $formatLevelMap = [])
     {
         $this->output = $output;
         $this->verbosityLevelMap = $verbosityLevelMap + $this->verbosityLevelMap;
@@ -44,12 +44,12 @@ class ConsoleLogger extends \Typo3RectorPrefix20210409\Psr\Log\AbstractLogger
     public function log($level, $message, array $context = [])
     {
         if (!isset($this->verbosityLevelMap[$level])) {
-            throw new \Typo3RectorPrefix20210409\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
+            throw new \Typo3RectorPrefix20210410\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
         }
         $output = $this->output;
         // Write to the error output if necessary and available
         if (self::ERROR === $this->formatLevelMap[$level]) {
-            if ($this->output instanceof \Typo3RectorPrefix20210409\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+            if ($this->output instanceof \Typo3RectorPrefix20210410\Symfony\Component\Console\Output\ConsoleOutputInterface) {
                 $output = $output->getErrorOutput();
             }
             $this->errored = \true;

@@ -5,16 +5,16 @@ namespace Rector\Core\Tests\NonPhpFile\Source;
 
 use Rector\Core\Contract\Processor\NonPhpFileProcessorInterface;
 use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
 final class TextNonPhpFileProcessor implements \Rector\Core\Contract\Processor\NonPhpFileProcessorInterface
 {
-    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
+    public function process(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
     {
         $oldContent = $smartFileInfo->getContents();
         $newContent = \str_replace('Foo', 'Bar', $oldContent);
         return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($oldContent, $newContent);
     }
-    public function supports(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function supports(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         return \in_array($smartFileInfo->getExtension(), $this->getSupportedFileExtensions());
     }

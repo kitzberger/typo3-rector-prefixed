@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Nette\Caching\Storages;
+namespace Typo3RectorPrefix20210410\Nette\Caching\Storages;
 
 /**
  * Cache journal provider.
@@ -22,4 +22,4 @@ interface Journal
      */
     function clean(array $conditions) : ?array;
 }
-\class_exists(\Typo3RectorPrefix20210409\Nette\Caching\Storages\IJournal::class);
+\class_exists(\Typo3RectorPrefix20210410\Nette\Caching\Storages\IJournal::class);

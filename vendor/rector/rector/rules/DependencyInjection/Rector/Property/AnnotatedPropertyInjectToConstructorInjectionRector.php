@@ -36,7 +36,7 @@ final class AnnotatedPropertyInjectToConstructorInjectionRector extends \Rector\
     /**
      * @var string[]
      */
-    private const INJECT_ANNOTATION_CLASSES = ['Typo3RectorPrefix20210409\\JMS\\DiExtraBundle\\Annotation\\Inject', 'Typo3RectorPrefix20210409\\DI\\Annotation\\Inject'];
+    private const INJECT_ANNOTATION_CLASSES = ['Typo3RectorPrefix20210410\\JMS\\DiExtraBundle\\Annotation\\Inject', 'Typo3RectorPrefix20210410\\DI\\Annotation\\Inject'];
     /**
      * @var PropertyUsageAnalyzer
      */

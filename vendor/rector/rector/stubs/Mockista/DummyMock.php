@@ -1,8 +1,8 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210409\Mockery;
+namespace Typo3RectorPrefix20210410\Mockery;
 
-class DummyMock implements \Typo3RectorPrefix20210409\Mockery\MockInterface
+class DummyMock implements \Typo3RectorPrefix20210410\Mockery\MockInterface
 {
 }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210409\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace Typo3RectorPrefix20210410\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * Session handler using the mongodb/mongodb package and MongoDB driver extension.
@@ -18,7 +18,7 @@ namespace Typo3RectorPrefix20210409\Symfony\Component\HttpFoundation\Session\Sto
  * @see https://packagist.org/packages/mongodb/mongodb
  * @see https://php.net/mongodb
  */
-class MongoDbSessionHandler extends \Typo3RectorPrefix20210409\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
+class MongoDbSessionHandler extends \Typo3RectorPrefix20210410\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
 {
     private $mongo;
     /**
@@ -59,7 +59,7 @@ class MongoDbSessionHandler extends \Typo3RectorPrefix20210409\Symfony\Component
      *
      * @throws \InvalidArgumentException When "database" or "collection" not provided
      */
-    public function __construct(\Typo3RectorPrefix20210409\MongoDB\Client $mongo, array $options)
+    public function __construct(\Typo3RectorPrefix20210410\MongoDB\Client $mongo, array $options)
     {
         if (!isset($options['database']) || !isset($options['collection'])) {
             throw new \InvalidArgumentException('You must provide the "database" and "collection" option for MongoDBSessionHandler.');
@@ -120,7 +120,7 @@ class MongoDbSessionHandler extends \Typo3RectorPrefix20210409\Symfony\Component
         }
         return $dbData[$this->options['data_field']]->getData();
     }
-    private function getCollection() : \Typo3RectorPrefix20210409\MongoDB\Collection
+    private function getCollection() : \Typo3RectorPrefix20210410\MongoDB\Collection
     {
         if (null === $this->collection) {
             $this->collection = $this->mongo->selectCollection($this->options['database'], $this->options['collection']);

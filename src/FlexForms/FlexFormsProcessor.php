@@ -7,7 +7,7 @@ use DOMDocument;
 use Rector\Core\Contract\Processor\NonPhpFileProcessorInterface;
 use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
 use Ssch\TYPO3Rector\FlexForms\Transformer\FlexFormTransformer;
-use Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
 use UnexpectedValueException;
 /**
  * @see \Ssch\TYPO3Rector\Tests\FlexForms\FlexFormsProcessorTest
@@ -25,7 +25,7 @@ final class FlexFormsProcessor implements \Rector\Core\Contract\Processor\NonPhp
     {
         $this->transformer = $transformer;
     }
-    public function process(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
+    public function process(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
     {
         $domDocument = new \DOMDocument();
         $domDocument->formatOutput = \true;
@@ -39,7 +39,7 @@ final class FlexFormsProcessor implements \Rector\Core\Contract\Processor\NonPhp
         }
         return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($smartFileInfo->getContents(), \html_entity_decode($xml) . "\n");
     }
-    public function supports(\Typo3RectorPrefix20210409\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function supports(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if ([] === $this->transformer) {
             return \false;

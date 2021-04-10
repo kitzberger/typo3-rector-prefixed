@@ -56,7 +56,7 @@ CODE_SAMPLE
             if (!$this->isName($node, $function)) {
                 continue;
             }
-            return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210409\\Nette\\Utils\\Strings', $staticMethod, $node->args);
+            return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210410\\Nette\\Utils\\Strings', $staticMethod, $node->args);
         }
         return null;
     }

@@ -6,14 +6,14 @@ namespace Rector\Tests\Autodiscovery\Rector\FileNode\MoveEntitiesToEntityDirecto
 use Iterator;
 use Rector\FileSystemRector\ValueObject\AddedFileWithContent;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileSystem;
 final class MoveEntitiesToEntityDirectoryRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, \Rector\FileSystemRector\ValueObject\AddedFileWithContent $expectedAddedFileWithContent) : void
+    public function test(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, \Rector\FileSystemRector\ValueObject\AddedFileWithContent $expectedAddedFileWithContent) : void
     {
         $this->doTestFileInfo($originalFileInfo);
         $this->assertFileWithContentWasAdded($expectedAddedFileWithContent);
@@ -23,8 +23,8 @@ final class MoveEntitiesToEntityDirectoryRectorTest extends \Rector\Testing\PHPU
      */
     public function provideData() : \Iterator
     {
-        $smartFileSystem = new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileSystem();
-        (yield [new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Controller/RandomEntity.php'), new \Rector\FileSystemRector\ValueObject\AddedFileWithContent($this->getFixtureTempDirectory() . '/Source/Entity/RandomEntity.php', $smartFileSystem->readFile(__DIR__ . '/Expected/ExpectedRandomEntity.php'))]);
+        $smartFileSystem = new \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileSystem();
+        (yield [new \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Controller/RandomEntity.php'), new \Rector\FileSystemRector\ValueObject\AddedFileWithContent($this->getFixtureTempDirectory() . '/Source/Entity/RandomEntity.php', $smartFileSystem->readFile(__DIR__ . '/Expected/ExpectedRandomEntity.php'))]);
     }
     public function provideConfigFilePath() : string
     {

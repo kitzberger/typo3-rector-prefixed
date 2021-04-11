@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Php70\Rector\FuncCall;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\ArrayDimFetch;
@@ -21,9 +21,7 @@ use Rector\Php70\EregToPcreTransformer;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see http://php.net/reference.pcre.pattern.posix
- * @see https://stackoverflow.com/a/17033826/1348344
- * @see https://docstore.mik.ua/orelly/webprog/pcook/ch13_02.htm
+ * @changelog http://php.net/reference.pcre.pattern.posix https://stackoverflow.com/a/17033826/1348344 https://docstore.mik.ua/orelly/webprog/pcook/ch13_02.htm
  *
  * @see \Rector\Tests\Php70\Rector\FuncCall\EregToPregMatchRector\EregToPregMatchRectorTest
  */
@@ -103,7 +101,7 @@ final class EregToPregMatchRector extends \Rector\Core\Rector\AbstractRector
      */
     private function processSplitLimitArgument(\PhpParser\Node\Expr\FuncCall $funcCall, string $functionName) : void
     {
-        if (!\Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($functionName, 'split')) {
+        if (!\Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($functionName, 'split')) {
             return;
         }
         // 3rd argument - $limit, 0 → 1
@@ -128,9 +126,9 @@ final class EregToPregMatchRector extends \Rector\Core\Rector\AbstractRector
     }
     private function isCaseInsensitiveFunction(string $functionName) : bool
     {
-        if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::contains($functionName, 'eregi')) {
+        if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::contains($functionName, 'eregi')) {
             return \true;
         }
-        return \Typo3RectorPrefix20210410\Nette\Utils\Strings::contains($functionName, 'spliti');
+        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::contains($functionName, 'spliti');
     }
 }

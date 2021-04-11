@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Nette\Rector\LNumber;
 
-use Typo3RectorPrefix20210410\Nette\Utils\DateTime;
+use Typo3RectorPrefix20210411\Nette\Utils\DateTime;
 use PhpParser\Node;
 use PhpParser\Node\Scalar\LNumber;
 use Rector\Core\Rector\AbstractRector;
@@ -18,7 +18,7 @@ final class ReplaceTimeNumberWithDateTimeConstantRector extends \Rector\Core\Rec
      * @noRector
      * @var array<int, string>
      */
-    private const NUMBER_TO_CONSTANT_NAME = [\Typo3RectorPrefix20210410\Nette\Utils\DateTime::HOUR => 'HOUR', \Typo3RectorPrefix20210410\Nette\Utils\DateTime::DAY => 'DAY', \Typo3RectorPrefix20210410\Nette\Utils\DateTime::WEEK => 'WEEK', \Typo3RectorPrefix20210410\Nette\Utils\DateTime::MONTH => 'MONTH', \Typo3RectorPrefix20210410\Nette\Utils\DateTime::YEAR => 'YEAR'];
+    private const NUMBER_TO_CONSTANT_NAME = [\Typo3RectorPrefix20210411\Nette\Utils\DateTime::HOUR => 'HOUR', \Typo3RectorPrefix20210411\Nette\Utils\DateTime::DAY => 'DAY', \Typo3RectorPrefix20210411\Nette\Utils\DateTime::WEEK => 'WEEK', \Typo3RectorPrefix20210411\Nette\Utils\DateTime::MONTH => 'MONTH', \Typo3RectorPrefix20210411\Nette\Utils\DateTime::YEAR => 'YEAR'];
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replace time numbers with Nette\\Utils\\DateTime constants', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
@@ -58,6 +58,6 @@ CODE_SAMPLE
         if ($constantName === null) {
             return null;
         }
-        return $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210410\\Nette\\Utils\\DateTime', $constantName);
+        return $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210411\\Nette\\Utils\\DateTime', $constantName);
     }
 }

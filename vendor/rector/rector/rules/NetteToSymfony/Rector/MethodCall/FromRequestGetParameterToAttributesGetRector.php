@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteToSymfony\Rector\MethodCall;
 
-use Typo3RectorPrefix20210410\Nette\Application\Request;
+use Typo3RectorPrefix20210411\Nette\Application\Request;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\PropertyFetch;
@@ -13,8 +13,8 @@ use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see https://doc.nette.org/en/2.4/http-request-response
- * @see https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpFoundation/Request.php
+ * @changelog https://doc.nette.org/en/2.4/http-request-response https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpFoundation/Request.php
+ *
  * @see \Rector\Tests\NetteToSymfony\Rector\MethodCall\FromRequestGetParameterToAttributesGetRector\FromRequestGetParameterToAttributesGetRectorTest
  */
 final class FromRequestGetParameterToAttributesGetRector extends \Rector\Core\Rector\AbstractRector
@@ -57,7 +57,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Nette\\Application\\Request'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Nette\\Application\\Request'))) {
             return null;
         }
         if (!$this->isName($node->name, 'getParameter')) {

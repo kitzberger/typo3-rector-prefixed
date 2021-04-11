@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodeQuality\Rector\Include_;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\BinaryOp\Concat;
 use PhpParser\Node\Expr\Include_;
@@ -13,7 +13,7 @@ use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see https://github.com/symplify/CodingStandard#includerequire-should-be-followed-by-absolute-path
+ * @changelog https://github.com/symplify/CodingStandard#includerequire-should-be-followed-by-absolute-path
  *
  * @see \Rector\Tests\CodeQuality\Rector\Include_\AbsolutizeRequireAndIncludePathRector\AbsolutizeRequireAndIncludePathRectorTest
  */
@@ -63,16 +63,16 @@ CODE_SAMPLE
         /** @var string $includeValue */
         $includeValue = $this->valueResolver->getValue($node->expr);
         // skip phar
-        if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($includeValue, 'phar://')) {
+        if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($includeValue, 'phar://')) {
             return null;
         }
         // skip absolute paths
-        if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($includeValue, '/')) {
+        if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($includeValue, '/')) {
             return null;
         }
         // add preslash to string
-        if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($includeValue, './')) {
-            $node->expr->value = \Typo3RectorPrefix20210410\Nette\Utils\Strings::substring($includeValue, 1);
+        if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($includeValue, './')) {
+            $node->expr->value = \Typo3RectorPrefix20210411\Nette\Utils\Strings::substring($includeValue, 1);
         } else {
             $node->expr->value = '/' . $includeValue;
         }

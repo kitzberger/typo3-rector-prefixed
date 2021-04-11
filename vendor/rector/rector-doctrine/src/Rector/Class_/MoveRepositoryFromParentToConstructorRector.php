@@ -87,18 +87,18 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Doctrine\\ORM\\EntityRepository'))) {
+        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Doctrine\\ORM\\EntityRepository'))) {
             return null;
         }
         // remove parent class
         $node->extends = null;
         $entityObjectType = $this->entityObjectTypeResolver->resolveFromRepositoryClass($node);
-        $genericObjectType = new \PHPStan\Type\Generic\GenericObjectType('Typo3RectorPrefix20210410\\Doctrine\\ORM\\EntityRepository', [$entityObjectType]);
+        $genericObjectType = new \PHPStan\Type\Generic\GenericObjectType('Typo3RectorPrefix20210411\\Doctrine\\ORM\\EntityRepository', [$entityObjectType]);
         // add $repository property
         $this->classInsertManipulator->addPropertyToClass($node, 'repository', $genericObjectType);
         // add $entityManager and assign to constuctor
         $repositoryAssign = $this->repositoryAssignFactory->create($node);
-        $this->classDependencyManipulator->addConstructorDependencyWithCustomAssign($node, 'entityManager', new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Doctrine\\ORM\\EntityManagerInterface'), $repositoryAssign);
+        $this->classDependencyManipulator->addConstructorDependencyWithCustomAssign($node, 'entityManager', new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Doctrine\\ORM\\EntityManagerInterface'), $repositoryAssign);
         return $node;
     }
 }

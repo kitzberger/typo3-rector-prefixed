@@ -3,18 +3,15 @@
 declare (strict_types=1);
 namespace Rector\ChangesReporting\Output;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
-use Rector\ChangesReporting\Annotation\AnnotationExtractor;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
+use Rector\ChangesReporting\Annotation\RectorsChangelogResolver;
 use Rector\ChangesReporting\Application\ErrorAndDiffCollector;
 use Rector\ChangesReporting\Contract\Output\OutputFormatterInterface;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\Configuration\Option;
-use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
 use Rector\Core\ValueObject\Application\RectorError;
 use Rector\Core\ValueObject\Reporting\FileDiff;
-use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Style\SymfonyStyle;
 final class ConsoleOutputFormatter implements \Rector\ChangesReporting\Contract\Output\OutputFormatterInterface
 {
     /**
@@ -35,19 +32,14 @@ final class ConsoleOutputFormatter implements \Rector\ChangesReporting\Contract\
      */
     private $configuration;
     /**
-     * @var BetterStandardPrinter
+     * @var RectorsChangelogResolver
      */
-    private $betterStandardPrinter;
-    /**
-     * @var AnnotationExtractor
-     */
-    private $annotationExtractor;
-    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210410\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor)
+    private $rectorsChangelogResolver;
+    public function __construct(\Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210411\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\ChangesReporting\Annotation\RectorsChangelogResolver $rectorsChangelogResolver)
     {
         $this->symfonyStyle = $symfonyStyle;
-        $this->betterStandardPrinter = $betterStandardPrinter;
         $this->configuration = $configuration;
-        $this->annotationExtractor = $annotationExtractor;
+        $this->rectorsChangelogResolver = $rectorsChangelogResolver;
     }
     public function report(\Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector) : void
     {
@@ -90,10 +82,11 @@ final class ConsoleOutputFormatter implements \Rector\ChangesReporting\Contract\
             $this->symfonyStyle->newLine();
             $this->symfonyStyle->writeln($fileDiff->getDiffConsoleFormatted());
             $this->symfonyStyle->newLine();
+            $rectorsChangelogsLines = $this->createRectorChangelogLines($fileDiff);
             if ($fileDiff->getRectorChanges() !== []) {
                 $this->symfonyStyle->writeln('<options=underscore>Applied rules:</>');
                 $this->symfonyStyle->newLine();
-                $this->symfonyStyle->listing($fileDiff->getRectorClassesWithChangelogUrl($this->annotationExtractor));
+                $this->symfonyStyle->listing($rectorsChangelogsLines);
                 $this->symfonyStyle->newLine();
             }
         }
@@ -128,8 +121,8 @@ final class ConsoleOutputFormatter implements \Rector\ChangesReporting\Contract\
     private function normalizePathsToRelativeWithLine(string $errorMessage) : string
     {
         $regex = '#' . \preg_quote(\getcwd(), '#') . '/#';
-        $errorMessage = \Typo3RectorPrefix20210410\Nette\Utils\Strings::replace($errorMessage, $regex, '');
-        return $errorMessage = \Typo3RectorPrefix20210410\Nette\Utils\Strings::replace($errorMessage, self::ON_LINE_REGEX, ':');
+        $errorMessage = \Typo3RectorPrefix20210411\Nette\Utils\Strings::replace($errorMessage, $regex, '');
+        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::replace($errorMessage, self::ON_LINE_REGEX, ':');
     }
     private function reportRemovedNodes(\Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector) : void
     {
@@ -138,25 +131,6 @@ final class ConsoleOutputFormatter implements \Rector\ChangesReporting\Contract\
         }
         $message = \sprintf('%d nodes were removed', $errorAndDiffCollector->getRemovedNodeCount());
         $this->symfonyStyle->warning($message);
-        if ($this->symfonyStyle->isVeryVerbose()) {
-            $i = 0;
-            foreach ($errorAndDiffCollector->getRemovedNodes() as $removedNode) {
-                /** @var SmartFileInfo $fileInfo */
-                $fileInfo = $removedNode->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-                $message = \sprintf('<options=bold>%d) %s:%d</>', ++$i, $fileInfo->getRelativeFilePath(), $removedNode->getStartLine());
-                $this->symfonyStyle->writeln($message);
-                $printedNode = $this->betterStandardPrinter->print($removedNode);
-                // color red + prefix with "-" to visually demonstrate removal
-                $printedNode = '-' . \Typo3RectorPrefix20210410\Nette\Utils\Strings::replace($printedNode, '#\\n#', "\n-");
-                $printedNode = $this->colorTextToRed($printedNode);
-                $this->symfonyStyle->writeln($printedNode);
-                $this->symfonyStyle->newLine(1);
-            }
-        }
-    }
-    private function colorTextToRed(string $text) : string
-    {
-        return '<fg=red>' . $text . '</fg=red>';
     }
     private function createSuccessMessage(\Rector\ChangesReporting\Application\ErrorAndDiffCollector $errorAndDiffCollector) : string
     {
@@ -164,6 +138,18 @@ final class ConsoleOutputFormatter implements \Rector\ChangesReporting\Contract\
         if ($changeCount === 0) {
             return 'Rector is done!';
         }
-        return \sprintf('%d file%s %s by Rector.', $changeCount, $changeCount > 1 ? 's' : '', $this->configuration->isDryRun() ? 'would have changed (dry-run)' : ($changeCount === 1 ? 'has' : 'have') . ' been changed');
+        return \sprintf('%d file%s %s by Rector', $changeCount, $changeCount > 1 ? 's' : '', $this->configuration->isDryRun() ? 'would have changed (dry-run)' : ($changeCount === 1 ? 'has' : 'have') . ' been changed');
+    }
+    /**
+     * @return string[]
+     */
+    private function createRectorChangelogLines(\Rector\Core\ValueObject\Reporting\FileDiff $fileDiff) : array
+    {
+        $rectorsChangelogs = $this->rectorsChangelogResolver->resolveIncludingMissing($fileDiff->getRectorClasses());
+        $rectorsChangelogsLines = [];
+        foreach ($rectorsChangelogs as $rectorClass => $changelog) {
+            $rectorsChangelogsLines[] = $changelog === null ? $rectorClass : $rectorClass . ' ' . $changelog;
+        }
+        return $rectorsChangelogsLines;
     }
 }

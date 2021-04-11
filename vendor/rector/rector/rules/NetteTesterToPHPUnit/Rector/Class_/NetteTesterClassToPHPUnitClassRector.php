@@ -80,7 +80,7 @@ CODE_SAMPLE
             $this->processUnderTestRun($node);
             return null;
         }
-        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Tester\\TestCase'))) {
+        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Tester\\TestCase'))) {
             return null;
         }
         $this->processExtends($node);
@@ -96,7 +96,7 @@ CODE_SAMPLE
     }
     private function processUnderTestRun(\PhpParser\Node\Expr\MethodCall $methodCall) : void
     {
-        if (!$this->isObjectType($methodCall->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Tester\\TestCase'))) {
+        if (!$this->isObjectType($methodCall->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Tester\\TestCase'))) {
             return;
         }
         if ($this->isName($methodCall->name, 'run')) {
@@ -105,7 +105,7 @@ CODE_SAMPLE
     }
     private function processExtends(\PhpParser\Node\Stmt\Class_ $class) : void
     {
-        $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210410\\PHPUnit\\Framework\\TestCase');
+        $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210411\\PHPUnit\\Framework\\TestCase');
     }
     private function processMethods(\PhpParser\Node\Stmt\Class_ $class) : void
     {

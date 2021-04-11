@@ -34,11 +34,4 @@ final class HasOffsetTypeMapper implements \Rector\PHPStanStaticTypeMapper\Contr
     {
         throw new \Rector\Core\Exception\ShouldNotHappenException();
     }
-    /**
-     * @param HasOffsetType $type
-     */
-    public function mapToDocString(\PHPStan\Type\Type $type, ?\PHPStan\Type\Type $parentType = null) : string
-    {
-        return 'mixed[]';
-    }
 }

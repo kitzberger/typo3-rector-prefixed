@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210410;
+namespace Typo3RectorPrefix20210411;
 
-class Normalizer extends \Typo3RectorPrefix20210410\Symfony\Polyfill\Intl\Normalizer\Normalizer
+class Normalizer extends \Typo3RectorPrefix20210411\Symfony\Polyfill\Intl\Normalizer\Normalizer
 {
     /**
      * @deprecated since ICU 56 and removed in PHP 8
@@ -17,4 +17,4 @@ class Normalizer extends \Typo3RectorPrefix20210410\Symfony\Polyfill\Intl\Normal
     public const NFC = 16;
     public const NFKC = 32;
 }
-\class_alias('Typo3RectorPrefix20210410\\Normalizer', 'Normalizer', \false);
+\class_alias('Typo3RectorPrefix20210411\\Normalizer', 'Normalizer', \false);

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210410\Symplify\EasyTesting\PHPUnit;
+namespace Typo3RectorPrefix20210411\Symplify\EasyTesting\PHPUnit;
 
 final class StaticPHPUnitEnvironment
 {

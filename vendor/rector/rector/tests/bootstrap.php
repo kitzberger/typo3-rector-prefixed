@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210410;
+namespace Typo3RectorPrefix20210411;
 
 use Rector\Core\Stubs\PHPStanStubLoader;
-use Typo3RectorPrefix20210410\Tracy\Debugger;
+use Typo3RectorPrefix20210411\Tracy\Debugger;
 require_once __DIR__ . '/../vendor/autoload.php';
 // silent deprecations, since we test them
 \error_reporting(\E_ALL ^ \E_DEPRECATED);
@@ -13,4 +13,4 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $phpStanStubLoader = new \Rector\Core\Stubs\PHPStanStubLoader();
 $phpStanStubLoader->loadStubs();
 // make dump() useful and not nest infinity spam
-\Typo3RectorPrefix20210410\Tracy\Debugger::$maxDepth = 2;
+\Typo3RectorPrefix20210411\Tracy\Debugger::$maxDepth = 2;

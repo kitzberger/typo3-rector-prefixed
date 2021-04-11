@@ -5,7 +5,7 @@ namespace Rector\Tests\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @requires PHP 7.4
  */
@@ -14,7 +14,7 @@ final class Php74Test extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

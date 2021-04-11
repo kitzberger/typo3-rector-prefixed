@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\DowngradePhp74\Rector\LNumber;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Scalar\DNumber;
 use PhpParser\Node\Scalar\LNumber;
@@ -12,7 +12,8 @@ use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see https://wiki.php.net/rfc/numeric_literal_separator
+ * @changelog https://wiki.php.net/rfc/numeric_literal_separator
+ *
  * @see \Rector\Tests\DowngradePhp74\Rector\LNumber\DowngradeNumericLiteralSeparatorRector\DowngradeNumericLiteralSeparatorRectorTest
  */
 final class DowngradeNumericLiteralSeparatorRector extends \Rector\Core\Rector\AbstractRector
@@ -58,7 +59,7 @@ CODE_SAMPLE
         }
         $numberNode = clone $node;
         $numberNodeValue = (string) $numberNode->value;
-        if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::contains($numberNodeValue, '+')) {
+        if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::contains($numberNodeValue, '+')) {
             return null;
         }
         $node->value = (string) $node->value;
@@ -69,7 +70,7 @@ CODE_SAMPLE
          * by adding ".0" at the end (eg: 0.0).
          * Then, add it again.
          */
-        if ($node instanceof \PhpParser\Node\Scalar\DNumber && !\Typo3RectorPrefix20210410\Nette\Utils\Strings::contains($node->value, '.')) {
+        if ($node instanceof \PhpParser\Node\Scalar\DNumber && !\Typo3RectorPrefix20210411\Nette\Utils\Strings::contains($node->value, '.')) {
             $node->value .= '.0';
         }
         return $node;

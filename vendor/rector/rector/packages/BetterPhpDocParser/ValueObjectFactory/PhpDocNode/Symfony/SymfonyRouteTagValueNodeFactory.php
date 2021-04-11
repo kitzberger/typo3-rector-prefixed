@@ -15,6 +15,6 @@ final class SymfonyRouteTagValueNodeFactory
      */
     public function createFromItems(array $items) : \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode
     {
-        return new \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode('Typo3RectorPrefix20210410\\Symfony\\Component\\Routing\\Annotation\\Route', null, $items, 'path');
+        return new \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode('Typo3RectorPrefix20210411\\Symfony\\Component\\Routing\\Annotation\\Route', null, $items, 'path');
     }
 }

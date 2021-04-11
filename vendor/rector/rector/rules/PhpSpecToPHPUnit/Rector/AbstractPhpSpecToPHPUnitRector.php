@@ -11,8 +11,8 @@ use Rector\NodeTypeResolver\Node\AttributeKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see https://gnugat.github.io/2015/09/23/phpunit-with-phpspec.html
- * @see http://www.phpspec.net/en/stable/cookbook/construction.html
+ * @changelog https://gnugat.github.io/2015/09/23/phpunit-with-phpspec.html
+ * @changelog http://www.phpspec.net/en/stable/cookbook/construction.html
  */
 abstract class AbstractPhpSpecToPHPUnitRector extends \Rector\Core\Rector\AbstractRector
 {
@@ -61,6 +61,6 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return \false;
         }
-        return $this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\PhpSpec\\ObjectBehavior'));
+        return $this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\PhpSpec\\ObjectBehavior'));
     }
 }

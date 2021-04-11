@@ -34,11 +34,4 @@ final class NonEmptyArrayTypeMapper implements \Rector\PHPStanStaticTypeMapper\C
     {
         return new \PhpParser\Node\Name('array');
     }
-    /**
-     * @param NonEmptyArrayType $type
-     */
-    public function mapToDocString(\PHPStan\Type\Type $type, ?\PHPStan\Type\Type $parentType = null) : string
-    {
-        return 'mixed[]';
-    }
 }

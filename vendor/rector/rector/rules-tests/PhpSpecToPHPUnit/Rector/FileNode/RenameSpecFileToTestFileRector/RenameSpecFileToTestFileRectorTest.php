@@ -4,22 +4,22 @@ declare (strict_types=1);
 namespace Rector\Tests\PhpSpecToPHPUnit\Rector\FileNode\RenameSpecFileToTestFileRector;
 
 use Iterator;
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
 use Rector\FileSystemRector\Contract\MovedFileInterface;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
 final class RenameSpecFileToTestFileRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
         // test file is moved
         $movedFile = $this->matchMovedFile($this->originalTempFileInfo);
         $this->assertInstanceOf(\Rector\FileSystemRector\Contract\MovedFileInterface::class, $movedFile);
-        $this->assertTrue(\Typo3RectorPrefix20210410\Nette\Utils\Strings::endsWith($movedFile->getNewPathname(), 'Test.php'));
+        $this->assertTrue(\Typo3RectorPrefix20210411\Nette\Utils\Strings::endsWith($movedFile->getNewPathname(), 'Test.php'));
     }
     /**
      * @return Iterator<SmartFileInfo>

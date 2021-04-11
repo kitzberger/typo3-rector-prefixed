@@ -3,12 +3,16 @@
 declare (strict_types=1);
 namespace Rector\ChangesReporting\Annotation;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
+use Rector\Core\Contract\Rector\RectorInterface;
 use ReflectionClass;
+/**
+ * @see \Rector\Tests\ChangesReporting\Annotation\AnnotationExtractorTest
+ */
 final class AnnotationExtractor
 {
     /**
-     * @param class-string<object> $className
+     * @param class-string<RectorInterface> $className
      */
     public function extractAnnotationFromClass(string $className, string $annotation) : ?string
     {
@@ -17,11 +21,9 @@ final class AnnotationExtractor
         if (!\is_string($docComment)) {
             return null;
         }
-        $pattern = '#' . \preg_quote($annotation, '#') . '\\s*(?<annotation>[a-zA-Z0-9, ()_].*)#';
-        $matches = \Typo3RectorPrefix20210410\Nette\Utils\Strings::match($docComment, $pattern);
-        if (!\array_key_exists('annotation', $matches)) {
-            return null;
-        }
-        return \trim((string) $matches['annotation']);
+        // @see https://regex101.com/r/oYGaWU/1
+        $pattern = '#' . \preg_quote($annotation, '#') . '\\s+(?<content>.*?)$#m';
+        $matches = \Typo3RectorPrefix20210411\Nette\Utils\Strings::match($docComment, $pattern);
+        return $matches['content'] ?? null;
     }
 }

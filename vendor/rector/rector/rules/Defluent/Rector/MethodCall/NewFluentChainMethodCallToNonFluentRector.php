@@ -14,12 +14,11 @@ use Rector\Defluent\ValueObject\AssignAndRootExprAndNodesToAdd;
 use Rector\Defluent\ValueObject\FluentCallsKind;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\Symfony\NodeAnalyzer\FluentNodeRemover;
-use Typo3RectorPrefix20210410\Symplify\PackageBuilder\Php\TypeChecker;
+use Typo3RectorPrefix20210411\Symplify\PackageBuilder\Php\TypeChecker;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see https://ocramius.github.io/blog/fluent-interfaces-are-evil/
- * @see https://www.yegor256.com/2018/03/13/fluent-interfaces.html
+ * @changelog https://ocramius.github.io/blog/fluent-interfaces-are-evil/
  *
  * @see \Rector\Tests\Defluent\Rector\MethodCall\FluentChainMethodCallToNormalMethodCallRector\FluentChainMethodCallToNormalMethodCallRectorTest
  * @see \Rector\Tests\Defluent\Rector\MethodCall\NewFluentChainMethodCallToNonFluentRector\NewFluentChainMethodCallToNonFluentRectorTest
@@ -42,7 +41,7 @@ final class NewFluentChainMethodCallToNonFluentRector extends \Rector\Core\Recto
      * @var FluentMethodCallSkipper
      */
     private $fluentMethodCallSkipper;
-    public function __construct(\Typo3RectorPrefix20210410\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Rector\Symfony\NodeAnalyzer\FluentNodeRemover $fluentNodeRemover, \Rector\Defluent\Matcher\AssignAndRootExprAndNodesToAddMatcher $assignAndRootExprAndNodesToAddMatcher, \Rector\Defluent\Skipper\FluentMethodCallSkipper $fluentMethodCallSkipper)
+    public function __construct(\Typo3RectorPrefix20210411\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Rector\Symfony\NodeAnalyzer\FluentNodeRemover $fluentNodeRemover, \Rector\Defluent\Matcher\AssignAndRootExprAndNodesToAddMatcher $assignAndRootExprAndNodesToAddMatcher, \Rector\Defluent\Skipper\FluentMethodCallSkipper $fluentMethodCallSkipper)
     {
         $this->typeChecker = $typeChecker;
         $this->fluentNodeRemover = $fluentNodeRemover;

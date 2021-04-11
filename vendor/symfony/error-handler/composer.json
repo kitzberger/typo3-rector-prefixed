@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210410\\Symfony\\Component\\ErrorHandler\\": ""
+            "Typo3RectorPrefix20210411\\Symfony\\Component\\ErrorHandler\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

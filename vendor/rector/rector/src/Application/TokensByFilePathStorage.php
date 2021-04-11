@@ -5,22 +5,22 @@ namespace Rector\Core\Application;
 
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\ValueObject\Application\ParsedStmtsAndTokens;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
 final class TokensByFilePathStorage
 {
     /**
      * @var ParsedStmtsAndTokens[]
      */
     private $tokensByFilePath = [];
-    public function addForRealPath(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, \Rector\Core\ValueObject\Application\ParsedStmtsAndTokens $parsedStmtsAndTokens) : void
+    public function addForRealPath(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, \Rector\Core\ValueObject\Application\ParsedStmtsAndTokens $parsedStmtsAndTokens) : void
     {
         $this->tokensByFilePath[$smartFileInfo->getRealPath()] = $parsedStmtsAndTokens;
     }
-    public function hasForFileInfo(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function hasForFileInfo(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         return isset($this->tokensByFilePath[$smartFileInfo->getRealPath()]);
     }
-    public function getForFileInfo(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \Rector\Core\ValueObject\Application\ParsedStmtsAndTokens
+    public function getForFileInfo(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \Rector\Core\ValueObject\Application\ParsedStmtsAndTokens
     {
         if (!$this->hasForFileInfo($smartFileInfo)) {
             throw new \Rector\Core\Exception\ShouldNotHappenException(\sprintf('File "%s" was not preparsed, so it cannot be printed.%sCheck "%s" method.', $smartFileInfo->getRealPath(), \PHP_EOL, self::class . '::parseFileInfoToLocalCache()'));

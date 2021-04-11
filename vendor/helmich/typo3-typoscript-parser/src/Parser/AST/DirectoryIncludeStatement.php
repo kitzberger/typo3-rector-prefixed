@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST;
+namespace Typo3RectorPrefix20210411\Helmich\TypoScriptParser\Parser\AST;
 
 /**
  * Include statements that includes many TypoScript files from a directory.
@@ -9,7 +9,7 @@ namespace Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST;
  * @package    Helmich\TypoScriptParser
  * @subpackage Parser\AST
  */
-class DirectoryIncludeStatement extends \Typo3RectorPrefix20210410\Helmich\TypoScriptParser\Parser\AST\IncludeStatement
+class DirectoryIncludeStatement extends \Typo3RectorPrefix20210411\Helmich\TypoScriptParser\Parser\AST\IncludeStatement
 {
     /**
      * The directory to include from.

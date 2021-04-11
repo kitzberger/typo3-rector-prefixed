@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210410\Symplify\AutowireArrayParameter\Tests\Source;
+namespace Typo3RectorPrefix20210411\Symplify\AutowireArrayParameter\Tests\Source;
 
-use Typo3RectorPrefix20210410\Symplify\AutowireArrayParameter\Tests\Source\Contract\FirstCollectedInterface;
-use Typo3RectorPrefix20210410\Symplify\AutowireArrayParameter\Tests\Source\Contract\SecondCollectedInterface;
+use Typo3RectorPrefix20210411\Symplify\AutowireArrayParameter\Tests\Source\Contract\FirstCollectedInterface;
+use Typo3RectorPrefix20210411\Symplify\AutowireArrayParameter\Tests\Source\Contract\SecondCollectedInterface;
 final class ArrayShapeCollector
 {
     /**

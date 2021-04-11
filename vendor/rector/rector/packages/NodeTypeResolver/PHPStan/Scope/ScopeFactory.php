@@ -6,7 +6,7 @@ namespace Rector\NodeTypeResolver\PHPStan\Scope;
 use PHPStan\Analyser\MutatingScope;
 use PHPStan\Analyser\ScopeContext;
 use PHPStan\Analyser\ScopeFactory as PHPStanScopeFactory;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
 final class ScopeFactory
 {
     /**
@@ -17,7 +17,7 @@ final class ScopeFactory
     {
         $this->phpStanScopeFactory = $phpStanScopeFactory;
     }
-    public function createFromFile(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : \PHPStan\Analyser\MutatingScope
+    public function createFromFile(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : \PHPStan\Analyser\MutatingScope
     {
         $scopeContext = \PHPStan\Analyser\ScopeContext::create($fileInfo->getRealPath());
         return $this->phpStanScopeFactory->create($scopeContext);

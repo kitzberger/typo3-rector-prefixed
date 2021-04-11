@@ -11,8 +11,8 @@ use PhpParser\Node\Stmt\Nop;
 use PhpParser\Node\Stmt\Return_;
 use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
-use Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
+use Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Extbase\Configuration\AbstractConfigurationManager;
@@ -81,9 +81,9 @@ CODE_SAMPLE
     }
     private function addMethodGetControllerConfiguration(\PhpParser\Node\Stmt\Class_ $node) : void
     {
-        $methodBuilder = new \Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('getControllerConfiguration');
+        $methodBuilder = new \Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('getControllerConfiguration');
         $methodBuilder->makeProtected();
-        $methodBuilder->addParams([(new \Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('extensionName'))->getNode(), (new \Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('pluginName'))->getNode()]);
+        $methodBuilder->addParams([(new \Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('extensionName'))->getNode(), (new \Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder('pluginName'))->getNode()]);
         $newMethod = $methodBuilder->getNode();
         $newMethod->returnType = new \PhpParser\Node\Identifier('array');
         $newMethod->stmts[] = new \PhpParser\Node\Stmt\Return_($this->nodeFactory->createMethodCall('this', 'getSwitchableControllerActions', [new \PhpParser\Node\Expr\Variable('extensionName'), new \PhpParser\Node\Expr\Variable('pluginName')]));

@@ -12,12 +12,13 @@ use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Nop;
 use PhpParser\Node\Stmt\Property;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\VerbosityLevel;
 use Rector\Core\NodeManipulator\ClassInsertManipulator;
 use Rector\Core\Rector\AbstractRector;
 use Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType;
-use Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
-use Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder;
+use Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder;
+use Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Extbase\Mvc\Web\Response;
@@ -121,10 +122,10 @@ CODE_SAMPLE
     }
     private function createEnvironmentServiceProperty() : \PhpParser\Node\Stmt\Property
     {
-        $propertyBuilder = new \Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder(self::ENVIRONMENT_SERVICE);
+        $propertyBuilder = new \Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\PropertyBuilder(self::ENVIRONMENT_SERVICE);
         $propertyBuilder->makeProtected();
-        $docString = $this->staticTypeMapper->mapPHPStanTypeToDocString(new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType(\TYPO3\CMS\Extbase\Service\EnvironmentService::class));
-        $propertyBuilder->setDocComment(new \PhpParser\Comment\Doc(\sprintf('/**%s * @var %s%s */', \PHP_EOL, $docString, \PHP_EOL)));
+        $type = new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType(\TYPO3\CMS\Extbase\Service\EnvironmentService::class);
+        $propertyBuilder->setDocComment(new \PhpParser\Comment\Doc(\sprintf('/**%s * @var \\%s%s */', \PHP_EOL, $type->describe(\PHPStan\Type\VerbosityLevel::typeOnly()), \PHP_EOL)));
         return $propertyBuilder->getNode();
     }
     private function isPropertyEnvironmentServiceInUse(\PhpParser\Node\Stmt\Class_ $node) : bool
@@ -143,11 +144,11 @@ CODE_SAMPLE
     }
     private function addInjectEnvironmentServiceMethod(\PhpParser\Node\Stmt\Class_ $node) : void
     {
-        $paramBuilder = new \Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder(self::ENVIRONMENT_SERVICE);
+        $paramBuilder = new \Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\ParamBuilder(self::ENVIRONMENT_SERVICE);
         $paramBuilder->setType(new \PhpParser\Node\Name\FullyQualified(\TYPO3\CMS\Extbase\Service\EnvironmentService::class));
         $param = $paramBuilder->getNode();
         $propertyAssignNode = $this->nodeFactory->createPropertyAssignmentWithExpr(self::ENVIRONMENT_SERVICE, new \PhpParser\Node\Expr\Variable(self::ENVIRONMENT_SERVICE));
-        $classMethodBuilder = new \Typo3RectorPrefix20210410\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('injectEnvironmentService');
+        $classMethodBuilder = new \Typo3RectorPrefix20210411\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('injectEnvironmentService');
         $classMethodBuilder->addParam($param);
         $classMethodBuilder->addStmt($propertyAssignNode);
         $classMethodBuilder->makePublic();

@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Rector\Core\ValueObject\Reporting;
 
-use Rector\ChangesReporting\Annotation\AnnotationExtractor;
 use Rector\ChangesReporting\ValueObject\RectorWithFileAndLineChange;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Rector\Core\Contract\Rector\RectorInterface;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
 final class FileDiff
 {
     /**
@@ -27,7 +27,7 @@ final class FileDiff
     /**
      * @param RectorWithFileAndLineChange[] $rectorWithFileAndLineChanges
      */
-    public function __construct(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $diff, string $diffConsoleFormatted, array $rectorWithFileAndLineChanges = [])
+    public function __construct(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $diff, string $diffConsoleFormatted, array $rectorWithFileAndLineChanges = [])
     {
         $this->smartFileInfo = $smartFileInfo;
         $this->diff = $diff;
@@ -46,7 +46,7 @@ final class FileDiff
     {
         return $this->smartFileInfo->getRelativeFilePath();
     }
-    public function getFileInfo() : \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo
+    public function getFileInfo() : \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->smartFileInfo;
     }
@@ -58,7 +58,7 @@ final class FileDiff
         return $this->rectorWithFileAndLineChanges;
     }
     /**
-     * @return string[]
+     * @return array<class-string<RectorInterface>>
      */
     public function getRectorClasses() : array
     {
@@ -69,35 +69,9 @@ final class FileDiff
         return $this->sortClasses($rectorClasses);
     }
     /**
-     * @return string[]
-     */
-    public function getRectorClassesWithChangelogUrl(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor) : array
-    {
-        $rectorClasses = [];
-        foreach ($this->rectorWithFileAndLineChanges as $rectorWithFileAndLineChange) {
-            $rectorClasses[] = $rectorWithFileAndLineChange->getRectorClassWithChangelogUrl($annotationExtractor);
-        }
-        return $this->sortClasses($rectorClasses);
-    }
-    /**
-     * @return array<string, string>
-     */
-    public function getRectorClassesWithChangelogUrlAndRectorClassAsKey(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor) : array
-    {
-        $rectorClasses = [];
-        foreach ($this->rectorWithFileAndLineChanges as $rectorWithFileAndLineChange) {
-            $changelogUrl = $rectorWithFileAndLineChange->getChangelogUrl($annotationExtractor);
-            if ($changelogUrl !== null) {
-                $rectorClasses[$rectorWithFileAndLineChange->getRectorClass()] = $changelogUrl;
-            }
-        }
-        $rectorClasses = \array_unique($rectorClasses);
-        \ksort($rectorClasses);
-        return $rectorClasses;
-    }
-    /**
-     * @param string[] $rectorClasses
-     * @return string[]
+     * @template TType as object
+     * @param array<class-string<TType>> $rectorClasses
+     * @return array<class-string<TType>>
      */
     private function sortClasses(array $rectorClasses) : array
     {

@@ -8,11 +8,11 @@ use PhpParser\Node\Name;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use PHPStan\Type\BooleanType;
+use PHPStan\Type\Constant\ConstantBooleanType;
 use PHPStan\Type\Type;
 use Rector\Core\Php\PhpVersionProvider;
 use Rector\Core\ValueObject\PhpVersionFeature;
 use Rector\PHPStanStaticTypeMapper\Contract\TypeMapperInterface;
-use Rector\StaticTypeMapper\ValueObject\Type\FalseBooleanType;
 final class BooleanTypeMapper implements \Rector\PHPStanStaticTypeMapper\Contract\TypeMapperInterface
 {
     /**
@@ -53,19 +53,12 @@ final class BooleanTypeMapper implements \Rector\PHPStanStaticTypeMapper\Contrac
         }
         return new \PhpParser\Node\Name('bool');
     }
-    /**
-     * @param BooleanType $type
-     */
-    public function mapToDocString(\PHPStan\Type\Type $type, ?\PHPStan\Type\Type $parentType = null) : string
-    {
-        if ($this->isFalseBooleanTypeWithUnion($type)) {
-            return 'false';
-        }
-        return 'bool';
-    }
     private function isFalseBooleanTypeWithUnion(\PHPStan\Type\Type $type) : bool
     {
-        if (!$type instanceof \Rector\StaticTypeMapper\ValueObject\Type\FalseBooleanType) {
+        if (!$type instanceof \PHPStan\Type\Constant\ConstantBooleanType) {
+            return \false;
+        }
+        if ($type->getValue()) {
             return \false;
         }
         return $this->phpVersionProvider->isAtLeastPhpVersion(\Rector\Core\ValueObject\PhpVersionFeature::UNION_TYPES);

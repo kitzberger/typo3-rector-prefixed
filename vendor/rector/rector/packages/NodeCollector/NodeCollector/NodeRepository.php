@@ -3,23 +3,18 @@
 declare (strict_types=1);
 namespace Rector\NodeCollector\NodeCollector;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Arrays;
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Arrays;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Attribute;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\Array_;
-use PhpParser\Node\Expr\BinaryOp;
-use PhpParser\Node\Expr\BinaryOp\BooleanAnd;
 use PhpParser\Node\Expr\ClassConstFetch;
-use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\MethodCall;
-use PhpParser\Node\Expr\New_;
 use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\StaticPropertyFetch;
 use PhpParser\Node\Expr\Variable;
-use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassConst;
@@ -39,7 +34,6 @@ use PHPStan\Type\TypeUtils;
 use PHPStan\Type\TypeWithClassName;
 use PHPStan\Type\UnionType;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Rector\Core\ValueObject\MethodName;
 use Rector\NodeCollector\NodeAnalyzer\ArrayCallableMethodReferenceAnalyzer;
 use Rector\NodeCollector\ValueObject\ArrayCallable;
 use Rector\NodeNameResolver\NodeNameResolver;
@@ -100,10 +94,6 @@ final class NodeRepository
      */
     private $attributes = [];
     /**
-     * @var array<string, Name[]>
-     */
-    private $names = [];
-    /**
      * @var ReflectionProvider
      */
     private $reflectionProvider;
@@ -139,22 +129,10 @@ final class NodeRepository
             $attributeClass = $this->nodeNameResolver->getName($node->name);
             $this->attributes[$attributeClass][] = $node;
         }
-        if ($node instanceof \PhpParser\Node\Name) {
-            $name = $this->nodeNameResolver->getName($node);
-            $this->names[$name][] = $node;
-        }
     }
     public function findFunction(string $name) : ?\PhpParser\Node\Stmt\Function_
     {
         return $this->functionsByName[$name] ?? null;
-    }
-    public function findFunctionByFuncCall(\PhpParser\Node\Expr\FuncCall $funcCall) : ?\PhpParser\Node\Stmt\Function_
-    {
-        $functionName = $this->nodeNameResolver->getName($funcCall);
-        if ($functionName === null) {
-            return null;
-        }
-        return $this->findFunction($functionName);
     }
     /**
      * @return array<string, MethodCall[]|StaticCall[]>
@@ -191,7 +169,7 @@ final class NodeRepository
     }
     public function findClassMethod(string $className, string $methodName) : ?\PhpParser\Node\Stmt\ClassMethod
     {
-        if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::contains($methodName, '\\')) {
+        if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::contains($methodName, '\\')) {
             $message = \sprintf('Class and method arguments are switched in "%s"', __METHOD__);
             throw new \Rector\Core\Exception\ShouldNotHappenException($message);
         }
@@ -214,7 +192,7 @@ final class NodeRepository
      */
     public function getMethodsCalls() : array
     {
-        $calls = \Typo3RectorPrefix20210410\Nette\Utils\Arrays::flatten($this->callsByTypeAndMethod);
+        $calls = \Typo3RectorPrefix20210411\Nette\Utils\Arrays::flatten($this->callsByTypeAndMethod);
         return \array_filter($calls, function (\PhpParser\Node $node) : bool {
             return $node instanceof \PhpParser\Node\Expr\MethodCall;
         });
@@ -293,7 +271,7 @@ final class NodeRepository
     {
         $classNodes = [];
         foreach ($this->parsedNodeCollector->getClasses() as $className => $classNode) {
-            if (!\Typo3RectorPrefix20210410\Nette\Utils\Strings::endsWith($className, $suffix)) {
+            if (!\Typo3RectorPrefix20210411\Nette\Utils\Strings::endsWith($className, $suffix)) {
                 continue;
             }
             $classNodes[] = $classNode;
@@ -371,28 +349,6 @@ final class NodeRepository
         return $this->attributes[$class] ?? [];
     }
     /**
-     * @return Name[]
-     */
-    public function findNames(string $name) : array
-    {
-        return $this->names[$name] ?? [];
-    }
-    public function findClassMethodConstructorByNew(\PhpParser\Node\Expr\New_ $new) : ?\PhpParser\Node\Stmt\ClassMethod
-    {
-        $className = $this->nodeTypeResolver->resolve($new->class);
-        if (!$className instanceof \PHPStan\Type\TypeWithClassName) {
-            return null;
-        }
-        $constructorClassMethod = $this->findClassMethod($className->getClassName(), \Rector\Core\ValueObject\MethodName::CONSTRUCT);
-        if (!$constructorClassMethod instanceof \PhpParser\Node\Stmt\ClassMethod) {
-            return null;
-        }
-        if ($constructorClassMethod->getParams() === []) {
-            return null;
-        }
-        return $constructorClassMethod;
-    }
-    /**
      * @param PropertyFetch|StaticPropertyFetch $expr
      */
     public function findPropertyByPropertyFetch(\PhpParser\Node\Expr $expr) : ?\PhpParser\Node\Stmt\Property
@@ -420,13 +376,6 @@ final class NodeRepository
     {
         return $this->parsedNodeCollector->getClasses();
     }
-    /**
-     * @return New_[]
-     */
-    public function findNewsByClass(string $className) : array
-    {
-        return $this->parsedNodeCollector->findNewsByClass($className);
-    }
     public function findClassConstant(string $className, string $constantName) : ?\PhpParser\Node\Stmt\ClassConst
     {
         return $this->parsedNodeCollector->findClassConstant($className, $constantName);
@@ -440,32 +389,11 @@ final class NodeRepository
         return $this->parsedNodeCollector->findByShortName($shortName);
     }
     /**
-     * @return Param[]
-     */
-    public function getParams() : array
-    {
-        return $this->parsedNodeCollector->getParams();
-    }
-    /**
-     * @return New_[]
-     */
-    public function getNews() : array
-    {
-        return $this->parsedNodeCollector->getNews();
-    }
-    /**
      * @return StaticCall[]
      */
     public function getStaticCalls() : array
     {
         return $this->parsedNodeCollector->getStaticCalls();
-    }
-    /**
-     * @return ClassConstFetch[]
-     */
-    public function getClassConstFetches() : array
-    {
-        return $this->parsedNodeCollector->getClassConstFetches();
     }
     public function resolveCallerClassName(\PhpParser\Node\Expr\MethodCall $methodCall) : ?string
     {
@@ -475,23 +403,6 @@ final class NodeRepository
             return null;
         }
         return $callerObjectType->getClassName();
-    }
-    /**
-     * @return Expr[]
-     */
-    public function findBooleanAndConditions(\PhpParser\Node\Expr\BinaryOp\BooleanAnd $booleanAnd) : array
-    {
-        $conditions = [];
-        while ($booleanAnd instanceof \PhpParser\Node\Expr\BinaryOp) {
-            $conditions[] = $booleanAnd->right;
-            $booleanAnd = $booleanAnd->left;
-            if (!$booleanAnd instanceof \PhpParser\Node\Expr\BinaryOp\BooleanAnd) {
-                $conditions[] = $booleanAnd;
-                break;
-            }
-        }
-        \krsort($conditions);
-        return $conditions;
     }
     public function findClassLike(string $classLikeName) : ?\PhpParser\Node\Stmt\ClassLike
     {

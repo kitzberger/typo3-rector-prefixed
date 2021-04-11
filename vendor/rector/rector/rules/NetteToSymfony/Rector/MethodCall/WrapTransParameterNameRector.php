@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteToSymfony\Rector\MethodCall;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\MethodCall;
@@ -13,8 +13,8 @@ use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
- * @see https://symfony.com/doc/current/components/translation/usage.html#message-placeholders
- * @see https://github.com/Kdyby/Translation/blob/master/docs/en/index.md#placeholders
+ * @changelog https://symfony.com/doc/current/components/translation/usage.html#message-placeholders
+ * @changelog https://github.com/Kdyby/Translation/blob/master/docs/en/index.md#placeholders
  * https://github.com/Kdyby/Translation/blob/6b0721c767a7be7f15b2fb13c529bea8536230aa/src/Translator.php#L172
  * @see \Rector\Tests\NetteToSymfony\Rector\MethodCall\WrapTransParameterNameRector\WrapTransParameterNameRectorTest
  */
@@ -71,7 +71,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210410\\Symfony\\Component\\Translation\\TranslatorInterface'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Symfony\\Component\\Translation\\TranslatorInterface'))) {
             return null;
         }
         if (!$this->isName($node->name, 'trans')) {
@@ -92,7 +92,7 @@ CODE_SAMPLE
             if (!$arrayItem->key instanceof \PhpParser\Node\Scalar\String_) {
                 continue;
             }
-            if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::match($arrayItem->key->value, self::BETWEEN_PERCENT_CHARS_REGEX)) {
+            if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::match($arrayItem->key->value, self::BETWEEN_PERCENT_CHARS_REGEX)) {
                 continue;
             }
             $arrayItem->key = new \PhpParser\Node\Scalar\String_('%' . $arrayItem->key->value . '%');

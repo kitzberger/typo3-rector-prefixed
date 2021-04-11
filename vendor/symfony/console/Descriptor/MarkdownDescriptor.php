@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210410\Symfony\Component\Console\Descriptor;
+namespace Typo3RectorPrefix20210411\Symfony\Component\Console\Descriptor;
 
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Application;
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Command\Command;
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Helper\Helper;
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputArgument;
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputDefinition;
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputOption;
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Application;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Command\Command;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Helper\Helper;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputArgument;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputDefinition;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputOption;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Markdown descriptor.
  *
@@ -24,12 +24,12 @@ use Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface;
  *
  * @internal
  */
-class MarkdownDescriptor extends \Typo3RectorPrefix20210410\Symfony\Component\Console\Descriptor\Descriptor
+class MarkdownDescriptor extends \Typo3RectorPrefix20210411\Symfony\Component\Console\Descriptor\Descriptor
 {
     /**
      * {@inheritdoc}
      */
-    public function describe(\Typo3RectorPrefix20210410\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = [])
+    public function describe(\Typo3RectorPrefix20210411\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = [])
     {
         $decorated = $output->isDecorated();
         $output->setDecorated(\false);
@@ -46,14 +46,14 @@ class MarkdownDescriptor extends \Typo3RectorPrefix20210410\Symfony\Component\Co
     /**
      * {@inheritdoc}
      */
-    protected function describeInputArgument(\Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputArgument $argument, array $options = [])
+    protected function describeInputArgument(\Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputArgument $argument, array $options = [])
     {
         $this->write('#### `' . ($argument->getName() ?: '<none>') . "`\n\n" . ($argument->getDescription() ? \preg_replace('/\\s*[\\r\\n]\\s*/', "\n", $argument->getDescription()) . "\n\n" : '') . '* Is required: ' . ($argument->isRequired() ? 'yes' : 'no') . "\n" . '* Is array: ' . ($argument->isArray() ? 'yes' : 'no') . "\n" . '* Default: `' . \str_replace("\n", '', \var_export($argument->getDefault(), \true)) . '`');
     }
     /**
      * {@inheritdoc}
      */
-    protected function describeInputOption(\Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputOption $option, array $options = [])
+    protected function describeInputOption(\Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputOption $option, array $options = [])
     {
         $name = '--' . $option->getName();
         if ($option->getShortcut()) {
@@ -64,7 +64,7 @@ class MarkdownDescriptor extends \Typo3RectorPrefix20210410\Symfony\Component\Co
     /**
      * {@inheritdoc}
      */
-    protected function describeInputDefinition(\Typo3RectorPrefix20210410\Symfony\Component\Console\Input\InputDefinition $definition, array $options = [])
+    protected function describeInputDefinition(\Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputDefinition $definition, array $options = [])
     {
         if ($showArguments = \count($definition->getArguments()) > 0) {
             $this->write('### Arguments');
@@ -91,10 +91,10 @@ class MarkdownDescriptor extends \Typo3RectorPrefix20210410\Symfony\Component\Co
     /**
      * {@inheritdoc}
      */
-    protected function describeCommand(\Typo3RectorPrefix20210410\Symfony\Component\Console\Command\Command $command, array $options = [])
+    protected function describeCommand(\Typo3RectorPrefix20210411\Symfony\Component\Console\Command\Command $command, array $options = [])
     {
         $command->mergeApplicationDefinition(\false);
-        $this->write('`' . $command->getName() . "`\n" . \str_repeat('-', \Typo3RectorPrefix20210410\Symfony\Component\Console\Helper\Helper::strlen($command->getName()) + 2) . "\n\n" . ($command->getDescription() ? $command->getDescription() . "\n\n" : '') . '### Usage' . "\n\n" . \array_reduce(\array_merge([$command->getSynopsis()], $command->getAliases(), $command->getUsages()), function ($carry, $usage) {
+        $this->write('`' . $command->getName() . "`\n" . \str_repeat('-', \Typo3RectorPrefix20210411\Symfony\Component\Console\Helper\Helper::strlen($command->getName()) + 2) . "\n\n" . ($command->getDescription() ? $command->getDescription() . "\n\n" : '') . '### Usage' . "\n\n" . \array_reduce(\array_merge([$command->getSynopsis()], $command->getAliases(), $command->getUsages()), function ($carry, $usage) {
             return $carry . '* `' . $usage . '`' . "\n";
         }));
         if ($help = $command->getProcessedHelp()) {
@@ -110,14 +110,14 @@ class MarkdownDescriptor extends \Typo3RectorPrefix20210410\Symfony\Component\Co
     /**
      * {@inheritdoc}
      */
-    protected function describeApplication(\Typo3RectorPrefix20210410\Symfony\Component\Console\Application $application, array $options = [])
+    protected function describeApplication(\Typo3RectorPrefix20210411\Symfony\Component\Console\Application $application, array $options = [])
     {
         $describedNamespace = $options['namespace'] ?? null;
-        $description = new \Typo3RectorPrefix20210410\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $describedNamespace);
+        $description = new \Typo3RectorPrefix20210411\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $describedNamespace);
         $title = $this->getApplicationTitle($application);
-        $this->write($title . "\n" . \str_repeat('=', \Typo3RectorPrefix20210410\Symfony\Component\Console\Helper\Helper::strlen($title)));
+        $this->write($title . "\n" . \str_repeat('=', \Typo3RectorPrefix20210411\Symfony\Component\Console\Helper\Helper::strlen($title)));
         foreach ($description->getNamespaces() as $namespace) {
-            if (\Typo3RectorPrefix20210410\Symfony\Component\Console\Descriptor\ApplicationDescription::GLOBAL_NAMESPACE !== $namespace['id']) {
+            if (\Typo3RectorPrefix20210411\Symfony\Component\Console\Descriptor\ApplicationDescription::GLOBAL_NAMESPACE !== $namespace['id']) {
                 $this->write("\n\n");
                 $this->write('**' . $namespace['id'] . ':**');
             }
@@ -133,7 +133,7 @@ class MarkdownDescriptor extends \Typo3RectorPrefix20210410\Symfony\Component\Co
             }
         }
     }
-    private function getApplicationTitle(\Typo3RectorPrefix20210410\Symfony\Component\Console\Application $application) : string
+    private function getApplicationTitle(\Typo3RectorPrefix20210411\Symfony\Component\Console\Application $application) : string
     {
         if ('UNKNOWN' !== $application->getName()) {
             if ('UNKNOWN' !== $application->getVersion()) {

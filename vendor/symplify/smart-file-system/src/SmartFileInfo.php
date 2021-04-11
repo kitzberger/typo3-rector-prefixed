@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210410\Symplify\SmartFileSystem;
+namespace Typo3RectorPrefix20210411\Symplify\SmartFileSystem;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
-use Typo3RectorPrefix20210410\Symfony\Component\Finder\SplFileInfo;
-use Typo3RectorPrefix20210410\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
-use Typo3RectorPrefix20210410\Symplify\EasyTesting\StaticFixtureSplitter;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Symfony\Component\Finder\SplFileInfo;
+use Typo3RectorPrefix20210411\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
+use Typo3RectorPrefix20210411\Symplify\EasyTesting\StaticFixtureSplitter;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\Exception\FileNotFoundException;
 /**
  * @see \Symplify\SmartFileSystem\Tests\SmartFileInfo\SmartFileInfoTest
  */
-final class SmartFileInfo extends \Typo3RectorPrefix20210410\Symfony\Component\Finder\SplFileInfo
+final class SmartFileInfo extends \Typo3RectorPrefix20210411\Symfony\Component\Finder\SplFileInfo
 {
     /**
      * @var string
@@ -25,13 +25,13 @@ final class SmartFileInfo extends \Typo3RectorPrefix20210410\Symfony\Component\F
     private $smartFileSystem;
     public function __construct(string $filePath)
     {
-        $this->smartFileSystem = new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileSystem();
+        $this->smartFileSystem = new \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileSystem();
         // accepts also dirs
         if (!\file_exists($filePath)) {
-            throw new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\Exception\FileNotFoundException(\sprintf('File path "%s" was not found while creating "%s" object.', $filePath, self::class));
+            throw new \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\Exception\FileNotFoundException(\sprintf('File path "%s" was not found while creating "%s" object.', $filePath, self::class));
         }
         // real path doesn't work in PHAR: https://www.php.net/manual/en/function.realpath.php
-        if (\Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($filePath, 'phar://')) {
+        if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($filePath, 'phar://')) {
             $relativeFilePath = $filePath;
             $relativeDirectoryPath = \dirname($filePath);
         } else {
@@ -58,7 +58,7 @@ final class SmartFileInfo extends \Typo3RectorPrefix20210410\Symfony\Component\F
     }
     public function getRealPathWithoutSuffix() : string
     {
-        return \Typo3RectorPrefix20210410\Nette\Utils\Strings::replace($this->getRealPath(), self::LAST_SUFFIX_REGEX, '');
+        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::replace($this->getRealPath(), self::LAST_SUFFIX_REGEX, '');
     }
     public function getRelativeFilePath() : string
     {
@@ -71,7 +71,7 @@ final class SmartFileInfo extends \Typo3RectorPrefix20210410\Symfony\Component\F
     public function getRelativeFilePathFromDirectory(string $directory) : string
     {
         if (!\file_exists($directory)) {
-            throw new \Typo3RectorPrefix20210410\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException(\sprintf('Directory "%s" was not found in %s.', $directory, self::class));
+            throw new \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException(\sprintf('Directory "%s" was not found in %s.', $directory, self::class));
         }
         $relativeFilePath = $this->smartFileSystem->makePathRelative($this->getNormalizedRealPath(), (string) \realpath($directory));
         return \rtrim($relativeFilePath, '/');
@@ -79,8 +79,8 @@ final class SmartFileInfo extends \Typo3RectorPrefix20210410\Symfony\Component\F
     public function getRelativeFilePathFromCwdInTests() : string
     {
         // special case for tests
-        if (\Typo3RectorPrefix20210410\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun()) {
-            return $this->getRelativeFilePathFromDirectory(\Typo3RectorPrefix20210410\Symplify\EasyTesting\StaticFixtureSplitter::getTemporaryPath());
+        if (\Typo3RectorPrefix20210411\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun()) {
+            return $this->getRelativeFilePathFromDirectory(\Typo3RectorPrefix20210411\Symplify\EasyTesting\StaticFixtureSplitter::getTemporaryPath());
         }
         return $this->getRelativeFilePathFromDirectory(\getcwd());
     }
@@ -90,7 +90,7 @@ final class SmartFileInfo extends \Typo3RectorPrefix20210410\Symfony\Component\F
     }
     public function endsWith(string $string) : bool
     {
-        return \Typo3RectorPrefix20210410\Nette\Utils\Strings::endsWith($this->getNormalizedRealPath(), $string);
+        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::endsWith($this->getNormalizedRealPath(), $string);
     }
     public function doesFnmatch(string $string) : bool
     {
@@ -111,7 +111,7 @@ final class SmartFileInfo extends \Typo3RectorPrefix20210410\Symfony\Component\F
     }
     public function startsWith(string $partialPath) : bool
     {
-        return \Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($this->getNormalizedRealPath(), $partialPath);
+        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($this->getNormalizedRealPath(), $partialPath);
     }
     private function getNormalizedRealPath() : string
     {

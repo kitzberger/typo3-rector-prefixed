@@ -8,7 +8,10 @@ use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Stmt\Return_;
 use Rector\Core\Rector\AbstractRector;
+use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
+use Ssch\TYPO3Rector\Reporting\Reporter;
+use Ssch\TYPO3Rector\Reporting\ValueObject\Report;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -18,6 +21,14 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 final class RefactorTypeInternalTypeFileAndFileReferenceToFalRector extends \Rector\Core\Rector\AbstractRector
 {
     use TcaHelperTrait;
+    /**
+     * @var Reporter
+     */
+    private $reportLogger;
+    public function __construct(\Ssch\TYPO3Rector\Reporting\Reporter $reporter)
+    {
+        $this->reportLogger = $reporter;
+    }
     /**
      * @return array<class-string<Node>>
      */
@@ -95,6 +106,10 @@ final class RefactorTypeInternalTypeFileAndFileReferenceToFalRector extends \Rec
                 }
                 $configValue->value = $this->nodeFactory->createStaticCall(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::class, 'getFileFieldTCAConfig', $args);
             }
+        }
+        if ($hasAstBeenChanged) {
+            $report = new \Ssch\TYPO3Rector\Reporting\ValueObject\Report('You have to do more', $this, $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO));
+            $this->reportLogger->report($report);
         }
         return $hasAstBeenChanged ? $node : null;
     }

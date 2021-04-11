@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Conditions;
 
-use Typo3RectorPrefix20210410\Nette\Utils\Strings;
+use Typo3RectorPrefix20210411\Nette\Utils\Strings;
 use Ssch\TYPO3Rector\ArrayUtility;
 abstract class AbstractRootlineConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher
 {
@@ -22,7 +22,7 @@ abstract class AbstractRootlineConditionMatcher implements \Ssch\TYPO3Rector\Typ
     }
     public function shouldApply(string $condition) : bool
     {
-        return \Typo3RectorPrefix20210410\Nette\Utils\Strings::startsWith($condition, $this->getType());
+        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($condition, $this->getType());
     }
     protected abstract function getType() : string;
     protected abstract function getExpression() : string;

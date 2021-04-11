@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210410\Symfony\Component\HttpFoundation\Session;
+namespace Typo3RectorPrefix20210411\Symfony\Component\HttpFoundation\Session;
 
 /**
  * Session Bag store.

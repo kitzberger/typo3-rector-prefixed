@@ -4,8 +4,8 @@ declare (strict_types=1);
 namespace Rector\Tests\NodeTypeResolver\PerNodeTypeResolver\PropertyFetchTypeResolver;
 
 use Iterator;
-use Typo3RectorPrefix20210410\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Rector\NodeTypeResolver\NodeTypeResolver\PropertyFetchTypeResolver
  */
@@ -15,7 +15,7 @@ final class Php80Test extends \Rector\Tests\NodeTypeResolver\PerNodeTypeResolver
      * @requires PHP 8.0
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function test(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $this->doTestFileInfo($smartFileInfo);
     }
@@ -24,6 +24,6 @@ final class Php80Test extends \Rector\Tests\NodeTypeResolver\PerNodeTypeResolver
      */
     public function provideData() : \Iterator
     {
-        return \Typo3RectorPrefix20210410\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/FixturePhp80');
+        return \Typo3RectorPrefix20210411\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/FixturePhp80');
     }
 }

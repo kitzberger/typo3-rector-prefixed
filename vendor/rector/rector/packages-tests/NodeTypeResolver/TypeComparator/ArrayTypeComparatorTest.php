@@ -16,8 +16,8 @@ use Rector\Core\HttpKernel\RectorKernel;
 use Rector\NodeTypeResolver\TypeComparator\ArrayTypeComparator;
 use Rector\StaticTypeMapper\TypeFactory\UnionTypeFactory;
 use Rector\Tests\NodeTypeResolver\TypeComparator\Source\SomeGenericTypeObject;
-use Typo3RectorPrefix20210410\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ArrayTypeComparatorTest extends \Typo3RectorPrefix20210410\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210411\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class ArrayTypeComparatorTest extends \Typo3RectorPrefix20210411\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var ArrayTypeComparator

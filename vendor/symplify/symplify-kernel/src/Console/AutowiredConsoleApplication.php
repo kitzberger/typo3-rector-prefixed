@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210410\Symplify\SymplifyKernel\Console;
+namespace Typo3RectorPrefix20210411\Symplify\SymplifyKernel\Console;
 
-use Typo3RectorPrefix20210410\Symfony\Component\Console\Command\Command;
+use Typo3RectorPrefix20210411\Symfony\Component\Console\Command\Command;
 /**
  * @see \Symplify\SymplifyKernel\Tests\Console\AbstractSymplifyConsoleApplication\AutowiredConsoleApplicationTest
  */
-final class AutowiredConsoleApplication extends \Typo3RectorPrefix20210410\Symplify\SymplifyKernel\Console\AbstractSymplifyConsoleApplication
+final class AutowiredConsoleApplication extends \Typo3RectorPrefix20210411\Symplify\SymplifyKernel\Console\AbstractSymplifyConsoleApplication
 {
     /**
      * @param Command[] $commands

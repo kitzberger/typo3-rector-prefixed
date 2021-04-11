@@ -5,7 +5,7 @@ namespace Rector\Tests\Php72\Rector\FuncCall\ParseStrWithResultArgumentRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @requires PHP < 8.0
  */
@@ -14,7 +14,7 @@ final class ParseStrWithResultArgumentRectorTest extends \Rector\Testing\PHPUnit
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210410\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

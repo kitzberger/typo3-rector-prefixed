@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210410;
+namespace Typo3RectorPrefix20210411;
 
-use Typo3RectorPrefix20210410\Symfony\Component\Routing\Annotation\Route;
+use Typo3RectorPrefix20210411\Symfony\Component\Routing\Annotation\Route;
 class SomeController
 {
     /**
@@ -12,4 +12,4 @@ class SomeController
     {
     }
 }
-\class_alias('Typo3RectorPrefix20210410\\SomeController', 'SomeController', \false);
+\class_alias('Typo3RectorPrefix20210411\\SomeController', 'SomeController', \false);

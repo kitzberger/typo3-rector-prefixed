@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210410\Symfony\Component\Config;
+namespace Typo3RectorPrefix20210411\Symfony\Component\Config;
 
-use Typo3RectorPrefix20210410\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use Typo3RectorPrefix20210411\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */

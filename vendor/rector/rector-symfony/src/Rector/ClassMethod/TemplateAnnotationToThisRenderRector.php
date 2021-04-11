@@ -42,7 +42,7 @@ final class TemplateAnnotationToThisRenderRector extends \Rector\Core\Rector\Abs
     /**
      * @var string
      */
-    private const RESPONSE_CLASS = 'Typo3RectorPrefix20210410\\Symfony\\Component\\HttpFoundation\\Response';
+    private const RESPONSE_CLASS = 'Typo3RectorPrefix20210411\\Symfony\\Component\\HttpFoundation\\Response';
     /**
      * @var ReturnTypeDeclarationUpdater
      */
@@ -109,7 +109,7 @@ CODE_SAMPLE
         if (!$this->hasTemplateAnnotations($class)) {
             return null;
         }
-        $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210410\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
+        $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210411\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
         return $class;
     }
     private function replaceTemplateAnnotation(\PhpParser\Node\Stmt\ClassMethod $classMethod) : ?\PhpParser\Node
@@ -118,7 +118,7 @@ CODE_SAMPLE
             return null;
         }
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210410\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210411\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template');
         if (!$doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return null;
         }
@@ -129,7 +129,7 @@ CODE_SAMPLE
     {
         foreach ($class->getMethods() as $classMethod) {
             $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
-            if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210410\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template')) {
+            if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210411\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template')) {
                 return \true;
             }
         }
@@ -243,7 +243,7 @@ CODE_SAMPLE
     private function removeDoctrineAnnotationTagValueNode(\PhpParser\Node\Stmt\ClassMethod $classMethod) : void
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210410\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210411\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template');
         if (!$doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return;
         }
@@ -252,7 +252,7 @@ CODE_SAMPLE
     private function removeAnnotationClass(\PhpParser\Node\Stmt\ClassMethod $classMethod) : void
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210410\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210411\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Template');
         if ($doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             $this->phpDocTagRemover->removeTagValueFromNode($phpDocInfo, $doctrineAnnotationTagValueNode);
         }

@@ -5,9 +5,8 @@ namespace Ssch\TYPO3Rector\Resources\Icons;
 
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\Contract\Processor\FileProcessorInterface;
-use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
+use Rector\Core\ValueObject\Application\File;
 use Typo3RectorPrefix20210412\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
 use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem;
 final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProcessorInterface
 {
@@ -29,8 +28,31 @@ final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProces
         $this->symfonyStyle = $symfonyStyle;
         $this->configuration = $configuration;
     }
-    public function process(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
+    /**
+     * @param File[] $files
+     */
+    public function process(array $files) : void
     {
+        foreach ($files as $file) {
+            $this->processFile($file);
+        }
+    }
+    public function supports(\Rector\Core\ValueObject\Application\File $file) : bool
+    {
+        $smartFileInfo = $file->getSmartFileInfo();
+        if (!\in_array($smartFileInfo->getFilename(), ['ext_icon.png', 'ext_icon.svg', 'ext_icon.gif'], \true)) {
+            return \false;
+        }
+        $extEmConf = \sprintf('%s/ext_emconf.php', \rtrim(\dirname($smartFileInfo->getRealPath()), '/'));
+        return $this->smartFileSystem->exists($extEmConf);
+    }
+    public function getSupportedFileExtensions() : array
+    {
+        return ['png', 'gif', 'svg'];
+    }
+    private function processFile(\Rector\Core\ValueObject\Application\File $file) : void
+    {
+        $smartFileInfo = $file->getSmartFileInfo();
         $relativeFilePath = \dirname($smartFileInfo->getRelativeFilePath());
         $realPath = \dirname($smartFileInfo->getRealPath());
         $relativeTargetFilePath = \sprintf('/Resources/Public/Icons/Extension.%s', $smartFileInfo->getExtension());
@@ -49,18 +71,5 @@ final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProces
             $message = \sprintf('File "%s" already exists.', $newFullPath);
             $this->symfonyStyle->warning($message);
         }
-        return null;
-    }
-    public function supports(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
-    {
-        if (!\in_array($smartFileInfo->getFilename(), ['ext_icon.png', 'ext_icon.svg', 'ext_icon.gif'], \true)) {
-            return \false;
-        }
-        $extEmConf = \sprintf('%s/ext_emconf.php', \rtrim(\dirname($smartFileInfo->getRealPath()), '/'));
-        return $this->smartFileSystem->exists($extEmConf);
-    }
-    public function getSupportedFileExtensions() : array
-    {
-        return ['png', 'gif', 'svg'];
     }
 }

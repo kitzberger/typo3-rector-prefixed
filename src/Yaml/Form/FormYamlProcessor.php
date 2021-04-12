@@ -4,10 +4,9 @@ declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Yaml\Form;
 
 use Rector\Core\Contract\Processor\FileProcessorInterface;
-use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
+use Rector\Core\ValueObject\Application\File;
 use Ssch\TYPO3Rector\Yaml\Form\Transformer\FormYamlTransformer;
 use Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Yaml\Form\FormYamlProcessorTest
  */
@@ -16,7 +15,7 @@ final class FormYamlProcessor implements \Rector\Core\Contract\Processor\FilePro
     /**
      * @var string[]
      */
-    private const ALLOWED_FILE_EXTENSIONS = ['form.yaml'];
+    private const ALLOWED_FILE_EXTENSIONS = ['yaml'];
     /**
      * @var FormYamlTransformer[]
      */
@@ -28,26 +27,38 @@ final class FormYamlProcessor implements \Rector\Core\Contract\Processor\FilePro
     {
         $this->transformer = $transformer;
     }
-    public function process(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
+    /**
+     * @param File[] $files
+     */
+    public function process(array $files) : void
     {
-        $yaml = \Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
-        if (!\is_array($yaml)) {
-            return null;
+        foreach ($files as $file) {
+            $this->processFile($file);
         }
-        foreach ($this->transformer as $transformer) {
-            $yaml = $transformer->transform($yaml);
-        }
-        return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($smartFileInfo->getContents(), \Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2));
     }
-    public function supports(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function supports(\Rector\Core\ValueObject\Application\File $file) : bool
     {
         if ([] === $this->transformer) {
             return \false;
         }
+        $smartFileInfo = $file->getSmartFileInfo();
         return \in_array($smartFileInfo->getExtension(), self::ALLOWED_FILE_EXTENSIONS, \true);
     }
     public function getSupportedFileExtensions() : array
     {
         return self::ALLOWED_FILE_EXTENSIONS;
+    }
+    private function processFile(\Rector\Core\ValueObject\Application\File $file) : void
+    {
+        $smartFileInfo = $file->getSmartFileInfo();
+        $yaml = \Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
+        if (!\is_array($yaml)) {
+            return;
+        }
+        foreach ($this->transformer as $transformer) {
+            $yaml = $transformer->transform($yaml);
+        }
+        $changedContent = \Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2);
+        $file->changeFileContent($changedContent);
     }
 }

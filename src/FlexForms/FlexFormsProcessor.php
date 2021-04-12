@@ -5,9 +5,8 @@ namespace Ssch\TYPO3Rector\FlexForms;
 
 use DOMDocument;
 use Rector\Core\Contract\Processor\FileProcessorInterface;
-use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
+use Rector\Core\ValueObject\Application\File;
 use Ssch\TYPO3Rector\FlexForms\Transformer\FlexFormTransformer;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
 use UnexpectedValueException;
 /**
  * @see \Ssch\TYPO3Rector\Tests\FlexForms\FlexFormsProcessorTest
@@ -25,25 +24,21 @@ final class FlexFormsProcessor implements \Rector\Core\Contract\Processor\FilePr
     {
         $this->transformer = $transformer;
     }
-    public function process(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
-    {
-        $domDocument = new \DOMDocument();
-        $domDocument->formatOutput = \true;
-        $domDocument->load($smartFileInfo->getRealPath());
-        foreach ($this->transformer as $transformer) {
-            $transformer->transform($domDocument);
-        }
-        $xml = $domDocument->saveXML($domDocument->documentElement, \LIBXML_NOEMPTYTAG);
-        if (\false === $xml) {
-            throw new \UnexpectedValueException('Could not convert to xml');
-        }
-        return new \Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange($smartFileInfo->getContents(), \html_entity_decode($xml) . "\n");
-    }
-    public function supports(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    /**
+     * @param File[] $files
+     */
+    public function process(array $files) : void
     {
         if ([] === $this->transformer) {
-            return \false;
+            return;
         }
+        foreach ($files as $file) {
+            $this->processFile($file);
+        }
+    }
+    public function supports(\Rector\Core\ValueObject\Application\File $file) : bool
+    {
+        $smartFileInfo = $file->getSmartFileInfo();
         if ('xml' !== $smartFileInfo->getExtension()) {
             return \false;
         }
@@ -56,5 +51,24 @@ final class FlexFormsProcessor implements \Rector\Core\Contract\Processor\FilePr
     public function getSupportedFileExtensions() : array
     {
         return ['xml'];
+    }
+    private function processFile(\Rector\Core\ValueObject\Application\File $file) : void
+    {
+        $smartFileInfo = $file->getSmartFileInfo();
+        $domDocument = new \DOMDocument();
+        $domDocument->formatOutput = \true;
+        $domDocument->load($smartFileInfo->getRealPath());
+        foreach ($this->transformer as $transformer) {
+            $transformer->transform($domDocument);
+        }
+        $xml = $domDocument->saveXML($domDocument->documentElement, \LIBXML_NOEMPTYTAG);
+        if (\false === $xml) {
+            throw new \UnexpectedValueException('Could not convert to xml');
+        }
+        if ($xml === $file->getFileContent()) {
+            return;
+        }
+        $changedContent = \html_entity_decode($xml) . "\n";
+        $file->changeFileContent($changedContent);
     }
 }

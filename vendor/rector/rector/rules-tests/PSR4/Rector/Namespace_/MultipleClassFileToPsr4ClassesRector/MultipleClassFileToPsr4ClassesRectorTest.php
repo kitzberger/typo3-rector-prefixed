@@ -4,7 +4,6 @@ declare (strict_types=1);
 namespace Rector\Tests\PSR4\Rector\Namespace_\MultipleClassFileToPsr4ClassesRector;
 
 use Iterator;
-use Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector;
 use Rector\FileSystemRector\ValueObject\AddedFileWithContent;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
 use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
@@ -17,9 +16,6 @@ final class MultipleClassFileToPsr4ClassesRectorTest extends \Rector\Testing\PHP
      */
     public function test(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, array $expectedFilePathsWithContents) : void
     {
-        /** @var RemovedAndAddedFilesCollector $removedAndAddedFilesCollector */
-        $removedAndAddedFilesCollector = $this->getService(\Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector::class);
-        $removedAndAddedFilesCollector->reset();
         $this->doTestFileInfo($originalFileInfo);
         $this->assertFilesWereAdded($expectedFilePathsWithContents);
     }

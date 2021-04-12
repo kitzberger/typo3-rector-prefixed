@@ -32,6 +32,7 @@ final class NoInstanceOfStaticReflectionRuleTest extends \Typo3RectorPrefix20210
         (yield [__DIR__ . '/Fixture/SkipReflection.php', []]);
         (yield [__DIR__ . '/Fixture/SkipDateTime.php', []]);
         (yield [__DIR__ . '/Fixture/SkipTypesArray.php', []]);
+        (yield [__DIR__ . '/Fixture/SkipSymfony.php', []]);
     }
     protected function getRule() : \PHPStan\Rules\Rule
     {

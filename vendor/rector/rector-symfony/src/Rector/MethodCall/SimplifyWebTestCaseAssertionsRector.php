@@ -127,7 +127,7 @@ CODE_SAMPLE
         if (!$classReflection instanceof \PHPStan\Reflection\ClassReflection) {
             return \false;
         }
-        return $classReflection->isSubclassOf('Typo3RectorPrefix20210411\\Symfony\\Bundle\\FrameworkBundle\\Test\\WebTestCase');
+        return $classReflection->isSubclassOf('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Test\\WebTestCase');
     }
     private function processAssertResponseStatusCodeSame(\PhpParser\Node\Expr\MethodCall $methodCall) : ?\PhpParser\Node\Expr\MethodCall
     {

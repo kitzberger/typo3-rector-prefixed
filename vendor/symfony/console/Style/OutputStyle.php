@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210411\Symfony\Component\Console\Style;
+namespace Typo3RectorPrefix20210412\Symfony\Component\Console\Style;
 
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Helper\ProgressBar;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Helper\ProgressBar;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Decorates output to add console style guide helpers.
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-abstract class OutputStyle implements \Typo3RectorPrefix20210411\Symfony\Component\Console\Output\OutputInterface, \Typo3RectorPrefix20210411\Symfony\Component\Console\Style\StyleInterface
+abstract class OutputStyle implements \Typo3RectorPrefix20210412\Symfony\Component\Console\Output\OutputInterface, \Typo3RectorPrefix20210412\Symfony\Component\Console\Style\StyleInterface
 {
     private $output;
-    public function __construct(\Typo3RectorPrefix20210411\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(\Typo3RectorPrefix20210412\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->output = $output;
     }
@@ -38,7 +38,7 @@ abstract class OutputStyle implements \Typo3RectorPrefix20210411\Symfony\Compone
      */
     public function createProgressBar(int $max = 0)
     {
-        return new \Typo3RectorPrefix20210411\Symfony\Component\Console\Helper\ProgressBar($this->output, $max);
+        return new \Typo3RectorPrefix20210412\Symfony\Component\Console\Helper\ProgressBar($this->output, $max);
     }
     /**
      * {@inheritdoc}
@@ -85,7 +85,7 @@ abstract class OutputStyle implements \Typo3RectorPrefix20210411\Symfony\Compone
     /**
      * {@inheritdoc}
      */
-    public function setFormatter(\Typo3RectorPrefix20210411\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter(\Typo3RectorPrefix20210412\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
     {
         $this->output->setFormatter($formatter);
     }
@@ -126,7 +126,7 @@ abstract class OutputStyle implements \Typo3RectorPrefix20210411\Symfony\Compone
     }
     protected function getErrorOutput()
     {
-        if (!$this->output instanceof \Typo3RectorPrefix20210411\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+        if (!$this->output instanceof \Typo3RectorPrefix20210412\Symfony\Component\Console\Output\ConsoleOutputInterface) {
             return $this->output;
         }
         return $this->output->getErrorOutput();

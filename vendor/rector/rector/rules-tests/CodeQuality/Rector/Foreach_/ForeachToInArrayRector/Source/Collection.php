@@ -4,7 +4,7 @@ namespace Rector\Tests\CodeQuality\Rector\Foreach_\ForeachToInArrayRector\Source
 
 use ArrayIterator;
 use Closure;
-use Typo3RectorPrefix20210411\Doctrine\Common\Collections\Expr\ClosureExpressionVisitor;
+use Typo3RectorPrefix20210412\Doctrine\Common\Collections\Expr\ClosureExpressionVisitor;
 use const ARRAY_FILTER_USE_BOTH;
 use function array_filter;
 use function array_key_exists;

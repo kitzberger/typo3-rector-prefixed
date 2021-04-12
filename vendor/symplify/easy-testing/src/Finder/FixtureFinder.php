@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411\Symplify\EasyTesting\Finder;
+namespace Typo3RectorPrefix20210412\Symplify\EasyTesting\Finder;
 
-use Typo3RectorPrefix20210411\Symfony\Component\Finder\Finder;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210412\Symfony\Component\Finder\Finder;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
 final class FixtureFinder
 {
     /**
      * @var FinderSanitizer
      */
     private $finderSanitizer;
-    public function __construct(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer)
+    public function __construct(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer)
     {
         $this->finderSanitizer = $finderSanitizer;
     }
@@ -21,7 +21,7 @@ final class FixtureFinder
      */
     public function find(array $sources) : array
     {
-        $finder = new \Typo3RectorPrefix20210411\Symfony\Component\Finder\Finder();
+        $finder = new \Typo3RectorPrefix20210412\Symfony\Component\Finder\Finder();
         $finder->files()->in($sources)->name('*.php.inc')->path('Fixture')->sortByName();
         return $this->finderSanitizer->sanitize($finder);
     }

@@ -5,13 +5,13 @@ namespace Rector\Tests\Transform\Rector\FileWithoutNamespace\FunctionToStaticMet
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
 final class FunctionToStaticMethodRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function test(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $this->doTestFileInfo($smartFileInfo);
         $this->doTestExtraFile('StaticFunctions.php', __DIR__ . '/Source/ExpectedStaticFunctions.php');

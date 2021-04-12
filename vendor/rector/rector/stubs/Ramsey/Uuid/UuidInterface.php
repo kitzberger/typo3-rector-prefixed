@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411\Ramsey\Uuid;
+namespace Typo3RectorPrefix20210412\Ramsey\Uuid;
 
-if (\interface_exists('Typo3RectorPrefix20210411\\Ramsey\\Uuid\\UuidInterface')) {
+if (\interface_exists('Typo3RectorPrefix20210412\\Ramsey\\Uuid\\UuidInterface')) {
     return;
 }
 interface UuidInterface

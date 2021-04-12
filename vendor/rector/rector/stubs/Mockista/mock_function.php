@@ -1,11 +1,11 @@
 <?php
 
-namespace Typo3RectorPrefix20210411;
+namespace Typo3RectorPrefix20210412;
 
-if (\function_exists('Typo3RectorPrefix20210411\\mock')) {
+if (\function_exists('Typo3RectorPrefix20210412\\mock')) {
     return;
 }
-function mock() : \Typo3RectorPrefix20210411\Mockery\MockInterface
+function mock() : \Typo3RectorPrefix20210412\Mockery\MockInterface
 {
-    return new \Typo3RectorPrefix20210411\DummyMock();
+    return new \Typo3RectorPrefix20210412\DummyMock();
 }

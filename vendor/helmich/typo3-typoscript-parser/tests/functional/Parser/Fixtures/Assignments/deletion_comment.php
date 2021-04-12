@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411;
+namespace Typo3RectorPrefix20210412;
 
-use Typo3RectorPrefix20210411\Helmich\TypoScriptParser\Parser\AST\Comment;
-return [new \Typo3RectorPrefix20210411\Helmich\TypoScriptParser\Parser\AST\Operator\Delete(new \Typo3RectorPrefix20210411\Helmich\TypoScriptParser\Parser\AST\ObjectPath('foo', 'foo'), 1), new \Typo3RectorPrefix20210411\Helmich\TypoScriptParser\Parser\AST\Comment('# Something', 1)];
+use Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\AST\Comment;
+return [new \Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\AST\Operator\Delete(new \Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\AST\ObjectPath('foo', 'foo'), 1), new \Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\AST\Comment('# Something', 1)];

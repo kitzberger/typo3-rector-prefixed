@@ -12,7 +12,7 @@ use PHPStan\Type\ObjectType;
 use Rector\Core\Configuration\Option;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210411\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210412\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -24,7 +24,7 @@ final class DesiredPropertyClassMethodTypeToDynamicRector extends \Rector\Core\R
      * @var ObjectType[]
      */
     private $staticObjectTypes = [];
-    public function __construct(\Typo3RectorPrefix20210411\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Typo3RectorPrefix20210412\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $typesToRemoveStaticFrom = $parameterProvider->provideArrayParameter(\Rector\Core\Configuration\Option::TYPES_TO_REMOVE_STATIC_FROM);
         foreach ($typesToRemoveStaticFrom as $typeToRemoveStaticFrom) {

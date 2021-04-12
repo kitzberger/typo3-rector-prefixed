@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411\Symplify\SymplifyKernel\HttpKernel;
+namespace Typo3RectorPrefix20210412\Symplify\SymplifyKernel\HttpKernel;
 
-use Typo3RectorPrefix20210411\Symfony\Component\Config\Loader\LoaderInterface;
-use Typo3RectorPrefix20210411\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Typo3RectorPrefix20210411\Symfony\Component\HttpKernel\Kernel;
-use Typo3RectorPrefix20210411\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210411\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
-use Typo3RectorPrefix20210411\Symplify\SymplifyKernel\Strings\KernelUniqueHasher;
-abstract class AbstractSymplifyKernel extends \Typo3RectorPrefix20210411\Symfony\Component\HttpKernel\Kernel implements \Typo3RectorPrefix20210411\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
+use Typo3RectorPrefix20210412\Symfony\Component\Config\Loader\LoaderInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\HttpKernel\Kernel;
+use Typo3RectorPrefix20210412\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210412\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
+use Typo3RectorPrefix20210412\Symplify\SymplifyKernel\Strings\KernelUniqueHasher;
+abstract class AbstractSymplifyKernel extends \Typo3RectorPrefix20210412\Symfony\Component\HttpKernel\Kernel implements \Typo3RectorPrefix20210412\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
 {
     /**
      * @var string[]
@@ -29,7 +29,7 @@ abstract class AbstractSymplifyKernel extends \Typo3RectorPrefix20210411\Symfony
      */
     public function registerBundles() : iterable
     {
-        return [new \Typo3RectorPrefix20210411\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle()];
+        return [new \Typo3RectorPrefix20210412\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle()];
     }
     /**
      * @param string[]|SmartFileInfo[] $configs
@@ -37,13 +37,13 @@ abstract class AbstractSymplifyKernel extends \Typo3RectorPrefix20210411\Symfony
     public function setConfigs(array $configs) : void
     {
         foreach ($configs as $config) {
-            if ($config instanceof \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo) {
+            if ($config instanceof \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo) {
                 $config = $config->getRealPath();
             }
             $this->configs[] = $config;
         }
     }
-    public function registerContainerConfiguration(\Typo3RectorPrefix20210411\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\Typo3RectorPrefix20210412\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         foreach ($this->configs as $config) {
             $loader->load($config);
@@ -51,7 +51,7 @@ abstract class AbstractSymplifyKernel extends \Typo3RectorPrefix20210411\Symfony
     }
     private function getUniqueKernelHash() : string
     {
-        $kernelUniqueHasher = new \Typo3RectorPrefix20210411\Symplify\SymplifyKernel\Strings\KernelUniqueHasher();
+        $kernelUniqueHasher = new \Typo3RectorPrefix20210412\Symplify\SymplifyKernel\Strings\KernelUniqueHasher();
         return $kernelUniqueHasher->hashKernelClass(static::class);
     }
 }

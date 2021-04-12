@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Nette\Rector\FuncCall;
 
-use Typo3RectorPrefix20210411\Nette\Utils\Strings;
+use Typo3RectorPrefix20210412\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -147,7 +147,7 @@ CODE_SAMPLE
             $args[] = $funcCall->args[1];
             $args[] = $funcCall->args[0];
         }
-        return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210411\\Nette\\Utils\\Strings', $methodName, $args);
+        return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210412\\Nette\\Utils\\Strings', $methodName, $args);
     }
     /**
      * @return FuncCall|StaticCall
@@ -175,7 +175,7 @@ CODE_SAMPLE
         if (!\is_string($patternValue)) {
             return;
         }
-        $match = \Typo3RectorPrefix20210411\Nette\Utils\Strings::match($patternValue, self::SLASH_REGEX);
+        $match = \Typo3RectorPrefix20210412\Nette\Utils\Strings::match($patternValue, self::SLASH_REGEX);
         if ($match === null) {
             return;
         }

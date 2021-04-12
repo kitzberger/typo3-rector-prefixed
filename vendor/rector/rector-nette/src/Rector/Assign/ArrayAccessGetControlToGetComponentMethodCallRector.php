@@ -71,6 +71,6 @@ CODE_SAMPLE
             return \false;
         }
         $arrayDimFetch = $assign->expr;
-        return $this->isObjectType($arrayDimFetch->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Nette\\Application\\UI\\Presenter'));
+        return $this->isObjectType($arrayDimFetch->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Nette\\Application\\UI\\Presenter'));
     }
 }

@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210411\Symfony\Component\Console\Command;
+namespace Typo3RectorPrefix20210412\Symfony\Component\Console\Command;
 
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Helper\DescriptorHelper;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputArgument;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputInterface;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputOption;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Output\OutputInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Helper\DescriptorHelper;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputArgument;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Output\OutputInterface;
 /**
  * ListCommand displays the list of all available commands for the application.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ListCommand extends \Typo3RectorPrefix20210411\Symfony\Component\Console\Command\Command
+class ListCommand extends \Typo3RectorPrefix20210412\Symfony\Component\Console\Command\Command
 {
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
-        $this->setName('list')->setDefinition([new \Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputArgument('namespace', \Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputOption('raw', null, \Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputOption('format', null, \Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt')])->setDescription('List commands')->setHelp(<<<'EOF'
+        $this->setName('list')->setDefinition([new \Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputArgument('namespace', \Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption('raw', null, \Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption('format', null, \Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt')])->setDescription('List commands')->setHelp(<<<'EOF'
 The <info>%command.name%</info> command lists all commands:
 
   <info>%command.full_name%</info>
@@ -49,9 +49,9 @@ EOF
     /**
      * {@inheritdoc}
      */
-    protected function execute(\Typo3RectorPrefix20210411\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210411\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function execute(\Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputInterface $input, \Typo3RectorPrefix20210412\Symfony\Component\Console\Output\OutputInterface $output)
     {
-        $helper = new \Typo3RectorPrefix20210411\Symfony\Component\Console\Helper\DescriptorHelper();
+        $helper = new \Typo3RectorPrefix20210412\Symfony\Component\Console\Helper\DescriptorHelper();
         $helper->describe($output, $this->getApplication(), ['format' => $input->getOption('format'), 'raw_text' => $input->getOption('raw'), 'namespace' => $input->getArgument('namespace')]);
         return 0;
     }

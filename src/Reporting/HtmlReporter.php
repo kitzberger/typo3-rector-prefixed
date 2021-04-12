@@ -6,8 +6,8 @@ namespace Ssch\TYPO3Rector\Reporting;
 use Rector\ChangesReporting\Annotation\AnnotationExtractor;
 use ReflectionClass;
 use Ssch\TYPO3Rector\Reporting\ValueObject\Report;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem;
 final class HtmlReporter implements \Ssch\TYPO3Rector\Reporting\Reporter
 {
     /**
@@ -26,7 +26,7 @@ final class HtmlReporter implements \Ssch\TYPO3Rector\Reporting\Reporter
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $reportFile, \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $reportFile, \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->annotationExtractor = $annotationExtractor;
         $this->reportFile = $reportFile;

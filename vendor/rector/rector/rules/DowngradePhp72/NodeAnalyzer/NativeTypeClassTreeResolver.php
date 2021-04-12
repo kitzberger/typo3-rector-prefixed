@@ -11,7 +11,7 @@ use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypehintHelper;
 use Rector\StaticTypeMapper\StaticTypeMapper;
-use Typo3RectorPrefix20210411\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use Typo3RectorPrefix20210412\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 final class NativeTypeClassTreeResolver
 {
     /**
@@ -22,7 +22,7 @@ final class NativeTypeClassTreeResolver
      * @var PrivatesAccessor
      */
     private $privatesAccessor;
-    public function __construct(\Rector\StaticTypeMapper\StaticTypeMapper $staticTypeMapper, \Typo3RectorPrefix20210411\Symplify\PackageBuilder\Reflection\PrivatesAccessor $privatesAccessor)
+    public function __construct(\Rector\StaticTypeMapper\StaticTypeMapper $staticTypeMapper, \Typo3RectorPrefix20210412\Symplify\PackageBuilder\Reflection\PrivatesAccessor $privatesAccessor)
     {
         $this->staticTypeMapper = $staticTypeMapper;
         $this->privatesAccessor = $privatesAccessor;

@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411\Nette\Utils;
+namespace Typo3RectorPrefix20210412\Nette\Utils;
 
-use Typo3RectorPrefix20210411\Nette;
+use Typo3RectorPrefix20210412\Nette;
 /**
  * Secure random string generator.
  */
@@ -25,9 +25,9 @@ final class Random
         }, $charlist), 3);
         $chLen = \strlen($charlist);
         if ($length < 1) {
-            throw new \Typo3RectorPrefix20210411\Nette\InvalidArgumentException('Length must be greater than zero.');
+            throw new \Typo3RectorPrefix20210412\Nette\InvalidArgumentException('Length must be greater than zero.');
         } elseif ($chLen < 2) {
-            throw new \Typo3RectorPrefix20210411\Nette\InvalidArgumentException('Character list must contain at least two chars.');
+            throw new \Typo3RectorPrefix20210412\Nette\InvalidArgumentException('Character list must contain at least two chars.');
         }
         $res = '';
         for ($i = 0; $i < $length; $i++) {

@@ -40,7 +40,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Symfony\\Component\\Process\\ProcessBuilder'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Component\\Process\\ProcessBuilder'))) {
             return null;
         }
         if (!$this->isName($node->name, 'getProcess')) {

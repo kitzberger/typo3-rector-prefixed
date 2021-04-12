@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Compiler;
+namespace Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Compiler;
 
-use Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Alias;
-use Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Reference;
+use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Alias;
+use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Reference;
 /**
  * Overwrites a service but keeps the overridden one.
  *
@@ -22,14 +22,14 @@ use Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Reference;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Diego Saint Esteben <diego@saintesteben.me>
  */
-class DecoratorServicePass extends \Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class DecoratorServicePass extends \Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private $innerId = '.inner';
     public function __construct(?string $innerId = '.inner')
     {
         $this->innerId = $innerId;
     }
-    public function process(\Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $definitions = new \SplPriorityQueue();
         $order = \PHP_INT_MAX;
@@ -43,7 +43,7 @@ class DecoratorServicePass extends \Typo3RectorPrefix20210411\Symfony\Component\
         foreach ($definitions as [$id, $definition]) {
             $decoratedService = $definition->getDecoratedService();
             [$inner, $renamedId] = $decoratedService;
-            $invalidBehavior = $decoratedService[3] ?? \Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+            $invalidBehavior = $decoratedService[3] ?? \Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
             $definition->setDecoratedService(null);
             if (!$renamedId) {
                 $renamedId = $id . '.inner';
@@ -58,7 +58,7 @@ class DecoratorServicePass extends \Typo3RectorPrefix20210411\Symfony\Component\
                 $alias = $container->getAlias($inner);
                 $public = $alias->isPublic();
                 $private = $alias->isPrivate();
-                $container->setAlias($renamedId, new \Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Alias((string) $alias, \false));
+                $container->setAlias($renamedId, new \Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Alias((string) $alias, \false));
             } elseif ($container->hasDefinition($inner)) {
                 $decoratedDefinition = $container->getDefinition($inner);
                 $public = $decoratedDefinition->isPublic();
@@ -66,14 +66,14 @@ class DecoratorServicePass extends \Typo3RectorPrefix20210411\Symfony\Component\
                 $decoratedDefinition->setPublic(\false);
                 $container->setDefinition($renamedId, $decoratedDefinition);
                 $decoratingDefinitions[$inner] = $decoratedDefinition;
-            } elseif (\Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
+            } elseif (\Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
                 $container->removeDefinition($id);
                 continue;
-            } elseif (\Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
+            } elseif (\Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
                 $public = $definition->isPublic();
                 $private = $definition->isPrivate();
             } else {
-                throw new \Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($inner, $id);
+                throw new \Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($inner, $id);
             }
             if (isset($decoratingDefinitions[$inner])) {
                 $decoratingDefinition = $decoratingDefinitions[$inner];
@@ -93,8 +93,8 @@ class DecoratorServicePass extends \Typo3RectorPrefix20210411\Symfony\Component\
     }
     protected function processValue($value, bool $isRoot = \false)
     {
-        if ($value instanceof \Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Reference && $this->innerId === (string) $value) {
-            return new \Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Reference($this->currentId, $value->getInvalidBehavior());
+        if ($value instanceof \Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Reference && $this->innerId === (string) $value) {
+            return new \Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Reference($this->currentId, $value->getInvalidBehavior());
         }
         return parent::processValue($value, $isRoot);
     }

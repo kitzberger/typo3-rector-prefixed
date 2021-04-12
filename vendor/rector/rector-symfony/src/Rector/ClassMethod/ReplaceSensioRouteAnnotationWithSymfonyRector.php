@@ -76,10 +76,10 @@ CODE_SAMPLE
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);
-        if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210411\\Symfony\\Component\\Routing\\Annotation\\Route')) {
+        if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210412\\Symfony\\Component\\Routing\\Annotation\\Route')) {
             return null;
         }
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210411\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Route');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210412\\Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Route');
         if (!$doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return null;
         }

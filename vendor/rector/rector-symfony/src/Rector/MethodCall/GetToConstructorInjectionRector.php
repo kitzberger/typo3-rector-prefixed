@@ -30,7 +30,7 @@ final class GetToConstructorInjectionRector extends \Rector\Core\Rector\Abstract
     private $dependencyInjectionMethodCallAnalyzer;
     public function __construct(\Rector\Symfony\NodeAnalyzer\DependencyInjectionMethodCallAnalyzer $dependencyInjectionMethodCallAnalyzer)
     {
-        $this->getMethodAwareObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerTrait')];
+        $this->getMethodAwareObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerTrait')];
         $this->dependencyInjectionMethodCallAnalyzer = $dependencyInjectionMethodCallAnalyzer;
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition

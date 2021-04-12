@@ -8,7 +8,7 @@ use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Type\ObjectType;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\NodeTypeResolver;
-use Typo3RectorPrefix20210411\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210412\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class MethodCallNameOnTypeResolver
 {
     /**
@@ -23,7 +23,7 @@ final class MethodCallNameOnTypeResolver
      * @var NodeTypeResolver
      */
     private $nodeTypeResolver;
-    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210411\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver)
+    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210412\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver)
     {
         $this->nodeNameResolver = $nodeNameResolver;
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;

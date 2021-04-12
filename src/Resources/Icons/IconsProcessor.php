@@ -6,9 +6,9 @@ namespace Ssch\TYPO3Rector\Resources\Icons;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\Contract\Processor\FileProcessorInterface;
 use Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange;
-use Typo3RectorPrefix20210411\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210412\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem;
 final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProcessorInterface
 {
     /**
@@ -23,13 +23,13 @@ final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProces
      * @var Configuration
      */
     private $configuration;
-    public function __construct(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210411\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
+    public function __construct(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210412\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
     {
         $this->smartFileSystem = $smartFileSystem;
         $this->symfonyStyle = $symfonyStyle;
         $this->configuration = $configuration;
     }
-    public function process(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
+    public function process(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?\Rector\Core\ValueObject\NonPhpFile\NonPhpFileChange
     {
         $relativeFilePath = \dirname($smartFileInfo->getRelativeFilePath());
         $realPath = \dirname($smartFileInfo->getRealPath());
@@ -51,7 +51,7 @@ final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProces
         }
         return null;
     }
-    public function supports(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function supports(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         if (!\in_array($smartFileInfo->getFilename(), ['ext_icon.png', 'ext_icon.svg', 'ext_icon.gif'], \true)) {
             return \false;

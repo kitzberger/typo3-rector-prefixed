@@ -69,10 +69,10 @@ CODE_SAMPLE
         if (!$classReflection instanceof \PHPStan\Reflection\ClassReflection) {
             return null;
         }
-        if (!$classReflection->isSubclassOf('Typo3RectorPrefix20210411\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
+        if (!$classReflection->isSubclassOf('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
             return null;
         }
-        if (!$this->fluentChainMethodCallNodeAnalyzer->isTypeAndChainCalls($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Symfony\\Component\\HttpFoundation\\Request'), ['getSession', 'getFlashBag', 'add'])) {
+        if (!$this->fluentChainMethodCallNodeAnalyzer->isTypeAndChainCalls($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Component\\HttpFoundation\\Request'), ['getSession', 'getFlashBag', 'add'])) {
             return null;
         }
         return $this->nodeFactory->createMethodCall('this', 'addFlash', $node->args);

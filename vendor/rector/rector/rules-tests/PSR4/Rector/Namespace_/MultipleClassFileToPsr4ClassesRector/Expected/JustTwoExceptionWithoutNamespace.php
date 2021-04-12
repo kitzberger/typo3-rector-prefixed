@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411;
+namespace Typo3RectorPrefix20210412;
 
 final class JustTwoExceptionWithoutNamespace
 {
 }
-\class_alias('Typo3RectorPrefix20210411\\JustTwoExceptionWithoutNamespace', 'JustTwoExceptionWithoutNamespace', \false);
+\class_alias('Typo3RectorPrefix20210412\\JustTwoExceptionWithoutNamespace', 'JustTwoExceptionWithoutNamespace', \false);

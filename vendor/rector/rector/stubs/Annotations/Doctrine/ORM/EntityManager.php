@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411\Doctrine\ORM;
+namespace Typo3RectorPrefix20210412\Doctrine\ORM;
 
-if (\class_exists('Typo3RectorPrefix20210411\\Doctrine\\ORM\\EntityManager')) {
+if (\class_exists('Typo3RectorPrefix20210412\\Doctrine\\ORM\\EntityManager')) {
     return;
 }
 class EntityManager

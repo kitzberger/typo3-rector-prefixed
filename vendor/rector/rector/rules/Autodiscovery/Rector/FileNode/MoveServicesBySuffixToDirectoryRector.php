@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Autodiscovery\Rector\FileNode;
 
-use Typo3RectorPrefix20210411\Nette\Utils\Strings;
+use Typo3RectorPrefix20210412\Nette\Utils\Strings;
 use PhpParser\Node;
 use Rector\Autodiscovery\FileLocation\ExpectedFileLocationResolver;
 use Rector\Core\Contract\Rector\ConfigurableRectorInterface;
@@ -13,8 +13,8 @@ use Rector\FileSystemRector\ValueObject\MovedFileWithNodes;
 use Rector\FileSystemRector\ValueObjectFactory\MovedFileWithNodesFactory;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210411\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210412\Webmozart\Assert\Assert;
 /**
  * Inspiration @see https://github.com/rectorphp/rector/pull/1865/files#diff-0d18e660cdb626958662641b491623f8
  *
@@ -81,7 +81,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $groupNamesBySuffix = $configuration[self::GROUP_NAMES_BY_SUFFIX] ?? [];
-        \Typo3RectorPrefix20210411\Webmozart\Assert\Assert::allString($groupNamesBySuffix);
+        \Typo3RectorPrefix20210412\Webmozart\Assert\Assert::allString($groupNamesBySuffix);
         $this->groupNamesBySuffix = $groupNamesBySuffix;
     }
     /**
@@ -100,31 +100,31 @@ CODE_SAMPLE
      *
      * @param string[] $groupNamesBySuffix
      */
-    private function processGroupNamesBySuffix(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, \Rector\Core\PhpParser\Node\CustomNode\FileNode $fileNode, array $groupNamesBySuffix) : void
+    private function processGroupNamesBySuffix(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, \Rector\Core\PhpParser\Node\CustomNode\FileNode $fileNode, array $groupNamesBySuffix) : void
     {
         foreach ($groupNamesBySuffix as $groupNames) {
             // has class suffix
             $suffixPattern = '\\w+' . $groupNames . '(Test)?\\.php$';
-            if (!\Typo3RectorPrefix20210411\Nette\Utils\Strings::match($smartFileInfo->getRealPath(), '#' . $suffixPattern . '#')) {
+            if (!\Typo3RectorPrefix20210412\Nette\Utils\Strings::match($smartFileInfo->getRealPath(), '#' . $suffixPattern . '#')) {
                 continue;
             }
             if ($this->isLocatedInExpectedLocation($groupNames, $suffixPattern, $smartFileInfo)) {
                 continue;
             }
             // file is already in the group
-            if (\Typo3RectorPrefix20210411\Nette\Utils\Strings::match($smartFileInfo->getPath(), '#' . $groupNames . '$#')) {
+            if (\Typo3RectorPrefix20210412\Nette\Utils\Strings::match($smartFileInfo->getPath(), '#' . $groupNames . '$#')) {
                 continue;
             }
             $this->moveFileToGroupName($smartFileInfo, $fileNode, $groupNames);
             return;
         }
     }
-    private function isLocatedInExpectedLocation(string $groupName, string $suffixPattern, \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    private function isLocatedInExpectedLocation(string $groupName, string $suffixPattern, \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         $expectedLocationFilePattern = $this->expectedFileLocationResolver->resolve($groupName, $suffixPattern);
-        return (bool) \Typo3RectorPrefix20210411\Nette\Utils\Strings::match($smartFileInfo->getRealPath(), $expectedLocationFilePattern);
+        return (bool) \Typo3RectorPrefix20210412\Nette\Utils\Strings::match($smartFileInfo->getRealPath(), $expectedLocationFilePattern);
     }
-    private function moveFileToGroupName(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, \Rector\Core\PhpParser\Node\CustomNode\FileNode $fileNode, string $desiredGroupName) : void
+    private function moveFileToGroupName(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, \Rector\Core\PhpParser\Node\CustomNode\FileNode $fileNode, string $desiredGroupName) : void
     {
         $movedFileWithNodes = $this->movedFileWithNodesFactory->createWithDesiredGroup($fileInfo, $fileNode->stmts, $desiredGroupName);
         if (!$movedFileWithNodes instanceof \Rector\FileSystemRector\ValueObject\MovedFileWithNodes) {

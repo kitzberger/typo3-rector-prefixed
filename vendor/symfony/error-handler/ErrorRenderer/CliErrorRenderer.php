@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210411\Symfony\Component\ErrorHandler\ErrorRenderer;
+namespace Typo3RectorPrefix20210412\Symfony\Component\ErrorHandler\ErrorRenderer;
 
-use Typo3RectorPrefix20210411\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use Typo3RectorPrefix20210411\Symfony\Component\VarDumper\Cloner\VarCloner;
-use Typo3RectorPrefix20210411\Symfony\Component\VarDumper\Dumper\CliDumper;
+use Typo3RectorPrefix20210412\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use Typo3RectorPrefix20210412\Symfony\Component\VarDumper\Cloner\VarCloner;
+use Typo3RectorPrefix20210412\Symfony\Component\VarDumper\Dumper\CliDumper;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\Typo3RectorPrefix20210411\Symfony\Component\VarDumper\Dumper\CliDumper::class);
+\class_exists(\Typo3RectorPrefix20210412\Symfony\Component\VarDumper\Dumper\CliDumper::class);
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CliErrorRenderer implements \Typo3RectorPrefix20210411\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
+class CliErrorRenderer implements \Typo3RectorPrefix20210412\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function render(\Throwable $exception) : \Typo3RectorPrefix20210411\Symfony\Component\ErrorHandler\Exception\FlattenException
+    public function render(\Throwable $exception) : \Typo3RectorPrefix20210412\Symfony\Component\ErrorHandler\Exception\FlattenException
     {
-        $cloner = new \Typo3RectorPrefix20210411\Symfony\Component\VarDumper\Cloner\VarCloner();
-        $dumper = new class extends \Typo3RectorPrefix20210411\Symfony\Component\VarDumper\Dumper\CliDumper
+        $cloner = new \Typo3RectorPrefix20210412\Symfony\Component\VarDumper\Cloner\VarCloner();
+        $dumper = new class extends \Typo3RectorPrefix20210412\Symfony\Component\VarDumper\Dumper\CliDumper
         {
             protected function supportsColors() : bool
             {
@@ -39,6 +39,6 @@ class CliErrorRenderer implements \Typo3RectorPrefix20210411\Symfony\Component\E
                 }
             }
         };
-        return \Typo3RectorPrefix20210411\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)->setAsString($dumper->dump($cloner->cloneVar($exception), \true));
+        return \Typo3RectorPrefix20210412\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)->setAsString($dumper->dump($cloner->cloneVar($exception), \true));
     }
 }

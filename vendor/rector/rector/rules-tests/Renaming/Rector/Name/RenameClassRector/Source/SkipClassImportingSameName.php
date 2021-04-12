@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411;
+namespace Typo3RectorPrefix20210412;
 
 interface SkipClassImportingSameName
 {
 }
-\class_alias('Typo3RectorPrefix20210411\\SkipClassImportingSameName', 'SkipClassImportingSameName', \false);
+\class_alias('Typo3RectorPrefix20210412\\SkipClassImportingSameName', 'SkipClassImportingSameName', \false);

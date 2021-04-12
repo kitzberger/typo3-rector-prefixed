@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210411;
+namespace Typo3RectorPrefix20210412;
 
 use Ssch\TYPO3Rector\Rector\v8\v1\Array2XmlCsToArray2XmlRector;
 use Ssch\TYPO3Rector\Rector\v8\v1\RefactorDbConstantsRector;
 use Ssch\TYPO3Rector\Rector\v8\v1\TypoScriptFrontendControllerCharsetConverterRector;
-use Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\Typo3RectorPrefix20210411\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/../config.php');
     $services = $containerConfigurator->services();
     $services->set(\Ssch\TYPO3Rector\Rector\v8\v1\RefactorDbConstantsRector::class);

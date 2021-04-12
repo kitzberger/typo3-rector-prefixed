@@ -9,9 +9,9 @@ use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\ValueObject\Reporting\FileDiff;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithOutChangelog;
-use Typo3RectorPrefix20210411\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
-final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210411\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210412\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210412\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var RectorsChangelogResolver
@@ -40,6 +40,6 @@ final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210411\Symp
         $rectorWithFileAndLineChange2 = new \Rector\ChangesReporting\ValueObject\RectorWithFileAndLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog(), __DIR__ . '/Source/RectorWithChangelog.php', 1);
         $rectorWithFileAndLineChange3 = new \Rector\ChangesReporting\ValueObject\RectorWithFileAndLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithOutChangelog(), __DIR__ . '/Source/RectorWithOutChangelog.php', 1);
         $rectorWithFileAndLineChanges = [$rectorWithFileAndLineChange1, $rectorWithFileAndLineChange2, $rectorWithFileAndLineChange3];
-        return new \Rector\Core\ValueObject\Reporting\FileDiff(new \Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo(__FILE__), 'foo', 'foo', $rectorWithFileAndLineChanges);
+        return new \Rector\Core\ValueObject\Reporting\FileDiff(new \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo(__FILE__), 'foo', 'foo', $rectorWithFileAndLineChanges);
     }
 }

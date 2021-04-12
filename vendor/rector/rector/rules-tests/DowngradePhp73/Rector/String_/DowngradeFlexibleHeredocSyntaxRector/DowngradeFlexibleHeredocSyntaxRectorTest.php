@@ -5,7 +5,7 @@ namespace Rector\Tests\DowngradePhp73\Rector\String_\DowngradeFlexibleHeredocSyn
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @requires PHP >= 7.3
  */
@@ -14,7 +14,7 @@ final class DowngradeFlexibleHeredocSyntaxRectorTest extends \Rector\Testing\PHP
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210411\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

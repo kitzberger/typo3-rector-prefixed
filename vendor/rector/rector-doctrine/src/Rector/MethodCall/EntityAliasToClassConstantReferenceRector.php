@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Rector\MethodCall;
 
-use Typo3RectorPrefix20210411\Nette\Utils\Strings;
+use Typo3RectorPrefix20210412\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
@@ -32,7 +32,7 @@ final class EntityAliasToClassConstantReferenceRector extends \Rector\Core\Recto
     private $aliasesToNamespaces = [];
     public function __construct()
     {
-        $this->doctrineManagerRegistryObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Doctrine\\ORM\\EntityManagerInterface'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Doctrine\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Doctrine\\Common\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Doctrine\\Persistence\\ManagerRegistry'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Doctrine\\Common\\Persistence\\ManagerRegistry')];
+        $this->doctrineManagerRegistryObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Doctrine\\ORM\\EntityManagerInterface'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Doctrine\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Doctrine\\Common\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Doctrine\\Persistence\\ManagerRegistry'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Doctrine\\Common\\Persistence\\ManagerRegistry')];
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
@@ -44,7 +44,7 @@ CODE_SAMPLE
 $entityManager = new Doctrine\ORM\EntityManager();
 $entityManager->getRepository(\App\Entity\Post::class);
 CODE_SAMPLE
-, [self::ALIASES_TO_NAMESPACES => ['App' => 'Typo3RectorPrefix20210411\\App\\Entity']])]);
+, [self::ALIASES_TO_NAMESPACES => ['App' => 'Typo3RectorPrefix20210412\\App\\Entity']])]);
     }
     /**
      * @return array<class-string<Node>>
@@ -96,7 +96,7 @@ CODE_SAMPLE
     }
     private function isAlias(string $name) : bool
     {
-        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::contains($name, ':');
+        return \Typo3RectorPrefix20210412\Nette\Utils\Strings::contains($name, ':');
     }
     private function hasAlias(string $name) : bool
     {

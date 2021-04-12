@@ -18,7 +18,7 @@ final class ComponentModelDynamicReturnTypeExtension implements \PHPStan\Type\Dy
 {
     public function getClass() : string
     {
-        return 'Typo3RectorPrefix20210411\\Nette\\ComponentModel\\Container';
+        return 'Typo3RectorPrefix20210412\\Nette\\ComponentModel\\Container';
     }
     public function isMethodSupported(\PHPStan\Reflection\MethodReflection $methodReflection) : bool
     {

@@ -82,17 +82,17 @@ final class PHPUnitStaticToKernelTestCaseGetRector extends \Rector\Core\Rector\A
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Convert static calls in PHPUnit test cases, to get() from the container of KernelTestCase', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample(<<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210411;
+namespace Typo3RectorPrefix20210412;
 
-use Typo3RectorPrefix20210411\PHPUnit\Framework\TestCase;
-final class SomeTestCase extends \Typo3RectorPrefix20210411\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210412\PHPUnit\Framework\TestCase;
+final class SomeTestCase extends \Typo3RectorPrefix20210412\PHPUnit\Framework\TestCase
 {
     public function test()
     {
-        $product = \Typo3RectorPrefix20210411\EntityFactory::create('product');
+        $product = \Typo3RectorPrefix20210412\EntityFactory::create('product');
     }
 }
-\class_alias('Typo3RectorPrefix20210411\\SomeTestCase', 'SomeTestCase', \false);
+\class_alias('Typo3RectorPrefix20210412\\SomeTestCase', 'SomeTestCase', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -152,7 +152,7 @@ CODE_SAMPLE
     }
     private function processClass(\PhpParser\Node\Stmt\Class_ $class) : ?\PhpParser\Node\Stmt\Class_
     {
-        if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\PHPUnit\\Framework\\TestCase'))) {
+        if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\PHPUnit\\Framework\\TestCase'))) {
             return $this->processPHPUnitClass($class);
         }
         // add property with the object
@@ -204,8 +204,8 @@ CODE_SAMPLE
             }
         }
         // update parent clsas if not already
-        if (!$this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210411\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase'))) {
-            $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210411\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase');
+        if (!$this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase'))) {
+            $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase');
         }
         return $class;
     }

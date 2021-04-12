@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\PHPUnit\Rector\Class_;
 
-use Typo3RectorPrefix20210411\Nette\Utils\Strings;
+use Typo3RectorPrefix20210412\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode;
@@ -163,9 +163,9 @@ CODE_SAMPLE
     }
     private function isSeeTestCaseClass(string $possibleClassName) : bool
     {
-        if (!\Typo3RectorPrefix20210411\Nette\Utils\Strings::startsWith($possibleClassName, '\\')) {
+        if (!\Typo3RectorPrefix20210412\Nette\Utils\Strings::startsWith($possibleClassName, '\\')) {
             return \false;
         }
-        return \Typo3RectorPrefix20210411\Nette\Utils\Strings::endsWith($possibleClassName, 'Test');
+        return \Typo3RectorPrefix20210412\Nette\Utils\Strings::endsWith($possibleClassName, 'Test');
     }
 }

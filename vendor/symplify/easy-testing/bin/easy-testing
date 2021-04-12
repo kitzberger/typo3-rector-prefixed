@@ -1,5 +1,5 @@
 #!/usr/bin/env php
 <?php 
-namespace Typo3RectorPrefix20210411;
+namespace Typo3RectorPrefix20210412;
 
 require __DIR__ . '/easy-testing.php';

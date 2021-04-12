@@ -6,8 +6,8 @@ namespace Rector\PHPStanExtensions\Tests\Rule\NoClassReflectionStaticReflectionR
 use Iterator;
 use PHPStan\Rules\Rule;
 use Rector\PHPStanExtensions\Rule\NoClassReflectionStaticReflectionRule;
-use Typo3RectorPrefix20210411\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
-final class NoClassReflectionStaticReflectionRuleTest extends \Typo3RectorPrefix20210411\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
+use Typo3RectorPrefix20210412\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
+final class NoClassReflectionStaticReflectionRuleTest extends \Typo3RectorPrefix20210412\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
 {
     /**
      * @dataProvider provideData()

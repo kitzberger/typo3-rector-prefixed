@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210411\Symfony\Component\HttpKernel\CacheWarmer;
+namespace Typo3RectorPrefix20210412\Symfony\Component\HttpKernel\CacheWarmer;
 
 /**
  * Aggregates several cache warmers into a single one.
@@ -17,7 +17,7 @@ namespace Typo3RectorPrefix20210411\Symfony\Component\HttpKernel\CacheWarmer;
  *
  * @final
  */
-class CacheWarmerAggregate implements \Typo3RectorPrefix20210411\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
+class CacheWarmerAggregate implements \Typo3RectorPrefix20210412\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
 {
     private $warmers;
     private $debug;

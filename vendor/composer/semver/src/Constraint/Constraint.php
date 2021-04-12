@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210411\Composer\Semver\Constraint;
+namespace Typo3RectorPrefix20210412\Composer\Semver\Constraint;
 
 /**
  * Defines a constraint.
  */
-class Constraint implements \Typo3RectorPrefix20210411\Composer\Semver\Constraint\ConstraintInterface
+class Constraint implements \Typo3RectorPrefix20210412\Composer\Semver\Constraint\ConstraintInterface
 {
     /* operator integer values */
     const OP_EQ = 0;
@@ -78,7 +78,7 @@ class Constraint implements \Typo3RectorPrefix20210411\Composer\Semver\Constrain
      *
      * @return bool
      */
-    public function matches(\Typo3RectorPrefix20210411\Composer\Semver\Constraint\ConstraintInterface $provider)
+    public function matches(\Typo3RectorPrefix20210412\Composer\Semver\Constraint\ConstraintInterface $provider)
     {
         if ($provider instanceof self) {
             return $this->matchSpecific($provider);
@@ -222,7 +222,7 @@ class Constraint implements \Typo3RectorPrefix20210411\Composer\Semver\Constrain
      *
      * @return bool
      */
-    public function matchSpecific(\Typo3RectorPrefix20210411\Composer\Semver\Constraint\Constraint $provider, $compareBranches = \false)
+    public function matchSpecific(\Typo3RectorPrefix20210412\Composer\Semver\Constraint\Constraint $provider, $compareBranches = \false)
     {
         $noEqualOp = \str_replace('=', '', self::$transOpInt[$this->operator]);
         $providerNoEqualOp = \str_replace('=', '', self::$transOpInt[$provider->operator]);
@@ -289,34 +289,34 @@ class Constraint implements \Typo3RectorPrefix20210411\Composer\Semver\Constrain
         }
         // Branches
         if (\strpos($this->version, 'dev-') === 0) {
-            $this->lowerBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::zero();
-            $this->upperBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::positiveInfinity();
+            $this->lowerBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::zero();
+            $this->upperBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::positiveInfinity();
             return;
         }
         switch ($this->operator) {
             case self::OP_EQ:
-                $this->lowerBound = new \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound($this->version, \true);
-                $this->upperBound = new \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->lowerBound = new \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->upperBound = new \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound($this->version, \true);
                 break;
             case self::OP_LT:
-                $this->lowerBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::zero();
-                $this->upperBound = new \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound($this->version, \false);
+                $this->lowerBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::zero();
+                $this->upperBound = new \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound($this->version, \false);
                 break;
             case self::OP_LE:
-                $this->lowerBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::zero();
-                $this->upperBound = new \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->lowerBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::zero();
+                $this->upperBound = new \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound($this->version, \true);
                 break;
             case self::OP_GT:
-                $this->lowerBound = new \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound($this->version, \false);
-                $this->upperBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::positiveInfinity();
+                $this->lowerBound = new \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound($this->version, \false);
+                $this->upperBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::positiveInfinity();
                 break;
             case self::OP_GE:
-                $this->lowerBound = new \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound($this->version, \true);
-                $this->upperBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::positiveInfinity();
+                $this->lowerBound = new \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound($this->version, \true);
+                $this->upperBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::positiveInfinity();
                 break;
             case self::OP_NE:
-                $this->lowerBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::zero();
-                $this->upperBound = \Typo3RectorPrefix20210411\Composer\Semver\Constraint\Bound::positiveInfinity();
+                $this->lowerBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::zero();
+                $this->upperBound = \Typo3RectorPrefix20210412\Composer\Semver\Constraint\Bound::positiveInfinity();
                 break;
         }
     }

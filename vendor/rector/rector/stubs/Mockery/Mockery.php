@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210412;
+namespace Typo3RectorPrefix20210413;
 
-if (\class_exists('Typo3RectorPrefix20210412\\Mockery')) {
+if (\class_exists('Typo3RectorPrefix20210413\\Mockery')) {
     return;
 }
 class Mockery
@@ -15,7 +15,7 @@ class Mockery
      */
     public static function mock(...$args)
     {
-        return new \Typo3RectorPrefix20210412\Mockery\DummyMock();
+        return new \Typo3RectorPrefix20210413\Mockery\DummyMock();
     }
 }
-\class_alias('Typo3RectorPrefix20210412\\Mockery', 'Mockery', \false);
+\class_alias('Typo3RectorPrefix20210413\\Mockery', 'Mockery', \false);

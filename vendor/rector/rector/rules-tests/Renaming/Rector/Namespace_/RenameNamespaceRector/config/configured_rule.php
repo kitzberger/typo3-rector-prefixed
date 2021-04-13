@@ -1,10 +1,10 @@
 <?php
 
-namespace Typo3RectorPrefix20210412;
+namespace Typo3RectorPrefix20210413;
 
 use Rector\Renaming\Rector\Namespace_\RenameNamespaceRector;
-use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use Typo3RectorPrefix20210413\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\Typo3RectorPrefix20210413\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
-    $services->set(\Rector\Renaming\Rector\Namespace_\RenameNamespaceRector::class)->call('configure', [[\Rector\Renaming\Rector\Namespace_\RenameNamespaceRector::OLD_TO_NEW_NAMESPACES => ['OldNamespace' => 'NewNamespace', 'Typo3RectorPrefix20210412\\OldNamespaceWith\\OldSplitNamespace' => 'Typo3RectorPrefix20210412\\NewNamespaceWith\\NewSplitNamespace', 'Typo3RectorPrefix20210412\\Old\\Long\\AnyNamespace' => 'Typo3RectorPrefix20210412\\Short\\AnyNamespace', 'PHPUnit_Framework_' => 'PHPUnit\\Framework\\']]]);
+    $services->set(\Rector\Renaming\Rector\Namespace_\RenameNamespaceRector::class)->call('configure', [[\Rector\Renaming\Rector\Namespace_\RenameNamespaceRector::OLD_TO_NEW_NAMESPACES => ['OldNamespace' => 'NewNamespace', 'Typo3RectorPrefix20210413\\OldNamespaceWith\\OldSplitNamespace' => 'Typo3RectorPrefix20210413\\NewNamespaceWith\\NewSplitNamespace', 'Typo3RectorPrefix20210413\\Old\\Long\\AnyNamespace' => 'Typo3RectorPrefix20210413\\Short\\AnyNamespace', 'PHPUnit_Framework_' => 'PHPUnit\\Framework\\']]]);
 };

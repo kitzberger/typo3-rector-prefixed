@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Nette\Kdyby\NodeFactory;
 
-use Typo3RectorPrefix20210412\Nette\Utils\Strings;
+use Typo3RectorPrefix20210413\Nette\Utils\Strings;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Name\FullyQualified;
@@ -18,9 +18,9 @@ use Rector\Core\ValueObject\MethodName;
 use Rector\Nette\Kdyby\BlueprintFactory\VariableWithTypesFactory;
 use Rector\Nette\Kdyby\ValueObject\VariableWithType;
 use Rector\NodeNameResolver\NodeNameResolver;
-use Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder;
-use Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder;
+use Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder;
+use Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder;
 /**
  * @todo decouple to generic object factory for better re-use, e.g. this is just value object pattern
  */
@@ -59,18 +59,18 @@ final class EventValueObjectClassFactory
         $class = $classBuilder->getNode();
         return $this->wrapClassToNamespace($className, $class);
     }
-    private function createEventClassBuilder(string $className) : \Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder
+    private function createEventClassBuilder(string $className) : \Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder
     {
         $shortClassName = $this->classNaming->getShortName($className);
-        $classBuilder = new \Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder($shortClassName);
+        $classBuilder = new \Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder($shortClassName);
         $classBuilder->makeFinal();
-        $classBuilder->extend(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210412\\Symfony\\Contracts\\EventDispatcher\\Event'));
+        $classBuilder->extend(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210413\\Symfony\\Contracts\\EventDispatcher\\Event'));
         return $classBuilder;
     }
     /**
      * @param Arg[] $args
      */
-    private function decorateWithConstructorIfHasArgs(\Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder $classBuilder, array $args) : void
+    private function decorateWithConstructorIfHasArgs(\Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder $classBuilder, array $args) : void
     {
         if ($args === []) {
             return;
@@ -92,15 +92,15 @@ final class EventValueObjectClassFactory
     }
     private function wrapClassToNamespace(string $className, \PhpParser\Node\Stmt\Class_ $class) : \PhpParser\Node\Stmt\Namespace_
     {
-        $namespace = \Typo3RectorPrefix20210412\Nette\Utils\Strings::before($className, '\\', -1);
-        $namespaceBuilder = new \Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder($namespace);
+        $namespace = \Typo3RectorPrefix20210413\Nette\Utils\Strings::before($className, '\\', -1);
+        $namespaceBuilder = new \Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\NamespaceBuilder($namespace);
         $namespaceBuilder->addStmt($class);
         return $namespaceBuilder->getNode();
     }
     /**
      * @param VariableWithType[] $variablesWithTypes
      */
-    private function ensureVariablesAreUnique(array $variablesWithTypes, \Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder $classBuilder) : void
+    private function ensureVariablesAreUnique(array $variablesWithTypes, \Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder $classBuilder) : void
     {
         $usedVariableNames = [];
         foreach ($variablesWithTypes as $variablesWithType) {
@@ -117,7 +117,7 @@ final class EventValueObjectClassFactory
      */
     private function createConstructClassMethod(array $variableWithTypes) : \PhpParser\Node\Stmt\ClassMethod
     {
-        $methodBuilder = new \Typo3RectorPrefix20210412\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(\Rector\Core\ValueObject\MethodName::CONSTRUCT);
+        $methodBuilder = new \Typo3RectorPrefix20210413\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(\Rector\Core\ValueObject\MethodName::CONSTRUCT);
         $methodBuilder->makePublic();
         foreach ($variableWithTypes as $variableWithType) {
             $param = new \PhpParser\Node\Param(new \PhpParser\Node\Expr\Variable($variableWithType->getName()));

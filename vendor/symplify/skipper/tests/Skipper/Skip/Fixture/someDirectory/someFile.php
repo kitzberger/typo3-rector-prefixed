@@ -1,6 +1,6 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210412;
+namespace Typo3RectorPrefix20210413;
 
 echo 'hello';

@@ -5,7 +5,7 @@ namespace Rector\Tests\DowngradePhp80\Rector\Property\DowngradeUnionTypeTypedPro
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @requires PHP 8.0
  */
@@ -14,7 +14,7 @@ final class DowngradeUnionTypeTypedPropertyRectorTest extends \Rector\Testing\PH
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

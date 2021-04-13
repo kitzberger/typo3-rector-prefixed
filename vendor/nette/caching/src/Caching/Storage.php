@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210412\Nette\Caching;
+namespace Typo3RectorPrefix20210413\Nette\Caching;
 
 /**
  * Cache storage.
@@ -34,4 +34,4 @@ interface Storage
      */
     function clean(array $conditions) : void;
 }
-\class_exists(\Typo3RectorPrefix20210412\Nette\Caching\IStorage::class);
+\class_exists(\Typo3RectorPrefix20210413\Nette\Caching\IStorage::class);

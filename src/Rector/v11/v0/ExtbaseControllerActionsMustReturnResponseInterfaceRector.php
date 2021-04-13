@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v11\v0;
 
-use Typo3RectorPrefix20210412\Nette\Utils\Strings;
+use Typo3RectorPrefix20210413\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Exit_;
 use PhpParser\Node\Expr\FuncCall;
@@ -13,7 +13,7 @@ use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Return_;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\TypeWithClassName;
-use Typo3RectorPrefix20210412\Psr\Http\Message\ResponseInterface;
+use Typo3RectorPrefix20210413\Psr\Http\Message\ResponseInterface;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -65,7 +65,7 @@ final class ExtbaseControllerActionsMustReturnResponseInterfaceRector extends \R
                 $returnCall->expr = $this->nodeFactory->createMethodCall(self::THIS, self::HTML_RESPONSE, $args);
             }
         }
-        $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210412\Psr\Http\Message\ResponseInterface::class);
+        $node->returnType = new \PhpParser\Node\Name\FullyQualified(\Typo3RectorPrefix20210413\Psr\Http\Message\ResponseInterface::class);
         $statements = $node->stmts;
         $lastStatement = null;
         if (\is_array($statements)) {
@@ -118,10 +118,10 @@ CODE_SAMPLE
         if (null === $methodName) {
             return \true;
         }
-        if (!\Typo3RectorPrefix20210412\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
+        if (!\Typo3RectorPrefix20210413\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
             return \true;
         }
-        if (\Typo3RectorPrefix20210412\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
+        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
             return \true;
         }
         if ($this->hasExitCall($node)) {
@@ -172,7 +172,7 @@ CODE_SAMPLE
             if (!$returnType instanceof \PHPStan\Type\TypeWithClassName) {
                 continue;
             }
-            if (\is_a($returnType->getClassName(), \Typo3RectorPrefix20210412\Psr\Http\Message\ResponseInterface::class, \true)) {
+            if (\is_a($returnType->getClassName(), \Typo3RectorPrefix20210413\Psr\Http\Message\ResponseInterface::class, \true)) {
                 return \true;
             }
         }

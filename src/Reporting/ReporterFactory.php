@@ -6,9 +6,9 @@ namespace Ssch\TYPO3Rector\Reporting;
 use DateTimeImmutable;
 use Rector\ChangesReporting\Annotation\AnnotationExtractor;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
-use Typo3RectorPrefix20210412\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210413\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem;
 final class ReporterFactory
 {
     /**
@@ -23,7 +23,7 @@ final class ReporterFactory
      * @var AnnotationExtractor
      */
     private $annotationExtractor;
-    public function __construct(\Typo3RectorPrefix20210412\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor)
+    public function __construct(\Typo3RectorPrefix20210413\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor)
     {
         $this->parameterProvider = $parameterProvider;
         $this->smartFileSystem = $smartFileSystem;
@@ -37,7 +37,7 @@ final class ReporterFactory
         }
         $this->smartFileSystem->remove($reportDirectory);
         $this->smartFileSystem->mirror(__DIR__ . '/../../templates/report/', $reportDirectory);
-        $reportFile = new \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo(\rtrim($reportDirectory, '/') . '/index.html');
+        $reportFile = new \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo(\rtrim($reportDirectory, '/') . '/index.html');
         $content = $reportFile->getContents();
         $content = \str_replace('###DATE###', (new \DateTimeImmutable())->format('d.m.Y'), $content);
         $this->smartFileSystem->dumpFile($reportFile->getRealPath(), $content);

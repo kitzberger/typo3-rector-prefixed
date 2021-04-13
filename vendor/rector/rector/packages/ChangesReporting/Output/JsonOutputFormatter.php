@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Rector\ChangesReporting\Output;
 
-use Typo3RectorPrefix20210412\Nette\Utils\Json;
+use Typo3RectorPrefix20210413\Nette\Utils\Json;
 use Rector\ChangesReporting\Annotation\RectorsChangelogResolver;
 use Rector\ChangesReporting\Contract\Output\OutputFormatterInterface;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\ValueObject\ProcessResult;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem;
 final class JsonOutputFormatter implements \Rector\ChangesReporting\Contract\Output\OutputFormatterInterface
 {
     /**
@@ -27,7 +27,7 @@ final class JsonOutputFormatter implements \Rector\ChangesReporting\Contract\Out
      * @var RectorsChangelogResolver
      */
     private $rectorsChangelogResolver;
-    public function __construct(\Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\ChangesReporting\Annotation\RectorsChangelogResolver $rectorsChangelogResolver)
+    public function __construct(\Rector\Core\Configuration\Configuration $configuration, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\ChangesReporting\Annotation\RectorsChangelogResolver $rectorsChangelogResolver)
     {
         $this->configuration = $configuration;
         $this->smartFileSystem = $smartFileSystem;
@@ -55,7 +55,7 @@ final class JsonOutputFormatter implements \Rector\ChangesReporting\Contract\Out
         if ($errorsData !== []) {
             $errorsArray['errors'] = $errorsData;
         }
-        $json = \Typo3RectorPrefix20210412\Nette\Utils\Json::encode($errorsArray, \Typo3RectorPrefix20210412\Nette\Utils\Json::PRETTY);
+        $json = \Typo3RectorPrefix20210413\Nette\Utils\Json::encode($errorsArray, \Typo3RectorPrefix20210413\Nette\Utils\Json::PRETTY);
         $outputFile = $this->configuration->getOutputFile();
         if ($outputFile !== null) {
             $this->smartFileSystem->dumpFile($outputFile, $json . \PHP_EOL);

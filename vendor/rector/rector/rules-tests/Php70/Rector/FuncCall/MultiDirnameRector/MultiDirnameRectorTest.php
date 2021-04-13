@@ -5,7 +5,7 @@ namespace Rector\Tests\Php70\Rector\FuncCall\MultiDirnameRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * Some tests copied from:
  * - https://github.com/FriendsOfPHP/PHP-CS-Fixer/pull/3826/files
@@ -15,7 +15,7 @@ final class MultiDirnameRectorTest extends \Rector\Testing\PHPUnit\AbstractRecto
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

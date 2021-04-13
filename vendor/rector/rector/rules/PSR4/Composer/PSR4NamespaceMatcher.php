@@ -3,40 +3,31 @@
 declare (strict_types=1);
 namespace Rector\PSR4\Composer;
 
-use Typo3RectorPrefix20210412\Nette\Utils\Strings;
+use Typo3RectorPrefix20210413\Nette\Utils\Strings;
 use PhpParser\Node;
-use Rector\Core\Exception\ShouldNotHappenException;
-use Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider;
+use Rector\Core\ValueObject\Application\File;
 use Rector\PSR4\Contract\PSR4AutoloadNamespaceMatcherInterface;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 final class PSR4NamespaceMatcher implements \Rector\PSR4\Contract\PSR4AutoloadNamespaceMatcherInterface
 {
     /**
      * @var PSR4AutoloadPathsProvider
      */
     private $psr4AutoloadPathsProvider;
-    /**
-     * @var CurrentFileInfoProvider
-     */
-    private $currentFileInfoProvider;
-    public function __construct(\Rector\PSR4\Composer\PSR4AutoloadPathsProvider $psr4AutoloadPathsProvider, \Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider $currentFileInfoProvider)
+    public function __construct(\Rector\PSR4\Composer\PSR4AutoloadPathsProvider $psr4AutoloadPathsProvider)
     {
         $this->psr4AutoloadPathsProvider = $psr4AutoloadPathsProvider;
-        $this->currentFileInfoProvider = $currentFileInfoProvider;
     }
-    public function getExpectedNamespace(\PhpParser\Node $node) : ?string
+    public function getExpectedNamespace(\Rector\Core\ValueObject\Application\File $file, \PhpParser\Node $node) : ?string
     {
-        $smartFileInfo = $this->currentFileInfoProvider->getSmartFileInfo();
-        if (!$smartFileInfo instanceof \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \Rector\Core\Exception\ShouldNotHappenException();
-        }
+        $smartFileInfo = $file->getSmartFileInfo();
         $psr4Autoloads = $this->psr4AutoloadPathsProvider->provide();
         foreach ($psr4Autoloads as $namespace => $path) {
             // remove extra slash
             $paths = \is_array($path) ? $path : [$path];
             foreach ($paths as $path) {
                 $path = \rtrim($path, '/');
-                if (!\Typo3RectorPrefix20210412\Nette\Utils\Strings::startsWith($smartFileInfo->getRelativeDirectoryPath(), $path)) {
+                if (!\Typo3RectorPrefix20210413\Nette\Utils\Strings::startsWith($smartFileInfo->getRelativeDirectoryPath(), $path)) {
                     continue;
                 }
                 $expectedNamespace = $namespace . $this->resolveExtraNamespace($smartFileInfo, $path);
@@ -48,10 +39,10 @@ final class PSR4NamespaceMatcher implements \Rector\PSR4\Contract\PSR4AutoloadNa
     /**
      * Get the extra path that is not included in root PSR-4 namespace
      */
-    private function resolveExtraNamespace(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $path) : string
+    private function resolveExtraNamespace(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $path) : string
     {
-        $extraNamespace = \Typo3RectorPrefix20210412\Nette\Utils\Strings::substring($smartFileInfo->getRelativeDirectoryPath(), \Typo3RectorPrefix20210412\Nette\Utils\Strings::length($path) + 1);
-        $extraNamespace = \Typo3RectorPrefix20210412\Nette\Utils\Strings::replace($extraNamespace, '#/#', '\\');
+        $extraNamespace = \Typo3RectorPrefix20210413\Nette\Utils\Strings::substring($smartFileInfo->getRelativeDirectoryPath(), \Typo3RectorPrefix20210413\Nette\Utils\Strings::length($path) + 1);
+        $extraNamespace = \Typo3RectorPrefix20210413\Nette\Utils\Strings::replace($extraNamespace, '#/#', '\\');
         return \trim($extraNamespace);
     }
 }

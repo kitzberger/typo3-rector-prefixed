@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210412\Symfony\Component\HttpKernel\Bundle;
+namespace Typo3RectorPrefix20210413\Symfony\Component\HttpKernel\Bundle;
 
-use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use Typo3RectorPrefix20210413\Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Typo3RectorPrefix20210413\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210413\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 /**
  * BundleInterface.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface BundleInterface extends \Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerAwareInterface
+interface BundleInterface extends \Typo3RectorPrefix20210413\Symfony\Component\DependencyInjection\ContainerAwareInterface
 {
     /**
      * Boots the Bundle.
@@ -33,7 +33,7 @@ interface BundleInterface extends \Typo3RectorPrefix20210412\Symfony\Component\D
      *
      * It is only ever called once when the cache is empty.
      */
-    public function build(\Typo3RectorPrefix20210412\Symfony\Component\DependencyInjection\ContainerBuilder $container);
+    public function build(\Typo3RectorPrefix20210413\Symfony\Component\DependencyInjection\ContainerBuilder $container);
     /**
      * Returns the container extension that should be implicitly loaded.
      *

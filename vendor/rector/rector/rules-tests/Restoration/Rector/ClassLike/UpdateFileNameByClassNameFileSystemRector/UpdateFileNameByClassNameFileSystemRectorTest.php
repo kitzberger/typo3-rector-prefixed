@@ -4,17 +4,20 @@ declare (strict_types=1);
 namespace Rector\Tests\Restoration\Rector\ClassLike\UpdateFileNameByClassNameFileSystemRector;
 
 use Iterator;
+use Typo3RectorPrefix20210413\Nette\Utils\FileSystem;
+use Rector\FileSystemRector\ValueObject\AddedFileWithContent;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 final class UpdateFileNameByClassNameFileSystemRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function test(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $this->doTestFileInfo($smartFileInfo);
-        $this->doTestExtraFile('SkipDifferentClassName.php', __DIR__ . '/Fixture/skip_different_class_name.php.inc');
+        $expectedAddedFileWithContent = new \Rector\FileSystemRector\ValueObject\AddedFileWithContent($this->originalTempFileInfo->getRealPathDirectory() . '/SkipDifferentClassName.php', \Typo3RectorPrefix20210413\Nette\Utils\FileSystem::read(__DIR__ . '/Fixture/skip_different_class_name.php.inc'));
+        $this->assertFileWasAdded($expectedAddedFileWithContent);
     }
     /**
      * @return Iterator<SmartFileInfo>

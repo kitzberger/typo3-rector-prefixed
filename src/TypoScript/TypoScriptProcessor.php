@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript;
 
-use Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\ParserInterface;
-use Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\Printer\ASTPrinterInterface;
-use Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\Traverser\Traverser;
-use Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\Traverser\Visitor;
-use Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Tokenizer\TokenizerException;
+use Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\ParserInterface;
+use Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\Printer\ASTPrinterInterface;
+use Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\Traverser\Traverser;
+use Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\Traverser\Visitor;
+use Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Tokenizer\TokenizerException;
 use Rector\Core\ValueObject\Application\File;
 use Ssch\TYPO3Rector\Processor\ConfigurableProcessorInterface;
-use Typo3RectorPrefix20210412\Symfony\Component\Console\Output\BufferedOutput;
+use Typo3RectorPrefix20210413\Symfony\Component\Console\Output\BufferedOutput;
 /**
  * @see \Ssch\TYPO3Rector\Tests\TypoScript\TypoScriptProcessorTest
  */
@@ -43,7 +43,7 @@ final class TypoScriptProcessor implements \Ssch\TYPO3Rector\Processor\Configura
     /**
      * @param Visitor[] $visitors
      */
-    public function __construct(\Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\ParserInterface $typoscriptParser, \Typo3RectorPrefix20210412\Symfony\Component\Console\Output\BufferedOutput $output, \Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\Printer\ASTPrinterInterface $typoscriptPrinter, array $visitors = [])
+    public function __construct(\Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\ParserInterface $typoscriptParser, \Typo3RectorPrefix20210413\Symfony\Component\Console\Output\BufferedOutput $output, \Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\Printer\ASTPrinterInterface $typoscriptPrinter, array $visitors = [])
     {
         $this->typoscriptParser = $typoscriptParser;
         $this->typoscriptPrinter = $typoscriptPrinter;
@@ -83,7 +83,7 @@ final class TypoScriptProcessor implements \Ssch\TYPO3Rector\Processor\Configura
         try {
             $smartFileInfo = $file->getSmartFileInfo();
             $originalStatements = $this->typoscriptParser->parseString($smartFileInfo->getContents());
-            $traverser = new \Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Parser\Traverser\Traverser($originalStatements);
+            $traverser = new \Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\Traverser\Traverser($originalStatements);
             foreach ($this->visitors as $visitor) {
                 $traverser->addVisitor($visitor);
             }
@@ -91,7 +91,7 @@ final class TypoScriptProcessor implements \Ssch\TYPO3Rector\Processor\Configura
             $this->typoscriptPrinter->printStatements($originalStatements, $this->output);
             $typoScriptContent = $this->output->fetch();
             $file->changeFileContent($typoScriptContent);
-        } catch (\Typo3RectorPrefix20210412\Helmich\TypoScriptParser\Tokenizer\TokenizerException $tokenizerException) {
+        } catch (\Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Tokenizer\TokenizerException $tokenizerException) {
             return;
         }
     }

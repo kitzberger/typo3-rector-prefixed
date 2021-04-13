@@ -69,7 +69,7 @@ CODE_SAMPLE
         if (!$originalNode instanceof \PhpParser\Node) {
             return \true;
         }
-        if (!$this->isObjectType($methodCall->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Component\\Form\\Form'))) {
+        if (!$this->isObjectType($methodCall->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Symfony\\Component\\Form\\Form'))) {
             return \true;
         }
         if (!$this->isName($methodCall->name, 'isValid')) {

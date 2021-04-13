@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Reporting\ValueObject;
 
 use Rector\Core\Contract\Rector\RectorInterface;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 final class Report
 {
     /**
@@ -26,7 +26,7 @@ final class Report
     /**
      * @param string[] $suggestions
      */
-    public function __construct(string $message, \Rector\Core\Contract\Rector\RectorInterface $rector, \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, array $suggestions = [])
+    public function __construct(string $message, \Rector\Core\Contract\Rector\RectorInterface $rector, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, array $suggestions = [])
     {
         $this->message = $message;
         $this->rector = $rector;
@@ -41,7 +41,7 @@ final class Report
     {
         return $this->rector;
     }
-    public function getSmartFileInfo() : \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo
+    public function getSmartFileInfo() : \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->smartFileInfo;
     }

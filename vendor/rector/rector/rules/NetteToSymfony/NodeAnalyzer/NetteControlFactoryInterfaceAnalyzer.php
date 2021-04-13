@@ -29,7 +29,7 @@ final class NetteControlFactoryInterfaceAnalyzer
             if (!$returnType instanceof \PHPStan\Type\TypeWithClassName) {
                 return \false;
             }
-            $controlOrForm = new \PHPStan\Type\UnionType([new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Nette\\Application\\UI\\Control'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Nette\\Application\\UI\\Form')]);
+            $controlOrForm = new \PHPStan\Type\UnionType([new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Nette\\Application\\UI\\Control'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Nette\\Application\\UI\\Form')]);
             if ($returnType instanceof \Rector\StaticTypeMapper\ValueObject\Type\ShortenedObjectType) {
                 $returnType = new \PHPStan\Type\ObjectType($returnType->getFullyQualifiedName());
             }

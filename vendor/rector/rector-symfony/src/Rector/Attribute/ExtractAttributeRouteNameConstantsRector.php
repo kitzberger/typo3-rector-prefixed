@@ -14,7 +14,7 @@ use Rector\Symfony\ValueObject\ClassName;
 use Rector\Symfony\ValueObject\ConstantNameAndValue;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ExtraFileCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see https://tomasvotruba.com/blog/2020/12/21/5-new-combos-opened-by-symfony-52-and-php-80/
  *
@@ -46,7 +46,7 @@ final class ExtractAttributeRouteNameConstantsRector extends \Rector\Core\Rector
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Rector\Symfony\NodeFactory\RouteNameClassFactory $routeNameClassFactory, \Rector\Symfony\ConstantNameAndValueMatcher $constantNameAndValueMatcher, \Rector\Symfony\ConstantNameAndValueResolver $constantNameAndValueResolver, \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\Rector\Symfony\NodeFactory\RouteNameClassFactory $routeNameClassFactory, \Rector\Symfony\ConstantNameAndValueMatcher $constantNameAndValueMatcher, \Rector\Symfony\ConstantNameAndValueResolver $constantNameAndValueResolver, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->routeNameClassFactory = $routeNameClassFactory;
         $this->constantNameAndValueMatcher = $constantNameAndValueMatcher;
@@ -100,7 +100,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isName($node->name, 'Typo3RectorPrefix20210412\\Symfony\\Component\\Routing\\Annotation\\Route')) {
+        if (!$this->isName($node->name, 'Typo3RectorPrefix20210413\\Symfony\\Component\\Routing\\Annotation\\Route')) {
             return null;
         }
         $this->createRouteNameValueObject();
@@ -125,7 +125,7 @@ CODE_SAMPLE
             // avoid override
             return;
         }
-        $routeAttributes = $this->nodeRepository->findAttributes('Typo3RectorPrefix20210412\\Symfony\\Component\\Routing\\Annotation\\Route');
+        $routeAttributes = $this->nodeRepository->findAttributes('Typo3RectorPrefix20210413\\Symfony\\Component\\Routing\\Annotation\\Route');
         $constantNameAndValues = $this->constantNameAndValueResolver->resolveFromAttributes($routeAttributes, 'ROUTE_');
         $namespace = $this->routeNameClassFactory->create($constantNameAndValues, self::ROUTE_NAME_FILE_LOCATION);
         $addedFileWithNodes = new \Rector\FileSystemRector\ValueObject\AddedFileWithNodes(self::ROUTE_NAME_FILE_LOCATION, [$namespace]);

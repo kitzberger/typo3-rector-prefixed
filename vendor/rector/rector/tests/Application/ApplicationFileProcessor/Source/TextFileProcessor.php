@@ -18,8 +18,8 @@ final class TextFileProcessor implements \Rector\Core\Contract\Processor\FilePro
     }
     public function supports(\Rector\Core\ValueObject\Application\File $file) : bool
     {
-        $fileInfo = $file->getSmartFileInfo();
-        return $fileInfo->hasSuffixes($this->getSupportedFileExtensions());
+        $smartFileInfo = $file->getSmartFileInfo();
+        return $smartFileInfo->hasSuffixes($this->getSupportedFileExtensions());
     }
     /**
      * @return string[]

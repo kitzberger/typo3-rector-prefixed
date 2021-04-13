@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\TypeDeclaration\PHPStan\Type;
 
-use Typo3RectorPrefix20210412\Nette\Utils\Strings;
+use Typo3RectorPrefix20210413\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
@@ -145,10 +145,10 @@ final class ObjectTypeSpecifier
     private function matchPartialNamespaceObjectType(\PHPStan\Type\ObjectType $objectType, \PhpParser\Node\Stmt\UseUse $useUse) : ?\Rector\StaticTypeMapper\ValueObject\Type\ShortenedObjectType
     {
         // partial namespace
-        if (!\Typo3RectorPrefix20210412\Nette\Utils\Strings::startsWith($objectType->getClassName(), $useUse->name->getLast() . '\\')) {
+        if (!\Typo3RectorPrefix20210413\Nette\Utils\Strings::startsWith($objectType->getClassName(), $useUse->name->getLast() . '\\')) {
             return null;
         }
-        $classNameWithoutLastUsePart = \Typo3RectorPrefix20210412\Nette\Utils\Strings::after($objectType->getClassName(), '\\', 1);
+        $classNameWithoutLastUsePart = \Typo3RectorPrefix20210413\Nette\Utils\Strings::after($objectType->getClassName(), '\\', 1);
         $connectedClassName = $useUse->name->toString() . '\\' . $classNameWithoutLastUsePart;
         if (!$this->reflectionProvider->hasClass($connectedClassName)) {
             return null;

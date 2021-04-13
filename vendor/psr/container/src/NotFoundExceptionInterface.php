@@ -1,10 +1,10 @@
 <?php
 
-namespace Typo3RectorPrefix20210412\Psr\Container;
+namespace Typo3RectorPrefix20210413\Psr\Container;
 
 /**
  * No entry was found in the container.
  */
-interface NotFoundExceptionInterface extends \Typo3RectorPrefix20210412\Psr\Container\ContainerExceptionInterface
+interface NotFoundExceptionInterface extends \Typo3RectorPrefix20210413\Psr\Container\ContainerExceptionInterface
 {
 }

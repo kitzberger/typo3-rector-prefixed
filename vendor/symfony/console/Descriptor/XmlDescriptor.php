@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210412\Symfony\Component\Console\Descriptor;
+namespace Typo3RectorPrefix20210413\Symfony\Component\Console\Descriptor;
 
-use Typo3RectorPrefix20210412\Symfony\Component\Console\Application;
-use Typo3RectorPrefix20210412\Symfony\Component\Console\Command\Command;
-use Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputArgument;
-use Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputDefinition;
-use Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption;
+use Typo3RectorPrefix20210413\Symfony\Component\Console\Application;
+use Typo3RectorPrefix20210413\Symfony\Component\Console\Command\Command;
+use Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputArgument;
+use Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputDefinition;
+use Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputOption;
 /**
  * XML descriptor.
  *
@@ -22,9 +22,9 @@ use Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption;
  *
  * @internal
  */
-class XmlDescriptor extends \Typo3RectorPrefix20210412\Symfony\Component\Console\Descriptor\Descriptor
+class XmlDescriptor extends \Typo3RectorPrefix20210413\Symfony\Component\Console\Descriptor\Descriptor
 {
-    public function getInputDefinitionDocument(\Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputDefinition $definition) : \DOMDocument
+    public function getInputDefinitionDocument(\Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputDefinition $definition) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($definitionXML = $dom->createElement('definition'));
@@ -38,7 +38,7 @@ class XmlDescriptor extends \Typo3RectorPrefix20210412\Symfony\Component\Console
         }
         return $dom;
     }
-    public function getCommandDocument(\Typo3RectorPrefix20210412\Symfony\Component\Console\Command\Command $command) : \DOMDocument
+    public function getCommandDocument(\Typo3RectorPrefix20210413\Symfony\Component\Console\Command\Command $command) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($commandXML = $dom->createElement('command'));
@@ -58,7 +58,7 @@ class XmlDescriptor extends \Typo3RectorPrefix20210412\Symfony\Component\Console
         $this->appendDocument($commandXML, $definitionXML->getElementsByTagName('definition')->item(0));
         return $dom;
     }
-    public function getApplicationDocument(\Typo3RectorPrefix20210412\Symfony\Component\Console\Application $application, string $namespace = null) : \DOMDocument
+    public function getApplicationDocument(\Typo3RectorPrefix20210413\Symfony\Component\Console\Application $application, string $namespace = null) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($rootXml = $dom->createElement('symfony'));
@@ -69,7 +69,7 @@ class XmlDescriptor extends \Typo3RectorPrefix20210412\Symfony\Component\Console
             }
         }
         $rootXml->appendChild($commandsXML = $dom->createElement('commands'));
-        $description = new \Typo3RectorPrefix20210412\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $namespace, \true);
+        $description = new \Typo3RectorPrefix20210413\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $namespace, \true);
         if ($namespace) {
             $commandsXML->setAttribute('namespace', $namespace);
         }
@@ -92,35 +92,35 @@ class XmlDescriptor extends \Typo3RectorPrefix20210412\Symfony\Component\Console
     /**
      * {@inheritdoc}
      */
-    protected function describeInputArgument(\Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputArgument $argument, array $options = [])
+    protected function describeInputArgument(\Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputArgument $argument, array $options = [])
     {
         $this->writeDocument($this->getInputArgumentDocument($argument));
     }
     /**
      * {@inheritdoc}
      */
-    protected function describeInputOption(\Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption $option, array $options = [])
+    protected function describeInputOption(\Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputOption $option, array $options = [])
     {
         $this->writeDocument($this->getInputOptionDocument($option));
     }
     /**
      * {@inheritdoc}
      */
-    protected function describeInputDefinition(\Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputDefinition $definition, array $options = [])
+    protected function describeInputDefinition(\Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputDefinition $definition, array $options = [])
     {
         $this->writeDocument($this->getInputDefinitionDocument($definition));
     }
     /**
      * {@inheritdoc}
      */
-    protected function describeCommand(\Typo3RectorPrefix20210412\Symfony\Component\Console\Command\Command $command, array $options = [])
+    protected function describeCommand(\Typo3RectorPrefix20210413\Symfony\Component\Console\Command\Command $command, array $options = [])
     {
         $this->writeDocument($this->getCommandDocument($command));
     }
     /**
      * {@inheritdoc}
      */
-    protected function describeApplication(\Typo3RectorPrefix20210412\Symfony\Component\Console\Application $application, array $options = [])
+    protected function describeApplication(\Typo3RectorPrefix20210413\Symfony\Component\Console\Application $application, array $options = [])
     {
         $this->writeDocument($this->getApplicationDocument($application, $options['namespace'] ?? null));
     }
@@ -141,7 +141,7 @@ class XmlDescriptor extends \Typo3RectorPrefix20210412\Symfony\Component\Console
         $dom->formatOutput = \true;
         $this->write($dom->saveXML());
     }
-    private function getInputArgumentDocument(\Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputArgument $argument) : \DOMDocument
+    private function getInputArgumentDocument(\Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputArgument $argument) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($objectXML = $dom->createElement('argument'));
@@ -158,7 +158,7 @@ class XmlDescriptor extends \Typo3RectorPrefix20210412\Symfony\Component\Console
         }
         return $dom;
     }
-    private function getInputOptionDocument(\Typo3RectorPrefix20210412\Symfony\Component\Console\Input\InputOption $option) : \DOMDocument
+    private function getInputOptionDocument(\Typo3RectorPrefix20210413\Symfony\Component\Console\Input\InputOption $option) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($objectXML = $dom->createElement('option'));

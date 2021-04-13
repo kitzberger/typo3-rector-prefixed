@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Compiler;
 
-use Typo3RectorPrefix20210412\Nette\Utils\Strings;
+use Typo3RectorPrefix20210413\Nette\Utils\Strings;
 final class Unprefixer
 {
     /**
@@ -14,15 +14,15 @@ final class Unprefixer
     public static function unprefixQuoted(string $content, string $prefix) : string
     {
         $match = \sprintf('\'%s\\\\r\\\\n\'', $prefix);
-        $content = \Typo3RectorPrefix20210412\Nette\Utils\Strings::replace($content, '#' . $match . '#', '\'\\\\r\\\\n\'');
+        $content = \Typo3RectorPrefix20210413\Nette\Utils\Strings::replace($content, '#' . $match . '#', '\'\\\\r\\\\n\'');
         $match = \sprintf('\'%s\\\\', $prefix);
-        $content = \Typo3RectorPrefix20210412\Nette\Utils\Strings::replace($content, '#' . $match . '#', "'");
+        $content = \Typo3RectorPrefix20210413\Nette\Utils\Strings::replace($content, '#' . $match . '#', "'");
         $match = \sprintf('\'%s\\\\\\\\', $prefix);
-        $content = \Typo3RectorPrefix20210412\Nette\Utils\Strings::replace($content, '#' . $match . '#', "'");
+        $content = \Typo3RectorPrefix20210413\Nette\Utils\Strings::replace($content, '#' . $match . '#', "'");
         return self::unPreSlashQuotedValues($content);
     }
     private static function unPreSlashQuotedValues(string $content) : string
     {
-        return \Typo3RectorPrefix20210412\Nette\Utils\Strings::replace($content, self::QUOTED_VALUE_REGEX, "'\$1");
+        return \Typo3RectorPrefix20210413\Nette\Utils\Strings::replace($content, self::QUOTED_VALUE_REGEX, "'\$1");
     }
 }

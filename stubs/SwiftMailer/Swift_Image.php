@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210412;
+namespace Typo3RectorPrefix20210413;
 
-if (\class_exists(\Typo3RectorPrefix20210412\Swift_Image::class)) {
+if (\class_exists(\Typo3RectorPrefix20210413\Swift_Image::class)) {
     return;
 }
 class Swift_Image

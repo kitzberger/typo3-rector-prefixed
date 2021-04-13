@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210412\Symfony\Contracts\EventDispatcher;
+namespace Typo3RectorPrefix20210413\Symfony\Contracts\EventDispatcher;
 
-use Typo3RectorPrefix20210412\Psr\EventDispatcher\StoppableEventInterface;
+use Typo3RectorPrefix20210413\Psr\EventDispatcher\StoppableEventInterface;
 /**
  * Event is the base class for classes containing event data.
  *
@@ -26,7 +26,7 @@ use Typo3RectorPrefix20210412\Psr\EventDispatcher\StoppableEventInterface;
  * @author Bernhard Schussek <bschussek@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Event implements \Typo3RectorPrefix20210412\Psr\EventDispatcher\StoppableEventInterface
+class Event implements \Typo3RectorPrefix20210413\Psr\EventDispatcher\StoppableEventInterface
 {
     private $propagationStopped = \false;
     /**

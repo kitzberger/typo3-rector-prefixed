@@ -6,7 +6,7 @@ namespace Ssch\TYPO3Rector\Yaml\Form;
 use Rector\Core\Contract\Processor\FileProcessorInterface;
 use Rector\Core\ValueObject\Application\File;
 use Ssch\TYPO3Rector\Yaml\Form\Transformer\FormYamlTransformer;
-use Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml;
+use Typo3RectorPrefix20210413\Symfony\Component\Yaml\Yaml;
 /**
  * @see \Ssch\TYPO3Rector\Tests\Yaml\Form\FormYamlProcessorTest
  */
@@ -51,14 +51,14 @@ final class FormYamlProcessor implements \Rector\Core\Contract\Processor\FilePro
     private function processFile(\Rector\Core\ValueObject\Application\File $file) : void
     {
         $smartFileInfo = $file->getSmartFileInfo();
-        $yaml = \Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
+        $yaml = \Typo3RectorPrefix20210413\Symfony\Component\Yaml\Yaml::parseFile($smartFileInfo->getRealPath());
         if (!\is_array($yaml)) {
             return;
         }
         foreach ($this->transformer as $transformer) {
             $yaml = $transformer->transform($yaml);
         }
-        $changedContent = \Typo3RectorPrefix20210412\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2);
+        $changedContent = \Typo3RectorPrefix20210413\Symfony\Component\Yaml\Yaml::dump($yaml, 99, 2);
         $file->changeFileContent($changedContent);
     }
 }

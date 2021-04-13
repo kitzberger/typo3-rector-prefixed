@@ -10,7 +10,6 @@ use PhpParser\Node\Stmt\Namespace_;
 use PHPStan\Analyser\Scope;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo;
 final class SymfonyControllerFactory
 {
     /**
@@ -28,10 +27,6 @@ final class SymfonyControllerFactory
     }
     public function createNamespace(\PhpParser\Node\Stmt\Class_ $node, \PhpParser\Node\Stmt\Class_ $formTypeClass) : ?\PhpParser\Node\Stmt\Namespace_
     {
-        $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210412\Symplify\SmartFileSystem\SmartFileInfo) {
-            return null;
-        }
         $scope = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::SCOPE);
         if (!$scope instanceof \PHPStan\Analyser\Scope) {
             return null;
@@ -39,7 +34,7 @@ final class SymfonyControllerFactory
         /** @var string $namespaceName */
         $namespaceName = $scope->getNamespace();
         $formControllerClass = new \PhpParser\Node\Stmt\Class_('SomeFormController');
-        $formControllerClass->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
+        $formControllerClass->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210413\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
         $formTypeClass = $namespaceName . '\\' . $this->nodeNameResolver->getName($formTypeClass);
         $formControllerClass->stmts[] = $this->actionWithFormProcessClassMethodFactory->create($formTypeClass);
         $namespace = new \PhpParser\Node\Stmt\Namespace_(new \PhpParser\Node\Name($namespaceName));

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210412;
+namespace Typo3RectorPrefix20210413;
 
 final class PHPExcel_Worksheet
 {
 }
-\class_alias('Typo3RectorPrefix20210412\\PHPExcel_Worksheet', 'PHPExcel_Worksheet', \false);
+\class_alias('Typo3RectorPrefix20210413\\PHPExcel_Worksheet', 'PHPExcel_Worksheet', \false);

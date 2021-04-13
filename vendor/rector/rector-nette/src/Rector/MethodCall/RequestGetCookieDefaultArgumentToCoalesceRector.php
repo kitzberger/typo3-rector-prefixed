@@ -53,7 +53,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Nette\\Http\\Request'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Nette\\Http\\Request'))) {
             return null;
         }
         if (!$this->isName($node->name, 'getCookie')) {

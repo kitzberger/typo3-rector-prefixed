@@ -9,10 +9,10 @@ use PhpParser\Node;
 use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Nop;
-use Typo3RectorPrefix20210412\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210413\PHPUnit\Framework\TestCase;
 use Rector\Core\Util\StaticNodeInstanceOf;
 use stdClass;
-final class StaticNodeInstanceOfTest extends \Typo3RectorPrefix20210412\PHPUnit\Framework\TestCase
+final class StaticNodeInstanceOfTest extends \Typo3RectorPrefix20210413\PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider provideIsOneOf()

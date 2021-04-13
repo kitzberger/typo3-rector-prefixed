@@ -74,7 +74,7 @@ final class FormTypeInstanceToClassConstRector extends \Rector\Core\Rector\Abstr
         $this->reflectionProvider = $reflectionProvider;
         $this->formAddMethodCallAnalyzer = $formAddMethodCallAnalyzer;
         $this->formOptionsArrayMatcher = $formOptionsArrayMatcher;
-        $this->controllerObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController')];
+        $this->controllerObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController')];
         $this->formCollectionAnalyzer = $formCollectionAnalyzer;
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition

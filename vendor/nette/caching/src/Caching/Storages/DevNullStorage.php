@@ -5,13 +5,13 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210412\Nette\Caching\Storages;
+namespace Typo3RectorPrefix20210413\Nette\Caching\Storages;
 
-use Typo3RectorPrefix20210412\Nette;
+use Typo3RectorPrefix20210413\Nette;
 /**
  * Cache dummy storage.
  */
-class DevNullStorage implements \Typo3RectorPrefix20210412\Nette\Caching\Storage
+class DevNullStorage implements \Typo3RectorPrefix20210413\Nette\Caching\Storage
 {
     use Nette\SmartObject;
     public function read(string $key)

@@ -14,7 +14,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\Transform\ValueObject\DimFetchAssignToMethodCall;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210412\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210413\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\Transform\Rector\Assign\DimFetchAssignToMethodCallRector\DimFetchAssignToMethodCallRectorTest
  */
@@ -55,7 +55,7 @@ class RouterFactory
     }
 }
 CODE_SAMPLE
-, [self::DIM_FETCH_ASSIGN_TO_METHOD_CALL => [new \Rector\Transform\ValueObject\DimFetchAssignToMethodCall('Typo3RectorPrefix20210412\\Nette\\Application\\Routers\\RouteList', 'Typo3RectorPrefix20210412\\Nette\\Application\\Routers\\Route', 'addRoute')]])]);
+, [self::DIM_FETCH_ASSIGN_TO_METHOD_CALL => [new \Rector\Transform\ValueObject\DimFetchAssignToMethodCall('Typo3RectorPrefix20210413\\Nette\\Application\\Routers\\RouteList', 'Typo3RectorPrefix20210413\\Nette\\Application\\Routers\\Route', 'addRoute')]])]);
     }
     /**
      * @return array<class-string<Node>>
@@ -88,7 +88,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $dimFetchAssignToMethodCalls = $configuration[self::DIM_FETCH_ASSIGN_TO_METHOD_CALL] ?? [];
-        \Typo3RectorPrefix20210412\Webmozart\Assert\Assert::allIsInstanceOf($dimFetchAssignToMethodCalls, \Rector\Transform\ValueObject\DimFetchAssignToMethodCall::class);
+        \Typo3RectorPrefix20210413\Webmozart\Assert\Assert::allIsInstanceOf($dimFetchAssignToMethodCalls, \Rector\Transform\ValueObject\DimFetchAssignToMethodCall::class);
         $this->dimFetchAssignToMethodCalls = $dimFetchAssignToMethodCalls;
     }
     private function findDimFetchAssignToMethodCall(\PhpParser\Node\Expr\Assign $assign) : ?\Rector\Transform\ValueObject\DimFetchAssignToMethodCall

@@ -36,7 +36,7 @@ final class TestsNodeAnalyzer
         $this->nodeTypeResolver = $nodeTypeResolver;
         $this->nodeNameResolver = $nodeNameResolver;
         $this->phpDocInfoFactory = $phpDocInfoFactory;
-        $this->testCaseObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\PHPUnit\\Framework\\TestCase'), new \PHPStan\Type\ObjectType('PHPUnit_Framework_TestCase')];
+        $this->testCaseObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\PHPUnit\\Framework\\TestCase'), new \PHPStan\Type\ObjectType('PHPUnit_Framework_TestCase')];
     }
     public function isInTestClass(\PhpParser\Node $node) : bool
     {
@@ -66,7 +66,7 @@ final class TestsNodeAnalyzer
         } else {
             return \false;
         }
-        $assertObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210412\\PHPUnit\\Framework\\Assert');
+        $assertObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\PHPUnit\\Framework\\Assert');
         if (!$assertObjectType->isSuperTypeOf($callerType)->yes()) {
             return \false;
         }

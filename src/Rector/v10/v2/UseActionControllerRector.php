@@ -6,7 +6,6 @@ namespace Ssch\TYPO3Rector\Rector\v10\v2;
 use PhpParser\Node;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt\Class_;
-use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -29,9 +28,10 @@ final class UseActionControllerRector extends \Rector\Core\Rector\AbstractRector
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        $classType = $this->getObjectType($node);
-        $abstractControllerObjectType = new \PHPStan\Type\ObjectType(\TYPO3\CMS\Extbase\Mvc\Controller\AbstractController::class);
-        if (!$abstractControllerObjectType->isSuperTypeOf($classType)->yes()) {
+        if (null === $node->extends) {
+            return null;
+        }
+        if (!$this->isName($node->extends, \TYPO3\CMS\Extbase\Mvc\Controller\AbstractController::class)) {
             return null;
         }
         $node->extends = new \PhpParser\Node\Name\FullyQualified(\TYPO3\CMS\Extbase\Mvc\Controller\ActionController::class);

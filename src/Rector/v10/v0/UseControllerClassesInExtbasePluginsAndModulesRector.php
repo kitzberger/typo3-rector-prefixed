@@ -10,7 +10,6 @@ use PhpParser\Node\Expr\BinaryOp\Concat;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
 use PHPStan\Type\ObjectType;
-use Rector\Core\Provider\CurrentFileProvider;
 use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\Strings;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -21,14 +20,6 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
  */
 final class UseControllerClassesInExtbasePluginsAndModulesRector extends \Rector\Core\Rector\AbstractRector
 {
-    /**
-     * @var CurrentFileProvider
-     */
-    private $currentFileProvider;
-    public function __construct(\Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
-    {
-        $this->currentFileProvider = $currentFileProvider;
-    }
     /**
      * @return array<class-string<Node>>
      */
@@ -49,11 +40,7 @@ final class UseControllerClassesInExtbasePluginsAndModulesRector extends \Rector
         }
         $extensionNameArgumentValue = $node->args[0]->value;
         $extensionName = $this->valueResolver->getValue($extensionNameArgumentValue);
-        $file = $this->currentFileProvider->getFile();
-        if (null === $file) {
-            return null;
-        }
-        $fileInfo = $file->getSmartFileInfo();
+        $fileInfo = $this->file->getSmartFileInfo();
         if ($extensionNameArgumentValue instanceof \PhpParser\Node\Expr\BinaryOp\Concat && $this->isPotentiallyUndefinedExtensionKeyVariable($extensionNameArgumentValue)) {
             $extensionName = $this->valueResolver->getValue($extensionNameArgumentValue->left) . \basename($fileInfo->getRelativeDirectoryPath());
         }

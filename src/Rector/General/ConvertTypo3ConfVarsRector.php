@@ -8,9 +8,7 @@ use PhpParser\Node\Expr\ArrayDimFetch;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
-use Rector\Core\Provider\CurrentFileProvider;
 use Rector\Core\Rector\AbstractRector;
-use Rector\Core\ValueObject\Application\File;
 use Ssch\TYPO3Rector\Helper\FileHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -20,14 +18,6 @@ use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 final class ConvertTypo3ConfVarsRector extends \Rector\Core\Rector\AbstractRector
 {
     use FileHelperTrait;
-    /**
-     * @var CurrentFileProvider
-     */
-    private $currentFileProvider;
-    public function __construct(\Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
-    {
-        $this->currentFileProvider = $currentFileProvider;
-    }
     /**
      * @codeCoverageIgnore
      */
@@ -59,11 +49,7 @@ CODE_SAMPLE
         if (!$this->isName($node->var, 'TYPO3_CONF_VARS')) {
             return null;
         }
-        $fileInfo = $this->currentFileProvider->getFile();
-        if (!$fileInfo instanceof \Rector\Core\ValueObject\Application\File) {
-            return null;
-        }
-        if (!$this->isExtLocalConf($fileInfo->getSmartFileInfo()) && !$this->isExtTables($fileInfo->getSmartFileInfo())) {
+        if (!$this->isExtLocalConf($this->file->getSmartFileInfo()) && !$this->isExtTables($this->file->getSmartFileInfo())) {
             return null;
         }
         $node->var = new \PhpParser\Node\Expr\ArrayDimFetch(new \PhpParser\Node\Expr\Variable('GLOBALS'), new \PhpParser\Node\Scalar\String_('TYPO3_CONF_VARS'));

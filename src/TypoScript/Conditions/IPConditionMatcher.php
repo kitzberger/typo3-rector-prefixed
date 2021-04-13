@@ -22,6 +22,9 @@ final class IPConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Condition
     }
     public function shouldApply(string $condition) : bool
     {
+        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::contains($condition, '{$')) {
+            return \false;
+        }
         return \Typo3RectorPrefix20210413\Nette\Utils\Strings::startsWith($condition, self::TYPE);
     }
 }

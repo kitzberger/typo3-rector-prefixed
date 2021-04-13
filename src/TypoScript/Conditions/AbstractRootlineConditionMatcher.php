@@ -22,6 +22,9 @@ abstract class AbstractRootlineConditionMatcher implements \Ssch\TYPO3Rector\Typ
     }
     public function shouldApply(string $condition) : bool
     {
+        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::contains($condition, '{$')) {
+            return \false;
+        }
         return \Typo3RectorPrefix20210413\Nette\Utils\Strings::startsWith($condition, $this->getType());
     }
     protected abstract function getType() : string;

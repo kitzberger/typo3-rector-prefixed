@@ -41,6 +41,9 @@ final class GlobalStringConditionMatcher implements \Ssch\TYPO3Rector\TypoScript
     }
     public function shouldApply(string $condition) : bool
     {
+        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::contains($condition, '{$')) {
+            return \false;
+        }
         return \Typo3RectorPrefix20210413\Nette\Utils\Strings::startsWith($condition, self::TYPE);
     }
     private function createEnvCondition(string $property, string $operator, string $value) : string

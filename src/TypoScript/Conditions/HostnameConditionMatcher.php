@@ -30,6 +30,9 @@ final class HostnameConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Con
     }
     public function shouldApply(string $condition) : bool
     {
+        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::contains($condition, '{$')) {
+            return \false;
+        }
         return 1 === \preg_match('#^' . self::TYPE . self::ZERO_ONE_OR_MORE_WHITESPACES . '=[^=]#', $condition);
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4f79ccbb34b19b424bf33b089fbd2582
+class ComposerStaticInit5506fb49ba942c11fccdc7323da5db29
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -2339,6 +2339,12 @@ class ComposerStaticInit4f79ccbb34b19b424bf33b089fbd2582
         'Ssch\\TYPO3Rector\\NodeAnalyzer\\ClassConstAnalyzer' => __DIR__ . '/../..' . '/src/NodeAnalyzer/ClassConstAnalyzer.php',
         'Ssch\\TYPO3Rector\\NodeFactory\\HelperArgumentAssignFactory' => __DIR__ . '/../..' . '/src/NodeFactory/HelperArgumentAssignFactory.php',
         'Ssch\\TYPO3Rector\\NodeFactory\\InitializeArgumentsClassMethodFactory' => __DIR__ . '/../..' . '/src/NodeFactory/InitializeArgumentsClassMethodFactory.php',
+        'Ssch\\TYPO3Rector\\PHPStan\\Rules\\AddChangelogDocBlockForRectorClass' => __DIR__ . '/../..' . '/utils/phpstan/src/Rules/AddChangelogDocBlockForRectorClass.php',
+        'Ssch\\TYPO3Rector\\PHPStan\\Rules\\AddCodeCoverageIgnoreForRectorDefinition' => __DIR__ . '/../..' . '/utils/phpstan/src/Rules/AddCodeCoverageIgnoreForRectorDefinition.php',
+        'Ssch\\TYPO3Rector\\PHPStan\\Type\\ContextGetAspectDynamicReturnTypeExtension' => __DIR__ . '/../..' . '/utils/phpstan/src/Type/ContextGetAspectDynamicReturnTypeExtension.php',
+        'Ssch\\TYPO3Rector\\PHPStan\\Type\\GeneralUtilityDynamicReturnTypeExtension' => __DIR__ . '/../..' . '/utils/phpstan/src/Type/GeneralUtilityDynamicReturnTypeExtension.php',
+        'Ssch\\TYPO3Rector\\PHPStan\\Type\\ObjectManagerDynamicReturnTypeExtension' => __DIR__ . '/../..' . '/utils/phpstan/src/Type/ObjectManagerDynamicReturnTypeExtension.php',
+        'Ssch\\TYPO3Rector\\PHPStan\\Type\\ValidatorResolverDynamicReturnTypeExtension' => __DIR__ . '/../..' . '/utils/phpstan/src/Type/ValidatorResolverDynamicReturnTypeExtension.php',
         'Ssch\\TYPO3Rector\\Processor\\ConfigurableProcessorInterface' => __DIR__ . '/../..' . '/src/Processor/ConfigurableProcessorInterface.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\ExtensionComposerRector' => __DIR__ . '/../..' . '/src/Rector/Composer/ExtensionComposerRector.php',
         'Ssch\\TYPO3Rector\\Rector\\Composer\\RemoveCmsPackageDirFromExtraRector' => __DIR__ . '/../..' . '/src/Rector/Composer/RemoveCmsPackageDirFromExtraRector.php',
@@ -3726,9 +3732,9 @@ class ComposerStaticInit4f79ccbb34b19b424bf33b089fbd2582
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4f79ccbb34b19b424bf33b089fbd2582::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4f79ccbb34b19b424bf33b089fbd2582::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit4f79ccbb34b19b424bf33b089fbd2582::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5506fb49ba942c11fccdc7323da5db29::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5506fb49ba942c11fccdc7323da5db29::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5506fb49ba942c11fccdc7323da5db29::$classMap;
 
         }, null, ClassLoader::class);
     }

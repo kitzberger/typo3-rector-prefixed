@@ -8,7 +8,6 @@ use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Stmt\Return_;
 use Rector\Core\Rector\AbstractRector;
-use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\TcaHelperTrait;
 use Ssch\TYPO3Rector\Reporting\Reporter;
 use Ssch\TYPO3Rector\Reporting\ValueObject\Report;
@@ -108,7 +107,7 @@ final class RefactorTypeInternalTypeFileAndFileReferenceToFalRector extends \Rec
             }
         }
         if ($hasAstBeenChanged) {
-            $report = new \Ssch\TYPO3Rector\Reporting\ValueObject\Report('You have to do more', $this, $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO));
+            $report = new \Ssch\TYPO3Rector\Reporting\ValueObject\Report('You have to do more', $this);
             $this->reportLogger->report($report);
         }
         return $hasAstBeenChanged ? $node : null;

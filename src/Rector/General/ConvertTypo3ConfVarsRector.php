@@ -8,18 +8,26 @@ use PhpParser\Node\Expr\ArrayDimFetch;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
+use Rector\Core\Provider\CurrentFileProvider;
 use Rector\Core\Rector\AbstractRector;
-use Rector\NodeTypeResolver\Node\AttributeKey;
+use Rector\Core\ValueObject\Application\File;
 use Ssch\TYPO3Rector\Helper\FileHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @changelog https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ExtensionArchitecture/ConfigurationFiles/Index.html
  */
 final class ConvertTypo3ConfVarsRector extends \Rector\Core\Rector\AbstractRector
 {
     use FileHelperTrait;
+    /**
+     * @var CurrentFileProvider
+     */
+    private $currentFileProvider;
+    public function __construct(\Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
+    {
+        $this->currentFileProvider = $currentFileProvider;
+    }
     /**
      * @codeCoverageIgnore
      */
@@ -51,11 +59,11 @@ CODE_SAMPLE
         if (!$this->isName($node->var, 'TYPO3_CONF_VARS')) {
             return null;
         }
-        $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo) {
+        $fileInfo = $this->currentFileProvider->getFile();
+        if (!$fileInfo instanceof \Rector\Core\ValueObject\Application\File) {
             return null;
         }
-        if (!$this->isExtLocalConf($fileInfo) && !$this->isExtTables($fileInfo)) {
+        if (!$this->isExtLocalConf($fileInfo->getSmartFileInfo()) && !$this->isExtTables($fileInfo->getSmartFileInfo())) {
             return null;
         }
         $node->var = new \PhpParser\Node\Expr\ArrayDimFetch(new \PhpParser\Node\Expr\Variable('GLOBALS'), new \PhpParser\Node\Scalar\String_('TYPO3_CONF_VARS'));

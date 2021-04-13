@@ -6,8 +6,8 @@ namespace Ssch\TYPO3Rector\Rector\v9\v0;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
+use Rector\Core\Provider\CurrentFileProvider;
 use Rector\Core\Rector\AbstractRector;
-use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\FileHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
@@ -19,6 +19,14 @@ use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 final class ReplaceExtKeyWithExtensionKeyRector extends \Rector\Core\Rector\AbstractRector
 {
     use FileHelperTrait;
+    /**
+     * @var CurrentFileProvider
+     */
+    private $currentFileProvider;
+    public function __construct(\Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
+    {
+        $this->currentFileProvider = $currentFileProvider;
+    }
     /**
      * @codeCoverageIgnore
      */
@@ -56,26 +64,25 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
-        if (!$fileInfo instanceof \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo) {
+        $file = $this->currentFileProvider->getFile();
+        if (null === $file) {
             return null;
         }
+        $fileInfo = $file->getSmartFileInfo();
         if ($this->isExtEmconf($fileInfo)) {
             return null;
         }
         if (!$this->isExtensionKeyVariable($node)) {
             return null;
         }
-        return new \PhpParser\Node\Scalar\String_($this->createExtensionKeyFromFolder($node));
+        return new \PhpParser\Node\Scalar\String_($this->createExtensionKeyFromFolder($fileInfo));
     }
     private function isExtensionKeyVariable(\PhpParser\Node\Expr\Variable $variable) : bool
     {
         return $this->isName($variable, '_EXTKEY');
     }
-    private function createExtensionKeyFromFolder(\PhpParser\Node $node) : string
+    private function createExtensionKeyFromFolder(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
     {
-        /** @var SmartFileInfo $fileInfo */
-        $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
         return \basename($fileInfo->getPath());
     }
 }

@@ -8,18 +8,25 @@ use PhpParser\Node\Expr\BinaryOp\Concat;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
 use PHPStan\Type\ObjectType;
+use Rector\Core\Provider\CurrentFileProvider;
 use Rector\Core\Rector\AbstractRector;
-use Rector\NodeTypeResolver\Node\AttributeKey;
 use Ssch\TYPO3Rector\Helper\Strings;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 /**
  * @changelog https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.1/Deprecation-88995-CallingRegisterPluginWithVendorName.html
  */
 final class RegisterPluginWithVendorNameRector extends \Rector\Core\Rector\AbstractRector
 {
+    /**
+     * @var CurrentFileProvider
+     */
+    private $currentFileProvider;
+    public function __construct(\Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
+    {
+        $this->currentFileProvider = $currentFileProvider;
+    }
     /**
      * @return array<class-string<Node>>
      */
@@ -61,9 +68,12 @@ final class RegisterPluginWithVendorNameRector extends \Rector\Core\Rector\Abstr
     {
         $extensionNameArgumentValue = $node->args[0]->value;
         $extensionName = $this->valueResolver->getValue($extensionNameArgumentValue);
+        $file = $this->currentFileProvider->getFile();
+        if (null === $file) {
+            return null;
+        }
+        $fileInfo = $file->getSmartFileInfo();
         if ($extensionNameArgumentValue instanceof \PhpParser\Node\Expr\BinaryOp\Concat && $this->isPotentiallyUndefinedExtensionKeyVariable($extensionNameArgumentValue)) {
-            /** @var SmartFileInfo $fileInfo */
-            $fileInfo = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FILE_INFO);
             $extensionName = $this->valueResolver->getValue($extensionNameArgumentValue->left) . \basename($fileInfo->getRelativeDirectoryPath());
         }
         if (!\is_string($extensionName)) {

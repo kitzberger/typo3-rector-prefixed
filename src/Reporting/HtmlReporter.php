@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Reporting;
 
 use Rector\ChangesReporting\Annotation\AnnotationExtractor;
+use Rector\Core\Provider\CurrentFileProvider;
 use ReflectionClass;
 use Ssch\TYPO3Rector\Reporting\ValueObject\Report;
 use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
@@ -26,16 +27,26 @@ final class HtmlReporter implements \Ssch\TYPO3Rector\Reporting\Reporter
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $reportFile, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    /**
+     * @var CurrentFileProvider
+     */
+    private $currentFileProvider;
+    public function __construct(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $reportFile, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
     {
         $this->annotationExtractor = $annotationExtractor;
         $this->reportFile = $reportFile;
         $this->smartFileSystem = $smartFileSystem;
+        $this->currentFileProvider = $currentFileProvider;
     }
     public function report(\Ssch\TYPO3Rector\Reporting\ValueObject\Report $report) : void
     {
+        $file = $this->currentFileProvider->getFile();
+        if (null === $file) {
+            return;
+        }
+        $smartFileInfo = $file->getSmartFileInfo();
         $rectorReflection = new \ReflectionClass($report->getRector());
-        $recordData = ['rector' => $rectorReflection->getShortName(), 'file' => \sprintf('<a href="file:///%s" target="_blank" rel="noopener">%s</a>', $report->getSmartFileInfo()->getRealPath(), $report->getSmartFileInfo()->getBasename()), 'changelog' => '-', 'suggestions' => '-'];
+        $recordData = ['rector' => $rectorReflection->getShortName(), 'file' => \sprintf('<a href="file:///%s" target="_blank" rel="noopener">%s</a>', $smartFileInfo->getRealPath(), $smartFileInfo->getBasename()), 'changelog' => '-', 'suggestions' => '-'];
         $changelog = $this->annotationExtractor->extractAnnotationFromClass($rectorReflection->getName(), '@changelog');
         if (null !== $changelog) {
             $recordData['changelog'] = \sprintf('<a href="%s" target="_blank" rel="noopener">Changelog</a>', $changelog);

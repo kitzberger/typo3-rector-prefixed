@@ -1,19 +1,22 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace TYPO3\CMS\Core\Resource;
 
-if (\class_exists(\TYPO3\CMS\Core\Resource\File::class)) {
+if (class_exists(File::class)) {
     return;
 }
+
 final class File
 {
-    public function _getMetaData() : string
+    public function _getMetaData(): string
     {
         return 'foo';
     }
-    public function getMetaData() : \TYPO3\CMS\Core\Resource\MetaDataAspect
+
+    public function getMetaData(): MetaDataAspect
     {
-        return new \TYPO3\CMS\Core\Resource\MetaDataAspect();
+        return new MetaDataAspect();
     }
 }

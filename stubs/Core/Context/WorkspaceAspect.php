@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
-declare (strict_types=1);
 namespace TYPO3\CMS\Core\Context;
 
-if (\class_exists(\TYPO3\CMS\Core\Context\WorkspaceAspect::class)) {
+if (class_exists(WorkspaceAspect::class)) {
     return;
 }
+
 final class WorkspaceAspect
 {
 }

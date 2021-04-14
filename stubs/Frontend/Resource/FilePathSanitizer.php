@@ -1,31 +1,37 @@
 <?php
+declare(strict_types=1);
 
-declare (strict_types=1);
 namespace TYPO3\CMS\Frontend\Resource;
 
 use TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException;
 use TYPO3\CMS\Core\Resource\Exception\InvalidFileException;
 use TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException;
 use TYPO3\CMS\Core\Resource\Exception\InvalidPathException;
-if (\class_exists(\TYPO3\CMS\Frontend\Resource\FilePathSanitizer::class)) {
+
+if (class_exists(FilePathSanitizer::class)) {
     return;
 }
+
 final class FilePathSanitizer
 {
-    public function sanitize(string $originalFileName) : string
+    public function sanitize(string $originalFileName): string
     {
         if ($originalFileName === 'foo') {
-            throw new \TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException($originalFileName);
+            throw new InvalidFileNameException($originalFileName);
         }
+
         if ($originalFileName === 'bar') {
-            throw new \TYPO3\CMS\Core\Resource\Exception\InvalidPathException($originalFileName);
+            throw new InvalidPathException($originalFileName);
         }
+
         if ($originalFileName === 'baz') {
-            throw new \TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException($originalFileName);
+            throw new FileDoesNotExistException($originalFileName);
         }
+
         if ($originalFileName === 'bazbar') {
-            throw new \TYPO3\CMS\Core\Resource\Exception\InvalidFileException($originalFileName);
+            throw new InvalidFileException($originalFileName);
         }
+
         return 'foo';
     }
 }

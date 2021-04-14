@@ -1,17 +1,21 @@
 <?php
+declare(strict_types=1);
 
-declare (strict_types=1);
 namespace TYPO3\CMS\Backend\Clipboard;
 
-if (\class_exists(\TYPO3\CMS\Backend\Clipboard\ClipBoard::class)) {
+if (class_exists(ClipBoard::class)) {
     return;
 }
+
 final class ClipBoard
 {
-    public function printContentFromTab() : void
+    public function printContentFromTab(): void
     {
+
     }
-    public function getContentFromTab() : void
+
+    public function getContentFromTab(): void
     {
+
     }
 }

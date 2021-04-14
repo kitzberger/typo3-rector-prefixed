@@ -2,9 +2,10 @@
 
 namespace TYPO3\CMS\Extbase\Object;
 
-if (\class_exists(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface::class)) {
+if (class_exists(ObjectManagerInterface::class)) {
     return;
 }
+
 interface ObjectManagerInterface
 {
     /**

@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
-declare (strict_types=1);
+
 namespace Nimut\TestingFramework\TestCase;
 
-if (\class_exists(\Nimut\TestingFramework\TestCase\FunctionalTestCase::class)) {
+if (class_exists(FunctionalTestCase::class)) {
     return;
 }
+
 class FunctionalTestCase
 {
+
 }

@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
-declare (strict_types=1);
 namespace TYPO3\CMS\Backend\Template;
 
-if (\class_exists(\TYPO3\CMS\Backend\Template\StandardDocumentTemplate::class)) {
+if (class_exists(StandardDocumentTemplate::class)) {
     return;
 }
+
 final class StandardDocumentTemplate
 {
 }

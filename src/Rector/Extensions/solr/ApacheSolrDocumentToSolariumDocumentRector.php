@@ -28,7 +28,7 @@ final class ApacheSolrDocumentToSolariumDocumentRector extends \Rector\Core\Rect
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210414\Apache_Solr_Document::class))) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType('Apache_Solr_Document'))) {
             return null;
         }
         if (!$this->isName($node->name, 'setMultiValue')) {

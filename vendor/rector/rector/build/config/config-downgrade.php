@@ -41,8 +41,6 @@ final class DowngradeRectorConfig
         'vendor/symfony/string/Slugger/AsciiSlugger.php',
         'vendor/symfony/cache/*',
         'nette/caching/src/Bridges/*',
-        // always excluded
-        '*vendor/symfony/polyfill*/bootstrap80.php',
         // This class has an issue for PHP 7.1:
         // https://github.com/rectorphp/rector/issues/4816#issuecomment-743209526
         // It doesn't happen often, and Rector doesn't use it, so then

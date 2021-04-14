@@ -9,14 +9,8 @@ $loader = require_once __DIR__.'/autoload.php';
 if (!class_exists('AutoloadIncluder', false) && !interface_exists('AutoloadIncluder', false) && !trait_exists('AutoloadIncluder', false)) {
     spl_autoload_call('Typo3RectorPrefix20210414\AutoloadIncluder');
 }
-if (!class_exists('Swift_Attachment', false) && !interface_exists('Swift_Attachment', false) && !trait_exists('Swift_Attachment', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210414\Swift_Attachment');
-}
-if (!class_exists('Swift_Image', false) && !interface_exists('Swift_Image', false) && !trait_exists('Swift_Image', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210414\Swift_Image');
-}
-if (!class_exists('ComposerAutoloaderInitd2bb3b93ac67d5681141cde33cca91e4', false) && !interface_exists('ComposerAutoloaderInitd2bb3b93ac67d5681141cde33cca91e4', false) && !trait_exists('ComposerAutoloaderInitd2bb3b93ac67d5681141cde33cca91e4', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210414\ComposerAutoloaderInitd2bb3b93ac67d5681141cde33cca91e4');
+if (!class_exists('ComposerAutoloaderInit532285468e830d92f432e35c3f6d0a8e', false) && !interface_exists('ComposerAutoloaderInit532285468e830d92f432e35c3f6d0a8e', false) && !trait_exists('ComposerAutoloaderInit532285468e830d92f432e35c3f6d0a8e', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210414\ComposerAutoloaderInit532285468e830d92f432e35c3f6d0a8e');
 }
 if (!class_exists('Doctrine\Inflector\Inflector', false) && !interface_exists('Doctrine\Inflector\Inflector', false) && !trait_exists('Doctrine\Inflector\Inflector', false)) {
     spl_autoload_call('Typo3RectorPrefix20210414\Doctrine\Inflector\Inflector');
@@ -126,9 +120,9 @@ if (!class_exists('ValueError', false) && !interface_exists('ValueError', false)
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequired2bb3b93ac67d5681141cde33cca91e4')) {
-    function composerRequired2bb3b93ac67d5681141cde33cca91e4() {
-        return \Typo3RectorPrefix20210414\composerRequired2bb3b93ac67d5681141cde33cca91e4(...func_get_args());
+if (!function_exists('composerRequire532285468e830d92f432e35c3f6d0a8e')) {
+    function composerRequire532285468e830d92f432e35c3f6d0a8e() {
+        return \Typo3RectorPrefix20210414\composerRequire532285468e830d92f432e35c3f6d0a8e(...func_get_args());
     }
 }
 if (!function_exists('parseArgs')) {

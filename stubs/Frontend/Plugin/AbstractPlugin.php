@@ -1,12 +1,14 @@
 <?php
+declare(strict_types=1);
 
-declare (strict_types=1);
 namespace TYPO3\CMS\Frontend\Plugin;
 
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-if (\class_exists(\TYPO3\CMS\Frontend\Plugin\AbstractPlugin::class)) {
+
+if(class_exists(AbstractPlugin::class)) {
     return;
 }
+
 class AbstractPlugin
 {
     /**
@@ -15,7 +17,8 @@ class AbstractPlugin
      * @var ContentObjectRenderer
      */
     public $cObj;
-    public function pi_getLL($key, $alternativeLabel = '', $hsc = \false) : void
+
+    public function pi_getLL($key, $alternativeLabel = '', $hsc = false): void
     {
     }
 }

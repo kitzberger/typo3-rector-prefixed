@@ -125,7 +125,7 @@ CODE_SAMPLE
         if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210414\Swift_Attachment::class))) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType('Swift_Attachment'))) {
             return null;
         }
         if (!$this->isName($firstArgument->name, 'fromPath')) {
@@ -141,7 +141,7 @@ CODE_SAMPLE
         if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210414\Swift_Image::class))) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType('Swift_Image'))) {
             return null;
         }
         if (!$this->isName($firstArgument->name, 'fromPath')) {

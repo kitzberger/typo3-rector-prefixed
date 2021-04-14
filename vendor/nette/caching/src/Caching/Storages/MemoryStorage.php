@@ -5,13 +5,13 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210413\Nette\Caching\Storages;
+namespace Typo3RectorPrefix20210414\Nette\Caching\Storages;
 
-use Typo3RectorPrefix20210413\Nette;
+use Typo3RectorPrefix20210414\Nette;
 /**
  * Memory cache storage.
  */
-class MemoryStorage implements \Typo3RectorPrefix20210413\Nette\Caching\Storage
+class MemoryStorage implements \Typo3RectorPrefix20210414\Nette\Caching\Storage
 {
     use Nette\SmartObject;
     /** @var array */
@@ -33,7 +33,7 @@ class MemoryStorage implements \Typo3RectorPrefix20210413\Nette\Caching\Storage
     }
     public function clean(array $conditions) : void
     {
-        if (!empty($conditions[\Typo3RectorPrefix20210413\Nette\Caching\Cache::ALL])) {
+        if (!empty($conditions[\Typo3RectorPrefix20210414\Nette\Caching\Cache::ALL])) {
             $this->data = [];
         }
     }

@@ -128,14 +128,14 @@ CODE_SAMPLE
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210413\\Gedmo\\Mapping\\Annotation\\Tree');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\Tree');
         if (!$doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return null;
         }
         // we're in a tree entity
         $this->phpDocTagRemover->removeTagValueFromNode($phpDocInfo, $doctrineAnnotationTagValueNode);
-        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210413\\Knp\\DoctrineBehaviors\\Contract\\Entity\\TreeNodeInterface');
-        $this->classInsertManipulator->addAsFirstTrait($node, 'Typo3RectorPrefix20210413\\Knp\\DoctrineBehaviors\\Model\\Tree\\TreeNodeTrait');
+        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210414\\Knp\\DoctrineBehaviors\\Contract\\Entity\\TreeNodeInterface');
+        $this->classInsertManipulator->addAsFirstTrait($node, 'Typo3RectorPrefix20210414\\Knp\\DoctrineBehaviors\\Model\\Tree\\TreeNodeTrait');
         // remove all tree-related properties and their getters and setters - it's handled by behavior trait
         $removedPropertyNames = [];
         foreach ($node->getProperties() as $property) {
@@ -153,7 +153,7 @@ CODE_SAMPLE
     }
     private function shouldRemoveProperty(\Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo $phpDocInfo) : bool
     {
-        return $phpDocInfo->hasByAnnotationClasses(['Typo3RectorPrefix20210413\\Gedmo\\Mapping\\Annotation\\TreeLeft', 'Typo3RectorPrefix20210413\\Gedmo\\Mapping\\Annotation\\TreeRight', 'Typo3RectorPrefix20210413\\Gedmo\\Mapping\\Annotation\\TreeRoot', 'Typo3RectorPrefix20210413\\Gedmo\\Mapping\\Annotation\\TreeParent', 'Typo3RectorPrefix20210413\\Gedmo\\Mapping\\Annotation\\TreeLevel']);
+        return $phpDocInfo->hasByAnnotationClasses(['Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\TreeLeft', 'Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\TreeRight', 'Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\TreeRoot', 'Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\TreeParent', 'Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\TreeLevel']);
     }
     /**
      * @param string[] $removedPropertyNames

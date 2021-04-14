@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210413\Psr\Log;
+namespace Psr\Log;
 
 /**
  * Describes a logger instance.

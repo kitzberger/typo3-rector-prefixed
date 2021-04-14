@@ -12,7 +12,7 @@ use PhpParser\NodeTraverser;
 use PHPStan\Type\ObjectType;
 use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\NodeTypeResolver\NodeTypeResolver;
-use Typo3RectorPrefix20210413\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210414\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class OnFormVariableMethodCallsCollector
 {
     /**
@@ -27,7 +27,7 @@ final class OnFormVariableMethodCallsCollector
      * @var NodeComparator
      */
     private $nodeComparator;
-    public function __construct(\Typo3RectorPrefix20210413\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
+    public function __construct(\Typo3RectorPrefix20210414\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->nodeTypeResolver = $nodeTypeResolver;
@@ -55,7 +55,7 @@ final class OnFormVariableMethodCallsCollector
             if (!$node instanceof \PhpParser\Node\Expr\Assign) {
                 return null;
             }
-            if (!$this->nodeTypeResolver->isObjectType($node->expr, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Nette\\Application\\UI\\Form'))) {
+            if (!$this->nodeTypeResolver->isObjectType($node->expr, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Nette\\Application\\UI\\Form'))) {
                 return null;
             }
             $newFormVariable = $node->var;

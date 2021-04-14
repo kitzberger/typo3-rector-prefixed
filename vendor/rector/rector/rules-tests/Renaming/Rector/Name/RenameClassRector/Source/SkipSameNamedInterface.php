@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210413;
+namespace Typo3RectorPrefix20210414;
 
 interface SkipSameNamedInterface
 {
 }
-\class_alias('Typo3RectorPrefix20210413\\SkipSameNamedInterface', 'SkipSameNamedInterface', \false);
+\class_alias('Typo3RectorPrefix20210414\\SkipSameNamedInterface', 'SkipSameNamedInterface', \false);

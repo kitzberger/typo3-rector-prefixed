@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210413\Doctrine\Inflector\Rules\Spanish;
+namespace Typo3RectorPrefix20210414\Doctrine\Inflector\Rules\Spanish;
 
-use Typo3RectorPrefix20210413\Doctrine\Inflector\Rules\Pattern;
+use Typo3RectorPrefix20210414\Doctrine\Inflector\Rules\Pattern;
 final class Uninflected
 {
     /**
@@ -25,8 +25,8 @@ final class Uninflected
      */
     private static function getDefault() : iterable
     {
-        (yield new \Typo3RectorPrefix20210413\Doctrine\Inflector\Rules\Pattern('lunes'));
-        (yield new \Typo3RectorPrefix20210413\Doctrine\Inflector\Rules\Pattern('rompecabezas'));
-        (yield new \Typo3RectorPrefix20210413\Doctrine\Inflector\Rules\Pattern('crisis'));
+        (yield new \Typo3RectorPrefix20210414\Doctrine\Inflector\Rules\Pattern('lunes'));
+        (yield new \Typo3RectorPrefix20210414\Doctrine\Inflector\Rules\Pattern('rompecabezas'));
+        (yield new \Typo3RectorPrefix20210414\Doctrine\Inflector\Rules\Pattern('crisis'));
     }
 }

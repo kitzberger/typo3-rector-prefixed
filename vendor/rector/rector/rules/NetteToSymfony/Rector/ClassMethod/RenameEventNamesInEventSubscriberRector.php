@@ -77,7 +77,7 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\ClassLike) {
             return null;
         }
-        if (!$this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface'))) {
+        if (!$this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Symfony\\Component\\EventDispatcher\\EventSubscriberInterface'))) {
             return null;
         }
         if (!$this->isName($node, 'getSubscribedEvents')) {

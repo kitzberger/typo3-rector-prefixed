@@ -3,22 +3,22 @@
 declare (strict_types=1);
 namespace Rector\Nette\Naming;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Strings;
-use Typo3RectorPrefix20210413\Stringy\Stringy;
+use Typo3RectorPrefix20210414\Nette\Utils\Strings;
+use Typo3RectorPrefix20210414\Stringy\Stringy;
 final class NetteControlNaming
 {
     public function createVariableName(string $shortName) : string
     {
-        $stringy = new \Typo3RectorPrefix20210413\Stringy\Stringy($shortName);
+        $stringy = new \Typo3RectorPrefix20210414\Stringy\Stringy($shortName);
         $variableName = (string) $stringy->camelize();
-        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::endsWith($variableName, 'Form')) {
+        if (\Typo3RectorPrefix20210414\Nette\Utils\Strings::endsWith($variableName, 'Form')) {
             return $variableName;
         }
         return $variableName . 'Control';
     }
     public function createCreateComponentClassMethodName(string $shortName) : string
     {
-        $stringy = new \Typo3RectorPrefix20210413\Stringy\Stringy($shortName);
+        $stringy = new \Typo3RectorPrefix20210414\Stringy\Stringy($shortName);
         $componentName = (string) $stringy->upperCamelize();
         return 'createComponent' . $componentName;
     }

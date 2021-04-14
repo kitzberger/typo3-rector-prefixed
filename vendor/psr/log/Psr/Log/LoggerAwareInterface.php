@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210413\Psr\Log;
+namespace Psr\Log;
 
 /**
  * Describes a logger-aware instance.
@@ -14,5 +14,5 @@ interface LoggerAwareInterface
      *
      * @return void
      */
-    public function setLogger(\Typo3RectorPrefix20210413\Psr\Log\LoggerInterface $logger);
+    public function setLogger(\Psr\Log\LoggerInterface $logger);
 }

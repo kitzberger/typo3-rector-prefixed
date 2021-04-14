@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210413\Psr\Log;
+namespace Psr\Log;
 
 /**
  * This Logger can be used to avoid conditional log calls.
@@ -10,7 +10,7 @@ namespace Typo3RectorPrefix20210413\Psr\Log;
  * is a good way to avoid littering your code with `if ($this->logger) { }`
  * blocks.
  */
-class NullLogger extends \Typo3RectorPrefix20210413\Psr\Log\AbstractLogger
+class NullLogger extends \Psr\Log\AbstractLogger
 {
     /**
      * Logs with an arbitrary level.

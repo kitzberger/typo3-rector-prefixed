@@ -7,8 +7,8 @@ use Iterator;
 use PHPStan\Rules\Rule;
 use Ssch\TYPO3Rector\PHPStan\Rules\AddCodeCoverageIgnoreForRectorDefinition;
 use Ssch\TYPO3Rector\PHPStan\Tests\Rules\AddCodeCoverageIgnoreForRectorDefinition\Fixture\MissingCodeCoverageIgnore;
-use Typo3RectorPrefix20210413\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
-final class AddCodeCoverageIgnoreForRectorDefinitionTest extends \Typo3RectorPrefix20210413\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
+use Typo3RectorPrefix20210414\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
+final class AddCodeCoverageIgnoreForRectorDefinitionTest extends \Typo3RectorPrefix20210414\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
 {
     /**
      * @dataProvider provideData()

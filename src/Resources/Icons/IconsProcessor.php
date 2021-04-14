@@ -6,8 +6,8 @@ namespace Ssch\TYPO3Rector\Resources\Icons;
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\Contract\Processor\FileProcessorInterface;
 use Rector\Core\ValueObject\Application\File;
-use Typo3RectorPrefix20210413\Symfony\Component\Console\Style\SymfonyStyle;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210414\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem;
 final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProcessorInterface
 {
     /**
@@ -22,7 +22,7 @@ final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProces
      * @var Configuration
      */
     private $configuration;
-    public function __construct(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210413\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
+    public function __construct(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210414\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
     {
         $this->smartFileSystem = $smartFileSystem;
         $this->symfonyStyle = $symfonyStyle;

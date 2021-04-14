@@ -3,11 +3,12 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\PhpDocParser;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Strings;
+use Typo3RectorPrefix20210414\Nette\Utils\Strings;
 use PhpParser\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode;
+use PHPStan\PhpDocParser\Lexer\Lexer;
 use Rector\BetterPhpDocParser\Attributes\AttributeMirrorer;
 use Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode;
 use Rector\BetterPhpDocParser\PhpDoc\SpacelessPhpDocTagNode;
@@ -19,11 +20,6 @@ use Rector\Core\Configuration\CurrentNodeProvider;
 use Rector\Core\Exception\ShouldNotHappenException;
 final class DoctrineAnnotationDecorator
 {
-    /**
-     * @see https://regex101.com/r/jHF5D9/1
-     * @var string
-     */
-    private const OPEN_ANNOTATION_SUFFIX_REGEX = '#(\\{|\\,)$#';
     /**
      * @var CurrentNodeProvider
      */
@@ -60,31 +56,7 @@ final class DoctrineAnnotationDecorator
         }
         // merge split doctrine nested tags
         $this->mergeNestedDoctrineAnnotations($phpDocNode);
-        foreach ($phpDocNode->children as $key => $phpDocChildNode) {
-            if (!$phpDocChildNode instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode) {
-                continue;
-            }
-            if (!$phpDocChildNode->value instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode) {
-                continue;
-            }
-            // known doc tag to annotation class
-            $fullyQualifiedAnnotationClass = $this->classAnnotationMatcher->resolveTagFullyQualifiedName($phpDocChildNode->name, $currentPhpNode);
-            // not an annotations class
-            if (!\Typo3RectorPrefix20210413\Nette\Utils\Strings::contains($fullyQualifiedAnnotationClass, '\\')) {
-                continue;
-            }
-            $genericTagValueNode = $phpDocChildNode->value;
-            $nestedTokenIterator = $this->tokenIteratorFactory->create($genericTagValueNode->value);
-            // mimics doctrine behavior just in phpdoc-parser syntax :)
-            // https://github.com/doctrine/annotations/blob/c66f06b7c83e9a2a7523351a9d5a4b55f885e574/lib/Doctrine/Common/Annotations/DocParser.php#L742
-            $values = $this->staticDoctrineAnnotationParser->resolveAnnotationMethodCall($nestedTokenIterator);
-            $formerStartEnd = $genericTagValueNode->getAttribute(\Rector\BetterPhpDocParser\ValueObject\PhpDocAttributeKey::START_AND_END);
-            $doctrineAnnotationTagValueNode = new \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode($fullyQualifiedAnnotationClass, $genericTagValueNode->value, $values, \Rector\BetterPhpDocParser\ValueObject\DoctrineAnnotation\SilentKeyMap::CLASS_NAMES_TO_SILENT_KEYS[$fullyQualifiedAnnotationClass] ?? null);
-            $doctrineAnnotationTagValueNode->setAttribute(\Rector\BetterPhpDocParser\ValueObject\PhpDocAttributeKey::START_AND_END, $formerStartEnd);
-            $spacelessPhpDocTagNode = new \Rector\BetterPhpDocParser\PhpDoc\SpacelessPhpDocTagNode($phpDocChildNode->name, $doctrineAnnotationTagValueNode);
-            $this->attributeMirrorer->mirror($phpDocChildNode, $spacelessPhpDocTagNode);
-            $phpDocNode->children[$key] = $spacelessPhpDocTagNode;
-        }
+        $this->transformGenericTagValueNodesToDoctrineAnnotationTagValueNodes($phpDocNode, $currentPhpNode);
     }
     /**
      * Join token iterator with all the following nodes if nested
@@ -103,27 +75,30 @@ final class DoctrineAnnotationDecorator
                 continue;
             }
             $genericTagValueNode = $phpDocChildNode->value;
-            /** @var GenericTagValueNode $currentGenericTagValueNode */
-            $currentGenericTagValueNode = $genericTagValueNode;
-            while (\Typo3RectorPrefix20210413\Nette\Utils\Strings::match($currentGenericTagValueNode->value, self::OPEN_ANNOTATION_SUFFIX_REGEX)) {
-                $nextPhpDocChildNode = $phpDocNode->children[$key + 1];
+            while (isset($phpDocNode->children[$key])) {
+                ++$key;
+                // no more next nodes
+                if (!isset($phpDocNode->children[$key])) {
+                    break;
+                }
+                $nextPhpDocChildNode = $phpDocNode->children[$key];
                 if (!$nextPhpDocChildNode instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode) {
                     continue;
                 }
                 if (!$nextPhpDocChildNode->value instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode) {
                     continue;
                 }
-                $genericTagValueNode->value .= \PHP_EOL . $nextPhpDocChildNode->name . $nextPhpDocChildNode->value;
+                if ($this->isClosedContent($genericTagValueNode->value)) {
+                    break;
+                }
+                $composedContent = $genericTagValueNode->value . \PHP_EOL . $nextPhpDocChildNode->name . $nextPhpDocChildNode->value;
+                $genericTagValueNode->value = $composedContent;
                 /** @var StartAndEnd $currentStartAndEnd */
                 $currentStartAndEnd = $phpDocChildNode->getAttribute(\Rector\BetterPhpDocParser\ValueObject\PhpDocAttributeKey::START_AND_END);
                 /** @var StartAndEnd $nextStartAndEnd */
                 $nextStartAndEnd = $nextPhpDocChildNode->getAttribute(\Rector\BetterPhpDocParser\ValueObject\PhpDocAttributeKey::START_AND_END);
                 $startAndEnd = new \Rector\BetterPhpDocParser\ValueObject\StartAndEnd($currentStartAndEnd->getStart(), $nextStartAndEnd->getEnd());
                 $phpDocChildNode->setAttribute(\Rector\BetterPhpDocParser\ValueObject\PhpDocAttributeKey::START_AND_END, $startAndEnd);
-                ++$key;
-                if (!isset($phpDocNode->children[$key])) {
-                    break;
-                }
                 $currentChildValueNode = $phpDocNode->children[$key];
                 if (!$currentChildValueNode instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode) {
                     continue;
@@ -141,5 +116,57 @@ final class DoctrineAnnotationDecorator
             }
             unset($phpDocNode->children[$key]);
         }
+    }
+    private function transformGenericTagValueNodesToDoctrineAnnotationTagValueNodes(\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode $phpDocNode, \PhpParser\Node $currentPhpNode) : void
+    {
+        foreach ($phpDocNode->children as $key => $phpDocChildNode) {
+            if (!$phpDocChildNode instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode) {
+                continue;
+            }
+            if (!$phpDocChildNode->value instanceof \PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode) {
+                continue;
+            }
+            // known doc tag to annotation class
+            $fullyQualifiedAnnotationClass = $this->classAnnotationMatcher->resolveTagFullyQualifiedName($phpDocChildNode->name, $currentPhpNode);
+            // not an annotations class
+            if (!\Typo3RectorPrefix20210414\Nette\Utils\Strings::contains($fullyQualifiedAnnotationClass, '\\')) {
+                continue;
+            }
+            $genericTagValueNode = $phpDocChildNode->value;
+            $nestedTokenIterator = $this->tokenIteratorFactory->create($genericTagValueNode->value);
+            // mimics doctrine behavior just in phpdoc-parser syntax :)
+            // https://github.com/doctrine/annotations/blob/c66f06b7c83e9a2a7523351a9d5a4b55f885e574/lib/Doctrine/Common/Annotations/DocParser.php#L742
+            $values = $this->staticDoctrineAnnotationParser->resolveAnnotationMethodCall($nestedTokenIterator);
+            $formerStartEnd = $genericTagValueNode->getAttribute(\Rector\BetterPhpDocParser\ValueObject\PhpDocAttributeKey::START_AND_END);
+            $doctrineAnnotationTagValueNode = new \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode($fullyQualifiedAnnotationClass, $genericTagValueNode->value, $values, \Rector\BetterPhpDocParser\ValueObject\DoctrineAnnotation\SilentKeyMap::CLASS_NAMES_TO_SILENT_KEYS[$fullyQualifiedAnnotationClass] ?? null);
+            $doctrineAnnotationTagValueNode->setAttribute(\Rector\BetterPhpDocParser\ValueObject\PhpDocAttributeKey::START_AND_END, $formerStartEnd);
+            $spacelessPhpDocTagNode = new \Rector\BetterPhpDocParser\PhpDoc\SpacelessPhpDocTagNode($phpDocChildNode->name, $doctrineAnnotationTagValueNode);
+            $this->attributeMirrorer->mirror($phpDocChildNode, $spacelessPhpDocTagNode);
+            $phpDocNode->children[$key] = $spacelessPhpDocTagNode;
+        }
+    }
+    /**
+     * This is closed block, e.g. {( ... )},
+     * false on: {( ... )
+     */
+    private function isClosedContent(string $composedContent) : bool
+    {
+        $composedTokenIterator = $this->tokenIteratorFactory->create($composedContent);
+        $tokenCount = $composedTokenIterator->count();
+        $openBracketCount = 0;
+        $closeBracketCount = 0;
+        if ($composedContent === '') {
+            return \true;
+        }
+        do {
+            if ($composedTokenIterator->isCurrentTokenTypes([\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_CURLY_BRACKET, \PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_OPEN_PARENTHESES]) || \Typo3RectorPrefix20210414\Nette\Utils\Strings::contains($composedTokenIterator->currentTokenValue(), '(')) {
+                ++$openBracketCount;
+            }
+            if ($composedTokenIterator->isCurrentTokenTypes([\PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_CURLY_BRACKET, \PHPStan\PhpDocParser\Lexer\Lexer::TOKEN_CLOSE_PARENTHESES]) || \Typo3RectorPrefix20210414\Nette\Utils\Strings::contains($composedTokenIterator->currentTokenValue(), ')')) {
+                ++$closeBracketCount;
+            }
+            $composedTokenIterator->next();
+        } while ($composedTokenIterator->currentPosition() < $tokenCount - 1);
+        return $openBracketCount === $closeBracketCount;
     }
 }

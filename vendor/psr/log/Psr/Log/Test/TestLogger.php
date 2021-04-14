@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210413\Psr\Log\Test;
+namespace Psr\Log\Test;
 
-use Typo3RectorPrefix20210413\Psr\Log\AbstractLogger;
+use Psr\Log\AbstractLogger;
 /**
  * Used for testing purposes.
  *
@@ -53,7 +53,7 @@ use Typo3RectorPrefix20210413\Psr\Log\AbstractLogger;
  * @method bool hasInfoThatPasses($message)
  * @method bool hasDebugThatPasses($message)
  */
-class TestLogger extends \Typo3RectorPrefix20210413\Psr\Log\AbstractLogger
+class TestLogger extends \Psr\Log\AbstractLogger
 {
     /**
      * @var array

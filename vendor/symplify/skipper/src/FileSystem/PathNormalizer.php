@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210413\Symplify\Skipper\FileSystem;
+namespace Typo3RectorPrefix20210414\Symplify\Skipper\FileSystem;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Strings;
+use Typo3RectorPrefix20210414\Nette\Utils\Strings;
 /**
  * @see \Symplify\Skipper\Tests\FileSystem\PathNormalizerTest
  */
@@ -22,14 +22,14 @@ final class PathNormalizer
     public function normalizeForFnmatch(string $path) : string
     {
         // ends with *
-        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::match($path, self::ONLY_ENDS_WITH_ASTERISK_REGEX)) {
+        if (\Typo3RectorPrefix20210414\Nette\Utils\Strings::match($path, self::ONLY_ENDS_WITH_ASTERISK_REGEX)) {
             return '*' . $path;
         }
         // starts with *
-        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::match($path, self::ONLY_STARTS_WITH_ASTERISK_REGEX)) {
+        if (\Typo3RectorPrefix20210414\Nette\Utils\Strings::match($path, self::ONLY_STARTS_WITH_ASTERISK_REGEX)) {
             return $path . '*';
         }
-        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::contains($path, '..')) {
+        if (\Typo3RectorPrefix20210414\Nette\Utils\Strings::contains($path, '..')) {
             $path = \realpath($path);
             if ($path === \false) {
                 return '';

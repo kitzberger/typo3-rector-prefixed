@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Rector\NodeTypeResolver\PhpDocNodeVisitor;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Strings;
+use Typo3RectorPrefix20210414\Nette\Utils\Strings;
 use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Renaming\ValueObject\PseudoNamespaceToNamespace;
 use Rector\StaticTypeMapper\StaticTypeMapper;
-use Typo3RectorPrefix20210413\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor;
-final class UnderscoreRenamePhpDocNodeVisitor extends \Typo3RectorPrefix20210413\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
+use Typo3RectorPrefix20210414\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor;
+final class UnderscoreRenamePhpDocNodeVisitor extends \Typo3RectorPrefix20210414\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
 {
     /**
      * @var StaticTypeMapper
@@ -52,7 +52,7 @@ final class UnderscoreRenamePhpDocNodeVisitor extends \Typo3RectorPrefix20210413
             return null;
         }
         // change underscore to \\
-        $slashedName = '\\' . \Typo3RectorPrefix20210413\Nette\Utils\Strings::replace($staticType->getClassName(), '#_#', '\\');
+        $slashedName = '\\' . \Typo3RectorPrefix20210414\Nette\Utils\Strings::replace($staticType->getClassName(), '#_#', '\\');
         return new \PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode($slashedName);
     }
     public function setPseudoNamespaceToNamespace(\Rector\Renaming\ValueObject\PseudoNamespaceToNamespace $pseudoNamespaceToNamespace) : void
@@ -69,7 +69,7 @@ final class UnderscoreRenamePhpDocNodeVisitor extends \Typo3RectorPrefix20210413
         if (!$staticType instanceof \PHPStan\Type\ObjectType) {
             return \true;
         }
-        if (!\Typo3RectorPrefix20210413\Nette\Utils\Strings::startsWith($staticType->getClassName(), $pseudoNamespaceToNamespace->getNamespacePrefix())) {
+        if (!\Typo3RectorPrefix20210414\Nette\Utils\Strings::startsWith($staticType->getClassName(), $pseudoNamespaceToNamespace->getNamespacePrefix())) {
             return \true;
         }
         // excluded?

@@ -5,13 +5,13 @@ namespace Rector\Tests\CodingStyle\Rector\Assign\SplitDoubleAssignRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
 final class SplitDoubleAssignRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

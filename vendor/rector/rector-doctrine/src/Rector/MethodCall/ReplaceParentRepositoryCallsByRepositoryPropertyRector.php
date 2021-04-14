@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Rector\MethodCall;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Strings;
+use Typo3RectorPrefix20210414\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\ClassConstFetch;
@@ -60,7 +60,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Doctrine\\ORM\\EntityRepository'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Doctrine\\ORM\\EntityRepository'))) {
             return null;
         }
         if (!$this->isNames($node->name, self::ENTITY_REPOSITORY_PUBLIC_METHODS)) {
@@ -76,7 +76,7 @@ CODE_SAMPLE
     private function resolveRepositoryName(\PhpParser\Node\Expr $expr) : string
     {
         $entityReferenceName = $this->valueResolver->getValue($expr);
-        $lastNamePart = (string) \Typo3RectorPrefix20210413\Nette\Utils\Strings::after($entityReferenceName, '\\', -1);
+        $lastNamePart = (string) \Typo3RectorPrefix20210414\Nette\Utils\Strings::after($entityReferenceName, '\\', -1);
         return \lcfirst($lastNamePart) . 'Repository';
     }
     private function guessRepositoryType(\PhpParser\Node\Expr $expr) : string
@@ -86,8 +86,8 @@ CODE_SAMPLE
             if ($entityClass === null) {
                 return 'Unknown_Repository_Class';
             }
-            $entityClassNamespace = (string) \Typo3RectorPrefix20210413\Nette\Utils\Strings::before($entityClass, '\\', -2);
-            $lastNamePart = (string) \Typo3RectorPrefix20210413\Nette\Utils\Strings::after($entityClass, '\\', -1);
+            $entityClassNamespace = (string) \Typo3RectorPrefix20210414\Nette\Utils\Strings::before($entityClass, '\\', -2);
+            $lastNamePart = (string) \Typo3RectorPrefix20210414\Nette\Utils\Strings::after($entityClass, '\\', -1);
             return $entityClassNamespace . '\\Repository\\' . $lastNamePart . 'Repository';
         }
         return 'Unknown_Repository_Class';
@@ -98,7 +98,7 @@ CODE_SAMPLE
         $parentMethodCall = $methodCall->var;
         if (\count($parentMethodCall->args) === 1) {
             $class = $methodCall->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLASS_NODE);
-            if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210413\\Doctrine\\ORM\\EntityRepository'))) {
+            if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Doctrine\\ORM\\EntityRepository'))) {
                 return null;
             }
             $firstArgValue = $parentMethodCall->args[0]->value;

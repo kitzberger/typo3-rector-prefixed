@@ -22,16 +22,16 @@ final class FluentMethodCallSkipper
      */
     private const ALLOWED_FLUENT_TYPES = [
         // symfony
-        'Typo3RectorPrefix20210413\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\AbstractConfigurator',
-        'Typo3RectorPrefix20210413\\Symfony\\Component\\Finder\\Finder',
+        'Typo3RectorPrefix20210414\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\AbstractConfigurator',
+        'Typo3RectorPrefix20210414\\Symfony\\Component\\Finder\\Finder',
         // doctrine
-        'Typo3RectorPrefix20210413\\Doctrine\\ORM\\QueryBuilder',
+        'Typo3RectorPrefix20210414\\Doctrine\\ORM\\QueryBuilder',
         // nette
-        'Typo3RectorPrefix20210413\\Nette\\Utils\\Finder',
-        'Typo3RectorPrefix20210413\\Nette\\Forms\\Controls\\BaseControl',
-        'Typo3RectorPrefix20210413\\Nette\\DI\\ContainerBuilder',
-        'Typo3RectorPrefix20210413\\Nette\\DI\\Definitions\\Definition',
-        'Typo3RectorPrefix20210413\\Nette\\DI\\Definitions\\ServiceDefinition',
+        'Typo3RectorPrefix20210414\\Nette\\Utils\\Finder',
+        'Typo3RectorPrefix20210414\\Nette\\Forms\\Controls\\BaseControl',
+        'Typo3RectorPrefix20210414\\Nette\\DI\\ContainerBuilder',
+        'Typo3RectorPrefix20210414\\Nette\\DI\\Definitions\\Definition',
+        'Typo3RectorPrefix20210414\\Nette\\DI\\Definitions\\ServiceDefinition',
         'PHPStan\\Analyser\\Scope',
         'DateTimeInterface',
     ];

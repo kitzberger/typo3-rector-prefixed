@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Rector\Core\Reflection;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Strings;
+use Typo3RectorPrefix20210414\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Reflection\Php\PhpMethodReflection;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\FileSystemRector\Parser\FileInfoParser;
 use Rector\NodeNameResolver\NodeNameResolver;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
 final class MethodReflectionToAstResolver
 {
     /**
@@ -43,7 +43,7 @@ final class MethodReflectionToAstResolver
             return null;
         }
         // skip vendor
-        if (\Typo3RectorPrefix20210413\Nette\Utils\Strings::contains($fileName, '#\\/vendor\\/#')) {
+        if (\Typo3RectorPrefix20210414\Nette\Utils\Strings::contains($fileName, '#\\/vendor\\/#')) {
             return null;
         }
         $methodName = $phpMethodReflection->getName();
@@ -51,7 +51,7 @@ final class MethodReflectionToAstResolver
         if (isset($this->analyzedMethodsInFileName[$fileName][$methodName])) {
             return $this->analyzedMethodsInFileName[$fileName][$methodName];
         }
-        $smartFileInfo = new \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo($fileName);
+        $smartFileInfo = new \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo($fileName);
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($smartFileInfo);
         /** @var ClassMethod|null $classMethod */
         $classMethod = $this->betterNodeFinder->findFirst($nodes, function (\PhpParser\Node $node) use($methodName) : bool {

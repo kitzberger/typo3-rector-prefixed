@@ -7,8 +7,8 @@ use Rector\ChangesReporting\Annotation\AnnotationExtractor;
 use Rector\Core\Provider\CurrentFileProvider;
 use ReflectionClass;
 use Ssch\TYPO3Rector\Reporting\ValueObject\Report;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem;
 final class HtmlReporter implements \Ssch\TYPO3Rector\Reporting\Reporter
 {
     /**
@@ -31,7 +31,7 @@ final class HtmlReporter implements \Ssch\TYPO3Rector\Reporting\Reporter
      * @var CurrentFileProvider
      */
     private $currentFileProvider;
-    public function __construct(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $reportFile, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
+    public function __construct(\Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $reportFile, \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
     {
         $this->annotationExtractor = $annotationExtractor;
         $this->reportFile = $reportFile;

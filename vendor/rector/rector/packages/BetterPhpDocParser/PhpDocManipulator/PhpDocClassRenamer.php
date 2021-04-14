@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\BetterPhpDocParser\PhpDocManipulator;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Strings;
+use Typo3RectorPrefix20210414\Nette\Utils\Strings;
 use PhpParser\Node;
 use Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
@@ -35,7 +35,7 @@ final class PhpDocClassRenamer
      */
     private function processAssertChoiceTagValueNode(array $oldToNewClasses, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo $phpDocInfo) : void
     {
-        $assertChoiceTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210413\\Symfony\\Component\\Validator\\Constraints\\Choice');
+        $assertChoiceTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210414\\Symfony\\Component\\Validator\\Constraints\\Choice');
         if (!$assertChoiceTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return;
         }
@@ -68,7 +68,7 @@ final class PhpDocClassRenamer
      */
     private function processSerializerTypeTagValueNode(array $oldToNewClasses, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo $phpDocInfo) : void
     {
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210413\\JMS\\Serializer\\Annotation\\Type');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210414\\JMS\\Serializer\\Annotation\\Type');
         if (!$doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return;
         }
@@ -79,7 +79,7 @@ final class PhpDocClassRenamer
                     $doctrineAnnotationTagValueNode->changeSilentValue($newClass);
                     continue;
                 }
-                $newContent = \Typo3RectorPrefix20210413\Nette\Utils\Strings::replace($className, '#\\b' . \preg_quote($oldClass, '#') . '\\b#', $newClass);
+                $newContent = \Typo3RectorPrefix20210414\Nette\Utils\Strings::replace($className, '#\\b' . \preg_quote($oldClass, '#') . '\\b#', $newClass);
                 if ($newContent === $className) {
                     continue;
                 }

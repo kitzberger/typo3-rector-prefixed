@@ -7,8 +7,8 @@ use Iterator;
 use PHPStan\Rules\Rule;
 use Rector\PHPStanExtensions\Rule\RequireRectorCategoryByGetNodeTypesRule;
 use Rector\PHPStanExtensions\Tests\Rule\RequireRectorCategoryByGetNodeTypesRule\Fixture\ClassMethod\ChangeSomethingRector;
-use Typo3RectorPrefix20210413\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
-final class RequireRectorCategoryByGetNodeTypesRuleTest extends \Typo3RectorPrefix20210413\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
+use Typo3RectorPrefix20210414\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
+final class RequireRectorCategoryByGetNodeTypesRuleTest extends \Typo3RectorPrefix20210414\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
 {
     /**
      * @dataProvider provideData()

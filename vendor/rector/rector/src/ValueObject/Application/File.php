@@ -7,7 +7,7 @@ use PhpParser\Node\Stmt;
 use Rector\ChangesReporting\ValueObject\RectorWithLineChange;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\ValueObject\Reporting\FileDiff;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Rector\Core\ValueObjectFactory\Application\FileFactory
  */
@@ -49,13 +49,17 @@ final class File
      * @var RectorWithLineChange[]
      */
     private $rectorWithLineChanges = [];
-    public function __construct(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $fileContent)
+    /**
+     * @var RectorError[]
+     */
+    private $rectorErrors = [];
+    public function __construct(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $fileContent)
     {
         $this->smartFileInfo = $smartFileInfo;
         $this->fileContent = $fileContent;
         $this->originalFileContent = $fileContent;
     }
-    public function getSmartFileInfo() : \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo
+    public function getSmartFileInfo() : \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->smartFileInfo;
     }
@@ -139,5 +143,20 @@ final class File
     public function getRectorWithLineChanges() : array
     {
         return $this->rectorWithLineChanges;
+    }
+    public function addRectorError(\Rector\Core\ValueObject\Application\RectorError $rectorError) : void
+    {
+        $this->rectorErrors[] = $rectorError;
+    }
+    public function hasErrors() : bool
+    {
+        return $this->rectorErrors !== [];
+    }
+    /**
+     * @return RectorError[]
+     */
+    public function getErrors() : array
+    {
+        return $this->rectorErrors;
     }
 }

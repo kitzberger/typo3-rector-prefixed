@@ -7,8 +7,8 @@ use Iterator;
 use Rector\BetterPhpDocParser\PhpDocInfo\TokenIteratorFactory;
 use Rector\BetterPhpDocParser\PhpDocParser\StaticDoctrineAnnotationParser\ArrayParser;
 use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210413\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ArrayParserTest extends \Typo3RectorPrefix20210413\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class ArrayParserTest extends \Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var ArrayParser
@@ -31,7 +31,7 @@ final class ArrayParserTest extends \Typo3RectorPrefix20210413\Symplify\PackageB
     public function test(string $docContent, array $expectedArray) : void
     {
         $betterTokenIterator = $this->tokenIteratorFactory->create($docContent);
-        $array = $this->arrayParser->parserArray($betterTokenIterator);
+        $array = $this->arrayParser->parseCurlyArray($betterTokenIterator);
         $this->assertSame($expectedArray, $array);
     }
     public function provideData() : \Iterator

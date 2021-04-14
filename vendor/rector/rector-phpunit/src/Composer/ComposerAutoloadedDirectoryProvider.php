@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Rector\PHPUnit\Composer;
 
-use Typo3RectorPrefix20210413\Nette\Utils\Arrays;
-use Typo3RectorPrefix20210413\Nette\Utils\Json;
+use Typo3RectorPrefix20210414\Nette\Utils\Arrays;
+use Typo3RectorPrefix20210414\Nette\Utils\Json;
 use Rector\Testing\PHPUnit\StaticPHPUnitEnvironment;
-use Typo3RectorPrefix20210413\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210414\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem;
 final class ComposerAutoloadedDirectoryProvider
 {
     /**
      * @var string[]
      */
-    private const AUTOLOAD_SECTIONS = [\Typo3RectorPrefix20210413\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD, \Typo3RectorPrefix20210413\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV];
+    private const AUTOLOAD_SECTIONS = [\Typo3RectorPrefix20210414\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD, \Typo3RectorPrefix20210414\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV];
     /**
      * @var string
      */
@@ -22,7 +22,7 @@ final class ComposerAutoloadedDirectoryProvider
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->composerFilePath = \getcwd() . '/composer.json';
         $this->smartFileSystem = $smartFileSystem;
@@ -45,7 +45,7 @@ final class ComposerAutoloadedDirectoryProvider
             $sectionDirectories = $this->collectDirectoriesFromAutoload($composerJson[$autoloadSection]);
             $autoloadDirectories[] = $sectionDirectories;
         }
-        return \Typo3RectorPrefix20210413\Nette\Utils\Arrays::flatten($autoloadDirectories);
+        return \Typo3RectorPrefix20210414\Nette\Utils\Arrays::flatten($autoloadDirectories);
     }
     /**
      * @return mixed[]
@@ -56,7 +56,7 @@ final class ComposerAutoloadedDirectoryProvider
             return [];
         }
         $composerFileContent = $this->smartFileSystem->readFile($this->composerFilePath);
-        return \Typo3RectorPrefix20210413\Nette\Utils\Json::decode($composerFileContent, \Typo3RectorPrefix20210413\Nette\Utils\Json::FORCE_ARRAY);
+        return \Typo3RectorPrefix20210414\Nette\Utils\Json::decode($composerFileContent, \Typo3RectorPrefix20210414\Nette\Utils\Json::FORCE_ARRAY);
     }
     /**
      * @param string[] $composerJsonAutoload

@@ -1,16 +1,16 @@
 <?php
 
-namespace Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Tests\Unit\Parser\AST;
+namespace Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Tests\Unit\Parser\AST;
 
-use Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\AST\RootObjectPath;
-use Typo3RectorPrefix20210413\PHPUnit\Framework\TestCase;
-class RootObjectPathTest extends \Typo3RectorPrefix20210413\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Parser\AST\RootObjectPath;
+use Typo3RectorPrefix20210414\PHPUnit\Framework\TestCase;
+class RootObjectPathTest extends \Typo3RectorPrefix20210414\PHPUnit\Framework\TestCase
 {
     /** @var RootObjectPath */
     private $path;
     public function setUp() : void
     {
-        $this->path = new \Typo3RectorPrefix20210413\Helmich\TypoScriptParser\Parser\AST\RootObjectPath();
+        $this->path = new \Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Parser\AST\RootObjectPath();
     }
     public function testAbsoluteNameIsEmpty()
     {

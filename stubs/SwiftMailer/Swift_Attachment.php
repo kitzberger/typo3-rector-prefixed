@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210413;
+namespace Typo3RectorPrefix20210414;
 
-if (\class_exists(\Typo3RectorPrefix20210413\Swift_Attachment::class)) {
+if (\class_exists(\Typo3RectorPrefix20210414\Swift_Attachment::class)) {
     return;
 }
 class Swift_Attachment

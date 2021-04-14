@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\ValueObject\Application;
 
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
 final class RectorError
 {
     /**
@@ -22,9 +22,8 @@ final class RectorError
      * @var string|null
      */
     private $rectorClass;
-    public function __construct(\Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $message, ?int $line = null, ?string $rectorClass = null)
+    public function __construct(string $message, ?int $line = null, ?string $rectorClass = null)
     {
-        $this->fileInfo = $smartFileInfo;
         $this->message = $message;
         $this->line = $line;
         $this->rectorClass = $rectorClass;
@@ -33,7 +32,7 @@ final class RectorError
     {
         return $this->fileInfo->getRelativeFilePathFromCwd();
     }
-    public function getFileInfo() : \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo
+    public function getFileInfo() : \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->fileInfo;
     }

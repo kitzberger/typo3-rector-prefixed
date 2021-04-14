@@ -12,8 +12,8 @@ use Rector\BetterPhpDocParser\PhpDocNodeMapper;
 use Rector\BetterPhpDocParser\ValueObject\Parser\BetterTokenIterator;
 use Rector\BetterPhpDocParser\ValueObject\PhpDoc\VariadicAwareParamTagValueNode;
 use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210413\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class PhpDocNodeMapperTest extends \Typo3RectorPrefix20210413\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class PhpDocNodeMapperTest extends \Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var PhpDocNodeMapper

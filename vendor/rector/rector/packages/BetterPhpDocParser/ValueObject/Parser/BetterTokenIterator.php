@@ -5,7 +5,7 @@ namespace Rector\BetterPhpDocParser\ValueObject\Parser;
 
 use PHPStan\PhpDocParser\Parser\TokenIterator;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Typo3RectorPrefix20210413\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use Typo3RectorPrefix20210414\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 final class BetterTokenIterator extends \PHPStan\PhpDocParser\Parser\TokenIterator
 {
     /**
@@ -25,7 +25,7 @@ final class BetterTokenIterator extends \PHPStan\PhpDocParser\Parser\TokenIterat
      */
     public function __construct(array $tokens, int $index = 0)
     {
-        $this->privatesAccessor = new \Typo3RectorPrefix20210413\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
+        $this->privatesAccessor = new \Typo3RectorPrefix20210414\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
         if ($tokens === []) {
             $this->privatesAccessor->setPrivateProperty($this, self::TOKENS, []);
             $this->privatesAccessor->setPrivateProperty($this, self::INDEX, 0);
@@ -40,6 +40,18 @@ final class BetterTokenIterator extends \PHPStan\PhpDocParser\Parser\TokenIterat
     {
         foreach ($types as $type) {
             if ($this->isNextTokenType($type)) {
+                return \true;
+            }
+        }
+        return \false;
+    }
+    /**
+     * @param int[] $tokenTypes
+     */
+    public function isCurrentTokenTypes(array $tokenTypes) : bool
+    {
+        foreach ($tokenTypes as $tokenType) {
+            if ($this->isCurrentTokenType($tokenType)) {
                 return \true;
             }
         }
@@ -89,14 +101,13 @@ final class BetterTokenIterator extends \PHPStan\PhpDocParser\Parser\TokenIterat
     }
     public function nextTokenType() : ?int
     {
-        $this->pushSavePoint();
         $tokens = $this->getTokens();
-        $index = $this->privatesAccessor->getPrivateProperty($this, self::INDEX);
         // does next token exist?
-        $nextIndex = $index + 1;
+        $nextIndex = $this->currentPosition() + 1;
         if (!isset($tokens[$nextIndex])) {
             return null;
         }
+        $this->pushSavePoint();
         $this->next();
         $nextTokenType = $this->currentTokenType();
         $this->rollback();

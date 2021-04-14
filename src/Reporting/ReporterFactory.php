@@ -7,9 +7,9 @@ use DateTimeImmutable;
 use Rector\ChangesReporting\Annotation\AnnotationExtractor;
 use Rector\Core\Provider\CurrentFileProvider;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
-use Typo3RectorPrefix20210413\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210414\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem;
 final class ReporterFactory
 {
     /**
@@ -28,7 +28,7 @@ final class ReporterFactory
      * @var CurrentFileProvider
      */
     private $currentFileProvider;
-    public function __construct(\Typo3RectorPrefix20210413\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
+    public function __construct(\Typo3RectorPrefix20210414\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Rector\ChangesReporting\Annotation\AnnotationExtractor $annotationExtractor, \Rector\Core\Provider\CurrentFileProvider $currentFileProvider)
     {
         $this->parameterProvider = $parameterProvider;
         $this->smartFileSystem = $smartFileSystem;
@@ -43,7 +43,7 @@ final class ReporterFactory
         }
         $this->smartFileSystem->remove($reportDirectory);
         $this->smartFileSystem->mirror(__DIR__ . '/../../templates/report/', $reportDirectory);
-        $reportFile = new \Typo3RectorPrefix20210413\Symplify\SmartFileSystem\SmartFileInfo(\rtrim($reportDirectory, '/') . '/index.html');
+        $reportFile = new \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo(\rtrim($reportDirectory, '/') . '/index.html');
         $content = $reportFile->getContents();
         $content = \str_replace('###DATE###', (new \DateTimeImmutable())->format('d.m.Y'), $content);
         $this->smartFileSystem->dumpFile($reportFile->getRealPath(), $content);

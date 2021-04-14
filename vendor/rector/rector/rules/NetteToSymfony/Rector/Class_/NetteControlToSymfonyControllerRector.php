@@ -99,7 +99,7 @@ CODE_SAMPLE
         $shortClassName = $this->nodeNameResolver->getShortName($node);
         $shortClassName = $this->classNaming->replaceSuffix($shortClassName, 'Control', 'Controller');
         $node->name = new \PhpParser\Node\Identifier($shortClassName);
-        $node->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210413\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
+        $node->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210414\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController');
         $classMethod = $node->getMethod('render');
         if ($classMethod !== null) {
             $this->processRenderMethod($classMethod);
@@ -116,7 +116,7 @@ CODE_SAMPLE
         $return = new \PhpParser\Node\Stmt\Return_($methodCall);
         $classMethod->stmts[] = $return;
         if ($this->isAtLeastPhpVersion(\Rector\Core\ValueObject\PhpVersionFeature::SCALAR_TYPES)) {
-            $classMethod->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210413\\Symfony\\Component\\HttpFoundation\\Response');
+            $classMethod->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210414\\Symfony\\Component\\HttpFoundation\\Response');
         }
         $this->removeNodes($classMethodRender->getNodesToRemove());
     }
@@ -140,7 +140,7 @@ CODE_SAMPLE
             if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {
                 throw new \Rector\Core\Exception\ShouldNotHappenException();
             }
-            $this->addConstructorDependencyToClass($classLike, new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType('Typo3RectorPrefix20210413\\Nette\\Http\\Session'), 'session');
+            $this->addConstructorDependencyToClass($classLike, new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType('Typo3RectorPrefix20210414\\Nette\\Http\\Session'), 'session');
             return $node;
         });
     }

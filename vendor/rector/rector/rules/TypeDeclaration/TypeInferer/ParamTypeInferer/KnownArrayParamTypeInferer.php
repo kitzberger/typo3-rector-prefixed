@@ -44,7 +44,7 @@ final class KnownArrayParamTypeInferer implements \Rector\TypeDeclaration\Contra
         $classReflection = $this->reflectionProvider->getClass($className);
         $paramName = $this->nodeNameResolver->getName($param);
         // @todo create map later
-        if ($paramName === 'configs' && $classReflection->isSubclassOf('Typo3RectorPrefix20210413\\Symfony\\Component\\DependencyInjection\\Extension\\Extension')) {
+        if ($paramName === 'configs' && $classReflection->isSubclassOf('Typo3RectorPrefix20210414\\Symfony\\Component\\DependencyInjection\\Extension\\Extension')) {
             return new \PHPStan\Type\ArrayType(new \PHPStan\Type\MixedType(), new \PHPStan\Type\StringType());
         }
         return new \PHPStan\Type\MixedType();

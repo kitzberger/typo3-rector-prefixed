@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210413\Symfony\Bundle\FrameworkBundle\Controller;
+namespace Typo3RectorPrefix20210414\Symfony\Bundle\FrameworkBundle\Controller;
 
-use Typo3RectorPrefix20210413\Symfony\Component\Form\FormInterface;
-if (\class_exists('Typo3RectorPrefix20210413\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
+use Typo3RectorPrefix20210414\Symfony\Component\Form\FormInterface;
+if (\class_exists('Typo3RectorPrefix20210414\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
     return;
 }
 class Controller
 {
-    public function createForm() : \Typo3RectorPrefix20210413\Symfony\Component\Form\FormInterface
+    public function createForm() : \Typo3RectorPrefix20210414\Symfony\Component\Form\FormInterface
     {
     }
 }

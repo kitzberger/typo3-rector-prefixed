@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Doctrine\ORM;
+namespace Typo3RectorPrefix20210415\Doctrine\ORM;
 
-if (\class_exists('Typo3RectorPrefix20210414\\Doctrine\\ORM\\QueryBuilder')) {
+if (\class_exists('Typo3RectorPrefix20210415\\Doctrine\\ORM\\QueryBuilder')) {
     return;
 }
 class QueryBuilder

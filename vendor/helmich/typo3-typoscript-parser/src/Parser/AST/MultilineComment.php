@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Parser\AST;
+namespace Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST;
 
-final class MultilineComment extends \Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Parser\AST\Statement
+final class MultilineComment extends \Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\Statement
 {
     /**
      * @var string

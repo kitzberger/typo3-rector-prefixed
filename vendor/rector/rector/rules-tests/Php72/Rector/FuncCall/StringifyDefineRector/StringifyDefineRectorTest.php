@@ -5,7 +5,7 @@ namespace Rector\Tests\Php72\Rector\FuncCall\StringifyDefineRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @requires PHP < 8.0
  */
@@ -14,7 +14,7 @@ final class StringifyDefineRectorTest extends \Rector\Testing\PHPUnit\AbstractRe
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210414\Symfony\Component\Console\CommandLoader;
+namespace Typo3RectorPrefix20210415\Symfony\Component\Console\CommandLoader;
 
 use Psr\Container\ContainerInterface;
-use Typo3RectorPrefix20210414\Symfony\Component\Console\Exception\CommandNotFoundException;
+use Typo3RectorPrefix20210415\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * Loads commands from a PSR-11 container.
  *
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class ContainerCommandLoader implements \Typo3RectorPrefix20210414\Symfony\Component\Console\CommandLoader\CommandLoaderInterface
+class ContainerCommandLoader implements \Typo3RectorPrefix20210415\Symfony\Component\Console\CommandLoader\CommandLoaderInterface
 {
     private $container;
     private $commandMap;
@@ -35,7 +35,7 @@ class ContainerCommandLoader implements \Typo3RectorPrefix20210414\Symfony\Compo
     public function get(string $name)
     {
         if (!$this->has($name)) {
-            throw new \Typo3RectorPrefix20210414\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
+            throw new \Typo3RectorPrefix20210415\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
         }
         return $this->container->get($this->commandMap[$name]);
     }

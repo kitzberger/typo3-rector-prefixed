@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Nette\Caching;
+namespace Typo3RectorPrefix20210415\Nette\Caching;
 
 /**
  * Cache storage with a bulk read support.
@@ -18,4 +18,4 @@ interface BulkReader
      */
     function bulkRead(array $keys) : array;
 }
-\class_exists(\Typo3RectorPrefix20210414\Nette\Caching\IBulkReader::class);
+\class_exists(\Typo3RectorPrefix20210415\Nette\Caching\IBulkReader::class);

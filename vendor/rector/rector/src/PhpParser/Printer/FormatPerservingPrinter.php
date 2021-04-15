@@ -7,8 +7,8 @@ use PhpParser\Node;
 use PhpParser\Node\Stmt;
 use Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace;
 use Rector\Core\ValueObject\Application\File;
-use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see \Rector\Core\Tests\PhpParser\Printer\FormatPerservingPrinterTest
  */
@@ -22,7 +22,7 @@ final class FormatPerservingPrinter
      * @var BetterStandardPrinter
      */
     private $betterStandardPrinter;
-    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->betterStandardPrinter = $betterStandardPrinter;
         $this->smartFileSystem = $smartFileSystem;
@@ -32,7 +32,7 @@ final class FormatPerservingPrinter
      * @param Node[] $oldStmts
      * @param Node[] $oldTokens
      */
-    public function printToFile(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, array $newStmts, array $oldStmts, array $oldTokens) : string
+    public function printToFile(\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $fileInfo, array $newStmts, array $oldStmts, array $oldTokens) : string
     {
         $newContent = $this->betterStandardPrinter->printFormatPreserving($newStmts, $oldStmts, $oldTokens);
         $this->smartFileSystem->dumpFile($fileInfo->getRealPath(), $newContent);

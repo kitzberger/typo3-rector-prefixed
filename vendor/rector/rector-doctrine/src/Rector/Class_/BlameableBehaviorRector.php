@@ -99,15 +99,15 @@ CODE_SAMPLE
             return null;
         }
         $this->removeBlameablePropertiesAndMethods($node);
-        $this->classInsertManipulator->addAsFirstTrait($node, 'Typo3RectorPrefix20210414\\Knp\\DoctrineBehaviors\\Model\\Blameable\\BlameableTrait');
-        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210414\\Knp\\DoctrineBehaviors\\Contract\\Entity\\BlameableInterface');
+        $this->classInsertManipulator->addAsFirstTrait($node, 'Typo3RectorPrefix20210415\\Knp\\DoctrineBehaviors\\Model\\Blameable\\BlameableTrait');
+        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210415\\Knp\\DoctrineBehaviors\\Contract\\Entity\\BlameableInterface');
         return $node;
     }
     private function isGedmoBlameableClass(\PhpParser\Node\Stmt\Class_ $class) : bool
     {
         foreach ($class->getProperties() as $property) {
             $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($property);
-            if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\Blameable')) {
+            if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210415\\Gedmo\\Mapping\\Annotation\\Blameable')) {
                 return \true;
             }
         }
@@ -118,7 +118,7 @@ CODE_SAMPLE
         $removedPropertyNames = [];
         foreach ($class->getProperties() as $property) {
             $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($property);
-            if (!$phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\Blameable')) {
+            if (!$phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210415\\Gedmo\\Mapping\\Annotation\\Blameable')) {
                 continue;
             }
             /** @var string $propertyName */

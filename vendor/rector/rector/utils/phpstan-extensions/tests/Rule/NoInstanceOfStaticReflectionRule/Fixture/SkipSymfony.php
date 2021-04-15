@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Rector\PHPStanExtensions\Tests\Rule\NoInstanceOfStaticReflectionRule\Fixture;
 
-use Typo3RectorPrefix20210414\Symfony\Component\Console\Helper\ProgressBar;
+use Typo3RectorPrefix20210415\Symfony\Component\Console\Helper\ProgressBar;
 final class SkipSymfony
 {
     public function find($node)
     {
-        return $node instanceof \Typo3RectorPrefix20210414\Symfony\Component\Console\Helper\ProgressBar;
+        return $node instanceof \Typo3RectorPrefix20210415\Symfony\Component\Console\Helper\ProgressBar;
     }
 }

@@ -18,7 +18,7 @@ final class ChangeDiffForHumansArgsRector extends \Rector\Core\Rector\AbstractRe
 {
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Typo3RectorPrefix20210414\\Change methods arguments of diffForHumans() on Carbon\\Carbon', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Typo3RectorPrefix20210415\\Change methods arguments of diffForHumans() on Carbon\\Carbon', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 use Carbon\Carbon;
 
 final class SomeClass
@@ -58,7 +58,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Carbon\\Carbon'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\Carbon\\Carbon'))) {
             return null;
         }
         if (!$this->isName($node->name, 'diffForHumans')) {
@@ -69,11 +69,11 @@ CODE_SAMPLE
         }
         $secondArgValue = $node->args[1]->value;
         if ($this->valueResolver->isTrue($secondArgValue)) {
-            $node->args[1]->value = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210414\\Carbon\\CarbonInterface', 'DIFF_ABSOLUTE');
+            $node->args[1]->value = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210415\\Carbon\\CarbonInterface', 'DIFF_ABSOLUTE');
             return $node;
         }
         if ($this->valueResolver->isFalse($secondArgValue)) {
-            $node->args[1]->value = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210414\\Carbon\\CarbonInterface', 'DIFF_RELATIVE_AUTO');
+            $node->args[1]->value = $this->nodeFactory->createClassConstFetch('Typo3RectorPrefix20210415\\Carbon\\CarbonInterface', 'DIFF_RELATIVE_AUTO');
             return $node;
         }
         return null;

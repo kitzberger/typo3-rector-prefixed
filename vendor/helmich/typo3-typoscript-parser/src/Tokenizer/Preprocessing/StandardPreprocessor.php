@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Tokenizer\Preprocessing;
+namespace Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Tokenizer\Preprocessing;
 
 /**
  * Helper class that provides the standard pre-processing behaviour
  *
  * @package Helmich\TypoScriptParser\Tokenizer\Preprocessing
  */
-class StandardPreprocessor extends \Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Tokenizer\Preprocessing\ProcessorChain
+class StandardPreprocessor extends \Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Tokenizer\Preprocessing\ProcessorChain
 {
     public function __construct(string $eolChar = "\n")
     {
-        $this->processors = [new \Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Tokenizer\Preprocessing\UnifyLineEndingsPreprocessor($eolChar), new \Typo3RectorPrefix20210414\Helmich\TypoScriptParser\Tokenizer\Preprocessing\RemoveTrailingWhitespacePreprocessor($eolChar)];
+        $this->processors = [new \Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Tokenizer\Preprocessing\UnifyLineEndingsPreprocessor($eolChar), new \Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Tokenizer\Preprocessing\RemoveTrailingWhitespacePreprocessor($eolChar)];
     }
 }

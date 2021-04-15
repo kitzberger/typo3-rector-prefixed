@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Rector\Core\Bootstrap;
 
-use Typo3RectorPrefix20210414\Symfony\Component\Config\FileLocator;
-use Typo3RectorPrefix20210414\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210414\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210415\Symfony\Component\Config\FileLocator;
+use Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
 final class SetConfigResolver
 {
     /**
@@ -16,10 +16,10 @@ final class SetConfigResolver
     /**
      * @return SmartFileInfo[]
      */
-    public function resolve(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : array
+    public function resolve(\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : array
     {
-        $containerBuilder = new \Typo3RectorPrefix20210414\Symfony\Component\DependencyInjection\ContainerBuilder();
-        $phpFileLoader = new \Typo3RectorPrefix20210414\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \Typo3RectorPrefix20210414\Symfony\Component\Config\FileLocator());
+        $containerBuilder = new \Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\ContainerBuilder();
+        $phpFileLoader = new \Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \Typo3RectorPrefix20210415\Symfony\Component\Config\FileLocator());
         $phpFileLoader->load($smartFileInfo->getRealPath());
         if (!$containerBuilder->hasParameter(self::SETS)) {
             return [];
@@ -35,7 +35,7 @@ final class SetConfigResolver
     {
         $setFileInfos = [];
         foreach ($sets as $set) {
-            $setFileInfos[] = new \Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo($set);
+            $setFileInfos[] = new \Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo($set);
         }
         return $setFileInfos;
     }

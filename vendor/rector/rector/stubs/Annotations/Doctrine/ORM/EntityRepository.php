@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Doctrine\ORM;
+namespace Typo3RectorPrefix20210415\Doctrine\ORM;
 
-if (\class_exists('Typo3RectorPrefix20210414\\Doctrine\\ORM\\EntityRepository')) {
+if (\class_exists('Typo3RectorPrefix20210415\\Doctrine\\ORM\\EntityRepository')) {
     return;
 }
 // @see https://github.com/doctrine/orm/blob/2.8.x/lib/Doctrine/ORM/EntityRepository.php
@@ -13,8 +13,8 @@ class EntityRepository
      * @var EntityManagerInterface
      */
     protected $_em;
-    public function createQueryBuilder() : \Typo3RectorPrefix20210414\Doctrine\ORM\QueryBuilder
+    public function createQueryBuilder() : \Typo3RectorPrefix20210415\Doctrine\ORM\QueryBuilder
     {
-        return new \Typo3RectorPrefix20210414\Doctrine\ORM\QueryBuilder();
+        return new \Typo3RectorPrefix20210415\Doctrine\ORM\QueryBuilder();
     }
 }

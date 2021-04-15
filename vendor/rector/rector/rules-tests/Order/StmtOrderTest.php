@@ -10,8 +10,8 @@ use PhpParser\Node\Stmt\PropertyProperty;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\Order\StmtOrder;
-use Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class StmtOrderTest extends \Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class StmtOrderTest extends \Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var int[]
@@ -42,9 +42,9 @@ final class StmtOrderTest extends \Typo3RectorPrefix20210414\Symplify\PackageBui
     }
     /**
      * @dataProvider dataProvider
-     * @param array<int, string> $desiredStmtOrder
-     * @param array<int, string> $currentStmtOrder
-     * @param array<int, int> $expected
+     * @param string[] $desiredStmtOrder
+     * @param string[] $currentStmtOrder
+     * @param int[] $expected
      */
     public function testCreateOldToNewKeys(array $desiredStmtOrder, array $currentStmtOrder, array $expected) : void
     {

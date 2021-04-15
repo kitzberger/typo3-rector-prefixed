@@ -5,14 +5,14 @@ namespace Rector\Tests\CodeQuality\Rector\Catch_\ThrowWithPreviousExceptionRecto
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
 final class Php8Test extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      * @requires PHP 8
      */
-    public function test(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

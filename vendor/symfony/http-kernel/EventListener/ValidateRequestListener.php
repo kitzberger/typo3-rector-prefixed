@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\EventListener;
+namespace Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\EventListener;
 
-use Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\Event\RequestEvent;
-use Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\KernelEvents;
+use Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\Event\RequestEvent;
+use Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Validates Requests.
  *
@@ -20,12 +20,12 @@ use Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class ValidateRequestListener implements \Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ValidateRequestListener implements \Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     /**
      * Performs the validation.
      */
-    public function onKernelRequest(\Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\Event\RequestEvent $event)
+    public function onKernelRequest(\Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\Event\RequestEvent $event)
     {
         if (!$event->isMasterRequest()) {
             return;
@@ -41,6 +41,6 @@ class ValidateRequestListener implements \Typo3RectorPrefix20210414\Symfony\Comp
      */
     public static function getSubscribedEvents() : array
     {
-        return [\Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 256]]];
+        return [\Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 256]]];
     }
 }

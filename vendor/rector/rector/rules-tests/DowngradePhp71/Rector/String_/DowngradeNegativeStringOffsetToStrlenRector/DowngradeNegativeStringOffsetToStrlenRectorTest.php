@@ -5,14 +5,14 @@ namespace Rector\Tests\DowngradePhp71\Rector\String_\DowngradeNegativeStringOffs
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
 final class DowngradeNegativeStringOffsetToStrlenRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @requires PHP 7.1
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210414\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

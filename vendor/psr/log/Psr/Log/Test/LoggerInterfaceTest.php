@@ -4,14 +4,14 @@ namespace Psr\Log\Test;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
-use Typo3RectorPrefix20210414\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210415\PHPUnit\Framework\TestCase;
 /**
  * Provides a base test class for ensuring compliance with the LoggerInterface.
  *
  * Implementors can extend the class and implement abstract methods to run this
  * as part of their test suite.
  */
-abstract class LoggerInterfaceTest extends \Typo3RectorPrefix20210414\PHPUnit\Framework\TestCase
+abstract class LoggerInterfaceTest extends \Typo3RectorPrefix20210415\PHPUnit\Framework\TestCase
 {
     /**
      * @return LoggerInterface

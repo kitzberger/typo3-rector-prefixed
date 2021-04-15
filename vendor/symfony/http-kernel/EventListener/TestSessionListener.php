@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\EventListener;
+namespace Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\EventListener;
 
 use Psr\Container\ContainerInterface;
-use Typo3RectorPrefix20210414\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * Sets the session in the request.
  *
@@ -19,7 +19,7 @@ use Typo3RectorPrefix20210414\Symfony\Component\HttpFoundation\Session\SessionIn
  *
  * @final
  */
-class TestSessionListener extends \Typo3RectorPrefix20210414\Symfony\Component\HttpKernel\EventListener\AbstractTestSessionListener
+class TestSessionListener extends \Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\EventListener\AbstractTestSessionListener
 {
     private $container;
     public function __construct(\Psr\Container\ContainerInterface $container, array $sessionOptions = [])
@@ -27,7 +27,7 @@ class TestSessionListener extends \Typo3RectorPrefix20210414\Symfony\Component\H
         $this->container = $container;
         parent::__construct($sessionOptions);
     }
-    protected function getSession() : ?\Typo3RectorPrefix20210414\Symfony\Component\HttpFoundation\Session\SessionInterface
+    protected function getSession() : ?\Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Session\SessionInterface
     {
         if (!$this->container->has('session')) {
             return null;

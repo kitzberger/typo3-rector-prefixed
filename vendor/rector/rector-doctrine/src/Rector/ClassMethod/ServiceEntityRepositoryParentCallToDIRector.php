@@ -119,7 +119,7 @@ CODE_SAMPLE
         $entityReferenceExpr = $this->removeParentConstructAndCollectEntityReference($node);
         // 3. add $entityManager->getRepository() fetch assign
         $repositoryAssign = $this->repositoryNodeFactory->createRepositoryAssign($entityReferenceExpr);
-        $entityManagerObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Doctrine\\ORM\\EntityManagerInterface');
+        $entityManagerObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\Doctrine\\ORM\\EntityManagerInterface');
         $this->classDependencyManipulator->addConstructorDependencyWithCustomAssign($classLike, 'entityManager', $entityManagerObjectType, $repositoryAssign);
         $this->addRepositoryProperty($classLike, $entityReferenceExpr);
         // 5. add param + add property, dependency
@@ -141,7 +141,7 @@ CODE_SAMPLE
             // possibly trait/interface
             return \true;
         }
-        return !$classReflection->isSubclassOf('Typo3RectorPrefix20210414\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository');
+        return !$classReflection->isSubclassOf('Typo3RectorPrefix20210415\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository');
     }
     private function removeParentConstructAndCollectEntityReference(\PhpParser\Node\Stmt\ClassMethod $classMethod) : \PhpParser\Node\Expr
     {

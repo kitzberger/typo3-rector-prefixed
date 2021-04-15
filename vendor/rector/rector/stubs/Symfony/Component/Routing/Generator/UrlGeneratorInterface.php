@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Symfony\Component\Routing\Generator;
+namespace Typo3RectorPrefix20210415\Symfony\Component\Routing\Generator;
 
-if (\interface_exists('Typo3RectorPrefix20210414\\Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface')) {
+if (\interface_exists('Typo3RectorPrefix20210415\\Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface')) {
     return;
 }
 interface UrlGeneratorInterface

@@ -98,7 +98,7 @@ CODE_SAMPLE
         $matchedProperty = null;
         foreach ($node->getProperties() as $property) {
             $propertyPhpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($property);
-            $doctrineAnnotationTagValueNode = $propertyPhpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210414\\Gedmo\\Mapping\\Annotation\\Slug');
+            $doctrineAnnotationTagValueNode = $propertyPhpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210415\\Gedmo\\Mapping\\Annotation\\Slug');
             if (!$doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
                 continue;
             }
@@ -119,8 +119,8 @@ CODE_SAMPLE
             }
             $this->removeNode($classMethod);
         }
-        $this->classInsertManipulator->addAsFirstTrait($node, 'Typo3RectorPrefix20210414\\Knp\\DoctrineBehaviors\\Model\\Sluggable\\SluggableTrait');
-        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210414\\Knp\\DoctrineBehaviors\\Contract\\Entity\\SluggableInterface');
+        $this->classInsertManipulator->addAsFirstTrait($node, 'Typo3RectorPrefix20210415\\Knp\\DoctrineBehaviors\\Model\\Sluggable\\SluggableTrait');
+        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210415\\Knp\\DoctrineBehaviors\\Contract\\Entity\\SluggableInterface');
         $this->addGetSluggableFieldsClassMethod($node, $slugFields);
         // change the node
         return $node;

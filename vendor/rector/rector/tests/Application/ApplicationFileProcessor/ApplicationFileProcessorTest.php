@@ -8,8 +8,8 @@ use Rector\Core\Configuration\Configuration;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\ValueObjectFactory\Application\FileFactory;
 use Rector\Core\ValueObjectFactory\ProcessResultFactory;
-use Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ApplicationFileProcessorTest extends \Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class ApplicationFileProcessorTest extends \Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var ApplicationFileProcessor

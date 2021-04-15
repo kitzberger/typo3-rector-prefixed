@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Symfony\Component\Form;
+namespace Typo3RectorPrefix20210415\Symfony\Component\Form;
 
-if (\class_exists('Typo3RectorPrefix20210414\\Symfony\\Component\\Form\\FormBuilder')) {
+if (\class_exists('Typo3RectorPrefix20210415\\Symfony\\Component\\Form\\FormBuilder')) {
     return;
 }
-class FormBuilder implements \Typo3RectorPrefix20210414\Symfony\Component\Form\FormBuilderInterface
+class FormBuilder implements \Typo3RectorPrefix20210415\Symfony\Component\Form\FormBuilderInterface
 {
 }

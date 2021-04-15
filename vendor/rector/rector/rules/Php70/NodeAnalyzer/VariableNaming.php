@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Php70\NodeAnalyzer;
 
-use Typo3RectorPrefix20210414\Nette\Utils\Strings;
+use Typo3RectorPrefix20210415\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -24,10 +24,9 @@ use PHPStan\Type\ThisType;
 use PHPStan\Type\Type;
 use Rector\Core\Exception\NotImplementedYetException;
 use Rector\Core\PhpParser\Node\Value\ValueResolver;
-use Rector\Core\Util\StaticNodeInstanceOf;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\NodeTypeResolver;
-use Typo3RectorPrefix20210414\Stringy\Stringy;
+use Typo3RectorPrefix20210415\Stringy\Stringy;
 /**
  * @todo extract to own service with collector
  */
@@ -57,8 +56,8 @@ final class VariableNaming
         if ($name === null) {
             $name = $fallbackName;
         }
-        if (\Typo3RectorPrefix20210414\Nette\Utils\Strings::contains($name, '\\')) {
-            $name = (string) \Typo3RectorPrefix20210414\Nette\Utils\Strings::after($name, '\\', -1);
+        if (\Typo3RectorPrefix20210415\Nette\Utils\Strings::contains($name, '\\')) {
+            $name = (string) \Typo3RectorPrefix20210415\Nette\Utils\Strings::after($name, '\\', -1);
         }
         $countedValueName = $this->createCountedValueName($name, $scope);
         return \lcfirst($countedValueName);
@@ -92,7 +91,7 @@ final class VariableNaming
             $shortClassName = $this->nodeNameResolver->getShortName($type->getClassName());
             $variableName = \lcfirst($shortClassName);
         }
-        $stringy = new \Typo3RectorPrefix20210414\Stringy\Stringy($variableName);
+        $stringy = new \Typo3RectorPrefix20210415\Stringy\Stringy($variableName);
         return (string) $stringy->camelize();
     }
     public function resolveFromFuncCallFirstArgumentWithSuffix(\PhpParser\Node\Expr\FuncCall $funcCall, string $suffix, string $fallbackName, ?\PHPStan\Analyser\Scope $scope) : string
@@ -124,7 +123,7 @@ final class VariableNaming
             if ($arrayDimFetch->dim instanceof \PhpParser\Node\Scalar) {
                 $valueName = $this->nodeNameResolver->getName($arrayDimFetch->var);
                 $dimName = $this->valueResolver->getValue($arrayDimFetch->dim);
-                $stringy = new \Typo3RectorPrefix20210414\Stringy\Stringy($dimName);
+                $stringy = new \Typo3RectorPrefix20210415\Stringy\Stringy($dimName);
                 $dimName = (string) $stringy->upperCamelize();
                 return $valueName . $dimName;
             }
@@ -141,8 +140,7 @@ final class VariableNaming
         if ($node instanceof \PhpParser\Node\Expr\PropertyFetch) {
             return $this->resolveFromPropertyFetch($node);
         }
-        if ($node !== null && \Rector\Core\Util\StaticNodeInstanceOf::isOneOf($node, [\PhpParser\Node\Expr\MethodCall::class, \PhpParser\Node\Expr\NullsafeMethodCall::class, \PhpParser\Node\Expr\StaticCall::class])) {
-            /** @var MethodCall|NullsafeMethodCall|StaticCall $node */
+        if ($node instanceof \PhpParser\Node\Expr\MethodCall || $node instanceof \PhpParser\Node\Expr\NullsafeMethodCall || $node instanceof \PhpParser\Node\Expr\StaticCall) {
             return $this->resolveFromMethodCall($node);
         }
         if ($node instanceof \PhpParser\Node\Expr\New_) {

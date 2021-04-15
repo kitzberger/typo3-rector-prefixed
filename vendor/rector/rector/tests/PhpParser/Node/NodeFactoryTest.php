@@ -10,8 +10,8 @@ use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\NodeFactory;
-use Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class NodeFactoryTest extends \Typo3RectorPrefix20210414\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class NodeFactoryTest extends \Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var NodeFactory
@@ -23,7 +23,7 @@ final class NodeFactoryTest extends \Typo3RectorPrefix20210414\Symplify\PackageB
         $this->nodeFactory = $this->getService(\Rector\Core\PhpParser\Node\NodeFactory::class);
     }
     /**
-     * @param mixed[] $inputArray
+     * @param int[]|array<string, int> $inputArray
      * @dataProvider provideDataForArray()
      */
     public function testCreateArray(array $inputArray, \PhpParser\Node\Expr\Array_ $expectedArrayNode) : void

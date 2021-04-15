@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Symfony\Bundle\FrameworkBundle\Controller;
+namespace Typo3RectorPrefix20210415\Symfony\Bundle\FrameworkBundle\Controller;
 
-if (\trait_exists('Typo3RectorPrefix20210414\\Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerTrait')) {
+if (\trait_exists('Typo3RectorPrefix20210415\\Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerTrait')) {
     return;
 }
 trait ControllerTrait

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210414\Symplify\PackageBuilder\Yaml;
+namespace Typo3RectorPrefix20210415\Symplify\PackageBuilder\Yaml;
 
 use Closure;
 final class ParametersMerger

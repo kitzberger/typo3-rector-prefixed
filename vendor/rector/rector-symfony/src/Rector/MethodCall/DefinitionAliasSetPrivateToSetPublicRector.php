@@ -23,7 +23,7 @@ final class DefinitionAliasSetPrivateToSetPublicRector extends \Rector\Core\Rect
     private $definitionObjectTypes = [];
     public function __construct()
     {
-        $this->definitionObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Symfony\\Component\\DependencyInjection\\Alias'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210414\\Symfony\\Component\\DependencyInjection\\Definition')];
+        $this->definitionObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\Symfony\\Component\\DependencyInjection\\Alias'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\Symfony\\Component\\DependencyInjection\\Definition')];
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher;
+namespace Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher;
 
 use Psr\EventDispatcher\StoppableEventInterface;
-use Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\Debug\WrappedListener;
+use Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher\Debug\WrappedListener;
 /**
  * The EventDispatcherInterface is the central point of Symfony's event listener system.
  *
@@ -27,7 +27,7 @@ use Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\Debug\WrappedLis
  * @author Jordan Alliot <jordan.alliot@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EventDispatcher implements \Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\EventDispatcherInterface
+class EventDispatcher implements \Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher\EventDispatcherInterface
 {
     private $listeners = [];
     private $sorted = [];
@@ -153,7 +153,7 @@ class EventDispatcher implements \Typo3RectorPrefix20210414\Symfony\Component\Ev
     /**
      * {@inheritdoc}
      */
-    public function addSubscriber(\Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function addSubscriber(\Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
             if (\is_string($params)) {
@@ -170,7 +170,7 @@ class EventDispatcher implements \Typo3RectorPrefix20210414\Symfony\Component\Ev
     /**
      * {@inheritdoc}
      */
-    public function removeSubscriber(\Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function removeSubscriber(\Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
             if (\is_array($params) && \is_array($params[0])) {
@@ -238,7 +238,7 @@ class EventDispatcher implements \Typo3RectorPrefix20210414\Symfony\Component\Ev
                         ($closure = \Closure::fromCallable($listener))(...$args);
                     };
                 } else {
-                    $closure = $listener instanceof \Closure || $listener instanceof \Typo3RectorPrefix20210414\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener : \Closure::fromCallable($listener);
+                    $closure = $listener instanceof \Closure || $listener instanceof \Typo3RectorPrefix20210415\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener : \Closure::fromCallable($listener);
                 }
             }
         }

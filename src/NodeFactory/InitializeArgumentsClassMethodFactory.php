@@ -19,6 +19,7 @@ use PhpParser\Node\Stmt\Nop;
 use PhpParser\Node\UnionType;
 use PHPStan\Analyser\Scope;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
+use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeWithClassName;
@@ -33,7 +34,7 @@ use Rector\StaticTypeMapper\StaticTypeMapper;
 use Rector\StaticTypeMapper\ValueObject\Type\ShortenedObjectType;
 use Rector\TypeDeclaration\TypeInferer\ParamTypeInferer;
 use ReflectionClass;
-use Typo3RectorPrefix20210414\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210415\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
 final class InitializeArgumentsClassMethodFactory
 {
     /**
@@ -101,7 +102,7 @@ final class InitializeArgumentsClassMethodFactory
     }
     private function createNewClassMethod() : \PhpParser\Node\Stmt\ClassMethod
     {
-        $methodBuilder = new \Typo3RectorPrefix20210414\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(self::METHOD_NAME);
+        $methodBuilder = new \Typo3RectorPrefix20210415\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(self::METHOD_NAME);
         $methodBuilder->makePublic();
         $methodBuilder->setReturnType('void');
         return $methodBuilder->getNode();
@@ -156,6 +157,9 @@ final class InitializeArgumentsClassMethodFactory
     {
         if (null !== $param->type) {
             return $this->resolveParamType($param->type);
+        }
+        if (null !== $paramTagValueNode && $paramTagValueNode->type instanceof \PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode) {
+            return $paramTagValueNode->type->name;
         }
         $inferedType = $this->paramTypeInferer->inferParam($param);
         if ($inferedType instanceof \PHPStan\Type\MixedType) {

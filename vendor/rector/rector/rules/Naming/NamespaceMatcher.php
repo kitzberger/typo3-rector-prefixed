@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Naming;
 
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use Rector\Renaming\ValueObject\RenamedNamespace;
 final class NamespaceMatcher
 {
@@ -15,7 +15,7 @@ final class NamespaceMatcher
         \krsort($oldToNewNamespace);
         /** @var string $oldNamespace */
         foreach ($oldToNewNamespace as $oldNamespace => $newNamespace) {
-            if (\Typo3RectorPrefix20210415\Nette\Utils\Strings::startsWith($name, $oldNamespace)) {
+            if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::startsWith($name, $oldNamespace)) {
                 return new \Rector\Renaming\ValueObject\RenamedNamespace($name, $oldNamespace, $newNamespace);
             }
         }

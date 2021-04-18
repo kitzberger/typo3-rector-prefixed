@@ -10,8 +10,8 @@ use PHPStan\PhpDocParser\Ast\Type\NullableTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use Rector\BetterPhpDocParser\PhpDocParser\TypeNodeAnalyzer;
 use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class TypeNodeAnalyzerTest extends \Typo3RectorPrefix20210415\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class TypeNodeAnalyzerTest extends \Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var string

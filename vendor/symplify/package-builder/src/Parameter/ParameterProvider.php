@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210415\Symplify\PackageBuilder\Parameter;
+namespace Typo3RectorPrefix20210418\Symplify\PackageBuilder\Parameter;
 
-use Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\Container;
-use Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Container;
+use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * @see \Symplify\PackageBuilder\Tests\Parameter\ParameterProviderTest
  */
@@ -18,10 +18,14 @@ final class ParameterProvider
     /**
      * @param Container|ContainerInterface $container
      */
-    public function __construct(\Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    public function __construct(\Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
         $parameterBag = $container->getParameterBag();
         $this->parameters = $parameterBag->all();
+    }
+    public function hasParameter(string $name) : bool
+    {
+        return isset($this->parameters[$name]);
     }
     /**
      * @api
@@ -83,6 +87,6 @@ final class ParameterProvider
         if (\array_key_exists($name, $this->parameters)) {
             return;
         }
-        throw new \Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException($name);
+        throw new \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException($name);
     }
 }

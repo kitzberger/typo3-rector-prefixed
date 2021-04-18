@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\Exception;
+namespace Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base LogicException for Dependency Injection component.
  */
-class LogicException extends \LogicException implements \Typo3RectorPrefix20210415\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class LogicException extends \LogicException implements \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }

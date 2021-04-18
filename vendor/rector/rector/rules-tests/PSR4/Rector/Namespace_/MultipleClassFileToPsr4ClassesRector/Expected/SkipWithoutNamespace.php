@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210415;
+namespace Typo3RectorPrefix20210418;
 
 final class SkipWithoutNamespace
 {
 }
-\class_alias('Typo3RectorPrefix20210415\\SkipWithoutNamespace', 'SkipWithoutNamespace', \false);
+\class_alias('Typo3RectorPrefix20210418\\SkipWithoutNamespace', 'SkipWithoutNamespace', \false);

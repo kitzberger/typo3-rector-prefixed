@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Rector\Autodiscovery\Rector\Class_;
 
-use Typo3RectorPrefix20210415\Controller;
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Controller;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Type\ObjectType;
@@ -168,7 +168,7 @@ CODE_SAMPLE
             return \false;
         }
         foreach ($this->suffixes as $suffix) {
-            if (\Typo3RectorPrefix20210415\Nette\Utils\Strings::endsWith($className, $suffix)) {
+            if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::endsWith($className, $suffix)) {
                 return \true;
             }
         }
@@ -177,7 +177,7 @@ CODE_SAMPLE
     private function isKnownServiceType(string $className) : bool
     {
         foreach (self::COMMON_SERVICE_SUFFIXES as $commonServiceSuffix) {
-            if (\Typo3RectorPrefix20210415\Nette\Utils\Strings::endsWith($className, $commonServiceSuffix)) {
+            if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::endsWith($className, $commonServiceSuffix)) {
                 return \true;
             }
         }

@@ -14,11 +14,12 @@ use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\Node\Stmt\Return_;
 use PhpParser\NodeFinder;
+use Rector\Core\NodeAnalyzer\ClassAnalyzer;
 use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210415\Symplify\PackageBuilder\Php\TypeChecker;
-use Typo3RectorPrefix20210415\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210418\Symplify\PackageBuilder\Php\TypeChecker;
+use Typo3RectorPrefix20210418\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Core\Tests\PhpParser\Node\BetterNodeFinder\BetterNodeFinderTest
  */
@@ -40,12 +41,17 @@ final class BetterNodeFinder
      * @var NodeComparator
      */
     private $nodeComparator;
-    public function __construct(\PhpParser\NodeFinder $nodeFinder, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210415\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
+    /**
+     * @var ClassAnalyzer
+     */
+    private $classAnalyzer;
+    public function __construct(\PhpParser\NodeFinder $nodeFinder, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210418\Symplify\PackageBuilder\Php\TypeChecker $typeChecker, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator, \Rector\Core\NodeAnalyzer\ClassAnalyzer $classAnalyzer)
     {
         $this->nodeFinder = $nodeFinder;
         $this->nodeNameResolver = $nodeNameResolver;
         $this->typeChecker = $typeChecker;
         $this->nodeComparator = $nodeComparator;
+        $this->classAnalyzer = $classAnalyzer;
     }
     /**
      * @template T of Node
@@ -54,7 +60,7 @@ final class BetterNodeFinder
      */
     public function findParentType(\PhpParser\Node $node, string $type) : ?\PhpParser\Node
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
         $parent = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE);
         if (!$parent instanceof \PhpParser\Node) {
             return null;
@@ -76,7 +82,7 @@ final class BetterNodeFinder
      */
     public function findParentTypes(\PhpParser\Node $node, array $types) : ?\PhpParser\Node
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::allIsAOf($types, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::allIsAOf($types, \PhpParser\Node::class);
         $parent = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::PARENT_NODE);
         if (!$parent instanceof \PhpParser\Node) {
             return null;
@@ -101,7 +107,7 @@ final class BetterNodeFinder
      */
     public function findInstanceOf($nodes, string $type) : array
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
         return $this->nodeFinder->findInstanceOf($nodes, $type);
     }
     /**
@@ -112,7 +118,7 @@ final class BetterNodeFinder
      */
     public function findFirstInstanceOf($nodes, string $type) : ?\PhpParser\Node
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
         return $this->nodeFinder->findFirstInstanceOf($nodes, $type);
     }
     /**
@@ -121,7 +127,7 @@ final class BetterNodeFinder
      */
     public function hasInstanceOfName($nodes, string $type, string $name) : bool
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
         return (bool) $this->findInstanceOfName($nodes, $type, $name);
     }
     /**
@@ -145,7 +151,7 @@ final class BetterNodeFinder
      */
     public function hasInstancesOf($nodes, array $types) : bool
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::allIsAOf($types, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::allIsAOf($types, \PhpParser\Node::class);
         foreach ($types as $type) {
             $foundNode = $this->nodeFinder->findFirstInstanceOf($nodes, $type);
             if (!$foundNode instanceof \PhpParser\Node) {
@@ -163,7 +169,7 @@ final class BetterNodeFinder
      */
     public function findLastInstanceOf($nodes, string $type) : ?\PhpParser\Node
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
         $foundInstances = $this->nodeFinder->findInstanceOf($nodes, $type);
         if ($foundInstances === []) {
             return null;
@@ -192,7 +198,7 @@ final class BetterNodeFinder
                 return \false;
             }
             // skip anonymous classes
-            return !($node instanceof \PhpParser\Node\Stmt\Class_ && $node->isAnonymous());
+            return !($node instanceof \PhpParser\Node\Stmt\Class_ && $this->classAnalyzer->isAnonymousClass($node));
         });
     }
     /**
@@ -206,7 +212,7 @@ final class BetterNodeFinder
                 return \false;
             }
             // skip anonymous classes
-            return !($node instanceof \PhpParser\Node\Stmt\Class_ && $node->isAnonymous());
+            return !($node instanceof \PhpParser\Node\Stmt\Class_ && $this->classAnalyzer->isAnonymousClass($node));
         });
     }
     /**
@@ -312,7 +318,7 @@ final class BetterNodeFinder
      */
     private function findInstanceOfName($nodes, string $type, string $name) : ?\PhpParser\Node
     {
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::isAOf($type, \PhpParser\Node::class);
         $foundInstances = $this->nodeFinder->findInstanceOf($nodes, $type);
         foreach ($foundInstances as $foundInstance) {
             if (!$this->nodeNameResolver->isName($foundInstance, $name)) {

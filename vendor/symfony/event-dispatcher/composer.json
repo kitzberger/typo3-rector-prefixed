@@ -44,7 +44,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210415\\Symfony\\Component\\EventDispatcher\\": ""
+            "Typo3RectorPrefix20210418\\Symfony\\Component\\EventDispatcher\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

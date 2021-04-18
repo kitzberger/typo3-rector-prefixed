@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210415\Nette\Utils;
+namespace Typo3RectorPrefix20210418\Nette\Utils;
 
-use Typo3RectorPrefix20210415\Nette;
+use Typo3RectorPrefix20210418\Nette;
 /**
  * Nette\Object behaviour mixin.
  * @deprecated
@@ -19,7 +19,7 @@ final class ObjectMixin
     public static function getSuggestion(array $possibilities, string $value) : ?string
     {
         \trigger_error(__METHOD__ . '() has been renamed to Nette\\Utils\\ObjectHelpers::getSuggestion()', \E_USER_DEPRECATED);
-        return \Typo3RectorPrefix20210415\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
+        return \Typo3RectorPrefix20210418\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
     }
     public static function setExtensionMethod() : void
     {

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\ValueObject\Application;
 
-use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
 final class RectorError
 {
     /**
@@ -32,7 +32,7 @@ final class RectorError
     {
         return $this->fileInfo->getRelativeFilePathFromCwd();
     }
-    public function getFileInfo() : \Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo
+    public function getFileInfo() : \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->fileInfo;
     }

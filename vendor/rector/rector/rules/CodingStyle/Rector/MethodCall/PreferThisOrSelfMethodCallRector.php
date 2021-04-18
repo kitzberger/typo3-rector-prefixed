@@ -13,7 +13,7 @@ use Rector\Core\Exception\Configuration\InvalidConfigurationException;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210415\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210418\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\CodingStyle\Rector\MethodCall\PreferThisOrSelfMethodCallRector\PreferThisOrSelfMethodCallRectorTest
  */
@@ -52,7 +52,7 @@ class SomeClass extends \PHPUnit\Framework\TestCase
     }
 }
 CODE_SAMPLE
-, [self::TYPE_TO_PREFERENCE => ['Typo3RectorPrefix20210415\\PHPUnit\\Framework\\TestCase' => \Rector\CodingStyle\ValueObject\PreferenceSelfThis::PREFER_SELF]])]);
+, [self::TYPE_TO_PREFERENCE => ['Typo3RectorPrefix20210418\\PHPUnit\\Framework\\TestCase' => \Rector\CodingStyle\ValueObject\PreferenceSelfThis::PREFER_SELF]])]);
     }
     /**
      * @return array<class-string<Node>>
@@ -83,7 +83,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $typeToPreference = $configuration[self::TYPE_TO_PREFERENCE] ?? [];
-        \Typo3RectorPrefix20210415\Webmozart\Assert\Assert::allString($typeToPreference);
+        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::allString($typeToPreference);
         foreach ($typeToPreference as $singleTypeToPreference) {
             $this->ensurePreferenceIsValid($singleTypeToPreference);
         }

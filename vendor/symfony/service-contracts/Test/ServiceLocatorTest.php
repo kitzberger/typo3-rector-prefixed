@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210415\Symfony\Contracts\Service\Test;
+namespace Typo3RectorPrefix20210418\Symfony\Contracts\Service\Test;
 
-use Typo3RectorPrefix20210415\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210418\PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Typo3RectorPrefix20210415\Symfony\Contracts\Service\ServiceLocatorTrait;
-abstract class ServiceLocatorTest extends \Typo3RectorPrefix20210415\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210418\Symfony\Contracts\Service\ServiceLocatorTrait;
+abstract class ServiceLocatorTest extends \Typo3RectorPrefix20210418\PHPUnit\Framework\TestCase
 {
     protected function getServiceLocator(array $factories)
     {

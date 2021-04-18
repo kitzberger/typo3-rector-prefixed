@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210415\Doctrine\Inflector\Rules\NorwegianBokmal;
+namespace Typo3RectorPrefix20210418\Doctrine\Inflector\Rules\NorwegianBokmal;
 
-use Typo3RectorPrefix20210415\Doctrine\Inflector\Rules\Pattern;
+use Typo3RectorPrefix20210418\Doctrine\Inflector\Rules\Pattern;
 final class Uninflected
 {
     /**
@@ -25,8 +25,8 @@ final class Uninflected
      */
     private static function getDefault() : iterable
     {
-        (yield new \Typo3RectorPrefix20210415\Doctrine\Inflector\Rules\Pattern('barn'));
-        (yield new \Typo3RectorPrefix20210415\Doctrine\Inflector\Rules\Pattern('fjell'));
-        (yield new \Typo3RectorPrefix20210415\Doctrine\Inflector\Rules\Pattern('hus'));
+        (yield new \Typo3RectorPrefix20210418\Doctrine\Inflector\Rules\Pattern('barn'));
+        (yield new \Typo3RectorPrefix20210418\Doctrine\Inflector\Rules\Pattern('fjell'));
+        (yield new \Typo3RectorPrefix20210418\Doctrine\Inflector\Rules\Pattern('hus'));
     }
 }

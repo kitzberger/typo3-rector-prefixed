@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Rector\Core\FileSystem;
 
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use Rector\Caching\Application\CachedFileInfoFilterAndReporter;
 use Rector\Core\Configuration\Configuration;
-use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
 final class PhpFilesFinder
 {
     /**
@@ -35,8 +35,8 @@ final class PhpFilesFinder
     {
         $phpFileInfos = $this->filesFinder->findInDirectoriesAndFiles($paths, $this->configuration->getFileExtensions());
         // filter out non-PHP php files, e.g. blade templates in Laravel
-        $phpFileInfos = \array_filter($phpFileInfos, function (\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool {
-            return !\Typo3RectorPrefix20210415\Nette\Utils\Strings::endsWith($smartFileInfo->getPathname(), '.blade.php');
+        $phpFileInfos = \array_filter($phpFileInfos, function (\Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool {
+            return !\Typo3RectorPrefix20210418\Nette\Utils\Strings::endsWith($smartFileInfo->getPathname(), '.blade.php');
         });
         return $this->cachedFileInfoFilterAndReporter->filterFileInfos($phpFileInfos);
     }

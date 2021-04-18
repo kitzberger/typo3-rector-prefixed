@@ -28,8 +28,8 @@ final class ActionWithFormProcessClassMethodFactory
     {
         $classMethod = $this->nodeFactory->createPublicMethod('actionSomeForm');
         $requestVariable = new \PhpParser\Node\Expr\Variable('request');
-        $classMethod->params[] = new \PhpParser\Node\Param($requestVariable, null, new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210415\\Symfony\\Component\\HttpFoundation\\Request'));
-        $classMethod->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210415\\Symfony\\Component\\HttpFoundation\\Response');
+        $classMethod->params[] = new \PhpParser\Node\Param($requestVariable, null, new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210418\\Symfony\\Component\\HttpFoundation\\Request'));
+        $classMethod->returnType = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210418\\Symfony\\Component\\HttpFoundation\\Response');
         $formVariable = new \PhpParser\Node\Expr\Variable('form');
         $assign = $this->createFormInstanceAssign($formTypeClass, $formVariable);
         $classMethod->stmts[] = new \PhpParser\Node\Stmt\Expression($assign);

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\NodeAnalyzer;
 
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\New_;
 use PhpParser\Node\Stmt\Class_;
@@ -33,11 +33,14 @@ final class ClassAnalyzer
         if (!$parent instanceof \PhpParser\Node\Expr\New_) {
             return \false;
         }
+        if ($node->isAnonymous()) {
+            return \true;
+        }
         $className = $this->nodeNameResolver->getName($node);
         if ($className === null) {
             return \true;
         }
         // match PHPStan pattern for anonymous classes
-        return (bool) \Typo3RectorPrefix20210415\Nette\Utils\Strings::match($className, self::ANONYMOUS_CLASS_REGEX);
+        return (bool) \Typo3RectorPrefix20210418\Nette\Utils\Strings::match($className, self::ANONYMOUS_CLASS_REGEX);
     }
 }

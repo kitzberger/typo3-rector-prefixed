@@ -3,12 +3,13 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Visitors;
 
-use Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement;
-use Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\Statement;
+use Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement;
+use Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\Statement;
 use LogicException;
 use Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher;
 /**
  * @see \Ssch\TYPO3Rector\Tests\TypoScript\Visitors\OldConditionToExpressionLanguageVisitorTest
+ * @changelog https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.4/Feature-85829-ImplementSymfonyExpressionLanguageForTypoScriptConditions.html
  */
 final class OldConditionToExpressionLanguageVisitor extends \Ssch\TYPO3Rector\TypoScript\Visitors\AbstractVisitor
 {
@@ -23,9 +24,9 @@ final class OldConditionToExpressionLanguageVisitor extends \Ssch\TYPO3Rector\Ty
     {
         $this->conditionMatchers = $conditionMatchers;
     }
-    public function enterNode(\Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void
+    public function enterNode(\Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void
     {
-        if ($statement instanceof \Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement) {
+        if ($statement instanceof \Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement) {
             \preg_match_all('#\\[(.*)]#imU', $statement->condition, $conditions, \PREG_SET_ORDER);
             \preg_match_all('#]\\s*(&&|\\|\\||AND|OR)#imU', $statement->condition, $operators, \PREG_SET_ORDER);
             $conditions = \array_filter($conditions);

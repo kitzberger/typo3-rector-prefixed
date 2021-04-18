@@ -5,7 +5,7 @@ namespace Rector\Tests\Php70\Rector\ClassMethod\Php4ConstructorRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * Some test cases used from:
  * - https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.12/tests/Fixer/ClassNotation/NoPhp4ConstructorFixerTest.php
@@ -15,7 +15,7 @@ final class Php4ConstructorRectorTest extends \Rector\Testing\PHPUnit\AbstractRe
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

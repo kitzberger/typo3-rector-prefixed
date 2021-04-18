@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NodeCollector\NodeCollector;
 
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ClassConstFetch;
@@ -16,6 +16,7 @@ use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Trait_;
 use Rector\Core\Exception\ShouldNotHappenException;
+use Rector\Core\NodeAnalyzer\ClassAnalyzer;
 use Rector\NodeCollector\ScopeResolver\ParentClassScopeResolver;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
@@ -71,10 +72,15 @@ final class ParsedNodeCollector
      * @var ParentClassScopeResolver
      */
     private $parentClassScopeResolver;
-    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeCollector\ScopeResolver\ParentClassScopeResolver $parentClassScopeResolver)
+    /**
+     * @var ClassAnalyzer
+     */
+    private $classAnalyzer;
+    public function __construct(\Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Rector\NodeCollector\ScopeResolver\ParentClassScopeResolver $parentClassScopeResolver, \Rector\Core\NodeAnalyzer\ClassAnalyzer $classAnalyzer)
     {
         $this->nodeNameResolver = $nodeNameResolver;
         $this->parentClassScopeResolver = $parentClassScopeResolver;
+        $this->classAnalyzer = $classAnalyzer;
     }
     /**
      * @return Interface_[]
@@ -109,7 +115,7 @@ final class ParsedNodeCollector
     public function findByShortName(string $shortName) : ?\PhpParser\Node\Stmt\Class_
     {
         foreach ($this->classes as $className => $classNode) {
-            if (\Typo3RectorPrefix20210415\Nette\Utils\Strings::endsWith($className, '\\' . $shortName)) {
+            if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::endsWith($className, '\\' . $shortName)) {
                 return $classNode;
             }
         }
@@ -117,7 +123,7 @@ final class ParsedNodeCollector
     }
     public function findClassConstant(string $className, string $constantName) : ?\PhpParser\Node\Stmt\ClassConst
     {
-        if (\Typo3RectorPrefix20210415\Nette\Utils\Strings::contains($constantName, '\\')) {
+        if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::contains($constantName, '\\')) {
             throw new \Rector\Core\Exception\ShouldNotHappenException(\sprintf('Switched arguments in "%s"', __METHOD__));
         }
         return $this->constantsByType[$className][$constantName] ?? null;
@@ -174,7 +180,7 @@ final class ParsedNodeCollector
     }
     private function addClass(\PhpParser\Node\Stmt\Class_ $class) : void
     {
-        if ($this->isClassAnonymous($class)) {
+        if ($this->classAnalyzer->isAnonymousClass($class)) {
             return;
         }
         $className = $class->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLASS_NAME);
@@ -217,17 +223,5 @@ final class ParsedNodeCollector
             return $this->parentClassScopeResolver->resolveParentClassName($classConstFetch);
         }
         return $className;
-    }
-    private function isClassAnonymous(\PhpParser\Node\Stmt\Class_ $class) : bool
-    {
-        if ($class->isAnonymous()) {
-            return \true;
-        }
-        $className = $this->nodeNameResolver->getName($class);
-        if ($className === null) {
-            return \true;
-        }
-        // PHPStan polution
-        return \Typo3RectorPrefix20210415\Nette\Utils\Strings::startsWith($className, 'AnonymousClass');
     }
 }

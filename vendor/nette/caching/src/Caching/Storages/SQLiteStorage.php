@@ -5,14 +5,14 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210415\Nette\Caching\Storages;
+namespace Typo3RectorPrefix20210418\Nette\Caching\Storages;
 
-use Typo3RectorPrefix20210415\Nette;
-use Typo3RectorPrefix20210415\Nette\Caching\Cache;
+use Typo3RectorPrefix20210418\Nette;
+use Typo3RectorPrefix20210418\Nette\Caching\Cache;
 /**
  * SQLite storage.
  */
-class SQLiteStorage implements \Typo3RectorPrefix20210415\Nette\Caching\Storage, \Typo3RectorPrefix20210415\Nette\Caching\BulkReader
+class SQLiteStorage implements \Typo3RectorPrefix20210418\Nette\Caching\Storage, \Typo3RectorPrefix20210418\Nette\Caching\BulkReader
 {
     use Nette\SmartObject;
     /** @var \PDO */
@@ -78,12 +78,12 @@ class SQLiteStorage implements \Typo3RectorPrefix20210415\Nette\Caching\Storage,
     }
     public function write(string $key, $data, array $dependencies) : void
     {
-        $expire = isset($dependencies[\Typo3RectorPrefix20210415\Nette\Caching\Cache::EXPIRATION]) ? $dependencies[\Typo3RectorPrefix20210415\Nette\Caching\Cache::EXPIRATION] + \time() : null;
-        $slide = isset($dependencies[\Typo3RectorPrefix20210415\Nette\Caching\Cache::SLIDING]) ? $dependencies[\Typo3RectorPrefix20210415\Nette\Caching\Cache::EXPIRATION] : null;
+        $expire = isset($dependencies[\Typo3RectorPrefix20210418\Nette\Caching\Cache::EXPIRATION]) ? $dependencies[\Typo3RectorPrefix20210418\Nette\Caching\Cache::EXPIRATION] + \time() : null;
+        $slide = isset($dependencies[\Typo3RectorPrefix20210418\Nette\Caching\Cache::SLIDING]) ? $dependencies[\Typo3RectorPrefix20210418\Nette\Caching\Cache::EXPIRATION] : null;
         $this->pdo->exec('BEGIN TRANSACTION');
         $this->pdo->prepare('REPLACE INTO cache (key, data, expire, slide) VALUES (?, ?, ?, ?)')->execute([$key, \serialize($data), $expire, $slide]);
-        if (!empty($dependencies[\Typo3RectorPrefix20210415\Nette\Caching\Cache::TAGS])) {
-            foreach ($dependencies[\Typo3RectorPrefix20210415\Nette\Caching\Cache::TAGS] as $tag) {
+        if (!empty($dependencies[\Typo3RectorPrefix20210418\Nette\Caching\Cache::TAGS])) {
+            foreach ($dependencies[\Typo3RectorPrefix20210418\Nette\Caching\Cache::TAGS] as $tag) {
                 $arr[] = $key;
                 $arr[] = $tag;
             }
@@ -97,13 +97,13 @@ class SQLiteStorage implements \Typo3RectorPrefix20210415\Nette\Caching\Storage,
     }
     public function clean(array $conditions) : void
     {
-        if (!empty($conditions[\Typo3RectorPrefix20210415\Nette\Caching\Cache::ALL])) {
+        if (!empty($conditions[\Typo3RectorPrefix20210418\Nette\Caching\Cache::ALL])) {
             $this->pdo->prepare('DELETE FROM cache')->execute();
         } else {
             $sql = 'DELETE FROM cache WHERE expire < ?';
             $args = [\time()];
-            if (!empty($conditions[\Typo3RectorPrefix20210415\Nette\Caching\Cache::TAGS])) {
-                $tags = $conditions[\Typo3RectorPrefix20210415\Nette\Caching\Cache::TAGS];
+            if (!empty($conditions[\Typo3RectorPrefix20210418\Nette\Caching\Cache::TAGS])) {
+                $tags = $conditions[\Typo3RectorPrefix20210418\Nette\Caching\Cache::TAGS];
                 $sql .= ' OR key IN (SELECT key FROM tags WHERE tag IN (?' . \str_repeat(',?', \count($tags) - 1) . '))';
                 $args = \array_merge($args, $tags);
             }

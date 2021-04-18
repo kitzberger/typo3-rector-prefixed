@@ -4,14 +4,14 @@ declare (strict_types=1);
 namespace Rector\Tests\NodeTypeResolver\PerNodeTypeResolver\PropertyFetchTypeResolver;
 
 use Iterator;
-use Typo3RectorPrefix20210415\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210418\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
 final class PropertyFetchTypeResolverTest extends \Rector\Tests\NodeTypeResolver\PerNodeTypeResolver\PropertyFetchTypeResolver\AbstractPropertyFetchTypeResolverTest
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210415\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function test(\Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $this->doTestFileInfo($smartFileInfo);
     }
@@ -20,6 +20,6 @@ final class PropertyFetchTypeResolverTest extends \Rector\Tests\NodeTypeResolver
      */
     public function provideData() : \Iterator
     {
-        return \Typo3RectorPrefix20210415\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture');
+        return \Typo3RectorPrefix20210418\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture');
     }
 }

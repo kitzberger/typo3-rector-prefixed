@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\NetteTesterToPHPUnit\Rector\Class_;
 
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use Rector\Core\Rector\AbstractRector;
@@ -58,7 +58,7 @@ CODE_SAMPLE
     {
         $smartFileInfo = $this->file->getSmartFileInfo();
         $oldRealPath = $smartFileInfo->getRealPath();
-        if (!\Typo3RectorPrefix20210415\Nette\Utils\Strings::endsWith($oldRealPath, '.phpt')) {
+        if (!\Typo3RectorPrefix20210418\Nette\Utils\Strings::endsWith($oldRealPath, '.phpt')) {
             return null;
         }
         $newRealPath = $this->createNewRealPath($oldRealPath);
@@ -73,12 +73,12 @@ CODE_SAMPLE
     private function createNewRealPath(string $oldRealPath) : string
     {
         // file suffix
-        $newRealPath = \Typo3RectorPrefix20210415\Nette\Utils\Strings::replace($oldRealPath, self::PHPT_SUFFIX_REGEX, '.php');
+        $newRealPath = \Typo3RectorPrefix20210418\Nette\Utils\Strings::replace($oldRealPath, self::PHPT_SUFFIX_REGEX, '.php');
         // cleanup tests prefix
         $newRealPath = $this->fileInfoDeletionAnalyzer->clearNameFromTestingPrefix($newRealPath);
         // Test suffix
-        if (!\Typo3RectorPrefix20210415\Nette\Utils\Strings::endsWith($newRealPath, 'Test.php')) {
-            return \Typo3RectorPrefix20210415\Nette\Utils\Strings::replace($newRealPath, self::PHP_SUFFIX_REGEX, 'Test.php');
+        if (!\Typo3RectorPrefix20210418\Nette\Utils\Strings::endsWith($newRealPath, 'Test.php')) {
+            return \Typo3RectorPrefix20210418\Nette\Utils\Strings::replace($newRealPath, self::PHP_SUFFIX_REGEX, 'Test.php');
         }
         return $newRealPath;
     }

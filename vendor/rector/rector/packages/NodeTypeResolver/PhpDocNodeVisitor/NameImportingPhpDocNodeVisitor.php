@@ -14,9 +14,9 @@ use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\PostRector\Collector\UseNodesToAddCollector;
 use Rector\StaticTypeMapper\StaticTypeMapper;
 use Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType;
-use Typo3RectorPrefix20210415\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor;
-final class NameImportingPhpDocNodeVisitor extends \Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
+use Typo3RectorPrefix20210418\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor;
+final class NameImportingPhpDocNodeVisitor extends \Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
 {
     /**
      * @var StaticTypeMapper
@@ -38,7 +38,7 @@ final class NameImportingPhpDocNodeVisitor extends \Typo3RectorPrefix20210415\Sy
      * @var PhpParserNode|null
      */
     private $currentPhpParserNode;
-    public function __construct(\Rector\StaticTypeMapper\StaticTypeMapper $staticTypeMapper, \Typo3RectorPrefix20210415\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Rector\CodingStyle\ClassNameImport\ClassNameImportSkipper $classNameImportSkipper, \Rector\PostRector\Collector\UseNodesToAddCollector $useNodesToAddCollector)
+    public function __construct(\Rector\StaticTypeMapper\StaticTypeMapper $staticTypeMapper, \Typo3RectorPrefix20210418\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Rector\CodingStyle\ClassNameImport\ClassNameImportSkipper $classNameImportSkipper, \Rector\PostRector\Collector\UseNodesToAddCollector $useNodesToAddCollector)
     {
         $this->staticTypeMapper = $staticTypeMapper;
         $this->parameterProvider = $parameterProvider;

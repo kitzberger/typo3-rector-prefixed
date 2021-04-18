@@ -40,7 +40,7 @@ final class RedirectToRouteRector extends \Rector\Core\Rector\AbstractRector
         if (!$classReflection instanceof \PHPStan\Reflection\ClassReflection) {
             return null;
         }
-        if (!$classReflection->isSubclassOf('Typo3RectorPrefix20210415\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
+        if (!$classReflection->isSubclassOf('Typo3RectorPrefix20210418\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller')) {
             return null;
         }
         if (!$this->isName($node->name, 'redirect')) {

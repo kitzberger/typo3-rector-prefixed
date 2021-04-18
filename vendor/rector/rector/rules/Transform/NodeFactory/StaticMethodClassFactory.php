@@ -7,7 +7,7 @@ use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Function_;
 use Rector\CodingStyle\Naming\ClassNaming;
-use Typo3RectorPrefix20210415\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder;
+use Typo3RectorPrefix20210418\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder;
 final class StaticMethodClassFactory
 {
     /**
@@ -28,7 +28,7 @@ final class StaticMethodClassFactory
      */
     public function createStaticMethodClass(string $shortClassName, array $functions) : \PhpParser\Node\Stmt\Class_
     {
-        $classBuilder = new \Typo3RectorPrefix20210415\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder($shortClassName);
+        $classBuilder = new \Typo3RectorPrefix20210418\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder($shortClassName);
         $classBuilder->makeFinal();
         foreach ($functions as $function) {
             $staticClassMethod = $this->createStaticMethod($function);

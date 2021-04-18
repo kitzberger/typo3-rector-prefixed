@@ -24,7 +24,7 @@ final class FormBuilderSetDataMapperRector extends \Rector\Core\Rector\AbstractR
     private $dataMapperObjectType;
     public function __construct()
     {
-        $this->dataMapperObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\Symfony\\Component\\Form\\Extension\\Core\\DataMapper\\DataMapper');
+        $this->dataMapperObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210418\\Symfony\\Component\\Form\\Extension\\Core\\DataMapper\\DataMapper');
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
@@ -68,7 +68,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\Symfony\\Component\\Form\\FormConfigBuilderInterface'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210418\\Symfony\\Component\\Form\\FormConfigBuilderInterface'))) {
             return null;
         }
         if (!$this->isName($node->name, 'setDataMapper')) {
@@ -78,7 +78,7 @@ CODE_SAMPLE
         if ($this->isObjectType($argumentValue, $this->dataMapperObjectType)) {
             return null;
         }
-        $propertyPathAccessor = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210415\\Symfony\\Component\\Form\\Extension\\Core\\DataAccessor\\PropertyPathAccessor'));
+        $propertyPathAccessor = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210418\\Symfony\\Component\\Form\\Extension\\Core\\DataAccessor\\PropertyPathAccessor'));
         $newArgumentValue = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified($this->dataMapperObjectType->getClassName()), [new \PhpParser\Node\Arg($propertyPathAccessor)]);
         $node->args[0]->value = $newArgumentValue;
         return $node;

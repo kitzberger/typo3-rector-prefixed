@@ -23,7 +23,7 @@ final class AddProphecyTraitRector extends \Rector\Core\Rector\AbstractRector
     /**
      * @var string
      */
-    private const PROPHECY_TRAIT = 'Typo3RectorPrefix20210415\\Prophecy\\PhpUnit\\ProphecyTrait';
+    private const PROPHECY_TRAIT = 'Typo3RectorPrefix20210418\\Prophecy\\PhpUnit\\ProphecyTrait';
     /**
      * @var ClassInsertManipulator
      */

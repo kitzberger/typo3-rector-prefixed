@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210415\Symfony\Component\Finder\Iterator;
+namespace Typo3RectorPrefix20210418\Symfony\Component\Finder\Iterator;
 
-use Typo3RectorPrefix20210415\Symfony\Component\Finder\Glob;
+use Typo3RectorPrefix20210418\Symfony\Component\Finder\Glob;
 /**
  * FilenameFilterIterator filters files by patterns (a regexp, a glob, or a string).
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FilenameFilterIterator extends \Typo3RectorPrefix20210415\Symfony\Component\Finder\Iterator\MultiplePcreFilterIterator
+class FilenameFilterIterator extends \Typo3RectorPrefix20210418\Symfony\Component\Finder\Iterator\MultiplePcreFilterIterator
 {
     /**
      * Filters the iterator values.
@@ -39,6 +39,6 @@ class FilenameFilterIterator extends \Typo3RectorPrefix20210415\Symfony\Componen
      */
     protected function toRegex(string $str)
     {
-        return $this->isRegex($str) ? $str : \Typo3RectorPrefix20210415\Symfony\Component\Finder\Glob::toRegex($str);
+        return $this->isRegex($str) ? $str : \Typo3RectorPrefix20210418\Symfony\Component\Finder\Glob::toRegex($str);
     }
 }

@@ -75,10 +75,10 @@ CODE_SAMPLE
         if ($firstParam->type === null) {
             return null;
         }
-        if (!$this->isName($firstParam->type, 'Typo3RectorPrefix20210415\\Symfony\\Component\\Routing\\RouteCollectionBuilder')) {
+        if (!$this->isName($firstParam->type, 'Typo3RectorPrefix20210418\\Symfony\\Component\\Routing\\RouteCollectionBuilder')) {
             return null;
         }
-        $firstParam->type = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210415\\Symfony\\Component\\Routing\\Loader\\Configurator\\RoutingConfigurator');
+        $firstParam->type = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210418\\Symfony\\Component\\Routing\\Loader\\Configurator\\RoutingConfigurator');
         $node->name = new \PhpParser\Node\Identifier('configureRouting');
         $node->returnType = new \PhpParser\Node\Identifier('void');
         $this->traverseNodesWithCallable((array) $node->stmts, function (\PhpParser\Node $node) : ?MethodCall {

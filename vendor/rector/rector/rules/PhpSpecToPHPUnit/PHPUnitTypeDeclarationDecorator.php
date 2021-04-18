@@ -23,14 +23,14 @@ final class PHPUnitTypeDeclarationDecorator
     }
     public function decorate(\PhpParser\Node\Stmt\ClassMethod $classMethod) : void
     {
-        if (!$this->reflectionProvider->hasClass('Typo3RectorPrefix20210415\\PHPUnit\\Framework\\TestCase')) {
+        if (!$this->reflectionProvider->hasClass('Typo3RectorPrefix20210418\\PHPUnit\\Framework\\TestCase')) {
             return;
         }
         // skip test run
         if (\Rector\Testing\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun()) {
             return;
         }
-        $classReflection = $this->reflectionProvider->getClass('Typo3RectorPrefix20210415\\PHPUnit\\Framework\\TestCase');
+        $classReflection = $this->reflectionProvider->getClass('Typo3RectorPrefix20210418\\PHPUnit\\Framework\\TestCase');
         $reflectionClass = $classReflection->getNativeReflection();
         $reflectionMethod = $reflectionClass->getMethod(\Rector\Core\ValueObject\MethodName::SET_UP);
         if (!$reflectionMethod->hasReturnType()) {

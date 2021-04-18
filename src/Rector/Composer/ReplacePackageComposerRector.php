@@ -5,7 +5,7 @@ namespace Ssch\TYPO3Rector\Rector\Composer;
 
 use Rector\Composer\Contract\Rector\ComposerRectorInterface;
 use Ssch\TYPO3Rector\ValueObject\ReplacePackage;
-use Typo3RectorPrefix20210415\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -21,7 +21,7 @@ final class ReplacePackageComposerRector implements \Rector\Composer\Contract\Re
      * @var ReplacePackage[]
      */
     private $replacePackages = [];
-    public function refactor(\Typo3RectorPrefix20210415\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function refactor(\Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         foreach ($this->replacePackages as $replacePackage) {
             if ($composerJson->hasRequiredPackage($replacePackage->getOldPackageName())) {

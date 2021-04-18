@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\Operator;
+namespace Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\Operator;
 
-use Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\ObjectPath;
+use Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\ObjectPath;
 /**
  * Abstract base class for statements with binary operators.
  *
  * @package    Helmich\TypoScriptParser
  * @subpackage Parser\AST\Operator
  */
-abstract class BinaryObjectOperator extends \Typo3RectorPrefix20210415\Helmich\TypoScriptParser\Parser\AST\Operator\BinaryOperator
+abstract class BinaryObjectOperator extends \Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\Operator\BinaryOperator
 {
     /**
      * The target object to reference to or copy from.

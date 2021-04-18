@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\Event;
+namespace Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Event;
 
-use Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\HttpKernelInterface;
+use Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows to execute logic after a response was sent.
  *
@@ -21,15 +21,15 @@ use Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */
-final class TerminateEvent extends \Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\Event\KernelEvent
+final class TerminateEvent extends \Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $response;
-    public function __construct(\Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Response $response)
+    public function __construct(\Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Response $response)
     {
-        parent::__construct($kernel, $request, \Typo3RectorPrefix20210415\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST);
+        parent::__construct($kernel, $request, \Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST);
         $this->response = $response;
     }
-    public function getResponse() : \Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Response
+    public function getResponse() : \Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Response
     {
         return $this->response;
     }

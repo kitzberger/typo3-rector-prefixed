@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v8\v5;
 
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\Rector\AbstractRector;
@@ -32,7 +32,7 @@ final class MoveLanguageFilesFromLocallangToResourcesRector extends \Rector\Core
     {
         $value = $this->valueResolver->getValue($node);
         foreach (self::MAPPING_OLD_TO_NEW_PATHS as $oldPath => $newPath) {
-            if (\Typo3RectorPrefix20210415\Nette\Utils\Strings::contains($value, $oldPath)) {
+            if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::contains($value, $oldPath)) {
                 return new \PhpParser\Node\Scalar\String_(\str_replace($oldPath, $newPath, $value));
             }
         }

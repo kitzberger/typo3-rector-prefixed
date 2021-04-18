@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210415\Symplify\PackageBuilder\ValueObject;
+namespace Typo3RectorPrefix20210418\Symplify\PackageBuilder\ValueObject;
 
 final class Option
 {

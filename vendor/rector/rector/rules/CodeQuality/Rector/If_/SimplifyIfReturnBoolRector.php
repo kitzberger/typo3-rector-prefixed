@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodeQuality\Rector\If_;
 
-use Typo3RectorPrefix20210415\Nette\Utils\Strings;
+use Typo3RectorPrefix20210418\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\BinaryOp\Identical;
@@ -110,7 +110,7 @@ CODE_SAMPLE
         if (!$this->valueResolver->isFalse($returnedExpr)) {
             return !$this->valueResolver->isTrueOrFalse($nextNode->expr);
         }
-        if (!\Typo3RectorPrefix20210415\Nette\Utils\Strings::contains($this->print($if->cond), '!=')) {
+        if (!\Typo3RectorPrefix20210418\Nette\Utils\Strings::contains($this->print($if->cond), '!=')) {
             return !$this->valueResolver->isTrueOrFalse($nextNode->expr);
         }
         return \true;

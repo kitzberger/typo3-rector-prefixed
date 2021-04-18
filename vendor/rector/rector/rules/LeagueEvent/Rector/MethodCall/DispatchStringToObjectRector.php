@@ -38,7 +38,7 @@ final class DispatchStringToObjectRector extends \Rector\Core\Rector\AbstractRec
     private const NAME = 'name';
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Typo3RectorPrefix20210415\\Change string events to anonymous class which implement \\League\\Event\\HasEventName', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Typo3RectorPrefix20210418\\Change string events to anonymous class which implement \\League\\Event\\HasEventName', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
 final class SomeClass
 {
     /** @var \League\Event\EventDispatcher */
@@ -92,7 +92,7 @@ CODE_SAMPLE
         if (!$this->isNames($methodCall->name, ['dispatch', 'emit'])) {
             return \true;
         }
-        if (!$this->nodeTypeResolver->isObjectTypes($methodCall->var, [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\League\\Event\\EventDispatcher'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210415\\League\\Event\\Emitter')])) {
+        if (!$this->nodeTypeResolver->isObjectTypes($methodCall->var, [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210418\\League\\Event\\EventDispatcher'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210418\\League\\Event\\Emitter')])) {
             return \true;
         }
         return !$this->getStaticType($methodCall->args[0]->value) instanceof \PHPStan\Type\StringType;
@@ -104,7 +104,7 @@ CODE_SAMPLE
     }
     private function createNewAnonymousEventClass(\PhpParser\Node\Expr $expr) : \PhpParser\Node\Expr\New_
     {
-        $implements = [new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210415\\League\\Event\\HasEventName')];
+        $implements = [new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210418\\League\\Event\\HasEventName')];
         return new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Stmt\Class_(null, ['implements' => $implements, self::STMTS => $this->createAnonymousEventClassBody()]), [new \PhpParser\Node\Arg($expr)]);
     }
     /**

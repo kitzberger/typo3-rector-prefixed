@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Session\Attribute;
+namespace Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Session\Attribute;
 
 /**
  * This class provides structured storage of session attributes using
@@ -16,7 +16,7 @@ namespace Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Session\Att
  *
  * @author Drak <drak@zikula.org>
  */
-class NamespacedAttributeBag extends \Typo3RectorPrefix20210415\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
+class NamespacedAttributeBag extends \Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
 {
     private $namespaceCharacter;
     /**

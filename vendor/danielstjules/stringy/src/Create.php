@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210415\Stringy;
+namespace Typo3RectorPrefix20210418\Stringy;
 
-if (!\function_exists('Typo3RectorPrefix20210415\\Stringy\\create')) {
+if (!\function_exists('Typo3RectorPrefix20210418\\Stringy\\create')) {
     /**
      * Creates a Stringy object and returns it on success.
      *
@@ -14,6 +14,6 @@ if (!\function_exists('Typo3RectorPrefix20210415\\Stringy\\create')) {
      */
     function create($str, $encoding = null)
     {
-        return new \Typo3RectorPrefix20210415\Stringy\Stringy($str, $encoding);
+        return new \Typo3RectorPrefix20210418\Stringy\Stringy($str, $encoding);
     }
 }

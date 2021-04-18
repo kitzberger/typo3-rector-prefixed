@@ -7,10 +7,10 @@ use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
 use Rector\BetterPhpDocParser\Contract\BasePhpDocNodeVisitorInterface;
 use Rector\BetterPhpDocParser\DataProvider\CurrentTokenIteratorProvider;
 use Rector\BetterPhpDocParser\ValueObject\Parser\BetterTokenIterator;
-use Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\Contract\PhpDocNodeVisitorInterface;
-use Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeTraverser;
-use Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\CloningPhpDocNodeVisitor;
-use Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\ParentConnectingPhpDocNodeVisitor;
+use Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\Contract\PhpDocNodeVisitorInterface;
+use Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeTraverser;
+use Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\CloningPhpDocNodeVisitor;
+use Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\ParentConnectingPhpDocNodeVisitor;
 /**
  * @see \Rector\Tests\BetterPhpDocParser\PhpDocNodeMapperTest
  */
@@ -35,7 +35,7 @@ final class PhpDocNodeMapper
     /**
      * @param BasePhpDocNodeVisitorInterface[] $phpDocNodeVisitors
      */
-    public function __construct(\Rector\BetterPhpDocParser\DataProvider\CurrentTokenIteratorProvider $currentTokenIteratorProvider, \Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\ParentConnectingPhpDocNodeVisitor $parentConnectingPhpDocNodeVisitor, \Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\CloningPhpDocNodeVisitor $cloningPhpDocNodeVisitor, array $phpDocNodeVisitors)
+    public function __construct(\Rector\BetterPhpDocParser\DataProvider\CurrentTokenIteratorProvider $currentTokenIteratorProvider, \Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\ParentConnectingPhpDocNodeVisitor $parentConnectingPhpDocNodeVisitor, \Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\CloningPhpDocNodeVisitor $cloningPhpDocNodeVisitor, array $phpDocNodeVisitors)
     {
         $this->phpDocNodeVisitors = $phpDocNodeVisitors;
         $this->currentTokenIteratorProvider = $currentTokenIteratorProvider;
@@ -45,13 +45,13 @@ final class PhpDocNodeMapper
     public function transform(\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode $phpDocNode, \Rector\BetterPhpDocParser\ValueObject\Parser\BetterTokenIterator $betterTokenIterator) : void
     {
         $this->currentTokenIteratorProvider->setBetterTokenIterator($betterTokenIterator);
-        $parentPhpDocNodeTraverser = new \Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeTraverser();
+        $parentPhpDocNodeTraverser = new \Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeTraverser();
         $parentPhpDocNodeTraverser->addPhpDocNodeVisitor($this->parentConnectingPhpDocNodeVisitor);
         $parentPhpDocNodeTraverser->traverse($phpDocNode);
-        $cloningPhpDocNodeTraverser = new \Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeTraverser();
+        $cloningPhpDocNodeTraverser = new \Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeTraverser();
         $cloningPhpDocNodeTraverser->addPhpDocNodeVisitor($this->cloningPhpDocNodeVisitor);
         $cloningPhpDocNodeTraverser->traverse($phpDocNode);
-        $phpDocNodeTraverser = new \Typo3RectorPrefix20210415\Symplify\SimplePhpDocParser\PhpDocNodeTraverser();
+        $phpDocNodeTraverser = new \Typo3RectorPrefix20210418\Symplify\SimplePhpDocParser\PhpDocNodeTraverser();
         foreach ($this->phpDocNodeVisitors as $phpDocNodeVisitor) {
             $phpDocNodeTraverser->addPhpDocNodeVisitor($phpDocNodeVisitor);
         }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210415\Symplify\Astral\Exception;
+namespace Typo3RectorPrefix20210418\Symplify\Astral\Exception;
 
 use Exception;
 final class ShouldNotHappenException extends \Exception

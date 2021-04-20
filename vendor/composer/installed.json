@@ -1206,17 +1206,17 @@
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/rectorphp\/rector.git",
-                "reference": "3e3c2dc40d77c43f34fdb90828b573bcba1f353d"
+                "reference": "4064d01f84a7a280d7170dd6eb773a94e1715ded"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/3e3c2dc40d77c43f34fdb90828b573bcba1f353d",
-                "reference": "3e3c2dc40d77c43f34fdb90828b573bcba1f353d",
+                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/4064d01f84a7a280d7170dd6eb773a94e1715ded",
+                "reference": "4064d01f84a7a280d7170dd6eb773a94e1715ded",
                 "shasum": ""
             },
             "require": {
                 "composer\/semver": "^3.2",
-                "composer\/xdebug-handler": "^1.4",
+                "composer\/xdebug-handler": "^1.4|^2.0",
                 "danielstjules\/stringy": "^3.1",
                 "doctrine\/inflector": "^2.0",
                 "ext-dom": "*",
@@ -1275,7 +1275,7 @@
                 "symplify\/rule-doc-generator": "^9.2.16",
                 "tracy\/tracy": "^2.8"
             },
-            "time": "2021-04-19T16:15:52+00:00",
+            "time": "2021-04-20T19:50:42+00:00",
             "default-branch": true,
             "bin": [
                 "bin\/rector"
@@ -1323,7 +1323,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/rectorphp\/rector\/issues",
-                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/main"
+                "source": "https:\/\/github.com\/rectorphp\/rector\/tree\/0.10.8"
             },
             "funding": [
                 {

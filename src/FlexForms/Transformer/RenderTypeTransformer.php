@@ -8,6 +8,8 @@ use DOMElement;
 use DOMNode;
 use DOMNodeList;
 use DOMXPath;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 final class RenderTypeTransformer implements \Ssch\TYPO3Rector\FlexForms\Transformer\FlexFormTransformer
 {
     public function transform(\DOMDocument $domDocument) : void
@@ -48,5 +50,28 @@ final class RenderTypeTransformer implements \Ssch\TYPO3Rector\FlexForms\Transfo
             $insertBefore->parentNode->insertBefore($renderType, $insertBefore->nextSibling);
             $insertBefore->parentNode->insertBefore($domDocument->createTextNode("\n"), $insertBefore->nextSibling);
         }
+    }
+    public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
+    {
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Add renderType node in Flexforms xml', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+<type>select</type>
+<items>
+    <numIndex index="0" type="array">
+        <numIndex index="0">
+            LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.no-constraint
+        </numIndex>
+</items>
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
+<type>select</type>
+<renderType>selectSingle</renderType>
+<items>
+    <numIndex index="0" type="array">
+        <numIndex index="0">
+            LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.no-constraint
+        </numIndex>
+</items>
+CODE_SAMPLE
+)]);
     }
 }

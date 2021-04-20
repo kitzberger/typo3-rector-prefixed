@@ -62,21 +62,19 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->phpVersionProvider->isAtLeastPhpVersion(\Rector\Core\ValueObject\PhpVersionFeature::SCALAR_TYPES)) {
+        if (!$this->isAtLeastPhpVersion(\Rector\Core\ValueObject\PhpVersionFeature::VOID_TYPE)) {
             return null;
         }
         if ($node->returnType !== null) {
             return null;
         }
-        if ($node instanceof \PhpParser\Node\Stmt\ClassMethod && $node->isMagic()) {
+        if ($node instanceof \PhpParser\Node\Stmt\ClassMethod && ($node->isMagic() || $node->isAbstract())) {
             return null;
         }
         if (!$this->silentVoidResolver->hasExlusiveVoid($node)) {
             return null;
         }
-        if ($this->isAtLeastPhpVersion(\Rector\Core\ValueObject\PhpVersionFeature::VOID_TYPE)) {
-            $node->returnType = new \PhpParser\Node\Identifier('void');
-        }
+        $node->returnType = new \PhpParser\Node\Identifier('void');
         return $node;
     }
 }

@@ -13,7 +13,7 @@ return static function (\Typo3RectorPrefix20210420\Symfony\Component\DependencyI
     $parameters = $containerConfigurator->parameters();
     $parameters->set(\Rector\Core\Configuration\Option::SKIP, \Typo3RectorPrefix20210420\DowngradeRectorConfig::DEPENDENCY_EXCLUDE_PATHS);
     $parameters->set(\Rector\Core\Configuration\Option::PHPSTAN_FOR_RECTOR_PATH, __DIR__ . '/phpstan-for-downgrade.neon');
-    $parameters->set(\Rector\Core\Configuration\Option::SETS, [\Rector\Set\ValueObject\DowngradeSetList::PHP_80, \Rector\Set\ValueObject\DowngradeSetList::PHP_74, \Rector\Set\ValueObject\DowngradeSetList::PHP_73, \Rector\Set\ValueObject\DowngradeSetList::PHP_72]);
+    $parameters->set(\Rector\Core\Configuration\Option::SETS, [\Rector\Set\ValueObject\DowngradeSetList::PHP_80, \Rector\Set\ValueObject\DowngradeSetList::PHP_74, \Rector\Set\ValueObject\DowngradeSetList::PHP_73, \Rector\Set\ValueObject\DowngradeSetList::PHP_72, \Rector\Set\ValueObject\DowngradeSetList::PHP_71]);
 };
 /**
  * Configuration consts for the different rector.php config files

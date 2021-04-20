@@ -1,13 +1,11 @@
 <?php
-declare(strict_types=1);
 
-namespace Nimut\TestingFramework\TestCase;
+declare (strict_types=1);
 
-if (class_exists(ViewHelperBaseTestcase::class)) {
+
+if (\class_exists(\Nimut\TestingFramework\TestCase\ViewHelperBaseTestcase::class)) {
     return;
 }
-
 class ViewHelperBaseTestcase
 {
-
 }

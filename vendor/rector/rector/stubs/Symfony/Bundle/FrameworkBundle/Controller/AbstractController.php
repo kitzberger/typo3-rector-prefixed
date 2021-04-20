@@ -6,7 +6,7 @@ namespace Typo3RectorPrefix20210420\Symfony\Bundle\FrameworkBundle\Controller;
 use Typo3RectorPrefix20210420\Doctrine\Common\Persistence\ManagerRegistry;
 use Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\RedirectResponse;
 use Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Response;
-if (\class_exists('Typo3RectorPrefix20210420\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController')) {
+if (\class_exists('Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController')) {
     return;
 }
 abstract class AbstractController

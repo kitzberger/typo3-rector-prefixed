@@ -14,4 +14,4 @@ final class PHPExcel
     }
 }
 // @see: https://github.com/PHPOffice/PHPExcel/blob/1.8/Classes/PHPExcel.php
-\class_alias('Typo3RectorPrefix20210420\\PHPExcel', 'PHPExcel', \false);
+\class_alias('PHPExcel', 'PHPExcel', \false);

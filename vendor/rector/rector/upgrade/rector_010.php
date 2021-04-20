@@ -14,7 +14,7 @@ return static function (\Typo3RectorPrefix20210420\Symfony\Component\DependencyI
     $services = $containerConfigurator->services();
     $services->set(\Rector\Arguments\Rector\MethodCall\ValueObjectWrapArgRector::class)->call('configure', [[\Rector\Arguments\Rector\MethodCall\ValueObjectWrapArgRector::VALUE_OBJECT_WRAP_ARGS => \Symplify\SymfonyPhpConfig\ValueObjectInliner::inline([new \Rector\Arguments\ValueObject\ValueObjectWrapArg('Rector\\NodeTypeResolver\\NodeTypeResolver', 'isMethodStaticCallOrClassMethodObjectType', 1, 'PHPStan\\Type\\ObjectType'), new \Rector\Arguments\ValueObject\ValueObjectWrapArg('Rector\\NodeTypeResolver\\NodeTypeResolver', 'isObjectType', 1, 'PHPStan\\Type\\ObjectType'), new \Rector\Arguments\ValueObject\ValueObjectWrapArg('Rector\\NodeTypeResolver\\NodeTypeResolver', 'isObjectTypes', 1, 'PHPStan\\Type\\ObjectType'), new \Rector\Arguments\ValueObject\ValueObjectWrapArg('Rector\\Core\\Rector\\AbstractRector', 'isObjectType', 1, 'PHPStan\\Type\\ObjectType')])]]);
     $services->set(\Rector\Renaming\Rector\Name\RenameClassRector::class)->call('configure', [[
-        'Rector\\Core\\Console\\Command\\AbstractCommand' => 'Typo3RectorPrefix20210420\\Symfony\\Component\\Console\\Command\\Command',
+        'Rector\\Core\\Console\\Command\\AbstractCommand' => 'Symfony\\Component\\Console\\Command\\Command',
         'Rector\\Testing\\PHPUnit\\AbstractCommunityRectorTestCase' => 'Rector\\Testing\\PHPUnit\\AbstractRectorTestCase',
         'Rector\\AttributeAwarePhpDoc\\Ast\\PhpDoc\\AttributeAwareParamTagValueNode' => 'Rector\\BetterPhpDocParser\\ValueObject\\PhpDoc\\VariadicAwareParamTagValueNode',
         // @see https://github.com/rectorphp/rector/pull/5841

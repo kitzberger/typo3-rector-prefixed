@@ -1,12 +1,11 @@
 <?php
 
-namespace TYPO3\CMS\Extbase\Object;
 
-if (class_exists(ObjectManager::class)) {
+
+if (\class_exists(\TYPO3\CMS\Extbase\Object\ObjectManager::class)) {
     return;
 }
-
-class ObjectManager implements ObjectManagerInterface
+class ObjectManager implements \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
 {
     /**
      * @param $objectName
@@ -15,6 +14,6 @@ class ObjectManager implements ObjectManagerInterface
      */
     public function get($objectName)
     {
-        return new $objectName(func_get_args());
+        return new $objectName(\func_get_args());
     }
 }

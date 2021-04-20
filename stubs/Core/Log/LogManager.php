@@ -1,16 +1,15 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Core\Log;
+declare (strict_types=1);
 
-if(class_exists(LogManager::class)) {
+
+if (\class_exists(\TYPO3\CMS\Core\Log\LogManager::class)) {
     return null;
 }
-
 final class LogManager
 {
-    public function getLogger(string $class): Logger
+    public function getLogger(string $class) : \TYPO3\CMS\Core\Log\Logger
     {
-        return new Logger();
+        return new \TYPO3\CMS\Core\Log\Logger();
     }
 }

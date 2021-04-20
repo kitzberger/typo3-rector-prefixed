@@ -54,4 +54,4 @@ final class DowngradeRectorConfig
 /**
  * Configuration consts for the different rector.php config files
  */
-\class_alias('Typo3RectorPrefix20210420\\DowngradeRectorConfig', 'DowngradeRectorConfig', \false);
+\class_alias('DowngradeRectorConfig', 'DowngradeRectorConfig', \false);

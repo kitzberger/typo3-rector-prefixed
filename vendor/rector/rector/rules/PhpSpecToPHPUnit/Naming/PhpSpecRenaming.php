@@ -58,7 +58,7 @@ final class PhpSpecRenaming
     }
     public function renameExtends(\PhpParser\Node\Stmt\Class_ $class) : void
     {
-        $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase');
+        $class->extends = new \PhpParser\Node\Name\FullyQualified('PHPUnit\\Framework\\TestCase');
     }
     public function renameNamespace(\PhpParser\Node\Stmt\Class_ $class) : void
     {

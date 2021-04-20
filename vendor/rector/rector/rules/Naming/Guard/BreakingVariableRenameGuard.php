@@ -201,7 +201,7 @@ final class BreakingVariableRenameGuard
      */
     private function isRamseyUuidInterface(\PhpParser\Node\Param $param) : bool
     {
-        return $this->nodeTypeResolver->isObjectType($param, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Ramsey\\Uuid\\UuidInterface'));
+        return $this->nodeTypeResolver->isObjectType($param, new \PHPStan\Type\ObjectType('Ramsey\\Uuid\\UuidInterface'));
     }
     /**
      * @TODO Remove once ParamRenamer created

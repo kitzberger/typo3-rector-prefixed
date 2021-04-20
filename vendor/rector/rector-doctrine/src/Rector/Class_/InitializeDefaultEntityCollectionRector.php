@@ -125,7 +125,7 @@ CODE_SAMPLE
     private function createPropertyArrayCollectionAssign(string $toManyPropertyName) : \PhpParser\Node\Stmt\Expression
     {
         $propertyFetch = $this->nodeFactory->createPropertyFetch('this', $toManyPropertyName);
-        $new = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\Doctrine\\Common\\Collections\\ArrayCollection'));
+        $new = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Doctrine\\Common\\Collections\\ArrayCollection'));
         $assign = new \PhpParser\Node\Expr\Assign($propertyFetch, $new);
         return new \PhpParser\Node\Stmt\Expression($assign);
     }

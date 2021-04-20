@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Typo3RectorPrefix20210420;
 
-if (\class_exists('Typo3RectorPrefix20210420\\Mockery')) {
+if (\class_exists('Mockery')) {
     return;
 }
 class Mockery
@@ -18,4 +18,4 @@ class Mockery
         return new \Typo3RectorPrefix20210420\Mockery\DummyMock();
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\Mockery', 'Mockery', \false);
+\class_alias('Mockery', 'Mockery', \false);

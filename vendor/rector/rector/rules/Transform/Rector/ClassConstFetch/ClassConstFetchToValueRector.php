@@ -27,7 +27,7 @@ final class ClassConstFetchToValueRector extends \Rector\Core\Rector\AbstractRec
     private $classConstFetchesToValues = [];
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
-        $configuration = [self::CLASS_CONST_FETCHES_TO_VALUES => [new \Rector\Transform\ValueObject\ClassConstFetchToValue('Typo3RectorPrefix20210420\\Nette\\Configurator', 'DEVELOPMENT', 'development'), new \Rector\Transform\ValueObject\ClassConstFetchToValue('Typo3RectorPrefix20210420\\Nette\\Configurator', 'PRODUCTION', 'production')]];
+        $configuration = [self::CLASS_CONST_FETCHES_TO_VALUES => [new \Rector\Transform\ValueObject\ClassConstFetchToValue('Nette\\Configurator', 'DEVELOPMENT', 'development'), new \Rector\Transform\ValueObject\ClassConstFetchToValue('Nette\\Configurator', 'PRODUCTION', 'production')]];
         return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Replaces constant by value', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample('$value === Nette\\Configurator::DEVELOPMENT', '$value === "development"', $configuration)]);
     }
     /**

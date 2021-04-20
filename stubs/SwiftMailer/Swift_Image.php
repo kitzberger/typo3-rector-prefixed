@@ -1,14 +1,16 @@
 <?php
-declare(strict_types=1);
 
-if (class_exists(Swift_Image::class)) {
+declare (strict_types=1);
+
+
+if (\class_exists(\Typo3RectorPrefix20210420\Swift_Image::class)) {
     return;
 }
-
 class Swift_Image
 {
-    public static function fromPath(string $string): string
+    public static function fromPath(string $string) : string
     {
         return 'foo';
     }
 }
+\class_alias('Swift_Image', 'Swift_Image', \false);

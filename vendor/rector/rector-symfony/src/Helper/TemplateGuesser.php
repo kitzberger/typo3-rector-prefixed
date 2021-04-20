@@ -104,7 +104,7 @@ final class TemplateGuesser
         if (!$match) {
             return '';
         }
-        $controller = \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($match['class_name_without_suffix'], self::SMALL_LETTER_BIG_LETTER_REGEX, 'Typo3RectorPrefix20210420\\1_\\2');
+        $controller = \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($match['class_name_without_suffix'], self::SMALL_LETTER_BIG_LETTER_REGEX, '1_\\2');
         return \str_replace('\\', '/', $controller);
     }
 }

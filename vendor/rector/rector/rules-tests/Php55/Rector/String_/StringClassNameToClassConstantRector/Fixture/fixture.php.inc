@@ -11,7 +11,7 @@ class Fixture
 
     public function preSlash()
     {
-        return '\Rector\Tests\Php55\Rector\String_\StringClassNameToClassConstantRector\Source\AnotherClass';
+        return 'Rector\Tests\Php55\Rector\String_\StringClassNameToClassConstantRector\Source\AnotherClass';
     }
 }
 

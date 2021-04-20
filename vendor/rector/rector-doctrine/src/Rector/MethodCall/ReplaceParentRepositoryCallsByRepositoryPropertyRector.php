@@ -60,7 +60,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\ORM\\EntityRepository'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Doctrine\\ORM\\EntityRepository'))) {
             return null;
         }
         if (!$this->isNames($node->name, self::ENTITY_REPOSITORY_PUBLIC_METHODS)) {
@@ -98,7 +98,7 @@ CODE_SAMPLE
         $parentMethodCall = $methodCall->var;
         if (\count($parentMethodCall->args) === 1) {
             $class = $methodCall->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLASS_NODE);
-            if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\ORM\\EntityRepository'))) {
+            if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('Doctrine\\ORM\\EntityRepository'))) {
                 return null;
             }
             $firstArgValue = $parentMethodCall->args[0]->value;

@@ -1,13 +1,11 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Form\Controller;
+declare (strict_types=1);
 
-if (class_exists(FormFrontendController::class)) {
+
+if (\class_exists(\TYPO3\CMS\Form\Controller\FormFrontendController::class)) {
     return;
 }
-
 final class FormFrontendController
 {
-
 }

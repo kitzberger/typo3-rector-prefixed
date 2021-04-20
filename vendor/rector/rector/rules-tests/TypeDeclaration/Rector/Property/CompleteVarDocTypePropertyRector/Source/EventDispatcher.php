@@ -6,4 +6,4 @@ namespace Typo3RectorPrefix20210420;
 final class EventDispatcher
 {
 }
-\class_alias('Typo3RectorPrefix20210420\\EventDispatcher', 'EventDispatcher', \false);
+\class_alias('EventDispatcher', 'EventDispatcher', \false);

@@ -64,8 +64,8 @@ final class RouterListToControllerAnnotationsRector extends \Rector\Core\Rector\
         $this->returnTypeInferer = $returnTypeInferer;
         $this->explicitRouteAnnotationDecorator = $explicitRouteAnnotationDecorator;
         $this->symfonyRouteTagValueNodeFactory = $symfonyRouteTagValueNodeFactory;
-        $this->routerObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Nette\\Application\\IRouter'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Nette\\Routing\\Router')];
-        $this->routeListObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Nette\\Application\\Routers\\RouteList');
+        $this->routerObjectTypes = [new \PHPStan\Type\ObjectType('Nette\\Application\\IRouter'), new \PHPStan\Type\ObjectType('Nette\\Routing\\Router')];
+        $this->routeListObjectType = new \PHPStan\Type\ObjectType('Nette\\Application\\Routers\\RouteList');
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
@@ -175,7 +175,7 @@ CODE_SAMPLE
             }
             if ($node->expr instanceof \PhpParser\Node\Expr\StaticCall) {
                 // for custom static route factories
-                return $this->nodeTypeResolver->isObjectType($node->expr, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Nette\\Application\\IRouter'));
+                return $this->nodeTypeResolver->isObjectType($node->expr, new \PHPStan\Type\ObjectType('Nette\\Application\\IRouter'));
             }
             return \false;
         });
@@ -246,7 +246,7 @@ CODE_SAMPLE
         }
         // already has Route tag
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
-        return $phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Annotation\\Route');
+        return $phpDocInfo->hasByAnnotationClass('Symfony\\Component\\Routing\\Annotation\\Route');
     }
     private function resolvePathFromClassAndMethodNodes(\PhpParser\Node\Stmt\Class_ $class, \PhpParser\Node\Stmt\ClassMethod $classMethod) : string
     {

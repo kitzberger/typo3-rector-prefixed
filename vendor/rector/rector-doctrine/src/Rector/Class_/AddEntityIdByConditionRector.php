@@ -71,7 +71,7 @@ class SomeClass
     }
 }
 CODE_SAMPLE
-, [self::DETECTED_TRAITS => ['Typo3RectorPrefix20210420\\Knp\\DoctrineBehaviors\\Model\\Translatable\\Translation', 'Typo3RectorPrefix20210420\\Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslationTrait']])]);
+, [self::DETECTED_TRAITS => ['Knp\\DoctrineBehaviors\\Model\\Translatable\\Translation', 'Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslationTrait']])]);
     }
     /**
      * @return array<class-string<Node>>

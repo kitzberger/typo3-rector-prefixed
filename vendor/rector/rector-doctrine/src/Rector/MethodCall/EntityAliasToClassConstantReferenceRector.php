@@ -32,7 +32,7 @@ final class EntityAliasToClassConstantReferenceRector extends \Rector\Core\Recto
     private $aliasesToNamespaces = [];
     public function __construct()
     {
-        $this->doctrineManagerRegistryObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\ORM\\EntityManagerInterface'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\Common\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\Persistence\\ManagerRegistry'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\Common\\Persistence\\ManagerRegistry')];
+        $this->doctrineManagerRegistryObjectTypes = [new \PHPStan\Type\ObjectType('Doctrine\\ORM\\EntityManagerInterface'), new \PHPStan\Type\ObjectType('Doctrine\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Doctrine\\Common\\Persistence\\ObjectManager'), new \PHPStan\Type\ObjectType('Doctrine\\Persistence\\ManagerRegistry'), new \PHPStan\Type\ObjectType('Doctrine\\Common\\Persistence\\ManagerRegistry')];
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {
@@ -44,7 +44,7 @@ CODE_SAMPLE
 $entityManager = new Doctrine\ORM\EntityManager();
 $entityManager->getRepository(\App\Entity\Post::class);
 CODE_SAMPLE
-, [self::ALIASES_TO_NAMESPACES => ['App' => 'Typo3RectorPrefix20210420\\App\\Entity']])]);
+, [self::ALIASES_TO_NAMESPACES => ['App' => 'App\\Entity']])]);
     }
     /**
      * @return array<class-string<Node>>

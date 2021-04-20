@@ -81,7 +81,7 @@ CODE_SAMPLE
             return null;
         }
         $callerType = $this->nodeTypeResolver->resolve($node->var);
-        $containerObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Nette\\DI\\Container');
+        $containerObjectType = new \PHPStan\Type\ObjectType('Nette\\DI\\Container');
         if (!$containerObjectType->isSuperTypeOf($callerType)->yes()) {
             return null;
         }

@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 
-namespace TYPO3\CMS\Core\Tests;
 
-if (class_exists(UnitTestCase::class)) {
+if (\class_exists(\TYPO3\CMS\Core\Tests\UnitTestCase::class)) {
     return;
 }
-
 class UnitTestCase
 {
 }

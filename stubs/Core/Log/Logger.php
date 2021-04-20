@@ -1,14 +1,11 @@
 <?php
-declare(strict_types=1);
+
+declare (strict_types=1);
 
 
-namespace TYPO3\CMS\Core\Log;
-
-if(class_exists(Logger::class)) {
+if (\class_exists(\TYPO3\CMS\Core\Log\Logger::class)) {
     return null;
 }
-
 final class Logger
 {
-
 }

@@ -6,4 +6,4 @@ namespace Typo3RectorPrefix20210420;
 final class PHPExcel_Worksheet
 {
 }
-\class_alias('Typo3RectorPrefix20210420\\PHPExcel_Worksheet', 'PHPExcel_Worksheet', \false);
+\class_alias('PHPExcel_Worksheet', 'PHPExcel_Worksheet', \false);

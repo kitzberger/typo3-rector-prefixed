@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Typo3RectorPrefix20210420\Doctrine\Persistence;
 
 use Typo3RectorPrefix20210420\Doctrine\ORM\EntityManagerInterface;
-if (\class_exists('Typo3RectorPrefix20210420\\Doctrine\\Persistence\\ManagerRegistry')) {
+if (\class_exists('Doctrine\\Persistence\\ManagerRegistry')) {
     return;
 }
 final class ManagerRegistry

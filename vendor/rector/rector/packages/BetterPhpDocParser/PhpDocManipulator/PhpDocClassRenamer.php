@@ -35,7 +35,7 @@ final class PhpDocClassRenamer
      */
     private function processAssertChoiceTagValueNode(array $oldToNewClasses, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo $phpDocInfo) : void
     {
-        $assertChoiceTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210420\\Symfony\\Component\\Validator\\Constraints\\Choice');
+        $assertChoiceTagValueNode = $phpDocInfo->getByAnnotationClass('Symfony\\Component\\Validator\\Constraints\\Choice');
         if (!$assertChoiceTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return;
         }
@@ -68,7 +68,7 @@ final class PhpDocClassRenamer
      */
     private function processSerializerTypeTagValueNode(array $oldToNewClasses, \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo $phpDocInfo) : void
     {
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210420\\JMS\\Serializer\\Annotation\\Type');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('JMS\\Serializer\\Annotation\\Type');
         if (!$doctrineAnnotationTagValueNode instanceof \Rector\BetterPhpDocParser\PhpDoc\DoctrineAnnotationTagValueNode) {
             return;
         }

@@ -2,7 +2,7 @@
 
 namespace Typo3RectorPrefix20210420;
 
-if (\function_exists('Typo3RectorPrefix20210420\\mock')) {
+if (\function_exists('mock')) {
     return;
 }
 function mock() : \Typo3RectorPrefix20210420\Mockery\MockInterface

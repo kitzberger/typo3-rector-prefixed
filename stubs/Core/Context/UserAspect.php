@@ -1,12 +1,11 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Core\Context;
+declare (strict_types=1);
 
-if (class_exists(UserAspect::class)) {
+
+if (\class_exists(\TYPO3\CMS\Core\Context\UserAspect::class)) {
     return;
 }
-
 final class UserAspect
 {
 }

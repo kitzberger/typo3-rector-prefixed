@@ -6,4 +6,4 @@ namespace Typo3RectorPrefix20210420;
 final class ChangeMe_AnotherNamespace
 {
 }
-\class_alias('Typo3RectorPrefix20210420\\ChangeMe_AnotherNamespace', 'ChangeMe_AnotherNamespace', \false);
+\class_alias('ChangeMe_AnotherNamespace', 'ChangeMe_AnotherNamespace', \false);

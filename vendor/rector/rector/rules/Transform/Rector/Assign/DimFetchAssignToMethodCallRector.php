@@ -55,7 +55,7 @@ class RouterFactory
     }
 }
 CODE_SAMPLE
-, [self::DIM_FETCH_ASSIGN_TO_METHOD_CALL => [new \Rector\Transform\ValueObject\DimFetchAssignToMethodCall('Typo3RectorPrefix20210420\\Nette\\Application\\Routers\\RouteList', 'Typo3RectorPrefix20210420\\Nette\\Application\\Routers\\Route', 'addRoute')]])]);
+, [self::DIM_FETCH_ASSIGN_TO_METHOD_CALL => [new \Rector\Transform\ValueObject\DimFetchAssignToMethodCall('Nette\\Application\\Routers\\RouteList', 'Nette\\Application\\Routers\\Route', 'addRoute')]])]);
     }
     /**
      * @return array<class-string<Node>>

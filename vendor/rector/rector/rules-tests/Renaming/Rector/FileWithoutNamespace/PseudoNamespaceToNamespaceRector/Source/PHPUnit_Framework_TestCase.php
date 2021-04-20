@@ -6,4 +6,4 @@ namespace Typo3RectorPrefix20210420;
 abstract class PHPUnit_Framework_TestCase
 {
 }
-\class_alias('Typo3RectorPrefix20210420\\PHPUnit_Framework_TestCase', 'PHPUnit_Framework_TestCase', \false);
+\class_alias('PHPUnit_Framework_TestCase', 'PHPUnit_Framework_TestCase', \false);

@@ -52,7 +52,7 @@ class SomeClass extends \PHPUnit\Framework\TestCase
     }
 }
 CODE_SAMPLE
-, [self::TYPE_TO_PREFERENCE => ['Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase' => \Rector\CodingStyle\ValueObject\PreferenceSelfThis::PREFER_SELF]])]);
+, [self::TYPE_TO_PREFERENCE => ['PHPUnit\\Framework\\TestCase' => \Rector\CodingStyle\ValueObject\PreferenceSelfThis::PREFER_SELF]])]);
     }
     /**
      * @return array<class-string<Node>>

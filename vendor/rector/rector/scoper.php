@@ -48,7 +48,7 @@ return [\Rector\Compiler\ValueObject\ScoperOption::PREFIX => 'RectorPrefix' . $t
             return $content;
         }
         // see https://regex101.com/r/v8zRMm/1
-        return \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($content, '#' . $prefix . '\\\\Composer\\\\InstalledVersions#', 'Typo3RectorPrefix20210420\\Composer\\InstalledVersions');
+        return \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($content, '#' . $prefix . '\\\\Composer\\\\InstalledVersions#', 'Composer\\InstalledVersions');
     },
     // fixes https://github.com/rectorphp/rector/issues/6007
     function (string $filePath, string $prefix, string $content) : string {

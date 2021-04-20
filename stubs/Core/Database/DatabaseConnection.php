@@ -1,16 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 
-namespace TYPO3\CMS\Core\Database;
 
-if (class_exists(DatabaseConnection::class)) {
+if (\class_exists(\TYPO3\CMS\Core\Database\DatabaseConnection::class)) {
     return;
 }
-
 final class DatabaseConnection
 {
-
     /**
      * Creates and executes an INSERT SQL-statement for $table from the array with field/value pairs $fields_values.
      * Using this function specifically allows us to handle BLOB and CLOB fields depending on DB
@@ -21,11 +18,10 @@ final class DatabaseConnection
      *
      * @return bool|\mysqli_result|object MySQLi result object / DBAL object
      */
-    public function exec_INSERTquery($table, $fields_values, $no_quote_fields = false)
+    public function exec_INSERTquery($table, $fields_values, $no_quote_fields = \false)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Creates and executes an INSERT SQL-statement for $table with multiple rows.
      *
@@ -36,11 +32,10 @@ final class DatabaseConnection
      *
      * @return bool|\mysqli_result|object MySQLi result object / DBAL object
      */
-    public function exec_INSERTmultipleRows($table, array $fields, array $rows, $no_quote_fields = false)
+    public function exec_INSERTmultipleRows($table, array $fields, array $rows, $no_quote_fields = \false)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Creates and executes an UPDATE SQL-statement for $table where $where-clause (typ. 'uid=...') from the array with field/value pairs $fields_values.
      * Using this function specifically allow us to handle BLOB and CLOB fields depending on DB
@@ -52,11 +47,10 @@ final class DatabaseConnection
      *
      * @return bool|\mysqli_result|object MySQLi result object / DBAL object
      */
-    public function exec_UPDATEquery($table, $where, $fields_values, $no_quote_fields = false)
+    public function exec_UPDATEquery($table, $where, $fields_values, $no_quote_fields = \false)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Creates and executes a DELETE SQL-statement for $table where $where-clause
      *
@@ -67,9 +61,8 @@ final class DatabaseConnection
      */
     public function exec_DELETEquery($table, $where)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Creates and executes a SELECT SQL-statement
      * Using this function specifically allow us to handle the LIMIT feature independently of DB.
@@ -85,9 +78,8 @@ final class DatabaseConnection
      */
     public function exec_SELECTquery($select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $limit = '')
     {
-        return false;
+        return \false;
     }
-
     /**
      * Creates and executes a SELECT query, selecting fields ($select) from two/three tables joined
      * Use $mm_table together with $local_table or $foreign_table to select over two tables. Or use all three tables to select the full MM-relation.
@@ -108,9 +100,8 @@ final class DatabaseConnection
      */
     public function exec_SELECT_mm_query($select, $local_table, $mm_table, $foreign_table, $whereClause = '', $groupBy = '', $orderBy = '', $limit = '')
     {
-        return false;
+        return \false;
     }
-
     /**
      * Executes a select based on input query parts array
      *
@@ -121,9 +112,8 @@ final class DatabaseConnection
      */
     public function exec_SELECT_queryArray($queryParts)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Creates and executes a SELECT SQL-statement AND traverse result set and returns array with records in.
      *
@@ -142,7 +132,6 @@ final class DatabaseConnection
     {
         return null;
     }
-
     /**
      * Creates and executes a SELECT SQL-statement AND gets a result set and returns an array with a single record in.
      * LIMIT is automatically set to 1 and can not be overridden.
@@ -156,11 +145,10 @@ final class DatabaseConnection
      *
      * @return array|FALSE|NULL Single row, FALSE on empty result, NULL on error
      */
-    public function exec_SELECTgetSingleRow($select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $numIndex = false)
+    public function exec_SELECTgetSingleRow($select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $numIndex = \false)
     {
         return null;
     }
-
     /**
      * Counts the number of rows in a table.
      *
@@ -172,9 +160,8 @@ final class DatabaseConnection
      */
     public function exec_SELECTcountRows($field, $table, $where = '1=1')
     {
-        return false;
+        return \false;
     }
-
     /**
      * Truncates a table.
      *
@@ -184,9 +171,8 @@ final class DatabaseConnection
      */
     public function exec_TRUNCATEquery($table)
     {
-        return false;
+        return \false;
     }
-
     /**************************************
      *
      * Query building
@@ -201,11 +187,10 @@ final class DatabaseConnection
      *
      * @return string|NULL Full SQL query for INSERT, NULL if $fields_values is empty
      */
-    public function INSERTquery($table, $fields_values, $no_quote_fields = false)
+    public function INSERTquery($table, $fields_values, $no_quote_fields = \false)
     {
         return null;
     }
-
     /**
      * Creates an INSERT SQL-statement for $table with multiple rows.
      *
@@ -216,11 +201,10 @@ final class DatabaseConnection
      *
      * @return string|NULL Full SQL query for INSERT, NULL if $rows is empty
      */
-    public function INSERTmultipleRows($table, array $fields, array $rows, $no_quote_fields = false)
+    public function INSERTmultipleRows($table, array $fields, array $rows, $no_quote_fields = \false)
     {
         return null;
     }
-
     /**
      * Creates an UPDATE SQL-statement for $table where $where-clause (typ. 'uid=...') from the array with field/value pairs $fields_values.
      *
@@ -232,11 +216,10 @@ final class DatabaseConnection
      *
      * @return string Full SQL query for UPDATE
      */
-    public function UPDATEquery($table, $where, $fields_values, $no_quote_fields = false)
+    public function UPDATEquery($table, $where, $fields_values, $no_quote_fields = \false)
     {
         return '';
     }
-
     /**
      * Creates a DELETE SQL-statement for $table where $where-clause
      *
@@ -249,7 +232,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Creates a SELECT SQL-statement
      *
@@ -266,7 +248,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Creates a SELECT SQL-statement to be used as subquery within another query.
      * BEWARE: This method should not be overridden within DBAL to prevent quoting from happening.
@@ -281,7 +262,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Creates a SELECT query, selecting fields ($select) from two/three tables joined
      * Use $mm_table together with $local_table or $foreign_table to select over two tables. Or use all three tables to select the full MM-relation.
@@ -304,7 +284,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Creates a TRUNCATE TABLE SQL-statement
      *
@@ -316,7 +295,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Returns a WHERE clause that can find a value ($value) in a list field ($field)
      * For instance a record in the database might contain a list of numbers,
@@ -336,7 +314,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Returns a WHERE clause which will make an AND or OR search for the words in the $searchWords array in any of the fields in array $fields.
      *
@@ -351,7 +328,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**************************************
      *
      * Prepared Query Support
@@ -372,9 +348,8 @@ final class DatabaseConnection
      */
     public function prepare_SELECTquery($select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $limit = '', array $input_parameters = [])
     {
-        return new PreparedStatement();
+        return new \TYPO3\CMS\Core\Database\PreparedStatement();
     }
-
     /**
      * Creates a SELECT prepared SQL statement based on input query parts array
      *
@@ -385,9 +360,8 @@ final class DatabaseConnection
      */
     public function prepare_SELECTqueryArray(array $queryParts, array $input_parameters = [])
     {
-        return new PreparedStatement();
+        return new \TYPO3\CMS\Core\Database\PreparedStatement();
     }
-
     /**************************************
      *
      * Various helper functions
@@ -408,11 +382,10 @@ final class DatabaseConnection
      * @return string Output string; Wrapped in single quotes and quotes in the string (" / ') and \ will be backslashed (or otherwise based on DBAL handler)
      * @see quoteStr()
      */
-    public function fullQuoteStr($str, $table, $allowNull = false)
+    public function fullQuoteStr($str, $table, $allowNull = \false)
     {
         return '';
     }
-
     /**
      * Will fullquote all values in the one-dimensional array so they are ready to "implode" for an sql query.
      *
@@ -424,11 +397,10 @@ final class DatabaseConnection
      * @return array The input array with the values quoted
      * @see cleanIntArray()
      */
-    public function fullQuoteArray($arr, $table, $noQuote = false, $allowNull = false)
+    public function fullQuoteArray($arr, $table, $noQuote = \false, $allowNull = \false)
     {
         return [];
     }
-
     /**
      * Substitution for PHP function "addslashes()"
      * Use this function instead of the PHP addslashes() function when you build queries - this will prepare your code for DBAL.
@@ -444,7 +416,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Escaping values for SQL LIKE statements.
      *
@@ -458,7 +429,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Will convert all values in the one-dimensional array to integers.
      * Useful when you want to make sure an array contains only integers before imploding them in a select-list.
@@ -472,7 +442,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**
      * Will force all entries in the input comma list to integers
      * Useful when you want to make sure a commalist of supposed integers really contain only integers; You want to know that when you don't trust content that could go into an SQL statement.
@@ -486,7 +455,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Removes the prefix "ORDER BY" from the input string.
      * This function is used when you call the exec_SELECTquery() function and want to pass the ORDER BY parameter by can't guarantee that "ORDER BY" is not prefixed.
@@ -501,7 +469,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Removes the prefix "GROUP BY" from the input string.
      * This function is used when you call the SELECTquery() function and want to pass the GROUP BY parameter by can't guarantee that "GROUP BY" is not prefixed.
@@ -516,7 +483,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Returns the date and time formats compatible with the given database table.
      *
@@ -528,7 +494,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**************************************
      *
      * MySQL(i) wrapper functions
@@ -547,9 +512,8 @@ final class DatabaseConnection
      */
     public function sql_query($query)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Returns the error status on the last query() execution
      *
@@ -559,7 +523,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Returns the error number on the last query() execution
      *
@@ -569,7 +532,6 @@ final class DatabaseConnection
     {
         return 0;
     }
-
     /**
      * Returns the number of selected rows.
      *
@@ -581,7 +543,6 @@ final class DatabaseConnection
     {
         return 0;
     }
-
     /**
      * Returns an associative array that corresponds to the fetched row, or FALSE if there are no more rows.
      * MySQLi fetch_assoc() wrapper function
@@ -594,7 +555,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**
      * Returns an array that corresponds to the fetched row, or FALSE if there are no more rows.
      * The array contains the values in numerical indices.
@@ -606,9 +566,8 @@ final class DatabaseConnection
      */
     public function sql_fetch_row($res)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Free result memory
      * free_result() wrapper function
@@ -619,9 +578,8 @@ final class DatabaseConnection
      */
     public function sql_free_result($res)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Get the ID generated from the previous INSERT operation
      *
@@ -631,7 +589,6 @@ final class DatabaseConnection
     {
         return 0;
     }
-
     /**
      * Returns the number of rows affected by the last INSERT, UPDATE or DELETE query
      *
@@ -641,7 +598,6 @@ final class DatabaseConnection
     {
         return 0;
     }
-
     /**
      * Move internal result pointer
      *
@@ -652,9 +608,8 @@ final class DatabaseConnection
      */
     public function sql_data_seek($res, $seek)
     {
-        return false;
+        return \false;
     }
-
     /**
      * Get the type of the specified field in a result
      * mysql_field_type() wrapper function
@@ -668,7 +623,6 @@ final class DatabaseConnection
     {
         return '';
     }
-
     /**
      * Open a (persistent) connection to a MySQL server
      *
@@ -676,9 +630,8 @@ final class DatabaseConnection
      */
     public function sql_pconnect()
     {
-        return false;
+        return \false;
     }
-
     /**
      * Select a SQL database
      *
@@ -686,9 +639,8 @@ final class DatabaseConnection
      */
     public function sql_select_db()
     {
-        return false;
+        return \false;
     }
-
     /**************************************
      *
      * SQL admin functions
@@ -707,7 +659,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**
      * Returns the list of tables from the default database, TYPO3_db (quering the DBMS)
      * In a DBAL this method should 1) look up all tables from the DBMS  of
@@ -719,7 +670,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**
      * Returns information about each field in the $table (quering the DBMS)
      * In a DBAL this should look up the right handler for the table and return compatible information
@@ -736,7 +686,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**
      * Returns information about each index key in the $table (quering the DBMS)
      * In a DBAL this should look up the right handler for the table and return compatible information
@@ -749,7 +698,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**
      * Returns information about the character sets supported by the current DBM
      * This function is important not only for the Install Tool but probably for
@@ -766,7 +714,6 @@ final class DatabaseConnection
     {
         return [];
     }
-
     /**
      * mysqli() wrapper function, used by the Install Tool and EM for all queries regarding management of the database!
      *
@@ -776,9 +723,8 @@ final class DatabaseConnection
      */
     public function admin_query($query)
     {
-        return false;
+        return \false;
     }
-
     /******************************
      *
      * Debugging
@@ -792,9 +738,7 @@ final class DatabaseConnection
      */
     public function debug($func, $query = '')
     {
-
     }
-
     /**
      * Checks if record set is valid and writes debugging information into devLog if not.
      *
@@ -804,7 +748,6 @@ final class DatabaseConnection
      */
     public function debug_check_recordset($res)
     {
-        return false;
+        return \false;
     }
-
 }

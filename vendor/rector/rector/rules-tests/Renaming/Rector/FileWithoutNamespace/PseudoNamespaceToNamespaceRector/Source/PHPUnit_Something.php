@@ -6,4 +6,4 @@ namespace Typo3RectorPrefix20210420;
 final class PHPUnit_Something
 {
 }
-\class_alias('Typo3RectorPrefix20210420\\PHPUnit_Something', 'PHPUnit_Something', \false);
+\class_alias('PHPUnit_Something', 'PHPUnit_Something', \false);

@@ -55,7 +55,7 @@ final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210420\Symplif
     }
     public function provideDataForDoubleSlashEscaping() : \Iterator
     {
-        (yield ['Typo3RectorPrefix20210420\\Vendor\\Name', "'Vendor\\Name'"]);
+        (yield ['Vendor\\Name', "'Vendor\\Name'"]);
         (yield ['Vendor\\', "'Vendor\\\\'"]);
         (yield ["Vendor'Name", "'Vendor\\'Name'"]);
     }

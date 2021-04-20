@@ -151,13 +151,13 @@ CODE_SAMPLE
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
         $classType = $this->nodeTypeResolver->resolve($node);
-        $translatableObjectType = new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Gedmo\\Translatable\\Translatable');
+        $translatableObjectType = new \PHPStan\Type\ObjectType('Gedmo\\Translatable\\Translatable');
         if (!$translatableObjectType->isSuperTypeOf($classType)->yes()) {
             return null;
         }
-        $this->classManipulator->removeInterface($node, 'Typo3RectorPrefix20210420\\Gedmo\\Translatable\\Translatable');
-        $this->classInsertManipulator->addAsFirstTrait($node, 'Typo3RectorPrefix20210420\\Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslatableTrait');
-        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\Knp\\DoctrineBehaviors\\Contract\\Entity\\TranslatableInterface');
+        $this->classManipulator->removeInterface($node, 'Gedmo\\Translatable\\Translatable');
+        $this->classInsertManipulator->addAsFirstTrait($node, 'Knp\\DoctrineBehaviors\\Model\\Translatable\\TranslatableTrait');
+        $node->implements[] = new \PhpParser\Node\Name\FullyQualified('Knp\\DoctrineBehaviors\\Contract\\Entity\\TranslatableInterface');
         $removedPropertyNameToPhpDocInfo = $this->collectAndRemoveTranslatableProperties($node);
         $removePropertyNames = \array_keys($removedPropertyNameToPhpDocInfo);
         $this->removeSetAndGetMethods($node, $removePropertyNames);
@@ -172,11 +172,11 @@ CODE_SAMPLE
         $removedPropertyNameToPhpDocInfo = [];
         foreach ($class->getProperties() as $property) {
             $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($property);
-            if ($phpDocInfo->hasByAnnotationClass('Typo3RectorPrefix20210420\\Gedmo\\Mapping\\Annotation\\Locale')) {
+            if ($phpDocInfo->hasByAnnotationClass('Gedmo\\Mapping\\Annotation\\Locale')) {
                 $this->removeNode($property);
                 continue;
             }
-            $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210420\\Gedmo\\Mapping\\Annotation\\Translatable');
+            $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Gedmo\\Mapping\\Annotation\\Translatable');
             if (!$doctrineAnnotationTagValueNode) {
                 continue;
             }

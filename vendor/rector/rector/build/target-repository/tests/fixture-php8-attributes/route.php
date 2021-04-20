@@ -12,4 +12,4 @@ class SomeController
     {
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\SomeController', 'SomeController', \false);
+\class_alias('SomeController', 'SomeController', \false);

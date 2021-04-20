@@ -1,16 +1,15 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Core\Configuration;
+declare (strict_types=1);
 
-if (class_exists(Features::class)) {
+
+if (\class_exists(\TYPO3\CMS\Core\Configuration\Features::class)) {
     return;
 }
-
 final class Features
 {
-    public function isFeatureEnabled(string $feature): bool
+    public function isFeatureEnabled(string $feature) : bool
     {
-        return true;
+        return \true;
     }
 }

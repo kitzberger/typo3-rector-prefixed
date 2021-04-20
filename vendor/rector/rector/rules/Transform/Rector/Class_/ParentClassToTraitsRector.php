@@ -50,7 +50,7 @@ class SomeClass
     use Nette\SmartObject;
 }
 CODE_SAMPLE
-, [self::PARENT_CLASS_TO_TRAITS => ['Typo3RectorPrefix20210420\\Nette\\Object' => ['Typo3RectorPrefix20210420\\Nette\\SmartObject']]])]);
+, [self::PARENT_CLASS_TO_TRAITS => ['Nette\\Object' => ['Nette\\SmartObject']]])]);
     }
     /**
      * @return array<class-string<Node>>

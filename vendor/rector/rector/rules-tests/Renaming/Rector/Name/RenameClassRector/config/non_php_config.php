@@ -11,8 +11,8 @@ return static function (\Typo3RectorPrefix20210420\Symfony\Component\DependencyI
     $services->set(\Rector\Renaming\Rector\Name\RenameClassRector::class)->call('configure', [[\Rector\Renaming\Rector\Name\RenameClassRector::OLD_TO_NEW_CLASSES => [
         \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\OldClass::class => \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\NewClass::class,
         // Laravel
-        'Session' => 'Typo3RectorPrefix20210420\\Illuminate\\Support\\Facades\\Session',
-        'Form' => 'Typo3RectorPrefix20210420\\Collective\\Html\\FormFacade',
-        'Html' => 'Typo3RectorPrefix20210420\\Collective\\Html\\HtmlFacade',
+        'Session' => 'Illuminate\\Support\\Facades\\Session',
+        'Form' => 'Collective\\Html\\FormFacade',
+        'Html' => 'Collective\\Html\\HtmlFacade',
     ]]]);
 };

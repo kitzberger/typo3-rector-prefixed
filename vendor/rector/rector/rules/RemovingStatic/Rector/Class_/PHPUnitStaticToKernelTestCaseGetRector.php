@@ -92,7 +92,7 @@ final class SomeTestCase extends \Typo3RectorPrefix20210420\PHPUnit\Framework\Te
         $product = \Typo3RectorPrefix20210420\EntityFactory::create('product');
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\SomeTestCase', 'SomeTestCase', \false);
+\class_alias('SomeTestCase', 'SomeTestCase', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -152,7 +152,7 @@ CODE_SAMPLE
     }
     private function processClass(\PhpParser\Node\Stmt\Class_ $class) : ?\PhpParser\Node\Stmt\Class_
     {
-        if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase'))) {
+        if ($this->isObjectType($class, new \PHPStan\Type\ObjectType('PHPUnit\\Framework\\TestCase'))) {
             return $this->processPHPUnitClass($class);
         }
         // add property with the object
@@ -204,8 +204,8 @@ CODE_SAMPLE
             }
         }
         // update parent clsas if not already
-        if (!$this->isObjectType($class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase'))) {
-            $class->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase');
+        if (!$this->isObjectType($class, new \PHPStan\Type\ObjectType('Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase'))) {
+            $class->extends = new \PhpParser\Node\Name\FullyQualified('Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase');
         }
         return $class;
     }

@@ -1,12 +1,11 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\IndexedSearch\Utility;
+declare (strict_types=1);
 
-if (class_exists(LikeWildcard::class)) {
+
+if (\class_exists(\TYPO3\CMS\IndexedSearch\Utility\LikeWildcard::class)) {
     return;
 }
-
 final class LikeWildcard
 {
     public const WILDCARD_LEFT = 'foo';

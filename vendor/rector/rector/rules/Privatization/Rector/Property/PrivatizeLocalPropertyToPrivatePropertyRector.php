@@ -39,7 +39,7 @@ final class PrivatizeLocalPropertyToPrivatePropertyRector extends \Rector\Core\R
     public function __construct(\Rector\VendorLocker\NodeVendorLocker\PropertyVisibilityVendorLockResolver $propertyVisibilityVendorLockResolver)
     {
         $this->propertyVisibilityVendorLockResolver = $propertyVisibilityVendorLockResolver;
-        $this->excludedObjectTypes = [new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase'), new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\PHP_CodeSniffer\\Sniffs\\Sniff')];
+        $this->excludedObjectTypes = [new \PHPStan\Type\ObjectType('PHPUnit\\Framework\\TestCase'), new \PHPStan\Type\ObjectType('PHP_CodeSniffer\\Sniffs\\Sniff')];
     }
     public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
     {

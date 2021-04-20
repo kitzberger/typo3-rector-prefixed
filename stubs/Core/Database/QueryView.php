@@ -1,13 +1,11 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Core\Database;
+declare (strict_types=1);
 
-if (class_exists(QueryView::class)) {
+
+if (\class_exists(\TYPO3\CMS\Core\Database\QueryView::class)) {
     return;
 }
-
 final class QueryView
 {
-
 }

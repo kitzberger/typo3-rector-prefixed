@@ -22,16 +22,16 @@ final class FluentMethodCallSkipper
      */
     private const ALLOWED_FLUENT_TYPES = [
         // symfony
-        'Typo3RectorPrefix20210420\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\AbstractConfigurator',
-        'Typo3RectorPrefix20210420\\Symfony\\Component\\Finder\\Finder',
+        'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\AbstractConfigurator',
+        'Symfony\\Component\\Finder\\Finder',
         // doctrine
-        'Typo3RectorPrefix20210420\\Doctrine\\ORM\\QueryBuilder',
+        'Doctrine\\ORM\\QueryBuilder',
         // nette
-        'Typo3RectorPrefix20210420\\Nette\\Utils\\Finder',
-        'Typo3RectorPrefix20210420\\Nette\\Forms\\Controls\\BaseControl',
-        'Typo3RectorPrefix20210420\\Nette\\DI\\ContainerBuilder',
-        'Typo3RectorPrefix20210420\\Nette\\DI\\Definitions\\Definition',
-        'Typo3RectorPrefix20210420\\Nette\\DI\\Definitions\\ServiceDefinition',
+        'Nette\\Utils\\Finder',
+        'Nette\\Forms\\Controls\\BaseControl',
+        'Nette\\DI\\ContainerBuilder',
+        'Nette\\DI\\Definitions\\Definition',
+        'Nette\\DI\\Definitions\\ServiceDefinition',
         'PHPStan\\Analyser\\Scope',
         'DateTimeInterface',
     ];

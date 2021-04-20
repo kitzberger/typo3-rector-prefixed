@@ -9,15 +9,15 @@ final class StaticEasyPrefixer
      * @var string[]
      */
     public const EXCLUDED_CLASSES = [
-        'Typo3RectorPrefix20210420\\Symfony\\Component\\Console\\Style\\SymfonyStyle',
+        'Symfony\\Component\\Console\\Style\\SymfonyStyle',
         // part of public interface of configs.php
-        'Typo3RectorPrefix20210420\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator',
+        'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator',
         // this is not prefixed on few places by php-scoper by default, probably some bug
-        'Typo3RectorPrefix20210420\\Doctrine\\Inflector\\Inflector',
+        'Doctrine\\Inflector\\Inflector',
         // for ocramius versions - https://github.com/rectorphp/rector/runs/2089178426
-        'Typo3RectorPrefix20210420\\Composer\\InstalledVersions',
+        'Composer\\InstalledVersions',
         // for SmartFileInfo
-        'Typo3RectorPrefix20210420\\Symplify\\SmartFileSystem\\SmartFileInfo',
+        'Symplify\\SmartFileSystem\\SmartFileInfo',
     ];
     /**
      * @var string[]

@@ -5,7 +5,7 @@ namespace Typo3RectorPrefix20210420\Symfony\Bundle\FrameworkBundle\Test;
 
 use Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase;
 use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\ContainerInterface;
-if (\class_exists('Typo3RectorPrefix20210420\\Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase')) {
+if (\class_exists('Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase')) {
     return;
 }
 class KernelTestCase extends \Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase

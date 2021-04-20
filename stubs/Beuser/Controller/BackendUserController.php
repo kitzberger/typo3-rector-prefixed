@@ -1,13 +1,11 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Beuser\Controller;
+declare (strict_types=1);
 
-if (class_exists(BackendUserGroupController::class)) {
+
+if (\class_exists(\TYPO3\CMS\Beuser\Controller\BackendUserGroupController::class)) {
     return;
 }
-
 final class BackendUserController
 {
-
 }

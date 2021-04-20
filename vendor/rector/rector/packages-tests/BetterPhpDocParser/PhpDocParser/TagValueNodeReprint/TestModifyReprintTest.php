@@ -50,7 +50,7 @@ final class TestModifyReprintTest extends \Typo3RectorPrefix20210420\Symplify\Pa
         $inputFileInfo = $inputFileInfoAndExpected->getInputFileInfo();
         $phpDocInfo = $this->parseFileAndGetFirstNodeOfType($inputFileInfo, \PhpParser\Node\Stmt\ClassMethod::class);
         /** @var DoctrineAnnotationTagValueNode $doctrineAnnotationTagValueNode */
-        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Annotation\\Route');
+        $doctrineAnnotationTagValueNode = $phpDocInfo->getByAnnotationClass('Symfony\\Component\\Routing\\Annotation\\Route');
         // this will extended tokens of first node
         $doctrineAnnotationTagValueNode->changeValue('methods', new \Rector\BetterPhpDocParser\ValueObject\PhpDoc\DoctrineAnnotation\CurlyListNode(['"GET"', '"HEAD"']));
         $expectedDocContent = \trim($inputFileInfoAndExpected->getExpected());

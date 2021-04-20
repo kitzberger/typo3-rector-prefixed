@@ -1,11 +1,8 @@
 <?php
-declare(strict_types=1);
 
-
-namespace Psr\Http\Message;
+declare (strict_types=1);
 
 
 final class ServerRequestInterface
 {
-
 }

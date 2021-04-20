@@ -120,7 +120,7 @@ CODE_SAMPLE
             return \true;
         }
         // one of the cases when we are in the repo and it's extended from EntityRepository
-        if (!$this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\ORM\\EntityRepository'))) {
+        if (!$this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Doctrine\\ORM\\EntityRepository'))) {
             return \true;
         }
         if (!$this->isName($methodCall->name, 'setParameters')) {
@@ -131,7 +131,7 @@ CODE_SAMPLE
         if (!$rootExpr instanceof \PhpParser\Node\Expr\MethodCall) {
             return \true;
         }
-        return !$this->isObjectType($rootExpr, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Doctrine\\ORM\\QueryBuilder'));
+        return !$this->isObjectType($rootExpr, new \PHPStan\Type\ObjectType('Doctrine\\ORM\\QueryBuilder'));
     }
     private function getNewArrayCollectionFromSetParametersArgument(\PhpParser\Node\Arg $arg) : \PhpParser\Node\Expr\New_
     {
@@ -144,11 +144,11 @@ CODE_SAMPLE
             if (!$firstArgumentArrayItem->key instanceof \PhpParser\Node\Scalar\String_ || !$firstArgumentArrayItem->value instanceof \PhpParser\Node\Scalar\String_) {
                 throw new \Rector\Core\Exception\ShouldNotHappenException();
             }
-            $queryParameter = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\Doctrine\\ORM\\Query\\Parameter'));
+            $queryParameter = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Doctrine\\ORM\\Query\\Parameter'));
             $queryParameter->args = [new \PhpParser\Node\Arg($firstArgumentArrayItem->key), new \PhpParser\Node\Arg($firstArgumentArrayItem->value)];
             $arrayCollectionArrayArguments[] = new \PhpParser\Node\Expr\ArrayItem($queryParameter);
         }
-        $arrayCollection = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\Doctrine\\Common\\Collections\\ArrayCollection'));
+        $arrayCollection = new \PhpParser\Node\Expr\New_(new \PhpParser\Node\Name\FullyQualified('Doctrine\\Common\\Collections\\ArrayCollection'));
         $arrayCollection->args = [new \PhpParser\Node\Arg(new \PhpParser\Node\Expr\Array_($arrayCollectionArrayArguments))];
         return $arrayCollection;
     }

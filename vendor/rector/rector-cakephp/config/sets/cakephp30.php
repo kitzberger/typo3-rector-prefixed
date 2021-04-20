@@ -14,18 +14,18 @@ return static function (\Typo3RectorPrefix20210420\Symfony\Component\DependencyI
     $services->set(\Rector\CakePHP\Rector\FileWithoutNamespace\ImplicitShortClassNameUseStatementRector::class);
     $services->set(\Rector\Renaming\Rector\Name\RenameClassRector::class)->call('configure', [[\Rector\Renaming\Rector\Name\RenameClassRector::OLD_TO_NEW_CLASSES => [
         # see https://github.com/cakephp/upgrade/blob/756410c8b7d5aff9daec3fa1fe750a3858d422ac/src/Shell/Task/RenameClassesTask.php#L37
-        'Typo3RectorPrefix20210420\\Cake\\Network\\Http\\HttpSocket' => 'Typo3RectorPrefix20210420\\Cake\\Network\\Http\\Client',
-        'Typo3RectorPrefix20210420\\Cake\\Model\\ConnectionManager' => 'Typo3RectorPrefix20210420\\Cake\\Database\\ConnectionManager',
-        'Typo3RectorPrefix20210420\\Cake\\TestSuite\\CakeTestCase' => 'Typo3RectorPrefix20210420\\Cake\\TestSuite\\TestCase',
-        'Typo3RectorPrefix20210420\\Cake\\TestSuite\\Fixture\\CakeTestFixture' => 'Typo3RectorPrefix20210420\\Cake\\TestSuite\\Fixture\\TestFixture',
-        'Typo3RectorPrefix20210420\\Cake\\Utility\\String' => 'Typo3RectorPrefix20210420\\Cake\\Utility\\Text',
+        'Cake\\Network\\Http\\HttpSocket' => 'Cake\\Network\\Http\\Client',
+        'Cake\\Model\\ConnectionManager' => 'Cake\\Database\\ConnectionManager',
+        'Cake\\TestSuite\\CakeTestCase' => 'Cake\\TestSuite\\TestCase',
+        'Cake\\TestSuite\\Fixture\\CakeTestFixture' => 'Cake\\TestSuite\\Fixture\\TestFixture',
+        'Cake\\Utility\\String' => 'Cake\\Utility\\Text',
         'CakePlugin' => 'Plugin',
         'CakeException' => 'Exception',
         # see https://book.cakephp.org/3/en/appendices/3-0-migration-guide.html#configure
-        'Typo3RectorPrefix20210420\\Cake\\Configure\\PhpReader' => 'Typo3RectorPrefix20210420\\Cake\\Core\\Configure\\EnginePhpConfig',
-        'Typo3RectorPrefix20210420\\Cake\\Configure\\IniReader' => 'Typo3RectorPrefix20210420\\Cake\\Core\\Configure\\EngineIniConfig',
-        'Typo3RectorPrefix20210420\\Cake\\Configure\\ConfigReaderInterface' => 'Typo3RectorPrefix20210420\\Cake\\Core\\Configure\\ConfigEngineInterface',
+        'Cake\\Configure\\PhpReader' => 'Cake\\Core\\Configure\\EnginePhpConfig',
+        'Cake\\Configure\\IniReader' => 'Cake\\Core\\Configure\\EngineIniConfig',
+        'Cake\\Configure\\ConfigReaderInterface' => 'Cake\\Core\\Configure\\ConfigEngineInterface',
         # https://book.cakephp.org/3/en/appendices/3-0-migration-guide.html#request
-        'CakeRequest' => 'Typo3RectorPrefix20210420\\Cake\\Network\\Request',
+        'CakeRequest' => 'Cake\\Network\\Request',
     ]]]);
 };

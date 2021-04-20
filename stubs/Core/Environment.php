@@ -1,31 +1,26 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 
-namespace TYPO3\CMS\Core\Core;
 
-if (class_exists(Environment::class)) {
+if (\class_exists(\TYPO3\CMS\Core\Core\Environment::class)) {
     return;
 }
-
 final class Environment
 {
-    public static function isCli(): bool
+    public static function isCli() : bool
     {
-        return false;
+        return \false;
     }
-
-    public static function getProjectPath(): string
+    public static function getProjectPath() : string
     {
         return '';
     }
-
-    public static function isRunningOnCgiServer(): bool
+    public static function isRunningOnCgiServer() : bool
     {
-        return false;
+        return \false;
     }
-
-    public static function getContext(): string
+    public static function getContext() : string
     {
         return 'foo';
     }

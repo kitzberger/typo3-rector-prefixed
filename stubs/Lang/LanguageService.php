@@ -1,24 +1,20 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Lang;
+declare (strict_types=1);
 
-if(class_exists(LanguageService::class))
-{
+
+if (\class_exists(\TYPO3\CMS\Lang\LanguageService::class)) {
     return;
 }
-
 final class LanguageService
 {
-    public function sL($input, $hsc = false): void
+    public function sL($input, $hsc = \false) : void
     {
     }
-
-    public function getLL($index, $hsc = false): void
+    public function getLL($index, $hsc = \false) : void
     {
     }
-
-    public function getLLL($index, $localLanguage, $hsc = false): void
+    public function getLLL($index, $localLanguage, $hsc = \false) : void
     {
     }
 }

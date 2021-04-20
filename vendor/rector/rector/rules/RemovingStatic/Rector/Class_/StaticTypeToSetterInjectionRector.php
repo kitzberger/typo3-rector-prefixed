@@ -64,7 +64,7 @@ final class CheckoutEntityFactory
         return \Typo3RectorPrefix20210420\SomeStaticClass::go();
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
+\class_alias('CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 <?php
@@ -86,7 +86,7 @@ final class CheckoutEntityFactory
         return $this->someStaticClass->go();
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
+\class_alias('CheckoutEntityFactory', 'CheckoutEntityFactory', \false);
 CODE_SAMPLE
 , [self::STATIC_TYPES => ['SomeStaticClass']])]);
     }

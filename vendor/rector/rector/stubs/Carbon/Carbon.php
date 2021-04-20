@@ -5,7 +5,7 @@ namespace Typo3RectorPrefix20210420\Carbon;
 use DateInterval;
 use DateTimeInterface;
 use DateTimeZone;
-if (\class_exists('Typo3RectorPrefix20210420\\Carbon\\Carbon')) {
+if (\class_exists('Carbon\\Carbon')) {
     return;
 }
 class Carbon extends \DateTime

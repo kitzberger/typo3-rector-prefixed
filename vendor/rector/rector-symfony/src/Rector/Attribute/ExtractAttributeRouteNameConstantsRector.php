@@ -100,7 +100,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isName($node->name, 'Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Annotation\\Route')) {
+        if (!$this->isName($node->name, 'Symfony\\Component\\Routing\\Annotation\\Route')) {
             return null;
         }
         $this->createRouteNameValueObject();
@@ -125,7 +125,7 @@ CODE_SAMPLE
             // avoid override
             return;
         }
-        $routeAttributes = $this->nodeRepository->findAttributes('Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Annotation\\Route');
+        $routeAttributes = $this->nodeRepository->findAttributes('Symfony\\Component\\Routing\\Annotation\\Route');
         $constantNameAndValues = $this->constantNameAndValueResolver->resolveFromAttributes($routeAttributes, 'ROUTE_');
         $namespace = $this->routeNameClassFactory->create($constantNameAndValues, self::ROUTE_NAME_FILE_LOCATION);
         $addedFileWithNodes = new \Rector\FileSystemRector\ValueObject\AddedFileWithNodes(self::ROUTE_NAME_FILE_LOCATION, [$namespace]);

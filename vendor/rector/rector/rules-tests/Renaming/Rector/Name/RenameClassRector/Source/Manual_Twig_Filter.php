@@ -6,4 +6,4 @@ namespace Typo3RectorPrefix20210420;
 final class Manual_Twig_Filter
 {
 }
-\class_alias('Typo3RectorPrefix20210420\\Manual_Twig_Filter', 'Manual_Twig_Filter', \false);
+\class_alias('Manual_Twig_Filter', 'Manual_Twig_Filter', \false);

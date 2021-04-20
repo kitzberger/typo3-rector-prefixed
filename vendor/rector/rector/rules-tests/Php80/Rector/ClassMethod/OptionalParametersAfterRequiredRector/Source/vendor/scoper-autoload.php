@@ -9,8 +9,23 @@ $loader = require_once __DIR__.'/autoload.php';
 if (!class_exists('AutoloadIncluder', false) && !interface_exists('AutoloadIncluder', false) && !trait_exists('AutoloadIncluder', false)) {
     spl_autoload_call('Typo3RectorPrefix20210420\AutoloadIncluder');
 }
-if (!class_exists('ComposerAutoloaderInitd54599d032ad471b01ac399347a723d4', false) && !interface_exists('ComposerAutoloaderInitd54599d032ad471b01ac399347a723d4', false) && !trait_exists('ComposerAutoloaderInitd54599d032ad471b01ac399347a723d4', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210420\ComposerAutoloaderInitd54599d032ad471b01ac399347a723d4');
+if (!class_exists('Apache_Solr_Document', false) && !interface_exists('Apache_Solr_Document', false) && !trait_exists('Apache_Solr_Document', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\Apache_Solr_Document');
+}
+if (!class_exists('Apache_Solr_Response', false) && !interface_exists('Apache_Solr_Response', false) && !trait_exists('Apache_Solr_Response', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\Apache_Solr_Response');
+}
+if (!class_exists('Swift_Attachment', false) && !interface_exists('Swift_Attachment', false) && !trait_exists('Swift_Attachment', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\Swift_Attachment');
+}
+if (!class_exists('Swift_Image', false) && !interface_exists('Swift_Image', false) && !trait_exists('Swift_Image', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\Swift_Image');
+}
+if (!class_exists('Composer\InstalledVersions', false) && !interface_exists('Composer\InstalledVersions', false) && !trait_exists('Composer\InstalledVersions', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\Composer\InstalledVersions');
+}
+if (!class_exists('ComposerAutoloaderInitf827c15bef7e12cce93c87d9ab6b5fdc', false) && !interface_exists('ComposerAutoloaderInitf827c15bef7e12cce93c87d9ab6b5fdc', false) && !trait_exists('ComposerAutoloaderInitf827c15bef7e12cce93c87d9ab6b5fdc', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\ComposerAutoloaderInitf827c15bef7e12cce93c87d9ab6b5fdc');
 }
 if (!class_exists('Doctrine\Inflector\Inflector', false) && !interface_exists('Doctrine\Inflector\Inflector', false) && !trait_exists('Doctrine\Inflector\Inflector', false)) {
     spl_autoload_call('Typo3RectorPrefix20210420\Doctrine\Inflector\Inflector');
@@ -117,12 +132,15 @@ if (!class_exists('UnhandledMatchError', false) && !interface_exists('UnhandledM
 if (!class_exists('ValueError', false) && !interface_exists('ValueError', false) && !trait_exists('ValueError', false)) {
     spl_autoload_call('Typo3RectorPrefix20210420\ValueError');
 }
+if (!class_exists('Symplify\SmartFileSystem\SmartFileInfo', false) && !interface_exists('Symplify\SmartFileSystem\SmartFileInfo', false) && !trait_exists('Symplify\SmartFileSystem\SmartFileInfo', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo');
+}
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequired54599d032ad471b01ac399347a723d4')) {
-    function composerRequired54599d032ad471b01ac399347a723d4() {
-        return \Typo3RectorPrefix20210420\composerRequired54599d032ad471b01ac399347a723d4(...func_get_args());
+if (!function_exists('composerRequiref827c15bef7e12cce93c87d9ab6b5fdc')) {
+    function composerRequiref827c15bef7e12cce93c87d9ab6b5fdc() {
+        return \Typo3RectorPrefix20210420\composerRequiref827c15bef7e12cce93c87d9ab6b5fdc(...func_get_args());
     }
 }
 if (!function_exists('parseArgs')) {
@@ -203,6 +221,11 @@ if (!function_exists('dump')) {
 if (!function_exists('setproctitle')) {
     function setproctitle() {
         return \Typo3RectorPrefix20210420\setproctitle(...func_get_args());
+    }
+}
+if (!function_exists('trigger_deprecation')) {
+    function trigger_deprecation() {
+        return \Typo3RectorPrefix20210420\trigger_deprecation(...func_get_args());
     }
 }
 if (!function_exists('includeIfExists')) {

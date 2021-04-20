@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Typo3RectorPrefix20210420\Symfony\Component\Routing;
 
 use Typo3RectorPrefix20210420\Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-if (\class_exists('Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Router')) {
+if (\class_exists('Symfony\\Component\\Routing\\Router')) {
     return;
 }
 class Router implements \Typo3RectorPrefix20210420\Symfony\Component\Routing\RouterInterface

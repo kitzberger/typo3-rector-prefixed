@@ -64,7 +64,7 @@ final class EventValueObjectClassFactory
         $shortClassName = $this->classNaming->getShortName($className);
         $classBuilder = new \Typo3RectorPrefix20210420\Symplify\Astral\ValueObject\NodeBuilder\ClassBuilder($shortClassName);
         $classBuilder->makeFinal();
-        $classBuilder->extend(new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\Symfony\\Contracts\\EventDispatcher\\Event'));
+        $classBuilder->extend(new \PhpParser\Node\Name\FullyQualified('Symfony\\Contracts\\EventDispatcher\\Event'));
         return $classBuilder;
     }
     /**

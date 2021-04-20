@@ -20,7 +20,7 @@ final class AllowedAutoloadedTypeAnalyzer
     /**
      * @var array<class-string>
      */
-    private const ALLOWED_CLASSES = [\DateTimeInterface::class, 'Typo3RectorPrefix20210420\\Symplify\\SmartFileSystem\\SmartFileInfo'];
+    private const ALLOWED_CLASSES = [\DateTimeInterface::class, 'Symplify\\SmartFileSystem\\SmartFileInfo'];
     public function isAllowedType(\PHPStan\Type\Type $type) : bool
     {
         if ($type instanceof \PHPStan\Type\UnionType) {

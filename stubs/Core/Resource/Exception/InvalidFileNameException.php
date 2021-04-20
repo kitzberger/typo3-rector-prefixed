@@ -1,15 +1,12 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Core\Resource\Exception;
+declare (strict_types=1);
+
 
 use Exception;
-
-if (class_exists(InvalidFileNameException::class)) {
+if (\class_exists(\TYPO3\CMS\Core\Resource\Exception\InvalidFileNameException::class)) {
     return;
 }
-
-final class InvalidFileNameException extends Exception
+final class InvalidFileNameException extends \Exception
 {
-
 }

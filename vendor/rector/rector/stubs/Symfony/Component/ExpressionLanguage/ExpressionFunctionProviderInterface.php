@@ -5,7 +5,7 @@ declare (strict_types=1);
 // because it has optional-dependency on expression language
 namespace Typo3RectorPrefix20210420\Symfony\Component\ExpressionLanguage;
 
-if (\interface_exists('Typo3RectorPrefix20210420\\Symfony\\Component\\ExpressionLanguage\\ExpressionFunctionProviderInterface')) {
+if (\interface_exists('Symfony\\Component\\ExpressionLanguage\\ExpressionFunctionProviderInterface')) {
     return;
 }
 interface ExpressionFunctionProviderInterface

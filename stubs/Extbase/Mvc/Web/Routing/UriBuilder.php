@@ -1,41 +1,34 @@
 <?php
-declare(strict_types=1);
 
-namespace TYPO3\CMS\Extbase\Mvc\Web\Routing;
+declare (strict_types=1);
 
-if(class_exists(UriBuilder::class)) {
+
+if (\class_exists(\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder::class)) {
     return;
 }
-
 final class UriBuilder
 {
-    public function setAddQueryStringMethod(string $addQueryStringMethod): self
+    public function setAddQueryStringMethod(string $addQueryStringMethod) : self
     {
         return $this;
     }
-
-    public function reset(): self
+    public function reset() : self
     {
         return $this;
     }
-
-    public function setUseCacheHash(bool $true): self
+    public function setUseCacheHash(bool $true) : self
     {
         return $this;
     }
-
-    public function setCreateAbsoluteUri(bool $true): self
+    public function setCreateAbsoluteUri(bool $true) : self
     {
         return $this;
     }
-
-    public function setAddQueryString(bool $true): self
+    public function setAddQueryString(bool $true) : self
     {
         return $this;
     }
-
-    public function build(): void
+    public function build() : void
     {
-
     }
 }

@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 
-namespace TYPO3\CMS\Extbase\Service;
 
-if (class_exists(EnvironmentService::class)) {
+if (\class_exists(\TYPO3\CMS\Extbase\Service\EnvironmentService::class)) {
     return;
 }
-
 class EnvironmentService
 {
-    public function isEnvironmentInCliMode(): string
+    public function isEnvironmentInCliMode() : string
     {
         return 'foo';
     }

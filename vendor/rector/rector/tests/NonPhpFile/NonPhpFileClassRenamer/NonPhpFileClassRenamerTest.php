@@ -20,11 +20,11 @@ final class NonPhpFileClassRenamerTest extends \Typo3RectorPrefix20210420\Sympli
      * @var array<string, class-string>
      */
     private const CLASS_RENAMES = [
-        'Session' => 'Typo3RectorPrefix20210420\\Illuminate\\Support\\Facades\\Session',
+        'Session' => 'Illuminate\\Support\\Facades\\Session',
         \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\OldClass::class => \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\NewClass::class,
         // Laravel
-        'Form' => 'Typo3RectorPrefix20210420\\Collective\\Html\\FormFacade',
-        'Html' => 'Typo3RectorPrefix20210420\\Collective\\Html\\HtmlFacade',
+        'Form' => 'Collective\\Html\\FormFacade',
+        'Html' => 'Collective\\Html\\HtmlFacade',
     ];
     /**
      * @var NonPhpFileClassRenamer

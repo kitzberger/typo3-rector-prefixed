@@ -147,7 +147,7 @@ CODE_SAMPLE
             $args[] = $funcCall->args[1];
             $args[] = $funcCall->args[0];
         }
-        return $this->nodeFactory->createStaticCall('Typo3RectorPrefix20210420\\Nette\\Utils\\Strings', $methodName, $args);
+        return $this->nodeFactory->createStaticCall('Nette\\Utils\\Strings', $methodName, $args);
     }
     /**
      * @return FuncCall|StaticCall

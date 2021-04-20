@@ -6,4 +6,4 @@ namespace Typo3RectorPrefix20210420;
 interface SkipClassImportingSameName
 {
 }
-\class_alias('Typo3RectorPrefix20210420\\SkipClassImportingSameName', 'SkipClassImportingSameName', \false);
+\class_alias('SkipClassImportingSameName', 'SkipClassImportingSameName', \false);

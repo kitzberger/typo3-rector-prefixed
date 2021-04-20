@@ -13,10 +13,10 @@ return static function (\Typo3RectorPrefix20210420\Symfony\Component\DependencyI
     $services = $containerConfigurator->services();
     $services->set(\Rector\Renaming\Rector\MethodCall\RenameMethodRector::class)->call('configure', [[\Rector\Renaming\Rector\MethodCall\RenameMethodRector::METHOD_CALL_RENAMES => \Symplify\SymfonyPhpConfig\ValueObjectInliner::inline([
         new \Rector\Renaming\ValueObject\MethodCallRename(\Rector\Tests\Renaming\Rector\MethodCall\RenameMethodRector\Source\AbstractType::class, 'setDefaultOptions', 'configureOptions'),
-        new \Rector\Renaming\ValueObject\MethodCallRename('Typo3RectorPrefix20210420\\Nette\\Utils\\Html', 'add', 'addHtml'),
+        new \Rector\Renaming\ValueObject\MethodCallRename('Nette\\Utils\\Html', 'add', 'addHtml'),
         new \Rector\Renaming\ValueObject\MethodCallRename('Rector\\Tests\\Renaming\\Rector\\MethodCall\\RenameMethodRector\\Fixture\\DemoFile', 'notify', '__invoke'),
         new \Rector\Renaming\ValueObject\MethodCallRename('Rector\\Tests\\Renaming\\Rector\\MethodCall\\RenameMethodRector\\Fixture\\SomeSubscriber', 'old', 'new'),
         // with array key
-        new \Rector\Renaming\ValueObject\MethodCallRenameWithArrayKey('Typo3RectorPrefix20210420\\Nette\\Utils\\Html', 'addToArray', 'addToHtmlArray', 'hey'),
+        new \Rector\Renaming\ValueObject\MethodCallRenameWithArrayKey('Nette\\Utils\\Html', 'addToArray', 'addToHtmlArray', 'hey'),
     ])]]);
 };

@@ -103,7 +103,7 @@ class SomeFormType extends \Typo3RectorPrefix20210420\Symfony\Component\Form\Abs
         $formBuilder->add('name', \Typo3RectorPrefix20210420\Symfony\Component\Form\Extension\Core\Type\TextType::class, ['label' => 'Your name']);
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\SomeFormType', 'SomeFormType', \false);
+\class_alias('SomeFormType', 'SomeFormType', \false);
 CODE_SAMPLE
 )]);
     }
@@ -119,7 +119,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Nette\\Application\\UI\\Control'))) {
+        if (!$this->isObjectType($node, new \PHPStan\Type\ObjectType('Nette\\Application\\UI\\Control'))) {
             return null;
         }
         foreach ($node->getMethods() as $classMethod) {
@@ -156,7 +156,7 @@ CODE_SAMPLE
     private function createFormTypeClassFromBuildFormClassMethod(\PhpParser\Node\Stmt\ClassMethod $buildFormClassMethod) : \PhpParser\Node\Stmt\Class_
     {
         $formTypeClass = new \PhpParser\Node\Stmt\Class_('SomeFormType');
-        $formTypeClass->extends = new \PhpParser\Node\Name\FullyQualified('Typo3RectorPrefix20210420\\Symfony\\Component\\Form\\AbstractType');
+        $formTypeClass->extends = new \PhpParser\Node\Name\FullyQualified('Symfony\\Component\\Form\\AbstractType');
         $formTypeClass->stmts[] = $buildFormClassMethod;
         return $formTypeClass;
     }

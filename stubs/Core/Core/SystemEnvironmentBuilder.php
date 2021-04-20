@@ -1,13 +1,11 @@
 <?php
-declare(strict_types=1);
+
+declare (strict_types=1);
 
 
-namespace TYPO3\CMS\Core\Core;
-
-if (class_exists(SystemEnvironmentBuilder::class)) {
+if (\class_exists(\TYPO3\CMS\Core\Core\SystemEnvironmentBuilder::class)) {
     return;
 }
-
 final class SystemEnvironmentBuilder
 {
     /** @internal */
@@ -20,7 +18,6 @@ final class SystemEnvironmentBuilder
     public const REQUESTTYPE_AJAX = 8;
     /** @internal */
     public const REQUESTTYPE_INSTALL = 16;
-
     public static function run(int $entryPointLevel = 0, int $requestType = self::REQUESTTYPE_FE)
     {
     }

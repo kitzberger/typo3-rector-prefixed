@@ -75,7 +75,7 @@ class SomeClass
         return new \Typo3RectorPrefix20210420\AnotherClass();
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\SomeClass', 'SomeClass', \false);
+\class_alias('SomeClass', 'SomeClass', \false);
 class AnotherClass
 {
     public function someFun()
@@ -83,7 +83,7 @@ class AnotherClass
         return \Typo3RectorPrefix20210420\StaticClass::staticMethod();
     }
 }
-\class_alias('Typo3RectorPrefix20210420\\AnotherClass', 'AnotherClass', \false);
+\class_alias('AnotherClass', 'AnotherClass', \false);
 CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 class SomeClass

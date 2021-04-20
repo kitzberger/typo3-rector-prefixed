@@ -10,5 +10,5 @@ return static function (\Typo3RectorPrefix20210420\Symfony\Component\DependencyI
     $parameters = $containerConfigurator->parameters();
     $parameters->set(\Rector\Core\Configuration\Option::AUTO_IMPORT_NAMES, \true);
     $services = $containerConfigurator->services();
-    $services->set(\Rector\Renaming\Rector\FuncCall\RenameFunctionRector::class)->call('configure', [[\Rector\Renaming\Rector\FuncCall\RenameFunctionRector::OLD_FUNCTION_TO_NEW_FUNCTION => ['service' => 'Typo3RectorPrefix20210420\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\service']]]);
+    $services->set(\Rector\Renaming\Rector\FuncCall\RenameFunctionRector::class)->call('configure', [[\Rector\Renaming\Rector\FuncCall\RenameFunctionRector::OLD_FUNCTION_TO_NEW_FUNCTION => ['service' => 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\service']]]);
 };

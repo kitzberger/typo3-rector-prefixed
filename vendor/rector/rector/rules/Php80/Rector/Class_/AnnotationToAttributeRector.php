@@ -75,7 +75,7 @@ class SymfonyRoute
     }
 }
 CODE_SAMPLE
-, [self::ANNOTATION_TO_ATTRIBUTE => [new \Rector\Php80\ValueObject\AnnotationToAttribute('Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Annotation\\Route', 'Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Annotation\\Route')]])]);
+, [self::ANNOTATION_TO_ATTRIBUTE => [new \Rector\Php80\ValueObject\AnnotationToAttribute('Symfony\\Component\\Routing\\Annotation\\Route', 'Symfony\\Component\\Routing\\Annotation\\Route')]])]);
     }
     /**
      * @return array<class-string<Node>>

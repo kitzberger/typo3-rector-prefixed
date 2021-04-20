@@ -24,7 +24,7 @@ final class ExplicitPhpErrorApiRector extends \Rector\Core\Rector\AbstractRector
     /**
      * @var array<string, string>
      */
-    private const REPLACEMENTS = ['Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase\\Notice' => 'expectNotice', 'Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase\\Deprecated' => 'expectDeprecation', 'Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase\\Error' => 'expectError', 'Typo3RectorPrefix20210420\\PHPUnit\\Framework\\TestCase\\Warning' => 'expectWarning'];
+    private const REPLACEMENTS = ['PHPUnit\\Framework\\TestCase\\Notice' => 'expectNotice', 'PHPUnit\\Framework\\TestCase\\Deprecated' => 'expectDeprecation', 'PHPUnit\\Framework\\TestCase\\Error' => 'expectError', 'PHPUnit\\Framework\\TestCase\\Warning' => 'expectWarning'];
     /**
      * @var AssertCallFactory
      */

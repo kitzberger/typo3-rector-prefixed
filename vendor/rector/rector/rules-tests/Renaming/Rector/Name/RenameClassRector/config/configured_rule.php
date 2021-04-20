@@ -21,21 +21,21 @@ use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\Confi
 return static function (\Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->set(\Rector\Renaming\Rector\Name\RenameClassRector::class)->call('configure', [[\Rector\Renaming\Rector\Name\RenameClassRector::OLD_TO_NEW_CLASSES => [
-        'FqnizeNamespaced' => 'Typo3RectorPrefix20210420\\Abc\\FqnizeNamespaced',
+        'FqnizeNamespaced' => 'Abc\\FqnizeNamespaced',
         \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\OldClass::class => \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\NewClass::class,
         \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\OldClassWithTypo::class => \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\NewClassWithoutTypo::class,
         'DateTime' => 'DateTimeInterface',
         'Countable' => 'stdClass',
         \Typo3RectorPrefix20210420\Manual_Twig_Filter::class => \Typo3RectorPrefix20210420\Manual\Twig\TwigFilter::class,
         'Twig_AbstractManualExtension' => \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Source\AbstractManualExtension::class,
-        'Twig_Extension_Sandbox' => 'Typo3RectorPrefix20210420\\Twig\\Extension\\SandboxExtension',
+        'Twig_Extension_Sandbox' => 'Twig\\Extension\\SandboxExtension',
         // Renaming class itself and its namespace
-        'Typo3RectorPrefix20210420\\MyNamespace\\MyClass' => 'Typo3RectorPrefix20210420\\MyNewNamespace\\MyNewClass',
-        'Typo3RectorPrefix20210420\\MyNamespace\\MyTrait' => 'Typo3RectorPrefix20210420\\MyNewNamespace\\MyNewTrait',
-        'Typo3RectorPrefix20210420\\MyNamespace\\MyInterface' => 'Typo3RectorPrefix20210420\\MyNewNamespace\\MyNewInterface',
-        'MyOldClass' => 'Typo3RectorPrefix20210420\\MyNamespace\\MyNewClass',
+        'MyNamespace\\MyClass' => 'MyNewNamespace\\MyNewClass',
+        'MyNamespace\\MyTrait' => 'MyNewNamespace\\MyNewTrait',
+        'MyNamespace\\MyInterface' => 'MyNewNamespace\\MyNewInterface',
+        'MyOldClass' => 'MyNamespace\\MyNewClass',
         'AnotherMyOldClass' => 'AnotherMyNewClass',
-        'Typo3RectorPrefix20210420\\MyNamespace\\AnotherMyClass' => 'MyNewClassWithoutNamespace',
+        'MyNamespace\\AnotherMyClass' => 'MyNewClassWithoutNamespace',
         // test duplicated class - @see https://github.com/rectorphp/rector/issues/1438
         'Rector\\Tests\\Renaming\\Rector\\Name\\RenameClassRector\\Fixture\\SingularClass' => \Rector\Tests\Renaming\Rector\Name\RenameClassRector\Fixture\DuplicatedClass::class,
         // test duplicated class - @see https://github.com/rectorphp/rector/issues/5389

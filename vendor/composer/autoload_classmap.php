@@ -2003,6 +2003,7 @@ return array(
     'Ssch\\TYPO3Rector\\Helper\\Database\\Refactorings\\DatabaseConnectionToDbalRefactoring' => $baseDir . '/src/Helper/Database/Refactorings/DatabaseConnectionToDbalRefactoring.php',
     'Ssch\\TYPO3Rector\\Helper\\FileHelperTrait' => $baseDir . '/src/Helper/FileHelperTrait.php',
     'Ssch\\TYPO3Rector\\Helper\\OldSeverityToLogLevelMapper' => $baseDir . '/src/Helper/OldSeverityToLogLevelMapper.php',
+    'Ssch\\TYPO3Rector\\Helper\\StringUtility' => $baseDir . '/src/Helper/StringUtility.php',
     'Ssch\\TYPO3Rector\\Helper\\TcaHelperTrait' => $baseDir . '/src/Helper/TcaHelperTrait.php',
     'Ssch\\TYPO3Rector\\Helper\\Typo3NodeResolver' => $baseDir . '/src/Helper/Typo3NodeResolver.php',
     'Ssch\\TYPO3Rector\\NodeAnalyzer\\ClassConstAnalyzer' => $baseDir . '/src/NodeAnalyzer/ClassConstAnalyzer.php',

@@ -11,7 +11,7 @@ use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
 use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
-use Ssch\TYPO3Rector\Helper\Strings;
+use Ssch\TYPO3Rector\Helper\StringUtility;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -52,7 +52,7 @@ final class UseControllerClassesInExtbasePluginsAndModulesRector extends \Rector
             return null;
         }
         $vendorName = $this->prepareVendorName($extensionName, $delimiterPosition);
-        $extensionName = \Ssch\TYPO3Rector\Helper\Strings::prepareExtensionName($extensionName, $delimiterPosition);
+        $extensionName = \Ssch\TYPO3Rector\Helper\StringUtility::prepareExtensionName($extensionName, $delimiterPosition);
         if ('' === $extensionName) {
             return null;
         }

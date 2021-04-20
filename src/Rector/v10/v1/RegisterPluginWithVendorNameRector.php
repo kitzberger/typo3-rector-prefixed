@@ -9,7 +9,7 @@ use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
 use PHPStan\Type\ObjectType;
 use Rector\Core\Rector\AbstractRector;
-use Ssch\TYPO3Rector\Helper\Strings;
+use Ssch\TYPO3Rector\Helper\StringUtility;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -70,7 +70,7 @@ final class RegisterPluginWithVendorNameRector extends \Rector\Core\Rector\Abstr
         if (\false === $delimiterPosition) {
             return null;
         }
-        $extensionName = \Ssch\TYPO3Rector\Helper\Strings::prepareExtensionName($extensionName, $delimiterPosition);
+        $extensionName = \Ssch\TYPO3Rector\Helper\StringUtility::prepareExtensionName($extensionName, $delimiterPosition);
         $node->args[0] = $this->nodeFactory->createArg($extensionName);
         return $node;
     }

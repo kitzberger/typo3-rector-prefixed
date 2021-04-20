@@ -24,8 +24,8 @@ if (!class_exists('Swift_Image', false) && !interface_exists('Swift_Image', fals
 if (!class_exists('Composer\InstalledVersions', false) && !interface_exists('Composer\InstalledVersions', false) && !trait_exists('Composer\InstalledVersions', false)) {
     spl_autoload_call('Typo3RectorPrefix20210420\Composer\InstalledVersions');
 }
-if (!class_exists('ComposerAutoloaderInit3e2c8aa5bf0b3f80077b4169961973f6', false) && !interface_exists('ComposerAutoloaderInit3e2c8aa5bf0b3f80077b4169961973f6', false) && !trait_exists('ComposerAutoloaderInit3e2c8aa5bf0b3f80077b4169961973f6', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210420\ComposerAutoloaderInit3e2c8aa5bf0b3f80077b4169961973f6');
+if (!class_exists('ComposerAutoloaderInit8a2aff408cb7cb52310a873463581eaf', false) && !interface_exists('ComposerAutoloaderInit8a2aff408cb7cb52310a873463581eaf', false) && !trait_exists('ComposerAutoloaderInit8a2aff408cb7cb52310a873463581eaf', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210420\ComposerAutoloaderInit8a2aff408cb7cb52310a873463581eaf');
 }
 if (!class_exists('Doctrine\Inflector\Inflector', false) && !interface_exists('Doctrine\Inflector\Inflector', false) && !trait_exists('Doctrine\Inflector\Inflector', false)) {
     spl_autoload_call('Typo3RectorPrefix20210420\Doctrine\Inflector\Inflector');
@@ -138,9 +138,9 @@ if (!class_exists('Symplify\SmartFileSystem\SmartFileInfo', false) && !interface
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire3e2c8aa5bf0b3f80077b4169961973f6')) {
-    function composerRequire3e2c8aa5bf0b3f80077b4169961973f6() {
-        return \Typo3RectorPrefix20210420\composerRequire3e2c8aa5bf0b3f80077b4169961973f6(...func_get_args());
+if (!function_exists('composerRequire8a2aff408cb7cb52310a873463581eaf')) {
+    function composerRequire8a2aff408cb7cb52310a873463581eaf() {
+        return \Typo3RectorPrefix20210420\composerRequire8a2aff408cb7cb52310a873463581eaf(...func_get_args());
     }
 }
 if (!function_exists('parseArgs')) {

@@ -5,8 +5,8 @@ namespace Ssch\TYPO3Rector\Composer;
 
 use Rector\Core\Contract\Processor\FileProcessorInterface;
 use Rector\Core\ValueObject\Application\File;
-use Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
+use Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
 final class ExtensionComposerProcessor implements \Rector\Core\Contract\Processor\FileProcessorInterface
 {
     /**
@@ -21,7 +21,7 @@ final class ExtensionComposerProcessor implements \Rector\Core\Contract\Processo
      * @var ComposerModifier
      */
     private $composerModifier;
-    public function __construct(\Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter, \Ssch\TYPO3Rector\Composer\ComposerModifier $composerModifier)
+    public function __construct(\Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter, \Ssch\TYPO3Rector\Composer\ComposerModifier $composerModifier)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->composerJsonPrinter = $composerJsonPrinter;

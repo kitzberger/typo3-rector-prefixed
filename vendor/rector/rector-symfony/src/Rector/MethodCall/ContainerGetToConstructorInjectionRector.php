@@ -27,7 +27,7 @@ final class ContainerGetToConstructorInjectionRector extends \Rector\Core\Rector
     /**
      * @var string[]
      */
-    private $containerAwareParentTypes = ['Typo3RectorPrefix20210418\\Symfony\\Bundle\\FrameworkBundle\\Command\\ContainerAwareCommand', 'Typo3RectorPrefix20210418\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller'];
+    private $containerAwareParentTypes = ['Typo3RectorPrefix20210420\\Symfony\\Bundle\\FrameworkBundle\\Command\\ContainerAwareCommand', 'Typo3RectorPrefix20210420\\Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller'];
     /**
      * @var DependencyInjectionMethodCallAnalyzer
      */
@@ -84,7 +84,7 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210418\\Symfony\\Component\\DependencyInjection\\ContainerInterface'))) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Symfony\\Component\\DependencyInjection\\ContainerInterface'))) {
             return null;
         }
         if (!$this->isName($node->name, 'get')) {

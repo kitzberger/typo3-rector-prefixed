@@ -8,35 +8,35 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Component\HttpKernel;
+namespace Typo3RectorPrefix20210420\Symfony\Component\HttpKernel;
 
-use Typo3RectorPrefix20210418\Symfony\Component\HttpClient\HttpClient;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpClient\HttpClient;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Mime\Part\AbstractPart;
 use Symfony\Component\Mime\Part\DataPart;
 use Symfony\Component\Mime\Part\Multipart\FormDataPart;
 use Symfony\Component\Mime\Part\TextPart;
-use Typo3RectorPrefix20210418\Symfony\Contracts\HttpClient\HttpClientInterface;
+use Typo3RectorPrefix20210420\Symfony\Contracts\HttpClient\HttpClientInterface;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
+\class_exists(\Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
 /**
  * An implementation of a Symfony HTTP kernel using a "real" HTTP client.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-final class HttpClientKernel implements \Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\HttpKernelInterface
+final class HttpClientKernel implements \Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\HttpKernelInterface
 {
     private $client;
-    public function __construct(\Typo3RectorPrefix20210418\Symfony\Contracts\HttpClient\HttpClientInterface $client = null)
+    public function __construct(\Typo3RectorPrefix20210420\Symfony\Contracts\HttpClient\HttpClientInterface $client = null)
     {
-        if (null === $client && !\class_exists(\Typo3RectorPrefix20210418\Symfony\Component\HttpClient\HttpClient::class)) {
+        if (null === $client && !\class_exists(\Typo3RectorPrefix20210420\Symfony\Component\HttpClient\HttpClient::class)) {
             throw new \LogicException(\sprintf('You cannot use "%s" as the HttpClient component is not installed. Try running "composer require symfony/http-client".', __CLASS__));
         }
-        $this->client = $client ?? \Typo3RectorPrefix20210418\Symfony\Component\HttpClient\HttpClient::create();
+        $this->client = $client ?? \Typo3RectorPrefix20210420\Symfony\Component\HttpClient\HttpClient::create();
     }
-    public function handle(\Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Request $request, int $type = \Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST, bool $catch = \true) : \Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Response
+    public function handle(\Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Request $request, int $type = \Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST, bool $catch = \true) : \Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Response
     {
         $headers = $this->getHeaders($request);
         $body = '';
@@ -45,11 +45,11 @@ final class HttpClientKernel implements \Typo3RectorPrefix20210418\Symfony\Compo
             $body = $part->bodyToIterable();
         }
         $response = $this->client->request($request->getMethod(), $request->getUri(), ['headers' => $headers, 'body' => $body] + $request->attributes->get('http_client_options', []));
-        $response = new \Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Response($response->getContent(!$catch), $response->getStatusCode(), $response->getHeaders(!$catch));
+        $response = new \Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Response($response->getContent(!$catch), $response->getStatusCode(), $response->getHeaders(!$catch));
         $response->headers->remove('X-Body-File');
         $response->headers->remove('X-Body-Eval');
         $response->headers->remove('X-Content-Digest');
-        $response->headers = new class($response->headers->all()) extends \Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\ResponseHeaderBag
+        $response->headers = new class($response->headers->all()) extends \Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\ResponseHeaderBag
         {
             protected function computeCacheControlValue() : string
             {
@@ -59,7 +59,7 @@ final class HttpClientKernel implements \Typo3RectorPrefix20210418\Symfony\Compo
         };
         return $response;
     }
-    private function getBody(\Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Request $request) : ?\Symfony\Component\Mime\Part\AbstractPart
+    private function getBody(\Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Request $request) : ?\Symfony\Component\Mime\Part\AbstractPart
     {
         if (\in_array($request->getMethod(), ['GET', 'HEAD'])) {
             return null;
@@ -76,7 +76,7 @@ final class HttpClientKernel implements \Typo3RectorPrefix20210418\Symfony\Compo
         }
         return new \Symfony\Component\Mime\Part\Multipart\FormDataPart($fields);
     }
-    private function getHeaders(\Typo3RectorPrefix20210418\Symfony\Component\HttpFoundation\Request $request) : array
+    private function getHeaders(\Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Request $request) : array
     {
         $headers = [];
         foreach ($request->headers as $key => $value) {

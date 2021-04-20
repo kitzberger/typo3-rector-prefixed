@@ -92,7 +92,7 @@ CODE_SAMPLE
         if (!$expr instanceof \PhpParser\Node\Expr\ClassConstFetch) {
             return \false;
         }
-        return $this->isObjectType($expr->class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210418\\Symfony\\Component\\HttpFoundation\\Response'));
+        return $this->isObjectType($expr->class, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Symfony\\Component\\HttpFoundation\\Response'));
     }
     /**
      * @return Variable|MethodCall|Expr|null

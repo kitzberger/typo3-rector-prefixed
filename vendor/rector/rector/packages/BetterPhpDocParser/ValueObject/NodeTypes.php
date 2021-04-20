@@ -18,5 +18,5 @@ final class NodeTypes
     /**
      * @var string[]
      */
-    public const TYPE_AWARE_DOCTRINE_ANNOTATION_CLASSES = ['Typo3RectorPrefix20210418\\JMS\\Serializer\\Annotation\\Type', 'Doctrine\\ORM\\Mapping\\OneToMany', 'Typo3RectorPrefix20210418\\Symfony\\Component\\Validator\\Constraints\\Choice', 'Typo3RectorPrefix20210418\\Symfony\\Component\\Validator\\Constraints\\Email', 'Typo3RectorPrefix20210418\\Symfony\\Component\\Validator\\Constraints\\Range'];
+    public const TYPE_AWARE_DOCTRINE_ANNOTATION_CLASSES = ['Typo3RectorPrefix20210420\\JMS\\Serializer\\Annotation\\Type', 'Doctrine\\ORM\\Mapping\\OneToMany', 'Typo3RectorPrefix20210420\\Symfony\\Component\\Validator\\Constraints\\Choice', 'Typo3RectorPrefix20210420\\Symfony\\Component\\Validator\\Constraints\\Email', 'Typo3RectorPrefix20210420\\Symfony\\Component\\Validator\\Constraints\\Range'];
 }

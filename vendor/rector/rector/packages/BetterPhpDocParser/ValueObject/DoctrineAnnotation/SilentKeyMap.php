@@ -8,5 +8,5 @@ final class SilentKeyMap
     /**
      * @var array<string, string>
      */
-    public const CLASS_NAMES_TO_SILENT_KEYS = ['Typo3RectorPrefix20210418\\Symfony\\Component\\Routing\\Annotation\\Route' => 'path'];
+    public const CLASS_NAMES_TO_SILENT_KEYS = ['Typo3RectorPrefix20210420\\Symfony\\Component\\Routing\\Annotation\\Route' => 'path'];
 }

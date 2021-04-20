@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\EventListener;
+namespace Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\EventListener;
 
 use Psr\Log\LoggerInterface;
-use Typo3RectorPrefix20210418\Symfony\Component\Console\ConsoleEvents;
-use Typo3RectorPrefix20210418\Symfony\Component\Console\Event\ConsoleEvent;
-use Typo3RectorPrefix20210418\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use Typo3RectorPrefix20210418\Symfony\Component\ErrorHandler\ErrorHandler;
-use Typo3RectorPrefix20210418\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Event\KernelEvent;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\KernelEvents;
+use Typo3RectorPrefix20210420\Symfony\Component\Console\ConsoleEvents;
+use Typo3RectorPrefix20210420\Symfony\Component\Console\Event\ConsoleEvent;
+use Typo3RectorPrefix20210420\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use Typo3RectorPrefix20210420\Symfony\Component\ErrorHandler\ErrorHandler;
+use Typo3RectorPrefix20210420\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\Event\KernelEvent;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Configures errors and exceptions handlers.
  *
@@ -26,7 +26,7 @@ use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class DebugHandlersListener implements \Typo3RectorPrefix20210418\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class DebugHandlersListener implements \Typo3RectorPrefix20210420\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $earlyHandler;
     private $exceptionHandler;
@@ -66,20 +66,20 @@ class DebugHandlersListener implements \Typo3RectorPrefix20210418\Symfony\Compon
      */
     public function configure(object $event = null)
     {
-        if ($event instanceof \Typo3RectorPrefix20210418\Symfony\Component\Console\Event\ConsoleEvent && !\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true)) {
+        if ($event instanceof \Typo3RectorPrefix20210420\Symfony\Component\Console\Event\ConsoleEvent && !\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true)) {
             return;
         }
-        if (!$event instanceof \Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMasterRequest()) {
+        if (!$event instanceof \Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMasterRequest()) {
             return;
         }
         $this->firstCall = $this->hasTerminatedWithException = \false;
         $handler = \set_exception_handler('var_dump');
         $handler = \is_array($handler) ? $handler[0] : null;
         \restore_exception_handler();
-        if (!$handler instanceof \Typo3RectorPrefix20210418\Symfony\Component\ErrorHandler\ErrorHandler) {
+        if (!$handler instanceof \Typo3RectorPrefix20210420\Symfony\Component\ErrorHandler\ErrorHandler) {
             $handler = $this->earlyHandler;
         }
-        if ($handler instanceof \Typo3RectorPrefix20210418\Symfony\Component\ErrorHandler\ErrorHandler) {
+        if ($handler instanceof \Typo3RectorPrefix20210420\Symfony\Component\ErrorHandler\ErrorHandler) {
             if ($this->logger || $this->deprecationLogger) {
                 $this->setDefaultLoggers($handler);
                 if (\is_array($this->levels)) {
@@ -105,7 +105,7 @@ class DebugHandlersListener implements \Typo3RectorPrefix20210418\Symfony\Compon
             }
         }
         if (!$this->exceptionHandler) {
-            if ($event instanceof \Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Event\KernelEvent) {
+            if ($event instanceof \Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\Event\KernelEvent) {
                 if (\method_exists($kernel = $event->getKernel(), 'terminateWithException')) {
                     $request = $event->getRequest();
                     $hasRun =& $this->hasTerminatedWithException;
@@ -117,9 +117,9 @@ class DebugHandlersListener implements \Typo3RectorPrefix20210418\Symfony\Compon
                         $kernel->terminateWithException($e, $request);
                     };
                 }
-            } elseif ($event instanceof \Typo3RectorPrefix20210418\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
+            } elseif ($event instanceof \Typo3RectorPrefix20210420\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
                 $output = $event->getOutput();
-                if ($output instanceof \Typo3RectorPrefix20210418\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+                if ($output instanceof \Typo3RectorPrefix20210420\Symfony\Component\Console\Output\ConsoleOutputInterface) {
                     $output = $output->getErrorOutput();
                 }
                 $this->exceptionHandler = static function (\Throwable $e) use($app, $output) {
@@ -128,13 +128,13 @@ class DebugHandlersListener implements \Typo3RectorPrefix20210418\Symfony\Compon
             }
         }
         if ($this->exceptionHandler) {
-            if ($handler instanceof \Typo3RectorPrefix20210418\Symfony\Component\ErrorHandler\ErrorHandler) {
+            if ($handler instanceof \Typo3RectorPrefix20210420\Symfony\Component\ErrorHandler\ErrorHandler) {
                 $handler->setExceptionHandler($this->exceptionHandler);
             }
             $this->exceptionHandler = null;
         }
     }
-    private function setDefaultLoggers(\Typo3RectorPrefix20210418\Symfony\Component\ErrorHandler\ErrorHandler $handler) : void
+    private function setDefaultLoggers(\Typo3RectorPrefix20210420\Symfony\Component\ErrorHandler\ErrorHandler $handler) : void
     {
         if (\is_array($this->levels)) {
             $levelsDeprecatedOnly = [];
@@ -161,9 +161,9 @@ class DebugHandlersListener implements \Typo3RectorPrefix20210418\Symfony\Compon
     }
     public static function getSubscribedEvents() : array
     {
-        $events = [\Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
+        $events = [\Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
         if (\defined('Symfony\\Component\\Console\\ConsoleEvents::COMMAND')) {
-            $events[\Typo3RectorPrefix20210418\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
+            $events[\Typo3RectorPrefix20210420\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
         }
         return $events;
     }

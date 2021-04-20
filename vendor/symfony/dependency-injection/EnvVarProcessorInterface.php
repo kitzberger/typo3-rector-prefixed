@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection;
+namespace Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection;
 
-use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * The EnvVarProcessorInterface is implemented by objects that manage environment-like variables.
  *

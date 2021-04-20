@@ -1,16 +1,16 @@
 <?php
 
-namespace Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Tests\Unit\Parser;
+namespace Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Tests\Unit\Parser;
 
-use Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\ParseError;
-use Typo3RectorPrefix20210418\PHPUnit\Framework\TestCase;
-class ParseErrorTest extends \Typo3RectorPrefix20210418\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\ParseError;
+use Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase;
+class ParseErrorTest extends \Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase
 {
     /** @var ParseError */
     private $exc;
     public function setUp() : void
     {
-        $this->exc = new \Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\ParseError('foobar', 1234, 4321);
+        $this->exc = new \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\ParseError('foobar', 1234, 4321);
     }
     public function testCanSetSourceLine()
     {

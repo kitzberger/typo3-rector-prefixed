@@ -31,13 +31,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210418\\Symfony\\Contracts\\EventDispatcher\\": ""
+            "Typo3RectorPrefix20210420\\Symfony\\Contracts\\EventDispatcher\\": ""
         }
     },
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "dev-master": "2.2-dev"
+            "dev-main": "2.4-dev"
         },
         "thanks": {
             "name": "symfony\/contracts",

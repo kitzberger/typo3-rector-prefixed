@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Conditions;
 
-use Typo3RectorPrefix20210418\Nette\Utils\Strings;
+use Typo3RectorPrefix20210420\Nette\Utils\Strings;
 use Ssch\TYPO3Rector\ArrayUtility;
 final class ApplicationContextConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher
 {
@@ -30,7 +30,7 @@ final class ApplicationContextConditionMatcher implements \Ssch\TYPO3Rector\Typo
     }
     public function shouldApply(string $condition) : bool
     {
-        if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::contains($condition, '{$')) {
+        if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::contains($condition, '{$')) {
             return \false;
         }
         return 1 === \preg_match('#^' . self::TYPE . self::ZERO_ONE_OR_MORE_WHITESPACES . '=[^=]#', $condition);

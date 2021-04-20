@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Contracts\Service;
+namespace Typo3RectorPrefix20210420\Symfony\Contracts\Service;
 
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -38,14 +38,16 @@ trait ServiceLocatorTrait
      *
      * @return bool
      */
-    public function has($id)
+    public function has(string $id)
     {
         return isset($this->factories[$id]);
     }
     /**
      * {@inheritdoc}
+     *
+     * @return mixed
      */
-    public function get($id)
+    public function get(string $id)
     {
         if (!isset($this->factories[$id])) {
             throw $this->createNotFoundException($id);

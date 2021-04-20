@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Component\EventDispatcher;
+namespace Typo3RectorPrefix20210420\Symfony\Component\EventDispatcher;
 
-use Typo3RectorPrefix20210418\Symfony\Contracts\EventDispatcher\Event;
+use Typo3RectorPrefix20210420\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event encapsulation class.
  *
@@ -18,7 +18,7 @@ use Typo3RectorPrefix20210418\Symfony\Contracts\EventDispatcher\Event;
  *
  * @author Drak <drak@zikula.org>
  */
-class GenericEvent extends \Typo3RectorPrefix20210418\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
+class GenericEvent extends \Typo3RectorPrefix20210420\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
 {
     protected $subject;
     protected $arguments;

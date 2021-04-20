@@ -100,7 +100,7 @@ CODE_SAMPLE
         $assign = $this->createEventInstanceAssign($eventClassName, $node);
         /** @var Class_ $classLike */
         $classLike = $node->getAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::CLASS_NODE);
-        $this->addConstructorDependencyToClass($classLike, new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType('Typo3RectorPrefix20210418\\Symfony\\Contracts\\EventDispatcher\\EventDispatcherInterface'), 'eventDispatcher');
+        $this->addConstructorDependencyToClass($classLike, new \Rector\StaticTypeMapper\ValueObject\Type\FullyQualifiedObjectType('Typo3RectorPrefix20210420\\Symfony\\Contracts\\EventDispatcher\\EventDispatcherInterface'), 'eventDispatcher');
         // 6. remove property
         if ($eventAndListenerTree->getOnMagicProperty() !== null) {
             $this->removeNode($eventAndListenerTree->getOnMagicProperty());

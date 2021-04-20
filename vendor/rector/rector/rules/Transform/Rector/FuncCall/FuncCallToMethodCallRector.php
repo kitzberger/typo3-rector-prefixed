@@ -14,7 +14,7 @@ use Rector\Transform\NodeAnalyzer\FuncCallStaticCallToMethodCallAnalyzer;
 use Rector\Transform\ValueObject\FuncCallToMethodCall;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210418\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210420\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\Transform\Rector\FuncCall\FuncCallToMethodCallRector\FuncCallToMethodCallRectorTest
  */
@@ -66,7 +66,7 @@ class SomeClass
     }
 }
 CODE_SAMPLE
-, [self::FUNC_CALL_TO_CLASS_METHOD_CALL => [new \Rector\Transform\ValueObject\FuncCallToMethodCall('view', 'Typo3RectorPrefix20210418\\Namespaced\\SomeRenderer', 'render')]])]);
+, [self::FUNC_CALL_TO_CLASS_METHOD_CALL => [new \Rector\Transform\ValueObject\FuncCallToMethodCall('view', 'Typo3RectorPrefix20210420\\Namespaced\\SomeRenderer', 'render')]])]);
     }
     /**
      * @return array<class-string<Node>>
@@ -106,7 +106,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $funcCallsToClassMethodCalls = $configuration[self::FUNC_CALL_TO_CLASS_METHOD_CALL] ?? [];
-        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::allIsInstanceOf($funcCallsToClassMethodCalls, \Rector\Transform\ValueObject\FuncCallToMethodCall::class);
+        \Typo3RectorPrefix20210420\Webmozart\Assert\Assert::allIsInstanceOf($funcCallsToClassMethodCalls, \Rector\Transform\ValueObject\FuncCallToMethodCall::class);
         $this->funcNameToMethodCallNames = $funcCallsToClassMethodCalls;
     }
 }

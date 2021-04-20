@@ -14,7 +14,7 @@ use Rector\Core\Rector\AbstractRector;
 use Rector\Defluent\ValueObject\NormalToFluent;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210418\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210420\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\Defluent\Rector\ClassMethod\NormalToFluentRector\NormalToFluentRectorTest
  */
@@ -70,7 +70,7 @@ CODE_SAMPLE
             }
             /** @var Expression $stmt */
             $stmt = $node->stmts[$i];
-            if ($this->shouldSkipPreviousStmt($node, $i, $stmt)) {
+            if ($this->shouldSkipPreviousStmt($node, $i)) {
                 continue;
             }
             /** @var Expression $prevStmt */
@@ -97,10 +97,10 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $callsToFluent = $configuration[self::CALLS_TO_FLUENT] ?? [];
-        \Typo3RectorPrefix20210418\Webmozart\Assert\Assert::allIsInstanceOf($callsToFluent, \Rector\Defluent\ValueObject\NormalToFluent::class);
+        \Typo3RectorPrefix20210420\Webmozart\Assert\Assert::allIsInstanceOf($callsToFluent, \Rector\Defluent\ValueObject\NormalToFluent::class);
         $this->callsToFluent = $callsToFluent;
     }
-    private function shouldSkipPreviousStmt(\PhpParser\Node\Stmt\ClassMethod $classMethod, int $i, \PhpParser\Node\Stmt\Expression $expression) : bool
+    private function shouldSkipPreviousStmt(\PhpParser\Node\Stmt\ClassMethod $classMethod, int $i) : bool
     {
         // we look only for 2+ stmts
         if (!isset($classMethod->stmts[$i - 1])) {

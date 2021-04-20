@@ -5,20 +5,20 @@ namespace Rector\Tests\PhpSpecToPHPUnit\Rector\Variable\PhpSpecToPHPUnitRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210418\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210420\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
 final class PhpSpecToPHPUnitRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }
     public function provideData() : \Iterator
     {
-        return \Typo3RectorPrefix20210418\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture');
+        return \Typo3RectorPrefix20210420\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture');
     }
     public function provideConfigFilePath() : string
     {

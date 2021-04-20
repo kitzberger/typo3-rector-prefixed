@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser;
+namespace Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser;
 
 use ArrayObject;
-use Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\ObjectPath;
-use Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\RootObjectPath;
-use Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Tokenizer\TokenInterface;
+use Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST\ObjectPath;
+use Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST\RootObjectPath;
+use Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Tokenizer\TokenInterface;
 class ParserState
 {
     /** @var ObjectPath */
@@ -15,16 +15,16 @@ class ParserState
     private $statements;
     /** @var TokenStream */
     private $tokens;
-    public function __construct(\Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\TokenStream $tokens, \ArrayObject $statements = null)
+    public function __construct(\Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\TokenStream $tokens, \ArrayObject $statements = null)
     {
         if ($statements === null) {
             $statements = new \ArrayObject();
         }
         $this->statements = $statements;
         $this->tokens = $tokens;
-        $this->context = new \Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\RootObjectPath();
+        $this->context = new \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST\RootObjectPath();
     }
-    public function withContext(\Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\ObjectPath $context) : self
+    public function withContext(\Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST\ObjectPath $context) : self
     {
         $clone = clone $this;
         $clone->context = $context;
@@ -40,7 +40,7 @@ class ParserState
      * @param int $lookAhead
      * @return TokenInterface
      */
-    public function token(int $lookAhead = 0) : \Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Tokenizer\TokenInterface
+    public function token(int $lookAhead = 0) : \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Tokenizer\TokenInterface
     {
         return $this->tokens->current($lookAhead);
     }
@@ -62,7 +62,7 @@ class ParserState
     /**
      * @return ObjectPath
      */
-    public function context() : \Typo3RectorPrefix20210418\Helmich\TypoScriptParser\Parser\AST\ObjectPath
+    public function context() : \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST\ObjectPath
     {
         return $this->context;
     }

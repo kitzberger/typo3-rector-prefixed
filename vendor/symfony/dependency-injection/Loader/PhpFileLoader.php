@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader;
+namespace Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader;
 
-use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 /**
  * PhpFileLoader loads service definitions from a PHP file.
  *
@@ -19,7 +19,7 @@ use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\Confi
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class PhpFileLoader extends \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\FileLoader
+class PhpFileLoader extends \Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     protected $autoRegisterAliasesForSinglyImplementedInterfaces = \false;
     /**
@@ -36,11 +36,11 @@ class PhpFileLoader extends \Typo3RectorPrefix20210418\Symfony\Component\Depende
         // the closure forbids access to the private scope in the included file
         $load = \Closure::bind(function ($path) use($container, $loader, $resource, $type) {
             return include $path;
-        }, $this, \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\ProtectedPhpFileLoader::class);
+        }, $this, \Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\ProtectedPhpFileLoader::class);
         try {
             $callback = $load($path);
             if (\is_object($callback) && \is_callable($callback)) {
-                $callback(new \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator($this->container, $this, $this->instanceof, $path, $resource), $this->container, $this);
+                $callback(new \Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator($this->container, $this, $this->instanceof, $path, $resource), $this->container, $this);
             }
         } finally {
             $this->instanceof = [];
@@ -64,6 +64,6 @@ class PhpFileLoader extends \Typo3RectorPrefix20210418\Symfony\Component\Depende
 /**
  * @internal
  */
-final class ProtectedPhpFileLoader extends \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
+final class ProtectedPhpFileLoader extends \Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
 {
 }

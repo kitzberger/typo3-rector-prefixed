@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\CodingStyle\Rector\String_;
 
-use Typo3RectorPrefix20210418\Nette\Utils\Strings;
+use Typo3RectorPrefix20210420\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Name\FullyQualified;
@@ -69,7 +69,7 @@ CODE_SAMPLE
     public function getExistingClasses(\PhpParser\Node\Scalar\String_ $string) : array
     {
         /** @var mixed[] $matches */
-        $matches = \Typo3RectorPrefix20210418\Nette\Utils\Strings::matchAll($string->value, self::CLASS_BEFORE_STATIC_ACCESS_REGEX, \PREG_PATTERN_ORDER);
+        $matches = \Typo3RectorPrefix20210420\Nette\Utils\Strings::matchAll($string->value, self::CLASS_BEFORE_STATIC_ACCESS_REGEX, \PREG_PATTERN_ORDER);
         if (!isset($matches['class_name'])) {
             return [];
         }
@@ -92,7 +92,7 @@ CODE_SAMPLE
             return \preg_quote($className);
         }, $classNames);
         // @see https://regex101.com/r/8nGS0F/1
-        $parts = \Typo3RectorPrefix20210418\Nette\Utils\Strings::split($string->value, '#(' . \implode('|', $classNames) . ')#');
+        $parts = \Typo3RectorPrefix20210420\Nette\Utils\Strings::split($string->value, '#(' . \implode('|', $classNames) . ')#');
         return \array_filter($parts, function (string $className) : bool {
             return $className !== '';
         });

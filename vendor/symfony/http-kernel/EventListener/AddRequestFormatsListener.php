@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\EventListener;
+namespace Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\EventListener;
 
-use Typo3RectorPrefix20210418\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Event\RequestEvent;
-use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\KernelEvents;
+use Typo3RectorPrefix20210420\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\Event\RequestEvent;
+use Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Adds configured formats to each request.
  *
@@ -20,7 +20,7 @@ use Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class AddRequestFormatsListener implements \Typo3RectorPrefix20210418\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class AddRequestFormatsListener implements \Typo3RectorPrefix20210420\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     protected $formats;
     public function __construct(array $formats)
@@ -30,7 +30,7 @@ class AddRequestFormatsListener implements \Typo3RectorPrefix20210418\Symfony\Co
     /**
      * Adds request formats.
      */
-    public function onKernelRequest(\Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\Event\RequestEvent $event)
+    public function onKernelRequest(\Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\Event\RequestEvent $event)
     {
         $request = $event->getRequest();
         foreach ($this->formats as $format => $mimeTypes) {
@@ -42,6 +42,6 @@ class AddRequestFormatsListener implements \Typo3RectorPrefix20210418\Symfony\Co
      */
     public static function getSubscribedEvents() : array
     {
-        return [\Typo3RectorPrefix20210418\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 100]];
+        return [\Typo3RectorPrefix20210420\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 100]];
     }
 }

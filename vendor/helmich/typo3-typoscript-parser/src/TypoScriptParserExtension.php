@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210418\Helmich\TypoScriptParser;
+namespace Typo3RectorPrefix20210420\Helmich\TypoScriptParser;
 
-use Typo3RectorPrefix20210418\Symfony\Component\Config\FileLocator;
-use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Typo3RectorPrefix20210420\Symfony\Component\Config\FileLocator;
+use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * Class TypoScriptParserExtension
  *
  * @package Helmich\TypoScriptParser
  * @codeCoverageIgnore
  */
-class TypoScriptParserExtension implements \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
+class TypoScriptParserExtension implements \Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
 {
     /**
      * Loads a specific configuration.
@@ -26,9 +26,9 @@ class TypoScriptParserExtension implements \Typo3RectorPrefix20210418\Symfony\Co
      * @api
      * @psalm-suppress MissingReturnType Signature is determined by Symfony DI -- nothing to fix, here
      */
-    public function load(array $configs, \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function load(array $configs, \Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
-        $loader = new \Typo3RectorPrefix20210418\Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, new \Typo3RectorPrefix20210418\Symfony\Component\Config\FileLocator(__DIR__ . '/../config'));
+        $loader = new \Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, new \Typo3RectorPrefix20210420\Symfony\Component\Config\FileLocator(__DIR__ . '/../config'));
         $loader->load('services.yml');
     }
     /**

@@ -3,7 +3,7 @@
 /**
  * provides type inference and auto-completion for magic static methods of Assert.
  */
-namespace Typo3RectorPrefix20210418\Webmozart\Assert;
+namespace Typo3RectorPrefix20210420\Webmozart\Assert;
 
 use ArrayAccess;
 use Closure;

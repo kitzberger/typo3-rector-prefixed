@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210418\Symfony\Contracts\Service;
+namespace Typo3RectorPrefix20210420\Symfony\Contracts\Service;
 
 use Psr\Container\ContainerInterface;
 /**
@@ -21,6 +21,9 @@ trait ServiceSubscriberTrait
 {
     /** @var ContainerInterface */
     protected $container;
+    /**
+     * {@inheritdoc}
+     */
     public static function getSubscribedServices() : array
     {
         static $services;
@@ -33,7 +36,7 @@ trait ServiceSubscriberTrait
                 continue;
             }
             if (self::class === $method->getDeclaringClass()->name && ($returnType = $method->getReturnType()) && !$returnType->isBuiltin()) {
-                $services[self::class . '::' . $method->name] = '?' . ($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $type);
+                $services[self::class . '::' . $method->name] = '?' . ($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $returnType);
             }
         }
         return $services;

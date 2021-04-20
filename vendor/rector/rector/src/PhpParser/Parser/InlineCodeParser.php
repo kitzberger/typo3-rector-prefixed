@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\PhpParser\Parser;
 
-use Typo3RectorPrefix20210418\Nette\Utils\Strings;
+use Typo3RectorPrefix20210420\Nette\Utils\Strings;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\BinaryOp\Concat;
 use PhpParser\Node\Expr\PropertyFetch;
@@ -16,7 +16,7 @@ use PhpParser\Parser;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
 use Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator;
-use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileSystem;
 final class InlineCodeParser
 {
     /**
@@ -55,7 +55,7 @@ final class InlineCodeParser
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator, \PhpParser\Parser $parser, \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, \Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator, \PhpParser\Parser $parser, \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->parser = $parser;
         $this->betterStandardPrinter = $betterStandardPrinter;
@@ -72,8 +72,8 @@ final class InlineCodeParser
             $content = $this->smartFileSystem->readFile($content);
         }
         // wrap code so php-parser can interpret it
-        $content = \Typo3RectorPrefix20210418\Nette\Utils\Strings::match($content, self::OPEN_PHP_TAG_REGEX) ? $content : '<?php ' . $content;
-        $content = \Typo3RectorPrefix20210418\Nette\Utils\Strings::match($content, self::ENDING_SEMI_COLON_REGEX) ? $content : $content . ';';
+        $content = \Typo3RectorPrefix20210420\Nette\Utils\Strings::match($content, self::OPEN_PHP_TAG_REGEX) ? $content : '<?php ' . $content;
+        $content = \Typo3RectorPrefix20210420\Nette\Utils\Strings::match($content, self::ENDING_SEMI_COLON_REGEX) ? $content : $content . ';';
         $nodes = (array) $this->parser->parse($content);
         return $this->nodeScopeAndMetadataDecorator->decorateNodesFromString($nodes);
     }
@@ -86,9 +86,9 @@ final class InlineCodeParser
             // remove "
             $expr = \trim($this->betterStandardPrinter->print($expr), '""');
             // use \$ → $
-            $expr = \Typo3RectorPrefix20210418\Nette\Utils\Strings::replace($expr, self::PRESLASHED_DOLLAR_REGEX, '$');
+            $expr = \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($expr, self::PRESLASHED_DOLLAR_REGEX, '$');
             // use \'{$...}\' → $...
-            return \Typo3RectorPrefix20210418\Nette\Utils\Strings::replace($expr, self::CURLY_BRACKET_WRAPPER_REGEX, '$1');
+            return \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($expr, self::CURLY_BRACKET_WRAPPER_REGEX, '$1');
         }
         if ($expr instanceof \PhpParser\Node\Expr\BinaryOp\Concat) {
             return $this->stringify($expr->left) . $this->stringify($expr->right);

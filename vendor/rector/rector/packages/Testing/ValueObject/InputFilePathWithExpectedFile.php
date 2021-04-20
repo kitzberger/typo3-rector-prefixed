@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Rector\Testing\ValueObject;
 
 use Rector\FileSystemRector\ValueObject\AddedFileWithContent;
-use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
 final class InputFilePathWithExpectedFile
 {
     /**
@@ -20,9 +20,9 @@ final class InputFilePathWithExpectedFile
         $this->inputFilePath = $inputFilePath;
         $this->addedFileWithContent = $addedFileWithContent;
     }
-    public function getInputFileInfo() : \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo
+    public function getInputFileInfo() : \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo
     {
-        return new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo($this->inputFilePath);
+        return new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo($this->inputFilePath);
     }
     public function getAddedFileWithContent() : \Rector\FileSystemRector\ValueObject\AddedFileWithContent
     {

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Core\PhpParser\Printer\Whitespace;
 
-use Typo3RectorPrefix20210418\Nette\Utils\Strings;
+use Typo3RectorPrefix20210420\Nette\Utils\Strings;
 final class IndentCharacterDetector
 {
     /**
@@ -18,7 +18,7 @@ final class IndentCharacterDetector
         foreach ($tokens as $token) {
             if ($token[0] === \T_WHITESPACE) {
                 $tokenContent = $token[1];
-                if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::matchAll($tokenContent, '#^\\t#m')) {
+                if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::matchAll($tokenContent, '#^\\t#m')) {
                     return "\t";
                 }
             }

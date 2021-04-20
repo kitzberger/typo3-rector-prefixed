@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Privatization\Rector\Class_;
 
-use Typo3RectorPrefix20210418\Nette\Utils\Strings;
+use Typo3RectorPrefix20210420\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Scalar\String_;
@@ -179,7 +179,7 @@ CODE_SAMPLE
             return \true;
         }
         // is replaceable value?
-        $matches = \Typo3RectorPrefix20210418\Nette\Utils\Strings::match($value, '#(?<' . self::VALUE . '>[\\w\\-\\/\\_]+)#');
+        $matches = \Typo3RectorPrefix20210420\Nette\Utils\Strings::match($value, '#(?<' . self::VALUE . '>[\\w\\-\\/\\_]+)#');
         if (!isset($matches[self::VALUE])) {
             return \true;
         }
@@ -193,10 +193,10 @@ CODE_SAMPLE
     private function createConstName(string $value) : string
     {
         // replace slashes and dashes
-        $value = \Typo3RectorPrefix20210418\Nette\Utils\Strings::replace($value, self::SLASH_AND_DASH_REGEX, self::UNDERSCORE);
+        $value = \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($value, self::SLASH_AND_DASH_REGEX, self::UNDERSCORE);
         // find beginning numbers
         $beginningNumbers = '';
-        $matches = \Typo3RectorPrefix20210418\Nette\Utils\Strings::match($value, '#(?<' . self::NUMBERS . '>[0-9]*)(?<' . self::VALUE . '>.*)#');
+        $matches = \Typo3RectorPrefix20210420\Nette\Utils\Strings::match($value, '#(?<' . self::NUMBERS . '>[0-9]*)(?<' . self::VALUE . '>.*)#');
         if (isset($matches[self::NUMBERS])) {
             $beginningNumbers = $matches[self::NUMBERS];
         }
@@ -213,7 +213,7 @@ CODE_SAMPLE
             $parts = \array_merge(['CONST', $beginningNumbers], $parts);
         }
         $value = \implode(self::UNDERSCORE, $parts);
-        return \strtoupper(\Typo3RectorPrefix20210418\Nette\Utils\Strings::replace($value, '#_+#', self::UNDERSCORE));
+        return \strtoupper(\Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($value, '#_+#', self::UNDERSCORE));
     }
     private function isNativeConstantResemblingValue(string $value) : bool
     {

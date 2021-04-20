@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\TypeDeclaration\TypeInferer\PropertyTypeInferer;
 
-use Typo3RectorPrefix20210418\Nette\Utils\Strings;
+use Typo3RectorPrefix20210420\Nette\Utils\Strings;
 use PhpParser\Node\Stmt\Property;
 use PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprTrueNode;
 use PHPStan\Type\ArrayType;
@@ -22,7 +22,7 @@ final class DoctrineRelationPropertyTypeInferer implements \Rector\TypeDeclarati
     /**
      * @var string
      */
-    private const COLLECTION_TYPE = 'Typo3RectorPrefix20210418\\Doctrine\\Common\\Collections\\Collection';
+    private const COLLECTION_TYPE = 'Typo3RectorPrefix20210420\\Doctrine\\Common\\Collections\\Collection';
     /**
      * @var TypeFactory
      */
@@ -81,8 +81,8 @@ final class DoctrineRelationPropertyTypeInferer implements \Rector\TypeDeclarati
         if ($targetEntity === null) {
             return new \PHPStan\Type\MixedType();
         }
-        if (\Typo3RectorPrefix20210418\Nette\Utils\Strings::endsWith($targetEntity, '::class')) {
-            $targetEntity = \Typo3RectorPrefix20210418\Nette\Utils\Strings::before($targetEntity, '::class');
+        if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::endsWith($targetEntity, '::class')) {
+            $targetEntity = \Typo3RectorPrefix20210420\Nette\Utils\Strings::before($targetEntity, '::class');
         }
         // resolve to FQN
         $tagFullyQualifiedName = $this->classAnnotationMatcher->resolveTagFullyQualifiedName($targetEntity, $property);

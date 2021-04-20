@@ -11,8 +11,8 @@ use PHPStan\Type\StringType;
 use PHPStan\Type\UnionType;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\TypeDeclaration\TypeNormalizer;
-use Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class TypeNormalizerTest extends \Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class TypeNormalizerTest extends \Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var TypeNormalizer

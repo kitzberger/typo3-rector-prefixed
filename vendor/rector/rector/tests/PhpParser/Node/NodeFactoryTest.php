@@ -10,8 +10,8 @@ use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\NodeFactory;
-use Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class NodeFactoryTest extends \Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class NodeFactoryTest extends \Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var NodeFactory

@@ -6,8 +6,8 @@ namespace Rector\Tests\Autodiscovery\Rector\Interface_\MoveInterfacesToContractN
 use Iterator;
 use Rector\FileSystemRector\ValueObject\AddedFileWithContent;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @requires PHP 7.4
  */
@@ -16,7 +16,7 @@ final class MoveInterfacesToContractNamespaceDirectoryRectorTest extends \Rector
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, \Rector\FileSystemRector\ValueObject\AddedFileWithContent $expectedAddedFileWithContent) : void
+    public function test(\Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, \Rector\FileSystemRector\ValueObject\AddedFileWithContent $expectedAddedFileWithContent) : void
     {
         $this->doTestFileInfo($originalFileInfo);
         $this->assertFileWasAdded($expectedAddedFileWithContent);
@@ -26,13 +26,13 @@ final class MoveInterfacesToContractNamespaceDirectoryRectorTest extends \Rector
      */
     public function provideData() : \Iterator
     {
-        $smartFileSystem = new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileSystem();
-        (yield [new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Entity/RandomInterface.php'), new \Rector\FileSystemRector\ValueObject\AddedFileWithContent($this->getFixtureTempDirectory() . '/Contract/RandomInterface.php', $smartFileSystem->readFile(__DIR__ . '/Expected/ExpectedRandomInterface.php'))]);
+        $smartFileSystem = new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileSystem();
+        (yield [new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Entity/RandomInterface.php'), new \Rector\FileSystemRector\ValueObject\AddedFileWithContent($this->getFixtureTempDirectory() . '/Contract/RandomInterface.php', $smartFileSystem->readFile(__DIR__ . '/Expected/ExpectedRandomInterface.php'))]);
     }
     /**
      * @dataProvider provideDataSkip()
      */
-    public function testSkip(\Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo) : void
+    public function testSkip(\Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo) : void
     {
         $this->doTestFileInfo($originalFileInfo);
         $this->assertFileWasNotChanged($this->originalTempFileInfo);
@@ -43,13 +43,13 @@ final class MoveInterfacesToContractNamespaceDirectoryRectorTest extends \Rector
     public function provideDataSkip() : \Iterator
     {
         // skip already in correct location
-        (yield [new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Contract/KeepThisSomeInterface.php')]);
+        (yield [new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Contract/KeepThisSomeInterface.php')]);
         // skip already in correct location
-        (yield [new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Contract/Foo/KeepThisSomeInterface.php')]);
+        (yield [new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Contract/Foo/KeepThisSomeInterface.php')]);
         // skip nette control factory
-        (yield [new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Control/ControlFactory.php')]);
+        (yield [new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Control/ControlFactory.php')]);
         // skip form control factory, even in docblock
-        (yield [new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Control/FormFactory.php')]);
+        (yield [new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/Control/FormFactory.php')]);
     }
     public function provideConfigFilePath() : string
     {

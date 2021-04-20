@@ -9,9 +9,9 @@ use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\ValueObject\Reporting\FileDiff;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithOutChangelog;
-use Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
-final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210418\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
+final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var RectorsChangelogResolver
@@ -40,6 +40,6 @@ final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210418\Symp
         $rectorWithLineChanges[] = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog(), 1);
         $rectorWithLineChanges[] = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog(), 1);
         $rectorWithLineChanges[] = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithOutChangelog(), 1);
-        return new \Rector\Core\ValueObject\Reporting\FileDiff(new \Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo(__FILE__), 'foo', 'foo', $rectorWithLineChanges);
+        return new \Rector\Core\ValueObject\Reporting\FileDiff(new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo(__FILE__), 'foo', 'foo', $rectorWithLineChanges);
     }
 }

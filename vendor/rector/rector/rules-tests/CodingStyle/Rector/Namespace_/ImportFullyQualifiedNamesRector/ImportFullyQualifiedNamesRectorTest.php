@@ -5,7 +5,7 @@ namespace Rector\Tests\CodingStyle\Rector\Namespace_\ImportFullyQualifiedNamesRe
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Rector\PostRector\Rector\NameImportingPostRector
  */
@@ -16,7 +16,7 @@ final class ImportFullyQualifiedNamesRectorTest extends \Rector\Testing\PHPUnit\
      * @dataProvider provideDataFunction()
      * @dataProvider provideDataGeneric()
      */
-    public function test(\Typo3RectorPrefix20210418\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

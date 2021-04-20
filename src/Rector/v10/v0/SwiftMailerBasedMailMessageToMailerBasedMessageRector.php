@@ -10,8 +10,8 @@ use PhpParser\Node\Identifier;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
 use Rector\Core\Rector\AbstractRector;
-use Typo3RectorPrefix20210418\Swift_Attachment;
-use Typo3RectorPrefix20210418\Swift_Image;
+use Typo3RectorPrefix20210420\Swift_Attachment;
+use Typo3RectorPrefix20210420\Swift_Image;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -125,7 +125,7 @@ CODE_SAMPLE
         if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210418\Swift_Attachment::class))) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210420\Swift_Attachment::class))) {
             return null;
         }
         if (!$this->isName($firstArgument->name, 'fromPath')) {
@@ -141,7 +141,7 @@ CODE_SAMPLE
         if (!$firstArgument instanceof \PhpParser\Node\Expr\StaticCall) {
             return null;
         }
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210418\Swift_Image::class))) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($firstArgument, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210420\Swift_Image::class))) {
             return null;
         }
         if (!$this->isName($firstArgument->name, 'fromPath')) {

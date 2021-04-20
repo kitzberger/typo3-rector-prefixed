@@ -68,7 +68,7 @@ CODE_SAMPLE
         if (!$classLike instanceof \PhpParser\Node\Stmt\Class_) {
             return null;
         }
-        if (!$this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210418\\Symfony\\Component\\Console\\Command\\Command'))) {
+        if (!$this->isObjectType($classLike, new \PHPStan\Type\ObjectType('Typo3RectorPrefix20210420\\Symfony\\Component\\Console\\Command\\Command'))) {
             return null;
         }
         $this->refactorReturnTypeDeclaration($node);

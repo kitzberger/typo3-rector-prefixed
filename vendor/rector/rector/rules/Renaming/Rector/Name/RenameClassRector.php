@@ -69,7 +69,7 @@ function someFunction(SomeNewClass $someOldClass): SomeNewClass
     }
 }
 CODE_SAMPLE
-, [self::OLD_TO_NEW_CLASSES => ['Typo3RectorPrefix20210418\\App\\SomeOldClass' => 'Typo3RectorPrefix20210418\\App\\SomeNewClass']])]);
+, [self::OLD_TO_NEW_CLASSES => ['Typo3RectorPrefix20210420\\App\\SomeOldClass' => 'Typo3RectorPrefix20210420\\App\\SomeNewClass']])]);
     }
     /**
      * @return array<class-string<Node>>

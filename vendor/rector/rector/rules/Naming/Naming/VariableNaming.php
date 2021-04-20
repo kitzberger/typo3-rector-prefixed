@@ -23,7 +23,7 @@ use Rector\Core\Exception\NotImplementedYetException;
 use Rector\Core\PhpParser\Node\Value\ValueResolver;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\NodeTypeResolver\NodeTypeResolver;
-use Typo3RectorPrefix20210418\Stringy\Stringy;
+use Typo3RectorPrefix20210420\Stringy\Stringy;
 final class VariableNaming
 {
     /**
@@ -60,7 +60,7 @@ final class VariableNaming
             $shortClassName = $this->nodeNameResolver->getShortName($type->getClassName());
             $variableName = \lcfirst($shortClassName);
         }
-        $stringy = new \Typo3RectorPrefix20210418\Stringy\Stringy($variableName);
+        $stringy = new \Typo3RectorPrefix20210420\Stringy\Stringy($variableName);
         return (string) $stringy->camelize();
     }
     private function resolveBareFromNode(\PhpParser\Node $node) : ?string
@@ -112,7 +112,7 @@ final class VariableNaming
             if ($arrayDimFetch->dim instanceof \PhpParser\Node\Scalar) {
                 $valueName = $this->nodeNameResolver->getName($arrayDimFetch->var);
                 $dimName = $this->valueResolver->getValue($arrayDimFetch->dim);
-                $stringy = new \Typo3RectorPrefix20210418\Stringy\Stringy($dimName);
+                $stringy = new \Typo3RectorPrefix20210420\Stringy\Stringy($dimName);
                 $dimName = (string) $stringy->upperCamelize();
                 return $valueName . $dimName;
             }

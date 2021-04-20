@@ -16,7 +16,7 @@ use Rector\NodeTypeResolver\Node\AttributeKey;
 use Rector\NodeTypeResolver\NodeTypeResolver;
 use Rector\NodeTypeResolver\PHPStan\Type\TypeFactory;
 use Rector\TypeDeclaration\Contract\TypeInferer\ParamTypeInfererInterface;
-use Typo3RectorPrefix20210418\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210420\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class PropertyNodeParamTypeInferer implements \Rector\TypeDeclaration\Contract\TypeInferer\ParamTypeInfererInterface
 {
     /**
@@ -39,7 +39,7 @@ final class PropertyNodeParamTypeInferer implements \Rector\TypeDeclaration\Cont
      * @var TypeFactory
      */
     private $typeFactory;
-    public function __construct(\Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer $propertyFetchAnalyzer, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210418\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\NodeTypeResolver\PHPStan\Type\TypeFactory $typeFactory)
+    public function __construct(\Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer $propertyFetchAnalyzer, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210420\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\NodeTypeResolver\PHPStan\Type\TypeFactory $typeFactory)
     {
         $this->propertyFetchAnalyzer = $propertyFetchAnalyzer;
         $this->nodeNameResolver = $nodeNameResolver;

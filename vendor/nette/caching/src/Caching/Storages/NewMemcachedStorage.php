@@ -5,11 +5,11 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210418\Nette\Caching\Storages;
+namespace Typo3RectorPrefix20210420\Nette\Caching\Storages;
 
 /**
  * @deprecated
  */
-class NewMemcachedStorage extends \Typo3RectorPrefix20210418\Nette\Caching\Storages\MemcachedStorage
+class NewMemcachedStorage extends \Typo3RectorPrefix20210420\Nette\Caching\Storages\MemcachedStorage
 {
 }

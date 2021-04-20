@@ -6,7 +6,7 @@ namespace Rector\Composer\Rector;
 use Rector\Composer\Contract\Rector\ComposerRectorInterface;
 use Rector\Composer\Guard\VersionGuard;
 use Rector\Composer\ValueObject\PackageAndVersion;
-use Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -30,7 +30,7 @@ final class AddPackageToRequireComposerRector implements \Rector\Composer\Contra
     {
         $this->versionGuard = $versionGuard;
     }
-    public function refactor(\Typo3RectorPrefix20210418\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function refactor(\Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         foreach ($this->packagesAndVersions as $packageAndVersion) {
             $composerJson->addRequiredPackage($packageAndVersion->getPackageName(), $packageAndVersion->getVersion());

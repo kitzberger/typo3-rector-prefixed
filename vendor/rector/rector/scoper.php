@@ -66,7 +66,21 @@ return [\Rector\Compiler\ValueObject\ScoperOption::PREFIX => 'RectorPrefix' . $t
         }
         return $content;
     },
-    // fixes https://github.com/rectorphp/rector/issues/6010
+    function (string $filePath, string $prefix, string $content) : string {
+        if (!\Typo3RectorPrefix20210421\Nette\Utils\Strings::endsWith($filePath, 'vendor/symplify/package-builder/src/Testing/AbstractKernelTestCase.php')) {
+            return $content;
+        }
+        // un-prefix
+        return \Typo3RectorPrefix20210421\Nette\Utils\Strings::replace($content, \sprintf('\%s\\PHPUnit\\Framework\\TestCase', $prefix), 'PHPUnit\\Framework\\TestCase');
+    },
+    function (string $filePath, string $prefix, string $content) : string {
+        if (!\Typo3RectorPrefix20210421\Nette\Utils\Strings::endsWith($filePath, 'packages/Testing/PHPUnit/AbstractRectorTestCase.php')) {
+            return $content;
+        }
+        // un-prefix
+        return \Typo3RectorPrefix20210421\Nette\Utils\Strings::replace($content, \sprintf('\%s\\Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase', $prefix), 'Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase');
+    },
+    // fixes https://github.com/rectorphp/rector/issues/6010 + test case prefix
     function (string $filePath, string $prefix, string $content) : string {
         // @see https://regex101.com/r/bA1nQa/1
         if (!\Typo3RectorPrefix20210421\Nette\Utils\Strings::match($filePath, '#vendor/symfony/polyfill-php\\d{2}/Resources/stubs#')) {

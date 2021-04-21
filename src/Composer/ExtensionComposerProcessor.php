@@ -65,7 +65,6 @@ final class ExtensionComposerProcessor implements \Rector\Core\Contract\Processo
         if ($oldComposerJson->getJsonArray() === $composerJson->getJsonArray()) {
             return;
         }
-        $oldContent = $this->composerJsonPrinter->printToString($oldComposerJson);
         $newContent = $this->composerJsonPrinter->printToString($composerJson);
         $file->changeFileContent($newContent);
     }

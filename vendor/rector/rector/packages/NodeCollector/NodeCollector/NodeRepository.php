@@ -406,7 +406,7 @@ final class NodeRepository
     }
     public function findClassLike(string $classLikeName) : ?\PhpParser\Node\Stmt\ClassLike
     {
-        return $this->findClass($classLikeName) ?? $this->findInterface($classLikeName);
+        return $this->findClass($classLikeName) ?? $this->findInterface($classLikeName) ?? $this->findTrait($classLikeName);
     }
     private function collectArray(\PhpParser\Node\Expr\Array_ $array) : void
     {

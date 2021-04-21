@@ -76,7 +76,7 @@ final class DowngradePathsCommand extends \Typo3RectorPrefix20210421\Symfony\Com
             if (!\Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($downgradePath, 'vendor/')) {
                 continue;
             }
-            $downgradePaths[$key] = \Typo3RectorPrefix20210421\Nette\Utils\Strings::before($downgradePath, '/', 2);
+            $downgradePaths[$key] = (string) \Typo3RectorPrefix20210421\Nette\Utils\Strings::before($downgradePath, '/', 2);
         }
         return \array_unique($downgradePaths);
     }

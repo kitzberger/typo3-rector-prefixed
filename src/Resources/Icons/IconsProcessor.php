@@ -5,10 +5,13 @@ namespace Ssch\TYPO3Rector\Resources\Icons;
 
 use Rector\Core\Configuration\Configuration;
 use Rector\Core\Contract\Processor\FileProcessorInterface;
+use Rector\Core\Contract\Rector\RectorInterface;
 use Rector\Core\ValueObject\Application\File;
 use Typo3RectorPrefix20210421\Symfony\Component\Console\Style\SymfonyStyle;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileSystem;
-final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProcessorInterface
+final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProcessorInterface, \Rector\Core\Contract\Rector\RectorInterface
 {
     /**
      * @var SmartFileSystem
@@ -49,6 +52,16 @@ final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProces
     public function getSupportedFileExtensions() : array
     {
         return ['png', 'gif', 'svg'];
+    }
+    public function getRuleDefinition() : \Symplify\RuleDocGenerator\ValueObject\RuleDefinition
+    {
+        return new \Symplify\RuleDocGenerator\ValueObject\RuleDefinition('Move ext_icon.* to Resources/Icons/Extension.*', [new \Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample(<<<'CODE_SAMPLE'
+ext_icon.gif
+CODE_SAMPLE
+, <<<'CODE_SAMPLE'
+Resources/Icons/Extension.gif
+CODE_SAMPLE
+)]);
     }
     private function processFile(\Rector\Core\ValueObject\Application\File $file) : void
     {

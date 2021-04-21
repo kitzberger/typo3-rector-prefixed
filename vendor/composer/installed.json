@@ -1206,12 +1206,12 @@
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/rectorphp\/rector.git",
-                "reference": "15cc05033294e35382f0f86953ea2921a9b2a5b2"
+                "reference": "ff57c496629f228b671b556d9bb5a895e7122d7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/15cc05033294e35382f0f86953ea2921a9b2a5b2",
-                "reference": "15cc05033294e35382f0f86953ea2921a9b2a5b2",
+                "url": "https:\/\/api.github.com\/repos\/rectorphp\/rector\/zipball\/ff57c496629f228b671b556d9bb5a895e7122d7e",
+                "reference": "ff57c496629f228b671b556d9bb5a895e7122d7e",
                 "shasum": ""
             },
             "require": {
@@ -1275,7 +1275,7 @@
                 "symplify\/rule-doc-generator": "^9.2.16",
                 "tracy\/tracy": "^2.8"
             },
-            "time": "2021-04-21T20:03:40+00:00",
+            "time": "2021-04-21T22:02:38+00:00",
             "default-branch": true,
             "bin": [
                 "bin\/rector"
@@ -1394,8 +1394,8 @@
         },
         {
             "name": "rector\/rector-doctrine",
-            "version": "0.10.3",
-            "version_normalized": "0.10.3.0",
+            "version": "0.10.4",
+            "version_normalized": "0.10.4.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/rectorphp\/rector-doctrine.git",
@@ -1447,7 +1447,7 @@
             "description": "Rector upgrades rules for Doctrine",
             "support": {
                 "issues": "https:\/\/github.com\/rectorphp\/rector-doctrine\/issues",
-                "source": "https:\/\/github.com\/rectorphp\/rector-doctrine\/tree\/0.10.3"
+                "source": "https:\/\/github.com\/rectorphp\/rector-doctrine\/tree\/0.10.4"
             },
             "install-path": "..\/rector\/rector-doctrine"
         },

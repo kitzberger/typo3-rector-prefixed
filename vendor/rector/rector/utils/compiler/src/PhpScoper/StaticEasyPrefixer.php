@@ -18,8 +18,6 @@ final class StaticEasyPrefixer
         'Composer\\InstalledVersions',
         // for SmartFileInfo
         'Symplify\\SmartFileSystem\\SmartFileInfo',
-        // for AbstractRectorTestCase
-        'Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase',
     ];
     /**
      * @var string[]

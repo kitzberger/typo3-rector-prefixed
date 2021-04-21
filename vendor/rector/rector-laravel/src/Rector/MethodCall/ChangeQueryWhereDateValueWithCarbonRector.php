@@ -93,7 +93,10 @@ CODE_SAMPLE
     }
     private function matchWhereDateThirdArgValue(\PhpParser\Node\Expr\MethodCall $methodCall) : ?\PhpParser\Node\Expr
     {
-        if (!$this->isOnClassMethodCall($methodCall, new \PHPStan\Type\ObjectType('Illuminate\\Database\\Query\\Builder'), 'whereDate')) {
+        if (!$this->isObjectType($methodCall->var, new \PHPStan\Type\ObjectType('Illuminate\\Database\\Query\\Builder'))) {
+            return null;
+        }
+        if (!$this->isName($methodCall->name, 'whereDate')) {
             return null;
         }
         if (!isset($methodCall->args[2])) {

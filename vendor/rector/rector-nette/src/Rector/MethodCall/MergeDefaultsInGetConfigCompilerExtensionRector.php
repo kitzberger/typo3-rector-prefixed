@@ -61,7 +61,10 @@ CODE_SAMPLE
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->isOnClassMethodCall($node, new \PHPStan\Type\ObjectType('Nette\\DI\\CompilerExtension'), 'getConfig')) {
+        if (!$this->isObjectType($node->var, new \PHPStan\Type\ObjectType('Nette\\DI\\CompilerExtension'))) {
+            return null;
+        }
+        if (!$this->isName($node->name, 'getConfig')) {
             return null;
         }
         if (\count($node->args) !== 1) {

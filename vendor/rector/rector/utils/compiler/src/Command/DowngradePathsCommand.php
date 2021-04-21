@@ -36,27 +36,17 @@ final class DowngradePathsCommand extends \Typo3RectorPrefix20210421\Symfony\Com
         $targetPhpVersion = (string) $input->getArgument(self::OPTION_PHP_VERSION);
         $downgradePaths = $this->whyNotVendorPackagesResolver->resolveFromPhpVersion($targetPhpVersion);
         $downgradePaths = \array_values($downgradePaths);
-        $rulesPaths = $this->resolveRulesPaths();
-        $downgradePaths = \array_merge($downgradePaths, $rulesPaths);
+        $downgradePaths = $this->normalizeSingleDirectoryNesting($downgradePaths);
         // make symplify grouped into 1 directory, to make covariance downgrade work with all dependent classes
         $rulesPaths = $this->resolveRulesPaths();
         $downgradePaths = \array_merge($downgradePaths, $rulesPaths);
         // make symplify grouped into 1 directory, to make covariance downgrade work with all dependent classes
         foreach ($downgradePaths as $key => $downgradePath) {
-            if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($downgradePath, 'vendor/symplify')) {
-                unset($downgradePaths[$key]);
-            }
-            if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($downgradePath, 'vendor/symfony')) {
-                unset($downgradePaths[$key]);
-            }
-            if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($downgradePath, 'vendor/nikic')) {
-                unset($downgradePaths[$key]);
-            }
-            if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($downgradePath, 'vendor/psr')) {
+            if (\in_array($downgradePath, ['vendor/symplify', 'vendor/symfony', 'vendor/nikic', 'vendor/psr'], \true)) {
                 unset($downgradePaths[$key]);
             }
         }
-        $downgradePaths = \array_merge(['vendor/symplify vendor/symfony vendor/psr vendor/nikic src packages'], $downgradePaths);
+        $downgradePaths = \array_merge(['vendor/symplify vendor/symfony vendor/nikic vendor/psr bin src packages rector.php'], $downgradePaths);
         $downgradePaths = \array_values($downgradePaths);
         // bash format
         $downgradePathsLine = \implode(';', $downgradePaths);
@@ -75,5 +65,19 @@ final class DowngradePathsCommand extends \Typo3RectorPrefix20210421\Symfony\Com
             $rulesPaths[] = 'rules/' . $fileInfo->getRelativePathname();
         }
         return $rulesPaths;
+    }
+    /**
+     * @param string[] $downgradePaths
+     * @return string[]
+     */
+    private function normalizeSingleDirectoryNesting(array $downgradePaths) : array
+    {
+        foreach ($downgradePaths as $key => $downgradePath) {
+            if (!\Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($downgradePath, 'vendor/')) {
+                continue;
+            }
+            $downgradePaths[$key] = \Typo3RectorPrefix20210421\Nette\Utils\Strings::before($downgradePath, '/', 2);
+        }
+        return \array_unique($downgradePaths);
     }
 }

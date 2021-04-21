@@ -5,12 +5,13 @@ namespace Rector\PHPUnit\ValueObject;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\Expression;
 final class ExpectationMock
 {
     /**
-     * @var Variable
+     * @var Variable|PropertyFetch
      */
     private $expectationVariable;
     /**
@@ -34,10 +35,11 @@ final class ExpectationMock
      */
     private $originalExpression;
     /**
+     * @param Variable|PropertyFetch $expectationVariable
      * @param Arg[] $methodArguments
      * @param array<int, null|Expr> $withArguments
      */
-    public function __construct(\PhpParser\Node\Expr\Variable $expectationVariable, array $methodArguments, int $index, ?\PhpParser\Node\Expr $expr, array $withArguments, ?\PhpParser\Node\Stmt\Expression $originalExpression)
+    public function __construct(\PhpParser\Node\Expr $expectationVariable, array $methodArguments, int $index, ?\PhpParser\Node\Expr $expr, array $withArguments, ?\PhpParser\Node\Stmt\Expression $originalExpression)
     {
         $this->expectationVariable = $expectationVariable;
         $this->methodArguments = $methodArguments;
@@ -46,7 +48,10 @@ final class ExpectationMock
         $this->withArguments = $withArguments;
         $this->originalExpression = $originalExpression;
     }
-    public function getExpectationVariable() : \PhpParser\Node\Expr\Variable
+    /**
+     * @return Variable|PropertyFetch
+     */
+    public function getExpectationVariable() : \PhpParser\Node\Expr
     {
         return $this->expectationVariable;
     }

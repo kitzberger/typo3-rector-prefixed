@@ -2352,7 +2352,6 @@ return array(
     'Ssch\\TYPO3Rector\\Rector\\v9\\v5\\RemoveInitMethodFromPageRepositoryRector' => $baseDir . '/src/Rector/v9/v5/RemoveInitMethodFromPageRepositoryRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v5\\RemoveInternalAnnotationRector' => $baseDir . '/src/Rector/v9/v5/RemoveInternalAnnotationRector.php',
     'Ssch\\TYPO3Rector\\Rector\\v9\\v5\\UsePackageManagerActivePackagesRector' => $baseDir . '/src/Rector/v9/v5/UsePackageManagerActivePackagesRector.php',
-    'Ssch\\TYPO3Rector\\Renaming\\NodeManipulator\\ClassRenamer' => $baseDir . '/src/Renaming/NodeManipulator/ClassRenamer.php',
     'Ssch\\TYPO3Rector\\Reporting\\HtmlReporter' => $baseDir . '/src/Reporting/HtmlReporter.php',
     'Ssch\\TYPO3Rector\\Reporting\\NullReporter' => $baseDir . '/src/Reporting/NullReporter.php',
     'Ssch\\TYPO3Rector\\Reporting\\Reporter' => $baseDir . '/src/Reporting/Reporter.php',

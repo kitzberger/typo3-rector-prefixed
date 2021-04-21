@@ -4,11 +4,11 @@ declare (strict_types=1);
 namespace Rector\Tests\ChangesReporting\Annotation;
 
 use Iterator;
-use Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase;
 use Rector\ChangesReporting\Annotation\AnnotationExtractor;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithOutChangelog;
-final class AnnotationExtractorTest extends \Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase
+final class AnnotationExtractorTest extends \Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase
 {
     /**
      * @var AnnotationExtractor

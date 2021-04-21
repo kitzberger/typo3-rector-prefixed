@@ -3,7 +3,7 @@
 declare (strict_types=1);
 
 
-if (\class_exists(\Typo3RectorPrefix20210420\Swift_Image::class)) {
+if (\class_exists(\Typo3RectorPrefix20210421\Swift_Image::class)) {
     return;
 }
 class Swift_Image

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Conditions;
 
-use Typo3RectorPrefix20210420\Nette\Utils\Strings;
+use Typo3RectorPrefix20210421\Nette\Utils\Strings;
 use Ssch\TYPO3Rector\ArrayUtility;
 final class GlobalStringConditionMatcher implements \Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher
 {
@@ -41,10 +41,10 @@ final class GlobalStringConditionMatcher implements \Ssch\TYPO3Rector\TypoScript
     }
     public function shouldApply(string $condition) : bool
     {
-        if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::contains($condition, '{$')) {
+        if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::contains($condition, '{$')) {
             return \false;
         }
-        return \Typo3RectorPrefix20210420\Nette\Utils\Strings::startsWith($condition, self::TYPE);
+        return \Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($condition, self::TYPE);
     }
     private function createEnvCondition(string $property, string $operator, string $value) : string
     {
@@ -52,7 +52,7 @@ final class GlobalStringConditionMatcher implements \Ssch\TYPO3Rector\TypoScript
     }
     private function createIndependentCondition(string $property, string $operator, string $value) : string
     {
-        if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::contains($value, '*')) {
+        if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::contains($value, '*')) {
             return \sprintf('like(request.getNormalizedParams().%s(), "%s")', self::IENV_MAPPING[$property], $value);
         }
         return \sprintf('request.getNormalizedParams().%s() %s "%s"', self::IENV_MAPPING[$property], self::OPERATOR_MAPPING[$operator], $value);

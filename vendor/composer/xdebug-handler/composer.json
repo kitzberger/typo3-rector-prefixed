@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210420\\Composer\\XdebugHandler\\": "src"
+            "Typo3RectorPrefix20210421\\Composer\\XdebugHandler\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Typo3RectorPrefix20210420\\Composer\\XdebugHandler\\": "tests"
+            "Typo3RectorPrefix20210421\\Composer\\XdebugHandler\\": "tests"
         }
     },
     "scripts": {

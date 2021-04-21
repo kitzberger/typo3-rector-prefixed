@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v11\v0;
 
-use Typo3RectorPrefix20210420\Nette\Utils\Strings;
+use Typo3RectorPrefix20210421\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Exit_;
 use PhpParser\Node\Expr\FuncCall;
@@ -118,10 +118,10 @@ CODE_SAMPLE
         if (null === $methodName) {
             return \true;
         }
-        if (!\Typo3RectorPrefix20210420\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
+        if (!\Typo3RectorPrefix20210421\Nette\Utils\Strings::endsWith($methodName, 'Action')) {
             return \true;
         }
-        if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
+        if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::startsWith($methodName, 'initialize')) {
             return \true;
         }
         if ($this->hasExitCall($node)) {

@@ -24,15 +24,15 @@ use PHPStan\Type\StringType;
 use PHPStan\Type\Type;
 use PHPStan\Type\UnionType;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210420\Symplify\Astral\NodeValue\NodeValueResolver;
-use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210421\Symplify\Astral\NodeValue\NodeValueResolver;
+use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
 final class GetAttributeReturnTypeExtension implements \PHPStan\Type\DynamicMethodReturnTypeExtension
 {
     /**
      * @var array<string, string|string[]>>
      */
     private const ARGUMENT_KEY_TO_RETURN_TYPE = [
-        \Rector\NodeTypeResolver\Node\AttributeKey::class . '::FILE_INFO' => \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo::class,
+        \Rector\NodeTypeResolver\Node\AttributeKey::class . '::FILE_INFO' => \Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo::class,
         \Rector\NodeTypeResolver\Node\AttributeKey::class . '::RESOLVED_NAME' => \PhpParser\Node\Name::class,
         \Rector\NodeTypeResolver\Node\AttributeKey::class . '::CLASS_NODE' => \PhpParser\Node\Stmt\ClassLike::class,
         \Rector\NodeTypeResolver\Node\AttributeKey::class . '::METHOD_NODE' => \PhpParser\Node\Stmt\ClassMethod::class,
@@ -52,7 +52,7 @@ final class GetAttributeReturnTypeExtension implements \PHPStan\Type\DynamicMeth
      * @var NodeValueResolver
      */
     private $nodeValueResolver;
-    public function __construct(\Typo3RectorPrefix20210420\Symplify\Astral\NodeValue\NodeValueResolver $nodeValueResolver)
+    public function __construct(\Typo3RectorPrefix20210421\Symplify\Astral\NodeValue\NodeValueResolver $nodeValueResolver)
     {
         $this->nodeValueResolver = $nodeValueResolver;
     }

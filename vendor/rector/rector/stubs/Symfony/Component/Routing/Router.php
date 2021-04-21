@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Symfony\Component\Routing;
+namespace Typo3RectorPrefix20210421\Symfony\Component\Routing;
 
-use Typo3RectorPrefix20210420\Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Typo3RectorPrefix20210421\Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 if (\class_exists('Symfony\\Component\\Routing\\Router')) {
     return;
 }
-class Router implements \Typo3RectorPrefix20210420\Symfony\Component\Routing\RouterInterface
+class Router implements \Typo3RectorPrefix20210421\Symfony\Component\Routing\RouterInterface
 {
     /**
      * {@inheritdoc}
@@ -16,7 +16,7 @@ class Router implements \Typo3RectorPrefix20210420\Symfony\Component\Routing\Rou
     {
         return $this->getGenerator()->generate($name, $parameters, $referenceType);
     }
-    private function getGenerator() : \Typo3RectorPrefix20210420\Symfony\Component\Routing\Generator\UrlGeneratorInterface
+    private function getGenerator() : \Typo3RectorPrefix20210421\Symfony\Component\Routing\Generator\UrlGeneratorInterface
     {
     }
 }

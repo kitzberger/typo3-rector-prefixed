@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Symfony\Bundle\FrameworkBundle\Test;
+namespace Typo3RectorPrefix20210421\Symfony\Bundle\FrameworkBundle\Test;
 
-use Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ContainerInterface;
 if (\class_exists('Symfony\\Bundle\\FrameworkBundle\\Test\\KernelTestCase')) {
     return;
 }
-class KernelTestCase extends \Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase
+class KernelTestCase extends \Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase
 {
     /**
      * @var ContainerInterface

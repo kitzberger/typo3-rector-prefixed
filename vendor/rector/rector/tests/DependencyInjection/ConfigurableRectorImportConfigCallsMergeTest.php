@@ -8,8 +8,8 @@ use Rector\Core\Bootstrap\RectorConfigsResolver;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Renaming\Rector\Name\RenameClassRector;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210420\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
-use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210421\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
 final class ConfigurableRectorImportConfigCallsMergeTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
@@ -18,7 +18,7 @@ final class ConfigurableRectorImportConfigCallsMergeTest extends \Rector\Testing
     private $privatesAccessor;
     protected function setUp() : void
     {
-        $this->privatesAccessor = new \Typo3RectorPrefix20210420\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
+        $this->privatesAccessor = new \Typo3RectorPrefix20210421\Symplify\PackageBuilder\Reflection\PrivatesAccessor();
     }
     /**
      * @dataProvider provideData()
@@ -27,7 +27,7 @@ final class ConfigurableRectorImportConfigCallsMergeTest extends \Rector\Testing
     public function testMainConfigValues(string $config, array $expectedConfiguration) : void
     {
         $rectorConfigsResolver = new \Rector\Core\Bootstrap\RectorConfigsResolver();
-        $configFileInfos = $rectorConfigsResolver->resolveFromConfigFileInfo(new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo($config));
+        $configFileInfos = $rectorConfigsResolver->resolveFromConfigFileInfo(new \Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo($config));
         $this->bootKernelWithConfigs(\Rector\Core\HttpKernel\RectorKernel::class, $configFileInfos);
         $renameClassRector = $this->getService(\Rector\Renaming\Rector\Name\RenameClassRector::class);
         $oldToNewClasses = $this->privatesAccessor->getPrivateProperty($renameClassRector, 'oldToNewClasses');

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST;
+namespace Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\AST;
 
-final class Comment extends \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST\Statement
+final class Comment extends \Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\AST\Statement
 {
     /**
      * @var string

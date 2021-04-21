@@ -6,7 +6,7 @@ namespace Rector\Core\Application\FileSystem;
 use Rector\FileSystemRector\Contract\AddedFileInterface;
 use Rector\FileSystemRector\ValueObject\AddedFileWithContent;
 use Rector\FileSystemRector\ValueObject\AddedFileWithNodes;
-use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
 final class RemovedAndAddedFilesCollector
 {
     /**
@@ -17,7 +17,7 @@ final class RemovedAndAddedFilesCollector
      * @var AddedFileInterface[]
      */
     private $addedFiles = [];
-    public function removeFile(\Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    public function removeFile(\Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $this->removedFileInfos[] = $smartFileInfo;
     }
@@ -28,7 +28,7 @@ final class RemovedAndAddedFilesCollector
     {
         return $this->removedFileInfos;
     }
-    public function isFileRemoved(\Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
+    public function isFileRemoved(\Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool
     {
         foreach ($this->removedFileInfos as $removedFileInfo) {
             if ($removedFileInfo->getPathname() !== $smartFileInfo->getPathname()) {

@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Rector\Tests\Php70;
 
 use Iterator;
-use Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase;
 use Rector\Php70\EregToPcreTransformer;
-final class EregToPcreTransformerTest extends \Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase
+final class EregToPcreTransformerTest extends \Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase
 {
     /**
      * @var EregToPcreTransformer

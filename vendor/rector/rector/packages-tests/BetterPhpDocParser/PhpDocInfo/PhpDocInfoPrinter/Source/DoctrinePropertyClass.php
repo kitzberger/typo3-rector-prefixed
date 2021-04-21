@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Tests\BetterPhpDocParser\PhpDocInfo\PhpDocInfoPrinter\Source;
 
-use Typo3RectorPrefix20210420\Doctrine\ORM\Mapping as ORM;
+use Typo3RectorPrefix20210421\Doctrine\ORM\Mapping as ORM;
 final class DoctrinePropertyClass
 {
     /**

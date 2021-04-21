@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Symplify\PackageBuilder\Reflection;
+namespace Typo3RectorPrefix20210421\Symplify\PackageBuilder\Reflection;
 
 use ReflectionClass;
 use ReflectionMethod;
-use Typo3RectorPrefix20210420\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210421\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @see \Symplify\PackageBuilder\Tests\Reflection\PrivatesCallerTest
  */
@@ -56,6 +56,6 @@ final class PrivatesCaller
             return;
         }
         $errorMessage = \sprintf('Value passed to "%s()" method cannot be null', $location);
-        throw new \Typo3RectorPrefix20210420\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
+        throw new \Typo3RectorPrefix20210421\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
     }
 }

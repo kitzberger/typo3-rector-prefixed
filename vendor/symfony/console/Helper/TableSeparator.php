@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210420\Symfony\Component\Console\Helper;
+namespace Typo3RectorPrefix20210421\Symfony\Component\Console\Helper;
 
 /**
  * Marks a row as being a separator.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TableSeparator extends \Typo3RectorPrefix20210420\Symfony\Component\Console\Helper\TableCell
+class TableSeparator extends \Typo3RectorPrefix20210421\Symfony\Component\Console\Helper\TableCell
 {
     public function __construct(array $options = [])
     {

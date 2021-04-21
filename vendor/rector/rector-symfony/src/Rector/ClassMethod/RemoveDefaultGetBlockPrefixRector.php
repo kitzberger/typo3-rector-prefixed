@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Symfony\Rector\ClassMethod;
 
-use Typo3RectorPrefix20210420\Nette\Utils\Strings;
+use Typo3RectorPrefix20210421\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt\Class_;
@@ -13,7 +13,7 @@ use PHPStan\Type\ObjectType;
 use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\Rector\AbstractRector;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210420\Stringy\Stringy;
+use Typo3RectorPrefix20210421\Stringy\Stringy;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -70,10 +70,10 @@ CODE_SAMPLE
             return null;
         }
         $shortClassName = $this->nodeNameResolver->getShortName($className);
-        if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::endsWith($shortClassName, 'Type')) {
-            $shortClassName = (string) \Typo3RectorPrefix20210420\Nette\Utils\Strings::before($shortClassName, 'Type');
+        if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::endsWith($shortClassName, 'Type')) {
+            $shortClassName = (string) \Typo3RectorPrefix20210421\Nette\Utils\Strings::before($shortClassName, 'Type');
         }
-        $stringy = new \Typo3RectorPrefix20210420\Stringy\Stringy($shortClassName);
+        $stringy = new \Typo3RectorPrefix20210421\Stringy\Stringy($shortClassName);
         $underscoredClassShortName = (string) $stringy->underscored();
         if ($underscoredClassShortName !== $returnedValue) {
             return null;

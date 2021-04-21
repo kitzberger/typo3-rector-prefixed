@@ -3,7 +3,7 @@
 declare (strict_types=1);
 
 
-if (\class_exists(\Typo3RectorPrefix20210420\Apache_Solr_Document::class)) {
+if (\class_exists(\Typo3RectorPrefix20210421\Apache_Solr_Document::class)) {
     return;
 }
 final class Apache_Solr_Document implements \IteratorAggregate

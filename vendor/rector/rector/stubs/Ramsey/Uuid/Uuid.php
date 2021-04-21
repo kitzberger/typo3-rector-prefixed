@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Ramsey\Uuid;
+namespace Typo3RectorPrefix20210421\Ramsey\Uuid;
 
 if (\class_exists('Ramsey\\Uuid\\Uuid')) {
     return;
 }
-class Uuid implements \Typo3RectorPrefix20210420\Ramsey\Uuid\UuidInterface
+class Uuid implements \Typo3RectorPrefix20210421\Ramsey\Uuid\UuidInterface
 {
     public static function uuid4() : self
     {
-        return new \Typo3RectorPrefix20210420\Ramsey\Uuid\Uuid();
+        return new \Typo3RectorPrefix20210421\Ramsey\Uuid\Uuid();
     }
     public function toString()
     {

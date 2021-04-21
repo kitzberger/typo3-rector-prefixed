@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Symplify\EasyTesting\HttpKernel;
+namespace Typo3RectorPrefix20210421\Symplify\EasyTesting\HttpKernel;
 
-use Typo3RectorPrefix20210420\Symfony\Component\Config\Loader\LoaderInterface;
-use Typo3RectorPrefix20210420\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class EasyTestingKernel extends \Typo3RectorPrefix20210420\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+use Typo3RectorPrefix20210421\Symfony\Component\Config\Loader\LoaderInterface;
+use Typo3RectorPrefix20210421\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class EasyTestingKernel extends \Typo3RectorPrefix20210421\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
-    public function registerContainerConfiguration(\Typo3RectorPrefix20210420\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\Typo3RectorPrefix20210421\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         $loader->load(__DIR__ . '/../../config/config.php');
     }

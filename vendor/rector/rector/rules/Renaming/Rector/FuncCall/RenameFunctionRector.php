@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Renaming\Rector\FuncCall;
 
-use Typo3RectorPrefix20210420\Nette\Utils\Strings;
+use Typo3RectorPrefix20210421\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Name;
@@ -59,7 +59,7 @@ final class RenameFunctionRector extends \Rector\Core\Rector\AbstractRector impl
     }
     private function createName(string $newFunction) : \PhpParser\Node\Name
     {
-        if (\Typo3RectorPrefix20210420\Nette\Utils\Strings::contains($newFunction, '\\')) {
+        if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::contains($newFunction, '\\')) {
             return new \PhpParser\Node\Name\FullyQualified($newFunction);
         }
         return new \PhpParser\Node\Name($newFunction);

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection;
+namespace Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection;
 
 use Psr\Container\ContainerInterface as PsrContainerInterface;
-use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use Typo3RectorPrefix20210420\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * ContainerInterface is the interface implemented by service container classes.
  *

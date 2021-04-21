@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Tests\Functional\Parser;
+namespace Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Tests\Functional\Parser;
 
-use Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\ParseError;
-use Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\Parser;
-use Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Tokenizer\Tokenizer;
-use Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase;
-class ParserTest extends \Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\ParseError;
+use Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\Parser;
+use Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Tokenizer\Tokenizer;
+use Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase;
+class ParserTest extends \Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase
 {
     /** @var Parser */
     private $parser;
     public function setUp() : void
     {
-        $this->parser = new \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\Parser(new \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Tokenizer\Tokenizer());
+        $this->parser = new \Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\Parser(new \Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Tokenizer\Tokenizer());
     }
     public function dataForParserTest()
     {
@@ -59,7 +59,7 @@ class ParserTest extends \Typo3RectorPrefix20210420\PHPUnit\Framework\TestCase
      */
     public function testBadCodeCausesParserError($inputCode)
     {
-        $this->expectException(\Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\ParseError::class);
+        $this->expectException(\Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\ParseError::class);
         $this->parser->parseString($inputCode);
     }
 }

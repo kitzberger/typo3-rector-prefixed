@@ -6,8 +6,8 @@ namespace Rector\PHPStanExtensions\Tests\Rule\NoInstanceOfStaticReflectionRule;
 use Iterator;
 use PHPStan\Rules\Rule;
 use Rector\PHPStanExtensions\Rule\NoInstanceOfStaticReflectionRule;
-use Typo3RectorPrefix20210420\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
-final class NoInstanceOfStaticReflectionRuleTest extends \Typo3RectorPrefix20210420\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
+use Typo3RectorPrefix20210421\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
+final class NoInstanceOfStaticReflectionRuleTest extends \Typo3RectorPrefix20210421\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
 {
     /**
      * @dataProvider provideData()

@@ -14,10 +14,10 @@ use Rector\Core\Exception\ShouldNotHappenException;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\FileSystemRector\Parser\FileInfoParser;
-use Typo3RectorPrefix20210420\Symplify\EasyTesting\StaticFixtureSplitter;
-use Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo;
-final class TestModifyReprintTest extends \Typo3RectorPrefix20210420\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210421\Symplify\EasyTesting\StaticFixtureSplitter;
+use Typo3RectorPrefix20210421\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
+final class TestModifyReprintTest extends \Typo3RectorPrefix20210421\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var FileInfoParser
@@ -45,8 +45,8 @@ final class TestModifyReprintTest extends \Typo3RectorPrefix20210420\Symplify\Pa
     }
     public function test() : void
     {
-        $fixtureFileInfo = new \Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/FixtureModify/route_with_extra_methods.php.inc');
-        $inputFileInfoAndExpected = \Typo3RectorPrefix20210420\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToLocalInputAndExpected($fixtureFileInfo);
+        $fixtureFileInfo = new \Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/FixtureModify/route_with_extra_methods.php.inc');
+        $inputFileInfoAndExpected = \Typo3RectorPrefix20210421\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToLocalInputAndExpected($fixtureFileInfo);
         $inputFileInfo = $inputFileInfoAndExpected->getInputFileInfo();
         $phpDocInfo = $this->parseFileAndGetFirstNodeOfType($inputFileInfo, \PhpParser\Node\Stmt\ClassMethod::class);
         /** @var DoctrineAnnotationTagValueNode $doctrineAnnotationTagValueNode */
@@ -60,7 +60,7 @@ final class TestModifyReprintTest extends \Typo3RectorPrefix20210420\Symplify\Pa
     /**
      * @param class-string<Node> $nodeType
      */
-    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210420\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $nodeType) : \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo
+    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $nodeType) : \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo
     {
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($smartFileInfo);
         $node = $this->betterNodeFinder->findFirstInstanceOf($nodes, $nodeType);

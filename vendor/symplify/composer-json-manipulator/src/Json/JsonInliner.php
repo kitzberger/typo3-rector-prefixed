@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\Json;
+namespace Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\Json;
 
-use Typo3RectorPrefix20210420\Nette\Utils\Strings;
-use Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\ValueObject\Option;
-use Typo3RectorPrefix20210420\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Typo3RectorPrefix20210421\Nette\Utils\Strings;
+use Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\ValueObject\Option;
+use Typo3RectorPrefix20210421\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class JsonInliner
 {
     /**
@@ -17,20 +17,20 @@ final class JsonInliner
      * @var ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\Typo3RectorPrefix20210420\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Typo3RectorPrefix20210421\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->parameterProvider = $parameterProvider;
     }
     public function inlineSections(string $jsonContent) : string
     {
-        if (!$this->parameterProvider->hasParameter(\Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\ValueObject\Option::INLINE_SECTIONS)) {
+        if (!$this->parameterProvider->hasParameter(\Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\ValueObject\Option::INLINE_SECTIONS)) {
             return $jsonContent;
         }
-        $inlineSections = $this->parameterProvider->provideArrayParameter(\Typo3RectorPrefix20210420\Symplify\ComposerJsonManipulator\ValueObject\Option::INLINE_SECTIONS);
+        $inlineSections = $this->parameterProvider->provideArrayParameter(\Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\ValueObject\Option::INLINE_SECTIONS);
         foreach ($inlineSections as $inlineSection) {
             $pattern = '#("' . \preg_quote($inlineSection, '#') . '": )\\[(.*?)\\](,)#ms';
-            $jsonContent = \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($jsonContent, $pattern, function (array $match) : string {
-                $inlined = \Typo3RectorPrefix20210420\Nette\Utils\Strings::replace($match[2], self::SPACE_REGEX, ' ');
+            $jsonContent = \Typo3RectorPrefix20210421\Nette\Utils\Strings::replace($jsonContent, $pattern, function (array $match) : string {
+                $inlined = \Typo3RectorPrefix20210421\Nette\Utils\Strings::replace($match[2], self::SPACE_REGEX, ' ');
                 $inlined = \trim($inlined);
                 $inlined = '[' . $inlined . ']';
                 return $match[1] . $inlined . $match[3];

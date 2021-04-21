@@ -1,6 +1,6 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210420;
+namespace Typo3RectorPrefix20210421;
 
-return [new \Typo3RectorPrefix20210420\Helmich\TypoScriptParser\Parser\AST\FileIncludeStatement('foo.typoscript', \false, null, 1)];
+return [new \Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\AST\FileIncludeStatement('foo.typoscript', \false, null, 1)];

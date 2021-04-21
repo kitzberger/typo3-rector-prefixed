@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\v9\v5;
 
-use Typo3RectorPrefix20210420\Nette\Utils\Strings;
+use Typo3RectorPrefix20210421\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;
 use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTagRemover;
@@ -37,7 +37,7 @@ final class RemoveFlushCachesRector extends \Rector\Core\Rector\AbstractRector
     {
         /** @var string $name */
         $name = $this->getName($node);
-        if (!\Typo3RectorPrefix20210420\Nette\Utils\Strings::endsWith($name, 'Command')) {
+        if (!\Typo3RectorPrefix20210421\Nette\Utils\Strings::endsWith($name, 'Command')) {
             return null;
         }
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);

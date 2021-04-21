@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210420\Symfony\Component\HttpKernel;
+namespace Typo3RectorPrefix20210421\Symfony\Component\HttpKernel;
 
-use Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Response;
 /**
  * HttpKernelInterface handles a Request to convert it to a Response.
  *
@@ -35,5 +35,5 @@ interface HttpKernelInterface
      *
      * @throws \Exception When an Exception occurs during processing
      */
-    public function handle(\Typo3RectorPrefix20210420\Symfony\Component\HttpFoundation\Request $request, int $type = self::MASTER_REQUEST, bool $catch = \true);
+    public function handle(\Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Request $request, int $type = self::MASTER_REQUEST, bool $catch = \true);
 }

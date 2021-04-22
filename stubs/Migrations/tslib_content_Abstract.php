@@ -1,0 +1,12 @@
+<?php
+
+declare (strict_types=1);
+namespace Typo3RectorPrefix20210422;
+
+if (\class_exists(\Typo3RectorPrefix20210422\tslib_content_Abstract::class)) {
+    return;
+}
+final class tslib_content_Abstract
+{
+}
+\class_alias('tslib_content_Abstract', 'tslib_content_Abstract', \false);

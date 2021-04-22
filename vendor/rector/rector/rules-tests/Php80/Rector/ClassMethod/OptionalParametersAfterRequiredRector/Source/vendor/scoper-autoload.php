@@ -6,17 +6,17 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('AutoloadIncluder', false) && !interface_exists('AutoloadIncluder', false) && !trait_exists('AutoloadIncluder', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210422\AutoloadIncluder');
-}
 if (!class_exists('Composer\InstalledVersions', false) && !interface_exists('Composer\InstalledVersions', false) && !trait_exists('Composer\InstalledVersions', false)) {
     spl_autoload_call('Typo3RectorPrefix20210422\Composer\InstalledVersions');
 }
-if (!class_exists('ComposerAutoloaderInitdda2aa34ea9060d496b81fcbd71a578e', false) && !interface_exists('ComposerAutoloaderInitdda2aa34ea9060d496b81fcbd71a578e', false) && !trait_exists('ComposerAutoloaderInitdda2aa34ea9060d496b81fcbd71a578e', false)) {
-    spl_autoload_call('Typo3RectorPrefix20210422\ComposerAutoloaderInitdda2aa34ea9060d496b81fcbd71a578e');
+if (!class_exists('ComposerAutoloaderInit6df8c115b6d11a16269f9376fc5026ab', false) && !interface_exists('ComposerAutoloaderInit6df8c115b6d11a16269f9376fc5026ab', false) && !trait_exists('ComposerAutoloaderInit6df8c115b6d11a16269f9376fc5026ab', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210422\ComposerAutoloaderInit6df8c115b6d11a16269f9376fc5026ab');
 }
 if (!class_exists('Doctrine\Inflector\Inflector', false) && !interface_exists('Doctrine\Inflector\Inflector', false) && !trait_exists('Doctrine\Inflector\Inflector', false)) {
     spl_autoload_call('Typo3RectorPrefix20210422\Doctrine\Inflector\Inflector');
+}
+if (!class_exists('AutoloadIncluder', false) && !interface_exists('AutoloadIncluder', false) && !trait_exists('AutoloadIncluder', false)) {
+    spl_autoload_call('Typo3RectorPrefix20210422\AutoloadIncluder');
 }
 if (!class_exists('DowngradeRectorConfig', false) && !interface_exists('DowngradeRectorConfig', false) && !trait_exists('DowngradeRectorConfig', false)) {
     spl_autoload_call('Typo3RectorPrefix20210422\DowngradeRectorConfig');
@@ -126,9 +126,9 @@ if (!class_exists('Symplify\SmartFileSystem\SmartFileInfo', false) && !interface
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequiredda2aa34ea9060d496b81fcbd71a578e')) {
-    function composerRequiredda2aa34ea9060d496b81fcbd71a578e() {
-        return \Typo3RectorPrefix20210422\composerRequiredda2aa34ea9060d496b81fcbd71a578e(...func_get_args());
+if (!function_exists('composerRequire6df8c115b6d11a16269f9376fc5026ab')) {
+    function composerRequire6df8c115b6d11a16269f9376fc5026ab() {
+        return \Typo3RectorPrefix20210422\composerRequire6df8c115b6d11a16269f9376fc5026ab(...func_get_args());
     }
 }
 if (!function_exists('parseArgs')) {

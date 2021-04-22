@@ -926,6 +926,7 @@ return array(
     'Rector\\DowngradePhp70\\Rector\\New_\\DowngradeAnonymousClassRector' => $vendorDir . '/rector/rector/rules/DowngradePhp70/Rector/New_/DowngradeAnonymousClassRector.php',
     'Rector\\DowngradePhp71\\Rector\\Array_\\SymmetricArrayDestructuringToListRector' => $vendorDir . '/rector/rector/rules/DowngradePhp71/Rector/Array_/SymmetricArrayDestructuringToListRector.php',
     'Rector\\DowngradePhp71\\Rector\\ClassConst\\DowngradeClassConstantVisibilityRector' => $vendorDir . '/rector/rector/rules/DowngradePhp71/Rector/ClassConst/DowngradeClassConstantVisibilityRector.php',
+    'Rector\\DowngradePhp71\\Rector\\FuncCall\\DowngradeIsIterableRector' => $vendorDir . '/rector/rector/rules/DowngradePhp71/Rector/FuncCall/DowngradeIsIterableRector.php',
     'Rector\\DowngradePhp71\\Rector\\FunctionLike\\DowngradeIterablePseudoTypeDeclarationRector' => $vendorDir . '/rector/rector/rules/DowngradePhp71/Rector/FunctionLike/DowngradeIterablePseudoTypeDeclarationRector.php',
     'Rector\\DowngradePhp71\\Rector\\FunctionLike\\DowngradeNullableTypeDeclarationRector' => $vendorDir . '/rector/rector/rules/DowngradePhp71/Rector/FunctionLike/DowngradeNullableTypeDeclarationRector.php',
     'Rector\\DowngradePhp71\\Rector\\FunctionLike\\DowngradeVoidTypeDeclarationRector' => $vendorDir . '/rector/rector/rules/DowngradePhp71/Rector/FunctionLike/DowngradeVoidTypeDeclarationRector.php',

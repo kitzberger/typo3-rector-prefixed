@@ -48,7 +48,8 @@ return [\Rector\Compiler\ValueObject\ScoperOption::PREFIX => 'RectorPrefix' . $t
             return $content;
         }
         // see https://regex101.com/r/v8zRMm/1
-        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::replace($content, '#' . $prefix . '\\\\Composer\\\\InstalledVersions#', 'Composer\\InstalledVersions');
+        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::replace($content, '
+                #' . $prefix . '\\\\Composer\\\\InstalledVersions#', 'Composer\\InstalledVersions');
     },
     // un-prefix composer plugin
     function (string $filePath, string $prefix, string $content) : string {
@@ -79,14 +80,14 @@ return [\Rector\Compiler\ValueObject\ScoperOption::PREFIX => 'RectorPrefix' . $t
             return $content;
         }
         // un-prefix
-        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::replace($content, \sprintf('\%s\\PHPUnit\\Framework\\TestCase', $prefix), 'PHPUnit\\Framework\\TestCase');
+        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::replace($content, '#' . $prefix . '\\\\PHPUnit\\\\Framework\\\\TestCase#', 'PHPUnit\\Framework\\TestCase');
     },
     function (string $filePath, string $prefix, string $content) : string {
         if (!\Typo3RectorPrefix20210422\Nette\Utils\Strings::endsWith($filePath, 'packages/Testing/PHPUnit/AbstractRectorTestCase.php')) {
             return $content;
         }
         // un-prefix
-        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::replace($content, \sprintf('\%s\\Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase', $prefix), 'Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase');
+        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::replace($content, '#' . $prefix . '\\\\Symplify\\\\PackageBuilder\\\\Testing\\\\AbstractKernelTestCase#', 'Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase');
     },
     // fixes https://github.com/rectorphp/rector/issues/6010 + test case prefix
     function (string $filePath, string $prefix, string $content) : string {

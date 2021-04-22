@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita77919f36571747c38328438ec1c7a49
+class ComposerStaticInitdda2aa34ea9060d496b81fcbd71a578e
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1008,7 +1008,6 @@ class ComposerStaticInita77919f36571747c38328438ec1c7a49
         'Rector\\Core\\Exception\\Application\\FileProcessingException' => __DIR__ . '/..' . '/rector/rector/src/Exception/Application/FileProcessingException.php',
         'Rector\\Core\\Exception\\Configuration\\InvalidConfigurationException' => __DIR__ . '/..' . '/rector/rector/src/Exception/Configuration/InvalidConfigurationException.php',
         'Rector\\Core\\Exception\\InvalidNodeTypeException' => __DIR__ . '/..' . '/rector/rector/src/Exception/InvalidNodeTypeException.php',
-        'Rector\\Core\\Exception\\Node\\MissingParentNodeException' => __DIR__ . '/..' . '/rector/rector/src/Exception/Node/MissingParentNodeException.php',
         'Rector\\Core\\Exception\\NotImplementedYetException' => __DIR__ . '/..' . '/rector/rector/src/Exception/NotImplementedYetException.php',
         'Rector\\Core\\Exception\\ShouldNotHappenException' => __DIR__ . '/..' . '/rector/rector/src/Exception/ShouldNotHappenException.php',
         'Rector\\Core\\Exception\\Testing\\SuperfluousAfterContentFixtureException' => __DIR__ . '/..' . '/rector/rector/src/Exception/Testing/SuperfluousAfterContentFixtureException.php',
@@ -1621,6 +1620,7 @@ class ComposerStaticInita77919f36571747c38328438ec1c7a49
         'Rector\\NodeTypeResolver\\NodeTypeResolver\\StaticCallMethodCallTypeResolver' => __DIR__ . '/..' . '/rector/rector/packages/NodeTypeResolver/NodeTypeResolver/StaticCallMethodCallTypeResolver.php',
         'Rector\\NodeTypeResolver\\NodeTypeResolver\\TraitTypeResolver' => __DIR__ . '/..' . '/rector/rector/packages/NodeTypeResolver/NodeTypeResolver/TraitTypeResolver.php',
         'Rector\\NodeTypeResolver\\NodeTypeResolver\\VariableTypeResolver' => __DIR__ . '/..' . '/rector/rector/packages/NodeTypeResolver/NodeTypeResolver/VariableTypeResolver.php',
+        'Rector\\NodeTypeResolver\\NodeVisitor\\FileNodeVisitor' => __DIR__ . '/..' . '/rector/rector/packages/NodeTypeResolver/NodeVisitor/FileNodeVisitor.php',
         'Rector\\NodeTypeResolver\\NodeVisitor\\FunctionLikeParamArgPositionNodeVisitor' => __DIR__ . '/..' . '/rector/rector/packages/NodeTypeResolver/NodeVisitor/FunctionLikeParamArgPositionNodeVisitor.php',
         'Rector\\NodeTypeResolver\\NodeVisitor\\FunctionMethodAndClassNodeVisitor' => __DIR__ . '/..' . '/rector/rector/packages/NodeTypeResolver/NodeVisitor/FunctionMethodAndClassNodeVisitor.php',
         'Rector\\NodeTypeResolver\\NodeVisitor\\NamespaceNodeVisitor' => __DIR__ . '/..' . '/rector/rector/packages/NodeTypeResolver/NodeVisitor/NamespaceNodeVisitor.php',
@@ -3751,9 +3751,9 @@ class ComposerStaticInita77919f36571747c38328438ec1c7a49
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita77919f36571747c38328438ec1c7a49::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita77919f36571747c38328438ec1c7a49::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita77919f36571747c38328438ec1c7a49::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitdda2aa34ea9060d496b81fcbd71a578e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitdda2aa34ea9060d496b81fcbd71a578e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitdda2aa34ea9060d496b81fcbd71a578e::$classMap;
 
         }, null, ClassLoader::class);
     }

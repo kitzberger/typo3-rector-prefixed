@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\PHPStan\Rules;
 
-use Typo3RectorPrefix20210421\Nette\Utils\Strings;
+use Typo3RectorPrefix20210422\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
@@ -68,7 +68,7 @@ final class AddChangelogDocBlockForRectorClass implements \PHPStan\Rules\Rule
         }
         $resolvedPhpDoc = $this->fileTypeMapper->getResolvedPhpDoc($scope->getFile(), $classReflection->getName(), null, null, $docComment->getText());
         $phpDocString = $resolvedPhpDoc->getPhpDocString();
-        if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::contains($phpDocString, '@changelog')) {
+        if (\Typo3RectorPrefix20210422\Nette\Utils\Strings::contains($phpDocString, '@changelog')) {
             return [];
         }
         return [\sprintf(self::ERROR_MESSAGE, $className)];

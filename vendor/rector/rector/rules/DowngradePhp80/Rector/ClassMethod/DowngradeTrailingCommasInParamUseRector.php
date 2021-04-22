@@ -122,12 +122,12 @@ CODE_SAMPLE
     /**
      * @param ClosureUse[]|Param[]|Arg[] $array
      */
-    private function cleanTrailingComma(\PhpParser\Node $node, array $array) : \PhpParser\Node
+    private function cleanTrailingComma(\PhpParser\Node $node, array $array) : ?\PhpParser\Node
     {
         $lastPosition = \array_key_last($array);
         $last = $array[$lastPosition];
         if (!$this->followedByCommaAnalyzer->isFollowed($this->file, $last)) {
-            return $node;
+            return null;
         }
         $node->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::ORIGINAL_NODE, null);
         $last->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::FUNC_ARGS_TRAILING_COMMA, \false);

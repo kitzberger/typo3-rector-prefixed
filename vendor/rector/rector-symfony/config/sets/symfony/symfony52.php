@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210421;
+namespace Typo3RectorPrefix20210422;
 
 use PHPStan\Type\ObjectType;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
@@ -21,10 +21,10 @@ use Rector\Symfony\Rector\New_\PropertyPathMapperToDataMapperRector;
 use Rector\Symfony\Rector\StaticCall\BinaryFileResponseCreateToNewInstanceRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddParamTypeDeclarationRector;
 use Rector\TypeDeclaration\ValueObject\AddParamTypeDeclaration;
-use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
 # https://github.com/symfony/symfony/blob/5.x/UPGRADE-5.2.md
-return static function (\Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/symfony50-types.php');
     $services = $containerConfigurator->services();
     // @see https://symfony.com/blog/new-in-symfony-5-2-php-8-attributes

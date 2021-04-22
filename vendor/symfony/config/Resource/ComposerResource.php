@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210421\Symfony\Component\Config\Resource;
+namespace Typo3RectorPrefix20210422\Symfony\Component\Config\Resource;
 
 /**
  * ComposerResource tracks the PHP version and Composer dependencies.
@@ -17,7 +17,7 @@ namespace Typo3RectorPrefix20210421\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class ComposerResource implements \Typo3RectorPrefix20210421\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ComposerResource implements \Typo3RectorPrefix20210422\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $vendors;
     private static $runtimeVendors;

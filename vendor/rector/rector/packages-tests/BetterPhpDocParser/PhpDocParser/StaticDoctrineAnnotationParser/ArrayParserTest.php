@@ -7,8 +7,8 @@ use Iterator;
 use Rector\BetterPhpDocParser\PhpDocInfo\TokenIteratorFactory;
 use Rector\BetterPhpDocParser\PhpDocParser\StaticDoctrineAnnotationParser\ArrayParser;
 use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210421\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ArrayParserTest extends \Typo3RectorPrefix20210421\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class ArrayParserTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var ArrayParser

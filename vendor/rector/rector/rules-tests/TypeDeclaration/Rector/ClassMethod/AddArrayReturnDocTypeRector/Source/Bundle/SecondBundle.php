@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Rector\Tests\TypeDeclaration\Rector\ClassMethod\AddArrayReturnDocTypeRector\Source\Bundle;
 
-use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ContainerBuilder;
-use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ContainerInterface;
-use Typo3RectorPrefix20210421\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-final class SecondBundle implements \Typo3RectorPrefix20210421\Symfony\Component\HttpKernel\Bundle\BundleInterface
+use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\ContainerBuilder;
+use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\ContainerInterface;
+use Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+final class SecondBundle implements \Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\Bundle\BundleInterface
 {
     public function boot()
     {
@@ -14,7 +14,7 @@ final class SecondBundle implements \Typo3RectorPrefix20210421\Symfony\Component
     public function shutdown()
     {
     }
-    public function build(\Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function build(\Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
     }
     public function getContainerExtension()
@@ -29,7 +29,7 @@ final class SecondBundle implements \Typo3RectorPrefix20210421\Symfony\Component
     public function getPath()
     {
     }
-    public function setContainer(\Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ContainerInterface $container = null)
+    public function setContainer(\Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\ContainerInterface $container = null)
     {
     }
 }

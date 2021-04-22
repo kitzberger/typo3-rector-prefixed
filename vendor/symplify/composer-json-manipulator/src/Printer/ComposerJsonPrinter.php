@@ -1,29 +1,29 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\Printer;
+namespace Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\Printer;
 
-use Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
 final class ComposerJsonPrinter
 {
     /**
      * @var JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->jsonFileManager = $jsonFileManager;
     }
-    public function printToString(\Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : string
+    public function printToString(\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : string
     {
         return $this->jsonFileManager->encodeJsonToFileContent($composerJson->getJsonArray());
     }
     /**
      * @param string|SmartFileInfo $targetFile
      */
-    public function print(\Typo3RectorPrefix20210421\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, $targetFile) : string
+    public function print(\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, $targetFile) : string
     {
         if (\is_string($targetFile)) {
             return $this->jsonFileManager->printComposerJsonToFilePath($composerJson, $targetFile);

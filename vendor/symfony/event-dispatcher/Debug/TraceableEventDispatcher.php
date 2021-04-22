@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\Debug;
+namespace Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\Debug;
 
 use Psr\EventDispatcher\StoppableEventInterface;
 use Psr\Log\LoggerInterface;
-use Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\RequestStack;
-use Typo3RectorPrefix20210421\Symfony\Component\Stopwatch\Stopwatch;
-use Typo3RectorPrefix20210421\Symfony\Contracts\Service\ResetInterface;
+use Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\RequestStack;
+use Typo3RectorPrefix20210422\Symfony\Component\Stopwatch\Stopwatch;
+use Typo3RectorPrefix20210422\Symfony\Contracts\Service\ResetInterface;
 /**
  * Collects some data about event listeners.
  *
@@ -25,7 +25,7 @@ use Typo3RectorPrefix20210421\Symfony\Contracts\Service\ResetInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\EventDispatcherInterface, \Typo3RectorPrefix20210421\Symfony\Contracts\Service\ResetInterface
+class TraceableEventDispatcher implements \Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\EventDispatcherInterface, \Typo3RectorPrefix20210422\Symfony\Contracts\Service\ResetInterface
 {
     protected $logger;
     protected $stopwatch;
@@ -35,7 +35,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
     private $orphanedEvents;
     private $requestStack;
     private $currentRequestHash = '';
-    public function __construct(\Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher, \Typo3RectorPrefix20210421\Symfony\Component\Stopwatch\Stopwatch $stopwatch, \Psr\Log\LoggerInterface $logger = null, \Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
+    public function __construct(\Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher, \Typo3RectorPrefix20210422\Symfony\Component\Stopwatch\Stopwatch $stopwatch, \Psr\Log\LoggerInterface $logger = null, \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
     {
         $this->dispatcher = $dispatcher;
         $this->stopwatch = $stopwatch;
@@ -54,7 +54,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
     /**
      * {@inheritdoc}
      */
-    public function addSubscriber(\Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function addSubscriber(\Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         $this->dispatcher->addSubscriber($subscriber);
     }
@@ -77,7 +77,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
     /**
      * {@inheritdoc}
      */
-    public function removeSubscriber(\Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function removeSubscriber(\Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         return $this->dispatcher->removeSubscriber($subscriber);
     }
@@ -148,7 +148,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
     /**
      * @return array
      */
-    public function getCalledListeners(\Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Request $request = null)
+    public function getCalledListeners(\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request $request = null)
     {
         if (null === $this->callStack) {
             return [];
@@ -166,7 +166,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
     /**
      * @return array
      */
-    public function getNotCalledListeners(\Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Request $request = null)
+    public function getNotCalledListeners(\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request $request = null)
     {
         try {
             $allListeners = $this->getListeners();
@@ -191,8 +191,8 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
         foreach ($allListeners as $eventName => $listeners) {
             foreach ($listeners as $listener) {
                 if (!\in_array($listener, $calledListeners, \true)) {
-                    if (!$listener instanceof \Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
-                        $listener = new \Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener, null, $this->stopwatch, $this);
+                    if (!$listener instanceof \Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
+                        $listener = new \Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener, null, $this->stopwatch, $this);
                     }
                     $notCalled[] = $listener->getInfo($eventName);
                 }
@@ -201,7 +201,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
         \uasort($notCalled, [$this, 'sortNotCalledListeners']);
         return $notCalled;
     }
-    public function getOrphanedEvents(\Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Request $request = null) : array
+    public function getOrphanedEvents(\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request $request = null) : array
     {
         if ($request) {
             return $this->orphanedEvents[\spl_object_hash($request)] ?? [];
@@ -249,7 +249,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
         }
         foreach ($this->dispatcher->getListeners($eventName) as $listener) {
             $priority = $this->getListenerPriority($eventName, $listener);
-            $wrappedListener = new \Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener instanceof \Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener->getWrappedListener() : $listener, null, $this->stopwatch, $this);
+            $wrappedListener = new \Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener instanceof \Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener->getWrappedListener() : $listener, null, $this->stopwatch, $this);
             $this->wrappedListeners[$eventName][] = $wrappedListener;
             $this->dispatcher->removeListener($eventName, $listener);
             $this->dispatcher->addListener($eventName, $wrappedListener, $priority);
@@ -261,7 +261,7 @@ class TraceableEventDispatcher implements \Typo3RectorPrefix20210421\Symfony\Com
         unset($this->wrappedListeners[$eventName]);
         $skipped = \false;
         foreach ($this->dispatcher->getListeners($eventName) as $listener) {
-            if (!$listener instanceof \Typo3RectorPrefix20210421\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
+            if (!$listener instanceof \Typo3RectorPrefix20210422\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
                 // #12845: a new listener was added during dispatch.
                 continue;
             }

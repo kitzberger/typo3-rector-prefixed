@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Rector\PHPStanExtensions\TypeAnalyzer;
 
 use DateTimeInterface;
-use Typo3RectorPrefix20210421\Nette\Utils\Strings;
+use Typo3RectorPrefix20210422\Nette\Utils\Strings;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\Generic\GenericClassStringType;
 use PHPStan\Type\ObjectType;
@@ -45,7 +45,7 @@ final class AllowedAutoloadedTypeAnalyzer
     private function isAllowedClassString(string $value) : bool
     {
         // autoloaded allowed type
-        if (\Typo3RectorPrefix20210421\Nette\Utils\Strings::match($value, self::AUTOLOADED_CLASS_PREFIX_REGEX)) {
+        if (\Typo3RectorPrefix20210422\Nette\Utils\Strings::match($value, self::AUTOLOADED_CLASS_PREFIX_REGEX)) {
             return \true;
         }
         foreach (self::ALLOWED_CLASSES as $allowedClass) {

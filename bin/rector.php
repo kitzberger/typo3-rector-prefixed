@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210421;
+namespace Typo3RectorPrefix20210422;
 
 use Rector\Core\Bootstrap\RectorConfigsResolver;
 use Rector\Core\Console\ConsoleApplication;
@@ -9,10 +9,10 @@ use Rector\Core\Console\Style\SymfonyStyleFactory;
 use Rector\Core\DependencyInjection\RectorContainerFactory;
 use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\ValueObject\Bootstrap\BootstrapConfigs;
-use Typo3RectorPrefix20210421\Symplify\PackageBuilder\Console\ShellCode;
-use Typo3RectorPrefix20210421\Symplify\PackageBuilder\Reflection\PrivatesCaller;
-use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210421\Tracy\Debugger;
+use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Console\ShellCode;
+use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210422\Tracy\Debugger;
 // @ intentionally: continue anyway
 @\ini_set('memory_limit', '-1');
 // Performance boost
@@ -21,28 +21,28 @@ use Typo3RectorPrefix20210421\Tracy\Debugger;
 \gc_disable();
 \define('__RECTOR_RUNNING__', \true);
 // Require Composer autoload.php
-$autoloadIncluder = new \Typo3RectorPrefix20210421\AutoloadIncluder();
+$autoloadIncluder = new \Typo3RectorPrefix20210422\AutoloadIncluder();
 $autoloadIncluder->includeDependencyOrRepositoryVendorAutoloadIfExists();
 $autoloadIncluder->loadIfExistsAndNotLoadedYet(__DIR__ . '/../vendor/scoper-autoload.php');
 $autoloadIncluder->autoloadProjectAutoloaderFile();
 $autoloadIncluder->autoloadFromCommandLine();
-$symfonyStyleFactory = new \Rector\Core\Console\Style\SymfonyStyleFactory(new \Typo3RectorPrefix20210421\Symplify\PackageBuilder\Reflection\PrivatesCaller());
+$symfonyStyleFactory = new \Rector\Core\Console\Style\SymfonyStyleFactory(new \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Reflection\PrivatesCaller());
 $symfonyStyle = $symfonyStyleFactory->create();
 $rectorConfigsResolver = new \Rector\Core\Bootstrap\RectorConfigsResolver();
 // for simpler debugging output
-if (\class_exists(\Typo3RectorPrefix20210421\Tracy\Debugger::class)) {
-    \Typo3RectorPrefix20210421\Tracy\Debugger::$maxDepth = 2;
+if (\class_exists(\Typo3RectorPrefix20210422\Tracy\Debugger::class)) {
+    \Typo3RectorPrefix20210422\Tracy\Debugger::$maxDepth = 2;
 }
 try {
     $bootstrapConfigs = $rectorConfigsResolver->provide();
     $configFileInfos = $bootstrapConfigs->getConfigFileInfos();
-    $configFileInfos[] = new \Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/../config/config.php');
+    $configFileInfos[] = new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/../config/config.php');
     $bootstrapConfigs = new \Rector\Core\ValueObject\Bootstrap\BootstrapConfigs($bootstrapConfigs->getMainConfigFileInfo(), $configFileInfos);
     $rectorContainerFactory = new \Rector\Core\DependencyInjection\RectorContainerFactory();
     $container = $rectorContainerFactory->createFromBootstrapConfigs($bootstrapConfigs);
 } catch (\Throwable $throwable) {
     $symfonyStyle->error($throwable->getMessage());
-    exit(\Typo3RectorPrefix20210421\Symplify\PackageBuilder\Console\ShellCode::ERROR);
+    exit(\Typo3RectorPrefix20210422\Symplify\PackageBuilder\Console\ShellCode::ERROR);
 }
 /** @var ConsoleApplication $application */
 $application = $container->get(\Rector\Core\Console\ConsoleApplication::class);
@@ -96,4 +96,4 @@ final class AutoloadIncluder
         require_once $filePath;
     }
 }
-\class_alias('Typo3RectorPrefix20210421\\AutoloadIncluder', 'AutoloadIncluder', \false);
+\class_alias('Typo3RectorPrefix20210422\\AutoloadIncluder', 'AutoloadIncluder', \false);

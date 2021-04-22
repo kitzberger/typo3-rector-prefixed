@@ -8,14 +8,14 @@ use PhpParser\Node\Expr\New_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use Rector\PHPStanExtensions\TypeAnalyzer\AllowedAutoloadedTypeAnalyzer;
-use Typo3RectorPrefix20210421\Symplify\Astral\Naming\SimpleNameResolver;
-use Typo3RectorPrefix20210421\Symplify\PHPStanRules\Rules\AbstractSymplifyRule;
+use Typo3RectorPrefix20210422\Symplify\Astral\Naming\SimpleNameResolver;
+use Typo3RectorPrefix20210422\Symplify\PHPStanRules\Rules\AbstractSymplifyRule;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
  * @see \Rector\PHPStanExtensions\Tests\Rule\NoClassReflectionStaticReflectionRule\NoClassReflectionStaticReflectionRuleTest
  */
-final class NoClassReflectionStaticReflectionRule extends \Typo3RectorPrefix20210421\Symplify\PHPStanRules\Rules\AbstractSymplifyRule implements \PHPStan\Rules\Rule
+final class NoClassReflectionStaticReflectionRule extends \Typo3RectorPrefix20210422\Symplify\PHPStanRules\Rules\AbstractSymplifyRule implements \PHPStan\Rules\Rule
 {
     /**
      * @var string
@@ -29,7 +29,7 @@ final class NoClassReflectionStaticReflectionRule extends \Typo3RectorPrefix2021
      * @var SimpleNameResolver
      */
     private $simpleNameResolver;
-    public function __construct(\Typo3RectorPrefix20210421\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \Rector\PHPStanExtensions\TypeAnalyzer\AllowedAutoloadedTypeAnalyzer $allowedAutoloadedTypeAnalyzer)
+    public function __construct(\Typo3RectorPrefix20210422\Symplify\Astral\Naming\SimpleNameResolver $simpleNameResolver, \Rector\PHPStanExtensions\TypeAnalyzer\AllowedAutoloadedTypeAnalyzer $allowedAutoloadedTypeAnalyzer)
     {
         $this->allowedAutoloadedTypeAnalyzer = $allowedAutoloadedTypeAnalyzer;
         $this->simpleNameResolver = $simpleNameResolver;

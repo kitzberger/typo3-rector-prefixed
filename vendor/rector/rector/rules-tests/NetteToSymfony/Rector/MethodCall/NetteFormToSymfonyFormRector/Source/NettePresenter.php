@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Rector\Tests\NetteToSymfony\Rector\MethodCall\NetteFormToSymfonyFormRector\Source;
 
-use Typo3RectorPrefix20210421\Nette\Application\IPresenter;
-use Typo3RectorPrefix20210421\Nette\Application\IResponse;
-use Typo3RectorPrefix20210421\Nette\Application\Request;
-abstract class NettePresenter implements \Typo3RectorPrefix20210421\Nette\Application\IPresenter
+use Typo3RectorPrefix20210422\Nette\Application\IPresenter;
+use Typo3RectorPrefix20210422\Nette\Application\IResponse;
+use Typo3RectorPrefix20210422\Nette\Application\Request;
+abstract class NettePresenter implements \Typo3RectorPrefix20210422\Nette\Application\IPresenter
 {
-    public function run(\Typo3RectorPrefix20210421\Nette\Application\Request $request) : \Typo3RectorPrefix20210421\Nette\Application\IResponse
+    public function run(\Typo3RectorPrefix20210422\Nette\Application\Request $request) : \Typo3RectorPrefix20210422\Nette\Application\IResponse
     {
     }
 }

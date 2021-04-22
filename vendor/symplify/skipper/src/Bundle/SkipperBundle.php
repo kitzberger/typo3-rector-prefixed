@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210421\Symplify\Skipper\Bundle;
+namespace Typo3RectorPrefix20210422\Symplify\Skipper\Bundle;
 
-use Typo3RectorPrefix20210421\Symfony\Component\HttpKernel\Bundle\Bundle;
-use Typo3RectorPrefix20210421\Symplify\Skipper\DependencyInjection\Extension\SkipperExtension;
-final class SkipperBundle extends \Typo3RectorPrefix20210421\Symfony\Component\HttpKernel\Bundle\Bundle
+use Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\Bundle\Bundle;
+use Typo3RectorPrefix20210422\Symplify\Skipper\DependencyInjection\Extension\SkipperExtension;
+final class SkipperBundle extends \Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\Bundle\Bundle
 {
-    protected function createContainerExtension() : \Typo3RectorPrefix20210421\Symplify\Skipper\DependencyInjection\Extension\SkipperExtension
+    protected function createContainerExtension() : \Typo3RectorPrefix20210422\Symplify\Skipper\DependencyInjection\Extension\SkipperExtension
     {
-        return new \Typo3RectorPrefix20210421\Symplify\Skipper\DependencyInjection\Extension\SkipperExtension();
+        return new \Typo3RectorPrefix20210422\Symplify\Skipper\DependencyInjection\Extension\SkipperExtension();
     }
 }

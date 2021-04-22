@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210421\Symplify\SetConfigResolver;
+namespace Typo3RectorPrefix20210422\Symplify\SetConfigResolver;
 
-use Typo3RectorPrefix20210421\Symplify\SetConfigResolver\Config\SetsParameterResolver;
-use Typo3RectorPrefix20210421\Symplify\SetConfigResolver\Contract\SetProviderInterface;
-use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210422\Symplify\SetConfigResolver\Config\SetsParameterResolver;
+use Typo3RectorPrefix20210422\Symplify\SetConfigResolver\Contract\SetProviderInterface;
+use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\SetConfigResolver\Tests\ConfigResolver\SetAwareConfigResolverTest
  */
-final class SetAwareConfigResolver extends \Typo3RectorPrefix20210421\Symplify\SetConfigResolver\AbstractConfigResolver
+final class SetAwareConfigResolver extends \Typo3RectorPrefix20210422\Symplify\SetConfigResolver\AbstractConfigResolver
 {
     /**
      * @var SetsParameterResolver
@@ -19,10 +19,10 @@ final class SetAwareConfigResolver extends \Typo3RectorPrefix20210421\Symplify\S
      * @var SetResolver
      */
     private $setResolver;
-    public function __construct(\Typo3RectorPrefix20210421\Symplify\SetConfigResolver\Contract\SetProviderInterface $setProvider)
+    public function __construct(\Typo3RectorPrefix20210422\Symplify\SetConfigResolver\Contract\SetProviderInterface $setProvider)
     {
-        $this->setResolver = new \Typo3RectorPrefix20210421\Symplify\SetConfigResolver\SetResolver($setProvider);
-        $this->setsParameterResolver = new \Typo3RectorPrefix20210421\Symplify\SetConfigResolver\Config\SetsParameterResolver($this->setResolver);
+        $this->setResolver = new \Typo3RectorPrefix20210422\Symplify\SetConfigResolver\SetResolver($setProvider);
+        $this->setsParameterResolver = new \Typo3RectorPrefix20210422\Symplify\SetConfigResolver\Config\SetsParameterResolver($this->setResolver);
         parent::__construct();
     }
     /**

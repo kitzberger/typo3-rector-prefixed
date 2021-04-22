@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Rector\PHPStanExtensions\Tests\Rule\NoInstanceOfStaticReflectionRule\Fixture;
 
-use Typo3RectorPrefix20210421\Hoa\Math\Sampler\Random;
+use Typo3RectorPrefix20210422\Hoa\Math\Sampler\Random;
 final class IsAWithType
 {
     public function check($object)
     {
-        return \is_a($object, \Typo3RectorPrefix20210421\Hoa\Math\Sampler\Random::class);
+        return \is_a($object, \Typo3RectorPrefix20210422\Hoa\Math\Sampler\Random::class);
     }
 }

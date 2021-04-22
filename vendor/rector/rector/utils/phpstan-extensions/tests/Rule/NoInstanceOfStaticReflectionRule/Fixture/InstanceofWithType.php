@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Rector\PHPStanExtensions\Tests\Rule\NoInstanceOfStaticReflectionRule\Fixture;
 
-use Typo3RectorPrefix20210421\Hoa\Math\Sampler\Random;
+use Typo3RectorPrefix20210422\Hoa\Math\Sampler\Random;
 final class InstanceofWithType
 {
     public function check($object)
     {
-        if ($object instanceof \Typo3RectorPrefix20210421\Hoa\Math\Sampler\Random) {
+        if ($object instanceof \Typo3RectorPrefix20210422\Hoa\Math\Sampler\Random) {
             return \true;
         }
     }

@@ -7,10 +7,10 @@ use Rector\Core\Configuration\Configuration;
 use Rector\Core\Contract\Processor\FileProcessorInterface;
 use Rector\Core\Contract\Rector\RectorInterface;
 use Rector\Core\ValueObject\Application\File;
-use Typo3RectorPrefix20210421\Symfony\Component\Console\Style\SymfonyStyle;
+use Typo3RectorPrefix20210422\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileSystem;
+use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem;
 final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProcessorInterface, \Rector\Core\Contract\Rector\RectorInterface
 {
     /**
@@ -25,7 +25,7 @@ final class IconsProcessor implements \Rector\Core\Contract\Processor\FileProces
      * @var Configuration
      */
     private $configuration;
-    public function __construct(\Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210421\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
+    public function __construct(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Typo3RectorPrefix20210422\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Rector\Core\Configuration\Configuration $configuration)
     {
         $this->smartFileSystem = $smartFileSystem;
         $this->symfonyStyle = $symfonyStyle;

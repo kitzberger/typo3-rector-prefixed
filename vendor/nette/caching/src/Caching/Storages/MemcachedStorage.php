@@ -5,14 +5,14 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210421\Nette\Caching\Storages;
+namespace Typo3RectorPrefix20210422\Nette\Caching\Storages;
 
-use Typo3RectorPrefix20210421\Nette;
-use Typo3RectorPrefix20210421\Nette\Caching\Cache;
+use Typo3RectorPrefix20210422\Nette;
+use Typo3RectorPrefix20210422\Nette\Caching\Cache;
 /**
  * Memcached storage using memcached extension.
  */
-class MemcachedStorage implements \Typo3RectorPrefix20210421\Nette\Caching\Storage, \Typo3RectorPrefix20210421\Nette\Caching\BulkReader
+class MemcachedStorage implements \Typo3RectorPrefix20210422\Nette\Caching\Storage, \Typo3RectorPrefix20210422\Nette\Caching\BulkReader
 {
     use Nette\SmartObject;
     /** @internal cache structure */
@@ -30,10 +30,10 @@ class MemcachedStorage implements \Typo3RectorPrefix20210421\Nette\Caching\Stora
     {
         return \extension_loaded('memcached');
     }
-    public function __construct(string $host = 'localhost', int $port = 11211, string $prefix = '', \Typo3RectorPrefix20210421\Nette\Caching\Storages\Journal $journal = null)
+    public function __construct(string $host = 'localhost', int $port = 11211, string $prefix = '', \Typo3RectorPrefix20210422\Nette\Caching\Storages\Journal $journal = null)
     {
         if (!static::isAvailable()) {
-            throw new \Typo3RectorPrefix20210421\Nette\NotSupportedException("PHP extension 'memcached' is not loaded.");
+            throw new \Typo3RectorPrefix20210422\Nette\NotSupportedException("PHP extension 'memcached' is not loaded.");
         }
         $this->prefix = $prefix;
         $this->journal = $journal;
@@ -47,7 +47,7 @@ class MemcachedStorage implements \Typo3RectorPrefix20210421\Nette\Caching\Stora
         if (@$this->memcached->addServer($host, $port, 1) === \false) {
             // @ is escalated to exception
             $error = \error_get_last();
-            throw new \Typo3RectorPrefix20210421\Nette\InvalidStateException("Memcached::addServer(): {$error['message']}.");
+            throw new \Typo3RectorPrefix20210422\Nette\InvalidStateException("Memcached::addServer(): {$error['message']}.");
         }
     }
     public function getConnection() : \Memcached
@@ -68,7 +68,7 @@ class MemcachedStorage implements \Typo3RectorPrefix20210421\Nette\Caching\Stora
         //     callbacks => array of callbacks (function, args)
         // )
         // verify dependencies
-        if (!empty($meta[self::META_CALLBACKS]) && !\Typo3RectorPrefix20210421\Nette\Caching\Cache::checkCallbacks($meta[self::META_CALLBACKS])) {
+        if (!empty($meta[self::META_CALLBACKS]) && !\Typo3RectorPrefix20210422\Nette\Caching\Cache::checkCallbacks($meta[self::META_CALLBACKS])) {
             $this->memcached->delete($key, 0);
             return null;
         }
@@ -87,7 +87,7 @@ class MemcachedStorage implements \Typo3RectorPrefix20210421\Nette\Caching\Stora
         $result = [];
         $deleteKeys = [];
         foreach ($metas as $prefixedKey => $meta) {
-            if (!empty($meta[self::META_CALLBACKS]) && !\Typo3RectorPrefix20210421\Nette\Caching\Cache::checkCallbacks($meta[self::META_CALLBACKS])) {
+            if (!empty($meta[self::META_CALLBACKS]) && !\Typo3RectorPrefix20210422\Nette\Caching\Cache::checkCallbacks($meta[self::META_CALLBACKS])) {
                 $deleteKeys[] = $prefixedKey;
             } else {
                 $result[$keys[$prefixedKey]] = $meta[self::META_DATA];
@@ -106,25 +106,25 @@ class MemcachedStorage implements \Typo3RectorPrefix20210421\Nette\Caching\Stora
     }
     public function write(string $key, $data, array $dp) : void
     {
-        if (isset($dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::ITEMS])) {
-            throw new \Typo3RectorPrefix20210421\Nette\NotSupportedException('Dependent items are not supported by MemcachedStorage.');
+        if (isset($dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::ITEMS])) {
+            throw new \Typo3RectorPrefix20210422\Nette\NotSupportedException('Dependent items are not supported by MemcachedStorage.');
         }
         $key = \urlencode($this->prefix . $key);
         $meta = [self::META_DATA => $data];
         $expire = 0;
-        if (isset($dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::EXPIRATION])) {
-            $expire = (int) $dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::EXPIRATION];
-            if (!empty($dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::SLIDING])) {
+        if (isset($dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::EXPIRATION])) {
+            $expire = (int) $dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::EXPIRATION];
+            if (!empty($dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::SLIDING])) {
                 $meta[self::META_DELTA] = $expire;
                 // sliding time
             }
         }
-        if (isset($dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::CALLBACKS])) {
-            $meta[self::META_CALLBACKS] = $dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::CALLBACKS];
+        if (isset($dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::CALLBACKS])) {
+            $meta[self::META_CALLBACKS] = $dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::CALLBACKS];
         }
-        if (isset($dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::TAGS]) || isset($dp[\Typo3RectorPrefix20210421\Nette\Caching\Cache::PRIORITY])) {
+        if (isset($dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::TAGS]) || isset($dp[\Typo3RectorPrefix20210422\Nette\Caching\Cache::PRIORITY])) {
             if (!$this->journal) {
-                throw new \Typo3RectorPrefix20210421\Nette\InvalidStateException('CacheJournal has not been provided.');
+                throw new \Typo3RectorPrefix20210422\Nette\InvalidStateException('CacheJournal has not been provided.');
             }
             $this->journal->write($key, $dp);
         }
@@ -136,7 +136,7 @@ class MemcachedStorage implements \Typo3RectorPrefix20210421\Nette\Caching\Stora
     }
     public function clean(array $conditions) : void
     {
-        if (!empty($conditions[\Typo3RectorPrefix20210421\Nette\Caching\Cache::ALL])) {
+        if (!empty($conditions[\Typo3RectorPrefix20210422\Nette\Caching\Cache::ALL])) {
             $this->memcached->flush();
         } elseif ($this->journal) {
             foreach ($this->journal->clean($conditions) as $entry) {

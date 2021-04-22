@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation;
+namespace Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation;
 
 /**
  * HTTP header utility functions.

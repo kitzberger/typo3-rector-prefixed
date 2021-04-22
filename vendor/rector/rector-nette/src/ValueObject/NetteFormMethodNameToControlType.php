@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Nette\ValueObject;
 
-use Typo3RectorPrefix20210421\Nette\Forms\Controls\BaseControl;
+use Typo3RectorPrefix20210422\Nette\Forms\Controls\BaseControl;
 final class NetteFormMethodNameToControlType
 {
     /**

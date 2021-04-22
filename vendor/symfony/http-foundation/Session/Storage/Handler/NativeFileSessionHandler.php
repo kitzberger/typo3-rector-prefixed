@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210421\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * Native session handler using PHP's built in file storage.

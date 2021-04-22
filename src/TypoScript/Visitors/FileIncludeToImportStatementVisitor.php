@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Visitors;
 
-use Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\AST\FileIncludeStatement;
-use Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\AST\Statement;
+use Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\FileIncludeStatement;
+use Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\Statement;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 final class FileIncludeToImportStatementVisitor extends \Ssch\TYPO3Rector\TypoScript\Visitors\AbstractVisitor
 {
-    public function enterNode(\Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void
+    public function enterNode(\Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void
     {
-        if (!$statement instanceof \Typo3RectorPrefix20210421\Helmich\TypoScriptParser\Parser\AST\FileIncludeStatement) {
+        if (!$statement instanceof \Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\FileIncludeStatement) {
             return;
         }
         if (null !== $statement->condition) {

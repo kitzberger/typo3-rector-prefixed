@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210421\Symfony\Component\ErrorHandler\ErrorRenderer;
+namespace Typo3RectorPrefix20210422\Symfony\Component\ErrorHandler\ErrorRenderer;
 
-use Typo3RectorPrefix20210421\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use Typo3RectorPrefix20210422\Symfony\Component\ErrorHandler\Exception\FlattenException;
 /**
  * Formats an exception to be used as response content.
  *
@@ -21,5 +21,5 @@ interface ErrorRendererInterface
     /**
      * Renders a Throwable as a FlattenException.
      */
-    public function render(\Throwable $exception) : \Typo3RectorPrefix20210421\Symfony\Component\ErrorHandler\Exception\FlattenException;
+    public function render(\Throwable $exception) : \Typo3RectorPrefix20210422\Symfony\Component\ErrorHandler\Exception\FlattenException;
 }

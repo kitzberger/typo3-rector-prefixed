@@ -5,7 +5,7 @@ namespace Rector\PHPStanExtensions\Tests\Rule\NoInstanceOfStaticReflectionRule\F
 
 use PhpParser\Node;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210421\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210422\Webmozart\Assert\Assert;
 final class SkipIsAGenericClassString
 {
     /**

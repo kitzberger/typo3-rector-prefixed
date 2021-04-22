@@ -12,7 +12,7 @@ use Rector\Renaming\ValueObject\MethodCallRenameWithArrayKey;
 use Rector\Transform\ValueObject\MethodCallToAnotherMethodCallWithArguments;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210421\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210422\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\Transform\Rector\MethodCall\MethodCallToAnotherMethodCallWithArgumentsRector\MethodCallToAnotherMethodCallWithArgumentsRectorTest
  */
@@ -66,7 +66,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $methodCallRenamesWithAddedArguments = $configuration[self::METHOD_CALL_RENAMES_WITH_ADDED_ARGUMENTS] ?? [];
-        \Typo3RectorPrefix20210421\Webmozart\Assert\Assert::allIsInstanceOf($methodCallRenamesWithAddedArguments, \Rector\Transform\ValueObject\MethodCallToAnotherMethodCallWithArguments::class);
+        \Typo3RectorPrefix20210422\Webmozart\Assert\Assert::allIsInstanceOf($methodCallRenamesWithAddedArguments, \Rector\Transform\ValueObject\MethodCallToAnotherMethodCallWithArguments::class);
         $this->methodCallRenamesWithAddedArguments = $methodCallRenamesWithAddedArguments;
     }
 }

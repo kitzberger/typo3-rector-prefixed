@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ParameterBag;
+namespace Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\ParameterBag;
 
-use Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\Container;
+use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Container;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ContainerBag extends \Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
+class ContainerBag extends \Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
 {
     private $container;
-    public function __construct(\Typo3RectorPrefix20210421\Symfony\Component\DependencyInjection\Container $container)
+    public function __construct(\Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Container $container)
     {
         $this->container = $container;
     }

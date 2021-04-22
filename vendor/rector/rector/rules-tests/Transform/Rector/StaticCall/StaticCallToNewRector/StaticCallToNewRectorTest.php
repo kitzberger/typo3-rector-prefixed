@@ -5,13 +5,13 @@ namespace Rector\Tests\Transform\Rector\StaticCall\StaticCallToNewRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
 final class StaticCallToNewRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

@@ -22,7 +22,7 @@ use Rector\Renaming\ValueObject\MethodCallRename;
 use Rector\Renaming\ValueObject\MethodCallRenameWithArrayKey;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210421\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210422\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\Renaming\Rector\MethodCall\RenameMethodRector\RenameMethodRectorTest
  */
@@ -101,7 +101,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $methodCallRenames = $configuration[self::METHOD_CALL_RENAMES] ?? [];
-        \Typo3RectorPrefix20210421\Webmozart\Assert\Assert::allIsInstanceOf($methodCallRenames, \Rector\Renaming\Contract\MethodCallRenameInterface::class);
+        \Typo3RectorPrefix20210422\Webmozart\Assert\Assert::allIsInstanceOf($methodCallRenames, \Rector\Renaming\Contract\MethodCallRenameInterface::class);
         $this->methodCallRenames = $methodCallRenames;
         foreach ($methodCallRenames as $methodCallRename) {
             $this->methodCallRenameCollector->addMethodCallRename($methodCallRename);

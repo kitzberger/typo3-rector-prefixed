@@ -5,13 +5,13 @@ namespace Rector\Tests\CodingStyle\Rector\PostInc\PostIncDecToPreIncDecRector;
 
 use Iterator;
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
-use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
 final class PostIncDecToPreIncDecRectorTest extends \Rector\Testing\PHPUnit\AbstractRectorTestCase
 {
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210421\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function test(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->doTestFileInfo($fileInfo);
     }

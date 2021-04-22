@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210421\Symfony\Component\Config\Resource;
+namespace Typo3RectorPrefix20210422\Symfony\Component\Config\Resource;
 
 /**
  * FileResource represents a resource stored on the filesystem.
@@ -19,7 +19,7 @@ namespace Typo3RectorPrefix20210421\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class FileResource implements \Typo3RectorPrefix20210421\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class FileResource implements \Typo3RectorPrefix20210422\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     /**
      * @var string|false

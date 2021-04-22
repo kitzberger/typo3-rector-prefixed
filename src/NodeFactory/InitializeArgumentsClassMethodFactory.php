@@ -34,7 +34,7 @@ use Rector\StaticTypeMapper\StaticTypeMapper;
 use Rector\StaticTypeMapper\ValueObject\Type\ShortenedObjectType;
 use Rector\TypeDeclaration\TypeInferer\ParamTypeInferer;
 use ReflectionClass;
-use Typo3RectorPrefix20210421\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+use Typo3RectorPrefix20210422\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
 final class InitializeArgumentsClassMethodFactory
 {
     /**
@@ -102,7 +102,7 @@ final class InitializeArgumentsClassMethodFactory
     }
     private function createNewClassMethod() : \PhpParser\Node\Stmt\ClassMethod
     {
-        $methodBuilder = new \Typo3RectorPrefix20210421\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(self::METHOD_NAME);
+        $methodBuilder = new \Typo3RectorPrefix20210422\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder(self::METHOD_NAME);
         $methodBuilder->makePublic();
         $methodBuilder->setReturnType('void');
         return $methodBuilder->getNode();

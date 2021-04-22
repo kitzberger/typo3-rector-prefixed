@@ -12,7 +12,7 @@ use PhpParser\NodeTraverser;
 use PHPStan\Type\ObjectType;
 use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\NodeTypeResolver\NodeTypeResolver;
-use Typo3RectorPrefix20210421\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class OnFormVariableMethodCallsCollector
 {
     /**
@@ -27,7 +27,7 @@ final class OnFormVariableMethodCallsCollector
      * @var NodeComparator
      */
     private $nodeComparator;
-    public function __construct(\Typo3RectorPrefix20210421\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
+    public function __construct(\Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->nodeTypeResolver = $nodeTypeResolver;

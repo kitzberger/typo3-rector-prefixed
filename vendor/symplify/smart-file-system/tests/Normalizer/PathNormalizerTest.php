@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210421\Symplify\SmartFileSystem\Tests\Normalizer;
+namespace Typo3RectorPrefix20210422\Symplify\SmartFileSystem\Tests\Normalizer;
 
 use Iterator;
-use Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase;
-use Typo3RectorPrefix20210421\Symplify\SmartFileSystem\Normalizer\PathNormalizer;
-final class PathNormalizerTest extends \Typo3RectorPrefix20210421\PHPUnit\Framework\TestCase
+use Typo3RectorPrefix20210422\PHPUnit\Framework\TestCase;
+use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\Normalizer\PathNormalizer;
+final class PathNormalizerTest extends \Typo3RectorPrefix20210422\PHPUnit\Framework\TestCase
 {
     /**
      * @var PathNormalizer
@@ -14,7 +14,7 @@ final class PathNormalizerTest extends \Typo3RectorPrefix20210421\PHPUnit\Framew
     private $pathNormalizer;
     protected function setUp() : void
     {
-        $this->pathNormalizer = new \Typo3RectorPrefix20210421\Symplify\SmartFileSystem\Normalizer\PathNormalizer();
+        $this->pathNormalizer = new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\Normalizer\PathNormalizer();
     }
     /**
      * @dataProvider provideData()
@@ -31,6 +31,6 @@ final class PathNormalizerTest extends \Typo3RectorPrefix20210421\PHPUnit\Framew
     {
         // based on Linux
         (yield ['/any/path', '/any/path']);
-        (yield ['Typo3RectorPrefix20210421\\any\\path', '/any/path']);
+        (yield ['Typo3RectorPrefix20210422\\any\\path', '/any/path']);
     }
 }

@@ -6,8 +6,8 @@ namespace Ssch\TYPO3Rector\PHPStan\Tests\Rules\AddChangelogDocBlockForRectorClas
 use Iterator;
 use PHPStan\Rules\Rule;
 use Ssch\TYPO3Rector\PHPStan\Rules\AddChangelogDocBlockForRectorClass;
-use Typo3RectorPrefix20210422\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
-final class AddChangelogDocBlockForRectorClassTest extends \Typo3RectorPrefix20210422\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
+use Typo3RectorPrefix20210423\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase;
+final class AddChangelogDocBlockForRectorClassTest extends \Typo3RectorPrefix20210423\Symplify\PHPStanExtensions\Testing\AbstractServiceAwareRuleTestCase
 {
     /**
      * @dataProvider provideData()

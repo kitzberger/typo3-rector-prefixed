@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\HttpCache;
+namespace Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\HttpCache;
 
-use Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\IpUtils;
-use Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\HttpKernelInterface;
+use Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\IpUtils;
+use Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
@@ -21,15 +21,15 @@ use Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\HttpKernelInterface;
  */
 class SubRequestHandler
 {
-    public static function handle(\Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request $request, int $type, bool $catch) : \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Response
+    public static function handle(\Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request $request, int $type, bool $catch) : \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Response
     {
         // save global state related to trusted headers and proxies
-        $trustedProxies = \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::getTrustedProxies();
-        $trustedHeaderSet = \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet();
+        $trustedProxies = \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::getTrustedProxies();
+        $trustedHeaderSet = \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet();
         // remove untrusted values
         $remoteAddr = $request->server->get('REMOTE_ADDR');
-        if (!\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\IpUtils::checkIp($remoteAddr, $trustedProxies)) {
-            $trustedHeaders = ['FORWARDED' => $trustedHeaderSet & \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED, 'X_FORWARDED_FOR' => $trustedHeaderSet & \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR, 'X_FORWARDED_HOST' => $trustedHeaderSet & \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_HOST, 'X_FORWARDED_PROTO' => $trustedHeaderSet & \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PROTO, 'X_FORWARDED_PORT' => $trustedHeaderSet & \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PORT];
+        if (!\Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\IpUtils::checkIp($remoteAddr, $trustedProxies)) {
+            $trustedHeaders = ['FORWARDED' => $trustedHeaderSet & \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED, 'X_FORWARDED_FOR' => $trustedHeaderSet & \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR, 'X_FORWARDED_HOST' => $trustedHeaderSet & \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_HOST, 'X_FORWARDED_PROTO' => $trustedHeaderSet & \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PROTO, 'X_FORWARDED_PORT' => $trustedHeaderSet & \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PORT];
             foreach (\array_filter($trustedHeaders) as $name => $key) {
                 $request->headers->remove($name);
                 $request->server->remove('HTTP_' . $name);
@@ -47,16 +47,16 @@ class SubRequestHandler
             $trustedValues[] = \sprintf('for="%s"', $remoteAddr);
         }
         // set trusted values, reusing as much as possible the global trusted settings
-        if (\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet) {
+        if (\Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet) {
             $trustedValues[0] .= \sprintf(';host="%s";proto=%s', $request->getHttpHost(), $request->getScheme());
             $request->headers->set('Forwarded', $v = \implode(', ', $trustedValues));
             $request->server->set('HTTP_FORWARDED', $v);
         }
-        if (\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR & $trustedHeaderSet) {
+        if (\Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR & $trustedHeaderSet) {
             $request->headers->set('X-Forwarded-For', $v = \implode(', ', $trustedIps));
             $request->server->set('HTTP_X_FORWARDED_FOR', $v);
-        } elseif (!(\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet)) {
-            \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet | \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR);
+        } elseif (!(\Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet)) {
+            \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet | \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR);
             $request->headers->set('X-Forwarded-For', $v = \implode(', ', $trustedIps));
             $request->server->set('HTTP_X_FORWARDED_FOR', $v);
         }
@@ -64,14 +64,14 @@ class SubRequestHandler
         // which is the core responsibility of this method
         $request->server->set('REMOTE_ADDR', '127.0.0.1');
         // ensure 127.0.0.1 is set as trusted proxy
-        if (!\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\IpUtils::checkIp('127.0.0.1', $trustedProxies)) {
-            \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::setTrustedProxies(\array_merge($trustedProxies, ['127.0.0.1']), \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet());
+        if (!\Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\IpUtils::checkIp('127.0.0.1', $trustedProxies)) {
+            \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::setTrustedProxies(\array_merge($trustedProxies, ['127.0.0.1']), \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet());
         }
         try {
             return $kernel->handle($request, $type, $catch);
         } finally {
             // restore global state
-            \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet);
+            \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet);
         }
     }
 }

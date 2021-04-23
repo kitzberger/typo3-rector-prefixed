@@ -12,12 +12,11 @@ use PHPStan\Type\Generic\GenericClassStringType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\NodeTypeResolver\TypeComparator\ArrayTypeComparator;
 use Rector\StaticTypeMapper\TypeFactory\UnionTypeFactory;
+use Rector\Testing\PHPUnit\AbstractTestCase;
 use Rector\Tests\NodeTypeResolver\TypeComparator\Source\SomeGenericTypeObject;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ArrayTypeComparatorTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+final class ArrayTypeComparatorTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var ArrayTypeComparator
@@ -25,7 +24,7 @@ final class ArrayTypeComparatorTest extends \Typo3RectorPrefix20210422\Symplify\
     private $arrayTypeComparator;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->arrayTypeComparator = $this->getService(\Rector\NodeTypeResolver\TypeComparator\ArrayTypeComparator::class);
     }
     /**

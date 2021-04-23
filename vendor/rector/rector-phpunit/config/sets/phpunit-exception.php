@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210422;
+namespace Typo3RectorPrefix20210423;
 
 use Rector\PHPUnit\Rector\ClassMethod\ExceptionAnnotationRector;
 use Rector\PHPUnit\Rector\MethodCall\DelegateExceptionArgumentsRector;
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
-use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
-return static function (\Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     # handles 2nd and 3rd argument of setExpectedException
     $services->set(\Rector\PHPUnit\Rector\MethodCall\DelegateExceptionArgumentsRector::class);

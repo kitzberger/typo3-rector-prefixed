@@ -10,11 +10,10 @@ use PHPStan\PhpDocParser\Ast\Type\ArrayShapeNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use PHPStan\Type\ArrayType;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\StaticTypeMapper\Naming\NameScopeFactory;
 use Rector\StaticTypeMapper\PhpDoc\PhpDocTypeMapper;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class PhpDocTypeMapperTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class PhpDocTypeMapperTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var PhpDocTypeMapper
@@ -26,7 +25,7 @@ final class PhpDocTypeMapperTest extends \Typo3RectorPrefix20210422\Symplify\Pac
     private $nameScopeFactory;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->phpDocTypeMapper = $this->getService(\Rector\StaticTypeMapper\PhpDoc\PhpDocTypeMapper::class);
         $this->nameScopeFactory = $this->getService(\Rector\StaticTypeMapper\Naming\NameScopeFactory::class);
     }

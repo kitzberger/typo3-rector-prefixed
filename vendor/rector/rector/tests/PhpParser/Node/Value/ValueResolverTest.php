@@ -8,11 +8,10 @@ use PhpParser\BuilderFactory;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\BinaryOp\Plus;
 use PhpParser\Node\Name\FullyQualified;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\Value\ValueResolver;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ValueResolverTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class ValueResolverTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var ValueResolver
@@ -20,7 +19,7 @@ final class ValueResolverTest extends \Typo3RectorPrefix20210422\Symplify\Packag
     private $valueResolver;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->valueResolver = $this->getService(\Rector\Core\PhpParser\Node\Value\ValueResolver::class);
     }
     /**

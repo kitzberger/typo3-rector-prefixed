@@ -6,15 +6,14 @@ namespace Rector\Tests\Naming\ValueObjectFactory\PropertyRenameFactory;
 use Iterator;
 use PhpParser\Node\Stmt\Property;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\FileSystemRector\Parser\FileInfoParser;
 use Rector\Naming\ExpectedNameResolver\MatchPropertyTypeExpectedNameResolver;
 use Rector\Naming\ValueObject\PropertyRename;
 use Rector\Naming\ValueObjectFactory\PropertyRenameFactory;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
-final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+final class PropertyRenameFactoryTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var PropertyRenameFactory
@@ -34,7 +33,7 @@ final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210422\Symplif
     private $matchPropertyTypeExpectedNameResolver;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->propertyRenameFactory = $this->getService(\Rector\Naming\ValueObjectFactory\PropertyRenameFactory::class);
         $this->matchPropertyTypeExpectedNameResolver = $this->getService(\Rector\Naming\ExpectedNameResolver\MatchPropertyTypeExpectedNameResolver::class);
         $this->fileInfoParser = $this->getService(\Rector\FileSystemRector\Parser\FileInfoParser::class);
@@ -43,7 +42,7 @@ final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210422\Symplif
     /**
      * @dataProvider provideData()
      */
-    public function test(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fileInfoWithProperty, string $expectedName, string $currentName) : void
+    public function test(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $fileInfoWithProperty, string $expectedName, string $currentName) : void
     {
         $property = $this->getPropertyFromFileInfo($fileInfoWithProperty);
         $expectedPropertyName = $this->matchPropertyTypeExpectedNameResolver->resolve($property);
@@ -62,9 +61,9 @@ final class PropertyRenameFactoryTest extends \Typo3RectorPrefix20210422\Symplif
      */
     public function provideData() : \Iterator
     {
-        (yield [new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/skip_some_class.php.inc'), 'eliteManager', 'eventManager']);
+        (yield [new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/skip_some_class.php.inc'), 'eliteManager', 'eventManager']);
     }
-    private function getPropertyFromFileInfo(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : \PhpParser\Node\Stmt\Property
+    private function getPropertyFromFileInfo(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : \PhpParser\Node\Stmt\Property
     {
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($fileInfo);
         $property = $this->betterNodeFinder->findFirstInstanceOf($nodes, \PhpParser\Node\Stmt\Property::class);

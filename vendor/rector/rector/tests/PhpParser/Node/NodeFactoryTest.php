@@ -8,10 +8,9 @@ use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Scalar\String_;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\NodeFactory;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class NodeFactoryTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class NodeFactoryTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var NodeFactory
@@ -19,7 +18,7 @@ final class NodeFactoryTest extends \Typo3RectorPrefix20210422\Symplify\PackageB
     private $nodeFactory;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->nodeFactory = $this->getService(\Rector\Core\PhpParser\Node\NodeFactory::class);
     }
     /**

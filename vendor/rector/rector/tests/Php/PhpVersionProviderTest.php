@@ -3,10 +3,9 @@
 declare (strict_types=1);
 namespace Rector\Core\Tests\Php;
 
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\Php\PhpVersionProvider;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class PhpVersionProviderTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class PhpVersionProviderTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var PhpVersionProvider
@@ -14,7 +13,7 @@ final class PhpVersionProviderTest extends \Typo3RectorPrefix20210422\Symplify\P
     private $phpVersionProvider;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->phpVersionProvider = $this->getService(\Rector\Core\Php\PhpVersionProvider::class);
     }
     public function test() : void

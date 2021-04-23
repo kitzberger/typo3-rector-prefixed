@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Rector\RectorInstaller;
 
-use Typo3RectorPrefix20210422\Composer\Installer\InstallationManager;
-use Typo3RectorPrefix20210422\Composer\IO\IOInterface;
-use Typo3RectorPrefix20210422\Composer\Package\PackageInterface;
-use Typo3RectorPrefix20210422\Composer\Repository\InstalledRepositoryInterface;
-use Typo3RectorPrefix20210422\Composer\Util\Filesystem as ComposerFilesystem;
+use Typo3RectorPrefix20210423\Composer\Installer\InstallationManager;
+use Typo3RectorPrefix20210423\Composer\IO\IOInterface;
+use Typo3RectorPrefix20210423\Composer\Package\PackageInterface;
+use Typo3RectorPrefix20210423\Composer\Repository\InstalledRepositoryInterface;
+use Typo3RectorPrefix20210423\Composer\Util\Filesystem as ComposerFilesystem;
 final class PluginInstaller
 {
     /**
@@ -61,7 +61,7 @@ CODE_SAMPLE;
      * @var ComposerFilesystem
      */
     private $composerFilesystem;
-    public function __construct(\Rector\RectorInstaller\Filesystem $filesystem, \Typo3RectorPrefix20210422\Composer\Repository\InstalledRepositoryInterface $localRepository, \Typo3RectorPrefix20210422\Composer\IO\IOInterface $io, \Typo3RectorPrefix20210422\Composer\Installer\InstallationManager $installationManager, \Typo3RectorPrefix20210422\Composer\Util\Filesystem $composerFilesystem, string $configurationFile)
+    public function __construct(\Rector\RectorInstaller\Filesystem $filesystem, \Typo3RectorPrefix20210423\Composer\Repository\InstalledRepositoryInterface $localRepository, \Typo3RectorPrefix20210423\Composer\IO\IOInterface $io, \Typo3RectorPrefix20210423\Composer\Installer\InstallationManager $installationManager, \Typo3RectorPrefix20210423\Composer\Util\Filesystem $composerFilesystem, string $configurationFile)
     {
         $this->filesystem = $filesystem;
         $this->localRepository = $localRepository;
@@ -98,7 +98,7 @@ CODE_SAMPLE;
             $this->io->write(\sprintf('> <info>%s:</info> installed', $name));
         }
     }
-    private function shouldSkip(\Typo3RectorPrefix20210422\Composer\Package\PackageInterface $package) : bool
+    private function shouldSkip(\Typo3RectorPrefix20210423\Composer\Package\PackageInterface $package) : bool
     {
         if ($package->getType() === self::RECTOR_EXTENSION_TYPE) {
             return \false;

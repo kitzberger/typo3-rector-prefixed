@@ -4,10 +4,9 @@ declare (strict_types=1);
 namespace Rector\Core\Tests\Php\PhpVersionResolver\ProjectComposerJsonPhpVersionResolver;
 
 use Iterator;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\Php\PhpVersionResolver\ProjectComposerJsonPhpVersionResolver;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ProjectComposerJsonPhpVersionResolverTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class ProjectComposerJsonPhpVersionResolverTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var ProjectComposerJsonPhpVersionResolver
@@ -15,7 +14,7 @@ final class ProjectComposerJsonPhpVersionResolverTest extends \Typo3RectorPrefix
     private $projectComposerJsonPhpVersionResolver;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->projectComposerJsonPhpVersionResolver = $this->getService(\Rector\Core\Php\PhpVersionResolver\ProjectComposerJsonPhpVersionResolver::class);
     }
     /**

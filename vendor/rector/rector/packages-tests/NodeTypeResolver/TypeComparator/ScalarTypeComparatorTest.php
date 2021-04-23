@@ -8,10 +8,9 @@ use PHPStan\Type\BooleanType;
 use PHPStan\Type\ClassStringType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\Type;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\NodeTypeResolver\TypeComparator\ScalarTypeComparator;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ScalarTypeComparatorTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class ScalarTypeComparatorTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var ScalarTypeComparator
@@ -19,7 +18,7 @@ final class ScalarTypeComparatorTest extends \Typo3RectorPrefix20210422\Symplify
     private $scalarTypeComparator;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->scalarTypeComparator = $this->getService(\Rector\NodeTypeResolver\TypeComparator\ScalarTypeComparator::class);
     }
     /**

@@ -9,10 +9,9 @@ use PHPStan\Type\IntegerType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\UnionType;
-use Rector\Core\HttpKernel\RectorKernel;
+use Rector\Testing\PHPUnit\AbstractTestCase;
 use Rector\TypeDeclaration\TypeNormalizer;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class TypeNormalizerTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+final class TypeNormalizerTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var TypeNormalizer
@@ -20,7 +19,7 @@ final class TypeNormalizerTest extends \Typo3RectorPrefix20210422\Symplify\Packa
     private $typeNormalizer;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->typeNormalizer = $this->getService(\Rector\TypeDeclaration\TypeNormalizer::class);
     }
     /**

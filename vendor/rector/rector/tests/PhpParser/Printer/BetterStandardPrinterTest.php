@@ -10,12 +10,11 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Expr\Yield_;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt\Expression;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Printer\BetterStandardPrinter;
 use Rector\NodeTypeResolver\Node\AttributeKey;
-use Typo3RectorPrefix20210422\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder;
+final class BetterStandardPrinterTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var BetterStandardPrinter
@@ -23,7 +22,7 @@ final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210422\Symplif
     private $betterStandardPrinter;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->betterStandardPrinter = $this->getService(\Rector\Core\PhpParser\Printer\BetterStandardPrinter::class);
     }
     public function testAddingCommentOnSomeNodesFail() : void
@@ -32,7 +31,7 @@ final class BetterStandardPrinterTest extends \Typo3RectorPrefix20210422\Symplif
         // cannot be on MethodCall, must be Expression
         $methodCallExpression = new \PhpParser\Node\Stmt\Expression($methodCall);
         $methodCallExpression->setAttribute(\Rector\NodeTypeResolver\Node\AttributeKey::COMMENTS, [new \PhpParser\Comment('// todo: fix')]);
-        $methodBuilder = new \Typo3RectorPrefix20210422\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('run');
+        $methodBuilder = new \Typo3RectorPrefix20210423\Symplify\Astral\ValueObject\NodeBuilder\MethodBuilder('run');
         $methodBuilder->addStmt($methodCallExpression);
         $classMethod = $methodBuilder->getNode();
         $printed = $this->betterStandardPrinter->print($classMethod) . \PHP_EOL;

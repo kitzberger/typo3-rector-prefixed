@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Rector\Compiler\Downgrade;
 
-use Typo3RectorPrefix20210422\Nette\Utils\Strings;
-use Typo3RectorPrefix20210422\Symfony\Component\Process\Process;
+use Typo3RectorPrefix20210423\Nette\Utils\Strings;
+use Typo3RectorPrefix20210423\Symfony\Component\Process\Process;
 final class WhyNotVendorPackagesResolver
 {
     /**
@@ -34,7 +34,7 @@ final class WhyNotVendorPackagesResolver
     private function resolveWhyNotPackageNames(string $targetPhpVersion) : array
     {
         $commandOutput = $this->runCommandToOutput(['composer', 'why-not', 'php', $targetPhpVersion]);
-        $matches = \Typo3RectorPrefix20210422\Nette\Utils\Strings::matchAll($commandOutput, self::PACKAGE_NAME_REGEX);
+        $matches = \Typo3RectorPrefix20210423\Nette\Utils\Strings::matchAll($commandOutput, self::PACKAGE_NAME_REGEX);
         $packageNames = [];
         foreach ($matches as $match) {
             $packageNames[] = $match['package_name'];
@@ -47,7 +47,7 @@ final class WhyNotVendorPackagesResolver
     private function resolvePackageNamesToPaths() : array
     {
         $commandOutput = $this->runCommandToOutput(['composer', 'info', '--path']);
-        $matches = \Typo3RectorPrefix20210422\Nette\Utils\Strings::matchAll($commandOutput, self::PACKAGE_NAME_TO_PACKAGE_PATH_REGEX);
+        $matches = \Typo3RectorPrefix20210423\Nette\Utils\Strings::matchAll($commandOutput, self::PACKAGE_NAME_TO_PACKAGE_PATH_REGEX);
         $packageNameToPath = [];
         foreach ($matches as $match) {
             $packageName = (string) $match['package_name'];
@@ -61,7 +61,7 @@ final class WhyNotVendorPackagesResolver
      */
     private function runCommandToOutput(array $commandLine) : string
     {
-        $process = new \Typo3RectorPrefix20210422\Symfony\Component\Process\Process($commandLine);
+        $process = new \Typo3RectorPrefix20210423\Symfony\Component\Process\Process($commandLine);
         $process->run();
         return $process->getOutput();
     }

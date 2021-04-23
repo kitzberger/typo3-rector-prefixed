@@ -37,7 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Typo3RectorPrefix20210422\\Symfony\\Component\\Config\\": ""
+            "Typo3RectorPrefix20210423\\Symfony\\Component\\Config\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

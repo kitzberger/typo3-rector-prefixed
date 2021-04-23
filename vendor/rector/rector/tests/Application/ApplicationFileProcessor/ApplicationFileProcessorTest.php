@@ -5,11 +5,11 @@ namespace Rector\Core\Tests\Application\ApplicationFileProcessor;
 
 use Rector\Core\Application\ApplicationFileProcessor;
 use Rector\Core\Configuration\Configuration;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\ValueObjectFactory\Application\FileFactory;
 use Rector\Core\ValueObjectFactory\ProcessResultFactory;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ApplicationFileProcessorTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+final class ApplicationFileProcessorTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var ApplicationFileProcessor
@@ -25,7 +25,7 @@ final class ApplicationFileProcessorTest extends \Typo3RectorPrefix20210422\Symp
     private $processResultFactory;
     protected function setUp() : void
     {
-        $this->bootKernelWithConfigs(\Rector\Core\HttpKernel\RectorKernel::class, [__DIR__ . '/config/configured_rule.php']);
+        $this->bootFromConfigFileInfos([new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/config/configured_rule.php')]);
         /** @var Configuration $configuration */
         $configuration = $this->getService(\Rector\Core\Configuration\Configuration::class);
         $configuration->setIsDryRun(\true);

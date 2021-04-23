@@ -3,12 +3,11 @@
 declare (strict_types=1);
 namespace Rector\Core\Tests\PhpParser\Printer;
 
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Printer\FormatPerservingPrinter;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem;
-final class FormatPerservingPrinterTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileSystem;
+final class FormatPerservingPrinterTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var int
@@ -24,9 +23,9 @@ final class FormatPerservingPrinterTest extends \Typo3RectorPrefix20210422\Sympl
     private $smartFileSystem;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->formatPerservingPrinter = $this->getService(\Rector\Core\PhpParser\Printer\FormatPerservingPrinter::class);
-        $this->smartFileSystem = $this->getService(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $this->smartFileSystem = $this->getService(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileSystem::class);
     }
     protected function tearDown() : void
     {
@@ -37,7 +36,7 @@ final class FormatPerservingPrinterTest extends \Typo3RectorPrefix20210422\Sympl
         \mkdir(__DIR__ . '/Fixture');
         \touch(__DIR__ . '/Fixture/file.php');
         \chmod(__DIR__ . '/Fixture/file.php', self::EXPECTED_FILEMOD);
-        $fileInfo = new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/file.php');
+        $fileInfo = new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Fixture/file.php');
         $this->formatPerservingPrinter->printToFile($fileInfo, [], [], []);
         $this->assertSame(self::EXPECTED_FILEMOD, \fileperms(__DIR__ . '/Fixture/file.php') & 0777);
     }

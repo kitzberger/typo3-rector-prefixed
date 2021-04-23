@@ -5,13 +5,12 @@ namespace Rector\Tests\Defluent\NodeFactory\FluentChainMethodCallRootExtractor;
 
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Defluent\NodeAnalyzer\FluentChainMethodCallRootExtractor;
 use Rector\Defluent\ValueObject\AssignAndRootExpr;
 use Rector\Defluent\ValueObject\FluentCallsKind;
+use Rector\Testing\PHPUnit\AbstractTestCase;
 use Rector\Testing\TestingParser\TestingParser;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class FluentChainMethodCallRootExtractorTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+final class FluentChainMethodCallRootExtractorTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var FluentChainMethodCallRootExtractor
@@ -23,7 +22,7 @@ final class FluentChainMethodCallRootExtractorTest extends \Typo3RectorPrefix202
     private $testingParser;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->fluentChainMethodCallRootExtractor = $this->getService(\Rector\Defluent\NodeAnalyzer\FluentChainMethodCallRootExtractor::class);
         $this->testingParser = $this->getService(\Rector\Testing\TestingParser\TestingParser::class);
     }

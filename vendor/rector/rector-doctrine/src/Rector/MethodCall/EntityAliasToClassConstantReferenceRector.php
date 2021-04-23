@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Rector\Doctrine\Rector\MethodCall;
 
-use Typo3RectorPrefix20210422\Nette\Utils\Strings;
+use Typo3RectorPrefix20210423\Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Scalar\String_;
@@ -96,7 +96,7 @@ CODE_SAMPLE
     }
     private function isAlias(string $name) : bool
     {
-        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::contains($name, ':');
+        return \Typo3RectorPrefix20210423\Nette\Utils\Strings::contains($name, ':');
     }
     private function hasAlias(string $name) : bool
     {

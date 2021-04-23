@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210422;
+namespace Typo3RectorPrefix20210423;
 
 # https://github.com/symfony/symfony/blob/5.x/UPGRADE-5.1.md
 use PHPStan\Type\ObjectType;
@@ -21,9 +21,9 @@ use Rector\Transform\ValueObject\NewArgToMethodCall;
 use Rector\Transform\ValueObject\StaticCallToNew;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddParamTypeDeclarationRector;
 use Rector\TypeDeclaration\ValueObject\AddParamTypeDeclaration;
-use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\SymfonyPhpConfig\ValueObjectInliner;
-return static function (\Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     // see https://github.com/symfony/symfony/pull/36243
     $services->set(\Rector\Symfony\Rector\Class_\LogoutHandlerToLogoutEventSubscriberRector::class);

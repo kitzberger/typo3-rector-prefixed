@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210422\Symplify\SimplePhpDocParser\PhpDocNodeVisitor;
+namespace Typo3RectorPrefix20210423\Symplify\SimplePhpDocParser\PhpDocNodeVisitor;
 
 use PHPStan\PhpDocParser\Ast\Node;
-use Typo3RectorPrefix20210422\Symplify\SimplePhpDocParser\ValueObject\PhpDocAttributeKey;
+use Typo3RectorPrefix20210423\Symplify\SimplePhpDocParser\ValueObject\PhpDocAttributeKey;
 /**
  * Mimics https://github.com/nikic/PHP-Parser/blob/master/lib/PhpParser/NodeVisitor/ParentConnectingVisitor.php
  *
  * @see \Symplify\SimplePhpDocParser\Tests\PhpDocNodeVisitor\ParentConnectingPhpDocNodeVisitorTest
  */
-final class ParentConnectingPhpDocNodeVisitor extends \Typo3RectorPrefix20210422\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
+final class ParentConnectingPhpDocNodeVisitor extends \Typo3RectorPrefix20210423\Symplify\SimplePhpDocParser\PhpDocNodeVisitor\AbstractPhpDocNodeVisitor
 {
     /**
      * @var Node[]
@@ -24,7 +24,7 @@ final class ParentConnectingPhpDocNodeVisitor extends \Typo3RectorPrefix20210422
     {
         if ($this->stack !== []) {
             $parentNode = $this->stack[\count($this->stack) - 1];
-            $node->setAttribute(\Typo3RectorPrefix20210422\Symplify\SimplePhpDocParser\ValueObject\PhpDocAttributeKey::PARENT, $parentNode);
+            $node->setAttribute(\Typo3RectorPrefix20210423\Symplify\SimplePhpDocParser\ValueObject\PhpDocAttributeKey::PARENT, $parentNode);
         }
         $this->stack[] = $node;
         return $node;

@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Rector\Composer\Rector;
 
 use Rector\Composer\Contract\Rector\ComposerRectorInterface;
-use Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -20,7 +20,7 @@ final class RemovePackageComposerRector implements \Rector\Composer\Contract\Rec
      * @var string[]
      */
     private $packageNames = [];
-    public function refactor(\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function refactor(\Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         foreach ($this->packageNames as $packageName) {
             $composerJson->removePackage($packageName);

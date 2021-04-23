@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210422\Symplify\Skipper\Contract;
+namespace Typo3RectorPrefix20210423\Symplify\Skipper\Contract;
 
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
 interface SkipVoterInterface
 {
     /**
@@ -13,5 +13,5 @@ interface SkipVoterInterface
     /**
      * @param string|object $element
      */
-    public function shouldSkip($element, \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool;
+    public function shouldSkip($element, \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : bool;
 }

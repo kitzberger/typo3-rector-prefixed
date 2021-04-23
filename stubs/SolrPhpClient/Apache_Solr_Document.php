@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210422;
+namespace Typo3RectorPrefix20210423;
 
-if (\class_exists(\Typo3RectorPrefix20210422\Apache_Solr_Document::class)) {
+if (\class_exists(\Typo3RectorPrefix20210423\Apache_Solr_Document::class)) {
     return;
 }
-final class Apache_Solr_Document implements \IteratorAggregate
+class Apache_Solr_Document implements \IteratorAggregate
 {
     /**
      * Document boost value

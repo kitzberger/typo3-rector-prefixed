@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php 
-namespace Typo3RectorPrefix20210422;
+namespace Typo3RectorPrefix20210423;
 
 /*
  * This file is part of the Symfony package.
@@ -16,30 +16,30 @@ namespace Typo3RectorPrefix20210422;
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
 use Psr\Log\LoggerInterface;
-use Typo3RectorPrefix20210422\Symfony\Component\Console\Application;
-use Typo3RectorPrefix20210422\Symfony\Component\Console\Input\ArgvInput;
-use Typo3RectorPrefix20210422\Symfony\Component\Console\Input\InputOption;
-use Typo3RectorPrefix20210422\Symfony\Component\Console\Logger\ConsoleLogger;
-use Typo3RectorPrefix20210422\Symfony\Component\Console\Output\ConsoleOutput;
-use Typo3RectorPrefix20210422\Symfony\Component\VarDumper\Command\ServerDumpCommand;
-use Typo3RectorPrefix20210422\Symfony\Component\VarDumper\Server\DumpServer;
+use Typo3RectorPrefix20210423\Symfony\Component\Console\Application;
+use Typo3RectorPrefix20210423\Symfony\Component\Console\Input\ArgvInput;
+use Typo3RectorPrefix20210423\Symfony\Component\Console\Input\InputOption;
+use Typo3RectorPrefix20210423\Symfony\Component\Console\Logger\ConsoleLogger;
+use Typo3RectorPrefix20210423\Symfony\Component\Console\Output\ConsoleOutput;
+use Typo3RectorPrefix20210423\Symfony\Component\VarDumper\Command\ServerDumpCommand;
+use Typo3RectorPrefix20210423\Symfony\Component\VarDumper\Server\DumpServer;
 function includeIfExists(string $file) : bool
 {
     return \file_exists($file) && (include $file);
 }
-if (!\Typo3RectorPrefix20210422\includeIfExists(__DIR__ . '/../../../../autoload.php') && !\Typo3RectorPrefix20210422\includeIfExists(__DIR__ . '/../../vendor/autoload.php') && !\Typo3RectorPrefix20210422\includeIfExists(__DIR__ . '/../../../../../../vendor/autoload.php')) {
+if (!\Typo3RectorPrefix20210423\includeIfExists(__DIR__ . '/../../../../autoload.php') && !\Typo3RectorPrefix20210423\includeIfExists(__DIR__ . '/../../vendor/autoload.php') && !\Typo3RectorPrefix20210423\includeIfExists(__DIR__ . '/../../../../../../vendor/autoload.php')) {
     \fwrite(\STDERR, 'Install dependencies using Composer.' . \PHP_EOL);
     exit(1);
 }
-if (!\class_exists(\Typo3RectorPrefix20210422\Symfony\Component\Console\Application::class)) {
+if (!\class_exists(\Typo3RectorPrefix20210423\Symfony\Component\Console\Application::class)) {
     \fwrite(\STDERR, 'You need the "symfony/console" component in order to run the VarDumper server.' . \PHP_EOL);
     exit(1);
 }
-$input = new \Typo3RectorPrefix20210422\Symfony\Component\Console\Input\ArgvInput();
-$output = new \Typo3RectorPrefix20210422\Symfony\Component\Console\Output\ConsoleOutput();
+$input = new \Typo3RectorPrefix20210423\Symfony\Component\Console\Input\ArgvInput();
+$output = new \Typo3RectorPrefix20210423\Symfony\Component\Console\Output\ConsoleOutput();
 $defaultHost = '127.0.0.1:9912';
 $host = $input->getParameterOption(['--host'], $_SERVER['VAR_DUMPER_SERVER'] ?? $defaultHost, \true);
-$logger = \interface_exists(\Psr\Log\LoggerInterface::class) ? new \Typo3RectorPrefix20210422\Symfony\Component\Console\Logger\ConsoleLogger($output->getErrorOutput()) : null;
-$app = new \Typo3RectorPrefix20210422\Symfony\Component\Console\Application();
-$app->getDefinition()->addOption(new \Typo3RectorPrefix20210422\Symfony\Component\Console\Input\InputOption('--host', null, \Typo3RectorPrefix20210422\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The address the server should listen to', $defaultHost));
-$app->add($command = new \Typo3RectorPrefix20210422\Symfony\Component\VarDumper\Command\ServerDumpCommand(new \Typo3RectorPrefix20210422\Symfony\Component\VarDumper\Server\DumpServer($host, $logger)))->getApplication()->setDefaultCommand($command->getName(), \true)->run($input, $output);
+$logger = \interface_exists(\Psr\Log\LoggerInterface::class) ? new \Typo3RectorPrefix20210423\Symfony\Component\Console\Logger\ConsoleLogger($output->getErrorOutput()) : null;
+$app = new \Typo3RectorPrefix20210423\Symfony\Component\Console\Application();
+$app->getDefinition()->addOption(new \Typo3RectorPrefix20210423\Symfony\Component\Console\Input\InputOption('--host', null, \Typo3RectorPrefix20210423\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The address the server should listen to', $defaultHost));
+$app->add($command = new \Typo3RectorPrefix20210423\Symfony\Component\VarDumper\Command\ServerDumpCommand(new \Typo3RectorPrefix20210423\Symfony\Component\VarDumper\Server\DumpServer($host, $logger)))->getApplication()->setDefaultCommand($command->getName(), \true)->run($input, $output);

@@ -11,13 +11,12 @@ use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
 use Rector\BetterPhpDocParser\Printer\PhpDocInfoPrinter;
 use Rector\BetterPhpDocParser\ValueObject\PhpDoc\DoctrineAnnotation\CurlyListNode;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\FileSystemRector\Parser\FileInfoParser;
-use Typo3RectorPrefix20210422\Symplify\EasyTesting\StaticFixtureSplitter;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
-final class TestModifyReprintTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\EasyTesting\StaticFixtureSplitter;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+final class TestModifyReprintTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var FileInfoParser
@@ -37,7 +36,7 @@ final class TestModifyReprintTest extends \Typo3RectorPrefix20210422\Symplify\Pa
     private $phpDocInfoFactory;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->fileInfoParser = $this->getService(\Rector\FileSystemRector\Parser\FileInfoParser::class);
         $this->betterNodeFinder = $this->getService(\Rector\Core\PhpParser\Node\BetterNodeFinder::class);
         $this->phpDocInfoPrinter = $this->getService(\Rector\BetterPhpDocParser\Printer\PhpDocInfoPrinter::class);
@@ -45,8 +44,8 @@ final class TestModifyReprintTest extends \Typo3RectorPrefix20210422\Symplify\Pa
     }
     public function test() : void
     {
-        $fixtureFileInfo = new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/FixtureModify/route_with_extra_methods.php.inc');
-        $inputFileInfoAndExpected = \Typo3RectorPrefix20210422\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToLocalInputAndExpected($fixtureFileInfo);
+        $fixtureFileInfo = new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/FixtureModify/route_with_extra_methods.php.inc');
+        $inputFileInfoAndExpected = \Typo3RectorPrefix20210423\Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToLocalInputAndExpected($fixtureFileInfo);
         $inputFileInfo = $inputFileInfoAndExpected->getInputFileInfo();
         $phpDocInfo = $this->parseFileAndGetFirstNodeOfType($inputFileInfo, \PhpParser\Node\Stmt\ClassMethod::class);
         /** @var DoctrineAnnotationTagValueNode $doctrineAnnotationTagValueNode */
@@ -60,7 +59,7 @@ final class TestModifyReprintTest extends \Typo3RectorPrefix20210422\Symplify\Pa
     /**
      * @param class-string<Node> $nodeType
      */
-    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $nodeType) : \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo
+    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $nodeType) : \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo
     {
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($smartFileInfo);
         $node = $this->betterNodeFinder->findFirstInstanceOf($nodes, $nodeType);

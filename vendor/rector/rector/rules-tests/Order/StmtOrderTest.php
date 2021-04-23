@@ -7,11 +7,10 @@ use Iterator;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Property;
 use PhpParser\Node\Stmt\PropertyProperty;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\NodeNameResolver\NodeNameResolver;
 use Rector\Order\StmtOrder;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class StmtOrderTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class StmtOrderTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var int[]
@@ -27,7 +26,7 @@ final class StmtOrderTest extends \Typo3RectorPrefix20210422\Symplify\PackageBui
     private $nodeNameResolver;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->stmtOrder = $this->getService(\Rector\Order\StmtOrder::class);
         $this->nodeNameResolver = $this->getService(\Rector\NodeNameResolver\NodeNameResolver::class);
     }

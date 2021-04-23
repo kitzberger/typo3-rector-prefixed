@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\DataCollector;
+namespace Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\DataCollector;
 
-use Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request;
-use Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Response;
-use Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\KernelInterface;
-use Typo3RectorPrefix20210422\Symfony\Component\Stopwatch\Stopwatch;
-use Typo3RectorPrefix20210422\Symfony\Component\Stopwatch\StopwatchEvent;
+use Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request;
+use Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Response;
+use Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\KernelInterface;
+use Typo3RectorPrefix20210423\Symfony\Component\Stopwatch\Stopwatch;
+use Typo3RectorPrefix20210423\Symfony\Component\Stopwatch\StopwatchEvent;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @final
  */
-class TimeDataCollector extends \Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class TimeDataCollector extends \Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     protected $kernel;
     protected $stopwatch;
-    public function __construct(\Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\KernelInterface $kernel = null, \Typo3RectorPrefix20210422\Symfony\Component\Stopwatch\Stopwatch $stopwatch = null)
+    public function __construct(\Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\KernelInterface $kernel = null, \Typo3RectorPrefix20210423\Symfony\Component\Stopwatch\Stopwatch $stopwatch = null)
     {
         $this->kernel = $kernel;
         $this->stopwatch = $stopwatch;
@@ -32,14 +32,14 @@ class TimeDataCollector extends \Typo3RectorPrefix20210422\Symfony\Component\Htt
     /**
      * {@inheritdoc}
      */
-    public function collect(\Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210422\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Request $request, \Typo3RectorPrefix20210423\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         if (null !== $this->kernel) {
             $startTime = $this->kernel->getStartTime();
         } else {
             $startTime = $request->server->get('REQUEST_TIME_FLOAT');
         }
-        $this->data = ['token' => $response->headers->get('X-Debug-Token'), 'start_time' => $startTime * 1000, 'events' => [], 'stopwatch_installed' => \class_exists(\Typo3RectorPrefix20210422\Symfony\Component\Stopwatch\Stopwatch::class, \false)];
+        $this->data = ['token' => $response->headers->get('X-Debug-Token'), 'start_time' => $startTime * 1000, 'events' => [], 'stopwatch_installed' => \class_exists(\Typo3RectorPrefix20210423\Symfony\Component\Stopwatch\Stopwatch::class, \false)];
     }
     /**
      * {@inheritdoc}

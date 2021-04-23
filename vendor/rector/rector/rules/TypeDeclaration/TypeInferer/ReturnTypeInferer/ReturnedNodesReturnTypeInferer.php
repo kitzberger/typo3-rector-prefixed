@@ -24,7 +24,7 @@ use Rector\NodeTypeResolver\PHPStan\Type\TypeFactory;
 use Rector\TypeDeclaration\Contract\TypeInferer\ReturnTypeInfererInterface;
 use Rector\TypeDeclaration\TypeInferer\SilentVoidResolver;
 use Rector\TypeDeclaration\TypeInferer\SplArrayFixedTypeNarrower;
-use Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210423\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class ReturnedNodesReturnTypeInferer implements \Rector\TypeDeclaration\Contract\TypeInferer\ReturnTypeInfererInterface
 {
     /**
@@ -51,7 +51,7 @@ final class ReturnedNodesReturnTypeInferer implements \Rector\TypeDeclaration\Co
      * @var SplArrayFixedTypeNarrower
      */
     private $splArrayFixedTypeNarrower;
-    public function __construct(\Rector\TypeDeclaration\TypeInferer\SilentVoidResolver $silentVoidResolver, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\PHPStan\Type\TypeFactory $typeFactory, \Rector\TypeDeclaration\TypeInferer\SplArrayFixedTypeNarrower $splArrayFixedTypeNarrower)
+    public function __construct(\Rector\TypeDeclaration\TypeInferer\SilentVoidResolver $silentVoidResolver, \Rector\NodeTypeResolver\NodeTypeResolver $nodeTypeResolver, \Typo3RectorPrefix20210423\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\NodeTypeResolver\PHPStan\Type\TypeFactory $typeFactory, \Rector\TypeDeclaration\TypeInferer\SplArrayFixedTypeNarrower $splArrayFixedTypeNarrower)
     {
         $this->silentVoidResolver = $silentVoidResolver;
         $this->nodeTypeResolver = $nodeTypeResolver;
@@ -80,8 +80,7 @@ final class ReturnedNodesReturnTypeInferer implements \Rector\TypeDeclaration\Co
         $hasSilentVoid = $this->silentVoidResolver->hasSilentVoid($functionLike);
         foreach ($localReturnNodes as $localReturnNode) {
             $returnedExprType = $this->nodeTypeResolver->getStaticType($localReturnNode);
-            $returnedExprType = $this->splArrayFixedTypeNarrower->narrow($returnedExprType);
-            $this->types[] = $returnedExprType;
+            $this->types[] = $this->splArrayFixedTypeNarrower->narrow($returnedExprType);
         }
         if ($hasSilentVoid) {
             $this->types[] = new \PHPStan\Type\VoidType();

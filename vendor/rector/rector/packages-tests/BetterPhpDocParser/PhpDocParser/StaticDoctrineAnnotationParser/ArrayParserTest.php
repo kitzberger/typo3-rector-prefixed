@@ -6,9 +6,8 @@ namespace Rector\Tests\BetterPhpDocParser\PhpDocParser\StaticDoctrineAnnotationP
 use Iterator;
 use Rector\BetterPhpDocParser\PhpDocInfo\TokenIteratorFactory;
 use Rector\BetterPhpDocParser\PhpDocParser\StaticDoctrineAnnotationParser\ArrayParser;
-use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ArrayParserTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class ArrayParserTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var ArrayParser
@@ -20,7 +19,7 @@ final class ArrayParserTest extends \Typo3RectorPrefix20210422\Symplify\PackageB
     private $tokenIteratorFactory;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->arrayParser = $this->getService(\Rector\BetterPhpDocParser\PhpDocParser\StaticDoctrineAnnotationParser\ArrayParser::class);
         $this->tokenIteratorFactory = $this->getService(\Rector\BetterPhpDocParser\PhpDocInfo\TokenIteratorFactory::class);
     }

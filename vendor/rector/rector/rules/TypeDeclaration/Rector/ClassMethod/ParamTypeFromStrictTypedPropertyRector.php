@@ -17,10 +17,11 @@ use PhpParser\Node\Stmt\Property;
 use PhpParser\Node\UnionType;
 use PhpParser\NodeTraverser;
 use PHPStan\Type\Type;
+use Rector\ChangesReporting\ValueObject\RectorWithLineChange;
 use Rector\Core\Rector\AbstractRector;
 use Rector\Core\ValueObject\PhpVersionFeature;
 use Rector\TypeDeclaration\Reflection\ReflectionTypeResolver;
-use Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210423\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 /**
@@ -36,7 +37,7 @@ final class ParamTypeFromStrictTypedPropertyRector extends \Rector\Core\Rector\A
      * @var ReflectionTypeResolver
      */
     private $reflectionTypeResolver;
-    public function __construct(\Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\TypeDeclaration\Reflection\ReflectionTypeResolver $reflectionTypeResolver)
+    public function __construct(\Typo3RectorPrefix20210423\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\TypeDeclaration\Reflection\ReflectionTypeResolver $reflectionTypeResolver)
     {
         $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
         $this->reflectionTypeResolver = $reflectionTypeResolver;
@@ -109,7 +110,8 @@ CODE_SAMPLE
             if (!$singlePropertyTypeNode instanceof \PhpParser\Node) {
                 return null;
             }
-            $this->rectorChangeCollector->notifyFileChange($this->file, $node, $this);
+            $rectorWithLineChange = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange($this, $node->getLine());
+            $this->file->addRectorClassWithLine($rectorWithLineChange);
             $param->type = $singlePropertyTypeNode;
             return \PhpParser\NodeTraverser::STOP_TRAVERSAL;
         });

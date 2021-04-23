@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\Controller;
+namespace Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\Controller;
 
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Container;
+use Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Container;
 /**
  * A controller resolver searching for a controller in a psr-11 container when using the "service::method" notation.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class ContainerControllerResolver extends \Typo3RectorPrefix20210422\Symfony\Component\HttpKernel\Controller\ControllerResolver
+class ContainerControllerResolver extends \Typo3RectorPrefix20210423\Symfony\Component\HttpKernel\Controller\ControllerResolver
 {
     protected $container;
     public function __construct(\Psr\Container\ContainerInterface $container, \Psr\Log\LoggerInterface $logger = null)
@@ -56,7 +56,7 @@ class ContainerControllerResolver extends \Typo3RectorPrefix20210422\Symfony\Com
     }
     private function throwExceptionIfControllerWasRemoved(string $controller, \Throwable $previous)
     {
-        if ($this->container instanceof \Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Container && isset($this->container->getRemovedIds()[$controller])) {
+        if ($this->container instanceof \Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Container && isset($this->container->getRemovedIds()[$controller])) {
             throw new \InvalidArgumentException(\sprintf('Controller "%s" cannot be fetched from the container because it is private. Did you forget to tag the service with "controller.service_arguments"?', $controller), 0, $previous);
         }
     }

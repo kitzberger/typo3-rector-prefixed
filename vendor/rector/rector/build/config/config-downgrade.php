@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210422;
+namespace Typo3RectorPrefix20210423;
 
 use Rector\Core\Configuration\Option;
 use Rector\Core\Stubs\PHPStanStubLoader;
 use Rector\Set\ValueObject\DowngradeSetList;
-use Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 $phpStanStubLoader = new \Rector\Core\Stubs\PHPStanStubLoader();
 $phpStanStubLoader->loadStubs();
-return static function (\Typo3RectorPrefix20210422\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Typo3RectorPrefix20210423\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
-    $parameters->set(\Rector\Core\Configuration\Option::SKIP, \Typo3RectorPrefix20210422\DowngradeRectorConfig::DEPENDENCY_EXCLUDE_PATHS);
+    $parameters->set(\Rector\Core\Configuration\Option::SKIP, \Typo3RectorPrefix20210423\DowngradeRectorConfig::DEPENDENCY_EXCLUDE_PATHS);
     $parameters->set(\Rector\Core\Configuration\Option::PHPSTAN_FOR_RECTOR_PATH, __DIR__ . '/phpstan-for-downgrade.neon');
     $parameters->set(\Rector\Core\Configuration\Option::SETS, [\Rector\Set\ValueObject\DowngradeSetList::PHP_80, \Rector\Set\ValueObject\DowngradeSetList::PHP_74, \Rector\Set\ValueObject\DowngradeSetList::PHP_73, \Rector\Set\ValueObject\DowngradeSetList::PHP_72, \Rector\Set\ValueObject\DowngradeSetList::PHP_71]);
 };
@@ -48,7 +48,6 @@ final class DowngradeRectorConfig
         'vendor/symfony/dependency-injection/ExpressionLanguage.php',
         'vendor/symfony/dependency-injection/ExpressionLanguageProvider.php',
         'vendor/symfony/var-dumper/Caster/*',
-        'vendor/symplify/package-builder/src/Testing/AbstractKernelTestCase.php',
     ];
 }
 /**

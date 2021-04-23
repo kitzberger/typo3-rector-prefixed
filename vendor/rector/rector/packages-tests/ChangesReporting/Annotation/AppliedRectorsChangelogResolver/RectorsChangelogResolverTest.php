@@ -5,13 +5,12 @@ namespace Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolv
 
 use Rector\ChangesReporting\Annotation\RectorsChangelogResolver;
 use Rector\ChangesReporting\ValueObject\RectorWithLineChange;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\ValueObject\Reporting\FileDiff;
+use Rector\Testing\PHPUnit\AbstractTestCase;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog;
 use Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithOutChangelog;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
-final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+final class RectorsChangelogResolverTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var RectorsChangelogResolver
@@ -23,7 +22,7 @@ final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210422\Symp
     private $fileDiff;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->rectorsChangelogResolver = $this->getService(\Rector\ChangesReporting\Annotation\RectorsChangelogResolver::class);
         $this->fileDiff = $this->createFileDiff();
     }
@@ -40,6 +39,6 @@ final class RectorsChangelogResolverTest extends \Typo3RectorPrefix20210422\Symp
         $rectorWithLineChanges[] = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog(), 1);
         $rectorWithLineChanges[] = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithChangelog(), 1);
         $rectorWithLineChanges[] = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange(new \Rector\Tests\ChangesReporting\Annotation\AppliedRectorsChangelogResolver\Source\RectorWithOutChangelog(), 1);
-        return new \Rector\Core\ValueObject\Reporting\FileDiff(new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo(__FILE__), 'foo', 'foo', $rectorWithLineChanges);
+        return new \Rector\Core\ValueObject\Reporting\FileDiff(new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo(__FILE__), 'foo', 'foo', $rectorWithLineChanges);
     }
 }

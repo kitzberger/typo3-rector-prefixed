@@ -25,11 +25,6 @@ final class RectorChangeCollector
         $this->currentRectorProvider = $currentRectorProvider;
         $this->currentFileProvider = $currentFileProvider;
     }
-    public function notifyFileChange(\Rector\Core\ValueObject\Application\File $file, \PhpParser\Node $node, \Rector\Core\Contract\Rector\RectorInterface $rector) : void
-    {
-        $rectorWithLineChange = new \Rector\ChangesReporting\ValueObject\RectorWithLineChange($rector, $node->getLine());
-        $file->addRectorClassWithLine($rectorWithLineChange);
-    }
     public function notifyNodeFileInfo(\PhpParser\Node $node) : void
     {
         $file = $this->currentFileProvider->getFile();

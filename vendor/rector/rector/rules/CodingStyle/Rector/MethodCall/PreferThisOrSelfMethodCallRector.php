@@ -13,7 +13,7 @@ use Rector\Core\Exception\Configuration\InvalidConfigurationException;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210422\Webmozart\Assert\Assert;
+use Typo3RectorPrefix20210423\Webmozart\Assert\Assert;
 /**
  * @see \Rector\Tests\CodingStyle\Rector\MethodCall\PreferThisOrSelfMethodCallRector\PreferThisOrSelfMethodCallRectorTest
  */
@@ -83,7 +83,7 @@ CODE_SAMPLE
     public function configure(array $configuration) : void
     {
         $typeToPreference = $configuration[self::TYPE_TO_PREFERENCE] ?? [];
-        \Typo3RectorPrefix20210422\Webmozart\Assert\Assert::allString($typeToPreference);
+        \Typo3RectorPrefix20210423\Webmozart\Assert\Assert::allString($typeToPreference);
         foreach ($typeToPreference as $singleTypeToPreference) {
             $this->ensurePreferenceIsValid($singleTypeToPreference);
         }

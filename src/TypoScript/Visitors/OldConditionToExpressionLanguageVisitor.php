@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\TypoScript\Visitors;
 
-use Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement;
-use Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\Statement;
+use Typo3RectorPrefix20210423\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement;
+use Typo3RectorPrefix20210423\Helmich\TypoScriptParser\Parser\AST\Statement;
 use LogicException;
 use Ssch\TYPO3Rector\TypoScript\Conditions\TyposcriptConditionMatcher;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -26,9 +26,9 @@ final class OldConditionToExpressionLanguageVisitor extends \Ssch\TYPO3Rector\Ty
     {
         $this->conditionMatchers = $conditionMatchers;
     }
-    public function enterNode(\Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void
+    public function enterNode(\Typo3RectorPrefix20210423\Helmich\TypoScriptParser\Parser\AST\Statement $statement) : void
     {
-        if ($statement instanceof \Typo3RectorPrefix20210422\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement) {
+        if ($statement instanceof \Typo3RectorPrefix20210423\Helmich\TypoScriptParser\Parser\AST\ConditionalStatement) {
             \preg_match_all('#\\[(.*)]#imU', $statement->condition, $conditions, \PREG_SET_ORDER);
             \preg_match_all('#]\\s*(&&|\\|\\||AND|OR)#imU', $statement->condition, $operators, \PREG_SET_ORDER);
             $conditions = \array_filter($conditions);

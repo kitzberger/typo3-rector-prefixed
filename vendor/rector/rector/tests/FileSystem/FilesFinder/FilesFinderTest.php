@@ -5,10 +5,9 @@ namespace Rector\Core\Tests\FileSystem\FilesFinder;
 
 use Iterator;
 use Rector\Core\FileSystem\FilesFinder;
-use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
-final class FilesFinderTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+final class FilesFinderTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var FilesFinder
@@ -16,7 +15,7 @@ final class FilesFinderTest extends \Typo3RectorPrefix20210422\Symplify\PackageB
     private $filesFinder;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->filesFinder = $this->getService(\Rector\Core\FileSystem\FilesFinder::class);
     }
     /**

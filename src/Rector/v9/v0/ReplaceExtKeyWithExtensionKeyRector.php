@@ -10,7 +10,7 @@ use Rector\Core\Rector\AbstractRector;
 use Ssch\TYPO3Rector\Helper\FileHelperTrait;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @changelog https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.0/Important-82692-GuidelinesForExtensionFiles.html
  * @see \Ssch\TYPO3Rector\Tests\Rector\v9\v0\ReplaceExtKeyWithExtensionKey\ReplaceExtKeyWithExtensionKeyRectorTest
@@ -68,7 +68,7 @@ CODE_SAMPLE
     {
         return $this->isName($variable, '_EXTKEY');
     }
-    private function createExtensionKeyFromFolder(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
+    private function createExtensionKeyFromFolder(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : string
     {
         return \basename($fileInfo->getPath());
     }

@@ -5,7 +5,7 @@ namespace Rector\Core\Bootstrap;
 
 use Rector\RectorInstaller\GeneratedConfig;
 use ReflectionClass;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
 final class ExtensionConfigResolver
 {
     /**
@@ -28,7 +28,7 @@ final class ExtensionConfigResolver
                 if ($includedFilePath === null) {
                     $includedFilePath = \sprintf('%s/%s', $extensionConfig['install_path'], $includedFile);
                 }
-                $configFileInfos[] = new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo($includedFilePath);
+                $configFileInfos[] = new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo($includedFilePath);
             }
         }
         return $configFileInfos;

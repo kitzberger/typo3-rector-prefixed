@@ -1,8 +1,8 @@
 <?php
 
-namespace Typo3RectorPrefix20210422;
+namespace Typo3RectorPrefix20210423;
 
-use Typo3RectorPrefix20210422\Symfony\Component\Routing\Annotation\Route;
+use Typo3RectorPrefix20210423\Symfony\Component\Routing\Annotation\Route;
 class SomeController
 {
     /**

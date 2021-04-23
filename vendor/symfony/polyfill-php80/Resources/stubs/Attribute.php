@@ -20,4 +20,4 @@ final class Attribute
         $this->flags = $flags;
     }
 }
-\class_alias('Typo3RectorPrefix20210422\\Attribute', 'Attribute', \false);
+\class_alias('Typo3RectorPrefix20210423\\Attribute', 'Attribute', \false);

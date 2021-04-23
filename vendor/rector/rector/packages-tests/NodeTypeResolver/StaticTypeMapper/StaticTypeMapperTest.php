@@ -15,10 +15,9 @@ use PHPStan\Type\ClassStringType;
 use PHPStan\Type\Generic\GenericObjectType;
 use PHPStan\Type\IterableType;
 use PHPStan\Type\MixedType;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\StaticTypeMapper\StaticTypeMapper;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class StaticTypeMapperTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class StaticTypeMapperTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var StaticTypeMapper
@@ -26,7 +25,7 @@ final class StaticTypeMapperTest extends \Typo3RectorPrefix20210422\Symplify\Pac
     private $staticTypeMapper;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->staticTypeMapper = $this->getService(\Rector\StaticTypeMapper\StaticTypeMapper::class);
     }
     /**

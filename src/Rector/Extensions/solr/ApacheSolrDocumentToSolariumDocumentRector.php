@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Ssch\TYPO3Rector\Rector\Extensions\solr;
 
-use Typo3RectorPrefix20210422\Apache_Solr_Document;
+use Typo3RectorPrefix20210423\Apache_Solr_Document;
 use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
@@ -28,7 +28,7 @@ final class ApacheSolrDocumentToSolariumDocumentRector extends \Rector\Core\Rect
      */
     public function refactor(\PhpParser\Node $node) : ?\PhpParser\Node
     {
-        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210422\Apache_Solr_Document::class))) {
+        if (!$this->nodeTypeResolver->isMethodStaticCallOrClassMethodObjectType($node, new \PHPStan\Type\ObjectType(\Typo3RectorPrefix20210423\Apache_Solr_Document::class))) {
             return null;
         }
         if (!$this->isName($node->name, 'setMultiValue')) {

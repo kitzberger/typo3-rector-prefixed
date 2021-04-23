@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Rector\PHPStanStaticTypeMapper\Tests\TypeMapper;
+namespace Rector\Tests\PHPStanStaticTypeMapper\TypeMapper;
 
 use Iterator;
 use PHPStan\Type\ArrayType;
@@ -9,10 +9,9 @@ use PHPStan\Type\IntegerType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\UnionType;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\PHPStanStaticTypeMapper\TypeMapper\ArrayTypeMapper;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class ArrayTypeMapperTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class ArrayTypeMapperTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var ArrayTypeMapper
@@ -20,7 +19,7 @@ final class ArrayTypeMapperTest extends \Typo3RectorPrefix20210422\Symplify\Pack
     private $arrayTypeMapper;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->arrayTypeMapper = $this->getService(\Rector\PHPStanStaticTypeMapper\TypeMapper\ArrayTypeMapper::class);
     }
     /**

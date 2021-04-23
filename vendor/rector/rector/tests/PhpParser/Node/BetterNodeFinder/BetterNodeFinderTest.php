@@ -8,11 +8,10 @@ use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassLike;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\Core\PhpParser\Parser\SimplePhpParser;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class BetterNodeFinderTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class BetterNodeFinderTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var Node[]
@@ -24,7 +23,7 @@ final class BetterNodeFinderTest extends \Typo3RectorPrefix20210422\Symplify\Pac
     private $betterNodeFinder;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->betterNodeFinder = $this->getService(\Rector\Core\PhpParser\Node\BetterNodeFinder::class);
         /** @var SimplePhpParser $simplePhpParser */
         $simplePhpParser = $this->getService(\Rector\Core\PhpParser\Parser\SimplePhpParser::class);

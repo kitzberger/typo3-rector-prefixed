@@ -14,7 +14,7 @@ use PhpParser\Node\Stmt\Foreach_;
 use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\NodeNameResolver\NodeNameResolver;
-use Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
+use Typo3RectorPrefix20210423\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser;
 final class ForeachAnalyzer
 {
     /**
@@ -37,7 +37,7 @@ final class ForeachAnalyzer
      * @var BetterNodeFinder
      */
     private $betterNodeFinder;
-    public function __construct(\Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator, \Rector\CodeQuality\NodeAnalyzer\ForAnalyzer $forAnalyzer, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210422\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder)
+    public function __construct(\Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator, \Rector\CodeQuality\NodeAnalyzer\ForAnalyzer $forAnalyzer, \Rector\NodeNameResolver\NodeNameResolver $nodeNameResolver, \Typo3RectorPrefix20210423\Symplify\Astral\NodeTraverser\SimpleCallableNodeTraverser $simpleCallableNodeTraverser, \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder)
     {
         $this->nodeComparator = $nodeComparator;
         $this->forAnalyzer = $forAnalyzer;

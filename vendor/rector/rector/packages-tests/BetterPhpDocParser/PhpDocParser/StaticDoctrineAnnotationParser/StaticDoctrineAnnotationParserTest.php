@@ -7,9 +7,8 @@ use Iterator;
 use Rector\BetterPhpDocParser\PhpDocInfo\TokenIteratorFactory;
 use Rector\BetterPhpDocParser\PhpDocParser\StaticDoctrineAnnotationParser;
 use Rector\BetterPhpDocParser\ValueObject\PhpDoc\DoctrineAnnotation\CurlyListNode;
-use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class StaticDoctrineAnnotationParserTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class StaticDoctrineAnnotationParserTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var StaticDoctrineAnnotationParser
@@ -21,7 +20,7 @@ final class StaticDoctrineAnnotationParserTest extends \Typo3RectorPrefix2021042
     private $tokenIteratorFactory;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->tokenIteratorFactory = $this->getService(\Rector\BetterPhpDocParser\PhpDocInfo\TokenIteratorFactory::class);
         $this->staticDoctrineAnnotationParser = $this->getService(\Rector\BetterPhpDocParser\PhpDocParser\StaticDoctrineAnnotationParser::class);
     }

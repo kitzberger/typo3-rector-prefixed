@@ -9,16 +9,15 @@ use PhpParser\Node;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
 use Rector\BetterPhpDocParser\Printer\PhpDocInfoPrinter;
 use Rector\Core\Exception\ShouldNotHappenException;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\FileSystemRector\Parser\FileInfoParser;
-use Typo3RectorPrefix20210422\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210422\Symplify\EasyTesting\FixtureSplitter\TrioFixtureSplitter;
-use Typo3RectorPrefix20210422\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem;
-final class TagValueNodeReprintTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210423\Symplify\EasyTesting\FixtureSplitter\TrioFixtureSplitter;
+use Typo3RectorPrefix20210423\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileSystem;
+final class TagValueNodeReprintTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var FileInfoParser
@@ -38,7 +37,7 @@ final class TagValueNodeReprintTest extends \Typo3RectorPrefix20210422\Symplify\
     private $phpDocInfoFactory;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->fileInfoParser = $this->getService(\Rector\FileSystemRector\Parser\FileInfoParser::class);
         $this->betterNodeFinder = $this->getService(\Rector\Core\PhpParser\Node\BetterNodeFinder::class);
         $this->phpDocInfoPrinter = $this->getService(\Rector\BetterPhpDocParser\Printer\PhpDocInfoPrinter::class);
@@ -48,9 +47,9 @@ final class TagValueNodeReprintTest extends \Typo3RectorPrefix20210422\Symplify\
      * @dataProvider provideData()
      * @dataProvider provideDataNested()
      */
-    public function test(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : void
+    public function test(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : void
     {
-        $trioFixtureSplitter = new \Typo3RectorPrefix20210422\Symplify\EasyTesting\FixtureSplitter\TrioFixtureSplitter();
+        $trioFixtureSplitter = new \Typo3RectorPrefix20210423\Symplify\EasyTesting\FixtureSplitter\TrioFixtureSplitter();
         $trioContent = $trioFixtureSplitter->splitFileInfo($fixtureFileInfo);
         $nodeClass = \trim($trioContent->getSecondValue());
         $tagValueNodeClasses = $this->splitListByEOL($trioContent->getExpectedResult());
@@ -64,20 +63,20 @@ final class TagValueNodeReprintTest extends \Typo3RectorPrefix20210422\Symplify\
      */
     public function provideData() : \Iterator
     {
-        return \Typo3RectorPrefix20210422\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture');
+        return \Typo3RectorPrefix20210423\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/Fixture');
     }
     /**
      * @return Iterator<SmartFileInfo>
      */
     public function provideDataNested() : \Iterator
     {
-        return \Typo3RectorPrefix20210422\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/FixtureNested');
+        return \Typo3RectorPrefix20210423\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory(__DIR__ . '/FixtureNested');
     }
     /**
      * @param class-string $annotationClass
      * @param class-string<Node> $nodeClass
      */
-    private function doTestPrintedPhpDocInfo(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $annotationClass, string $nodeClass) : void
+    private function doTestPrintedPhpDocInfo(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $annotationClass, string $nodeClass) : void
     {
         $nodeWithPhpDocInfo = $this->parseFileAndGetFirstNodeOfType($smartFileInfo, $nodeClass);
         $docComment = $nodeWithPhpDocInfo->getDocComment();
@@ -97,20 +96,20 @@ final class TagValueNodeReprintTest extends \Typo3RectorPrefix20210422\Symplify\
         $trimmedContent = \trim($content);
         return \explode(\PHP_EOL, $trimmedContent);
     }
-    private function createFixtureFileInfo(\Typo3RectorPrefix20210422\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent $trioContent, \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fixturefileInfo) : \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo
+    private function createFixtureFileInfo(\Typo3RectorPrefix20210423\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent $trioContent, \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $fixturefileInfo) : \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo
     {
         $temporaryFileName = \sys_get_temp_dir() . '/rector/tests/' . $fixturefileInfo->getRelativePathname();
         $firstValue = $trioContent->getFirstValue();
-        $smartFileSystem = new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem();
+        $smartFileSystem = new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileSystem();
         $smartFileSystem->dumpFile($temporaryFileName, $firstValue);
-        return new \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo($temporaryFileName);
+        return new \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo($temporaryFileName);
     }
     /**
      * @template T as Node
      * @param class-string<T> $nodeType
      * @return T
      */
-    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $nodeType) : \PhpParser\Node
+    private function parseFileAndGetFirstNodeOfType(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo, string $nodeType) : \PhpParser\Node
     {
         $nodes = $this->fileInfoParser->parseFileInfoToNodesAndDecorate($smartFileInfo);
         $node = $this->betterNodeFinder->findFirstInstanceOf($nodes, $nodeType);
@@ -127,7 +126,7 @@ final class TagValueNodeReprintTest extends \Typo3RectorPrefix20210422\Symplify\
     /**
      * @param class-string $annotationClass
      */
-    private function doTestContainsTagValueNodeType(\PhpParser\Node $node, string $annotationClass, \Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    private function doTestContainsTagValueNodeType(\PhpParser\Node $node, string $annotationClass, \Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);
         $hasByAnnotationClass = $phpDocInfo->hasByAnnotationClass($annotationClass);

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject;
+namespace Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject;
 
-use Typo3RectorPrefix20210422\Nette\Utils\Arrays;
-use Typo3RectorPrefix20210422\Nette\Utils\Strings;
-use Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo;
-use Typo3RectorPrefix20210422\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use Typo3RectorPrefix20210423\Nette\Utils\Arrays;
+use Typo3RectorPrefix20210423\Nette\Utils\Strings;
+use Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo;
+use Typo3RectorPrefix20210423\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  * @see \Symplify\ComposerJsonManipulator\Tests\ValueObject\ComposerJsonTest
@@ -124,9 +124,9 @@ final class ComposerJson
     private $version;
     public function __construct()
     {
-        $this->composerPackageSorter = new \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter();
+        $this->composerPackageSorter = new \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter();
     }
-    public function setOriginalFileInfo(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function setOriginalFileInfo(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->fileInfo = $fileInfo;
     }
@@ -213,7 +213,7 @@ final class ComposerJson
     public function getAbsoluteAutoloadDirectories() : array
     {
         if ($this->fileInfo === null) {
-            throw new \Typo3RectorPrefix20210422\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \Typo3RectorPrefix20210423\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         $autoloadDirectories = $this->getAutoloadDirectories();
         $absoluteAutoloadDirectories = [];
@@ -316,7 +316,7 @@ final class ComposerJson
         if ($this->name === null) {
             return null;
         }
-        return \Typo3RectorPrefix20210422\Nette\Utils\Strings::after($this->name, '/', -1);
+        return \Typo3RectorPrefix20210423\Nette\Utils\Strings::after($this->name, '/', -1);
     }
     /**
      * @return string[]
@@ -346,14 +346,14 @@ final class ComposerJson
      */
     public function getJsonArray() : array
     {
-        $array = \array_filter([\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME => $this->name, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION => $this->description, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS => $this->keywords, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE => $this->homepage, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE => $this->license, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS => $this->authors, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE => $this->type, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE => $this->require, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV => $this->requireDev, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => $this->autoload, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV => $this->autoloadDev, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES => $this->repositories, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA => $this->extra, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN => $this->bin, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS => $this->scripts, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS => $this->scriptsDescriptions, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG => $this->config, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE => $this->replace, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT => $this->conflicts, \Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION => $this->version]);
+        $array = \array_filter([\Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME => $this->name, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION => $this->description, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS => $this->keywords, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE => $this->homepage, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE => $this->license, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS => $this->authors, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE => $this->type, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE => $this->require, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV => $this->requireDev, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => $this->autoload, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV => $this->autoloadDev, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES => $this->repositories, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA => $this->extra, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN => $this->bin, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS => $this->scripts, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS => $this->scriptsDescriptions, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG => $this->config, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE => $this->replace, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT => $this->conflicts, \Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION => $this->version]);
         if ($this->minimumStability !== null) {
-            $array[\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY] = $this->minimumStability;
-            $this->moveValueToBack(\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY);
+            $array[\Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY] = $this->minimumStability;
+            $this->moveValueToBack(\Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY);
         }
         if ($this->preferStable !== null) {
-            $array[\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
-            $this->moveValueToBack(\Typo3RectorPrefix20210422\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE);
+            $array[\Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
+            $this->moveValueToBack(\Typo3RectorPrefix20210423\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE);
         }
         return $this->sortItemsByOrderedListOfKeys($array, $this->orderedKeys);
     }
@@ -507,7 +507,7 @@ final class ComposerJson
             $this->addRequiredDevPackage($newPackageName, $targetVersion);
         }
     }
-    public function getFileInfo() : ?\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileInfo
+    public function getFileInfo() : ?\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->fileInfo;
     }
@@ -584,7 +584,7 @@ final class ComposerJson
     public function getAutoloadDirectories() : array
     {
         $autoloadDirectories = \array_merge($this->getPsr4AndClassmapDirectories(), $this->getPsr4AndClassmapDevDirectories());
-        return \Typo3RectorPrefix20210422\Nette\Utils\Arrays::flatten($autoloadDirectories);
+        return \Typo3RectorPrefix20210423\Nette\Utils\Arrays::flatten($autoloadDirectories);
     }
     /**
      * @return string[]
@@ -654,7 +654,7 @@ final class ComposerJson
     private function resolveExistingAutoloadDirectory(string $autoloadDirectory) : string
     {
         if ($this->fileInfo === null) {
-            throw new \Typo3RectorPrefix20210422\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \Typo3RectorPrefix20210423\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         $filePathCandidates = [
             $this->fileInfo->getPath() . \DIRECTORY_SEPARATOR . $autoloadDirectory,

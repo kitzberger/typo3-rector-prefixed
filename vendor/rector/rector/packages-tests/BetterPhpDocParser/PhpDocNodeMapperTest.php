@@ -11,9 +11,8 @@ use PHPStan\PhpDocParser\Ast\Type\NullableTypeNode;
 use Rector\BetterPhpDocParser\PhpDocNodeMapper;
 use Rector\BetterPhpDocParser\ValueObject\Parser\BetterTokenIterator;
 use Rector\BetterPhpDocParser\ValueObject\PhpDoc\VariadicAwareParamTagValueNode;
-use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class PhpDocNodeMapperTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class PhpDocNodeMapperTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var PhpDocNodeMapper
@@ -21,7 +20,7 @@ final class PhpDocNodeMapperTest extends \Typo3RectorPrefix20210422\Symplify\Pac
     private $phpDocNodeMapper;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->phpDocNodeMapper = $this->getService(\Rector\BetterPhpDocParser\PhpDocNodeMapper::class);
     }
     public function testParamTag() : void

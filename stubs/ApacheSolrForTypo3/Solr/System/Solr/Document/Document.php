@@ -6,7 +6,7 @@ namespace ApacheSolrForTypo3\Solr\System\Solr\Document;
 if (\class_exists(\ApacheSolrForTypo3\Solr\System\Solr\Document\Document::class)) {
     return;
 }
-final class Document
+class Document
 {
     public function __set($name, $value)
     {

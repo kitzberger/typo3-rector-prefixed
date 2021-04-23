@@ -91,16 +91,16 @@ CODE_SAMPLE
 , <<<'CODE_SAMPLE'
 <?php
 
-namespace Typo3RectorPrefix20210422;
+namespace Typo3RectorPrefix20210423;
 
-use Typo3RectorPrefix20210422\Symfony\Component\Form\AbstractType;
-use Typo3RectorPrefix20210422\Symfony\Component\Form\Extension\Core\Type\TextType;
-use Typo3RectorPrefix20210422\Symfony\Component\Form\FormBuilderInterface;
-class SomeFormType extends \Typo3RectorPrefix20210422\Symfony\Component\Form\AbstractType
+use Typo3RectorPrefix20210423\Symfony\Component\Form\AbstractType;
+use Typo3RectorPrefix20210423\Symfony\Component\Form\Extension\Core\Type\TextType;
+use Typo3RectorPrefix20210423\Symfony\Component\Form\FormBuilderInterface;
+class SomeFormType extends \Typo3RectorPrefix20210423\Symfony\Component\Form\AbstractType
 {
-    public function buildForm(\Typo3RectorPrefix20210422\Symfony\Component\Form\FormBuilderInterface $formBuilder, array $options)
+    public function buildForm(\Typo3RectorPrefix20210423\Symfony\Component\Form\FormBuilderInterface $formBuilder, array $options)
     {
-        $formBuilder->add('name', \Typo3RectorPrefix20210422\Symfony\Component\Form\Extension\Core\Type\TextType::class, ['label' => 'Your name']);
+        $formBuilder->add('name', \Typo3RectorPrefix20210423\Symfony\Component\Form\Extension\Core\Type\TextType::class, ['label' => 'Your name']);
     }
 }
 \class_alias('SomeFormType', 'SomeFormType', \false);

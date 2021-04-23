@@ -4,11 +4,10 @@ declare (strict_types=1);
 namespace Rector\Tests\Naming\Naming;
 
 use Iterator;
-use Rector\Core\HttpKernel\RectorKernel;
 use Rector\Naming\Naming\PropertyNaming;
 use Rector\Naming\ValueObject\ExpectedName;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-final class PropertyNamingTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+final class PropertyNamingTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var PropertyNaming
@@ -16,7 +15,7 @@ final class PropertyNamingTest extends \Typo3RectorPrefix20210422\Symplify\Packa
     private $propertyNaming;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->propertyNaming = $this->getService(\Rector\Naming\Naming\PropertyNaming::class);
     }
     /**

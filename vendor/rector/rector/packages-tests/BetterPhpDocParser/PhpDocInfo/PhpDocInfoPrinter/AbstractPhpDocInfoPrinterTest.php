@@ -9,11 +9,10 @@ use PhpParser\Node;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
 use Rector\BetterPhpDocParser\Printer\PhpDocInfoPrinter;
-use Rector\Core\HttpKernel\RectorKernel;
-use Typo3RectorPrefix20210422\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
-use Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem;
-abstract class AbstractPhpDocInfoPrinterTest extends \Typo3RectorPrefix20210422\Symplify\PackageBuilder\Testing\AbstractKernelTestCase
+use Rector\Testing\PHPUnit\AbstractTestCase;
+use Typo3RectorPrefix20210423\Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
+use Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileSystem;
+abstract class AbstractPhpDocInfoPrinterTest extends \Rector\Testing\PHPUnit\AbstractTestCase
 {
     /**
      * @var PhpDocInfoPrinter
@@ -29,10 +28,10 @@ abstract class AbstractPhpDocInfoPrinterTest extends \Typo3RectorPrefix20210422\
     private $phpDocInfoFactory;
     protected function setUp() : void
     {
-        $this->bootKernel(\Rector\Core\HttpKernel\RectorKernel::class);
+        $this->boot();
         $this->phpDocInfoFactory = $this->getService(\Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory::class);
         $this->phpDocInfoPrinter = $this->getService(\Rector\BetterPhpDocParser\Printer\PhpDocInfoPrinter::class);
-        $this->smartFileSystem = $this->getService(\Typo3RectorPrefix20210422\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $this->smartFileSystem = $this->getService(\Typo3RectorPrefix20210423\Symplify\SmartFileSystem\SmartFileSystem::class);
     }
     protected function createPhpDocInfoFromDocCommentAndNode(string $docComment, \PhpParser\Node $node) : \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo
     {
@@ -41,6 +40,6 @@ abstract class AbstractPhpDocInfoPrinterTest extends \Typo3RectorPrefix20210422\
     }
     protected function yieldFilesFromDirectory(string $directory, string $suffix = '*.php') : \Iterator
     {
-        return \Typo3RectorPrefix20210422\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory($directory, $suffix);
+        return \Typo3RectorPrefix20210423\Symplify\EasyTesting\DataProvider\StaticFixtureFinder::yieldDirectory($directory, $suffix);
     }
 }

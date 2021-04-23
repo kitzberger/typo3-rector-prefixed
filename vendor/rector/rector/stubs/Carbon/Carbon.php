@@ -1,6 +1,6 @@
 <?php
 
-namespace Typo3RectorPrefix20210422\Carbon;
+namespace Typo3RectorPrefix20210423\Carbon;
 
 use DateInterval;
 use DateTimeInterface;
